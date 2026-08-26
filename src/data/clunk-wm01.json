@@ -1,0 +1,192 @@
+{
+  "id": "clunk-wm01",
+  "schemaVersion": 1,
+  "appliance": {
+    "name": "Clunk",
+    "model": "WM-01",
+    "type": "front-load-washer",
+    "fictional": true
+  },
+  "symptom": {
+    "id": "will-not-drain",
+    "label": "Washer will not drain"
+  },
+  "components": [
+    {
+      "id": "machine",
+      "label": "Clunk WM-01",
+      "description": "The complete fictional demonstration washer."
+    },
+    {
+      "id": "drum",
+      "label": "Wash drum",
+      "description": "Holds the wash load and remaining water."
+    },
+    {
+      "id": "sump",
+      "label": "Sump channel",
+      "description": "Guides water from the drum toward the filter and pump."
+    },
+    {
+      "id": "pump-filter",
+      "label": "Pump filter",
+      "description": "A user-accessible fictional filter that can collect debris."
+    },
+    {
+      "id": "drain-pump",
+      "label": "Drain pump",
+      "description": "A sealed fictional pump shown for identification only."
+    },
+    {
+      "id": "drain-hose",
+      "label": "Drain hose",
+      "description": "Carries drained water away from the washer."
+    },
+    {
+      "id": "control-module",
+      "label": "Control module",
+      "description": "Professional-only internal electronics; no repair steps are provided."
+    }
+  ],
+  "checks": [
+    {
+      "id": "prepare-power",
+      "label": "Make the washer safe",
+      "componentId": "machine",
+      "instruction": "Cancel the cycle, disconnect power, and wait for all movement to stop.",
+      "why": "The next checks involve standing near retained water and an access door.",
+      "stop": "Stop if you notice smoke, a burning smell, hot water, or an active leak near power.",
+      "safetyTags": ["power-disconnected"],
+      "results": [
+        {
+          "id": "acknowledged",
+          "label": "Power is disconnected"
+        },
+        {
+          "id": "hazard-burning",
+          "label": "There is a burning smell or smoke"
+        },
+        {
+          "id": "hazard-hot-water",
+          "label": "The water or cabinet feels hot"
+        },
+        {
+          "id": "hazard-active-leak",
+          "label": "Water is leaking near power"
+        }
+      ]
+    },
+    {
+      "id": "inspect-drain-hose",
+      "label": "Check the drain hose",
+      "componentId": "drain-hose",
+      "instruction": "Look behind the washer without moving or lifting it. Is the visible hose sharply bent, pinched, or disconnected?",
+      "why": "A visible hose restriction can stop water before an internal part is involved.",
+      "stop": "Do not reach behind, pull out, tilt, or lift the washer. Choose unsafe to reach instead.",
+      "safetyTags": ["external-observation"],
+      "results": [
+        {
+          "id": "hose-kinked",
+          "label": "The hose is kinked or pinched"
+        },
+        {
+          "id": "hose-clear",
+          "label": "The visible hose looks clear"
+        },
+        {
+          "id": "hose-disconnected",
+          "label": "The hose is disconnected or damaged"
+        },
+        {
+          "id": "unsafe-to-reach",
+          "label": "I cannot check it safely"
+        }
+      ]
+    },
+    {
+      "id": "inspect-pump-filter",
+      "label": "Check the pump filter",
+      "componentId": "pump-filter",
+      "instruction": "With power disconnected, place towels and a shallow tray by the lower access door. Open only the user access door and inspect the filter.",
+      "why": "The fictional pump filter is the most likely remaining restriction after a clear hose.",
+      "stop": "Water may release. Stop if the water is hot, the access is damaged, or anything requires a tool or internal panel removal.",
+      "safetyTags": ["power-disconnected", "water-release", "user-access-door"],
+      "results": [
+        {
+          "id": "filter-blocked",
+          "label": "The filter is blocked by debris"
+        },
+        {
+          "id": "filter-clear",
+          "label": "The filter looks clear"
+        },
+        {
+          "id": "filter-damaged",
+          "label": "The filter or access door is damaged"
+        },
+        {
+          "id": "unsafe-to-open",
+          "label": "I cannot open it safely"
+        }
+      ]
+    }
+  ],
+  "causes": [
+    {
+      "id": "blocked-filter",
+      "label": "Blocked pump filter",
+      "componentId": "pump-filter",
+      "baseRank": 4
+    },
+    {
+      "id": "kinked-hose",
+      "label": "Restricted drain hose",
+      "componentId": "drain-hose",
+      "baseRank": 3
+    },
+    {
+      "id": "drain-pump-failure",
+      "label": "Drain pump needs service",
+      "componentId": "drain-pump",
+      "baseRank": 2
+    },
+    {
+      "id": "control-fault",
+      "label": "Internal control fault",
+      "componentId": "control-module",
+      "baseRank": 1
+    }
+  ],
+  "parts": [
+    {
+      "id": "cl-pf-220",
+      "componentId": "pump-filter",
+      "name": "Pump filter cartridge",
+      "sku": "CL-PF-220",
+      "compatibleModel": "Clunk WM-01",
+      "effort": "Low · user-cleanable demo part",
+      "illustrativeCost": "Low",
+      "installBoundary": "user-cleanable"
+    },
+    {
+      "id": "cl-dh-208",
+      "componentId": "drain-hose",
+      "name": "Drain hose assembly",
+      "sku": "CL-DH-208",
+      "compatibleModel": "Clunk WM-01",
+      "effort": "Medium · professional fit recommended",
+      "illustrativeCost": "Medium",
+      "installBoundary": "professional-only"
+    },
+    {
+      "id": "cl-dp-420",
+      "componentId": "drain-pump",
+      "name": "Drain pump module",
+      "sku": "CL-DP-420",
+      "compatibleModel": "Clunk WM-01",
+      "effort": "High · professional installation only",
+      "illustrativeCost": "High",
+      "installBoundary": "professional-only"
+    }
+  ]
+}

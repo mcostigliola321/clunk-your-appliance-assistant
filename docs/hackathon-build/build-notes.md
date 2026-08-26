@@ -32,3 +32,12 @@
 - Switched the local dependency workflow from Bun to npm after Bun omitted native optional build bindings on this machine. The disposable Bun node_modules directory was moved to /tmp/clunk-node-modules-bun-20260826 and can be removed later.
 - Added the MIT license early so GitHub can detect it as soon as the repository becomes public.
 - Verification: npm install reported zero vulnerabilities; npm run build produced a static dist with no server output.
+
+## 2026-08-26 — Checklist item 2
+
+- Added the original fictional Clunk WM-01 repair pack with three bounded checks, seven visible components, four ranked causes, and three clearly fictional parts.
+- Implemented one pure action engine for all human, manual, and agent interactions, including rejected-action logging and deterministic event ordering.
+- Added state-derived progress, cause ranking, part matching, next actions, and a persistent fictional-data disclaimer.
+- Enforced immediate stop states for burning smell, hot water, leaks near power, unsafe access, and damaged user-access areas; no internal or energized instructions exist in the repair pack.
+- Added a shared React provider whose synchronous public action layer returns the same snapshot it renders.
+- Verification: 11 focused engine and safety tests pass; TypeScript and the static production build pass.

@@ -18,7 +18,7 @@
   Acceptance: Lovable has a Clunk project, a public-source workflow exists, the local workspace tracks the generated repository, and no application feature code predates that connection.
   Verify: Read the Lovable project metadata, inspect the Git remote and default branch, and run the scaffold build.
 
-- [ ] **2. Implement the repair pack, domain engine, safety policy, and shared state**
+- [x] **2. Implement the repair pack, domain engine, safety policy, and shared state**
   Spec ref: spec.md > Repair pack, Domain engine, State Model, and Safety Architecture
   What to build: Add the fictional Clunk WM-01 data, types, pack invariants, pure diagnosis transitions, cause ranking, part lookup, safety deny-list, reducer, selectors, and RepairProvider public action layer.
   Acceptance: PRD Epics 2, 4, 5, 6, and 10 have deterministic state behavior; invalid or hazardous actions cannot mutate into an unsafe state.
