@@ -88,3 +88,11 @@
 - Rewrote the public README, architecture, safety model, source ledger, repair-pack guide, JSON Schema, and product brief around source-backed evidence and bounded compatibility.
 - Verification passed: TypeScript, ESLint, 26 unit/integration/eval tests before the final diagram refinement, 22 focused engine/safety/registry/eval regressions after it, production build, and 12/12 Playwright cases across desktop and mobile. Browser checks include exact-part, no-part, hazard, keyboard, 44px touch targets, responsive overflow, reduced motion, and automated WCAG A/AA rules.
 - Desktop and 390px visual review confirmed the clean model-finder-first hierarchy. Deployment and actual natural-language WebMCP sessions remain checklist items 17–18.
+
+## 2026-08-26 — Production publish and browser proof
+
+- Pushed `d46c3ef` to the GitHub-connected `main` branch under Mark Costigliola’s configured author and published the synced build to https://clunk-appliance-assistant.lovable.app with Lovable deployment `36ba1bfc-9961-436e-ac7f-7d47d45aa72f`.
+- Live verification caught stale fictional title/description metadata. Fixed it in `30f568b`, pushed it under the same author, and republished with deployment `7bd4efd0-8698-4a28-ad92-69d5036769af`.
+- Chrome 149 loaded the public v2 catalog with **Agent tools ready**. The visible state-dependent inventory changed from 3/8 at catalog state to 4/8 at the exact-part result. The production LG `WM3400CW.ABWEVUS` path ended at `AHA75693425`, the cited LG evidence link, and a professional-only installation boundary with eight visible activity events and no console warnings or errors.
+- The in-app browser loaded the same public v2 build in **Manual mode ready**, exposed 3/8 catalog-state judge tools, and reported no console warnings or errors.
+- Checklist item 17 remains open until the exact-part, no-part-needed, and unsupported-model cases are captured as natural-language agent-driven WebMCP sessions rather than UI/manual verification alone.

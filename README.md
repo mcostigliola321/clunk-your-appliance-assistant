@@ -93,7 +93,7 @@ The app validates repair packs, rejects out-of-order calls, requires person-supp
 - **WebMCP-capable browser:** enable the browser’s WebMCP testing support and open the live URL.
 - **Any other modern browser:** Clunk reports **Manual mode ready**. Use the normal controls or Tool inspector; both reach the same state and log.
 
-Deployment validation in ChatGPT’s in-app browser and Chrome 149 will be documented after the source-backed Lovable build is published.
+The source-backed production build was verified in Chrome 149 with WebMCP testing enabled and in the in-app browser fallback. Chrome reported **Agent tools ready**, changed its active inventory as the repair state advanced, and completed the exact-code LG path with no console errors. The in-app browser reported **Manual mode ready** and exposed the same credential-free judge controls. A recorded natural-language agent session remains part of the final submission capture.
 
 ## Run locally
 
