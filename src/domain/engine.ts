@@ -44,7 +44,7 @@ export function createInitialRepairState(webMcpStatus: WebMcpStatus = "detecting
     action: "catalog_ready",
     arguments: {},
     outcome: "accepted",
-    message: `${APPLIANCE_CATALOG.length} source-backed washer families are ready to search.`,
+    message: `${APPLIANCE_CATALOG.length} washers are ready to search.`,
   };
   return {
     packId: null,
@@ -159,8 +159,8 @@ function searchSupportedAppliances(
     catalogResultIds: matches.map((entry) => entry.id),
   };
   const message = matches.length
-    ? `Found ${matches.length} supported model ${matches.length === 1 ? "family" : "families"}.`
-    : "No supported model matched. Clunk will not substitute a similar-looking appliance.";
+    ? `Found ${matches.length} matching washer${matches.length === 1 ? "" : "s"}.`
+    : "No matching washer found.";
   return result(nextState, source, "search_supported_appliances", input, true, message);
 }
 
@@ -216,7 +216,7 @@ function selectAppliance(
     "select_appliance",
     input,
     true,
-    `Selected ${entry.brand} ${entry.model}${productCode ? ` (${productCode})` : " at model-family level"}.`,
+    `Selected ${entry.brand} ${entry.model}${productCode ? ` with full model number ${productCode}` : ""}.`,
   );
 }
 
@@ -259,7 +259,7 @@ function startDiagnosis(
     "start_diagnosis",
     input,
     true,
-    "Diagnosis started with a mandatory power, heat, and leak check.",
+    "Started with the safety check.",
   );
 }
 
@@ -351,7 +351,7 @@ function recordObservation(
       "record_observation",
       input,
       true,
-      `Observation recorded. Next: ${nextCheck.label}.`,
+      `Next: ${nextCheck.label}.`,
     );
   }
   nextState = {
@@ -366,7 +366,7 @@ function recordObservation(
     "record_observation",
     input,
     true,
-    "Observation recorded. Clunk can now resolve the next safe outcome.",
+    "Checks complete. Showing the answer.",
   );
 }
 

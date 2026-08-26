@@ -3,11 +3,11 @@ import { Bot, CircleCheck, CircleDashed, CircleOff } from "lucide-react";
 import type { WebMcpStatus } from "@/domain/types";
 
 const STATUS_COPY: Record<WebMcpStatus, { label: string; detail: string }> = {
-  detecting: { label: "Checking WebMCP", detail: "Looking for browser tool support" },
-  ready: { label: "Agent tools ready", detail: "Eight WebMCP tools registered" },
-  unavailable: { label: "Manual mode ready", detail: "This browser does not expose WebMCP" },
-  partial: { label: "Some tools ready", detail: "Manual mode remains available" },
-  failed: { label: "Manual mode ready", detail: "Tool registration was blocked" },
+  detecting: { label: "Connecting", detail: "Checking browser support" },
+  ready: { label: "AI connected", detail: "Eight WebMCP tools registered" },
+  unavailable: { label: "Guided mode", detail: "Use the same flow without WebMCP" },
+  partial: { label: "Guided mode", detail: "Some browser tools are unavailable" },
+  failed: { label: "Guided mode", detail: "Use the same flow without WebMCP" },
 };
 
 export function StatusPill({ status }: { status: WebMcpStatus }) {

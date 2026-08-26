@@ -1,13 +1,11 @@
-import { BadgeCheck, ChevronDown, RotateCcw } from "lucide-react";
+import { ChevronDown, RotateCcw } from "lucide-react";
 
 import { ActivityLog } from "@/components/ActivityLog";
 import { ApplianceDiagram } from "@/components/ApplianceDiagram";
 import { CauseStack } from "@/components/CauseStack";
-import { DiagnosticRail } from "@/components/DiagnosticRail";
 import { ModelFinder } from "@/components/ModelFinder";
 import { NextCheckPanel } from "@/components/NextCheckPanel";
 import { PartResult } from "@/components/PartResult";
-import { RepairContext } from "@/components/RepairContext";
 import { SourcePanel } from "@/components/SourcePanel";
 import { StatusPill } from "@/components/StatusPill";
 import { ToolInspector } from "@/components/ToolInspector";
@@ -25,16 +23,21 @@ export function App() {
     invokeTool("search_supported_appliances", { modelQuery, ...(brand ? { brand } : {}) }, "human");
   };
 
-  const selectModel = (applianceId: string) => {
+  const selectModel = (applianceId: string, suppliedProductCode?: string) => {
     const entry = getCatalogEntry(applianceId);
-    const exactCode = entry.verifiedProductCodes.find(
-      (code) => normalizeModel(code) === normalizeModel(state.catalogQuery),
-    );
-    invokeTool(
+    const exactCode =
+      suppliedProductCode ??
+      entry.verifiedProductCodes.find(
+        (code) => normalizeModel(code) === normalizeModel(state.catalogQuery),
+      );
+    const selection = invokeTool(
       "select_appliance",
       { applianceId, ...(exactCode ? { productCode: exactCode } : {}) },
       "human",
     );
+    if (selection.ok && exactCode) {
+      invokeTool("start_diagnosis", { symptomId: "will-not-drain" }, "human");
+    }
   };
 
   const startDiagnosis = () => {
@@ -44,7 +47,26 @@ export function App() {
 
   const recordResult = (resultId: ResultId) => {
     if (!state.currentStepId) return;
-    invokeTool("record_observation", { checkId: state.currentStepId, resultId }, "human");
+    const observation = invokeTool(
+      "record_observation",
+      { checkId: state.currentStepId, resultId },
+      "human",
+    );
+    if (observation.ok && observation.state.phase === "result") {
+      invokeTool("find_compatible_part", {}, "human");
+    }
+  };
+
+  const continueWithProductCode = (productCode: string) => {
+    if (!state.applianceId) return;
+    const selection = invokeTool(
+      "select_appliance",
+      { applianceId: state.applianceId, productCode },
+      "human",
+    );
+    if (selection.ok) {
+      invokeTool("start_diagnosis", { symptomId: "will-not-drain" }, "human");
+    }
   };
 
   const highlightComponent = (componentId: ComponentId) => {
@@ -66,7 +88,7 @@ export function App() {
         </a>
         <div className="topbar__meta">
           <span className="model-badge">
-            {snapshot.appliance ?? `${APPLIANCE_CATALOG.length} real model families`}
+            {snapshot.appliance ?? `${APPLIANCE_CATALOG.length} washers supported`}
           </span>
           <StatusPill status={state.webMcpStatus} />
           {hasSession ? (
@@ -83,24 +105,23 @@ export function App() {
           <>
             <section className="intro-band" aria-labelledby="intro-title">
               <div className="intro-copy">
-                <h1 id="intro-title">Tell it what&apos;s broken.</h1>
+                <h1 id="intro-title">Your washer won&apos;t drain. Let&apos;s fix that.</h1>
                 <p>
-                  It shows you what to check and finds the exact part—only when the evidence is
-                  exact.
+                  Find your model. Clunk shows where to look and gives you the exact replacement
+                  part when you need one.
                 </p>
                 <div className="hero-proof">
-                  <BadgeCheck size={17} aria-hidden="true" />
-                  <span>Official support sources · deterministic safety · no login</span>
+                  <span>Clear checks · real part links · no login</span>
                 </div>
               </div>
               <figure className="intro-machine">
                 <img
                   src="/assets/clunk-washer-front-load-topology-v3.png"
-                  alt="Generalized front-load washer topology showing one connected drain path"
+                  alt="Front-load washer interior showing the drain path"
                   width="1305"
                   height="1205"
                 />
-                <figcaption>Topology orientation opens after model selection</figcaption>
+                <figcaption>Clunk points to each place to check.</figcaption>
               </figure>
               <ModelFinder
                 snapshot={snapshot}
@@ -109,54 +130,23 @@ export function App() {
                 onSelect={selectModel}
               />
             </section>
-
-            <ol className="onboarding-line" aria-label="How Clunk works">
-              <li>
-                <span>1</span>
-                <div>
-                  <strong>Find your washer</strong>
-                  <small>A complete model code unlocks exact evidence.</small>
-                </div>
-              </li>
-              <li>
-                <span>2</span>
-                <div>
-                  <strong>Report what you see</strong>
-                  <small>Clunk reveals one safe check at a time.</small>
-                </div>
-              </li>
-              <li>
-                <span>3</span>
-                <div>
-                  <strong>Act on evidence</strong>
-                  <small>Clean it, match the exact part, or stop safely.</small>
-                </div>
-              </li>
-            </ol>
           </>
         ) : (
           <>
             <section className="selected-appliance" aria-label="Selected appliance">
               <div>
-                <span className="section-kicker">Selected repair pack</span>
-                <strong>{snapshot.appliance}</strong>
-                <small>
-                  {snapshot.productCode ??
-                    "Family selected · complete product code still needed for exact compatibility"}
-                </small>
+                <h1>{snapshot.appliance} won&apos;t drain</h1>
+                <p>
+                  {snapshot.productCode
+                    ? `Full model number: ${snapshot.productCode}`
+                    : "Add the full model number to get the right part."}
+                </p>
               </div>
               <div className="selected-appliance__action">
                 <span>
-                  <small>Symptom</small>
-                  <strong>Will not drain</strong>
+                  <small>Problem</small>
+                  <strong>Water stays in the washer</strong>
                 </span>
-                {!snapshot.symptom ? (
-                  <button className="button button--dark" type="button" onClick={startDiagnosis}>
-                    Start safe diagnosis
-                  </button>
-                ) : (
-                  <span className="diagnosis-active">In progress · {snapshot.progress}%</span>
-                )}
               </div>
             </section>
 
@@ -174,9 +164,8 @@ export function App() {
             <section
               className="repair-bench"
               id="repair-bench"
-              aria-label="Shared appliance repair bench"
+              aria-label="Washer check and answer"
             >
-              <DiagnosticRail state={state} />
               <ApplianceDiagram
                 packId={state.packId}
                 highlightedComponentId={state.highlightedComponentId}
@@ -188,12 +177,26 @@ export function App() {
                   onStart={startDiagnosis}
                   onResult={recordResult}
                   onFindPart={() => invokeTool("find_compatible_part", {}, "human")}
+                  onUseProductCode={continueWithProductCode}
+                  exactPartAvailable={Boolean(
+                    state.applianceId && getCatalogEntry(state.applianceId).exactPart,
+                  )}
+                  exampleProductCode={
+                    state.applianceId
+                      ? (getCatalogEntry(state.applianceId).verifiedProductCodes[0] ?? null)
+                      : null
+                  }
                 />
                 <PartResult outcome={snapshot.partOutcome} />
-                <CauseStack causes={snapshot.likelyCauses} visible={Boolean(snapshot.symptom)} />
-                <SourcePanel sources={snapshot.sources} />
-                {snapshot.phase === "result" || snapshot.phase === "escalated" ? (
-                  <RepairContext />
+                {snapshot.partOutcome ? (
+                  <details className="answer-details">
+                    <summary>
+                      Why Clunk gave this answer
+                      <ChevronDown size={18} aria-hidden="true" />
+                    </summary>
+                    <CauseStack causes={snapshot.likelyCauses} visible />
+                    <SourcePanel sources={snapshot.sources} />
+                  </details>
                 ) : null}
               </aside>
             </section>
@@ -203,11 +206,11 @@ export function App() {
         <details className="protocol-disclosure">
           <summary>
             <span>
-              <strong>Agent activity &amp; WebMCP tools</strong>
+              <strong>Behind the scenes</strong>
               <small>{latestMessage}</small>
             </span>
             <span>
-              {state.activity.length} events · {snapshot.validNextActions.length} active tools
+              View activity
               <ChevronDown size={18} aria-hidden="true" />
             </span>
           </summary>

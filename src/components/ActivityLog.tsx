@@ -22,11 +22,8 @@ export function ActivityLog({ activity }: { activity: ActivityEvent[] }) {
   return (
     <section className="activity-log" aria-labelledby="activity-title" role="region">
       <div className="section-heading">
-        <div>
-          <div className="section-kicker">Shared state</div>
-          <h2 id="activity-title">Agent activity</h2>
-        </div>
-        <span className="activity-count">{activity.length} events</span>
+        <h2 id="activity-title">What Clunk did</h2>
+        <span className="activity-count">{activity.length} updates</span>
       </div>
       <ol className="activity-list">
         {recent.map((event) => (

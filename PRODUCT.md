@@ -10,7 +10,7 @@ People facing a washer that will not drain who need a calm, understandable way t
 
 ## Product Purpose
 
-Clunk is a shared visual repair bench for a person and a browser agent. The person reports what they can physically observe; the agent uses a small state-dependent WebMCP surface to search supported models and update the same visible diagnostic state, safe checks, likely causes, source evidence, compatibility outcome, and escalation path. Success means the five-second promise is obvious: “Tell it what’s broken. It shows you what to check and finds the exact part.”
+Clunk answers four homeowner questions in order: What is wrong? Where should I look? What part do I need? Where can I buy it? A person reports only what they can see while a browser agent updates the same washer view and answer. The protocol, source checks, and safety rules support that outcome but must never become the customer-facing product.
 
 ## Brand Personality
 
@@ -22,15 +22,17 @@ Simple, instantly understandable, clean. The interface should feel calm and exac
 - Decorative workshop skeuomorphism, grunge, blueprint clichés, or faux hand-drawn diagrams.
 - Neon “agent” interfaces, chat-first layouts, gradients, glass effects, and generic AI styling.
 - Dense prose, nested cards, ambiguous controls, or hidden safety boundaries.
+- Customer-facing phrases such as “evidence boundary,” “compatibility outcome,” “deterministic,” “repair pack,” or “resolve the part outcome.”
 - Any visual or copy that implies universal support, a confirmed diagnosis, fuzzy model substitution, or compatibility without exact evidence.
 
 ## Design Principles
 
-1. Make the next safe action obvious before exposing detail.
-2. Keep the human, agent, and appliance synchronized in one shared state.
-3. Show reasoning through visible state changes, not explanatory walls of text.
-4. Treat safety and uncertainty as core product behavior.
-5. Make model scope, evidence depth, and compatibility limits impossible to miss.
+1. Lead with the homeowner's answer, not Clunk's proof system.
+2. Show the exact place to check on the washer while asking one plain-language question.
+3. Reveal the result automatically after the last answer; never add a technical “resolve” step.
+4. When an exact match exists, show the part name, location, model fit, price, and a prominent buy link together.
+5. Keep WebMCP activity, sources, and detailed reasoning available behind a secondary disclosure for judges and interested users.
+6. Say “checks only” before a user starts any model path that cannot currently end in a verified part link.
 
 ## Accessibility & Inclusion
 

@@ -22,22 +22,26 @@ export function PartResult({ outcome }: { outcome: PartOutcome | null }) {
         <Icon size={20} />
       </div>
       <div className="part-result__body">
-        <div className="section-kicker">Compatibility outcome</div>
         <h2 id="part-title">{outcome.title}</h2>
-        {exact ? <div className="part-sku">{outcome.part?.sku}</div> : null}
+        {exact ? (
+          <>
+            <div className="part-name">{outcome.part?.name}</div>
+            <div className="part-sku">Part #{outcome.part?.sku}</div>
+          </>
+        ) : null}
         <p className="part-message">{outcome.message}</p>
         {exact ? (
           <>
             <dl className="part-details">
               <div>
-                <dt>Verified model code</dt>
+                <dt>Fits</dt>
                 <dd>
                   <BadgeCheck size={15} aria-hidden="true" /> {outcome.part?.compatibleModel}
                 </dd>
               </div>
               <div>
-                <dt>Install boundary</dt>
-                <dd>Professional only</dd>
+                <dt>Where it is</dt>
+                <dd>Lower front of the washer, behind the filter area</dd>
               </div>
             </dl>
             <div className="purchase-handoff">
@@ -59,31 +63,34 @@ export function PartResult({ outcome }: { outcome: PartOutcome | null }) {
                 rel="noreferrer"
               >
                 <ShoppingCart size={17} aria-hidden="true" />
-                {available ? "View product" : "Review listing"} at {purchase?.seller}
+                {available ? "Buy this part" : "View this part"}
                 <ExternalLink size={14} aria-hidden="true" />
               </a>
               <small className="purchase-verified">
-                Price and stock checked {purchase?.lastVerified}; seller controls live availability
-                and checkout.
+                Opens {purchase?.seller} in a new tab. Price and stock were checked{" "}
+                {purchase?.lastVerified}.
               </small>
             </div>
           </>
         ) : null}
         {outcome.requiredProductCode ? (
           <div className="product-code-needed">
-            <strong>Before buying anything</strong>
+            <strong>We need the full model number</strong>
             <span>{outcome.requiredProductCode}</span>
           </div>
         ) : null}
         {outcome.source ? (
           <a className="part-source" href={outcome.source.url} target="_blank" rel="noreferrer">
-            View {outcome.source.publisher} evidence <ExternalLink size={14} aria-hidden="true" />
+            Read the {outcome.source.publisher} instructions{" "}
+            <ExternalLink size={14} aria-hidden="true" />
           </a>
         ) : null}
-        <p className="part-disclaimer">
-          A compatibility match is not a confirmed diagnosis. Clunk does not sell parts or provide
-          an internal installation procedure.
-        </p>
+        {exact ? (
+          <p className="part-disclaimer">
+            Confirm the full model number again on the seller page before ordering. Replacing an
+            internal pump is a job for a qualified appliance technician.
+          </p>
+        ) : null}
       </div>
     </section>
   );

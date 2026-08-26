@@ -42,20 +42,20 @@ const COMPONENTS: RepairPackComponent[] = [
   },
   {
     id: "sump",
-    label: "Sump",
-    description: "The internal low point leading toward the pump.",
+    label: "Tub outlet",
+    description: "Where water leaves the bottom of the tub on its way to the pump.",
     access: "professional-only",
   },
   {
     id: "pump-filter",
-    label: "Pump filter",
-    description: "A debris filter when the manufacturer documents user access.",
+    label: "Drain filter",
+    description: "The small lower-front filter that catches coins, lint, and other debris.",
     access: "user-accessible",
   },
   {
     id: "drain-pump",
     label: "Drain pump",
-    description: "An internal pump; replacement remains professional-only.",
+    description: "The part that pushes water out through the drain hose.",
     access: "professional-only",
   },
   {
@@ -66,8 +66,8 @@ const COMPONENTS: RepairPackComponent[] = [
   },
   {
     id: "control-module",
-    label: "Control module",
-    description: "An internal electrical assembly that Clunk never instructs you to access.",
+    label: "Controls",
+    description: "The washer's internal controls. Do not open this area.",
     access: "professional-only",
   },
 ];
@@ -75,25 +75,25 @@ const COMPONENTS: RepairPackComponent[] = [
 const CAUSES = [
   {
     id: "blocked-filter" as const,
-    label: "Blocked pump filter",
+    label: "Blocked drain filter",
     componentId: "pump-filter" as const,
     baseRank: 40,
   },
   {
     id: "kinked-hose" as const,
-    label: "Restricted drain hose",
+    label: "Bent or blocked drain hose",
     componentId: "drain-hose" as const,
     baseRank: 30,
   },
   {
     id: "drain-pump-failure" as const,
-    label: "Drain-pump fault",
+    label: "Drain pump problem",
     componentId: "drain-pump" as const,
     baseRank: 20,
   },
   {
     id: "control-fault" as const,
-    label: "Internal control fault",
+    label: "Internal control problem",
     componentId: "control-module" as const,
     baseRank: 10,
   },
@@ -105,13 +105,13 @@ function prepareCheck(sourceIds: string[]): RepairPackCheck {
     label: "Make the washer safe",
     componentId: "machine",
     instruction:
-      "Cancel the cycle, disconnect power, and wait for all movement to stop. Do not continue while water is hot.",
-    why: "Every physical observation begins with the same deterministic safety boundary.",
-    stop: "Stop for smoke, a burning smell, hot water, or an active leak near power.",
+      "Cancel the cycle, unplug the washer, and wait until it is completely still. Make sure the water is cool.",
+    why: "This keeps you away from moving parts, hot water, and electricity.",
+    stop: "there is smoke, a burning smell, hot water, or water near the outlet.",
     safetyTags: ["disconnect-power", "cool-water", "external-observation"],
     sourceIds,
     results: [
-      { id: "acknowledged", label: "Power disconnected; water is cool" },
+      { id: "acknowledged", label: "Washer is unplugged and the water is cool" },
       { id: "hazard-burning", label: "Smoke or burning smell" },
       { id: "hazard-hot-water", label: "Water is still hot" },
       { id: "hazard-active-leak", label: "Active leak near power" },
@@ -122,19 +122,19 @@ function prepareCheck(sourceIds: string[]): RepairPackCheck {
 function hoseCheck(sourceIds: string[]): RepairPackCheck {
   return {
     id: "inspect-drain-hose",
-    label: "Inspect the visible drain hose",
+    label: "Check the drain hose",
     componentId: "drain-hose",
     instruction:
-      "Without moving the washer or disconnecting plumbing, trace the visible hose to the standpipe. Look for a pinch, sharp bend, damage, or an airtight taped connection.",
-    why: "Manufacturer guidance across these model families identifies hose restriction or incorrect installation as a first no-drain check.",
-    stop: "Stop if the hose is inaccessible, damaged, or moving the washer would be required.",
+      "Follow the hose from the back of the washer to the household drain. Look for a kink, pinch, damage, or a taped-shut connection. Do not move the washer.",
+    why: "A bent or badly placed hose can stop the water from leaving the washer.",
+    stop: "you cannot reach the hose safely, it looks damaged, or you would need to move the washer.",
     safetyTags: ["external-observation", "no-disassembly"],
     sourceIds,
     results: [
       { id: "hose-kinked", label: "Visible kink or pinch" },
-      { id: "hose-clear", label: "Hose looks clear and correctly placed" },
-      { id: "hose-disconnected", label: "Loose, damaged, or disconnected" },
-      { id: "unsafe-to-reach", label: "Unsafe or impossible to reach" },
+      { id: "hose-clear", label: "Hose looks clear" },
+      { id: "hose-disconnected", label: "Hose is loose or damaged" },
+      { id: "unsafe-to-reach", label: "I cannot reach it safely" },
     ],
   };
 }
@@ -143,20 +143,20 @@ function filterCheck(entry: ApplianceCatalogEntry): RepairPackCheck {
   const drawer = entry.topology === "drawer-filter";
   return {
     id: "inspect-pump-filter",
-    label: drawer ? "Check the documented lower filter" : "Check the front pump filter",
+    label: "Check the drain filter",
     componentId: "pump-filter",
     instruction: drawer
-      ? "Continue only if your owner manual and washer match the documented storage-drawer access. With power disconnected, release the storage drawer tabs, place a shallow pan and towels below the small drain hose, drain slowly, then turn the filter counterclockwise."
-      : "With power disconnected and water cool, place towels and a shallow pan below the front access door. Drain slowly through the small hose when present, then turn the pump filter counterclockwise.",
-    why: "The selected manufacturer's guidance documents a user-cleanable filter on this front-load configuration.",
-    stop: "Stop if the access does not match, the cap is stuck, water is hot, wiring is visible, or water approaches an outlet.",
+      ? "Only continue if your owner's manual shows the filter behind the lower drawer. Put down towels and a shallow pan, drain the small hose slowly, then unscrew the filter."
+      : "Open the small lower-front door. Put down towels and a shallow pan, drain the small hose slowly if there is one, then unscrew the filter.",
+    why: "Coins, lint, and other debris can block this filter and stop the washer from draining.",
+    stop: "the panel does not match the picture, the cap is stuck, water is hot, you see wires, or water gets near an outlet.",
     safetyTags: ["disconnect-power", "cool-water", "spill-control", "user-accessible-filter"],
     sourceIds: [entry.modelSource.id, ...entry.troubleshootingSources.map((item) => item.id)],
     results: [
-      { id: "filter-blocked", label: "Debris was blocking the filter" },
-      { id: "filter-clear", label: "Filter and visible impeller area look clear" },
-      { id: "filter-damaged", label: "Filter, cap, or seal looks damaged" },
-      { id: "unsafe-to-open", label: "Access does not match or feels unsafe" },
+      { id: "filter-blocked", label: "I found debris in the filter" },
+      { id: "filter-clear", label: "The filter looks clear" },
+      { id: "filter-damaged", label: "The filter or seal looks damaged" },
+      { id: "unsafe-to-open", label: "This does not match my washer" },
     ],
   };
 }

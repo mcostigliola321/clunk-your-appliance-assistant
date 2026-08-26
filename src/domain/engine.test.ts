@@ -126,7 +126,7 @@ describe("source-backed repair engine", () => {
     });
     expect(result.ok).toBe(true);
     expect(result.snapshot.catalogResults).toEqual([]);
-    expect(result.message).toContain("will not substitute");
+    expect(result.message).toBe("No matching washer found.");
   });
 
   it("rejects out-of-order observations without advancing", () => {

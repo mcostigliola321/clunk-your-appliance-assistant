@@ -39,17 +39,18 @@ export function ApplianceDiagram({
   );
   const componentLabel = (id: ComponentId) =>
     pack?.components.find((item) => item.id === id)?.label ?? id.replace("-", " ");
+  const activeComponent = pack?.components.find((item) => item.id === highlightedComponentId);
 
   return (
     <section className="workbench" aria-labelledby="workbench-title">
       <div className="workbench__header">
         <div>
-          <div className="section-kicker">Shared repair bench</div>
-          <h2 id="workbench-title">{applianceName}</h2>
+          <h2 id="workbench-title">Look here: {componentLabel(highlightedComponentId)}</h2>
+          <p>{activeComponent?.description}</p>
         </div>
         <div className="diagram-legend">
           <span className="diagram-legend__swatch" aria-hidden="true" />
-          Topology map · Current focus
+          Current check
         </div>
       </div>
 
@@ -58,7 +59,7 @@ export function ApplianceDiagram({
           <img
             className="appliance-render"
             src={illustration}
-            alt={`Generalized ${loadStyle} topology orientation used for ${applianceName}; component placement is not model-specific`}
+            alt={`Cutaway view of a ${loadStyle} washer with ${componentLabel(highlightedComponentId)} highlighted for ${applianceName}`}
             width={illustrationSize.width}
             height={illustrationSize.height}
           />
@@ -83,25 +84,8 @@ export function ApplianceDiagram({
           })}
         </div>
         <p className="diagram-note">
-          Topology orientation only—not this model&apos;s service diagram. Component placement
-          varies by revision.
+          General layout shown. Parts may sit in a slightly different place on your washer.
         </p>
-      </div>
-
-      <div className="component-selector" aria-label="Diagram components">
-        {visibleComponents.map((id) => {
-          return (
-            <button
-              className={highlightedComponentId === id ? "is-active" : ""}
-              type="button"
-              key={id}
-              aria-pressed={highlightedComponentId === id}
-              onClick={() => onHighlight(id)}
-            >
-              {componentLabel(id)}
-            </button>
-          );
-        })}
       </div>
     </section>
   );

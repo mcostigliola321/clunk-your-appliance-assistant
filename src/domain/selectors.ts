@@ -10,7 +10,7 @@ import {
 import type { PartOutcome, RepairSnapshot, RepairState, RepairToolName } from "./types";
 
 export const REAL_DATA_DISCLAIMER =
-  "Educational troubleshooting only. Confirm the complete model code with the manufacturer or a qualified professional before buying a part. Clunk does not guarantee diagnosis, compatibility, or repair.";
+  "Check the full model number before ordering. If anything looks unsafe, stop and call a qualified appliance technician.";
 
 export function getPartOutcome(state: RepairState): PartOutcome | null {
   if (!state.packId || state.phase !== "result") return null;
@@ -21,9 +21,9 @@ export function getPartOutcome(state: RepairState): PartOutcome | null {
   if (hose === "hose-kinked") {
     return {
       status: "no-part-needed",
-      title: "No part indicated",
+      title: "You probably don't need a part",
       message:
-        "The visible drain path is restricted. Correct only the external hose placement described by the manufacturer, then test the washer.",
+        "Straighten the visible drain hose without moving the washer, then run a short drain cycle.",
       part: null,
       requiredProductCode: null,
       source: pack.sources.find((item) => item.kind === "manufacturer-troubleshooting") ?? null,
@@ -32,9 +32,8 @@ export function getPartOutcome(state: RepairState): PartOutcome | null {
   if (hose === "hose-disconnected") {
     return {
       status: "professional-only",
-      title: "Service boundary",
-      message:
-        "A loose or damaged hose needs a leak-safe inspection before any part can be identified.",
+      title: "Stop here and call a technician",
+      message: "The hose looks loose or damaged and could leak if the washer runs.",
       part: null,
       requiredProductCode: pack.productCodePrompt,
       source: pack.sources.find((item) => item.kind === "manufacturer-troubleshooting") ?? null,
@@ -43,9 +42,9 @@ export function getPartOutcome(state: RepairState): PartOutcome | null {
   if (filter === "filter-blocked") {
     return {
       status: "no-part-needed",
-      title: "Cleanable blockage found",
+      title: "You probably don't need a part",
       message:
-        "The reported debris is a sufficient explanation to clean and reinstall the documented filter before considering a replacement part.",
+        "The blockage you found can keep the washer from draining. Clean the filter, reinstall it, and test the washer.",
       part: null,
       requiredProductCode: null,
       source: pack.sources.find((item) => item.id.includes("filter")) ?? null,
@@ -54,9 +53,9 @@ export function getPartOutcome(state: RepairState): PartOutcome | null {
   if (hose === "hose-clear" && !pack.checks.some((check) => check.id === "inspect-pump-filter")) {
     return {
       status: "professional-only",
-      title: "Visible checks exhausted",
+      title: "A technician needs to check inside",
       message:
-        "This manufacturer path does not expose a verified user-accessible filter. A professional must isolate the internal cause before a part is named.",
+        "The outside hose looks clear, but this washer has no filter you can safely check from the outside.",
       part: null,
       requiredProductCode: pack.productCodePrompt,
       source: pack.sources.find((item) => item.kind === "manufacturer-troubleshooting") ?? null,
@@ -72,9 +71,9 @@ export function getPartOutcome(state: RepairState): PartOutcome | null {
     if (exact && part) {
       return {
         status: "exact",
-        title: "Exact part match",
+        title: "This is the part for your washer",
         message:
-          "The complete product code unlocks this model-matched listing. Confirm fit once more with the seller before checkout; diagnosis is still unconfirmed and installation remains professional-only.",
+          "The hose and filter look clear, so the drain pump is the most likely part to check next.",
         part,
         requiredProductCode: null,
         source: part.source,
@@ -82,10 +81,10 @@ export function getPartOutcome(state: RepairState): PartOutcome | null {
     }
     return {
       status: "variant-needed",
-      title: "Product code required",
+      title: "We need the full model number",
       message: part
-        ? "Clunk has a verified part mapping for a specific product-code variant, but will not apply it to the family model alone."
-        : "The safe checks implicate an internal drain-path fault, but this pack has no verified exact-part mapping.",
+        ? "The letters after the main model number can change which part fits. Find the complete number on the appliance label."
+        : "The outside checks point to a problem inside the washer, but Clunk does not have a verified part link for this model yet.",
       part: null,
       requiredProductCode: pack.productCodePrompt,
       source: pack.sources.find((item) => item.kind === "manufacturer-model") ?? null,
@@ -93,8 +92,8 @@ export function getPartOutcome(state: RepairState): PartOutcome | null {
   }
   return {
     status: "not-ready",
-    title: "More evidence required",
-    message: "Complete the current safe observation before resolving whether a part is needed.",
+    title: "One more check needed",
+    message: "Finish the check on screen and Clunk will show the best next step.",
     part: null,
     requiredProductCode: null,
     source: null,
@@ -155,8 +154,8 @@ export function getRepairSnapshot(state: RepairState): RepairSnapshot {
     verificationLabel: pack
       ? state.productCode &&
         pack.verifiedProductCodes.map(normalizeModel).includes(normalizeModel(state.productCode))
-        ? "Complete code verified"
-        : "Model family verified"
+        ? "Full model number confirmed"
+        : "Washer model found"
       : null,
     symptom: state.symptomId ? (pack?.symptom.label ?? null) : null,
     phase: state.phase,

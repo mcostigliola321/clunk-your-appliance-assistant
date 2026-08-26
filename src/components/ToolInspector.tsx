@@ -16,10 +16,7 @@ export function ToolInspector({
   return (
     <section className="tool-inspector" aria-labelledby="tool-inspector-title" role="region">
       <div className="section-heading">
-        <div>
-          <div className="section-kicker">Judge mode</div>
-          <h2 id="tool-inspector-title">Tool inspector</h2>
-        </div>
+        <h2 id="tool-inspector-title">WebMCP tools</h2>
         <span className="tool-count">{visibleContracts.length} active · 8 total</span>
       </div>
       <p className="tool-intro">

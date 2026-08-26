@@ -14,20 +14,19 @@ No account, API key, model call, database, server function, or runtime API is re
 
 ## Judge it in under three minutes
 
-1. Search for `WM3400CW.ABWEVUS` and select **LG WM3400CW**.
-2. Start the safe diagnosis.
-3. Report **Power disconnected; water is cool**.
-4. Report **Hose looks clear and correctly placed**.
-5. Report either a blocked filter for the no-purchase path, or a clear filter for the sourced exact-part path.
-6. Resolve the part outcome. The exact path surfaces the seller listing, dated price/stock snapshot, and checkout handoff.
-7. Open **Tool inspector** to see the agent-facing surface.
+1. Choose **See the complete answer** on the home screen.
+2. Confirm **Washer is unplugged and the water is cool**.
+3. Report **Hose looks clear**.
+4. Report either **I found debris in the filter** for the no-purchase answer or **The filter looks clear** for the exact-part answer.
+5. Clunk automatically shows where the part is, its part number, price, availability, and a **Buy this part** link.
+6. Open **Behind the scenes** only if you want to inspect the WebMCP activity and tools.
 
 The same sequence can be driven by a person, the manual judge controls, or a WebMCP-capable browser agent. Every accepted and rejected action appears in the shared activity log.
 
 Try three proof cases:
 
 - **No part needed:** report debris blocking the accessible filter.
-- **Purchase-ready evidence boundary:** complete all visible checks for `WM3400CW.ABWEVUS`; Clunk surfaces the sourced pump listing and seller handoff while keeping diagnosis unconfirmed and installation professional-only.
+- **Part and purchase link:** complete the three visible checks for `WM3400CW.ABWEVUS`; Clunk points to the drain-pump location and shows the sourced part listing and seller link.
 - **Topology switch:** search `GTW585BSVWS`; the GE repair bench changes to the top-load orientation and removes the unsupported filter check.
 - **Safety stop:** report smoke or a burning smell; Clunk ends the flow immediately and removes further repair actions.
 

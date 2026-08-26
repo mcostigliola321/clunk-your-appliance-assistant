@@ -13,23 +13,23 @@ function initialEvidence(hasFilterCheck: boolean): Record<CauseId, CauseEvidence
       score: hasFilterCheck ? 40 : 22,
       confidence: "possible",
       explanation: hasFilterCheck
-        ? "The selected manufacturer documents a user-accessible filter for this configuration."
-        : "An internal restriction remains possible, but Clunk does not expose a filter check for this model family.",
+        ? "Coins, lint, or other debris may be blocking the drain filter."
+        : "Something inside the drain path may be blocked, but this washer has no outside filter to check.",
     },
     "kinked-hose": {
       score: 35,
       confidence: "likely",
-      explanation: "A visible kink or incorrect standpipe connection can restrict drainage.",
+      explanation: "A bent or badly placed hose can stop water from leaving the washer.",
     },
     "drain-pump-failure": {
       score: 25,
       confidence: "possible",
-      explanation: "The internal pump remains possible after external restrictions are excluded.",
+      explanation: "The drain pump may not be pushing water out of the washer.",
     },
     "control-fault": {
       score: 10,
       confidence: "possible",
-      explanation: "Internal electrical causes require professional diagnosis.",
+      explanation: "The washer's controls may need to be checked by a technician.",
     },
   };
 }
@@ -39,8 +39,7 @@ function applyResult(evidence: Record<CauseId, CauseEvidence>, result: ResultId)
     evidence["kinked-hose"] = {
       score: 100,
       confidence: "strong match",
-      explanation:
-        "Your visible observation directly matches a restricted or damaged external drain path.",
+      explanation: "The hose you saw can explain why the washer is not draining.",
     };
     evidence["blocked-filter"].score = 10;
     evidence["drain-pump-failure"].score = 8;
@@ -49,7 +48,7 @@ function applyResult(evidence: Record<CauseId, CauseEvidence>, result: ResultId)
     evidence["kinked-hose"] = {
       score: 5,
       confidence: "possible",
-      explanation: "The visible hose looks clear, so an external restriction is less likely.",
+      explanation: "The hose looks clear, so the problem is probably somewhere else.",
     };
     evidence["blocked-filter"].score += 20;
     evidence["drain-pump-failure"].score += 25;
@@ -58,8 +57,7 @@ function applyResult(evidence: Record<CauseId, CauseEvidence>, result: ResultId)
     evidence["blocked-filter"] = {
       score: 100,
       confidence: "strong match",
-      explanation:
-        "The human observed debris in the manufacturer-documented user-accessible filter.",
+      explanation: "The debris you found can stop the washer from draining.",
     };
     evidence["drain-pump-failure"].score = 10;
     evidence["control-fault"].score = 5;
@@ -68,18 +66,18 @@ function applyResult(evidence: Record<CauseId, CauseEvidence>, result: ResultId)
     evidence["blocked-filter"] = {
       score: 5,
       confidence: "possible",
-      explanation: "The visible filter area looks clear, so this cause is less likely.",
+      explanation: "The filter looks clear, so a blockage there is less likely.",
     };
     evidence["drain-pump-failure"] = {
       score: 100,
       confidence: "strong match",
       explanation:
-        "With the visible hose and documented filter clear, the internal drain pump is the strongest remaining match—but is not proven.",
+        "With the hose and filter clear, the drain pump is the most likely part to check next.",
     };
     evidence["control-fault"] = {
       score: 45,
       confidence: "possible",
-      explanation: "An internal control fault remains possible and cannot be checked safely here.",
+      explanation: "The washer's controls are another possibility and need a technician to check.",
     };
   }
 }

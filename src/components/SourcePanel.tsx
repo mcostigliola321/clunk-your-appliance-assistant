@@ -7,10 +7,7 @@ export function SourcePanel({ sources }: { sources: SourceReference[] }) {
   return (
     <section className="source-panel" aria-labelledby="source-panel-title">
       <div className="section-heading">
-        <div>
-          <div className="section-kicker">Evidence ledger</div>
-          <h2 id="source-panel-title">What this pack is based on</h2>
-        </div>
+        <h2 id="source-panel-title">Manufacturer information</h2>
         <span className="source-count">{sources.length} sources</span>
       </div>
       <ul>
@@ -20,7 +17,7 @@ export function SourcePanel({ sources }: { sources: SourceReference[] }) {
               <span>
                 <strong>{source.title}</strong>
                 <small>
-                  {source.publisher} · verified {source.lastVerified}
+                  {source.publisher} · checked {source.lastVerified}
                 </small>
               </span>
               <ExternalLink size={15} aria-hidden="true" />

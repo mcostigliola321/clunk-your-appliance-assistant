@@ -4,11 +4,7 @@ export function CauseStack({ causes, visible }: { causes: RankedCause[]; visible
   return (
     <section className={`cause-stack ${visible ? "is-visible" : ""}`} aria-labelledby="cause-title">
       <div className="section-heading">
-        <div>
-          <div className="section-kicker">Evidence ranking</div>
-          <h2 id="cause-title">Likely causes</h2>
-        </div>
-        <span className="scenario-label">Deterministic</span>
+        <h2 id="cause-title">What could be wrong</h2>
       </div>
       {visible ? (
         <ol className="cause-list" aria-label="Likely causes">
@@ -20,15 +16,17 @@ export function CauseStack({ causes, visible }: { causes: RankedCause[]; visible
                 <span>{cause.explanation}</span>
               </span>
               <span className={`confidence confidence--${cause.confidence.replace(" ", "-")}`}>
-                {cause.confidence}
+                {cause.confidence === "strong match"
+                  ? "Most likely"
+                  : cause.confidence === "likely"
+                    ? "Likely"
+                    : "Possible"}
               </span>
             </li>
           ))}
         </ol>
       ) : (
-        <p className="empty-copy">
-          Results will reorder as you report what you can physically observe.
-        </p>
+        <p className="empty-copy">Clunk updates this list as you answer each question.</p>
       )}
     </section>
   );
