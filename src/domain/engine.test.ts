@@ -5,8 +5,18 @@ import { getAvailablePartId } from "./selectors";
 
 function runHappyPath(filterResult: "filter-blocked" | "filter-clear") {
   let state = createInitialRepairState("unavailable");
-  state = executeRepairTool(state, "identify_appliance", { applianceId: "clunk-wm01" }, "human").state;
-  state = executeRepairTool(state, "start_diagnosis", { symptomId: "will-not-drain" }, "human").state;
+  state = executeRepairTool(
+    state,
+    "identify_appliance",
+    { applianceId: "clunk-wm01" },
+    "human",
+  ).state;
+  state = executeRepairTool(
+    state,
+    "start_diagnosis",
+    { symptomId: "will-not-drain" },
+    "human",
+  ).state;
   state = executeRepairTool(
     state,
     "record_check_result",
@@ -44,9 +54,9 @@ describe("repair engine", () => {
     const state = runHappyPath("filter-clear");
 
     expect(getAvailablePartId(state)).toBe("cl-dp-420");
-    expect(executeRepairTool(state, "find_compatible_part").snapshot.selectedPart?.installBoundary).toBe(
-      "professional-only",
-    );
+    expect(
+      executeRepairTool(state, "find_compatible_part").snapshot.selectedPart?.installBoundary,
+    ).toBe("professional-only");
   });
 
   it("rejects out-of-order and mismatched observations without advancing", () => {
@@ -65,9 +75,15 @@ describe("repair engine", () => {
   it("keeps activity ordering deterministic", () => {
     const initial = createInitialRepairState();
     const first = executeRepairTool(initial, "get_repair_state");
-    const second = executeRepairTool(first.state, "highlight_component", { componentId: "drain-hose" });
+    const second = executeRepairTool(first.state, "highlight_component", {
+      componentId: "drain-hose",
+    });
 
-    expect(second.state.activity.map((event) => event.id)).toEqual(["event-0", "event-1", "event-2"]);
+    expect(second.state.activity.map((event) => event.id)).toEqual([
+      "event-0",
+      "event-1",
+      "event-2",
+    ]);
     expect(second.state.sequence).toBe(2);
   });
 });

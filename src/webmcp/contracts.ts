@@ -75,7 +75,15 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
       properties: {
         componentId: {
           type: "string",
-          enum: ["machine", "drum", "sump", "pump-filter", "drain-pump", "drain-hose", "control-module"],
+          enum: [
+            "machine",
+            "drum",
+            "sump",
+            "pump-filter",
+            "drain-pump",
+            "drain-hose",
+            "control-module",
+          ],
           description: "A component in the Clunk WM-01 exploded diagram.",
         },
       },
@@ -162,7 +170,14 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
       properties: {
         reason: {
           type: "string",
-          enum: ["electrical", "burning-smell", "hot-water", "active-leak", "internal-access", "unresolved"],
+          enum: [
+            "electrical",
+            "burning-smell",
+            "hot-water",
+            "active-leak",
+            "internal-access",
+            "unresolved",
+          ],
           description: "The observed safety or service boundary requiring escalation.",
         },
       },

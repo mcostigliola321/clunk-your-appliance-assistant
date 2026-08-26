@@ -2,13 +2,7 @@ export type ApplianceId = "clunk-wm01";
 export type SymptomId = "will-not-drain";
 
 export type ComponentId =
-  | "machine"
-  | "drum"
-  | "sump"
-  | "pump-filter"
-  | "drain-pump"
-  | "drain-hose"
-  | "control-module";
+  "machine" | "drum" | "sump" | "pump-filter" | "drain-pump" | "drain-hose" | "control-module";
 
 export type CheckId = "prepare-power" | "inspect-drain-hose" | "inspect-pump-filter";
 
@@ -26,21 +20,12 @@ export type ResultId =
   | "filter-damaged"
   | "unsafe-to-open";
 
-export type CauseId =
-  | "blocked-filter"
-  | "kinked-hose"
-  | "drain-pump-failure"
-  | "control-fault";
+export type CauseId = "blocked-filter" | "kinked-hose" | "drain-pump-failure" | "control-fault";
 
 export type PartId = "cl-pf-220" | "cl-dh-208" | "cl-dp-420";
 
 export type EscalationReason =
-  | "electrical"
-  | "burning-smell"
-  | "hot-water"
-  | "active-leak"
-  | "internal-access"
-  | "unresolved";
+  "electrical" | "burning-smell" | "hot-water" | "active-leak" | "internal-access" | "unresolved";
 
 export type ActivitySource = "agent" | "human" | "manual" | "system";
 export type ActivityOutcome = "accepted" | "rejected";

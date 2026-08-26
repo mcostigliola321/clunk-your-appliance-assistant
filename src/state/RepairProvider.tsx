@@ -94,6 +94,8 @@ export function RepairProvider({ children }: PropsWithChildren) {
   return <RepairContext.Provider value={value}>{children}</RepairContext.Provider>;
 }
 
+// The provider and its hook intentionally share this small state boundary.
+// eslint-disable-next-line react-refresh/only-export-components
 export function useRepair(): RepairContextValue {
   const value = useContext(RepairContext);
   if (!value) {

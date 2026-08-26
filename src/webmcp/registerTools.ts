@@ -43,87 +43,111 @@ export function registerClunkTools(
   const escalate = getRepairToolContract("escalate_to_professional");
 
   const registrations = [
-    document.modelContext.registerTool({
-      name: getState.name,
-      title: getState.title,
-      description: getState.purpose,
-      inputSchema: getState.inputSchema,
-      annotations: { readOnlyHint: true },
-      execute: async (input, { signal }) => {
-        assertNotAborted(signal);
-        return asToolOutput(invokeTool("get_repair_state", input, "agent"));
+    document.modelContext.registerTool(
+      {
+        name: getState.name,
+        title: getState.title,
+        description: getState.purpose,
+        inputSchema: getState.inputSchema,
+        annotations: { readOnlyHint: true },
+        execute: async (input, { signal }) => {
+          assertNotAborted(signal);
+          return asToolOutput(invokeTool("get_repair_state", input, "agent"));
+        },
       },
-    }, registrationOptions),
-    document.modelContext.registerTool({
-      name: identify.name,
-      title: identify.title,
-      description: identify.purpose,
-      inputSchema: identify.inputSchema,
-      execute: async (input, { signal }) => {
-        assertNotAborted(signal);
-        return asToolOutput(invokeTool("identify_appliance", input, "agent"));
+      registrationOptions,
+    ),
+    document.modelContext.registerTool(
+      {
+        name: identify.name,
+        title: identify.title,
+        description: identify.purpose,
+        inputSchema: identify.inputSchema,
+        execute: async (input, { signal }) => {
+          assertNotAborted(signal);
+          return asToolOutput(invokeTool("identify_appliance", input, "agent"));
+        },
       },
-    }, registrationOptions),
-    document.modelContext.registerTool({
-      name: start.name,
-      title: start.title,
-      description: start.purpose,
-      inputSchema: start.inputSchema,
-      execute: async (input, { signal }) => {
-        assertNotAborted(signal);
-        return asToolOutput(invokeTool("start_diagnosis", input, "agent"));
+      registrationOptions,
+    ),
+    document.modelContext.registerTool(
+      {
+        name: start.name,
+        title: start.title,
+        description: start.purpose,
+        inputSchema: start.inputSchema,
+        execute: async (input, { signal }) => {
+          assertNotAborted(signal);
+          return asToolOutput(invokeTool("start_diagnosis", input, "agent"));
+        },
       },
-    }, registrationOptions),
-    document.modelContext.registerTool({
-      name: highlight.name,
-      title: highlight.title,
-      description: highlight.purpose,
-      inputSchema: highlight.inputSchema,
-      execute: async (input, { signal }) => {
-        assertNotAborted(signal);
-        return asToolOutput(invokeTool("highlight_component", input, "agent"));
+      registrationOptions,
+    ),
+    document.modelContext.registerTool(
+      {
+        name: highlight.name,
+        title: highlight.title,
+        description: highlight.purpose,
+        inputSchema: highlight.inputSchema,
+        execute: async (input, { signal }) => {
+          assertNotAborted(signal);
+          return asToolOutput(invokeTool("highlight_component", input, "agent"));
+        },
       },
-    }, registrationOptions),
-    document.modelContext.registerTool({
-      name: record.name,
-      title: record.title,
-      description: record.purpose,
-      inputSchema: record.inputSchema,
-      execute: async (input, { signal }) => {
-        assertNotAborted(signal);
-        return asToolOutput(invokeTool("record_check_result", input, "agent"));
+      registrationOptions,
+    ),
+    document.modelContext.registerTool(
+      {
+        name: record.name,
+        title: record.title,
+        description: record.purpose,
+        inputSchema: record.inputSchema,
+        execute: async (input, { signal }) => {
+          assertNotAborted(signal);
+          return asToolOutput(invokeTool("record_check_result", input, "agent"));
+        },
       },
-    }, registrationOptions),
-    document.modelContext.registerTool({
-      name: showStep.name,
-      title: showStep.title,
-      description: showStep.purpose,
-      inputSchema: showStep.inputSchema,
-      execute: async (input, { signal }) => {
-        assertNotAborted(signal);
-        return asToolOutput(invokeTool("show_repair_step", input, "agent"));
+      registrationOptions,
+    ),
+    document.modelContext.registerTool(
+      {
+        name: showStep.name,
+        title: showStep.title,
+        description: showStep.purpose,
+        inputSchema: showStep.inputSchema,
+        execute: async (input, { signal }) => {
+          assertNotAborted(signal);
+          return asToolOutput(invokeTool("show_repair_step", input, "agent"));
+        },
       },
-    }, registrationOptions),
-    document.modelContext.registerTool({
-      name: findPart.name,
-      title: findPart.title,
-      description: findPart.purpose,
-      inputSchema: findPart.inputSchema,
-      execute: async (input, { signal }) => {
-        assertNotAborted(signal);
-        return asToolOutput(invokeTool("find_compatible_part", input, "agent"));
+      registrationOptions,
+    ),
+    document.modelContext.registerTool(
+      {
+        name: findPart.name,
+        title: findPart.title,
+        description: findPart.purpose,
+        inputSchema: findPart.inputSchema,
+        execute: async (input, { signal }) => {
+          assertNotAborted(signal);
+          return asToolOutput(invokeTool("find_compatible_part", input, "agent"));
+        },
       },
-    }, registrationOptions),
-    document.modelContext.registerTool({
-      name: escalate.name,
-      title: escalate.title,
-      description: escalate.purpose,
-      inputSchema: escalate.inputSchema,
-      execute: async (input, { signal }) => {
-        assertNotAborted(signal);
-        return asToolOutput(invokeTool("escalate_to_professional", input, "agent"));
+      registrationOptions,
+    ),
+    document.modelContext.registerTool(
+      {
+        name: escalate.name,
+        title: escalate.title,
+        description: escalate.purpose,
+        inputSchema: escalate.inputSchema,
+        execute: async (input, { signal }) => {
+          assertNotAborted(signal);
+          return asToolOutput(invokeTool("escalate_to_professional", input, "agent"));
+        },
       },
-    }, registrationOptions),
+      registrationOptions,
+    ),
   ];
 
   void Promise.allSettled(registrations).then((settled) => {

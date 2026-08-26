@@ -40,7 +40,12 @@ export function getValidNextActions(state: RepairState): string[] {
   if (!state.applianceId) return ["identify_appliance"];
   if (!state.symptomId) return ["start_diagnosis"];
   if (state.currentStepId) {
-    return ["show_repair_step", "record_check_result", "highlight_component", "escalate_to_professional"];
+    return [
+      "show_repair_step",
+      "record_check_result",
+      "highlight_component",
+      "escalate_to_professional",
+    ];
   }
   if (getAvailablePartId(state)) {
     return ["find_compatible_part", "highlight_component", "escalate_to_professional"];

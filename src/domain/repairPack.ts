@@ -97,8 +97,7 @@ export function isResultForCheck(checkId: CheckId, resultId: ResultId): boolean 
 
 export function isComponentId(value: unknown): value is ComponentId {
   return (
-    typeof value === "string" &&
-    repairPack.components.some((component) => component.id === value)
+    typeof value === "string" && repairPack.components.some((component) => component.id === value)
   );
 }
 

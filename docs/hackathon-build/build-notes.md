@@ -49,3 +49,12 @@
 - Routed every WebMCP execution through the same synchronous action layer used by the human interface and labeled the resulting activity as agent-sourced.
 - Added progressive feature detection with ready, partial, failed, and unavailable states so the full manual experience continues in browsers without WebMCP.
 - Verification: registry tests capture all eight tools, execute an agent path, and confirm cleanup; 13 total tests and the static build pass; the literal registration count is eight.
+
+## 2026-08-26 — Checklist items 4–7
+
+- Applied the Impeccable and OpenAI-showcase direction as a restrained product interface: high-contrast black and white, generous space, local Albert Sans, and honey used only for current physical focus.
+- Built the original exploded Clunk WM-01 SVG, functional diagnostic rail, one-step observation panel, ranked causes, exact fictional part reveal, and illustrative repair-versus-replace context.
+- Added a visible source-labeled activity log, unsupported-browser status, reset, and an expandable judge inspector for all eight tools and their bounded sample inputs.
+- Added keyboard-accessible 44px component controls, focus rings, live-region updates, mobile reordering, reduced-motion rules, persistent fictional-data labels, and a safe recovery screen.
+- Corrected all issues found by the automated accessibility pass: progress semantics, low-contrast upcoming steps, and nested SVG interactions.
+- Verification: the canonical path reaches CL-PF-220 in the ChatGPT in-app browser with a clean console; desktop and Pixel 7 screenshots are captured; component, safety, keyboard, touch-size, responsive, reduced-motion, and WCAG A/AA tests pass at desktop and mobile widths.

@@ -11,7 +11,8 @@ const DEFAULT_EVIDENCE: Record<CauseId, CauseEvidence> = {
   "blocked-filter": {
     score: 40,
     confidence: "likely",
-    explanation: "A blocked user-accessible filter is the most common cause in this fictional scenario.",
+    explanation:
+      "A blocked user-accessible filter is the most common cause in this fictional scenario.",
   },
   "kinked-hose": {
     score: 30,
@@ -26,7 +27,8 @@ const DEFAULT_EVIDENCE: Record<CauseId, CauseEvidence> = {
   "control-fault": {
     score: 10,
     confidence: "possible",
-    explanation: "An internal control fault is less likely and always requires professional service.",
+    explanation:
+      "An internal control fault is less likely and always requires professional service.",
   },
 };
 
@@ -44,7 +46,8 @@ function applyResult(evidence: Record<CauseId, CauseEvidence>, result: ResultId)
     evidence["kinked-hose"] = {
       score: 100,
       confidence: "strong match",
-      explanation: "Your visible hose observation directly matches a restricted or damaged drain path.",
+      explanation:
+        "Your visible hose observation directly matches a restricted or damaged drain path.",
     };
     evidence["blocked-filter"].score = 15;
     evidence["drain-pump-failure"].score = 10;
@@ -79,12 +82,14 @@ function applyResult(evidence: Record<CauseId, CauseEvidence>, result: ResultId)
     evidence["drain-pump-failure"] = {
       score: 100,
       confidence: "strong match",
-      explanation: "With the visible hose and user-accessible filter clear, the sealed pump is the strongest remaining match.",
+      explanation:
+        "With the visible hose and user-accessible filter clear, the sealed pump is the strongest remaining match.",
     };
     evidence["control-fault"] = {
       score: 45,
       confidence: "possible",
-      explanation: "An internal control fault remains possible, but cannot be checked safely in this demo.",
+      explanation:
+        "An internal control fault remains possible, but cannot be checked safely in this demo.",
     };
   }
 }

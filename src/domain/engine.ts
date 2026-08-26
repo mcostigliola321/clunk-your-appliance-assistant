@@ -1,11 +1,10 @@
+import { getCheck, isCheckId, isComponentId, isResultForCheck, repairPack } from "./repairPack";
 import {
-  getCheck,
-  isCheckId,
-  isComponentId,
-  isResultForCheck,
-  repairPack,
-} from "./repairPack";
-import { assertSafeRepairStep, canShowCheck, escalationForReason, escalationForResult } from "./safety";
+  assertSafeRepairStep,
+  canShowCheck,
+  escalationForReason,
+  escalationForResult,
+} from "./safety";
 import { getAvailablePartId, getRepairSnapshot } from "./selectors";
 import type {
   ActivityEvent,
@@ -101,7 +100,14 @@ function result(
   ok: boolean,
   message: string,
 ): ToolExecutionResult {
-  const loggedState = appendEvent(state, source, action, input, ok ? "accepted" : "rejected", message);
+  const loggedState = appendEvent(
+    state,
+    source,
+    action,
+    input,
+    ok ? "accepted" : "rejected",
+    message,
+  );
   return { ok, state: loggedState, message, snapshot: getRepairSnapshot(loggedState) };
 }
 
@@ -121,7 +127,13 @@ function identifyAppliance(
   source: ActivitySource,
 ): ToolExecutionResult {
   if (!isString(input, "applianceId") || input["applianceId"] !== "clunk-wm01") {
-    return reject(state, source, "identify_appliance", input, "Only the fictional Clunk WM-01 is supported in this demo.");
+    return reject(
+      state,
+      source,
+      "identify_appliance",
+      input,
+      "Only the fictional Clunk WM-01 is supported in this demo.",
+    );
   }
 
   const nextState: RepairState = {
@@ -129,7 +141,14 @@ function identifyAppliance(
     applianceId: input["applianceId"] as ApplianceId,
     highlightedComponentId: "machine",
   };
-  return result(nextState, source, "identify_appliance", input, true, "Identified the fictional Clunk WM-01 washer.");
+  return result(
+    nextState,
+    source,
+    "identify_appliance",
+    input,
+    true,
+    "Identified the fictional Clunk WM-01 washer.",
+  );
 }
 
 function startDiagnosis(
@@ -138,10 +157,22 @@ function startDiagnosis(
   source: ActivitySource,
 ): ToolExecutionResult {
   if (!state.applianceId) {
-    return reject(state, source, "start_diagnosis", input, "Identify the appliance before starting a diagnosis.");
+    return reject(
+      state,
+      source,
+      "start_diagnosis",
+      input,
+      "Identify the appliance before starting a diagnosis.",
+    );
   }
   if (!isString(input, "symptomId") || input["symptomId"] !== repairPack.symptom.id) {
-    return reject(state, source, "start_diagnosis", input, "This demo supports only the washer-will-not-drain symptom.");
+    return reject(
+      state,
+      source,
+      "start_diagnosis",
+      input,
+      "This demo supports only the washer-will-not-drain symptom.",
+    );
   }
 
   const nextState: RepairState = {
@@ -154,7 +185,14 @@ function startDiagnosis(
     selectedPartId: null,
     escalation: null,
   };
-  return result(nextState, source, "start_diagnosis", input, true, "Diagnosis started with a mandatory power and hazard check.");
+  return result(
+    nextState,
+    source,
+    "start_diagnosis",
+    input,
+    true,
+    "Diagnosis started with a mandatory power and hazard check.",
+  );
 }
 
 function highlightComponent(
@@ -163,10 +201,26 @@ function highlightComponent(
   source: ActivitySource,
 ): ToolExecutionResult {
   if (!isComponentId(input["componentId"])) {
-    return reject(state, source, "highlight_component", input, "Choose a component from the Clunk WM-01 repair pack.");
+    return reject(
+      state,
+      source,
+      "highlight_component",
+      input,
+      "Choose a component from the Clunk WM-01 repair pack.",
+    );
   }
-  const nextState: RepairState = { ...state, highlightedComponentId: input["componentId"] as ComponentId };
-  return result(nextState, source, "highlight_component", input, true, `Highlighted ${input["componentId"]}.`);
+  const nextState: RepairState = {
+    ...state,
+    highlightedComponentId: input["componentId"] as ComponentId,
+  };
+  return result(
+    nextState,
+    source,
+    "highlight_component",
+    input,
+    true,
+    `Highlighted ${input["componentId"]}.`,
+  );
 }
 
 function recordCheckResult(
@@ -175,15 +229,33 @@ function recordCheckResult(
   source: ActivitySource,
 ): ToolExecutionResult {
   if (!isCheckId(input["checkId"]) || typeof input["resultId"] !== "string") {
-    return reject(state, source, "record_check_result", input, "Provide a valid current check and one of its listed observations.");
+    return reject(
+      state,
+      source,
+      "record_check_result",
+      input,
+      "Provide a valid current check and one of its listed observations.",
+    );
   }
   const checkId = input["checkId"] as CheckId;
   const resultId = input["resultId"] as ResultId;
   if (state.currentStepId !== checkId) {
-    return reject(state, source, "record_check_result", input, "Results can only be recorded for the current safe check.");
+    return reject(
+      state,
+      source,
+      "record_check_result",
+      input,
+      "Results can only be recorded for the current safe check.",
+    );
   }
   if (!isResultForCheck(checkId, resultId)) {
-    return reject(state, source, "record_check_result", input, "That observation does not belong to the current check.");
+    return reject(
+      state,
+      source,
+      "record_check_result",
+      input,
+      "That observation does not belong to the current check.",
+    );
   }
 
   const escalation = escalationForResult(resultId);
@@ -211,7 +283,14 @@ function recordCheckResult(
       currentStepId: "inspect-drain-hose",
       highlightedComponentId: "drain-hose",
     };
-    return result(nextState, source, "record_check_result", input, true, "Power is disconnected. Next, inspect only the visible drain hose.");
+    return result(
+      nextState,
+      source,
+      "record_check_result",
+      input,
+      true,
+      "Power is disconnected. Next, inspect only the visible drain hose.",
+    );
   }
 
   if (checkId === "inspect-drain-hose" && resultId === "hose-clear") {
@@ -221,7 +300,14 @@ function recordCheckResult(
       currentStepId: "inspect-pump-filter",
       highlightedComponentId: "pump-filter",
     };
-    return result(nextState, source, "record_check_result", input, true, "The visible hose looks clear. Next, inspect the user-accessible pump filter.");
+    return result(
+      nextState,
+      source,
+      "record_check_result",
+      input,
+      true,
+      "The visible hose looks clear. Next, inspect the user-accessible pump filter.",
+    );
   }
 
   nextState = {
@@ -230,7 +316,14 @@ function recordCheckResult(
     currentStepId: null,
     highlightedComponentId: checkId === "inspect-drain-hose" ? "drain-hose" : "pump-filter",
   };
-  return result(nextState, source, "record_check_result", input, true, "Observation recorded. Clunk has isolated the strongest matching cause.");
+  return result(
+    nextState,
+    source,
+    "record_check_result",
+    input,
+    true,
+    "Observation recorded. Clunk has isolated the strongest matching cause.",
+  );
 }
 
 function showRepairStep(
@@ -239,11 +332,25 @@ function showRepairStep(
   source: ActivitySource,
 ): ToolExecutionResult {
   if (!isCheckId(input["checkId"])) {
-    return reject(state, source, "show_repair_step", input, "Choose a valid safe check from the repair pack.");
+    return reject(
+      state,
+      source,
+      "show_repair_step",
+      input,
+      "Choose a valid safe check from the repair pack.",
+    );
   }
   const checkId = input["checkId"] as CheckId;
-  if (!canShowCheck(state.currentStepId, checkId, Object.keys(state.completedChecks) as CheckId[])) {
-    return reject(state, source, "show_repair_step", input, "That step is not available at this point in the diagnosis.");
+  if (
+    !canShowCheck(state.currentStepId, checkId, Object.keys(state.completedChecks) as CheckId[])
+  ) {
+    return reject(
+      state,
+      source,
+      "show_repair_step",
+      input,
+      "That step is not available at this point in the diagnosis.",
+    );
   }
   const check = assertSafeRepairStep(getCheck(checkId));
   const nextState: RepairState = { ...state, highlightedComponentId: check.componentId };
@@ -257,10 +364,23 @@ function findCompatiblePart(
 ): ToolExecutionResult {
   const partId = getAvailablePartId(state);
   if (!partId) {
-    return reject(state, source, "find_compatible_part", input, "Complete the safe checks before matching a fictional part.");
+    return reject(
+      state,
+      source,
+      "find_compatible_part",
+      input,
+      "Complete the safe checks before matching a fictional part.",
+    );
   }
   const nextState: RepairState = { ...state, selectedPartId: partId };
-  return result(nextState, source, "find_compatible_part", input, true, `Matched fictional demo part ${partId.toUpperCase()}.`);
+  return result(
+    nextState,
+    source,
+    "find_compatible_part",
+    input,
+    true,
+    `Matched fictional demo part ${partId.toUpperCase()}.`,
+  );
 }
 
 function escalateToProfessional(
@@ -269,7 +389,13 @@ function escalateToProfessional(
   source: ActivitySource,
 ): ToolExecutionResult {
   if (!isString(input, "reason") || !ESCALATION_REASONS.has(input["reason"] as EscalationReason)) {
-    return reject(state, source, "escalate_to_professional", input, "Choose a supported safety or service reason.");
+    return reject(
+      state,
+      source,
+      "escalate_to_professional",
+      input,
+      "Choose a supported safety or service reason.",
+    );
   }
   const escalation = escalationForReason(input["reason"] as EscalationReason);
   const nextState: RepairState = {
@@ -289,7 +415,14 @@ export function executeRepairTool(
 ): ToolExecutionResult {
   switch (action) {
     case "get_repair_state":
-      return result(state, source, action, input, true, "Returned the current shared repair state.");
+      return result(
+        state,
+        source,
+        action,
+        input,
+        true,
+        "Returned the current shared repair state.",
+      );
     case "identify_appliance":
       return identifyAppliance(state, input, source);
     case "start_diagnosis":
