@@ -26,7 +26,10 @@ function Index() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center px-6 py-12">
       <div className="max-w-xl text-center">
-        <p className="mb-4 inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
+        <p
+          aria-label="Fictional appliance demo"
+          className="mb-4 inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground"
+        >
           Fictional appliance demo
         </p>
         <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
