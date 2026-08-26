@@ -41,3 +41,11 @@
 - Enforced immediate stop states for burning smell, hot water, leaks near power, unsafe access, and damaged user-access areas; no internal or energized instructions exist in the repair pack.
 - Added a shared React provider whose synchronous public action layer returns the same snapshot it renders.
 - Verification: 11 focused engine and safety tests pass; TypeScript and the static production build pass.
+
+## 2026-08-26 — Checklist item 3
+
+- Added eight narrow WebMCP contracts with enum-bounded JSON Schemas, no additional properties, explicit sequencing, and sample inputs for the judge inspector.
+- Added eight literal `document.modelContext.registerTool({` registrations using the current draft API, per-call cancellation signals, and an AbortController-owned registration lifecycle.
+- Routed every WebMCP execution through the same synchronous action layer used by the human interface and labeled the resulting activity as agent-sourced.
+- Added progressive feature detection with ready, partial, failed, and unavailable states so the full manual experience continues in browsers without WebMCP.
+- Verification: registry tests capture all eight tools, execute an agent path, and confirm cleanup; 13 total tests and the static build pass; the literal registration count is eight.

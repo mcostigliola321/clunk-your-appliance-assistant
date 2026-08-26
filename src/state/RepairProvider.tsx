@@ -3,6 +3,7 @@ import {
   type PropsWithChildren,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useReducer,
   useRef,
@@ -18,6 +19,7 @@ import type {
   ToolExecutionResult,
   WebMcpStatus,
 } from "@/domain/types";
+import { registerClunkTools } from "@/webmcp/registerTools";
 
 interface RepairContextValue {
   state: RepairState;
@@ -72,6 +74,11 @@ export function RepairProvider({ children }: PropsWithChildren) {
     },
     [replaceState],
   );
+
+  useEffect(() => {
+    const controller = registerClunkTools(invokeTool, setWebMcpStatus);
+    return () => controller?.abort();
+  }, [invokeTool, setWebMcpStatus]);
 
   const value = useMemo<RepairContextValue>(
     () => ({

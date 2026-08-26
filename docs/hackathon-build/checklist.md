@@ -24,7 +24,7 @@
   Acceptance: PRD Epics 2, 4, 5, 6, and 10 have deterministic state behavior; invalid or hazardous actions cannot mutate into an unsafe state.
   Verify: Run focused domain and safety unit tests, including clear-hose plus blocked-filter and professional-escalation paths.
 
-- [ ] **3. Register and verify the literal WebMCP tool surface**
+- [x] **3. Register and verify the literal WebMCP tool surface**
   Spec ref: spec.md > WebMCP adapter and Tool Contracts
   What to build: Add current document.modelContext types, eight literal registerTool definitions, bounded schemas, AbortController lifecycle, feature detection, structured results, and registration status.
   Acceptance: PRD Epic 8 passes; every callback calls the shared action layer and the app remains usable without WebMCP.
