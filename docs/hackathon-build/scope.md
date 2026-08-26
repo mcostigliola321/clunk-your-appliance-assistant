@@ -46,7 +46,7 @@ Clunk makes those roles explicit. It does not pretend the browser can inspect th
 
 - Twelve real front-load washer model families across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux.
 - One hero symptom: washer will not drain.
-- Original topology-based SVGs with interactive, keyboard-accessible components; no manufacturer diagram is copied.
+- An original generated generalized washer cutaway with interactive, keyboard-accessible component hotspots; no manufacturer diagram is copied or presented as model-specific.
 - A static, schema-validated repair-pack catalog with official manufacturer support sources, last-verified dates, and compatibility confidence.
 - A deterministic diagnosis state machine with progress and evidence.
 - Likely causes that update from recorded observations.

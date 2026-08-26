@@ -96,3 +96,11 @@
 - Chrome 149 loaded the public v2 catalog with **Agent tools ready**. The visible state-dependent inventory changed from 3/8 at catalog state to 4/8 at the exact-part result. The production LG `WM3400CW.ABWEVUS` path ended at `AHA75693425`, the cited LG evidence link, and a professional-only installation boundary with eight visible activity events and no console warnings or errors.
 - The in-app browser loaded the same public v2 build in **Manual mode ready**, exposed 3/8 catalog-state judge tools, and reported no console warnings or errors.
 - Checklist item 17 remains open until the exact-part, no-part-needed, and unsupported-model cases are captured as natural-language agent-driven WebMCP sessions rather than UI/manual verification alone.
+
+## 2026-08-26 — Visual cutaway and progressive disclosure
+
+- Replaced the schematic SVG with an original generated generalized front-load washer cutaway. Seven conventional HTML hotspot controls keep the drum, sump, pump filter, drain pump, drain hose, control module, and cabinet keyboard-accessible and synchronized with WebMCP state.
+- Removed the empty repair bench from first load. The initial surface now presents the promise, the product cutaway, model selection, and a three-step explanation; the full bench appears only after model selection.
+- Collapsed the agent activity log and judge tool inspector behind a persistent status summary so the WebMCP implementation remains visible without dominating the repair task.
+- Re-ran the full exact-part path in both the in-app browser and Chrome. Chrome reported **Agent tools ready** and the visible hotspot state advanced with the same shared action layer.
+- The image is illustrative and brand-neutral, not a manufacturer service diagram or a claim about the selected model's physical layout. Generation details are recorded in `visual-assets.md`.

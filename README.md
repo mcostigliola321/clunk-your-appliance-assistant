@@ -50,7 +50,7 @@ The app contains eight literal `document.modelContext.registerTool` registration
 | `select_appliance`            | Select an exact supported family and optionally provide the complete rating-label code.                    |
 | `get_repair_state`            | Read the visible catalog, evidence, current check, likely causes, sources, result, and valid next actions. |
 | `start_diagnosis`             | Start the one supported symptom flow after a model is selected.                                            |
-| `show_component`              | Focus the shared original diagram without claiming a physical observation.                                 |
+| `show_component`              | Focus the shared original cutaway without claiming a physical observation.                                 |
 | `record_observation`          | Record one explicit person-supplied result for the current check.                                          |
 | `find_compatible_part`        | Return no-part, variant-needed, or exact-source-backed outcomes after the visible checks.                  |
 | `stop_and_escalate`           | Enter a terminal safe state for electrical, access, hazard, or unresolved boundaries.                      |

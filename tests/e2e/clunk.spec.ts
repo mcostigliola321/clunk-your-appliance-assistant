@@ -81,7 +81,7 @@ test("keeps model selection and repair controls keyboard reachable and touch siz
   await page.keyboard.press("Enter");
   await expect(page.getByRole("heading", { name: "Make the washer safe" })).toBeVisible();
 
-  const hoseComponent = page.getByRole("button", { name: "Drain hose" });
+  const hoseComponent = page.getByRole("button", { name: "Drain hose", exact: true });
   await hoseComponent.focus();
   await page.keyboard.press("Enter");
   await expect(hoseComponent).toHaveAttribute("aria-pressed", "true");
@@ -99,6 +99,7 @@ test("keeps model selection and repair controls keyboard reachable and touch siz
 
 test("honors reduced motion and has no detectable WCAG A or AA violations", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
+  await selectLg(page);
   const duration = await page
     .locator(".appliance-component")
     .first()
@@ -110,7 +111,6 @@ test("honors reduced motion and has no detectable WCAG A or AA violations", asyn
     .analyze();
   expect(initialResults.violations).toEqual([]);
 
-  await selectLg(page);
   await reachFilterOutcome(page, "Debris was blocking the filter");
   const resultState = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])

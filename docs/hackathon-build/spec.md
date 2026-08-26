@@ -29,7 +29,7 @@ This guarantees that agents and people operate the same product rather than two 
 - Vite: static development and production build.
 - Tailwind CSS: utility styling, extended with semantic CSS variables in OKLCH.
 - Local variable font: Albert Sans through an OFL-compatible font package or checked-in font assets.
-- Lucide React: small interface icons only; the appliance diagram remains original SVG.
+- Lucide React: small interface icons only; the original generalized washer cutaway is a local static asset with conventional HTML controls layered above it.
 - Vitest and Testing Library: domain, registration, and component integration tests.
 - Playwright: deterministic browser smoke path, responsive checks, and manual-mode flow.
 - No runtime data library, API SDK, database client, state-management dependency, or model client.

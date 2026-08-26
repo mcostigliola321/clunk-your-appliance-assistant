@@ -76,6 +76,7 @@ describe("Clunk repair bench", () => {
   it("runs the currently available manual tool through shared activity", async () => {
     const user = userEvent.setup();
     renderClunk();
+    await user.click(screen.getByText("Agent activity & WebMCP tools"));
     await user.click(screen.getByText("Select an exact washer family"));
     const inspector = screen.getByRole("region", { name: "Tool inspector" });
     await user.click(
