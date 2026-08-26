@@ -1,24 +1,42 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Clunk" },
+      {
+        name: "description",
+        content:
+          "Tell it what's broken. It shows you what to check and finds the exact part.",
+      },
+      { property: "og:title", content: "Clunk" },
+      {
+        property: "og:description",
+        content:
+          "Tell it what's broken. It shows you what to check and finds the exact part.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="flex min-h-screen flex-col items-center justify-center px-6 py-12">
+      <div className="max-w-xl text-center">
+        <p className="mb-4 inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
+          Fictional appliance demo
+        </p>
+        <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+          Clunk
+        </h1>
+        <p className="mt-4 text-lg text-muted-foreground">
+          Tell it what's broken. It shows you what to check and finds the exact
+          part.
+        </p>
+      </div>
+    </main>
   );
 }
