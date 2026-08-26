@@ -24,6 +24,11 @@ export function ApplianceDiagram({
 }: ApplianceDiagramProps) {
   const pack = packId ? getRepairPack(packId) : null;
   const topology = pack?.appliance.topology ?? "front-filter";
+  const loadStyle = pack?.appliance.loadStyle ?? "front-load";
+  const illustration =
+    loadStyle === "top-load"
+      ? "/assets/clunk-washer-top-load-cutaway-v1.png"
+      : "/assets/clunk-washer-cutaway-v2.png";
   const applianceName = pack
     ? `${pack.appliance.brand} ${pack.appliance.model}`
     : "front-load washer";
@@ -47,10 +52,10 @@ export function ApplianceDiagram({
       </div>
 
       <div className="appliance-canvas">
-        <div className="appliance-stage">
+        <div className={`appliance-stage appliance-stage--${loadStyle}`}>
           <img
             className="appliance-render"
-            src="/assets/clunk-washer-cutaway-v2.png"
+            src={illustration}
             alt={`Generalized cutaway illustration representing ${applianceName}`}
             width="1100"
             height="1100"

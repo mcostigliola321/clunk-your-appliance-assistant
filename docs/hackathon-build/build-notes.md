@@ -104,3 +104,13 @@
 - Collapsed the agent activity log and judge tool inspector behind a persistent status summary so the WebMCP implementation remains visible without dominating the repair task.
 - Re-ran the full exact-part path in both the in-app browser and Chrome. Chrome reported **Agent tools ready** and the visible hotspot state advanced with the same shared action layer.
 - The image is illustrative and brand-neutral, not a manufacturer service diagram or a claim about the selected model's physical layout. Generation details are recorded in `visual-assets.md`.
+
+## 2026-08-26 — Purchase handoff and top-load expansion
+
+- Added a purchase-ready exact-part result with seller, dated price/availability snapshot, and a direct product-page handoff. Payment, tax, delivery, returns, and live availability remain on the seller site.
+- Verified the LG `AHA75693425` listing at Encompass and exposed the purchase metadata through the same repair snapshot returned by `find_compatible_part`.
+- Expanded the catalog to 14 model families with LG `WT7400CW` and `WT7405CW` top-load packs backed by official model and no-drain guidance.
+- Generated an original generalized top-load cutaway matching the existing visual system. Repair packs now select front-load or top-load artwork and topology-specific hotspot positions.
+- Top-load packs use the conservative hose-only path, omit the unsupported front pump-filter check, and stop at professional service after visible checks.
+- Added a documented dishwasher and refrigerator expansion path that retains the current eight WebMCP tools while moving visuals, safety profiles, and symptom rules into category data.
+- Verification: 29 deterministic unit, UI, registry, safety, and WebMCP-eval tests pass; the static production build passes.

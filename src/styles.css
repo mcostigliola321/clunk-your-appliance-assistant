@@ -839,6 +839,36 @@ summary:focus-visible,
   filter: drop-shadow(0 24px 24px oklch(0.2 0.02 72 / 0.13));
 }
 
+.appliance-stage--top-load .component-hotspot--machine {
+  left: 73%;
+  top: 12%;
+}
+
+.appliance-stage--top-load .component-hotspot--control-module {
+  left: 39%;
+  top: 22%;
+}
+
+.appliance-stage--top-load .component-hotspot--drum {
+  left: 51%;
+  top: 47%;
+}
+
+.appliance-stage--top-load .component-hotspot--sump {
+  left: 52%;
+  top: 72%;
+}
+
+.appliance-stage--top-load .component-hotspot--drain-pump {
+  left: 75%;
+  top: 84%;
+}
+
+.appliance-stage--top-load .component-hotspot--drain-hose {
+  left: 82%;
+  top: 54%;
+}
+
 .appliance-component {
   position: absolute;
   z-index: 2;
@@ -1373,6 +1403,68 @@ summary:focus-visible,
   font-size: 10px;
   font-weight: 700;
   text-underline-offset: 3px;
+}
+
+.purchase-handoff {
+  display: grid;
+  gap: 10px;
+  margin-top: 17px;
+  padding-top: 15px;
+  border-top: 1px solid color-mix(in oklch, var(--honey) 55%, var(--line));
+}
+
+.purchase-handoff__summary {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.purchase-handoff__summary > span:first-child {
+  display: grid;
+  gap: 2px;
+}
+
+.purchase-handoff__summary small,
+.purchase-verified {
+  color: var(--honey-dark);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.purchase-handoff__summary strong {
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.purchase-availability {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: var(--background);
+  color: var(--success);
+  font-size: 10px;
+  font-weight: 720;
+}
+
+.purchase-availability--unavailable {
+  color: var(--stop);
+}
+
+.button--purchase {
+  width: 100%;
+  min-height: 48px;
+  background: var(--ink);
+  color: var(--background);
+  text-decoration: none;
+}
+
+.button--purchase:hover {
+  background: oklch(0.24 0 0);
+}
+
+.purchase-verified {
+  display: block;
 }
 
 .source-panel ul {
@@ -2028,6 +2120,21 @@ footer a {
     align-items: flex-start;
     flex-direction: column;
     padding: 22px 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .part-result {
+    grid-template-columns: 1fr;
+  }
+
+  .part-details > div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .part-details dd {
+    overflow-wrap: anywhere;
   }
 }
 

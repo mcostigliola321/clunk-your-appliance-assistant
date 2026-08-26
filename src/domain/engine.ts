@@ -44,7 +44,7 @@ export function createInitialRepairState(webMcpStatus: WebMcpStatus = "detecting
     action: "catalog_ready",
     arguments: {},
     outcome: "accepted",
-    message: "Twelve source-backed washer families are ready to search.",
+    message: `${APPLIANCE_CATALOG.length} source-backed washer families are ready to search.`,
   };
   return {
     packId: null,

@@ -24,6 +24,7 @@ export type CauseId = "blocked-filter" | "kinked-hose" | "drain-pump-failure" | 
 export type PartId = string;
 export type BrandName = "LG" | "Samsung" | "GE" | "Whirlpool" | "Maytag" | "Electrolux";
 export type DiagramTopology = "front-filter" | "drawer-filter" | "hose-only";
+export type WasherLoadStyle = "front-load" | "top-load";
 
 export type SourceKind =
   "manufacturer-model" | "manufacturer-troubleshooting" | "manufacturer-part" | "authorized-parts";
@@ -47,6 +48,13 @@ export interface RepairPackPart {
   compatibleModel: string;
   installBoundary: "professional-only";
   source: SourceReference;
+  purchase: {
+    seller: string;
+    url: string;
+    priceAtVerification: string;
+    availabilityAtVerification: string;
+    lastVerified: string;
+  };
 }
 
 export interface ApplianceCatalogEntry {
@@ -57,6 +65,7 @@ export interface ApplianceCatalogEntry {
   aliases: string[];
   verifiedProductCodes: string[];
   productCodePrompt: string;
+  loadStyle: WasherLoadStyle;
   topology: DiagramTopology;
   checkProfile: "filter-access" | "hose-then-service";
   modelSource: SourceReference;
@@ -109,7 +118,8 @@ export interface RepairPack {
   appliance: {
     brand: BrandName;
     model: string;
-    type: "front-load washer";
+    type: "front-load washer" | "top-load washer";
+    loadStyle: WasherLoadStyle;
     topology: DiagramTopology;
   };
   symptom: { id: SymptomId; label: string };

@@ -43,10 +43,13 @@ function runFilterPath(
 }
 
 describe("source-backed repair engine", () => {
-  it("validates twelve packs across six brands", () => {
-    expect(APPLIANCE_CATALOG).toHaveLength(12);
-    expect(REPAIR_PACKS.size).toBe(12);
+  it("validates fourteen packs across six brands and both washer formats", () => {
+    expect(APPLIANCE_CATALOG).toHaveLength(14);
+    expect(REPAIR_PACKS.size).toBe(14);
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.brand)).size).toBe(6);
+    expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.loadStyle))).toEqual(
+      new Set(["front-load", "top-load"]),
+    );
   });
 
   it("returns no-part-needed for a reported filter blockage", () => {
@@ -64,6 +67,15 @@ describe("source-backed repair engine", () => {
     expect(result.snapshot.partOutcome?.status).toBe("exact");
     expect(result.snapshot.selectedPart?.sku).toBe("AHA75693425");
     expect(result.snapshot.selectedPart?.installBoundary).toBe("professional-only");
+    expect(result.snapshot.selectedPart?.purchase.seller).toBe("Encompass");
+    expect(result.snapshot.selectedPart?.purchase.url).toMatch(/^https:\/\//);
+  });
+
+  it("uses the top-load hose-only path without inventing a user-accessible filter", () => {
+    const state = selectAndStart("lg-wt7400cw", "WT7400CW.ABWEUUS");
+    const pack = REPAIR_PACKS.get("lg-wt7400cw");
+    expect(pack?.appliance.loadStyle).toBe("top-load");
+    expect(pack?.checks.map((check) => check.id)).toEqual(["prepare-power", "inspect-drain-hose"]);
   });
 
   it("refuses a family-level exact-part claim", () => {

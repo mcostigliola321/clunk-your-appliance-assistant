@@ -30,6 +30,14 @@ const help = {
     "LG",
     "LG front-load washers with user-accessible filters",
   ),
+  lgTopDrain: source(
+    "lg-top-load-no-drain",
+    "manufacturer-troubleshooting",
+    "LG top-load washer: OE drain error",
+    "https://www.lg.com/us/support/help-library/lg-top-load-washer-troubleshooting-an-oe-error-code-CT00000305-1425330996723",
+    "LG",
+    "LG top-load washers",
+  ),
   samsungDrain: source(
     "samsung-no-drain",
     "manufacturer-troubleshooting",
@@ -98,11 +106,11 @@ const help = {
 
 const lgPumpSource = source(
   "lg-aha75693425",
-  "manufacturer-part",
-  "LG washer drain-pump replacement",
-  "https://www.lg.com/us/appliances-accessories/lg-5859e1004g-washer-drain-pump/",
-  "LG",
-  "WM3400CW.ABWEVUS",
+  "authorized-parts",
+  "LG AHA75693425 compatible-model listing",
+  "https://encompass.com/item/12525362/LG/AHA75693425/",
+  "Encompass",
+  "LG WM3400CW and WM4000HWA model families",
 );
 const samsungPumpSource = source(
   "samsung-dc97-20621a",
@@ -113,6 +121,22 @@ const samsungPumpSource = source(
   "WF45T6000AW/A5 and WF45B6300AW/US",
 );
 
+const lgPumpPurchase = {
+  seller: "Encompass",
+  url: "https://encompass.com/item/12525362/LG/AHA75693425/",
+  priceAtVerification: "$123.95",
+  availabilityAtVerification: "In stock",
+  lastVerified: VERIFIED_ON,
+};
+
+const samsungPumpPurchase = {
+  seller: "Samsung Parts",
+  url: "https://samsungparts.com/products/dc97-20621a-washer-drain-pump",
+  priceAtVerification: "$160.95",
+  availabilityAtVerification: "No longer available",
+  lastVerified: VERIFIED_ON,
+};
+
 interface EntryInput {
   id: string;
   brand: BrandName;
@@ -121,6 +145,7 @@ interface EntryInput {
   aliases: string[];
   verifiedProductCodes?: string[];
   productCodePrompt: string;
+  loadStyle?: ApplianceCatalogEntry["loadStyle"];
   topology: ApplianceCatalogEntry["topology"];
   checkProfile: ApplianceCatalogEntry["checkProfile"];
   modelUrl: string;
@@ -132,6 +157,7 @@ function entry(input: EntryInput): ApplianceCatalogEntry {
   const { modelUrl, exactPart, ...rest } = input;
   return {
     ...rest,
+    loadStyle: input.loadStyle ?? "front-load",
     verifiedProductCodes: input.verifiedProductCodes ?? [],
     modelSource: source(
       `${input.id}-model`,
@@ -167,6 +193,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
       compatibleModel: "LG WM3400CW.ABWEVUS",
       installBoundary: "professional-only",
       source: lgPumpSource,
+      purchase: lgPumpPurchase,
     },
   }),
   entry({
@@ -181,6 +208,17 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
     checkProfile: "filter-access",
     modelUrl: "https://www.lg.com/us/support/product/lg-WM4000HWA.ABWEUUS",
     troubleshootingSources: [help.lgDrain, help.lgFilter],
+    exactPart: {
+      id: "lg-aha75693425-wm4000",
+      componentId: "drain-pump",
+      name: "Drain-pump assembly",
+      sku: "AHA75693425",
+      compatibleProductCodes: ["WM4000HWA.ABWEUUS"],
+      compatibleModel: "LG WM4000HWA.ABWEUUS",
+      installBoundary: "professional-only",
+      source: lgPumpSource,
+      purchase: lgPumpPurchase,
+    },
   }),
   entry({
     id: "samsung-wf45t6000aw",
@@ -204,6 +242,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
       compatibleModel: "Samsung WF45T6000AW/A5",
       installBoundary: "professional-only",
       source: samsungPumpSource,
+      purchase: samsungPumpPurchase,
     },
   }),
   entry({
@@ -228,6 +267,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
       compatibleModel: "Samsung WF45B6300AW/US",
       installBoundary: "professional-only",
       source: samsungPumpSource,
+      purchase: samsungPumpPurchase,
     },
   }),
   entry({
@@ -325,5 +365,33 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
     checkProfile: "hose-then-service",
     modelUrl: "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7637AT",
     troubleshootingSources: [help.electroluxDrain],
+  }),
+  entry({
+    id: "lg-wt7400cw",
+    brand: "LG",
+    model: "WT7400CW",
+    label: "5.5 cu. ft. top-load washer with impeller",
+    aliases: ["WT7400CW", "WT7400CW.ABWEUUS", "WT7400CW.ABWETUS"],
+    verifiedProductCodes: ["WT7400CW.ABWEUUS", "WT7400CW.ABWETUS"],
+    productCodePrompt: "Enter the complete suffix printed after WT7400CW.",
+    loadStyle: "top-load",
+    topology: "hose-only",
+    checkProfile: "hose-then-service",
+    modelUrl: "https://www.lg.com/us/support/product/lg-WT7400CW.ABWEUUS",
+    troubleshootingSources: [help.lgTopDrain],
+  }),
+  entry({
+    id: "lg-wt7405cw",
+    brand: "LG",
+    model: "WT7405CW",
+    label: "5.3 cu. ft. top-load washer with agitator",
+    aliases: ["WT7405CW", "WT7405CW.ABWEUUS"],
+    verifiedProductCodes: ["WT7405CW.ABWEUUS"],
+    productCodePrompt: "Enter the complete suffix printed after WT7405CW.",
+    loadStyle: "top-load",
+    topology: "hose-only",
+    checkProfile: "hose-then-service",
+    modelUrl: "https://www.lg.com/us/support/product/lg-WT7405CW",
+    troubleshootingSources: [help.lgTopDrain],
   }),
 ];

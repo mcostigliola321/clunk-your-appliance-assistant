@@ -74,7 +74,7 @@ export function getPartOutcome(state: RepairState): PartOutcome | null {
         status: "exact",
         title: "Exact part match",
         message:
-          "The complete product code appears in the cited compatibility source. Diagnosis is still unconfirmed and installation remains professional-only.",
+          "The complete product code unlocks this model-matched listing. Confirm fit once more with the seller before checkout; diagnosis is still unconfirmed and installation remains professional-only.",
         part,
         requiredProductCode: null,
         source: part.source,

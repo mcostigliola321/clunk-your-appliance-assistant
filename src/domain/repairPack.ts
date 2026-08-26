@@ -174,19 +174,33 @@ function buildPack(entry: ApplianceCatalogEntry): RepairPack {
     appliance: {
       brand: entry.brand,
       model: entry.model,
-      type: "front-load washer",
+      type: `${entry.loadStyle} washer`,
+      loadStyle: entry.loadStyle,
       topology: entry.topology,
     },
     symptom: { id: "will-not-drain", label: "Washer will not drain" },
     productCodePrompt: entry.productCodePrompt,
     verifiedProductCodes: entry.verifiedProductCodes,
-    components: COMPONENTS.map((component) =>
-      component.id === "pump-filter" && entry.checkProfile === "hose-then-service"
-        ? { ...component, access: "professional-only" }
-        : { ...component },
-    ),
+    components: COMPONENTS.map((component) => {
+      if (component.id === "machine")
+        return {
+          ...component,
+          description: `The selected ${entry.loadStyle} washer.`,
+        };
+      if (component.id === "drum" && entry.loadStyle === "top-load")
+        return {
+          ...component,
+          label: "Wash basket",
+          description: "The visible vertical wash basket below the open lid.",
+        };
+      if (component.id === "pump-filter" && entry.checkProfile === "hose-then-service")
+        return { ...component, access: "professional-only" };
+      return { ...component };
+    }),
     checks,
-    causes: CAUSES.map((cause) => ({ ...cause })),
+    causes: CAUSES.filter(
+      (cause) => entry.checkProfile === "filter-access" || cause.id !== "blocked-filter",
+    ).map((cause) => ({ ...cause })),
     parts: entry.exactPart ? [entry.exactPart] : [],
     sources,
   };
@@ -232,6 +246,11 @@ export function assertRepairPack(pack: RepairPack): RepairPack {
       throw new Error(`Part ${part.id} lacks component or compatibility evidence.`);
     if (!new Set(["manufacturer-part", "authorized-parts"]).has(part.source.kind))
       throw new Error(`Part ${part.id} requires manufacturer or authorized-parts evidence.`);
+    if (
+      !part.purchase.url.startsWith("https://") ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(part.purchase.lastVerified)
+    )
+      throw new Error(`Part ${part.id} requires a secure, dated seller handoff.`);
   }
   return pack;
 }

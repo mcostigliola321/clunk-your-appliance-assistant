@@ -24,13 +24,14 @@
     "appliance": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["brand", "model", "type", "topology"],
+      "required": ["brand", "model", "type", "loadStyle", "topology"],
       "properties": {
         "brand": {
           "enum": ["LG", "Samsung", "GE", "Whirlpool", "Maytag", "Electrolux"]
         },
         "model": { "$ref": "#/$defs/shortText" },
-        "type": { "const": "front-load washer" },
+        "type": { "enum": ["front-load washer", "top-load washer"] },
+        "loadStyle": { "enum": ["front-load", "top-load"] },
         "topology": { "enum": ["front-filter", "drawer-filter", "hose-only"] }
       }
     },
@@ -196,7 +197,8 @@
         "compatibleProductCodes",
         "compatibleModel",
         "installBoundary",
-        "source"
+        "source",
+        "purchase"
       ],
       "properties": {
         "id": { "$ref": "#/$defs/identifier" },
@@ -211,7 +213,25 @@
         },
         "compatibleModel": { "$ref": "#/$defs/shortText" },
         "installBoundary": { "const": "professional-only" },
-        "source": { "$ref": "#/$defs/source" }
+        "source": { "$ref": "#/$defs/source" },
+        "purchase": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "seller",
+            "url",
+            "priceAtVerification",
+            "availabilityAtVerification",
+            "lastVerified"
+          ],
+          "properties": {
+            "seller": { "$ref": "#/$defs/shortText" },
+            "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+            "priceAtVerification": { "$ref": "#/$defs/shortText" },
+            "availabilityAtVerification": { "$ref": "#/$defs/shortText" },
+            "lastVerified": { "type": "string", "format": "date" }
+          }
+        }
       }
     }
   }

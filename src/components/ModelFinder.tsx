@@ -1,6 +1,7 @@
 import { ArrowRight, BadgeCheck, Search } from "lucide-react";
 import { useState } from "react";
 
+import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
 import type { BrandName, RepairSnapshot } from "@/domain/types";
 
 const BRANDS: BrandName[] = ["LG", "Samsung", "GE", "Whirlpool", "Maytag", "Electrolux"];
@@ -26,7 +27,9 @@ export function ModelFinder({ snapshot, selectedId, onSearch, onSelect }: ModelF
     <section className="model-finder" aria-labelledby="model-finder-title">
       <div className="model-finder__heading">
         <div>
-          <span>12 model families · 6 brands</span>
+          <span>
+            {APPLIANCE_CATALOG.length} model families · {BRANDS.length} brands
+          </span>
           <h2 id="model-finder-title">Find your washer</h2>
         </div>
         <BadgeCheck size={20} aria-label="Source backed" />

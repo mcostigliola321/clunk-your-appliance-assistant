@@ -224,7 +224,7 @@ This addendum supersedes fictional-only language above while preserving the prov
 
 ### Source-backed repair packs
 
-- Ship twelve real model families across six brands for the no-drain symptom.
+- Ship fourteen real model families—12 front-load and two top-load—across six brands for the no-drain symptom.
 - Every family stores an official model source, one or more troubleshooting sources, a last-verified date, a topology, and a product-code requirement.
 - Guidance remains limited to external inspection, cancellation/disconnection, spill preparation, visible hose checks, and manufacturer-documented user-accessible filter cleaning.
 - Where a manufacturer does not document a user-accessible filter, Clunk ends that branch at professional service instead of reusing another brand's instructions.
@@ -235,6 +235,13 @@ This addendum supersedes fictional-only language above while preserving the prov
 - `no-part-needed`: the observation identifies a user-cleanable blockage or correctable external hose issue.
 - `variant-needed`: safe diagnosis can continue, but the model suffix, production revision, or product number is insufficient for an exact part.
 - `professional-only`: Clunk can identify a likely internal component but provides no installation procedure.
+
+### Seller handoff and topology addendum
+
+- Exact outcomes surface the product name, SKU, seller, dated price/availability snapshot, verification date, and a direct seller link.
+- Checkout, tax, delivery, payment, returns, and live availability remain on the seller’s site.
+- The selected model chooses a generalized front-load or top-load cutaway and a topology-specific hotspot map.
+- Top-load packs omit the front pump-filter check when the manufacturer path only supports an external hose observation.
 
 ### WebMCP collaboration
 

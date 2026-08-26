@@ -44,14 +44,14 @@ Clunk makes those roles explicit. It does not pretend the browser can inspect th
 
 ## What We Are Building
 
-- Twelve real front-load washer model families across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux.
+- Fourteen real washer model families—12 front-load and two top-load—across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux.
 - One hero symptom: washer will not drain.
-- An original generated generalized washer cutaway with interactive, keyboard-accessible component hotspots; no manufacturer diagram is copied or presented as model-specific.
+- Original generated generalized front-load and top-load washer cutaways with interactive, keyboard-accessible component hotspots; no manufacturer diagram is copied or presented as model-specific.
 - A static, schema-validated repair-pack catalog with official manufacturer support sources, last-verified dates, and compatibility confidence.
 - A deterministic diagnosis state machine with progress and evidence.
 - Likely causes that update from recorded observations.
 - Safe next checks with explicit preconditions and stop conditions.
-- Exact real part results only for fully verified model/product-code matches; all other paths stop at a compatibility verification boundary.
+- Exact real part results only for fully verified model/product-code matches; those results may surface a dated seller listing and outbound checkout handoff. All other paths stop at a compatibility verification boundary.
 - Repair context clearly labeled as educational and non-diagnostic.
 - Eight literal document.modelContext.registerTool() tools:
   - search_supported_appliances
@@ -74,11 +74,11 @@ Clunk makes those roles explicit. It does not pretend the browser can inspect th
 - Additional appliance types or symptoms in the submission build.
 - Image upload, OCR, computer vision, sound classification, or sensor integrations.
 - A chatbot or any application-side LLM/API call.
-- Accounts, authentication, database, server functions, analytics, payments, or commerce.
-- Checkout, affiliate links, live pricing, or a claim that a part fits without the required complete model code.
+- Accounts, authentication, database, server functions, analytics, payment handling, or in-app checkout.
+- Affiliate monetization, live price scraping, seller-side cart mutation, or a claim that a part fits without the required complete model code.
 - Crowdsourced repair records or user persistence beyond an optional local session reset.
 - Instructions involving gas, mains/high voltage, refrigerant, sealed compressors, bypassing protections, wiring, internal control boards, or professional-only procedures.
-- Internal panel removal or drain-pump replacement instructions; the MVP can identify a fictional pump as a likely part while escalating installation.
+- Internal panel removal or drain-pump replacement instructions; the MVP can identify an evidence-backed pump listing while escalating installation.
 - Production guarantees, warranties, or claims that Clunk replaces a technician.
 
 ## Inspiration And References

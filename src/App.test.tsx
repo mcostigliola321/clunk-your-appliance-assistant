@@ -30,7 +30,7 @@ describe("Clunk repair bench", () => {
   it("makes the source-backed breadth and model finder immediately visible", () => {
     renderClunk();
     expect(screen.getByRole("heading", { name: "Tell it what's broken." })).toBeVisible();
-    expect(screen.getByText("12 model families · 6 brands")).toBeVisible();
+    expect(screen.getByText("14 model families · 6 brands")).toBeVisible();
     expect(screen.getByText("Manual mode ready")).toBeVisible();
   });
 
@@ -62,6 +62,23 @@ describe("Clunk repair bench", () => {
     await user.click(screen.getByRole("button", { name: "Resolve the part outcome" }));
     expect(screen.getByRole("heading", { name: "Exact part match" })).toBeVisible();
     expect(screen.getByText("AHA75693425")).toBeVisible();
+    expect(screen.getByRole("link", { name: /View product at Encompass/ })).toHaveAttribute(
+      "href",
+      "https://encompass.com/item/12525362/LG/AHA75693425/",
+    );
+  });
+
+  it("switches the repair bench to the top-load cutaway for a top-load model", async () => {
+    const user = userEvent.setup();
+    renderClunk();
+    const input = screen.getByRole("textbox", { name: "Model or complete product code" });
+    await user.type(input, "WT7400CW.ABWEUUS");
+    await user.click(screen.getByRole("button", { name: "Search" }));
+    await user.click(screen.getByRole("button", { name: /LG WT7400CW/ }));
+    expect(screen.getByAltText(/representing LG WT7400CW/)).toHaveAttribute(
+      "src",
+      "/assets/clunk-washer-top-load-cutaway-v1.png",
+    );
   });
 
   it("shows a terminal stop state for a reported hazard", async () => {

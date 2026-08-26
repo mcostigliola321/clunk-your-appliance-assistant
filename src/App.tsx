@@ -11,6 +11,7 @@ import { RepairContext } from "@/components/RepairContext";
 import { SourcePanel } from "@/components/SourcePanel";
 import { StatusPill } from "@/components/StatusPill";
 import { ToolInspector } from "@/components/ToolInspector";
+import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
 import { getCatalogEntry, normalizeModel } from "@/domain/repairPack";
 import type { BrandName, ComponentId, RepairToolName, ResultId } from "@/domain/types";
 import { useRepair } from "@/state/RepairProvider";
@@ -64,7 +65,9 @@ export function App() {
           Clunk<span aria-hidden="true">.</span>
         </a>
         <div className="topbar__meta">
-          <span className="model-badge">{snapshot.appliance ?? "12 real model families"}</span>
+          <span className="model-badge">
+            {snapshot.appliance ?? `${APPLIANCE_CATALOG.length} real model families`}
+          </span>
           <StatusPill status={state.webMcpStatus} />
           {hasSession ? (
             <button className="reset-button" type="button" onClick={reset}>

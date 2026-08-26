@@ -24,7 +24,7 @@ async function reachFilterOutcome(page: Page, resultName: string) {
 
 test("makes the source-backed scope and manual fallback immediately clear", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Tell it what's broken." })).toBeVisible();
-  await expect(page.getByText("12 model families · 6 brands")).toBeVisible();
+  await expect(page.getByText("14 model families · 6 brands")).toBeVisible();
   await expect(page.getByText("Manual mode ready")).toBeVisible();
   await expect(
     page.getByText("Official support sources · deterministic safety · no login"),
@@ -44,7 +44,7 @@ test("completes the no-part-needed blocked-filter path", async ({ page }) => {
   await expect(
     page.getByRole("list", { name: "Likely causes" }).getByRole("listitem").first(),
   ).toContainText("Blocked pump filter");
-  await expect(page.getByText("AHA75693425")).toHaveCount(0);
+  await expect(page.locator(".part-sku")).toHaveCount(0);
 });
 
 test("reveals an exact sourced part only for a complete verified code", async ({ page }) => {
@@ -52,9 +52,40 @@ test("reveals an exact sourced part only for a complete verified code", async ({
   await reachFilterOutcome(page, "Filter and visible impeller area look clear");
 
   await expect(page.getByRole("heading", { name: "Exact part match" })).toBeVisible();
-  await expect(page.getByText("AHA75693425")).toBeVisible();
+  await expect(page.locator(".part-sku")).toHaveText("AHA75693425");
   await expect(page.getByText("Professional only")).toBeVisible();
-  await expect(page.getByRole("link", { name: /View LG evidence/ })).toBeVisible();
+  await expect(page.getByText("$123.95", { exact: true })).toBeVisible();
+  await expect(page.getByText("In stock", { exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "View product at Encompass" })).toHaveAttribute(
+    "href",
+    "https://encompass.com/item/12525362/LG/AHA75693425/",
+  );
+  await expect(page.getByRole("link", { name: /View Encompass evidence/ })).toBeVisible();
+});
+
+test("switches the repair bench and checks for a verified top-load model", async ({ page }) => {
+  const input = page.getByRole("textbox", { name: "Model or complete product code" });
+  await input.fill("WT7400CW.ABWEUUS");
+  await page.getByRole("button", { name: "Search" }).click();
+  await page.getByRole("button", { name: /LG WT7400CW/ }).click();
+
+  await expect(
+    page.locator('img[src="/assets/clunk-washer-top-load-cutaway-v1.png"]'),
+  ).toBeVisible();
+  await expect(page.getByRole("button", { name: "Wash basket", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Pump filter", exact: true })).toHaveCount(0);
+});
+
+test("keeps the exact-part result inside a 320px viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  await selectLg(page);
+  await reachFilterOutcome(page, "Filter and visible impeller area look clear");
+
+  await expect(page.getByRole("heading", { name: "Exact part match" })).toBeVisible();
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  );
+  expect(overflow).toBeLessThanOrEqual(1);
 });
 
 test("stops instead of exposing more steps after a reported hazard", async ({ page }) => {

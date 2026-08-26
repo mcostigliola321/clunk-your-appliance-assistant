@@ -22,3 +22,27 @@
 > Composition: centered, square canvas, washer fills about 82% of the frame, all components fully visible, no cropping. Keep the drum centered, control module upper left, pump filter lower left, drain pump lower right, hose on the right.
 >
 > Safety and originality constraints: entirely fictional generalized appliance design; no resemblance to a specific branded washer; no logos, trademarks, labels, letters, numbers, callout lines, arrows, dimensions, people, hands, tools, text, watermark, or UI chrome. Do not show exposed mains wiring or unsafe repair action. Avoid impossible plumbing geometry.
+
+## Generalized top-load washer cutaway v1
+
+- File: `public/assets/clunk-washer-top-load-cutaway-v1.png`
+- Mode: built-in image generation workflow using the front-load asset as a style reference
+- Generated: 2026-08-26
+- Purpose: make the selected washer format immediately visible while preserving one coherent repair-bench visual language
+- Product boundary: original, brand-neutral, generalized, and illustrative—not a manufacturer service diagram
+- Provenance: the exact generation prompt is embedded in the PNG metadata under `impeccable:prompt`
+
+### Final generation prompt
+
+> Use case: product-mockup
+> Asset type: interactive appliance repair-bench illustration for the Clunk web app
+> Primary request: Create a matching generalized cutaway illustration of a modern white top-load washing machine, with the lid open and the outer cabinet partially removed so the vertical wash basket, tub, drain hose, lower sump path, drain pump, suspension rods, and compact control module are visible. It should instantly read as a top-load washer and visually pair with the provided front-load washer cutaway.
+> Input image: style and rendering reference only; do not edit or reproduce the front-load machine.
+> Scene/backdrop: isolated object with genuinely transparent background
+> Style/medium: highly polished realistic 3D product visualization, clean educational cutaway, original unbranded design
+> Composition/framing: square canvas, centered three-quarter front view, entire appliance visible with comfortable padding; lower drain pump and hose must be unobstructed enough for UI hotspots
+> Lighting/mood: soft neutral studio lighting, calm and precise
+> Color palette: warm white enamel, graphite and stainless steel internals, small restrained amber-orange service accents matching the reference
+> Materials/textures: believable painted metal, stainless perforated basket, molded hoses and pump housing
+> Constraints: no logos, no labels, no text, no watermark, no people, no tools, no manufacturer-specific styling; genuinely transparent background; mechanically plausible but clearly generalized; do not show a front door or horizontal drum
+> Avoid: exploded-parts cloud, blueprint styling, grunge, dramatic shadows, dark background, colorful wiring clutter

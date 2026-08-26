@@ -14,7 +14,7 @@ This ledger defines the first real-model catalog. It is deliberately conservativ
 | Brand      | Model family | Product-code requirement              | Model/support source                                                                                                                                            | Part state                                                              |
 | ---------- | ------------ | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | LG         | WM3400CW     | Full suffix requested before purchase | https://www.lg.com/us/support/product/lg-WM3400CW.ABWEVUS                                                                                                       | Exact drain pump verified for `.ABWEVUS`; professional installation     |
-| LG         | WM4000HWA    | Full suffix required                  | https://www.lg.com/us/support/product/lg-WM4000HWA.ABWEUUS                                                                                                      | Variant needed                                                          |
+| LG         | WM4000HWA    | Full suffix required                  | https://www.lg.com/us/support/product/lg-WM4000HWA.ABWEUUS                                                                                                      | Exact drain pump verified for `.ABWEUUS`; professional installation     |
 | Samsung    | WF45T6000AW  | `/A5` required                        | https://www.samsung.com/us/home-appliances/washers/front-load/4-5-cu-ft-front-load-washer-with-vibration-reduction-technology-plus-in-white-wf45t6000aw-a5/     | Exact drain-pump assembly verified for `/A5`; professional installation |
 | Samsung    | WF45B6300AW  | `/US` required                        | https://www.samsung.com/us/home-appliances/washers/front-load/4-5-cu--ft--large-capacity-smart-front-load-washer-with-super-speed-wash-in-white-wf45b6300aw-us/ | Exact drain-pump assembly verified for `/US`; professional installation |
 | GE         | GFW550SSNWW  | Engineering revision required         | https://products.geappliances.com/appliance/gea-specs/GFW550SSNWW/support                                                                                       | Variant needed                                                          |
@@ -25,16 +25,19 @@ This ledger defines the first real-model catalog. It is deliberately conservativ
 | Maytag     | MHW6630HW    | Engineering revision required         | https://www.maytag.com/owners-center-pdp.MHW6630HW.html                                                                                                         | Variant needed                                                          |
 | Electrolux | ELFW7537AT   | Full product number required          | https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7537AT                                                                              | Variant needed                                                          |
 | Electrolux | ELFW7637AT   | Full product number required          | https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7637AT                                                                              | Variant needed                                                          |
+| LG         | WT7400CW     | Full suffix required                  | https://www.lg.com/us/support/product/lg-WT7400CW.ABWEUUS                                                                                                       | Top-load visible hose path; service boundary                            |
+| LG         | WT7405CW     | Full suffix required                  | https://www.lg.com/us/support/product/lg-WT7405CW                                                                                                               | Top-load visible hose path; service boundary                            |
 
 ## Shared official troubleshooting sources
 
 - LG no-drain guidance: https://www.lg.com/us/support/help-library/lg-washing-machine-water-not-draining--20154726902590
 - LG drain-pump filter cleaning: https://www.lg.com/us/support/help-library/lg-washer-how-to-clean-the-drain-pump-filter--20150206838321
+- LG top-load OE/no-drain guidance: https://www.lg.com/us/support/help-library/lg-top-load-washer-troubleshooting-an-oe-error-code-CT00000305-1425330996723
 - Electrolux E21 long pump-out guidance: https://owner.electrolux.com/support-articles/article/1820072-laundry-front-loading-washer-displaying-error-code-e21-long-pump-out-time-
 
 ## Exact-part evidence included in the submission build
 
-- LG replacement drain-pump source: https://www.lg.com/us/appliances-accessories/lg-5859e1004g-washer-drain-pump/
+- LG authorized replacement drain-pump listing: https://encompass.com/item/12525362/LG/AHA75693425/
 - Samsung authorized-parts compatibility source: https://encompass.com/item/11667691/Samsung/DC97-20621A/
 
-All entries were last reviewed on 2026-08-26. Clunk links to sources but does not copy manufacturer diagrams or manuals.
+All entries and seller snapshots were last reviewed on 2026-08-26. Clunk links to sources but does not copy manufacturer diagrams or manuals. Seller price and availability can change; checkout always happens on the seller’s site.

@@ -6,7 +6,7 @@
 
 Clunk is a lightweight, open-source WebMCP app where a person and a browser agent investigate a washer that will not drain. The person supplies physical observations. The agent searches Clunk’s supported catalog, reads the shared repair state, focuses the relevant component, and records only what the person reports.
 
-The current catalog covers 12 real front-load washer model families across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux. Each repair pack links to manufacturer support evidence. Clunk never substitutes a similar model, never treats a likely cause as a confirmed diagnosis, and reveals an exact part only when a complete verified product code has a documented match.
+The current catalog covers 14 real washer model families—12 front-load and two top-load—across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux. Each repair pack links to manufacturer support evidence and chooses the matching generalized washer cutaway. Clunk never substitutes a similar model, never treats a likely cause as a confirmed diagnosis, and reveals an exact part only when a complete verified product code has a documented match.
 
 No account, API key, model call, database, server function, or runtime API is required. If WebMCP is unavailable, the entire experience remains usable in manual mode.
 
@@ -19,14 +19,16 @@ No account, API key, model call, database, server function, or runtime API is re
 3. Report **Power disconnected; water is cool**.
 4. Report **Hose looks clear and correctly placed**.
 5. Report either a blocked filter for the no-purchase path, or a clear filter for the sourced exact-part path.
-6. Resolve the part outcome and open **Tool inspector** to see the agent-facing surface.
+6. Resolve the part outcome. The exact path surfaces the seller listing, dated price/stock snapshot, and checkout handoff.
+7. Open **Tool inspector** to see the agent-facing surface.
 
 The same sequence can be driven by a person, the manual judge controls, or a WebMCP-capable browser agent. Every accepted and rejected action appears in the shared activity log.
 
 Try three proof cases:
 
 - **No part needed:** report debris blocking the accessible filter.
-- **Exact evidence boundary:** complete all visible checks for `WM3400CW.ABWEVUS`; Clunk can surface the sourced pump match while keeping installation professional-only.
+- **Purchase-ready evidence boundary:** complete all visible checks for `WM3400CW.ABWEVUS`; Clunk surfaces the sourced pump listing and seller handoff while keeping diagnosis unconfirmed and installation professional-only.
+- **Topology switch:** search `WT7400CW.ABWEUUS`; the repair bench changes to the top-load cutaway and removes the unsupported filter check.
 - **Safety stop:** report smoke or a burning smell; Clunk ends the flow immediately and removes further repair actions.
 
 ## Why WebMCP fits
@@ -52,7 +54,7 @@ The app contains eight literal `document.modelContext.registerTool` registration
 | `start_diagnosis`             | Start the one supported symptom flow after a model is selected.                                            |
 | `show_component`              | Focus the shared original cutaway without claiming a physical observation.                                 |
 | `record_observation`          | Record one explicit person-supplied result for the current check.                                          |
-| `find_compatible_part`        | Return no-part, variant-needed, or exact-source-backed outcomes after the visible checks.                  |
+| `find_compatible_part`        | Return no-part, variant-needed, or exact-source-backed outcomes, including a dated seller handoff.         |
 | `stop_and_escalate`           | Enter a terminal safe state for electrical, access, hazard, or unresolved boundaries.                      |
 
 Only contextually valid tools are registered at a given moment. Every input schema is bounded with `additionalProperties: false`. [`evals/webmcp-evals.json`](./evals/webmcp-evals.json) contains reproducible discovery, happy-path, unsupported-model, exact-part, hazard, and protection-bypass cases.
@@ -68,7 +70,7 @@ WebMCP call ───┘                                │
 source-backed catalog ─> validated repair-pack generator ─> model-specific checks and outcomes
 ```
 
-Clunk ships as static HTML, CSS, JavaScript, JSON, SVG, and local font files. The browser agent supplies reasoning; Clunk supplies the bounded tools, authoritative state, sources, deterministic transitions, and safety policy. See [`docs/architecture.md`](./docs/architecture.md) and [`docs/repair-pack-schema.md`](./docs/repair-pack-schema.md).
+Clunk ships as static HTML, CSS, JavaScript, JSON, original raster cutaways, and local font files. The browser agent supplies reasoning; Clunk supplies the bounded tools, authoritative state, sources, deterministic transitions, and safety policy. See [`docs/architecture.md`](./docs/architecture.md), [`docs/repair-pack-schema.md`](./docs/repair-pack-schema.md), and the [`category expansion plan`](./docs/category-expansion-plan.md).
 
 ## Evidence and compatibility
 
@@ -76,11 +78,11 @@ The catalog is intentionally honest about evidence depth:
 
 - **Family verified:** an official manufacturer page confirms the selected model family.
 - **Complete code verified:** the entered rating-label code exactly matches a cataloged code.
-- **Exact part:** a manufacturer or authorized parts source maps that code to a part.
+- **Exact part:** a manufacturer or authorized parts source maps that code to a part and Clunk surfaces the associated seller listing.
 - **Variant needed:** the family is supported, but Clunk needs the complete engineering/product code before any part claim.
 - **Professional only:** the visible checks are exhausted or manufacturer guidance ends at service.
 
-The source ledger records every supported model, official page, topology, and current part-evidence status. Clunk provides no marketplace links, price claims, or pump-installation instructions.
+The source ledger records every supported model, official page, topology, and current part-evidence status. Exact results may include a dated seller price and stock snapshot plus a direct product link. The seller controls live availability, tax, delivery, and checkout; Clunk handles no payment and provides no pump-installation instructions.
 
 ## Deterministic safety
 

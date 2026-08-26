@@ -82,7 +82,7 @@
 
 - [x] **12. Replace the fictional singleton with an extensible source-backed catalog**
       Spec ref: spec.md > Real-model expansion addendum
-      What to build: Add twelve real model-family entries, source provenance, verification tiers, topology identifiers, exact-model aliases, and schema invariants. Keep runtime data static and original.
+      What to build: Add fourteen real model-family entries, source provenance, verification tiers, topology identifiers, exact-model aliases, and schema invariants. Keep runtime data static and original.
       Acceptance: Six brands are represented; every entry has an official model/support source and verification date; exact-part claims require evidence and the required product-code specificity.
       Verify: Catalog validation tests cover uniqueness, sources, safety, model matching, and part-evidence requirements.
 
@@ -107,7 +107,7 @@
 - [x] **16. Refresh open-source schema, evals, and contributor path**
       Spec ref: spec.md > Real-model expansion addendum
       What to build: Document repair-pack authoring, source policy, confidence vocabulary, contribution validation, unsupported-model behavior, tool lifecycle, and agent eval prompts.
-      Acceptance: A contributor can add a thirteenth family without editing engine or component switch statements.
+      Acceptance: A contributor can add a fifteenth family without editing engine or component switch statements.
       Verify: README instructions, schema example, fixture validation, lint, tests, and build pass.
 
 - [ ] **17. Deploy and prove the real agent collaboration**
@@ -121,3 +121,9 @@
       What to build: Rewrite the README opening, Devpost draft, demo beat sheet, screenshots, and proof checklist around source-backed breadth and the human-senses/agent-structure collaboration.
       Acceptance: The public story makes the WebMCP advantage clear in under three minutes and avoids universal-diagnosis or compatibility claims.
       Verify: Re-run the official submission checklist before making the repository public.
+
+- [x] **19. Add purchase handoff and washer-format visuals**
+      Spec ref: prd.md > Seller handoff and topology addendum
+      What to build: Surface an exact seller product listing with dated price and availability evidence, preserve external human-controlled checkout, add two source-backed top-load families, and select a generalized front-load or top-load cutaway from the repair pack.
+      Acceptance: The LG exact-part path shows a working seller destination; top-load models show the correct cutaway and omit unsupported filter checks; WebMCP and human actions reveal the same state.
+      Verify: Unit and UI tests cover seller metadata, outbound link, top-load pack shape, and asset switching; production build and visual browser checks pass.
