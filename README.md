@@ -6,7 +6,7 @@
 
 Clunk is a lightweight, open-source WebMCP app where a person and a browser agent investigate a washer that will not drain. The person supplies physical observations. The agent searches Clunk’s supported catalog, reads the shared repair state, focuses the relevant component, and records only what the person reports.
 
-The current catalog covers 14 real washer model families—12 front-load and two top-load—across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux. Each repair pack links to manufacturer support evidence and chooses the matching generalized washer cutaway. Clunk never substitutes a similar model, never treats a likely cause as a confirmed diagnosis, and reveals an exact part only when a complete verified product code has a documented match.
+The current catalog covers 19 real washer model families—12 front-load and seven top-load—across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux. Five brands now include top-load coverage; each repair pack links to manufacturer support evidence and chooses the matching generalized washer cutaway. Clunk never substitutes a similar model, never treats a likely cause as a confirmed diagnosis, and reveals an exact part only when a complete verified product code has a documented match.
 
 No account, API key, model call, database, server function, or runtime API is required. If WebMCP is unavailable, the entire experience remains usable in manual mode.
 
@@ -28,7 +28,7 @@ Try three proof cases:
 
 - **No part needed:** report debris blocking the accessible filter.
 - **Purchase-ready evidence boundary:** complete all visible checks for `WM3400CW.ABWEVUS`; Clunk surfaces the sourced pump listing and seller handoff while keeping diagnosis unconfirmed and installation professional-only.
-- **Topology switch:** search `WT7400CW.ABWEUUS`; the repair bench changes to the top-load cutaway and removes the unsupported filter check.
+- **Topology switch:** search `GTW585BSVWS`; the GE repair bench changes to the top-load cutaway and removes the unsupported filter check.
 - **Safety stop:** report smoke or a burning smell; Clunk ends the flow immediately and removes further repair actions.
 
 ## Why WebMCP fits

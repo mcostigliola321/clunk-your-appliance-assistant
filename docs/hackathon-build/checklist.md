@@ -82,7 +82,7 @@
 
 - [x] **12. Replace the fictional singleton with an extensible source-backed catalog**
       Spec ref: spec.md > Real-model expansion addendum
-      What to build: Add fourteen real model-family entries, source provenance, verification tiers, topology identifiers, exact-model aliases, and schema invariants. Keep runtime data static and original.
+      What to build: Add nineteen real model-family entries, source provenance, verification tiers, topology identifiers, exact-model aliases, and schema invariants. Keep runtime data static and original.
       Acceptance: Six brands are represented; every entry has an official model/support source and verification date; exact-part claims require evidence and the required product-code specificity.
       Verify: Catalog validation tests cover uniqueness, sources, safety, model matching, and part-evidence requirements.
 

@@ -44,7 +44,7 @@ Clunk makes those roles explicit. It does not pretend the browser can inspect th
 
 ## What We Are Building
 
-- Fourteen real washer model families—12 front-load and two top-load—across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux.
+- Nineteen real washer model families—12 front-load and seven top-load—across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux; top-load coverage spans five brands.
 - One hero symptom: washer will not drain.
 - Original generated generalized front-load and top-load washer cutaways with interactive, keyboard-accessible component hotspots; no manufacturer diagram is copied or presented as model-specific.
 - A static, schema-validated repair-pack catalog with official manufacturer support sources, last-verified dates, and compatibility confidence.

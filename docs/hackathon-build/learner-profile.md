@@ -9,7 +9,7 @@
 ## Project Idea
 
 - Initial proof of concept: one fictional no-drain washer.
-- Participant-directed pivot: a source-backed catalog spanning six major US washer brands and twelve real model families, while keeping one bounded symptom and deterministic safety.
+- Participant-directed pivot: a source-backed catalog spanning six major US washer brands and nineteen real model families, including seven top-load packs across five brands, while keeping one bounded symptom and deterministic safety.
 - Product architecture must preserve optionality for hundreds of repair packs and additional appliance types without adding a runtime backend or app-side model.
 
 ## Technical Experience

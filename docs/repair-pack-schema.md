@@ -1,6 +1,6 @@
 # Repair pack extension schema
 
-Clunk keeps model evidence separate from the WebMCP registration and UI. The 14 launch entries live in [`src/data/applianceCatalog.ts`](../src/data/applianceCatalog.ts). Each entry is converted into a schema-v2 repair pack and checked by the runtime invariants in [`src/domain/repairPack.ts`](../src/domain/repairPack.ts).
+Clunk keeps model evidence separate from the WebMCP registration and UI. The 19 launch entries live in [`src/data/applianceCatalog.ts`](../src/data/applianceCatalog.ts). Each entry is converted into a schema-v2 repair pack and checked by the runtime invariants in [`src/domain/repairPack.ts`](../src/domain/repairPack.ts).
 
 The documented [`repair-pack.schema.json`](./repair-pack.schema.json) describes the serialized extension shape:
 

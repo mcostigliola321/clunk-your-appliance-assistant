@@ -105,7 +105,7 @@ npx playwright install --with-deps chromium
 npm run verify
 ```
 
-This runs typechecking, lint, 19 deterministic unit/integration/eval tests, a production build, and 12 desktop/mobile browser checks covering canonical and hazard paths, keyboard and touch behavior, responsive overflow, reduced motion, and automated WCAG A/AA scans.
+This runs typechecking, lint, 29 deterministic unit/integration/eval tests, a production build, and 16 desktop/mobile browser checks covering canonical and hazard paths, GE top-load topology, keyboard and touch behavior, responsive overflow, reduced motion, and automated WCAG A/AA scans.
 
 ## Public Demo Link
 

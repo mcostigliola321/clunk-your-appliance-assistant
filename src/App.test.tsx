@@ -30,7 +30,7 @@ describe("Clunk repair bench", () => {
   it("makes the source-backed breadth and model finder immediately visible", () => {
     renderClunk();
     expect(screen.getByRole("heading", { name: "Tell it what's broken." })).toBeVisible();
-    expect(screen.getByText("14 model families · 6 brands")).toBeVisible();
+    expect(screen.getByText("19 model families · 6 brands")).toBeVisible();
     expect(screen.getByText("Manual mode ready")).toBeVisible();
   });
 
@@ -72,10 +72,10 @@ describe("Clunk repair bench", () => {
     const user = userEvent.setup();
     renderClunk();
     const input = screen.getByRole("textbox", { name: "Model or complete product code" });
-    await user.type(input, "WT7400CW.ABWEUUS");
+    await user.type(input, "GTW585BSVWS");
     await user.click(screen.getByRole("button", { name: "Search" }));
-    await user.click(screen.getByRole("button", { name: /LG WT7400CW/ }));
-    expect(screen.getByAltText(/representing LG WT7400CW/)).toHaveAttribute(
+    await user.click(screen.getByRole("button", { name: /GE GTW585BSVWS/ }));
+    expect(screen.getByAltText(/representing GE GTW585BSVWS/)).toHaveAttribute(
       "src",
       "/assets/clunk-washer-top-load-cutaway-v1.png",
     );

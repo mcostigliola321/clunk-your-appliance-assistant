@@ -43,12 +43,17 @@ function runFilterPath(
 }
 
 describe("source-backed repair engine", () => {
-  it("validates fourteen packs across six brands and both washer formats", () => {
-    expect(APPLIANCE_CATALOG).toHaveLength(14);
-    expect(REPAIR_PACKS.size).toBe(14);
+  it("validates nineteen packs across six brands and both washer formats", () => {
+    expect(APPLIANCE_CATALOG).toHaveLength(19);
+    expect(REPAIR_PACKS.size).toBe(19);
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.brand)).size).toBe(6);
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.loadStyle))).toEqual(
       new Set(["front-load", "top-load"]),
+    );
+    const topLoadEntries = APPLIANCE_CATALOG.filter((entry) => entry.loadStyle === "top-load");
+    expect(topLoadEntries).toHaveLength(7);
+    expect(new Set(topLoadEntries.map((entry) => entry.brand))).toEqual(
+      new Set(["LG", "Samsung", "GE", "Whirlpool", "Maytag"]),
     );
   });
 
@@ -72,8 +77,8 @@ describe("source-backed repair engine", () => {
   });
 
   it("uses the top-load hose-only path without inventing a user-accessible filter", () => {
-    const state = selectAndStart("lg-wt7400cw", "WT7400CW.ABWEUUS");
-    const pack = REPAIR_PACKS.get("lg-wt7400cw");
+    const state = selectAndStart("ge-gtw585bsvws", "GTW585BSVWS");
+    const pack = REPAIR_PACKS.get("ge-gtw585bsvws");
     expect(pack?.appliance.loadStyle).toBe("top-load");
     expect(pack?.checks.map((check) => check.id)).toEqual(["prepare-power", "inspect-drain-hose"]);
   });

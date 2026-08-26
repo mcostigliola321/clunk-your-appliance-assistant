@@ -224,7 +224,7 @@ This addendum supersedes fictional-only language above while preserving the prov
 
 ### Source-backed repair packs
 
-- Ship fourteen real model families—12 front-load and two top-load—across six brands for the no-drain symptom.
+- Ship nineteen real model families—12 front-load and seven top-load—across six brands for the no-drain symptom, with top-load coverage for five brands.
 - Every family stores an official model source, one or more troubleshooting sources, a last-verified date, a topology, and a product-code requirement.
 - Guidance remains limited to external inspection, cancellation/disconnection, spill preparation, visible hose checks, and manufacturer-documented user-accessible filter cleaning.
 - Where a manufacturer does not document a user-accessible filter, Clunk ends that branch at professional service instead of reusing another brand's instructions.

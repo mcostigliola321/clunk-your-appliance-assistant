@@ -6,7 +6,7 @@ product
 
 ## Users
 
-People facing a washer that will not drain who need a calm, understandable way to make safe physical observations while an AI reasons over model-specific evidence. The launch catalog covers 14 real washer families—12 front-load and two top-load—across six major US brands. Judges must be able to understand and operate the product immediately without credentials.
+People facing a washer that will not drain who need a calm, understandable way to make safe physical observations while an AI reasons over model-specific evidence. The launch catalog covers 19 real washer families—12 front-load and seven top-load—across six major US brands, with top-load coverage for LG, Samsung, GE, Whirlpool, and Maytag. Judges must be able to understand and operate the product immediately without credentials.
 
 ## Product Purpose
 

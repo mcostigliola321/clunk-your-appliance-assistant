@@ -476,7 +476,7 @@ Original SVG geometry supports topology flags rather than manufacturer artwork. 
 
 ### Test matrix
 
-- All twelve entries pass schema and source validation.
+- All nineteen entries pass schema and source validation.
 - Search/select normalizes supported aliases and refuses unsupported models.
 - LG WM3400CW and both Samsung complete product codes can reach verified professional-only pump results after observations.
 - A blocked user-accessible filter returns no-part-needed, not a purchase prompt.

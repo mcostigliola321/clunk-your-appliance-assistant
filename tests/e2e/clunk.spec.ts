@@ -24,7 +24,7 @@ async function reachFilterOutcome(page: Page, resultName: string) {
 
 test("makes the source-backed scope and manual fallback immediately clear", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Tell it what's broken." })).toBeVisible();
-  await expect(page.getByText("14 model families · 6 brands")).toBeVisible();
+  await expect(page.getByText("19 model families · 6 brands")).toBeVisible();
   await expect(page.getByText("Manual mode ready")).toBeVisible();
   await expect(
     page.getByText("Official support sources · deterministic safety · no login"),
@@ -65,9 +65,9 @@ test("reveals an exact sourced part only for a complete verified code", async ({
 
 test("switches the repair bench and checks for a verified top-load model", async ({ page }) => {
   const input = page.getByRole("textbox", { name: "Model or complete product code" });
-  await input.fill("WT7400CW.ABWEUUS");
+  await input.fill("GTW585BSVWS");
   await page.getByRole("button", { name: "Search" }).click();
-  await page.getByRole("button", { name: /LG WT7400CW/ }).click();
+  await page.getByRole("button", { name: /GE GTW585BSVWS/ }).click();
 
   await expect(
     page.locator('img[src="/assets/clunk-washer-top-load-cutaway-v1.png"]'),

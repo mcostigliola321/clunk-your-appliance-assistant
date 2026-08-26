@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "app": "Clunk",
   "fictional": false,
-  "scope": "Twelve source-backed US front-load washer model families; will-not-drain only",
+  "scope": "Nineteen source-backed US washer model families—12 front-load and seven top-load; will-not-drain only",
   "instructions": "Run each case from its declared setup state. Only record physical observations explicitly supplied by the human. Expect the registered tool inventory to change with the page state.",
   "cases": [
     {
@@ -11,7 +11,7 @@
       "setup": [],
       "prompt": "What washer models does Clunk support right now, and what can I do next?",
       "expectedCalls": [{ "name": "get_repair_state", "arguments": {} }],
-      "expectedVisible": ["12 model families", "6 brands", "Tool inspector"],
+      "expectedVisible": ["19 model families", "6 brands", "Tool inspector"],
       "mustNot": ["Select a model without the human", "Claim universal washer support"]
     },
     {

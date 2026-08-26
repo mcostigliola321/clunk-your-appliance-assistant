@@ -110,6 +110,8 @@
 - Added a purchase-ready exact-part result with seller, dated price/availability snapshot, and a direct product-page handoff. Payment, tax, delivery, returns, and live availability remain on the seller site.
 - Verified the LG `AHA75693425` listing at Encompass and exposed the purchase metadata through the same repair snapshot returned by `find_compatible_part`.
 - Expanded the catalog to 14 model families with LG `WT7400CW` and `WT7405CW` top-load packs backed by official model and no-drain guidance.
+- Expanded the catalog again to 19 model families by adding GE `GTW465ASNWW` and `GTW585BSVWS`, Samsung `WA45T3200AW/A4`, Whirlpool `WTW5057LW`, and Maytag `MVW5430MW`. Seven top-load packs now span five brands and share the same hose-only safety boundary.
+- Full verification after the multi-brand top-load expansion passed 29 unit/integration/eval tests and 16 Playwright cases across desktop and mobile.
 - Generated an original generalized top-load cutaway matching the existing visual system. Repair packs now select front-load or top-load artwork and topology-specific hotspot positions.
 - Top-load packs use the conservative hose-only path, omit the unsupported front pump-filter check, and stop at professional service after visible checks.
 - Added a documented dishwasher and refrigerator expansion path that retains the current eight WebMCP tools while moving visuals, safety profiles, and symptom rules into category data.
