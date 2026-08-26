@@ -193,6 +193,12 @@ function buildPack(entry: ApplianceCatalogEntry): RepairPack {
           label: "Wash basket",
           description: "The visible vertical wash basket below the open lid.",
         };
+      if (component.id === "sump" && entry.loadStyle === "top-load")
+        return {
+          ...component,
+          label: "Tub outlet",
+          description: "The internal low outlet from the outer tub toward the drain pump.",
+        };
       if (component.id === "pump-filter" && entry.checkProfile === "hose-then-service")
         return { ...component, access: "professional-only" };
       return { ...component };

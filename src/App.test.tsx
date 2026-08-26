@@ -68,16 +68,16 @@ describe("Clunk repair bench", () => {
     );
   });
 
-  it("switches the repair bench to the top-load cutaway for a top-load model", async () => {
+  it("switches the repair bench to the top-load topology for a top-load model", async () => {
     const user = userEvent.setup();
     renderClunk();
     const input = screen.getByRole("textbox", { name: "Model or complete product code" });
     await user.type(input, "GTW585BSVWS");
     await user.click(screen.getByRole("button", { name: "Search" }));
     await user.click(screen.getByRole("button", { name: /GE GTW585BSVWS/ }));
-    expect(screen.getByAltText(/representing GE GTW585BSVWS/)).toHaveAttribute(
+    expect(screen.getByAltText(/used for GE GTW585BSVWS/)).toHaveAttribute(
       "src",
-      "/assets/clunk-washer-top-load-cutaway-v1.png",
+      "/assets/clunk-washer-top-load-topology-v2.png",
     );
   });
 

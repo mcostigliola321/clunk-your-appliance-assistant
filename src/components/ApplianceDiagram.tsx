@@ -27,8 +27,10 @@ export function ApplianceDiagram({
   const loadStyle = pack?.appliance.loadStyle ?? "front-load";
   const illustration =
     loadStyle === "top-load"
-      ? "/assets/clunk-washer-top-load-cutaway-v1.png"
-      : "/assets/clunk-washer-cutaway-v2.png";
+      ? "/assets/clunk-washer-top-load-topology-v2.png"
+      : "/assets/clunk-washer-front-load-topology-v3.png";
+  const illustrationSize =
+    loadStyle === "top-load" ? { width: 1254, height: 1254 } : { width: 1305, height: 1205 };
   const applianceName = pack
     ? `${pack.appliance.brand} ${pack.appliance.model}`
     : "front-load washer";
@@ -47,7 +49,7 @@ export function ApplianceDiagram({
         </div>
         <div className="diagram-legend">
           <span className="diagram-legend__swatch" aria-hidden="true" />
-          Current focus
+          Topology map · Current focus
         </div>
       </div>
 
@@ -56,9 +58,9 @@ export function ApplianceDiagram({
           <img
             className="appliance-render"
             src={illustration}
-            alt={`Generalized cutaway illustration representing ${applianceName}`}
-            width="1100"
-            height="1100"
+            alt={`Generalized ${loadStyle} topology orientation used for ${applianceName}; component placement is not model-specific`}
+            width={illustrationSize.width}
+            height={illustrationSize.height}
           />
           {visibleComponents.map((id) => {
             const label = componentLabel(id);
@@ -81,7 +83,8 @@ export function ApplianceDiagram({
           })}
         </div>
         <p className="diagram-note">
-          Generalized interactive cutaway—not a manufacturer service diagram.
+          Topology orientation only—not this model&apos;s service diagram. Component placement
+          varies by revision.
         </p>
       </div>
 

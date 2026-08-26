@@ -95,12 +95,12 @@ export function App() {
               </div>
               <figure className="intro-machine">
                 <img
-                  src="/assets/clunk-washer-cutaway-v2.png"
-                  alt="Generalized cutaway of a front-load washer showing its drum and drain path"
-                  width="1100"
-                  height="1100"
+                  src="/assets/clunk-washer-front-load-topology-v3.png"
+                  alt="Generalized front-load washer topology showing one connected drain path"
+                  width="1305"
+                  height="1205"
                 />
-                <figcaption>Interactive cutaway opens after model selection</figcaption>
+                <figcaption>Topology orientation opens after model selection</figcaption>
               </figure>
               <ModelFinder
                 snapshot={snapshot}

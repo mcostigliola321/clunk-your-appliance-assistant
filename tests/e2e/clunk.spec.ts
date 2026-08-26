@@ -70,9 +70,10 @@ test("switches the repair bench and checks for a verified top-load model", async
   await page.getByRole("button", { name: /GE GTW585BSVWS/ }).click();
 
   await expect(
-    page.locator('img[src="/assets/clunk-washer-top-load-cutaway-v1.png"]'),
+    page.locator('img[src="/assets/clunk-washer-top-load-topology-v2.png"]'),
   ).toBeVisible();
   await expect(page.getByRole("button", { name: "Wash basket", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Tub outlet", exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "Pump filter", exact: true })).toHaveCount(0);
 });
 

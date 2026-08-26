@@ -240,7 +240,7 @@ This addendum supersedes fictional-only language above while preserving the prov
 
 - Exact outcomes surface the product name, SKU, seller, dated price/availability snapshot, verification date, and a direct seller link.
 - Checkout, tax, delivery, payment, returns, and live availability remain on the seller’s site.
-- The selected model chooses a generalized front-load or top-load cutaway and a topology-specific hotspot map.
+- The selected model chooses a generalized front-load or top-load topology orientation and a topology-specific hotspot map, explicitly distinguished from a model service diagram.
 - Top-load packs omit the front pump-filter check when the manufacturer path only supports an external hose observation.
 
 ### WebMCP collaboration

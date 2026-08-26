@@ -124,6 +124,6 @@
 
 - [x] **19. Add purchase handoff and washer-format visuals**
       Spec ref: prd.md > Seller handoff and topology addendum
-      What to build: Surface an exact seller product listing with dated price and availability evidence, preserve external human-controlled checkout, add two source-backed top-load families, and select a generalized front-load or top-load cutaway from the repair pack.
-      Acceptance: The LG exact-part path shows a working seller destination; top-load models show the correct cutaway and omit unsupported filter checks; WebMCP and human actions reveal the same state.
+      What to build: Surface an exact seller product listing with dated price and availability evidence, preserve external human-controlled checkout, add two source-backed top-load families, and select a mechanically constrained front-load or top-load topology orientation from the repair pack.
+      Acceptance: The LG exact-part path shows a working seller destination; top-load models show the correct topology orientation and omit unsupported filter checks; WebMCP and human actions reveal the same state.
       Verify: Unit and UI tests cover seller metadata, outbound link, top-load pack shape, and asset switching; production build and visual browser checks pass.

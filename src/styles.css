@@ -840,13 +840,13 @@ summary:focus-visible,
 }
 
 .appliance-stage--top-load .component-hotspot--machine {
-  left: 73%;
-  top: 12%;
+  left: 78%;
+  top: 18%;
 }
 
 .appliance-stage--top-load .component-hotspot--control-module {
-  left: 39%;
-  top: 22%;
+  left: 60%;
+  top: 20%;
 }
 
 .appliance-stage--top-load .component-hotspot--drum {
@@ -856,17 +856,21 @@ summary:focus-visible,
 
 .appliance-stage--top-load .component-hotspot--sump {
   left: 52%;
-  top: 72%;
+  top: 67%;
 }
 
 .appliance-stage--top-load .component-hotspot--drain-pump {
-  left: 75%;
-  top: 84%;
+  left: 69%;
+  top: 82%;
 }
 
 .appliance-stage--top-load .component-hotspot--drain-hose {
   left: 82%;
   top: 54%;
+}
+
+.appliance-stage--top-load .appliance-render {
+  filter: none;
 }
 
 .appliance-component {
@@ -937,38 +941,38 @@ summary:focus-visible,
 }
 
 .component-hotspot--machine {
-  left: 67%;
-  top: 10%;
-}
-
-.component-hotspot--control-module {
-  left: 42%;
+  left: 73%;
   top: 14%;
 }
 
+.component-hotspot--control-module {
+  left: 54%;
+  top: 18%;
+}
+
 .component-hotspot--drum {
-  left: 51%;
-  top: 43%;
+  left: 52%;
+  top: 47%;
 }
 
 .component-hotspot--sump {
-  left: 55%;
-  top: 69%;
+  left: 50%;
+  top: 72%;
 }
 
 .component-hotspot--pump-filter {
-  left: 22%;
-  top: 83%;
+  left: 35%;
+  top: 85%;
 }
 
 .component-hotspot--drain-pump {
-  left: 84%;
-  top: 82%;
+  left: 46%;
+  top: 85%;
 }
 
 .component-hotspot--drain-hose {
-  left: 80%;
-  top: 48%;
+  left: 86%;
+  top: 52%;
 }
 
 .component-hotspot--machine .component-hotspot__label,

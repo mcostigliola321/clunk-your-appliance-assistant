@@ -116,3 +116,11 @@
 - Top-load packs use the conservative hose-only path, omit the unsupported front pump-filter check, and stop at professional service after visible checks.
 - Added a documented dishwasher and refrigerator expansion path that retains the current eight WebMCP tools while moving visuals, safety profiles, and symptom rules into category data.
 - Verification: 29 deterministic unit, UI, registry, safety, and WebMCP-eval tests pass; the static production build passes.
+
+## 2026-08-26 — Mechanical-credibility correction
+
+- Retired both generated washer cutaways after visual review found duplicated or display-like plumbing and implausible component placement.
+- Replaced them with original, mechanically constrained front-load and conventional U.S. top-load topology illustrations grounded in manufacturer support and parts architecture.
+- The front-load orientation now shows one basket and outer tub, suspension, and one connected tub-to-pump-to-drain path with the filter cap integrated into the low-front pump housing.
+- The top-load orientation now shows a rear control console, basket and outer tub, center agitator, four suspension rods, a plausible belt-drive assembly, and one connected drain pump path.
+- Updated every active customer-facing label to state that the illustration is a topology orientation rather than a model-specific service diagram and that placement varies by engineering revision.
