@@ -8,7 +8,9 @@
 
 ## Project Idea
 
-- Initial idea: Clunk, a shared visual repair bench where a person and an AI diagnose one fictional washing machine that will not drain, inspect highlighted components, record safe physical checks, and find a compatible fictional part.
+- Initial proof of concept: one fictional no-drain washer.
+- Participant-directed pivot: a source-backed catalog spanning six major US washer brands and twelve real model families, while keeping one bounded symptom and deterministic safety.
+- Product architecture must preserve optionality for hundreds of repair packs and additional appliance types without adding a runtime backend or app-side model.
 
 ## Technical Experience
 

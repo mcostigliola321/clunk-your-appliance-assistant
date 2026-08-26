@@ -4,10 +4,15 @@ import type { RepairToolName } from "@/domain/types";
 import { REPAIR_TOOL_CONTRACTS } from "@/webmcp/contracts";
 
 export function ToolInspector({
+  activeTools,
   onRun,
 }: {
+  activeTools: RepairToolName[];
   onRun: (name: RepairToolName, input: Record<string, unknown>) => void;
 }) {
+  const visibleContracts = REPAIR_TOOL_CONTRACTS.filter((contract) =>
+    activeTools.includes(contract.name),
+  );
   return (
     <section className="tool-inspector" aria-labelledby="tool-inspector-title" role="region">
       <div className="section-heading">
@@ -15,14 +20,14 @@ export function ToolInspector({
           <div className="section-kicker">Judge mode</div>
           <h2 id="tool-inspector-title">Tool inspector</h2>
         </div>
-        <span className="tool-count">8 WebMCP tools</span>
+        <span className="tool-count">{visibleContracts.length} active · 8 total</span>
       </div>
       <p className="tool-intro">
-        Run the same bounded actions an agent can call. Accepted and rejected calls update the
-        shared log above.
+        This list mirrors the tools registered for the current page state. Run the same bounded
+        actions an agent can call; each result updates the shared bench.
       </p>
       <div className="tool-list">
-        {REPAIR_TOOL_CONTRACTS.map((contract) => (
+        {visibleContracts.map((contract) => (
           <details key={contract.name}>
             <summary>
               <span>

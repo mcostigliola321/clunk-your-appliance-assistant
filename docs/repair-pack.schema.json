@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://clunk.example/schemas/repair-pack.schema.json",
   "title": "Clunk repair pack",
-  "description": "Static fictional appliance data used by a deterministic Clunk diagnosis.",
+  "description": "A source-backed, static appliance repair pack used by Clunk's deterministic engine.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -10,23 +10,28 @@
     "schemaVersion",
     "appliance",
     "symptom",
+    "productCodePrompt",
+    "verifiedProductCodes",
     "components",
     "checks",
     "causes",
-    "parts"
+    "parts",
+    "sources"
   ],
   "properties": {
-    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
-    "schemaVersion": { "const": 1 },
+    "id": { "$ref": "#/$defs/identifier" },
+    "schemaVersion": { "const": 2 },
     "appliance": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["name", "model", "type", "fictional"],
+      "required": ["brand", "model", "type", "topology"],
       "properties": {
-        "name": { "type": "string", "minLength": 1, "maxLength": 60 },
-        "model": { "type": "string", "minLength": 1, "maxLength": 60 },
-        "type": { "type": "string", "minLength": 1, "maxLength": 80 },
-        "fictional": { "const": true }
+        "brand": {
+          "enum": ["LG", "Samsung", "GE", "Whirlpool", "Maytag", "Electrolux"]
+        },
+        "model": { "$ref": "#/$defs/shortText" },
+        "type": { "const": "front-load washer" },
+        "topology": { "enum": ["front-filter", "drawer-filter", "hose-only"] }
       }
     },
     "symptom": {
@@ -34,9 +39,15 @@
       "additionalProperties": false,
       "required": ["id", "label"],
       "properties": {
-        "id": { "$ref": "#/$defs/identifier" },
+        "id": { "const": "will-not-drain" },
         "label": { "$ref": "#/$defs/shortText" }
       }
+    },
+    "productCodePrompt": { "$ref": "#/$defs/bodyText" },
+    "verifiedProductCodes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3, "maxLength": 80 }
     },
     "components": {
       "type": "array",
@@ -45,11 +56,12 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "label", "description"],
+        "required": ["id", "label", "description", "access"],
         "properties": {
           "id": { "$ref": "#/$defs/identifier" },
           "label": { "$ref": "#/$defs/shortText" },
-          "description": { "$ref": "#/$defs/bodyText" }
+          "description": { "$ref": "#/$defs/bodyText" },
+          "access": { "enum": ["visible", "user-accessible", "professional-only"] }
         }
       }
     },
@@ -68,6 +80,7 @@
           "why",
           "stop",
           "safetyTags",
+          "sourceIds",
           "results"
         ],
         "properties": {
@@ -83,12 +96,20 @@
             "uniqueItems": true,
             "items": {
               "enum": [
-                "power-disconnected",
+                "disconnect-power",
+                "cool-water",
                 "external-observation",
-                "water-release",
-                "user-access-door"
+                "no-disassembly",
+                "spill-control",
+                "user-accessible-filter"
               ]
             }
+          },
+          "sourceIds": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "$ref": "#/$defs/identifier" }
           },
           "results": {
             "type": "array",
@@ -125,32 +146,14 @@
     },
     "parts": {
       "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/part" }
+    },
+    "sources": {
+      "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "componentId",
-          "name",
-          "sku",
-          "compatibleModel",
-          "effort",
-          "illustrativeCost",
-          "installBoundary"
-        ],
-        "properties": {
-          "id": { "$ref": "#/$defs/identifier" },
-          "componentId": { "$ref": "#/$defs/identifier" },
-          "name": { "$ref": "#/$defs/shortText" },
-          "sku": { "type": "string", "pattern": "^[A-Z0-9-]{3,32}$" },
-          "compatibleModel": { "$ref": "#/$defs/shortText" },
-          "effort": { "$ref": "#/$defs/shortText" },
-          "illustrativeCost": { "enum": ["Low", "Medium", "High"] },
-          "installBoundary": { "enum": ["user-cleanable", "professional-only"] }
-        }
-      }
+      "items": { "$ref": "#/$defs/source" }
     }
   },
   "$defs": {
@@ -159,7 +162,57 @@
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
       "maxLength": 80
     },
-    "shortText": { "type": "string", "minLength": 1, "maxLength": 120 },
-    "bodyText": { "type": "string", "minLength": 1, "maxLength": 500 }
+    "shortText": { "type": "string", "minLength": 1, "maxLength": 140 },
+    "bodyText": { "type": "string", "minLength": 1, "maxLength": 700 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "title", "url", "publisher", "appliesTo", "lastVerified"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "kind": {
+          "enum": [
+            "manufacturer-model",
+            "manufacturer-troubleshooting",
+            "manufacturer-part",
+            "authorized-parts"
+          ]
+        },
+        "title": { "$ref": "#/$defs/shortText" },
+        "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "publisher": { "$ref": "#/$defs/shortText" },
+        "appliesTo": { "$ref": "#/$defs/shortText" },
+        "lastVerified": { "type": "string", "format": "date" }
+      }
+    },
+    "part": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "componentId",
+        "name",
+        "sku",
+        "compatibleProductCodes",
+        "compatibleModel",
+        "installBoundary",
+        "source"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "componentId": { "$ref": "#/$defs/identifier" },
+        "name": { "$ref": "#/$defs/shortText" },
+        "sku": { "type": "string", "pattern": "^[A-Za-z0-9-]{3,40}$" },
+        "compatibleProductCodes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 3, "maxLength": 80 }
+        },
+        "compatibleModel": { "$ref": "#/$defs/shortText" },
+        "installBoundary": { "const": "professional-only" },
+        "source": { "$ref": "#/$defs/source" }
+      }
+    }
   }
 }

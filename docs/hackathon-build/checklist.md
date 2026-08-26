@@ -77,3 +77,47 @@
       What to build: Gather the project story, screenshots, public repo link, live URL, testing instructions, tool inventory, safety proof, video beat sheet, and implementation notes required for submission prep.
       Acceptance: The participant has enough verified material to run prepare-submission and record a narrated demo under three minutes.
       Verify: Review the official requirements against the handoff materials and confirm the next command is prepare-submission.
+
+## Real-model expansion
+
+- [x] **12. Replace the fictional singleton with an extensible source-backed catalog**
+      Spec ref: spec.md > Real-model expansion addendum
+      What to build: Add twelve real model-family entries, source provenance, verification tiers, topology identifiers, exact-model aliases, and schema invariants. Keep runtime data static and original.
+      Acceptance: Six brands are represented; every entry has an official model/support source and verification date; exact-part claims require evidence and the required product-code specificity.
+      Verify: Catalog validation tests cover uniqueness, sources, safety, model matching, and part-evidence requirements.
+
+- [x] **13. Generalize the diagnosis engine and shared state**
+      Spec ref: spec.md > Real-model expansion addendum
+      What to build: Support catalog search, model selection, pack-specific safe checks, source-backed snapshots, unavailable-filter branches, and compatibility refusal without duplicating state logic.
+      Acceptance: Human, manual, and agent actions still reach the same synchronous transition layer across every pack.
+      Verify: Parameterized tests run canonical, no-public-filter, exact-part, unknown-model, and hazard paths.
+
+- [x] **14. Bake out the state-dependent WebMCP surface**
+      Spec ref: spec.md > Real-model expansion addendum
+      What to build: Register the eight v2 tools with literal registerTool calls, current-state schemas/descriptions, dynamic availability, structured provenance, and visible accepted/rejected activity.
+      Acceptance: Irrelevant tools are not registered; part lookup cannot appear before evidence; natural-language eval fixtures cover discovery, observation, compatibility, and refusal.
+      Verify: Registry lifecycle tests assert tool sets at catalog, diagnosis, result, and terminal states.
+
+- [x] **15. Redesign the bench around model discovery and evidence**
+      Spec ref: prd.md > Real-model expansion addendum
+      What to build: Add a five-second model finder, supported-family browser, selected-model identity, topology-aware original diagram, source ledger, compatibility status, and retained clean responsive repair flow.
+      Acceptance: A judge can enter “WM3400CW,” understand what is verified, and begin in under fifteen seconds without credentials.
+      Verify: Desktop/mobile, keyboard, reduced-motion, 200% zoom, and WCAG checks pass.
+
+- [x] **16. Refresh open-source schema, evals, and contributor path**
+      Spec ref: spec.md > Real-model expansion addendum
+      What to build: Document repair-pack authoring, source policy, confidence vocabulary, contribution validation, unsupported-model behavior, tool lifecycle, and agent eval prompts.
+      Acceptance: A contributor can add a thirteenth family without editing engine or component switch statements.
+      Verify: README instructions, schema example, fixture validation, lint, tests, and build pass.
+
+- [ ] **17. Deploy and prove the real agent collaboration**
+      Spec ref: spec.md > Deployed WebMCP
+      What to build: Publish through Lovable and run actual natural-language agent sessions in Chrome 149+ for an exact-part path, a no-part-needed path, and an unsupported-model refusal.
+      Acceptance: Tool discovery and state lifecycle work on the top-level production URL; every call is visible in Clunk.
+      Verify: Record prompt, discovered tool sequence, visible final state, browser version, console/network findings, and screenshots.
+
+- [ ] **18. Refresh the competition handoff**
+      Spec ref: prd.md > Submission Proof Points
+      What to build: Rewrite the README opening, Devpost draft, demo beat sheet, screenshots, and proof checklist around source-backed breadth and the human-senses/agent-structure collaboration.
+      Acceptance: The public story makes the WebMCP advantage clear in under three minutes and avoids universal-diagnosis or compatibility claims.
+      Verify: Re-run the official submission checklist before making the repository public.

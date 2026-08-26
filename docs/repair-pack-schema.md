@@ -1,39 +1,41 @@
 # Repair pack extension schema
 
-Clunk keeps appliance content separate from WebMCP registration and UI components. The MVP imports one static pack, [`src/data/clunk-wm01.json`](../src/data/clunk-wm01.json), validated against the documented [`repair-pack.schema.json`](./repair-pack.schema.json) shape and stricter runtime safety invariants.
+Clunk keeps model evidence separate from the WebMCP registration and UI. The 12 launch entries live in [`src/data/applianceCatalog.ts`](../src/data/applianceCatalog.ts). Each entry is converted into a schema-v2 repair pack and checked by the runtime invariants in [`src/domain/repairPack.ts`](../src/domain/repairPack.ts).
 
-The schema is intentionally small:
+The documented [`repair-pack.schema.json`](./repair-pack.schema.json) describes the serialized extension shape:
 
-- `appliance` identifies an explicitly fictional model.
+- `appliance` identifies the real brand, model family, appliance type, and diagram topology.
+- `verifiedProductCodes` lists complete rating-label codes that Clunk may compare exactly.
 - `symptom` names one bounded diagnostic entry point.
-- `components` map language to the original diagram.
-- `checks` contain a visible instruction, why it matters, a stop condition, safety tags, and enum-like human observations.
-- `causes` establish the default deterministic ranking.
-- `parts` provide fictional compatibility and an installation boundary.
+- `components` map plain-language labels to the original diagram and an access boundary.
+- `checks` contain a visible instruction, why it matters, stop conditions, safety tags, source IDs, and enum-like person-supplied observations.
+- `causes` establish a deterministic starting rank; observed evidence changes the visible ordering.
+- `parts` are optional and require exact product-code compatibility plus a manufacturer or authorized-parts source.
+- `sources` make every model, check, and part claim auditable.
 
 ## Safety contract
 
-Schema-valid data is not automatically safe. Every proposed pack must also pass the runtime invariants in `src/domain/repairPack.ts` and the safety tests.
+Schema-valid data is not automatically safe. Every pack must also pass runtime safety invariants and review.
 
-Allowed MVP safety tags are:
+Permitted launch tags describe constraints such as disconnected power, cool water, external observation, no disassembly, spill control, and a manufacturer-documented user-access filter. Clunk rejects steps tagged for gas, mains or high voltage, refrigerant, sealed compressors, protection bypasses, internal wiring, control boards, energized tests, or professional-only instructions.
 
-- `power-disconnected`
-- `external-observation`
-- `water-release`
-- `user-access-door`
+A contributor must not disguise a forbidden capability under a new tag.
 
-Clunk rejects steps tagged for gas, mains or high voltage, refrigerant, sealed compressors, protection bypasses, internal wiring, control boards, energized tests, or professional-only instructions. A contributor must not disguise one of those capabilities under a new tag.
+## Adding a model family
 
-## Adding a pack
+1. Add the exact real brand/model family and aliases. Never use fuzzy substitution to select a repair pack.
+2. Add an official manufacturer product/support source with its applicability and verification date.
+3. Choose the conservative topology and check profile supported by that model’s public guidance.
+4. Attach source IDs to every safe check. If access differs by engineering revision, stop and request the complete code instead of guessing.
+5. Add a part only when a manufacturer or authorized-parts source maps the complete code to the exact SKU. Otherwise leave `parts` empty.
+6. Validate the JSON shape and runtime invariants.
+7. Add search, selection, happy-path, mismatch, invalid-order, hazard, part-boundary, and WebMCP eval coverage.
+8. Update [`docs/model-source-ledger.md`](./model-source-ledger.md).
 
-1. Create original, fictional appliance data. Do not copy service manuals, manufacturer diagrams, model numbers, or compatibility catalogs.
-2. Validate the JSON shape against `docs/repair-pack.schema.json`.
-3. Add domain IDs and deterministic transitions. The MVP engine is deliberately explicit rather than a generic rules interpreter, so a new symptom requires reviewed code—not data-only execution.
-4. Add an original diagram or diagram variant with accessible component controls.
-5. Add happy-path, invalid-order, hazard, and professional-boundary tests.
-6. Add WebMCP eval cases with exact expected tools, arguments, visible effects, and prohibited behavior.
-7. Keep the fictional-data notice visible in every empty, result, and error state.
+## Adding an appliance category or symptom
 
-## Design boundary
+The schema reserves open string IDs, source records, topologies, checks, and parts, but the current TypeScript unions and deterministic ranking deliberately support only front-load washers and `will-not-drain`. A new category or symptom therefore requires an explicit reviewed code change, a new original diagram/topology, new safety policy, and dedicated tests. It is not enabled by dropping in unreviewed data.
 
-This schema demonstrates how Clunk can grow while preserving a reviewable safety boundary. It is not a format for real repair advice, and no pack should claim real diagnosis, compatibility, pricing, or professional certification.
+## Compatibility boundary
+
+A supported family is not automatically an exact part match. The app distinguishes family verification, complete-code verification, no-part-needed, exact match, variant-needed, and professional-only outcomes. No extension may claim diagnosis, pricing, repair success, marketplace availability, or professional certification.

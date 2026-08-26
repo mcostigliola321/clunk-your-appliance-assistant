@@ -210,3 +210,42 @@ The MVP includes all ten epics for a single deterministic scenario and no persis
 - Original diagram, fictional model, fictional parts, and explicit extension schema.
 - Deterministic test suite and eval fixtures.
 - Live Lovable URL, public GitHub repository, visible license, and sub-three-minute narrated demo.
+
+## Real-model expansion addendum
+
+This addendum supersedes fictional-only language above while preserving the proven interaction and safety requirements.
+
+### Catalog and selection
+
+- First load provides model search plus scannable supported-brand families.
+- Search normalizes case, spaces, hyphens, and suffix punctuation without fuzzy-matching an unsupported model into a supported one.
+- A model result states its verification tier before selection.
+- Unsupported models return an explicit no-match state and manufacturer-support direction; they are never mapped to the nearest repair pack.
+
+### Source-backed repair packs
+
+- Ship twelve real model families across six brands for the no-drain symptom.
+- Every family stores an official model source, one or more troubleshooting sources, a last-verified date, a topology, and a product-code requirement.
+- Guidance remains limited to external inspection, cancellation/disconnection, spill preparation, visible hose checks, and manufacturer-documented user-accessible filter cleaning.
+- Where a manufacturer does not document a user-accessible filter, Clunk ends that branch at professional service instead of reusing another brand's instructions.
+
+### Compatibility outcomes
+
+- `exact`: the observed evidence implicates a component and an official or authorized-parts source maps the part to the complete selected product code.
+- `no-part-needed`: the observation identifies a user-cleanable blockage or correctable external hose issue.
+- `variant-needed`: safe diagnosis can continue, but the model suffix, production revision, or product number is insufficient for an exact part.
+- `professional-only`: Clunk can identify a likely internal component but provides no installation procedure.
+
+### WebMCP collaboration
+
+- The agent discovers model families instead of assuming a hard-coded appliance.
+- Tool availability mirrors the current UI state; unavailable future actions are absent rather than merely rejected.
+- Every tool call updates the visible model results, selected appliance, diagram focus, observation history, part result, escalation, or activity log.
+- Structured results include the currently permitted actions, bounded identifiers, provenance, confidence, and any missing product-code requirement.
+- Natural-language evaluations must prove exact-match, cleanable blockage, variant-needed, hazard, and unsupported-model paths.
+
+### Expansion success criteria
+
+- A contributor adds a repair pack through data and validation without editing engine or WebMCP registration switch statements.
+- Model selection and the first safe check take under fifteen seconds in the hero demo.
+- The repository and UI never claim that Clunk supports all appliances or guarantees a diagnosis or repair.

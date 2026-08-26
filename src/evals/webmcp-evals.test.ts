@@ -18,8 +18,8 @@ function allCalls() {
 
 describe("WebMCP eval fixtures", () => {
   it("uses unique, fully described cases", () => {
-    expect(evalFixture.schemaVersion).toBe(1);
-    expect(evalFixture.fictional).toBe(true);
+    expect(evalFixture.schemaVersion).toBe(2);
+    expect(evalFixture.fictional).toBe(false);
     expect(new Set(evalFixture.cases.map((evalCase) => evalCase.id)).size).toBe(
       evalFixture.cases.length,
     );

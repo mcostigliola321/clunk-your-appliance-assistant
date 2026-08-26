@@ -10,7 +10,7 @@ import {
 } from "react";
 
 import { createInitialRepairState, executeRepairTool, withWebMcpStatus } from "@/domain/engine";
-import { getRepairSnapshot } from "@/domain/selectors";
+import { getRepairSnapshot, getToolAvailabilityKey } from "@/domain/selectors";
 import type {
   ActivitySource,
   RepairSnapshot,
@@ -75,10 +75,12 @@ export function RepairProvider({ children }: PropsWithChildren) {
     [replaceState],
   );
 
+  const toolAvailabilityKey = getToolAvailabilityKey(state);
+
   useEffect(() => {
-    const controller = registerClunkTools(invokeTool, setWebMcpStatus);
+    const controller = registerClunkTools(invokeTool, setWebMcpStatus, stateRef.current);
     return () => controller?.abort();
-  }, [invokeTool, setWebMcpStatus]);
+  }, [invokeTool, setWebMcpStatus, toolAvailabilityKey]);
 
   const value = useMemo<RepairContextValue>(
     () => ({

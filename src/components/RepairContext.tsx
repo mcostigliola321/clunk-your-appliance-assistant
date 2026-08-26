@@ -20,7 +20,9 @@ export function RepairContext() {
           <span>Repeated major faults</span>
         </div>
       </div>
-      <p>Illustrative context only. Age, condition, and real service quotes are not modeled.</p>
+      <p>
+        Educational context only. Age, condition, warranty, and real service quotes are not modeled.
+      </p>
     </section>
   );
 }

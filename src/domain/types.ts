@@ -1,4 +1,4 @@
-export type ApplianceId = "clunk-wm01";
+export type ApplianceId = string;
 export type SymptomId = "will-not-drain";
 
 export type ComponentId =
@@ -21,8 +21,48 @@ export type ResultId =
   | "unsafe-to-open";
 
 export type CauseId = "blocked-filter" | "kinked-hose" | "drain-pump-failure" | "control-fault";
+export type PartId = string;
+export type BrandName = "LG" | "Samsung" | "GE" | "Whirlpool" | "Maytag" | "Electrolux";
+export type DiagramTopology = "front-filter" | "drawer-filter" | "hose-only";
 
-export type PartId = "cl-pf-220" | "cl-dh-208" | "cl-dp-420";
+export type SourceKind =
+  "manufacturer-model" | "manufacturer-troubleshooting" | "manufacturer-part" | "authorized-parts";
+
+export interface SourceReference {
+  id: string;
+  kind: SourceKind;
+  title: string;
+  url: string;
+  publisher: string;
+  appliesTo: string;
+  lastVerified: string;
+}
+
+export interface RepairPackPart {
+  id: PartId;
+  componentId: ComponentId;
+  name: string;
+  sku: string;
+  compatibleProductCodes: string[];
+  compatibleModel: string;
+  installBoundary: "professional-only";
+  source: SourceReference;
+}
+
+export interface ApplianceCatalogEntry {
+  id: ApplianceId;
+  brand: BrandName;
+  model: string;
+  label: string;
+  aliases: string[];
+  verifiedProductCodes: string[];
+  productCodePrompt: string;
+  topology: DiagramTopology;
+  checkProfile: "filter-access" | "hose-then-service";
+  modelSource: SourceReference;
+  troubleshootingSources: SourceReference[];
+  exactPart?: RepairPackPart;
+}
 
 export type EscalationReason =
   "electrical" | "burning-smell" | "hot-water" | "active-leak" | "internal-access" | "unresolved";
@@ -30,8 +70,7 @@ export type EscalationReason =
 export type ActivitySource = "agent" | "human" | "manual" | "system";
 export type ActivityOutcome = "accepted" | "rejected";
 export type WebMcpStatus = "detecting" | "ready" | "unavailable" | "partial" | "failed";
-
-export type RepairPhase = "idle" | "preparing" | "checking" | "result" | "escalated";
+export type RepairPhase = "catalog" | "idle" | "preparing" | "checking" | "result" | "escalated";
 
 export interface RepairPackResult {
   id: ResultId;
@@ -46,6 +85,7 @@ export interface RepairPackCheck {
   why: string;
   stop: string;
   safetyTags: string[];
+  sourceIds: string[];
   results: RepairPackResult[];
 }
 
@@ -53,6 +93,7 @@ export interface RepairPackComponent {
   id: ComponentId;
   label: string;
   description: string;
+  access: "visible" | "user-accessible" | "professional-only";
 }
 
 export interface RepairPackCause {
@@ -62,34 +103,23 @@ export interface RepairPackCause {
   baseRank: number;
 }
 
-export interface RepairPackPart {
-  id: PartId;
-  componentId: ComponentId;
-  name: string;
-  sku: string;
-  compatibleModel: string;
-  effort: string;
-  illustrativeCost: "Low" | "Medium" | "High";
-  installBoundary: "user-cleanable" | "professional-only";
-}
-
 export interface RepairPack {
   id: ApplianceId;
   schemaVersion: number;
   appliance: {
-    name: string;
+    brand: BrandName;
     model: string;
-    type: string;
-    fictional: true;
+    type: "front-load washer";
+    topology: DiagramTopology;
   };
-  symptom: {
-    id: SymptomId;
-    label: string;
-  };
+  symptom: { id: SymptomId; label: string };
+  productCodePrompt: string;
+  verifiedProductCodes: string[];
   components: RepairPackComponent[];
   checks: RepairPackCheck[];
   causes: RepairPackCause[];
   parts: RepairPackPart[];
+  sources: SourceReference[];
 }
 
 export interface ActivityEvent {
@@ -108,14 +138,19 @@ export interface Escalation {
 }
 
 export interface RepairState {
-  packId: ApplianceId;
+  packId: ApplianceId | null;
   applianceId: ApplianceId | null;
+  productCode: string | null;
+  catalogQuery: string;
+  catalogBrand: BrandName | null;
+  catalogResultIds: ApplianceId[];
   symptomId: SymptomId | null;
   phase: RepairPhase;
   currentStepId: CheckId | null;
   highlightedComponentId: ComponentId;
   completedChecks: Partial<Record<CheckId, ResultId>>;
   selectedPartId: PartId | null;
+  partOutcomeRevealed: boolean;
   escalation: Escalation | null;
   webMcpStatus: WebMcpStatus;
   activity: ActivityEvent[];
@@ -131,9 +166,26 @@ export interface RankedCause {
   score: number;
 }
 
+export type PartOutcomeStatus =
+  "not-ready" | "no-part-needed" | "exact" | "variant-needed" | "professional-only";
+
+export interface PartOutcome {
+  status: PartOutcomeStatus;
+  title: string;
+  message: string;
+  part: RepairPackPart | null;
+  requiredProductCode: string | null;
+  source: SourceReference | null;
+}
+
 export interface RepairSnapshot {
+  catalogQuery: string;
+  catalogResults: Array<
+    Pick<ApplianceCatalogEntry, "id" | "brand" | "model" | "label" | "productCodePrompt">
+  >;
   appliance: string | null;
-  fictional: true;
+  productCode: string | null;
+  verificationLabel: string | null;
   symptom: string | null;
   phase: RepairPhase;
   progress: number;
@@ -141,23 +193,24 @@ export interface RepairSnapshot {
   highlightedComponent: RepairPackComponent;
   completedChecks: Partial<Record<CheckId, ResultId>>;
   likelyCauses: RankedCause[];
-  availablePart: RepairPackPart | null;
+  partOutcome: PartOutcome | null;
   selectedPart: RepairPackPart | null;
+  sources: SourceReference[];
   escalation: Escalation | null;
   webMcpStatus: WebMcpStatus;
-  validNextActions: string[];
+  validNextActions: RepairToolName[];
   disclaimer: string;
 }
 
 export const REPAIR_TOOL_NAMES = [
+  "search_supported_appliances",
+  "select_appliance",
   "get_repair_state",
-  "identify_appliance",
   "start_diagnosis",
-  "highlight_component",
-  "record_check_result",
-  "show_repair_step",
+  "show_component",
+  "record_observation",
   "find_compatible_part",
-  "escalate_to_professional",
+  "stop_and_escalate",
 ] as const;
 
 export type RepairToolName = (typeof REPAIR_TOOL_NAMES)[number];

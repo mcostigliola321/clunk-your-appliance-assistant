@@ -6,7 +6,7 @@
 
 ## One-Line Summary
 
-Clunk is a shared visual repair bench where a person reports physical observations and an AI uses WebMCP tools to diagnose why a fictional washing machine will not drain, show the next safe check, and identify the exact fictional replacement part.
+Clunk is a shared visual repair bench where a person reports physical observations and an AI uses WebMCP tools to select a source-backed washer repair pack, show the next safe check, and identify an exact part only when model-specific compatibility evidence is available.
 
 ## Five-Second Pitch
 
@@ -33,34 +33,35 @@ Clunk makes those roles explicit. It does not pretend the browser can inspect th
 
 ## Core Workflow
 
-1. The page immediately shows the fictional Clunk WM-01 washer and the symptom “will not drain.”
-2. The user or agent starts the diagnosis.
+1. The page immediately explains the no-drain repair flow and exposes a searchable catalog of supported washer model families.
+2. The user or agent selects the exact model family and starts the diagnosis.
 3. Clunk shows the first safety preparation and the component relevant to the next check.
 4. The person performs a safe physical observation and records the result.
 5. The diagnostic state updates: progress, highlighted component, likely causes, next safe check, and agent activity all change together.
 6. The agent can inspect state or invoke the same actions through WebMCP tools.
-7. Once evidence is sufficient, Clunk shows the leading cause, illustrative repair-vs-replace context, and the exact compatible fictional part.
+7. Once evidence is sufficient, Clunk shows the leading cause, source provenance, repair context, and either an evidence-backed exact part or an explicit model-variant verification requirement.
 8. Any hazardous observation or unsupported repair path deterministically escalates to a professional.
 
 ## What We Are Building
 
-- One original fictional appliance: Clunk WM-01, a front-loading washing machine.
+- Twelve real front-load washer model families across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux.
 - One hero symptom: washer will not drain.
-- An original exploded SVG with interactive, keyboard-accessible components.
+- Original topology-based SVGs with interactive, keyboard-accessible components; no manufacturer diagram is copied.
+- A static, schema-validated repair-pack catalog with official manufacturer support sources, last-verified dates, and compatibility confidence.
 - A deterministic diagnosis state machine with progress and evidence.
 - Likely causes that update from recorded observations.
 - Safe next checks with explicit preconditions and stop conditions.
-- A small fictional parts catalog and exact fictional compatibility result.
-- Repair-vs-replace context clearly labeled as illustrative demo data.
+- Exact real part results only for fully verified model/product-code matches; all other paths stop at a compatibility verification boundary.
+- Repair context clearly labeled as educational and non-diagnostic.
 - Eight literal document.modelContext.registerTool() tools:
+  - search_supported_appliances
+  - select_appliance
   - get_repair_state
-  - identify_appliance
   - start_diagnosis
-  - highlight_component
-  - record_check_result
-  - show_repair_step
+  - show_component
+  - record_observation
   - find_compatible_part
-  - escalate_to_professional
+  - stop_and_escalate
 - A manual judge mode that invokes the same application actions when WebMCP is unavailable.
 - A visible activity log and tool inspector.
 - Deterministic unit/integration tests and WebMCP evaluation fixtures.
@@ -69,12 +70,12 @@ Clunk makes those roles explicit. It does not pretend the browser can inspect th
 
 ## What We Are Not Building
 
-- Real appliance identification, diagnosis, compatibility, pricing, or repair claims.
-- Additional appliance types, brands, or symptoms.
+- Universal appliance coverage or unsupported-model inference.
+- Additional appliance types or symptoms in the submission build.
 - Image upload, OCR, computer vision, sound classification, or sensor integrations.
 - A chatbot or any application-side LLM/API call.
 - Accounts, authentication, database, server functions, analytics, payments, or commerce.
-- Real parts purchasing or affiliate links.
+- Checkout, affiliate links, live pricing, or a claim that a part fits without the required complete model code.
 - Crowdsourced repair records or user persistence beyond an optional local session reset.
 - Instructions involving gas, mains/high voltage, refrigerant, sealed compressors, bypassing protections, wiring, internal control boards, or professional-only procedures.
 - Internal panel removal or drain-pump replacement instructions; the MVP can identify a fictional pump as a likely part while escalating installation.

@@ -2,56 +2,60 @@
 
 **Tell it what’s broken. It shows you what to check and finds the exact part.**
 
-[Open the live repair bench](https://clunk-appliance-assistant.lovable.app) · [Watch the demo](#demo-video) · [Read the safety model](./docs/safety.md)
+[Open the live repair bench](https://clunk-appliance-assistant.lovable.app) · [Review the source ledger](./docs/model-source-ledger.md) · [Read the safety model](./docs/safety.md)
 
-![Clunk shared repair bench](./docs/hackathon-build/screenshots/clunk-desktop.png)
+Clunk is a lightweight, open-source WebMCP app where a person and a browser agent investigate a washer that will not drain. The person supplies physical observations. The agent searches Clunk’s supported catalog, reads the shared repair state, focuses the relevant component, and records only what the person reports.
 
-Clunk is a lightweight, open-source WebMCP app where a person and a browser agent diagnose one fictional washing machine together. The human supplies physical observations; the agent reads the shared state, highlights the exact component, advances a bounded diagnostic flow, and reveals a fictional compatible part. Every call updates the same interface a human can operate.
+The current catalog covers 12 real front-load washer model families across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux. Each repair pack links to manufacturer support evidence. Clunk never substitutes a similar model, never treats a likely cause as a confirmed diagnosis, and reveals an exact part only when a complete verified product code has a documented match.
 
-No account, API key, model call, database, server function, or runtime API is required. If WebMCP is unavailable, the full judge experience remains usable in manual mode.
+No account, API key, model call, database, server function, or runtime API is required. If WebMCP is unavailable, the entire experience remains usable in manual mode.
 
-> **Fictional demo only.** Clunk WM-01, its diagram, diagnoses, parts, compatibility, effort, and cost bands are original demonstration data. Do not use Clunk to diagnose or repair a real appliance.
+> **Important:** Clunk is a bounded troubleshooting aid, not a diagnostic authority. It currently supports one symptom—will not drain—and only the listed model families. Always follow the manufacturer’s manual. Stop for heat, smoke, a burning smell, an active leak near power, unsafe access, or any step that does not match the appliance.
 
-## Judge it in 90 seconds
+## Judge it in under three minutes
 
-1. Open the [live app](https://clunk-appliance-assistant.lovable.app).
-2. Select **Diagnose this washer**.
-3. Report **Power is disconnected**.
-4. Report **The visible hose looks clear**.
-5. Report **The filter is blocked by debris**.
-6. Select **Find the matching part**.
+1. Search for `WM3400CW.ABWEVUS` and select **LG WM3400CW**.
+2. Start the safe diagnosis.
+3. Report **Power disconnected; water is cool**.
+4. Report **Hose looks clear and correctly placed**.
+5. Report either a blocked filter for the no-purchase path, or a clear filter for the sourced exact-part path.
+6. Resolve the part outcome and open **Tool inspector** to see the agent-facing surface.
 
-The diagram focuses the pump filter, the likely-cause ranking changes, the activity log records each action, and the fictional `CL-PF-220` pump-filter cartridge appears. Open **Tool inspector** to run the same eight bounded actions an agent can call.
+The same sequence can be driven by a person, the manual judge controls, or a WebMCP-capable browser agent. Every accepted and rejected action appears in the shared activity log.
 
-For a safety path, restart and report **There is a burning smell or smoke**. Clunk ends the flow immediately and exposes no further repair step.
+Try three proof cases:
+
+- **No part needed:** report debris blocking the accessible filter.
+- **Exact evidence boundary:** complete all visible checks for `WM3400CW.ABWEVUS`; Clunk can surface the sourced pump match while keeping installation professional-only.
+- **Safety stop:** report smoke or a burning smell; Clunk ends the flow immediately and removes further repair actions.
 
 ## Why WebMCP fits
 
-Appliance troubleshooting happens across two worlds. An agent can reason over structured state, but only a person can safely observe the physical machine. WebMCP lets Clunk coordinate those roles without duplicating the app behind a private API:
+Washer troubleshooting crosses a physical boundary. An agent can reason over structured evidence, but only the person beside the machine can see the rating label, hose, water, and filter. WebMCP lets both parties operate one visible, deterministic repair state instead of hiding the work behind a chat transcript or private API.
 
-- the agent discovers explicit, typed capabilities from the page;
-- the human remains the source of physical observations;
-- tool calls and human controls use one deterministic action layer;
-- every accepted or rejected action is visible in the shared activity log;
-- visual explanation, diagnosis, lookup, and escalation are separate tools;
-- the site—not the model—enforces sequencing and safety boundaries.
+- The available tools change with the page state, so the agent sees only valid next actions.
+- Search and selection are model-aware; unsupported models produce a visible refusal.
+- Physical observations are explicit tool arguments and must come from the person.
+- Component focus, progress, likely causes, sources, and part outcomes update in the same UI.
+- The site—not the model—enforces order, evidence thresholds, and terminal safety stops.
+- The judge can replay every capability without credentials or WebMCP support.
 
-The app contains eight literal `document.modelContext.registerTool({` registrations in [`src/webmcp/registerTools.ts`](./src/webmcp/registerTools.ts). Registration is progressively enhanced, lifecycle-owned by an `AbortController`, and independent of the manual interface.
+The app contains eight literal `document.modelContext.registerTool` registrations in [`src/webmcp/registerTools.ts`](./src/webmcp/registerTools.ts). Registration is progressively enhanced, lifecycle-owned by an `AbortController`, and independent of the manual fallback.
 
-## Tool surface
+## Dynamic tool surface
 
-| Tool | Purpose |
-| --- | --- |
-| `get_repair_state` | Read the visible diagnosis, evidence, current safe check, ranked causes, result, and valid next actions. |
-| `identify_appliance` | Select the only supported appliance, fictional `clunk-wm01`. |
-| `start_diagnosis` | Start the only supported symptom flow, `will-not-drain`. |
-| `highlight_component` | Move the shared diagram focus without advancing diagnosis. |
-| `record_check_result` | Record one explicit human observation for the current check. |
-| `show_repair_step` | Show a current or completed safe observation step. |
-| `find_compatible_part` | Reveal a fictional part only after sufficient evidence exists. |
-| `escalate_to_professional` | End the flow at a hazard, access, electrical, or unresolved boundary. |
+| Tool                          | Purpose                                                                                                    |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `search_supported_appliances` | Search the bounded catalog by model code and optional brand without fuzzy substitution.                    |
+| `select_appliance`            | Select an exact supported family and optionally provide the complete rating-label code.                    |
+| `get_repair_state`            | Read the visible catalog, evidence, current check, likely causes, sources, result, and valid next actions. |
+| `start_diagnosis`             | Start the one supported symptom flow after a model is selected.                                            |
+| `show_component`              | Focus the shared original diagram without claiming a physical observation.                                 |
+| `record_observation`          | Record one explicit person-supplied result for the current check.                                          |
+| `find_compatible_part`        | Return no-part, variant-needed, or exact-source-backed outcomes after the visible checks.                  |
+| `stop_and_escalate`           | Enter a terminal safe state for electrical, access, hazard, or unresolved boundaries.                      |
 
-Every input schema is enum-bounded with `additionalProperties: false`. The visible inspector shows each tool’s purpose and sample arguments. [`evals/webmcp-evals.json`](./evals/webmcp-evals.json) contains reproducible discovery, happy-path, visual, invalid-call, hazard, and refusal cases.
+Only contextually valid tools are registered at a given moment. Every input schema is bounded with `additionalProperties: false`. [`evals/webmcp-evals.json`](./evals/webmcp-evals.json) contains reproducible discovery, happy-path, unsupported-model, exact-part, hazard, and protection-bypass cases.
 
 ## Architecture
 
@@ -60,22 +64,36 @@ Human control ─┐
                ├─> shared action layer ─> deterministic engine ─> repair state ─> UI
 WebMCP call ───┘                                │
                                                 └─> accepted/rejected activity event
+
+source-backed catalog ─> validated repair-pack generator ─> model-specific checks and outcomes
 ```
 
-Clunk ships as static HTML, CSS, JavaScript, JSON, SVG, and local font files. The browser agent supplies reasoning; Clunk supplies tools, authoritative state, deterministic transitions, and safety policy. See [`docs/architecture.md`](./docs/architecture.md) for the layer map and [`docs/repair-pack-schema.md`](./docs/repair-pack-schema.md) for the documented extension format.
+Clunk ships as static HTML, CSS, JavaScript, JSON, SVG, and local font files. The browser agent supplies reasoning; Clunk supplies the bounded tools, authoritative state, sources, deterministic transitions, and safety policy. See [`docs/architecture.md`](./docs/architecture.md) and [`docs/repair-pack-schema.md`](./docs/repair-pack-schema.md).
+
+## Evidence and compatibility
+
+The catalog is intentionally honest about evidence depth:
+
+- **Family verified:** an official manufacturer page confirms the selected model family.
+- **Complete code verified:** the entered rating-label code exactly matches a cataloged code.
+- **Exact part:** a manufacturer or authorized parts source maps that code to a part.
+- **Variant needed:** the family is supported, but Clunk needs the complete engineering/product code before any part claim.
+- **Professional only:** the visible checks are exhausted or manufacturer guidance ends at service.
+
+The source ledger records every supported model, official page, topology, and current part-evidence status. Clunk provides no marketplace links, price claims, or pump-installation instructions.
 
 ## Deterministic safety
 
 Clunk never provides gas, mains/high-voltage, energized, refrigerant, sealed-compressor, protection-bypass, internal-wiring, control-board, panel-removal, or professional-only repair instructions.
 
-The site validates repair content, rejects out-of-order calls, requires explicit human observations, and enters a terminal professional state for burning smell, smoke, hot water, leaks near power, damaged access, or unsafe reach. Invalid calls are logged without advancing the diagnosis. Full policy and tested outcomes are in [`docs/safety.md`](./docs/safety.md).
+The app validates repair packs, rejects out-of-order calls, requires person-supplied observations, and enters a terminal professional state for burning smell, smoke, hot water, leaks near power, mismatched access, or unsafe reach. Full policy and tested outcomes are in [`docs/safety.md`](./docs/safety.md).
 
 ## Browser setup
 
-- **Supported WebMCP browser:** enable WebMCP in a compatible agent/browser environment. For the Chrome 149 testing build, open `chrome://flags/#enable-webmcp-testing`, enable the flag, and relaunch Chrome.
-- **Any other modern browser:** Clunk reports **Manual mode ready**. Use the normal controls or the visible Tool inspector; both reach the same state and log.
+- **WebMCP-capable browser:** enable the browser’s WebMCP testing support and open the live URL.
+- **Any other modern browser:** Clunk reports **Manual mode ready**. Use the normal controls or Tool inspector; both reach the same state and log.
 
-The production URL was verified in ChatGPT’s in-app browser and in a connected Chrome profile with WebMCP enabled. The Chrome profile registered all eight tools; the in-app browser exercised the credential-free manual fallback.
+Deployment validation in ChatGPT’s in-app browser and Chrome 149 will be documented after the source-backed Lovable build is published.
 
 ## Run locally
 
@@ -91,19 +109,17 @@ Open `http://localhost:5173`. No environment file or external service is needed.
 To run the complete quality gate:
 
 ```bash
-npx playwright install --with-deps chromium
+npx playwright install chromium
 npm run verify
 ```
 
-The gate runs TypeScript, ESLint, 19 deterministic unit/integration/eval tests, a production build, and 12 desktop/mobile browser checks. Browser coverage includes the canonical and hazard paths, keyboard and touch targets, responsive overflow, reduced motion, and automated WCAG A/AA checks in both initial and result states.
+The gate runs TypeScript, ESLint, deterministic unit/integration/eval tests, a production build, and desktop/mobile browser checks for core paths, keyboard access, responsive overflow, reduced motion, and automated WCAG A/AA rules.
 
-## Demo video
+## Demo and AI usage
 
-The required public YouTube demo will be linked here before the Devpost entry is finalized. The recording outline is in [`devpost-submission.md`](./devpost-submission.md).
+The required public demo video will be linked before the Devpost entry is finalized. The recording outline lives in [`devpost-submission.md`](./devpost-submission.md).
 
-## Built with AI, not powered by an app-side model
-
-Codex was used to implement and test the conventional codebase, inspect the live browser experience, and prepare the open-source and Devpost materials. Lovable was used to create the hosting project and publish the static build. The shipped app itself does not call an LLM or include a model SDK, secret, or OpenAI API key.
+Codex helped implement, test, and document the conventional codebase. Lovable hosts the static build. The shipped app itself does not call an LLM, include a model SDK, or require an OpenAI API key.
 
 ## Contributing and license
 

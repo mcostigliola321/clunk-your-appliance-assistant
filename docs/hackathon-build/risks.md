@@ -95,3 +95,27 @@
 - Risk: A working project could miss the public repo, visible license, live link, description, or video deadline.
 - Mitigation: Keep submission proof points in the build checklist, capture screenshots during verification, draft the video beat sheet early, and target September 2.
 - Verification: Final checklist against live Devpost requirements; freeze after the official deadline.
+
+## R13 — Model breadth outruns evidence quality
+
+- Probability: Medium
+- Impact: Critical
+- Risk: A wide catalog could imply universal diagnosis or exact compatibility where only a marketing model is known.
+- Mitigation: Separate support, troubleshooting, and exact-part verification; require full product codes; refuse uncertain compatibility; store source type, URL, and verification date in every pack.
+- Verification: Schema tests reject an exact part without compatible model codes and a primary or authorized-parts source.
+
+## R14 — Shared family guidance hides hardware variants
+
+- Probability: Medium
+- Impact: High
+- Risk: Similar-looking models may have different filters, pumps, or access boundaries.
+- Mitigation: Reuse only high-level safe observations across a family; select topology and part claims at exact model-code granularity; show variant-needed status whenever a suffix or revision is missing.
+- Verification: Alias and variant tests cover Samsung suffixes and GE/Whirlpool/Maytag revision requirements.
+
+## R15 — Static tool registration weakens the WebMCP story
+
+- Probability: Medium
+- Impact: High
+- Risk: Registering every action at every state makes the tools look like button wrappers and permits irrelevant calls.
+- Mitigation: Re-register from a state-derived availability key and expose only actions useful in the current repair phase.
+- Verification: Lifecycle tests assert catalog, active-diagnosis, result, and terminal tool inventories.

@@ -426,3 +426,60 @@ See risks.md for the active register. Highest-risk items must be verified before
 3. Shared synchronous action results.
 4. Safety deny-list coverage.
 5. Judge path without credentials.
+
+## Real-model expansion addendum
+
+This addendum replaces the singleton `clunk-wm01` assumptions while retaining the static architecture and one shared action layer.
+
+### Catalog architecture
+
+- `ApplianceCatalogEntry` owns brand, family model, aliases, required product-code shape, topology, verification tier, and repair-pack ID.
+- `RepairPack` owns model-specific safe checks, cause rules, compatibility outcomes, and a provenance array.
+- A registry validates every pack at module load and provides exact normalized lookup plus filtered catalog search.
+- Catalog search never uses nearest-neighbor or fuzzy substitution; an unsupported query must remain unsupported.
+- Packs can share versioned check templates, but the fully materialized pack is validated after composition.
+
+### Provenance
+
+`SourceReference` contains `id`, `kind`, `title`, `url`, `publisher`, `appliesTo`, and `lastVerified`.
+
+Allowed source kinds are `manufacturer-model`, `manufacturer-troubleshooting`, `manufacturer-part`, and `authorized-parts`. An exact part requires at least one part source plus an explicit array of compatible complete product codes.
+
+### State
+
+The initial state has no selected pack. It includes catalog query, optional brand filter, visible result IDs, selected product code, and the existing diagnosis state. Selecting a different model clears downstream observations and part state deterministically.
+
+### V2 WebMCP tools
+
+1. `search_supported_appliances({ modelQuery?, brand? })`
+2. `select_appliance({ applianceId, productCode? })`
+3. `get_repair_state({})`
+4. `start_diagnosis({ symptomId })`
+5. `show_component({ componentId })`
+6. `record_observation({ checkId, resultId })`
+7. `find_compatible_part({})`
+8. `stop_and_escalate({ reason })`
+
+Registration is state-dependent:
+
+- Catalog: search, select, get state.
+- Selected: search, select, get state, start diagnosis.
+- Active check: get state, show component, record observation, stop and escalate.
+- Result with compatible outcome: get state, show component, find compatible part, stop and escalate.
+- Terminal escalation: get state, search, select.
+
+The provider derives a stable availability key. A registration effect aborts the old group and registers the current group. Each literal tool registration remains visible in source for judging and auditability.
+
+### Diagrams
+
+Original SVG geometry supports topology flags rather than manufacturer artwork. The submission includes front-filter, lower-service, and hose-only variants. Components omitted by a pack are not interactive or suggested by tools.
+
+### Test matrix
+
+- All twelve entries pass schema and source validation.
+- Search/select normalizes supported aliases and refuses unsupported models.
+- LG WM3400CW and both Samsung complete product codes can reach verified professional-only pump results after observations.
+- A blocked user-accessible filter returns no-part-needed, not a purchase prompt.
+- GE, Whirlpool, Maytag, and Electrolux incomplete product codes return variant-needed for internal part matching.
+- Packs without manufacturer-documented filter access advance from a clear hose directly to a service boundary.
+- WebMCP registry tests assert state-dependent registration and AbortController cleanup.

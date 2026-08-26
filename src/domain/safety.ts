@@ -25,10 +25,12 @@ const RESULT_ESCALATIONS: Partial<Record<ResultId, EscalationReason>> = {
 };
 
 const PERMITTED_SAFETY_TAGS = new Set([
-  "power-disconnected",
+  "disconnect-power",
+  "cool-water",
   "external-observation",
-  "water-release",
-  "user-access-door",
+  "no-disassembly",
+  "spill-control",
+  "user-accessible-filter",
 ]);
 
 export function escalationForReason(reason: EscalationReason): Escalation {

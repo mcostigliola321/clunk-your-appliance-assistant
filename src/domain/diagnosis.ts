@@ -1,4 +1,4 @@
-import { repairPack } from "./repairPack";
+import { getRepairPack } from "./repairPack";
 import type { CauseId, RankedCause, RepairState, ResultId } from "./types";
 
 interface CauseEvidence {
@@ -7,37 +7,30 @@ interface CauseEvidence {
   explanation: string;
 }
 
-const DEFAULT_EVIDENCE: Record<CauseId, CauseEvidence> = {
-  "blocked-filter": {
-    score: 40,
-    confidence: "likely",
-    explanation:
-      "A blocked user-accessible filter is the most common cause in this fictional scenario.",
-  },
-  "kinked-hose": {
-    score: 30,
-    confidence: "possible",
-    explanation: "A visible bend or pinch can restrict the washer's drain path.",
-  },
-  "drain-pump-failure": {
-    score: 20,
-    confidence: "possible",
-    explanation: "The sealed drain pump remains possible after external restrictions are excluded.",
-  },
-  "control-fault": {
-    score: 10,
-    confidence: "possible",
-    explanation:
-      "An internal control fault is less likely and always requires professional service.",
-  },
-};
-
-function copyDefaultEvidence(): Record<CauseId, CauseEvidence> {
+function initialEvidence(hasFilterCheck: boolean): Record<CauseId, CauseEvidence> {
   return {
-    "blocked-filter": { ...DEFAULT_EVIDENCE["blocked-filter"] },
-    "kinked-hose": { ...DEFAULT_EVIDENCE["kinked-hose"] },
-    "drain-pump-failure": { ...DEFAULT_EVIDENCE["drain-pump-failure"] },
-    "control-fault": { ...DEFAULT_EVIDENCE["control-fault"] },
+    "blocked-filter": {
+      score: hasFilterCheck ? 40 : 22,
+      confidence: "possible",
+      explanation: hasFilterCheck
+        ? "The selected manufacturer documents a user-accessible filter for this configuration."
+        : "An internal restriction remains possible, but Clunk does not expose a filter check for this model family.",
+    },
+    "kinked-hose": {
+      score: 35,
+      confidence: "likely",
+      explanation: "A visible kink or incorrect standpipe connection can restrict drainage.",
+    },
+    "drain-pump-failure": {
+      score: 25,
+      confidence: "possible",
+      explanation: "The internal pump remains possible after external restrictions are excluded.",
+    },
+    "control-fault": {
+      score: 10,
+      confidence: "possible",
+      explanation: "Internal electrical causes require professional diagnosis.",
+    },
   };
 }
 
@@ -47,66 +40,57 @@ function applyResult(evidence: Record<CauseId, CauseEvidence>, result: ResultId)
       score: 100,
       confidence: "strong match",
       explanation:
-        "Your visible hose observation directly matches a restricted or damaged drain path.",
+        "Your visible observation directly matches a restricted or damaged external drain path.",
     };
-    evidence["blocked-filter"].score = 15;
-    evidence["drain-pump-failure"].score = 10;
+    evidence["blocked-filter"].score = 10;
+    evidence["drain-pump-failure"].score = 8;
   }
-
   if (result === "hose-clear") {
     evidence["kinked-hose"] = {
       score: 5,
       confidence: "possible",
-      explanation: "The visible hose looks clear, so a hose restriction is now less likely.",
+      explanation: "The visible hose looks clear, so an external restriction is less likely.",
     };
-    evidence["blocked-filter"].score = 55;
-    evidence["drain-pump-failure"].score = 35;
+    evidence["blocked-filter"].score += 20;
+    evidence["drain-pump-failure"].score += 25;
   }
-
   if (result === "filter-blocked") {
     evidence["blocked-filter"] = {
       score: 100,
       confidence: "strong match",
-      explanation: "Your observation of debris in the filter directly matches the leading cause.",
+      explanation:
+        "The human observed debris in the manufacturer-documented user-accessible filter.",
     };
     evidence["drain-pump-failure"].score = 10;
     evidence["control-fault"].score = 5;
   }
-
   if (result === "filter-clear") {
     evidence["blocked-filter"] = {
       score: 5,
       confidence: "possible",
-      explanation: "The filter looks clear, so this cause is now less likely.",
+      explanation: "The visible filter area looks clear, so this cause is less likely.",
     };
     evidence["drain-pump-failure"] = {
       score: 100,
       confidence: "strong match",
       explanation:
-        "With the visible hose and user-accessible filter clear, the sealed pump is the strongest remaining match.",
+        "With the visible hose and documented filter clear, the internal drain pump is the strongest remaining match—but is not proven.",
     };
     evidence["control-fault"] = {
       score: 45,
       confidence: "possible",
-      explanation:
-        "An internal control fault remains possible, but cannot be checked safely in this demo.",
+      explanation: "An internal control fault remains possible and cannot be checked safely here.",
     };
   }
 }
 
 export function deriveCauses(state: RepairState): RankedCause[] {
-  const evidence = copyDefaultEvidence();
-
-  for (const result of Object.values(state.completedChecks)) {
-    if (result) {
-      applyResult(evidence, result);
-    }
-  }
-
-  return repairPack.causes
-    .map((cause) => ({
-      ...cause,
-      ...evidence[cause.id],
-    }))
+  if (!state.packId) return [];
+  const pack = getRepairPack(state.packId);
+  const evidence = initialEvidence(pack.checks.some((check) => check.id === "inspect-pump-filter"));
+  for (const result of Object.values(state.completedChecks))
+    if (result) applyResult(evidence, result);
+  return pack.causes
+    .map((cause) => ({ ...cause, ...evidence[cause.id] }))
     .sort((left, right) => right.score - left.score);
 }

@@ -14,11 +14,11 @@
   },
   "project": {
     "name": "Clunk",
-    "summary": "An open-source WebMCP appliance repair experience where a person and an AI diagnose a broken appliance together, inspect the exact component, and find the compatible part while the site enforces safety boundaries.",
-    "ai_usage": "A compatible browser agent invokes eight WebMCP tools against deterministic page state. The shipped site does not call a model. Lovable was used for hosting and GitHub sync.",
+    "summary": "An open-source WebMCP repair bench where a person supplies physical observations and an AI navigates source-backed diagnostic packs for real US washer model families while the site enforces safety and compatibility boundaries.",
+    "ai_usage": "A compatible browser agent discovers supported appliances and invokes a state-dependent set of eight WebMCP tools against deterministic page state. The shipped site does not call a model. Lovable is used for hosting and GitHub sync.",
     "codex_usage": "Codex supported scoping, implementation, debugging, accessibility, deterministic testing, live browser verification, and open-source and Devpost documentation."
   },
-  "current_stage": "prepare-submission",
+  "current_stage": "resources",
   "completed_stages": ["start-hackathon", "review", "resources"],
   "rules_acknowledged": true,
   "learning": {
@@ -30,7 +30,7 @@
   },
   "submission": {
     "draft_file": "devpost-submission.md",
-    "status": "drafting"
+    "status": "needs-refresh"
   },
-  "next_command": "prepare-submission"
+  "next_command": "build-project"
 }

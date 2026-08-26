@@ -69,3 +69,22 @@
 - Verified the connected Chrome profile reports all eight WebMCP tools ready and completes the live `CL-PF-220` path; the only console message was from an unrelated installed browser extension.
 - Created the Devpost draft with the official form fields, judging-aligned story, testing instructions, screenshot list, and an under-three-minute demo outline.
 - Remaining participant actions are external to the build: make the GitHub repository public, record and upload the public YouTube demo, and confirm the personal form answers.
+
+## 2026-08-26 — Participant-directed real-model pivot
+
+- The participant challenged whether a fictional-only demo was sufficiently useful and approved a larger eight-day build.
+- Scope now targets six brands and twelve real washer model families while retaining one excellent no-drain symptom.
+- Breadth is defined as source-backed model families, not universal coverage. Troubleshooting verification and exact-part verification are separate states.
+- The product must require a complete model/product code before making an exact compatibility claim; uncertain variants are a visible refusal, not a guessed result.
+- The WebMCP surface will become state-dependent and discovery-first so the browser agent performs a meaningful job: locate the right pack, sequence human observations, expose provenance, and stop at evidence or safety boundaries.
+- Existing fictional proof-of-concept history is retained; checklist items 12–18 supersede the prior submission handoff.
+
+## 2026-08-26 — Source-backed v2 vertical slice
+
+- Replaced the fictional singleton with 12 real front-load washer families across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux. Each family has a dated official model/support source and a conservative diagram/check profile.
+- Added exact product-code verification, unsupported-model refusal, no-part-needed, variant-needed, exact-part, and professional-only outcomes. Rechecked the launch evidence and corrected Samsung’s verified drain-pump listing to `DC97-20621A` for the selected complete codes.
+- Generalized the deterministic engine, shared snapshot, original topology diagram, model finder, source panel, part boundary, and activity log without adding a backend or app-side model call.
+- Replaced the v1 WebMCP catalog with eight state-dependent v2 tools and ten agent eval cases covering discovery, human observation, visual explanation, exact part, no part, unsupported models, hazards, and bypass refusal.
+- Rewrote the public README, architecture, safety model, source ledger, repair-pack guide, JSON Schema, and product brief around source-backed evidence and bounded compatibility.
+- Verification passed: TypeScript, ESLint, 26 unit/integration/eval tests before the final diagram refinement, 22 focused engine/safety/registry/eval regressions after it, production build, and 12/12 Playwright cases across desktop and mobile. Browser checks include exact-part, no-part, hazard, keyboard, 44px touch targets, responsive overflow, reduced motion, and automated WCAG A/AA rules.
+- Desktop and 390px visual review confirmed the clean model-finder-first hierarchy. Deployment and actual natural-language WebMCP sessions remain checklist items 17–18.

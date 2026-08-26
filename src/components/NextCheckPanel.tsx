@@ -9,29 +9,36 @@ interface NextCheckPanelProps {
   onFindPart: () => void;
 }
 
-function EmptyCheck({ onStart }: { onStart: () => void }) {
+function EmptyCheck({ onStart, modelSelected }: { onStart: () => void; modelSelected: boolean }) {
   return (
     <section className="next-check" aria-labelledby="next-check-title">
       <div className="next-check__status">
         <ShieldCheck size={17} aria-hidden="true" />
         Guided, visible checks only
       </div>
-      <h2 id="next-check-title">Start with what you can safely see.</h2>
+      <h2 id="next-check-title">
+        {modelSelected
+          ? "Start with what you can safely see."
+          : "Choose the model before the diagnosis."}
+      </h2>
       <p>
-        Clunk will ask one question at a time, update the washer diagram, and narrow the likely
-        cause.
+        {modelSelected
+          ? "Clunk will ask one question at a time, update the washer diagram, and narrow the likely cause."
+          : "Search the rating-label model above. Clunk will not borrow steps or parts from a similar-looking washer."}
       </p>
-      <button className="button button--primary button--wide" type="button" onClick={onStart}>
-        Start diagnosis
-        <ArrowRight size={18} aria-hidden="true" />
-      </button>
-      <p className="microcopy">About 2 minutes · no login · no tools required</p>
+      {modelSelected ? (
+        <button className="button button--primary button--wide" type="button" onClick={onStart}>
+          Start diagnosis <ArrowRight size={18} aria-hidden="true" />
+        </button>
+      ) : null}
+      <p className="microcopy">About 2 minutes · no login · source backed</p>
     </section>
   );
 }
 
 export function NextCheckPanel({ snapshot, onStart, onResult, onFindPart }: NextCheckPanelProps) {
-  if (!snapshot.appliance) return <EmptyCheck onStart={onStart} />;
+  if (!snapshot.appliance) return <EmptyCheck onStart={onStart} modelSelected={false} />;
+  if (!snapshot.symptom) return <EmptyCheck onStart={onStart} modelSelected />;
 
   if (snapshot.escalation) {
     return (
@@ -54,15 +61,15 @@ export function NextCheckPanel({ snapshot, onStart, onResult, onFindPart }: Next
           <CircleCheck size={17} aria-hidden="true" />
           Checks complete
         </div>
-        <h2 id="next-check-title">Clunk found the strongest match.</h2>
+        <h2 id="next-check-title">Clunk reached an evidence boundary.</h2>
         <p>{snapshot.likelyCauses[0]?.explanation}</p>
-        {snapshot.availablePart && !snapshot.selectedPart ? (
+        {!snapshot.partOutcome ? (
           <button
             className="button button--primary button--wide"
             type="button"
             onClick={onFindPart}
           >
-            Find the matching part
+            Resolve the part outcome
             <ArrowRight size={18} aria-hidden="true" />
           </button>
         ) : null}

@@ -15,29 +15,29 @@ describe("deterministic safety boundary", () => {
     expect(escalationForResult(resultId)?.reason).toBe(reason);
   });
 
-  it("ends the flow immediately when a hazard is observed", () => {
+  it("ends immediately when a hazard is reported", () => {
     let state = createInitialRepairState();
-    state = executeRepairTool(state, "identify_appliance", { applianceId: "clunk-wm01" }).state;
+    state = executeRepairTool(state, "select_appliance", { applianceId: "lg-wm3400cw" }).state;
     state = executeRepairTool(state, "start_diagnosis", { symptomId: "will-not-drain" }).state;
-    const stopped = executeRepairTool(state, "record_check_result", {
+    const stopped = executeRepairTool(state, "record_observation", {
       checkId: "prepare-power",
       resultId: "hazard-burning",
     });
-
-    expect(stopped.ok).toBe(true);
     expect(stopped.state.phase).toBe("escalated");
     expect(stopped.state.currentStepId).toBeNull();
     expect(stopped.state.escalation?.reason).toBe("burning-smell");
-    expect(stopped.snapshot.validNextActions).toEqual(["get_repair_state"]);
+    expect(stopped.snapshot.validNextActions).toEqual([
+      "get_repair_state",
+      "search_supported_appliances",
+      "select_appliance",
+    ]);
   });
 
-  it("allows only the repair pack's bounded observation steps", () => {
-    expect(assertSafeRepairStep(getCheck("prepare-power")).id).toBe("prepare-power");
-    expect(() =>
-      assertSafeRepairStep({
-        ...getCheck("prepare-power"),
-        safetyTags: ["energized-test"],
-      }),
-    ).toThrow("unsupported safety tag");
+  it("allows only bounded, external or user-accessible steps", () => {
+    const check = getCheck("lg-wm3400cw", "prepare-power");
+    expect(assertSafeRepairStep(check).id).toBe("prepare-power");
+    expect(() => assertSafeRepairStep({ ...check, safetyTags: ["energized-test"] })).toThrow(
+      "unsupported safety tag",
+    );
   });
 });

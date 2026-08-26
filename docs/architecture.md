@@ -1,32 +1,53 @@
 # Architecture
 
-Clunk is a static React application with no runtime service dependency. It does not call a model. A compatible browser or in-browser agent discovers the tools that the page registers and invokes them locally against the same state as the visible controls.
+Clunk is a static React application with no runtime service dependency and no app-side model call. A compatible browser agent discovers tools registered by the page and invokes them locally against the same state as the visible controls.
 
 ```text
 Human control ─┐
                ├─> invokeTool(name, input, source) ─> deterministic engine ─> shared repair state ─> UI
 WebMCP call ───┘                                      │
                                                       └─> accepted/rejected activity event
+
+catalog entry ─> validated repair pack ─> checks, causes, sources, components, part boundary
 ```
 
 ## Layers
 
-- `src/data/clunk-wm01.json` contains original fictional appliance content.
-- `src/domain` validates the pack, enforces safety, executes transitions, ranks causes, matches parts, and derives serializable snapshots.
-- `src/state/RepairProvider.tsx` owns current state and exposes one synchronous action layer. A ref guarantees that browser callbacks receive current state without re-registering tools after every render.
-- `src/webmcp/contracts.ts` is the bounded public catalog used by both registration and the visible inspector.
-- `src/webmcp/registerTools.ts` contains the eight literal imperative registrations, feature detection, structured results, and AbortController lifecycle.
-- `src/components` renders the repair bench. Components do not contain diagnosis rules.
+- `src/data/applianceCatalog.ts` contains the bounded 12-family launch catalog, official source references, topology metadata, and the small set of exact part mappings with supporting evidence.
+- `src/domain/repairPack.ts` converts catalog entries into schema-v2 repair packs and validates IDs, source links, part evidence, component references, and forbidden safety tags.
+- `src/domain/engine.ts` is the only transition engine. It handles catalog search, exact selection, checks, observations, part outcomes, refusals, and escalation.
+- `src/domain/selectors.ts` derives serializable snapshots and the tools that are valid for the current state.
+- `src/state/RepairProvider.tsx` owns current state and exposes one synchronous action layer to both UI controls and WebMCP callbacks.
+- `src/webmcp/contracts.ts` is the bounded public tool catalog used by registration, tests, eval fixtures, and the visible inspector.
+- `src/webmcp/registerTools.ts` contains eight literal imperative registrations, state-dependent registration, structured results, feature detection, and `AbortController` lifecycle cleanup.
+- `src/components` renders model discovery, the original washer diagram, next checks, evidence, source links, activity, and compatibility outcomes. Components do not contain diagnosis rules.
 - `evals/webmcp-evals.json` documents agent prompts, exact expected calls, visible results, and prohibited behavior.
 
-## Why imperative WebMCP
+## State-dependent WebMCP
 
-The repair workflow is stateful and includes visualization-only, observation, lookup, and safety-stop actions. Imperative registration gives each behavior an explicit name and bounded JSON Schema while keeping execution inside existing page logic.
+Clunk does not expose every mutation at every moment. At catalog state, an agent can read state, search, and select. After selection it can start the diagnosis. During a check it can read, focus a component, record an observation, or stop. A part lookup appears only after the visible evidence boundary is reached.
+
+`RepairProvider` replaces the active registration group when that valid inventory changes and aborts the prior group. This makes the protocol surface itself communicate sequencing instead of relying only on tool descriptions.
+
+## One engine, three control paths
+
+Normal buttons, the visible manual inspector, and browser-agent calls all invoke `executeRepairTool`. The engine returns the next state, a visible activity event, and the same serializable snapshot. A rejected call is also logged but cannot advance progress.
+
+The agent never receives a hidden repair database or privileged action. It can only operate the state the person can see.
+
+## Evidence boundary
+
+Catalog search can find a supported family; selection is always by its stable catalog ID. Product-code normalization removes punctuation only for exact comparison, never to choose a nearest model. Part results are separate states:
+
+- no part needed after a cleanable blockage;
+- exact only when a full verified code maps to source-backed part evidence;
+- variant needed when a family lacks sufficient revision detail;
+- professional only when the visible checks end without a safe consumer action.
 
 ## Progressive enhancement
 
-When `document.modelContext` is present, Clunk registers eight tools and reports ready, partial, or failed status. When it is absent, the app reports manual mode and remains fully usable. The judge inspector calls the same public action layer with a `manual` activity source; it is not a second implementation.
+When `document.modelContext` is present, Clunk registers the currently valid tools and reports ready, partial, or failed status. When it is absent, the app reports manual mode and remains fully usable. The judge inspector uses the same public action layer; it is not a mock diagnosis.
 
 ## No hidden backend
 
-The production build is static HTML, CSS, JavaScript, and local font files. There is no database, authentication, server function, payment flow, analytics requirement, model SDK, environment variable, or secret.
+The production build is static HTML, CSS, JavaScript, and local font files. There is no database, authentication, server function, payment flow, model SDK, environment variable, secret, or runtime dependency on the source sites.

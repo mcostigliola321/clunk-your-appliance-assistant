@@ -1,7 +1,8 @@
-import { repairPack } from "@/domain/repairPack";
-import type { ComponentId } from "@/domain/types";
+import { getRepairPack } from "@/domain/repairPack";
+import type { ApplianceId, ComponentId } from "@/domain/types";
 
 interface ApplianceDiagramProps {
+  packId: ApplianceId | null;
   highlightedComponentId: ComponentId;
   onHighlight: (componentId: ComponentId) => void;
 }
@@ -16,7 +17,16 @@ const INTERACTIVE_COMPONENTS: ComponentId[] = [
   "control-module",
 ];
 
-export function ApplianceDiagram({ highlightedComponentId, onHighlight }: ApplianceDiagramProps) {
+export function ApplianceDiagram({
+  packId,
+  highlightedComponentId,
+  onHighlight,
+}: ApplianceDiagramProps) {
+  const pack = packId ? getRepairPack(packId) : null;
+  const topology = pack?.appliance.topology ?? "front-filter";
+  const applianceName = pack
+    ? `${pack.appliance.brand} ${pack.appliance.model}`
+    : "front-load washer";
   const componentProps = (id: ComponentId) => ({
     className: `appliance-component ${highlightedComponentId === id ? "is-active" : ""}`,
     onClick: () => onHighlight(id),
@@ -27,7 +37,7 @@ export function ApplianceDiagram({ highlightedComponentId, onHighlight }: Applia
       <div className="workbench__header">
         <div>
           <div className="section-kicker">Shared repair bench</div>
-          <h2 id="workbench-title">Clunk WM-01</h2>
+          <h2 id="workbench-title">{applianceName}</h2>
         </div>
         <div className="diagram-legend">
           <span className="diagram-legend__swatch" aria-hidden="true" />
@@ -42,12 +52,10 @@ export function ApplianceDiagram({ highlightedComponentId, onHighlight }: Applia
           role="img"
           aria-labelledby="washer-diagram-title washer-diagram-desc"
         >
-          <title id="washer-diagram-title">
-            Exploded diagram of the fictional Clunk WM-01 washer
-          </title>
+          <title id="washer-diagram-title">Original topology diagram for {applianceName}</title>
           <desc id="washer-diagram-desc">
-            Selectable technical illustration showing the machine cabinet, drum, sump, pump filter,
-            drain pump, hose, and professional-only control module.
+            Selectable original illustration showing the cabinet, drum, drain path, hose, and
+            professional-only internal components. It is not a manufacturer parts diagram.
           </desc>
 
           <path className="diagram-floor" d="M72 438H593" />
@@ -58,7 +66,12 @@ export function ApplianceDiagram({ highlightedComponentId, onHighlight }: Applia
             <path className="machine-side" d="M436 54l24-18v369l-24 18z" />
             <path className="machine-panel" d="M138 76h276v54H138z" />
             <circle className="machine-control" cx="382" cy="102" r="13" />
-            <path className="machine-access" d="M139 363h94v42h-94z" />
+            {topology !== "hose-only" ? (
+              <path
+                className="machine-access"
+                d={topology === "drawer-filter" ? "M139 350h186v55H139z" : "M139 363h94v42h-94z"}
+              />
+            ) : null}
             <path className="machine-foot" d="M137 423v15m278-15v15" />
           </g>
 
@@ -84,12 +97,14 @@ export function ApplianceDiagram({ highlightedComponentId, onHighlight }: Applia
             <path className="sump-line" d="M274 371v22" />
           </g>
 
-          <g {...componentProps("pump-filter")}>
-            <path className="filter-body" d="M36 359h93v49H36z" />
-            <circle className="filter-cap" cx="104" cy="383.5" r="17" />
-            <path className="filter-grip" d="M96 383.5h16" />
-            <path className="exploded-line" d="M129 384h32" />
-          </g>
+          {topology !== "hose-only" ? (
+            <g {...componentProps("pump-filter")}>
+              <path className="filter-body" d="M36 359h93v49H36z" />
+              <circle className="filter-cap" cx="104" cy="383.5" r="17" />
+              <path className="filter-grip" d="M96 383.5h16" />
+              <path className="exploded-line" d="M129 384h32" />
+            </g>
+          ) : null}
 
           <g {...componentProps("drain-pump")}>
             <circle className="pump-body" cx="493" cy="353" r="42" />
@@ -113,10 +128,14 @@ export function ApplianceDiagram({ highlightedComponentId, onHighlight }: Applia
             <text x="123" y="128">
               drum
             </text>
-            <path d="M105 419v18" />
-            <text x="55" y="459">
-              filter
-            </text>
+            {topology !== "hose-only" ? (
+              <>
+                <path d="M105 419v18" />
+                <text x="55" y="459">
+                  filter
+                </text>
+              </>
+            ) : null}
             <path d="M493 404v27" />
             <text x="470" y="452">
               pump
@@ -130,8 +149,10 @@ export function ApplianceDiagram({ highlightedComponentId, onHighlight }: Applia
       </div>
 
       <div className="component-selector" aria-label="Diagram components">
-        {INTERACTIVE_COMPONENTS.map((id) => {
-          const component = repairPack.components.find((item) => item.id === id);
+        {INTERACTIVE_COMPONENTS.filter(
+          (id) => topology !== "hose-only" || id !== "pump-filter",
+        ).map((id) => {
+          const component = pack?.components.find((item) => item.id === id);
           return (
             <button
               className={highlightedComponentId === id ? "is-active" : ""}
@@ -140,7 +161,7 @@ export function ApplianceDiagram({ highlightedComponentId, onHighlight }: Applia
               aria-pressed={highlightedComponentId === id}
               onClick={() => onHighlight(id)}
             >
-              {component?.label}
+              {component?.label ?? id.replace("-", " ")}
             </button>
           );
         })}

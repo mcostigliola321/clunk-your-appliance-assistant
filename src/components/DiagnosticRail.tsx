@@ -1,6 +1,6 @@
 import { Check, Circle, OctagonAlert } from "lucide-react";
 
-import { repairPack } from "@/domain/repairPack";
+import { getRepairPack } from "@/domain/repairPack";
 import type { CheckId, RepairState } from "@/domain/types";
 
 function getStepState(state: RepairState, checkId: CheckId) {
@@ -11,11 +11,12 @@ function getStepState(state: RepairState, checkId: CheckId) {
 }
 
 export function DiagnosticRail({ state }: { state: RepairState }) {
+  const pack = state.packId ? getRepairPack(state.packId) : null;
   return (
     <nav className="diagnostic-rail" aria-label="Diagnostic progress">
       <div className="section-kicker">Diagnosis</div>
       <ol className="diagnostic-steps">
-        {repairPack.checks.map((check, index) => {
+        {(pack?.checks ?? []).map((check, index) => {
           const stepState = getStepState(state, check.id);
           return (
             <li className={`diagnostic-step diagnostic-step--${stepState}`} key={check.id}>
@@ -36,7 +37,19 @@ export function DiagnosticRail({ state }: { state: RepairState }) {
           );
         })}
       </ol>
-      <p className="rail-note">Visible checks only. Clunk never asks you to remove a panel.</p>
+      {!pack ? (
+        <p className="rail-empty">
+          01 Select model
+          <br />
+          02 Report what you see
+          <br />
+          03 Resolve the next step
+        </p>
+      ) : null}
+      <p className="rail-note">
+        External and manufacturer-documented user access only. No energized or internal repair
+        steps.
+      </p>
     </nav>
   );
 }

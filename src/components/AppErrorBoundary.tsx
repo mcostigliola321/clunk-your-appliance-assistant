@@ -24,7 +24,7 @@ export class AppErrorBoundary extends Component<AppErrorBoundaryProps, AppErrorB
 
     return (
       <main className="error-screen">
-        <div className="model-badge">Fictional demo · WM-01</div>
+        <div className="model-badge">Bounded washer guidance</div>
         <h1>Clunk stopped safely.</h1>
         <p>
           The shared repair state could not be displayed. No further instructions are available

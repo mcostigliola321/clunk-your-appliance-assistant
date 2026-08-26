@@ -1,3 +1,4 @@
+import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
 import type { RepairToolName } from "@/domain/types";
 
 export interface RepairToolContract {
@@ -9,56 +10,68 @@ export interface RepairToolContract {
   mutatesDiagnosis: boolean;
 }
 
-const EMPTY_OBJECT_SCHEMA = {
-  type: "object",
-  properties: {},
-  additionalProperties: false,
-} as const;
+const empty = { type: "object", properties: {}, additionalProperties: false };
+const brands = ["LG", "Samsung", "GE", "Whirlpool", "Maytag", "Electrolux"];
 
 export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
   {
-    name: "get_repair_state",
-    title: "Get repair state",
+    name: "search_supported_appliances",
+    title: "Search supported washers",
     purpose:
-      "Read the visible Clunk WM-01 diagnosis state, current safe check, observations, ranked causes, matched fictional part, and valid next actions. Call this before choosing an action.",
-    inputSchema: EMPTY_OBJECT_SCHEMA,
-    sampleInput: {},
-    mutatesDiagnosis: false,
-  },
-  {
-    name: "identify_appliance",
-    title: "Identify appliance",
-    purpose:
-      "Select the only appliance supported by this demo: the fictional Clunk WM-01 washer. Do not use this for a real appliance.",
+      "Search Clunk's visible source-backed catalog by brand or model text. Use this before selecting a washer; never substitute a similar model when no match is returned.",
     inputSchema: {
       type: "object",
       properties: {
-        applianceId: {
+        modelQuery: {
           type: "string",
-          enum: ["clunk-wm01"],
-          description: "The fictional demo appliance identifier.",
+          maxLength: 64,
+          description: "Full or partial model text, such as WM3400CW or WF45T6000AW/A5.",
+        },
+        brand: { type: "string", enum: brands },
+      },
+      additionalProperties: false,
+    },
+    sampleInput: { modelQuery: "WM3400CW.ABWEVUS" },
+    mutatesDiagnosis: false,
+  },
+  {
+    name: "select_appliance",
+    title: "Select an exact washer family",
+    purpose:
+      "Select an applianceId returned by catalog search. Include the complete productCode exactly as reported by the human when available; never invent a suffix or revision.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        applianceId: { type: "string", enum: APPLIANCE_CATALOG.map((entry) => entry.id) },
+        productCode: {
+          type: "string",
+          maxLength: 64,
+          description: "Optional complete product code read by the human from the rating label.",
         },
       },
       required: ["applianceId"],
       additionalProperties: false,
     },
-    sampleInput: { applianceId: "clunk-wm01" },
+    sampleInput: { applianceId: "lg-wm3400cw", productCode: "WM3400CW.ABWEVUS" },
     mutatesDiagnosis: true,
+  },
+  {
+    name: "get_repair_state",
+    title: "Get repair state",
+    purpose:
+      "Read the visible catalog or diagnosis state, bounded observations, sources, compatibility status, and valid next tools. Call this before choosing the next action.",
+    inputSchema: empty,
+    sampleInput: {},
+    mutatesDiagnosis: false,
   },
   {
     name: "start_diagnosis",
     title: "Start no-drain diagnosis",
     purpose:
-      "Start the bounded will-not-drain flow after identifying the fictional washer. This always begins with the required power and hazard check.",
+      "Begin the selected model family's will-not-drain path. This always starts with the deterministic power, heat, and leak boundary.",
     inputSchema: {
       type: "object",
-      properties: {
-        symptomId: {
-          type: "string",
-          enum: ["will-not-drain"],
-          description: "The only symptom supported by the demo.",
-        },
-      },
+      properties: { symptomId: { type: "string", enum: ["will-not-drain"] } },
       required: ["symptomId"],
       additionalProperties: false,
     },
@@ -66,10 +79,10 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
     mutatesDiagnosis: true,
   },
   {
-    name: "highlight_component",
-    title: "Highlight component",
+    name: "show_component",
+    title: "Show a diagram component",
     purpose:
-      "Move the shared diagram highlight to a named fictional component for explanation. This is visual only and never advances the diagnosis.",
+      "Focus any labeled component in the original shared diagram for explanation. This never records an observation, unlocks a future step, or exposes an internal repair instruction.",
     inputSchema: {
       type: "object",
       properties: {
@@ -84,27 +97,25 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
             "drain-hose",
             "control-module",
           ],
-          description: "A component in the Clunk WM-01 exploded diagram.",
         },
       },
       required: ["componentId"],
       additionalProperties: false,
     },
-    sampleInput: { componentId: "pump-filter" },
+    sampleInput: { componentId: "drain-hose" },
     mutatesDiagnosis: false,
   },
   {
-    name: "record_check_result",
-    title: "Record human observation",
+    name: "record_observation",
+    title: "Record a human observation",
     purpose:
-      "Record one physical observation explicitly reported by the human for the current check. Never infer, fabricate, or skip an observation. Hazard observations immediately stop the flow.",
+      "Record exactly one bounded physical observation reported by the human for the current check. Never infer or fabricate an observation; hazard results immediately stop the flow.",
     inputSchema: {
       type: "object",
       properties: {
         checkId: {
           type: "string",
           enum: ["prepare-power", "inspect-drain-hose", "inspect-pump-filter"],
-          description: "Must exactly match the current check in get_repair_state.",
         },
         resultId: {
           type: "string",
@@ -122,7 +133,6 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
             "filter-damaged",
             "unsafe-to-open",
           ],
-          description: "One listed observation for the current check, stated by the human.",
         },
       },
       required: ["checkId", "resultId"],
@@ -132,39 +142,19 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
     mutatesDiagnosis: true,
   },
   {
-    name: "show_repair_step",
-    title: "Show safe check",
-    purpose:
-      "Show and highlight the current or already completed safe observation step. This cannot unlock future steps or return internal repair instructions.",
-    inputSchema: {
-      type: "object",
-      properties: {
-        checkId: {
-          type: "string",
-          enum: ["prepare-power", "inspect-drain-hose", "inspect-pump-filter"],
-          description: "The current or already completed safe check.",
-        },
-      },
-      required: ["checkId"],
-      additionalProperties: false,
-    },
-    sampleInput: { checkId: "prepare-power" },
-    mutatesDiagnosis: false,
-  },
-  {
     name: "find_compatible_part",
-    title: "Find fictional compatible part",
+    title: "Resolve the part outcome",
     purpose:
-      "Reveal the exact fictional Clunk WM-01 demo part supported by completed observations. This makes no real-world compatibility claim and cannot run before evidence exists.",
-    inputSchema: EMPTY_OBJECT_SCHEMA,
+      "After safe observations, reveal one of four evidence-bounded outcomes: no part needed, exact verified part, complete product code required, or professional diagnosis required.",
+    inputSchema: empty,
     sampleInput: {},
     mutatesDiagnosis: true,
   },
   {
-    name: "escalate_to_professional",
+    name: "stop_and_escalate",
     title: "Stop and escalate",
     purpose:
-      "End the diagnosis at a safe boundary and show professional-service guidance for a hazard, unsafe access, electrical concern, or unresolved internal cause.",
+      "End the diagnosis at a safety or evidence boundary and show professional-service guidance. Use immediately for reported hazards or unsafe access.",
     inputSchema: {
       type: "object",
       properties: {
@@ -178,7 +168,6 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
             "internal-access",
             "unresolved",
           ],
-          description: "The observed safety or service boundary requiring escalation.",
         },
       },
       required: ["reason"],
@@ -191,8 +180,6 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
 
 export function getRepairToolContract(name: RepairToolName): RepairToolContract {
   const contract = REPAIR_TOOL_CONTRACTS.find((item) => item.name === name);
-  if (!contract) {
-    throw new Error(`Missing WebMCP contract for ${name}.`);
-  }
+  if (!contract) throw new Error(`Missing contract for ${name}.`);
   return contract;
 }

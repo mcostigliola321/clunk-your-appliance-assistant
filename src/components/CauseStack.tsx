@@ -5,10 +5,10 @@ export function CauseStack({ causes, visible }: { causes: RankedCause[]; visible
     <section className={`cause-stack ${visible ? "is-visible" : ""}`} aria-labelledby="cause-title">
       <div className="section-heading">
         <div>
-          <div className="section-kicker">Live reasoning</div>
+          <div className="section-kicker">Evidence ranking</div>
           <h2 id="cause-title">Likely causes</h2>
         </div>
-        <span className="scenario-label">Scenario ranking</span>
+        <span className="scenario-label">Deterministic</span>
       </div>
       {visible ? (
         <ol className="cause-list" aria-label="Likely causes">

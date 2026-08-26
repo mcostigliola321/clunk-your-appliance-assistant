@@ -1,15 +1,21 @@
-import { getCheck, isCheckId, isComponentId, isResultForCheck, repairPack } from "./repairPack";
+import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
+
 import {
-  assertSafeRepairStep,
-  canShowCheck,
-  escalationForReason,
-  escalationForResult,
-} from "./safety";
-import { getAvailablePartId, getRepairSnapshot } from "./selectors";
+  getCatalogEntry,
+  getCheck,
+  getRepairPack,
+  isBrandName,
+  isCheckId,
+  isComponentId,
+  isResultForCheck,
+  searchCatalog,
+} from "./repairPack";
+import { escalationForReason, escalationForResult } from "./safety";
+import { getPartOutcome, getRepairSnapshot } from "./selectors";
 import type {
   ActivityEvent,
   ActivitySource,
-  ApplianceId,
+  BrandName,
   CheckId,
   ComponentId,
   EscalationReason,
@@ -35,21 +41,25 @@ export function createInitialRepairState(webMcpStatus: WebMcpStatus = "detecting
     id: "event-0",
     sequence: 0,
     source: "system",
-    action: "bench_ready",
+    action: "catalog_ready",
     arguments: {},
     outcome: "accepted",
-    message: "Repair bench ready. No diagnosis has started.",
+    message: "Twelve source-backed washer families are ready to search.",
   };
-
   return {
-    packId: "clunk-wm01",
+    packId: null,
     applianceId: null,
+    productCode: null,
+    catalogQuery: "",
+    catalogBrand: null,
+    catalogResultIds: APPLIANCE_CATALOG.map((entry) => entry.id),
     symptomId: null,
-    phase: "idle",
+    phase: "catalog",
     currentStepId: null,
     highlightedComponentId: "machine",
     completedChecks: {},
     selectedPartId: null,
+    partOutcomeRevealed: false,
     escalation: null,
     webMcpStatus,
     activity: [initialEvent],
@@ -59,10 +69,6 @@ export function createInitialRepairState(webMcpStatus: WebMcpStatus = "detecting
 
 export function withWebMcpStatus(state: RepairState, status: WebMcpStatus): RepairState {
   return { ...state, webMcpStatus: status };
-}
-
-function isString(input: Record<string, unknown>, key: string): input is Record<string, string> {
-  return typeof input[key] === "string";
 }
 
 function appendEvent(
@@ -121,33 +127,96 @@ function reject(
   return result(state, source, action, input, false, message);
 }
 
-function identifyAppliance(
+function searchSupportedAppliances(
   state: RepairState,
   input: Record<string, unknown>,
   source: ActivitySource,
 ): ToolExecutionResult {
-  if (!isString(input, "applianceId") || input["applianceId"] !== "clunk-wm01") {
+  if (input["modelQuery"] !== undefined && typeof input["modelQuery"] !== "string")
     return reject(
       state,
       source,
-      "identify_appliance",
+      "search_supported_appliances",
       input,
-      "Only the fictional Clunk WM-01 is supported in this demo.",
+      "modelQuery must be a string.",
     );
-  }
+  if (input["brand"] !== undefined && !isBrandName(input["brand"]))
+    return reject(
+      state,
+      source,
+      "search_supported_appliances",
+      input,
+      "Choose one of the six supported brands.",
+    );
+  const query =
+    typeof input["modelQuery"] === "string" ? input["modelQuery"].trim().slice(0, 64) : "";
+  const brand = (input["brand"] as BrandName | undefined) ?? null;
+  const matches = searchCatalog(query, brand);
+  const nextState = {
+    ...state,
+    catalogQuery: query,
+    catalogBrand: brand,
+    catalogResultIds: matches.map((entry) => entry.id),
+  };
+  const message = matches.length
+    ? `Found ${matches.length} supported model ${matches.length === 1 ? "family" : "families"}.`
+    : "No supported model matched. Clunk will not substitute a similar-looking appliance.";
+  return result(nextState, source, "search_supported_appliances", input, true, message);
+}
 
+function selectAppliance(
+  state: RepairState,
+  input: Record<string, unknown>,
+  source: ActivitySource,
+): ToolExecutionResult {
+  if (
+    typeof input["applianceId"] !== "string" ||
+    !APPLIANCE_CATALOG.some((entry) => entry.id === input["applianceId"])
+  )
+    return reject(
+      state,
+      source,
+      "select_appliance",
+      input,
+      "Select an applianceId returned by search_supported_appliances.",
+    );
+  if (
+    input["productCode"] !== undefined &&
+    (typeof input["productCode"] !== "string" ||
+      !input["productCode"].trim() ||
+      input["productCode"].length > 64)
+  )
+    return reject(
+      state,
+      source,
+      "select_appliance",
+      input,
+      "productCode must be a complete label value under 65 characters.",
+    );
+  const entry = getCatalogEntry(input["applianceId"]);
+  const productCode =
+    typeof input["productCode"] === "string" ? input["productCode"].trim().toUpperCase() : null;
   const nextState: RepairState = {
     ...state,
-    applianceId: input["applianceId"] as ApplianceId,
+    packId: entry.id,
+    applianceId: entry.id,
+    productCode,
+    symptomId: null,
+    phase: "idle",
+    currentStepId: null,
     highlightedComponentId: "machine",
+    completedChecks: {},
+    selectedPartId: null,
+    partOutcomeRevealed: false,
+    escalation: null,
   };
   return result(
     nextState,
     source,
-    "identify_appliance",
+    "select_appliance",
     input,
     true,
-    "Identified the fictional Clunk WM-01 washer.",
+    `Selected ${entry.brand} ${entry.model}${productCode ? ` (${productCode})` : " at model-family level"}.`,
   );
 }
 
@@ -156,25 +225,23 @@ function startDiagnosis(
   input: Record<string, unknown>,
   source: ActivitySource,
 ): ToolExecutionResult {
-  if (!state.applianceId) {
+  if (!state.applianceId || !state.packId)
     return reject(
       state,
       source,
       "start_diagnosis",
       input,
-      "Identify the appliance before starting a diagnosis.",
+      "Select a supported appliance before starting.",
     );
-  }
-  if (!isString(input, "symptomId") || input["symptomId"] !== repairPack.symptom.id) {
+  const pack = getRepairPack(state.packId);
+  if (input["symptomId"] !== pack.symptom.id)
     return reject(
       state,
       source,
       "start_diagnosis",
       input,
-      "This demo supports only the washer-will-not-drain symptom.",
+      "This build supports the washer-will-not-drain symptom.",
     );
-  }
-
   const nextState: RepairState = {
     ...state,
     symptomId: input["symptomId"] as SymptomId,
@@ -183,6 +250,7 @@ function startDiagnosis(
     highlightedComponentId: "machine",
     completedChecks: {},
     selectedPartId: null,
+    partOutcomeRevealed: false,
     escalation: null,
   };
   return result(
@@ -191,125 +259,101 @@ function startDiagnosis(
     "start_diagnosis",
     input,
     true,
-    "Diagnosis started with a mandatory power and hazard check.",
+    "Diagnosis started with a mandatory power, heat, and leak check.",
   );
 }
 
-function highlightComponent(
+function showComponent(
   state: RepairState,
   input: Record<string, unknown>,
   source: ActivitySource,
 ): ToolExecutionResult {
-  if (!isComponentId(input["componentId"])) {
+  if (!isComponentId(state.packId, input["componentId"]))
     return reject(
       state,
       source,
-      "highlight_component",
+      "show_component",
       input,
-      "Choose a component from the Clunk WM-01 repair pack.",
+      "Choose a component from the selected repair pack.",
     );
-  }
-  const nextState: RepairState = {
-    ...state,
-    highlightedComponentId: input["componentId"] as ComponentId,
-  };
+  const nextState = { ...state, highlightedComponentId: input["componentId"] as ComponentId };
   return result(
     nextState,
     source,
-    "highlight_component",
+    "show_component",
     input,
     true,
-    `Highlighted ${input["componentId"]}.`,
+    `Focused the shared diagram on ${input["componentId"]}.`,
   );
 }
 
-function recordCheckResult(
+function recordObservation(
   state: RepairState,
   input: Record<string, unknown>,
   source: ActivitySource,
 ): ToolExecutionResult {
-  if (!isCheckId(input["checkId"]) || typeof input["resultId"] !== "string") {
+  if (
+    !state.packId ||
+    !isCheckId(state.packId, input["checkId"]) ||
+    typeof input["resultId"] !== "string"
+  )
     return reject(
       state,
       source,
-      "record_check_result",
+      "record_observation",
       input,
-      "Provide a valid current check and one of its listed observations.",
+      "Provide the current checkId and one listed human observation.",
     );
-  }
   const checkId = input["checkId"] as CheckId;
   const resultId = input["resultId"] as ResultId;
-  if (state.currentStepId !== checkId) {
+  if (state.currentStepId !== checkId)
     return reject(
       state,
       source,
-      "record_check_result",
+      "record_observation",
       input,
-      "Results can only be recorded for the current safe check.",
+      "Observations can only be recorded for the current safe check.",
     );
-  }
-  if (!isResultForCheck(checkId, resultId)) {
+  if (!isResultForCheck(state.packId, checkId, resultId))
     return reject(
       state,
       source,
-      "record_check_result",
+      "record_observation",
       input,
       "That observation does not belong to the current check.",
     );
-  }
-
-  const escalation = escalationForResult(resultId);
   const completedChecks = { ...state.completedChecks, [checkId]: resultId };
   let nextState: RepairState = {
     ...state,
     completedChecks,
     selectedPartId: null,
+    partOutcomeRevealed: false,
   };
-
+  const escalation = escalationForResult(resultId);
   if (escalation) {
-    nextState = {
-      ...nextState,
-      phase: "escalated",
-      currentStepId: null,
-      escalation,
-    };
-    return result(nextState, source, "record_check_result", input, true, escalation.message);
+    nextState = { ...nextState, phase: "escalated", currentStepId: null, escalation };
+    return result(nextState, source, "record_observation", input, true, escalation.message);
   }
-
-  if (checkId === "prepare-power" && resultId === "acknowledged") {
+  const pack = getRepairPack(state.packId);
+  const currentIndex = pack.checks.findIndex((check) => check.id === checkId);
+  const shouldAdvance = resultId === "acknowledged" || resultId === "hose-clear";
+  const nextCheck = shouldAdvance ? pack.checks[currentIndex + 1] : undefined;
+  if (nextCheck) {
     nextState = {
       ...nextState,
       phase: "checking",
-      currentStepId: "inspect-drain-hose",
-      highlightedComponentId: "drain-hose",
+      currentStepId: nextCheck.id,
+      highlightedComponentId: nextCheck.componentId,
     };
     return result(
       nextState,
       source,
-      "record_check_result",
+      "record_observation",
       input,
       true,
-      "Power is disconnected. Next, inspect only the visible drain hose.",
+      `Observation recorded. Next: ${nextCheck.label}.`,
     );
   }
-
-  if (checkId === "inspect-drain-hose" && resultId === "hose-clear") {
-    nextState = {
-      ...nextState,
-      phase: "checking",
-      currentStepId: "inspect-pump-filter",
-      highlightedComponentId: "pump-filter",
-    };
-    return result(
-      nextState,
-      source,
-      "record_check_result",
-      input,
-      true,
-      "The visible hose looks clear. Next, inspect the user-accessible pump filter.",
-    );
-  }
-
   nextState = {
     ...nextState,
     phase: "result",
@@ -319,42 +363,11 @@ function recordCheckResult(
   return result(
     nextState,
     source,
-    "record_check_result",
+    "record_observation",
     input,
     true,
-    "Observation recorded. Clunk has isolated the strongest matching cause.",
+    "Observation recorded. Clunk can now resolve the next safe outcome.",
   );
-}
-
-function showRepairStep(
-  state: RepairState,
-  input: Record<string, unknown>,
-  source: ActivitySource,
-): ToolExecutionResult {
-  if (!isCheckId(input["checkId"])) {
-    return reject(
-      state,
-      source,
-      "show_repair_step",
-      input,
-      "Choose a valid safe check from the repair pack.",
-    );
-  }
-  const checkId = input["checkId"] as CheckId;
-  if (
-    !canShowCheck(state.currentStepId, checkId, Object.keys(state.completedChecks) as CheckId[])
-  ) {
-    return reject(
-      state,
-      source,
-      "show_repair_step",
-      input,
-      "That step is not available at this point in the diagnosis.",
-    );
-  }
-  const check = assertSafeRepairStep(getCheck(checkId));
-  const nextState: RepairState = { ...state, highlightedComponentId: check.componentId };
-  return result(nextState, source, "show_repair_step", input, true, check.instruction);
 }
 
 function findCompatiblePart(
@@ -362,49 +375,44 @@ function findCompatiblePart(
   input: Record<string, unknown>,
   source: ActivitySource,
 ): ToolExecutionResult {
-  const partId = getAvailablePartId(state);
-  if (!partId) {
+  const outcome = getPartOutcome(state);
+  if (!outcome || outcome.status === "not-ready")
     return reject(
       state,
       source,
       "find_compatible_part",
       input,
-      "Complete the safe checks before matching a fictional part.",
+      "Complete the current safe observations before resolving a part outcome.",
     );
-  }
-  const nextState: RepairState = { ...state, selectedPartId: partId };
-  return result(
-    nextState,
-    source,
-    "find_compatible_part",
-    input,
-    true,
-    `Matched fictional demo part ${partId.toUpperCase()}.`,
-  );
+  const nextState: RepairState = {
+    ...state,
+    partOutcomeRevealed: true,
+    selectedPartId: outcome.status === "exact" ? (outcome.part?.id ?? null) : null,
+    highlightedComponentId:
+      outcome.status === "exact" ? "drain-pump" : state.highlightedComponentId,
+  };
+  return result(nextState, source, "find_compatible_part", input, true, outcome.message);
 }
 
-function escalateToProfessional(
+function stopAndEscalate(
   state: RepairState,
   input: Record<string, unknown>,
   source: ActivitySource,
 ): ToolExecutionResult {
-  if (!isString(input, "reason") || !ESCALATION_REASONS.has(input["reason"] as EscalationReason)) {
+  if (
+    typeof input["reason"] !== "string" ||
+    !ESCALATION_REASONS.has(input["reason"] as EscalationReason)
+  )
     return reject(
       state,
       source,
-      "escalate_to_professional",
+      "stop_and_escalate",
       input,
       "Choose a supported safety or service reason.",
     );
-  }
   const escalation = escalationForReason(input["reason"] as EscalationReason);
-  const nextState: RepairState = {
-    ...state,
-    phase: "escalated",
-    currentStepId: null,
-    escalation,
-  };
-  return result(nextState, source, "escalate_to_professional", input, true, escalation.message);
+  const nextState: RepairState = { ...state, phase: "escalated", currentStepId: null, escalation };
+  return result(nextState, source, "stop_and_escalate", input, true, escalation.message);
 }
 
 export function executeRepairTool(
@@ -414,6 +422,10 @@ export function executeRepairTool(
   source: ActivitySource = "agent",
 ): ToolExecutionResult {
   switch (action) {
+    case "search_supported_appliances":
+      return searchSupportedAppliances(state, input, source);
+    case "select_appliance":
+      return selectAppliance(state, input, source);
     case "get_repair_state":
       return result(
         state,
@@ -421,21 +433,17 @@ export function executeRepairTool(
         action,
         input,
         true,
-        "Returned the current shared repair state.",
+        "Returned current state, visible catalog results, sources, and permitted next tools.",
       );
-    case "identify_appliance":
-      return identifyAppliance(state, input, source);
     case "start_diagnosis":
       return startDiagnosis(state, input, source);
-    case "highlight_component":
-      return highlightComponent(state, input, source);
-    case "record_check_result":
-      return recordCheckResult(state, input, source);
-    case "show_repair_step":
-      return showRepairStep(state, input, source);
+    case "show_component":
+      return showComponent(state, input, source);
+    case "record_observation":
+      return recordObservation(state, input, source);
     case "find_compatible_part":
       return findCompatiblePart(state, input, source);
-    case "escalate_to_professional":
-      return escalateToProfessional(state, input, source);
+    case "stop_and_escalate":
+      return stopAndEscalate(state, input, source);
   }
 }

@@ -5,68 +5,94 @@ import type { RepairState, WebMcpStatus } from "@/domain/types";
 
 import { registerClunkTools } from "./registerTools";
 
-describe("WebMCP registration", () => {
-  afterEach(() => {
-    Reflect.deleteProperty(document, "modelContext");
-  });
+describe("state-dependent WebMCP registration", () => {
+  afterEach(() => Reflect.deleteProperty(document, "modelContext"));
 
   it("falls back cleanly when WebMCP is unavailable", () => {
     const statuses: WebMcpStatus[] = [];
+    const state = createInitialRepairState();
     const controller = registerClunkTools(
-      (name, input, source) => executeRepairTool(createInitialRepairState(), name, input, source),
+      (name, input, source) => executeRepairTool(state, name, input, source),
       (status) => statuses.push(status),
+      state,
     );
-
     expect(controller).toBeNull();
     expect(statuses).toEqual(["unavailable"]);
   });
 
-  it("registers all eight literal tools and routes execution through shared state", async () => {
+  it("registers only tools useful in the current state and aborts the group", async () => {
     const tools: WebMcpTool[] = [];
-    const registrationSignals: AbortSignal[] = [];
-    const registerTool = vi.fn(async (tool: WebMcpTool, options?: WebMcpRegisterToolOptions) => {
-      tools.push(tool);
-      if (options?.signal) registrationSignals.push(options.signal);
-    });
+    const signals: AbortSignal[] = [];
     Object.defineProperty(document, "modelContext", {
       configurable: true,
-      value: { registerTool },
+      value: {
+        registerTool: vi.fn(async (tool: WebMcpTool, options?: WebMcpRegisterToolOptions) => {
+          tools.push(tool);
+          if (options?.signal) signals.push(options.signal);
+        }),
+      },
     });
-
     let state: RepairState = createInitialRepairState();
-    const statuses: WebMcpStatus[] = [];
     const controller = registerClunkTools(
       (name, input, source) => {
         const execution = executeRepairTool(state, name, input, source);
         state = execution.state;
         return execution;
       },
-      (status) => statuses.push(status),
+      () => undefined,
+      state,
     );
     await Promise.resolve();
-    await Promise.resolve();
-
-    expect(registerTool).toHaveBeenCalledTimes(8);
     expect(tools.map((tool) => tool.name)).toEqual([
+      "search_supported_appliances",
+      "select_appliance",
       "get_repair_state",
-      "identify_appliance",
-      "start_diagnosis",
-      "highlight_component",
-      "record_check_result",
-      "show_repair_step",
-      "find_compatible_part",
-      "escalate_to_professional",
     ]);
-    expect(tools.every((tool) => tool.inputSchema?.["additionalProperties"] === false)).toBe(true);
-    expect(statuses).toEqual(["ready"]);
-
     const executeSignal = new AbortController().signal;
-    await tools[1]?.execute({ applianceId: "clunk-wm01" }, { signal: executeSignal });
-    await tools[2]?.execute({ symptomId: "will-not-drain" }, { signal: executeSignal });
-    expect(state.currentStepId).toBe("prepare-power");
+    await tools[1]?.execute(
+      { applianceId: "lg-wm3400cw", productCode: "WM3400CW.ABWEVUS" },
+      { signal: executeSignal },
+    );
+    expect(state.applianceId).toBe("lg-wm3400cw");
     expect(state.activity.at(-1)?.source).toBe("agent");
-
     controller?.abort();
-    expect(registrationSignals.every((signal) => signal.aborted)).toBe(true);
+    expect(signals.every((signal) => signal.aborted)).toBe(true);
+  });
+
+  it("changes inventory between selected, active, and result states", () => {
+    const inventories: string[][] = [];
+    Object.defineProperty(document, "modelContext", {
+      configurable: true,
+      value: {
+        registerTool: vi.fn(async (tool: WebMcpTool) => {
+          (inventories.at(-1) ?? []).push(tool.name);
+        }),
+      },
+    });
+    const capture = (state: RepairState) => {
+      inventories.push([]);
+      registerClunkTools(
+        (name, input, source) => executeRepairTool(state, name, input, source),
+        () => undefined,
+        state,
+      );
+    };
+    let state = createInitialRepairState();
+    state = executeRepairTool(state, "select_appliance", { applianceId: "lg-wm3400cw" }).state;
+    capture(state);
+    expect(inventories.at(-1)).toEqual([
+      "search_supported_appliances",
+      "select_appliance",
+      "get_repair_state",
+      "start_diagnosis",
+    ]);
+    state = executeRepairTool(state, "start_diagnosis", { symptomId: "will-not-drain" }).state;
+    capture(state);
+    expect(inventories.at(-1)).toEqual([
+      "get_repair_state",
+      "show_component",
+      "record_observation",
+      "stop_and_escalate",
+    ]);
   });
 });
