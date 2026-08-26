@@ -58,3 +58,14 @@
 - Added keyboard-accessible 44px component controls, focus rings, live-region updates, mobile reordering, reduced-motion rules, persistent fictional-data labels, and a safe recovery screen.
 - Corrected all issues found by the automated accessibility pass: progress semantics, low-contrast upcoming steps, and nested SVG interactions.
 - Verification: the canonical path reaches CL-PF-220 in the ChatGPT in-app browser with a clean console; desktop and Pixel 7 screenshots are captured; component, safety, keyboard, touch-size, responsive, reduced-motion, and WCAG A/AA tests pass at desktop and mobile widths.
+
+## 2026-08-26 — Checklist items 8–11
+
+- Added eleven WebMCP evaluation scenarios covering every public tool, canonical diagnosis, visual explanation, professional boundaries, invalid ordering, hazards, and a protection-bypass refusal.
+- Published the architecture, deterministic safety model, repair-pack schema, contribution guidance, security guidance, and judge-first README.
+- Added a GitHub Actions quality gate for TypeScript, lint, deterministic tests, static build, desktop/mobile Playwright flows, and accessibility checks.
+- Diagnosed Lovable’s stale-preview failure to its required `build:dev` command, added the portable Vite script, and successfully published the production site at https://clunk-appliance-assistant.lovable.app.
+- Verified the live canonical path in ChatGPT’s in-app browser with manual fallback and a clean console.
+- Verified the connected Chrome profile reports all eight WebMCP tools ready and completes the live `CL-PF-220` path; the only console message was from an unrelated installed browser extension.
+- Created the Devpost draft with the official form fields, judging-aligned story, testing instructions, screenshot list, and an under-three-minute demo outline.
+- Remaining participant actions are external to the build: make the GitHub repository public, record and upload the public YouTube demo, and confirm the personal form answers.

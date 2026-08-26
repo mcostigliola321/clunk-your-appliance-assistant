@@ -54,25 +54,25 @@
       Acceptance: All accessibility and recovery criteria in PRD Epics 3, 4, and 10 pass; no critical functionality is hidden on mobile.
       Verify: Run keyboard, reduced-motion, 200% zoom, responsive, console, and automated accessibility checks available in the environment.
 
-- [ ] **8. Complete deterministic tests and WebMCP evaluation fixtures**
+- [x] **8. Complete deterministic tests and WebMCP evaluation fixtures**
       Spec ref: spec.md > Testing Strategy
       What to build: Finish unit, integration, and Playwright coverage; add eval prompts with expected tools, arguments, visible outcomes, safety refusals, and manual-mode equivalents.
       Acceptance: Canonical and hazard paths are reproducible; rejected inputs prove no unsafe or contradictory state mutation.
       Verify: Run typecheck, lint, unit tests, coverage if configured, Playwright tests, and production build.
 
-- [ ] **9. Add open-source and contributor documentation**
+- [x] **9. Add open-source and contributor documentation**
       Spec ref: spec.md > File Structure and Demo And Submission Flow
       What to build: Add MIT LICENSE, judge-first README, architecture and safety notes, repair-pack extension schema, testing steps, browser enablement, AI usage distinction, and fictional-data disclaimers.
       Acceptance: A judge can run and understand Clunk without credentials; the repository visibly satisfies the official license and literal-registration requirements.
       Verify: Follow README instructions from a clean install and inspect repository root contents.
 
-- [ ] **10. Deploy and verify the production WebMCP experience**
+- [x] **10. Deploy and verify the production WebMCP experience**
       Spec ref: spec.md > Deployed WebMCP
       What to build: Publish Clunk on Lovable, ensure the top-level URL is public, and test the canonical agent path in ChatGPT’s in-app browser and Chrome 149+ with the WebMCP testing flag.
       Acceptance: The live app loads without credentials, exposes all tools in supported browsers, retains manual mode elsewhere, and has no runtime service dependency.
       Verify: Record the live URL, browser versions, tool inventory, canonical eval result, mobile screenshot, and console/network findings.
 
-- [ ] **11. Prepare Devpost handoff**
+- [x] **11. Prepare Devpost handoff**
       Spec ref: prd.md > Submission Proof Points
       What to build: Gather the project story, screenshots, public repo link, live URL, testing instructions, tool inventory, safety proof, video beat sheet, and implementation notes required for submission prep.
       Acceptance: The participant has enough verified material to run prepare-submission and record a narrated demo under three minutes.
