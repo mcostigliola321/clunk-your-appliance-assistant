@@ -1,25 +1,53 @@
-# Added-source URL audit
+# Source URL and live-catalog audit
 
-Audit date: **2026-08-27**. Scope: every URL added for the 19-model expansion, model-number finder, exact-part upgrade, and Shopify UCP integration. A bounded automated GET followed redirects with a 5-second connection timeout and 12-second total timeout. Manufacturer storefronts that block automated clients were also opened through browser/search retrieval during the evidence review; `Protected` below means the URL was retrievable for review but did not return a normal status to the command-line client. Clunk makes a user-triggered live Shopify catalog request for purchase-ready results; it does not scrape source pages.
+Audit date: **2026-08-27**. Current catalog: **131 models**—48 washers, 25 dishwashers, 25 electric dryers, and 33 refrigerators—with 25 purchase-ready exact revisions and 106 guided-only entries. This audit covers the 81-model expansion, the 13-revision exact-part upgrade, the existing model-number and exact-part evidence, and the live Shopify UCP boundary. Clunk makes a user-triggered live Shopify catalog request only for purchase-ready results; it does not scrape source pages at runtime.
 
-The complete per-model source, topology, symptom, capability, and retrieval record is in [`model-source-ledger.md`](./model-source-ledger.md). The exact-evidence pass raised the purchase-ready tier from four to 12 models.
+## 81-model expansion sweep
+
+The expansion contains 81 distinct official manufacturer model/support URLs and 41 unique official troubleshooting URLs. One Bosch product-support URL serves both roles, producing **121 unique endpoints**. A bounded automated GET used a browser user agent, followed redirects, and enforced a 30-second per-request timeout. Result: **121/121 endpoints returned HTTP 2xx**; all **81/81 model URLs** were reachable. Three initially drafted symptom URLs were corrected to live official pages during the pass: Amana water-filter timing, Whirlpool dishwasher not-draining, and Bosch dishwasher troubleshooting.
+
+The complete per-model source, profile, aliases/full-code rule, topology, symptom, capability, and retrieval record is in [`model-source-ledger.md`](./model-source-ledger.md). The normalized expansion data and its validation contract are in [`src/data/catalogExpansion.json`](../src/data/catalogExpansion.json) and [`catalog-expansion.schema.json`](./catalog-expansion.schema.json). No current expansion-source gap remains; storefront/CDN behavior can still change and should be re-audited before publication.
+
+## Exact-part upgrade URL pass
+
+The 13 compatibility pages below were reviewed at the complete-code level. Each page resolved one specific model revision to the recorded replacement SKU. The browser/search retrieval exposed the model-parts content; a parallel command-line GET returned HTTP 403 for all 13 because these storefronts block non-browser clients. That protection status is not treated as a broken link or as compatibility evidence by itself.
+
+| Complete code → SKU           | Manufacturer / authorized evidence URL                                                                                      | Command-line audit                                           | Retrieved  |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ---------- |
+| `GFW655SSV0WW` → `WH11X39237` | https://partstore.encompass.com/model/HOTGFW655SSV0WW                                                                       | Protected (HTTP 403); authorized model listing reviewed      | 2026-08-27 |
+| `GFW850SPN0RS` → `WH11X39237` | https://www.geapplianceparts.com/store/parts/ModelSectionParts/GFW850SPN0RS/4/0/0/0/CABINET_%281%29                         | Protected (HTTP 403); manufacturer diagram reviewed          | 2026-08-27 |
+| `GTW335ASN1WW` → `WH23X28418` | https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTW335ASN1WW/3/0/0/0/TUB_%26_MOTOR                           | Protected (HTTP 403); manufacturer diagram reviewed          | 2026-08-27 |
+| `HTW265ASW0WW` → `WH23X28418` | https://partstore.encompass.com/model/HOTHTW265ASW0WW                                                                       | Protected (HTTP 403); authorized model listing reviewed      | 2026-08-27 |
+| `WTW5010LW0` → `W11399437`    | https://www.whirlpoolparts.com/Shop-For-Parts/a11b5i168d2461121/Model-WTW5010LW0-Whirlpool-Washing-Machine-Drain-Pump-Parts | Protected (HTTP 403); one-result drain-pump listing reviewed | 2026-08-27 |
+| `WDT730HAMZ0` → `W10876537`   | https://www.whirlpoolparts.com/Shop-For-Parts/a9b5i168d2454271/Model-WDT730HAMZ0-Whirlpool-Dishwasher-Drain-Pump-Parts      | Protected (HTTP 403); one-result drain-pump listing reviewed | 2026-08-27 |
+| `MDB4949SKZ1` → `W11497943`   | https://www.whirlpoolparts.com/Shop-For-Parts/a9b4c36d2463970/Model-MDB4949SKZ1-Maytag-Dishwasher-Pump-Parts                | Protected (HTTP 403); exact drain-pump row reviewed          | 2026-08-27 |
+| `KDFE204KPS0` → `W11462456`   | https://www.whirlpoolparts.com/Shop-For-Parts/a9b121d2248070/Model-KDFE204KPS0-Kitchenaid-Dishwasher-Parts?n=3              | Protected (HTTP 403); exact drain-pump row reviewed          | 2026-08-27 |
+| `GFD55ESSN0WW` → `WE01X34600` | https://www.geapplianceparts.com/store/parts/ModelSectionParts/GFD55ESSN0WW/2/0/0/0/FRONT_PANEL                             | Protected (HTTP 403); manufacturer supersession reviewed     | 2026-08-27 |
+| `WED4815EW1` → `W11429587`    | https://www.whirlpoolparts.com/Shop-For-Parts/a8i2691d2145566/Model-WED4815EW1-Dryer-Catch-Parts                            | Protected (HTTP 403); one-result catch listing reviewed      | 2026-08-27 |
+| `WED5050LW0` → `W11429587`    | https://www.whirlpoolparts.com/Shop-For-Parts/a8b5c72d2454284/Model-WED5050LW0-Whirlpool-Dryer-Latch-Parts                  | Protected (HTTP 403); exact supersession reviewed            | 2026-08-27 |
+| `WRS588FIHZ00` → `EDR1RXD1`   | https://www.whirlpoolparts.com/Shop-For-Parts/a4b5c43d2269249/Model-WRS588FIHZ00-Whirlpool-Refrigerator-Filter-Parts        | Protected (HTTP 403); exact filter row reviewed              | 2026-08-27 |
+| `KRFC300ESS08` → `EDR4RXD1`   | https://www.whirlpoolparts.com/Shop-For-Parts/a4b121d2463919/Model-KRFC300ESS08-Kitchenaid-Refrigerator-Parts               | Protected (HTTP 403); exact filter row reviewed              | 2026-08-27 |
+
+## Published-milestone evidence audit
+
+The tables below preserve the earlier exact-part, model-label, and 19-model milestone audit. `Protected` means the URL was retrievable for evidence review but did not return a normal status to the command-line client during that earlier pass.
 
 ## Exact-part and Shopify additions
 
-| Added source                                                                                                               | Audit result                                                                           | Retrieved  |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ---------- |
-| https://image-us.samsung.com/SamsungUS/home/home-appliances/refrigerators/3-door-french-door/pdp/rf28t5001/RF28T5001SR.pdf | HTTP 200; official PDF reviewed for HAF-QIN                                            | 2026-08-27 |
-| https://www.lg.com/us/business/download/resources/CT00021979/LRFLC2706S_LG_Pro_Builder_Spec_Sheet%5B20240531_231311%5D.pdf | HTTP 200; official PDF reviewed for LT1000P                                            | 2026-08-27 |
-| https://www.whirlpoolparts.com/Shop-For-Parts/a8b5c72d2170809/Model-WED4950HW0-Whirlpool-Dryer-Latch-Parts                 | Protected; authorized exact-model listing reviewed                                     | 2026-08-27 |
-| https://www.whirlpoolparts.com/Shop-For-Parts/a8b4c72d2454088/Model-MED4500MW0-Maytag-Dryer-Latch-Parts                    | Protected; authorized exact-model listing reviewed                                     | 2026-08-27 |
-| https://www.whirlpoolparts.com/Shop-For-Parts/a8b1d2169040/Model-NED4655EW1-Amana-Dryer-Parts                              | Protected; authorized exact-model listing reviewed                                     | 2026-08-27 |
-| https://www.whirlpoolparts.com/Shop-For-Parts/i183d2454535/Model-WRS315SDHZ08-Water-Filter-Parts                           | Protected; authorized exact-model listing reviewed                                     | 2026-08-27 |
-| https://shopify.dev/docs/agents/catalog                                                                                    | HTTP 200; Global Catalog endpoint/auth/cache rules reviewed                            | 2026-08-27 |
-| https://shopify.dev/docs/agents/carts-and-checkout/cart-mcp                                                                | HTTP 200; anonymous cart boundary reviewed                                             | 2026-08-27 |
-| https://shopify.dev/docs/agents/carts-and-checkout/checkout-mcp                                                            | HTTP 200; authenticated checkout boundary reviewed                                     | 2026-08-27 |
-| https://catalog.shopify.com/api/ucp/mcp                                                                                    | JSON-RPC POST succeeded for all 10 exact-SKU queries; GET is not a supported operation | 2026-08-27 |
+| Added source                                                                                                               | Audit result                                                                                       | Retrieved  |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---------- |
+| https://image-us.samsung.com/SamsungUS/home/home-appliances/refrigerators/3-door-french-door/pdp/rf28t5001/RF28T5001SR.pdf | HTTP 200; official PDF reviewed for HAF-QIN                                                        | 2026-08-27 |
+| https://www.lg.com/us/business/download/resources/CT00021979/LRFLC2706S_LG_Pro_Builder_Spec_Sheet%5B20240531_231311%5D.pdf | HTTP 200; official PDF reviewed for LT1000P                                                        | 2026-08-27 |
+| https://www.whirlpoolparts.com/Shop-For-Parts/a8b5c72d2170809/Model-WED4950HW0-Whirlpool-Dryer-Latch-Parts                 | Protected; authorized exact-model listing reviewed                                                 | 2026-08-27 |
+| https://www.whirlpoolparts.com/Shop-For-Parts/a8b4c72d2454088/Model-MED4500MW0-Maytag-Dryer-Latch-Parts                    | Protected; authorized exact-model listing reviewed                                                 | 2026-08-27 |
+| https://www.whirlpoolparts.com/Shop-For-Parts/a8b1d2169040/Model-NED4655EW1-Amana-Dryer-Parts                              | Protected; authorized exact-model listing reviewed                                                 | 2026-08-27 |
+| https://www.whirlpoolparts.com/Shop-For-Parts/i183d2454535/Model-WRS315SDHZ08-Water-Filter-Parts                           | Protected; authorized exact-model listing reviewed                                                 | 2026-08-27 |
+| https://shopify.dev/docs/agents/catalog                                                                                    | HTTP 200; Global Catalog endpoint/auth/cache rules reviewed                                        | 2026-08-27 |
+| https://shopify.dev/docs/agents/carts-and-checkout/cart-mcp                                                                | HTTP 200; anonymous cart boundary reviewed                                                         | 2026-08-27 |
+| https://shopify.dev/docs/agents/carts-and-checkout/checkout-mcp                                                            | HTTP 200; authenticated checkout boundary reviewed                                                 | 2026-08-27 |
+| https://catalog.shopify.com/api/ucp/mcp                                                                                    | JSON-RPC POST succeeded for all 10 dedicated upgrade-SKU queries; GET is not a supported operation | 2026-08-27 |
 
-The live UCP query returned 5–20 exact available listings per SKU after Clunk's filter. Counts and methodology are recorded in [`shopify-ucp-integration.md`](./shopify-ucp-integration.md). Search results are not cached or persisted.
+The dedicated upgrade pass returned 10–20 exact available listings per SKU after Clunk's filter. Across those 10 no-store queries, 24 available neighboring results were rejected. Together with the earlier audit, the ledger now covers 17 unique exact SKUs; shared SKUs use the later count from this pass. Counts and methodology are recorded in [`shopify-ucp-integration.md`](./shopify-ucp-integration.md). Search results are not cached or persisted.
 
 ## Directly reachable during audit
 

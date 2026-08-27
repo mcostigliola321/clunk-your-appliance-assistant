@@ -69,22 +69,22 @@ function runExample(applianceId: string) {
 }
 
 describe("source-backed multi-appliance repair engine", () => {
-  it("validates 50 repair packs, explicit tiers, and four categories", () => {
+  it("validates 131 repair packs, explicit tiers, and four categories", () => {
     expect(assertCatalog(APPLIANCE_CATALOG)).toBe(APPLIANCE_CATALOG);
-    expect(APPLIANCE_CATALOG).toHaveLength(50);
-    expect(REPAIR_PACKS.size).toBe(50);
+    expect(APPLIANCE_CATALOG).toHaveLength(131);
+    expect(REPAIR_PACKS.size).toBe(131);
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.kind))).toEqual(
       new Set(["washer", "dishwasher", "dryer", "refrigerator"]),
     );
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "washer")).toHaveLength(23);
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dishwasher")).toHaveLength(9);
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dryer")).toHaveLength(9);
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "refrigerator")).toHaveLength(9);
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "washer")).toHaveLength(48);
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dishwasher")).toHaveLength(25);
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dryer")).toHaveLength(25);
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "refrigerator")).toHaveLength(33);
     expect(APPLIANCE_CATALOG.filter((entry) => entry.capability === "purchase-ready")).toHaveLength(
-      12,
+      25,
     );
     expect(APPLIANCE_CATALOG.filter((entry) => entry.capability === "guided-checks")).toHaveLength(
-      38,
+      106,
     );
     expect(
       APPLIANCE_CATALOG.filter((entry) => entry.capability === "verified-part-unavailable"),
@@ -104,10 +104,10 @@ describe("source-backed multi-appliance repair engine", () => {
         ]),
       ),
     ).toEqual({
-      washer: { purchaseReady: 3, guided: 20 },
-      dishwasher: { purchaseReady: 1, guided: 8 },
-      dryer: { purchaseReady: 4, guided: 5 },
-      refrigerator: { purchaseReady: 4, guided: 5 },
+      washer: { purchaseReady: 8, guided: 40 },
+      dishwasher: { purchaseReady: 4, guided: 21 },
+      dryer: { purchaseReady: 7, guided: 18 },
+      refrigerator: { purchaseReady: 6, guided: 27 },
     });
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.brand)).size).toBe(11);
     expect([...REPAIR_PACKS.values()].every((pack) => pack.schemaVersion === 5)).toBe(true);
@@ -137,14 +137,19 @@ describe("source-backed multi-appliance repair engine", () => {
 
   it("keeps every newly purchase-ready model on its separately evidenced exact code", () => {
     const upgraded = [
-      ["samsung-wf45t6000aw", "DC97-20621A"],
-      ["samsung-wf45b6300aw", "DC97-20621A"],
-      ["whirlpool-wed4950hw", "279570"],
-      ["maytag-med4500mw", "W11429587"],
-      ["amana-ned4655ew", "W11429587"],
-      ["whirlpool-wrs315sdhz", "EDR1RXD1"],
-      ["samsung-rf28t5001sr", "DA97-17376B"],
-      ["lg-lrflc2706s", "LT1000P"],
+      ["ge-gfw655ssvww", "WH11X39237"],
+      ["ge-gfw850spnrs", "WH11X39237"],
+      ["ge-gtw335asnww", "WH23X28418"],
+      ["hotpoint-htw265aswww", "WH23X28418"],
+      ["whirlpool-wtw5010lw", "W11399437"],
+      ["whirlpool-wdt730hamz", "W10876537"],
+      ["maytag-mdb4949skz", "W11497943"],
+      ["kitchenaid-kdfe204kps", "W11462456"],
+      ["ge-gfd55essnww", "WE01X34600"],
+      ["whirlpool-wed4815ew", "W11429587"],
+      ["whirlpool-wed5050lw", "W11429587"],
+      ["whirlpool-wrs588fihz", "EDR1RXD1"],
+      ["kitchenaid-krfc300ess", "EDR4RXD1"],
     ] as const;
 
     for (const [applianceId, sku] of upgraded) {
@@ -227,14 +232,14 @@ describe("source-backed multi-appliance repair engine", () => {
       kind: "washer",
     }).state;
     const output = getWebMcpTaskSnapshot(state);
-    expect(output.catalog.resultCount).toBe(23);
-    expect(output.catalog.results).toHaveLength(6);
-    expect(JSON.stringify(output).length).toBeLessThan(2200);
+    expect(output.catalog.resultCount).toBe(48);
+    expect(output.catalog.results).toHaveLength(4);
+    expect(JSON.stringify(output).length).toBeLessThan(3000);
     expect(output.catalog.counts).toEqual({
-      byKind: { washer: 23, dishwasher: 9, dryer: 9, refrigerator: 9 },
+      byKind: { washer: 48, dishwasher: 25, dryer: 25, refrigerator: 33 },
       byCapability: {
-        "purchase-ready": 12,
-        "guided-checks": 38,
+        "purchase-ready": 25,
+        "guided-checks": 106,
         "verified-part-unavailable": 0,
       },
     });
@@ -247,7 +252,10 @@ describe("source-backed multi-appliance repair engine", () => {
   });
 
   it("keeps expanded dishwasher and refrigerator access model-aware", () => {
-    expect(APPLIANCE_CATALOG.some((entry) => entry.id === "maytag-mdb4949skz")).toBe(false);
+    expect(getRepairPack("maytag-mdb4949skz").checks.map((check) => check.id)).toEqual([
+      "safety-check",
+      "inspect-drain-connection",
+    ]);
     expect(getRepairPack("amana-adb1400agw").checks.map((check) => check.id)).toContain(
       "inspect-sump-filter",
     );

@@ -175,5 +175,25 @@
 - Added a credential-free UCP `search_catalog` client, hosted agent profile, no-cache request policy, loading/error/empty states, exact-SKU filtering, seller-claim labels, and external cart handoff. Nearby SKUs are rejected even when returned by the catalog.
 - Verified 10 SKU queries against the live endpoint. Each returned 5–20 available exact-number offers after Clunk's filter on 2026-08-27.
 - Upgraded eight exact models after evidence review: two Samsung washers, three visible dryer catches, and three refrigerator filters. Final tiers are 12 purchase-ready, 38 guided checks, and zero verified-part-unavailable.
+
+## 2026-08-27 — Evidence-backed 131-model worktree expansion
+
+- Added 81 guided-only U.S. model families through 49 compact, schema-validated profiles. The reviewable catalog now totals 131: 48 washers, 25 dishwashers, 25 electric dryers, and 33 refrigerators across 11 brands.
+- Preserved the published purchase-ready set exactly: 12 complete engineering revisions backed by manufacturer or authorized exact-part evidence. The other 119 entries remain plainly guided-only; no adjacent revision inherits a part or Shopify query.
+- Added official model URLs, aliases/full-code rules, topology, supported symptom, retrieval date, and ledger coverage for every new entry. All 121 unique expansion model/troubleshooting endpoints returned HTTP 2xx in the final sweep.
+- Kept every new dishwasher on a conservative external sink/air-gap/drain-connection path, and represented Bosch `WTG86403UC/01` with a distinct compact-ventless topology.
+- Added capability-tier and brand filters, expanded WebMCP structured discovery output, runtime schema/source validation, focused unit/browser coverage, and documentation for the data-driven extension path.
+- Re-ran all 10 exact-SKU Shopify UCP queries without caching. Exact available counts ranged from 7 to 20; 35 neighboring listings were rejected.
+- This work remains an unpublished worktree expansion. No deploy, push, history rewrite, or universal-coverage claim was made.
 - Bumped repair packs to schema v5, added the same narrow commerce handoff to WebMCP structured output, and kept the public tool count at eight.
 - Added focused UCP parsing/request tests and desktop/mobile mocked-catalog coverage that injects a cheaper wrong SKU and proves it never reaches the UI.
+
+## 2026-08-27 — Dedicated exact-part revision pass
+
+- Upgraded 13 expansion rows at one complete engineering revision each: five washers, three dishwashers, three electric dryers, and two refrigerators. Final tiers are 25 purchase-ready and 106 guided-only.
+- Stored each exact code, exact SKU, manufacturer/authorized compatibility URL, UCP query, exact-offer count, and retrieval date on the individual model row. Shared troubleshooting profiles cannot carry a part into a sibling revision.
+- Added professional-install purchase handoffs after the safe external hose/sink checks for exact top-load washer and conservative dishwasher profiles; guided siblings still stop at service.
+- Queried 10 upgrade SKUs directly through Shopify Global Catalog/UCP with no-store semantics. All returned HTTP 200 with 10–20 exact offers; 24 available neighboring listings were rejected by the exact-number filter.
+- Added schema/runtime failures for multi-revision expansion parts, source/code mismatch, zero-offer tier inflation, and inexact Shopify queries. Added exact upgrade fixtures plus a `KDFE204KPS1` negative case proving `KDFE204KPS0` evidence does not carry over.
+- Re-audited the 13 compatibility URLs. The reviewed browser pages remained available, while command-line GETs returned storefront protection (HTTP 403); no protected status was treated as compatibility evidence.
+- This remains an unpublished, reviewable worktree. No deploy, push, rebase, amend, squash, force-push, or universal-compatibility claim was made.

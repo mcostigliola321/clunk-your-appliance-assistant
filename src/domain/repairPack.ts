@@ -192,12 +192,19 @@ function washerProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
           nextCheckId: "inspect-filter",
           focusComponentId: "pump-filter",
         })
-      : result("hose-clear", "The hose looks clear", "professional-only", {
-          focusComponentId: "drain-pump",
-          outcomeTitle: "The next check is inside the washer",
-          outcomeMessage:
-            "This model has no outside filter Clunk can safely direct you to. A technician should continue.",
-        }),
+      : entry.exactPart
+        ? result("hose-clear", "The hose looks clear", "part-candidate", {
+            focusComponentId: "drain-pump",
+            outcomeTitle: "The exact-code drain pump is the next likely part",
+            outcomeMessage:
+              "The outside hose looks clear. Clunk can show the separately verified pump for this complete model code, but internal access remains professional-only.",
+          })
+        : result("hose-clear", "The hose looks clear", "professional-only", {
+            focusComponentId: "drain-pump",
+            outcomeTitle: "The next check is inside the washer",
+            outcomeMessage:
+              "This model has no outside filter Clunk can safely direct you to. A technician should continue.",
+          }),
     result("hose-damaged", "The hose is loose or damaged", "professional-only", {
       focusComponentId: "drain-hose",
       outcomeTitle: "Do not run the washer",
@@ -327,17 +334,20 @@ function washerProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
           },
     diagramNote: "Location guide, not a service diagram. Exact panel shapes vary by model.",
     example:
-      entry.capability === "purchase-ready" &&
-      entry.exactPart &&
-      entry.profile === "washer-front-drain"
+      entry.capability === "purchase-ready" && entry.exactPart
         ? {
             title: "See a complete washer answer",
-            summary: "Clear hose + clear filter → verified drain-pump link",
+            summary:
+              entry.profile === "washer-front-drain"
+                ? "Clear hose + clear filter → verified drain-pump link"
+                : "Clear external hose → verified exact-code pump handoff",
             productCode: entry.verifiedProductCodes[0] ?? entry.model,
             observations: [
               { checkId: "safety-check", resultId: "safe-ready" },
               { checkId: "inspect-drain-hose", resultId: "hose-clear" },
-              { checkId: "inspect-filter", resultId: "filter-clear" },
+              ...(entry.profile === "washer-front-drain"
+                ? [{ checkId: "inspect-filter", resultId: "filter-clear" }]
+                : []),
             ],
           }
         : null,
@@ -385,17 +395,29 @@ function dishwasherProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
               outcomeMessage:
                 "A backed-up sink or disposal can keep the dishwasher from draining. Clear that household drain before testing again.",
             }),
-            result(
-              "connection-clear",
-              "The sink and visible hose look clear",
-              "professional-only",
-              {
-                focusComponentId: "drain-pump",
-                outcomeTitle: "Use the model-specific owner guide next",
-                outcomeMessage:
-                  "Internal filter and pump access differs by model. The official source below can confirm the next owner-safe step; Clunk will not assume a removable filter.",
-              },
-            ),
+            entry.exactPart
+              ? result(
+                  "connection-clear",
+                  "The sink and visible hose look clear",
+                  "part-candidate",
+                  {
+                    focusComponentId: "drain-pump",
+                    outcomeTitle: "The exact-code drain pump is the next likely part",
+                    outcomeMessage:
+                      "The outside drain path looks clear. Clunk can show the separately verified pump for this complete model code, but internal access remains professional-only.",
+                  },
+                )
+              : result(
+                  "connection-clear",
+                  "The sink and visible hose look clear",
+                  "professional-only",
+                  {
+                    focusComponentId: "drain-pump",
+                    outcomeTitle: "Use the model-specific owner guide next",
+                    outcomeMessage:
+                      "Internal filter and pump access differs by model. The official source below can confirm the next owner-safe step; Clunk will not assume a removable filter.",
+                  },
+                ),
             result(
               "connection-damaged",
               "The hose is loose, wet, or damaged",
@@ -448,7 +470,18 @@ function dishwasherProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
       },
       diagramNote:
         "Location guide, not a service diagram. Internal filter and pump access varies; no panel or filter removal is assumed.",
-      example: null,
+      example:
+        entry.capability === "purchase-ready" && entry.exactPart
+          ? {
+              title: "See a complete dishwasher answer",
+              summary: "Clear sink connection → verified exact-code pump handoff",
+              productCode: entry.verifiedProductCodes[0] ?? entry.model,
+              observations: [
+                { checkId: "safety-check", resultId: "safe-ready" },
+                { checkId: "inspect-drain-connection", resultId: "connection-clear" },
+              ],
+            }
+          : null,
     };
   }
 
@@ -983,6 +1016,19 @@ export function assertRepairPack(pack: RepairPack): RepairPack {
 }
 
 export function assertCatalog(entries: ApplianceCatalogEntry[]): ApplianceCatalogEntry[] {
+  const manufacturerModelHosts: Record<BrandName, string[]> = {
+    LG: ["lg.com"],
+    Samsung: ["samsung.com"],
+    GE: ["geappliances.com", "geapplianceparts.com"],
+    Hotpoint: ["geappliances.com"],
+    Whirlpool: ["whirlpool.com"],
+    Maytag: ["maytag.com"],
+    Amana: ["amana.com"],
+    Electrolux: ["electrolux.com"],
+    Frigidaire: ["frigidaire.com"],
+    Bosch: ["bosch-home.com"],
+    KitchenAid: ["kitchenaid.com"],
+  };
   const ids = new Set<string>();
   const identities = new Set<string>();
   for (const entry of entries) {
@@ -993,10 +1039,32 @@ export function assertCatalog(entries: ApplianceCatalogEntry[]): ApplianceCatalo
     identities.add(identity);
     if (entry.modelSource.kind !== "manufacturer-model")
       throw new Error(`Catalog entry ${entry.id} requires an authoritative model source.`);
+    const modelHost = new URL(entry.modelSource.url).hostname.toLowerCase();
+    if (
+      !manufacturerModelHosts[entry.brand].some(
+        (host) => modelHost === host || modelHost.endsWith(`.${host}`),
+      )
+    )
+      throw new Error(`Catalog entry ${entry.id} uses a non-manufacturer model source.`);
     if (!entry.topology || !entry.profile || entry.troubleshootingSources.length === 0)
       throw new Error(
         `Catalog entry ${entry.id} is missing topology, profile, or symptom evidence.`,
       );
+    if (!entry.productCodePrompt.trim())
+      throw new Error(`Catalog entry ${entry.id} is missing its complete-code rule.`);
+    const normalizedAliases = new Set(entry.aliases.map((alias) => alias.toUpperCase()));
+    if (!normalizedAliases.has(entry.model.toUpperCase()))
+      throw new Error(`Catalog entry ${entry.id} must include its model in aliases.`);
+    if (entry.verifiedProductCodes.some((code) => !normalizedAliases.has(code.toUpperCase())))
+      throw new Error(`Catalog entry ${entry.id} has a verified code missing from aliases.`);
+    const expectedSymptom =
+      entry.kind === "dryer"
+        ? "door-will-not-close"
+        : entry.kind === "refrigerator"
+          ? "slow-water-flow"
+          : "will-not-drain";
+    if (entry.supportedSymptom !== expectedSymptom)
+      throw new Error(`Catalog entry ${entry.id} has a category/symptom mismatch.`);
     const sources = [entry.modelSource, ...entry.troubleshootingSources];
     if (
       sources.some(
@@ -1005,14 +1073,46 @@ export function assertCatalog(entries: ApplianceCatalogEntry[]): ApplianceCatalo
       )
     )
       throw new Error(`Catalog entry ${entry.id} has an undated or insecure source.`);
+    const expectedCapability = entry.exactPart
+      ? isPurchaseReadyPart(entry.exactPart)
+        ? "purchase-ready"
+        : "verified-part-unavailable"
+      : "guided-checks";
+    if (entry.capability !== expectedCapability)
+      throw new Error(`Catalog entry ${entry.id} has an inconsistent capability tier.`);
     if (entry.exactPart) {
       const normalizedCodes = new Set(entry.verifiedProductCodes.map((code) => code.toUpperCase()));
+      if (
+        entry.verifiedProductCodes.length === 0 ||
+        entry.exactPart.compatibleProductCodes.length === 0 ||
+        !["manufacturer-part", "authorized-parts"].includes(entry.exactPart.source.kind)
+      )
+        throw new Error(`Catalog entry ${entry.id} lacks complete-code exact-part evidence.`);
       if (
         entry.exactPart.compatibleProductCodes.some(
           (code) => !normalizedCodes.has(code.toUpperCase()),
         )
       )
         throw new Error(`Catalog entry ${entry.id} has part codes outside its verified codes.`);
+      if (
+        !entry.exactPart.source.url.startsWith("https://") ||
+        !/^\d{4}-\d{2}-\d{2}$/.test(entry.exactPart.source.lastVerified) ||
+        entry.exactPart.compatibleProductCodes.some(
+          (code) =>
+            !hasExactPartNumber(entry.exactPart!.source.appliesTo, code) ||
+            !hasExactPartNumber(entry.exactPart!.compatibleModel, code),
+        )
+      )
+        throw new Error(`Catalog entry ${entry.id} has inexact revision evidence.`);
+      if (
+        entry.exactPart.commerce &&
+        (entry.exactPart.commerce.exactSku.toUpperCase() !== entry.exactPart.sku.toUpperCase() ||
+          !hasExactPartNumber(entry.exactPart.commerce.query, entry.exactPart.sku) ||
+          !Number.isInteger(entry.exactPart.commerce.offerCountAtVerification) ||
+          entry.exactPart.commerce.offerCountAtVerification <= 0 ||
+          !/^\d{4}-\d{2}-\d{2}$/.test(entry.exactPart.commerce.lastVerified))
+      )
+        throw new Error(`Catalog entry ${entry.id} has an inexact Shopify SKU query.`);
     }
   }
   return entries;

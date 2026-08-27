@@ -4,7 +4,13 @@ import { useMemo, useRef, useState } from "react";
 import { ModelNumberGuide } from "@/components/ModelNumberGuide";
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
 import { analyzeModelQuery, capabilityLabel } from "@/domain/modelSearch";
-import type { ApplianceKind, BrandName, RepairSnapshot, WasherLoadStyle } from "@/domain/types";
+import type {
+  ApplianceKind,
+  BrandName,
+  CapabilityTier,
+  RepairSnapshot,
+  WasherLoadStyle,
+} from "@/domain/types";
 
 const KINDS: Array<{ id: ApplianceKind; label: string; problem: string; glyph: string }> = [
   { id: "washer", label: "Washer", problem: "Won't drain", glyph: "01" },
@@ -37,6 +43,7 @@ export function ModelFinder({
 }: ModelFinderProps) {
   const [query, setQuery] = useState(snapshot.catalogQuery);
   const [brand, setBrand] = useState<BrandName | null>(null);
+  const [capability, setCapability] = useState<CapabilityTier | null>(null);
   const [kind, setKind] = useState<ApplianceKind>(snapshot.catalogKind ?? "dryer");
   const [showGuide, setShowGuide] = useState(false);
   const [washerStyle, setWasherStyle] = useState<WasherLoadStyle>("front-load");
@@ -46,7 +53,9 @@ export function ModelFinder({
   const brands = [...new Set(categoryEntries.map((entry) => entry.brand))];
   const flagship = categoryEntries.find((entry) => entry.id === FLAGSHIP_IDS[kind]);
   const analysis = useMemo(() => analyzeModelQuery(query, brand, kind), [brand, kind, query]);
-  const results = analysis.matches;
+  const results = capability
+    ? analysis.matches.filter((entry) => entry.capability === capability)
+    : analysis.matches;
   const tierCounts = categoryEntries.reduce(
     (counts, entry) => ({ ...counts, [entry.capability]: counts[entry.capability] + 1 }),
     { "purchase-ready": 0, "guided-checks": 0, "verified-part-unavailable": 0 },
@@ -55,6 +64,7 @@ export function ModelFinder({
   const chooseKind = (next: ApplianceKind) => {
     setKind(next);
     setBrand(null);
+    setCapability(null);
     setQuery("");
     setShowGuide(false);
     onSearch("", null, next);
@@ -211,18 +221,50 @@ export function ModelFinder({
             ? ` · ${tierCounts["verified-part-unavailable"]} checked unavailable`
             : ""}
         </p>
-        <div className="brand-filters" aria-label="Filter by brand">
-          {brands.map((name) => (
+        <div className="model-filter-group">
+          <span>Evidence level</span>
+          <div className="capability-filters" aria-label="Filter by evidence level">
             <button
-              className={brand === name ? "is-active" : ""}
+              className={capability === null ? "is-active" : ""}
               type="button"
-              aria-pressed={brand === name}
-              key={name}
-              onClick={() => setBrand(brand === name ? null : name)}
+              aria-pressed={capability === null}
+              onClick={() => setCapability(null)}
             >
-              {name}
+              All {categoryEntries.length}
             </button>
-          ))}
+            <button
+              className={capability === "purchase-ready" ? "is-active" : ""}
+              type="button"
+              aria-pressed={capability === "purchase-ready"}
+              onClick={() => setCapability("purchase-ready")}
+            >
+              Purchase-ready {tierCounts["purchase-ready"]}
+            </button>
+            <button
+              className={capability === "guided-checks" ? "is-active" : ""}
+              type="button"
+              aria-pressed={capability === "guided-checks"}
+              onClick={() => setCapability("guided-checks")}
+            >
+              Checks only {tierCounts["guided-checks"]}
+            </button>
+          </div>
+        </div>
+        <div className="model-filter-group">
+          <span>Brand</span>
+          <div className="brand-filters" aria-label="Filter by brand">
+            {brands.map((name) => (
+              <button
+                className={brand === name ? "is-active" : ""}
+                type="button"
+                aria-pressed={brand === name}
+                key={name}
+                onClick={() => setBrand(brand === name ? null : name)}
+              >
+                {name}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="model-results" id="model-suggestions" aria-live="polite">
           {results.length ? (
@@ -252,11 +294,17 @@ export function ModelFinder({
           ) : (
             <div className="model-empty">
               <strong>
-                {analysis.status === "serial-number"
-                  ? "That looks like the serial line."
-                  : "That model is not in Clunk yet."}
+                {analysis.matches.length > 0 && capability
+                  ? `No ${capabilityLabel(capability).toLowerCase()} models in this view.`
+                  : analysis.status === "serial-number"
+                    ? "That looks like the serial line."
+                    : "That model is not in Clunk yet."}
               </strong>
-              <span>{analysis.guidance}</span>
+              <span>
+                {analysis.matches.length > 0 && capability
+                  ? "Choose another evidence level or clear a brand filter."
+                  : analysis.guidance}
+              </span>
             </div>
           )}
         </div>

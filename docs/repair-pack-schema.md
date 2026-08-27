@@ -1,6 +1,6 @@
 # Repair pack extension schema
 
-Clunk keeps model evidence separate from the WebMCP registration and UI. The 50 entries live in [`src/data/applianceCatalog.ts`](../src/data/applianceCatalog.ts). Each entry is converted into a schema-v5 repair pack and checked by the catalog and pack runtime invariants in [`src/domain/repairPack.ts`](../src/domain/repairPack.ts).
+Clunk keeps model evidence separate from the WebMCP registration and UI. The 50 published-milestone entries and 81 expansion entries are composed into one 131-entry catalog by [`src/data/applianceCatalog.ts`](../src/data/applianceCatalog.ts). Thirteen expansion rows contain a separately evidenced one-revision exact-part record; the other 68 are guided-only. The added families live as compact data in [`src/data/catalogExpansion.json`](../src/data/catalogExpansion.json), are documented by [`catalog-expansion.schema.json`](./catalog-expansion.schema.json), and pass runtime source, identity, topology, symptom, alias, full-code, exact-revision, and capability validation in [`src/data/catalogExpansion.ts`](../src/data/catalogExpansion.ts). Every catalog entry is then converted into a schema-v5 repair pack and checked by the catalog and pack invariants in [`src/domain/repairPack.ts`](../src/domain/repairPack.ts).
 
 The documented [`repair-pack.schema.json`](./repair-pack.schema.json) describes the serialized extension shape:
 
@@ -25,12 +25,12 @@ A contributor must not disguise a forbidden capability under a new tag.
 ## Adding a model family
 
 1. Add the exact real brand/model family and aliases. Never use fuzzy substitution to select a repair pack.
-2. Add an official manufacturer product/support source with its applicability and verification date.
+2. Add an official manufacturer product/support source with its applicability and retrieval date. Merchant pages are never model-identity evidence.
 3. Choose the conservative load style, topology, and check profile supported by that model’s public guidance.
 4. Declare exactly one capability tier: `purchase-ready`, `guided-checks`, or `verified-part-unavailable`. Runtime validation requires its part evidence and seller state to agree.
 5. Attach source IDs to every safe check. If access differs by engineering revision, stop and request the complete code instead of guessing.
-6. Add a part only when a manufacturer or authorized-parts source maps the complete code to the exact SKU. A fixed seller handoff records its destination and dated price/availability snapshot. A Shopify handoff records provider, protocol, exact-SKU query, observed exact-offer count, and verification date. Neither handoff may create the compatibility claim; otherwise leave `parts` empty.
-7. Validate the JSON shape and runtime invariants.
+6. Add a part only when a manufacturer or authorized-parts source maps the complete code to the exact SKU. Expansion exact parts must bind to one verified code, and that same code must appear in the evidence applicability and compatible-model label; a sibling revision requires its own evidence row. A fixed seller handoff records its destination and dated price/availability snapshot. A Shopify handoff records provider, protocol, exact-SKU query, positive observed exact-offer count, and verification date. Neither handoff may create the compatibility claim; otherwise leave `parts` empty.
+7. Validate the JSON shape and runtime invariants. A reusable family profile may deduplicate safe behavior, but every model still requires its own identity, aliases/full-code rule, official URL, category/topology, symptom, and ledger record.
 8. Add search, selection, happy-path, mismatch, invalid-order, hazard, part-boundary, and WebMCP eval coverage.
 9. Update [`docs/model-source-ledger.md`](./model-source-ledger.md).
 

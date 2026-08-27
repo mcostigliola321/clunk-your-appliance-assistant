@@ -1,17 +1,17 @@
 # Category expansion plan
 
-Clunk now ships the reusable multi-appliance foundation: 50 real model families across washers, dishwashers, electric dryers, and refrigerators; 11 brands; explicit capability tiers; pack-derived tool enums; per-pack component hotspots, result effects, ranking rules, safety boundaries, sources, and optional static/live commerce handoffs. The eight public WebMCP tools did not change as categories, model discovery, and Shopify UCP offer discovery expanded.
+Clunk now ships a reusable multi-appliance foundation: 131 source-backed U.S. model families across washers, dishwashers, electric dryers, and refrigerators; 11 brands; explicit capability tiers; pack-derived tool enums; per-pack component hotspots, result effects, ranking rules, safety boundaries, sources, and optional static/live commerce handoffs. The eight public WebMCP tools did not change as categories, model discovery, evidence filters, and Shopify UCP offer discovery expanded. This is useful breadth, not exhaustive or universal compatibility.
 
-Final tier totals are 12 **Purchase-ready**, 38 **Guided checks**, and zero **Verified part unavailable**. The material model expansion added 19 entries, while a separate exact-evidence pass upgraded eight models without cloning a part claim into a neighboring revision.
+Final tier totals are 25 **Purchase-ready**, 106 **Guided checks**, and zero **Verified part unavailable**. The current worktree adds 81 entries through 49 validated family profiles, then upgrades 13 of those entries only at a separately evidenced complete engineering revision. Exact-part data lives on the model row—not the shared profile—so no neighboring revision inherits a part or Shopify query.
 
 ## Submission slice
 
-| Category       | Purchase-ready exact models | Exact outcomes                                                            | Additional breadth                                                   |
-| -------------- | --------------------------: | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| Washer         |                           3 | `WH11X39237`; `DC97-20621A` for two separately verified Samsung codes     | 23 total; nine brands; front- and top-load external paths            |
-| Dishwasher     |                           1 | `W11412291`                                                               | 9 total; documented removable-filter access or conservative boundary |
-| Electric dryer |                           4 | `WE01M10007`, `279570`, and `W11429587` for two separately verified codes | 9 total; visible door-hardware inspection only                       |
-| Refrigerator   |                           4 | `XWFE`, `EDR1RXD1`, `DA97-17376B`, `LT1000P`                              | 9 total; model guidance controls location/mechanism assumptions      |
+| Category       | Purchase-ready exact models | Exact outcomes                                           | Additional breadth                                                            |
+| -------------- | --------------------------: | -------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Washer         |                           8 | `WH11X39237`, `WH23X28418`, `W11399437`, `DC97-20621A`   | 48 total; nine brands; front- and top-load external paths                     |
+| Dishwasher     |                           4 | `W11412291`, `W10876537`, `W11497943`, `W11462456`       | 25 total; new exact pumps retain the conservative sink-then-service boundary  |
+| Electric dryer |                           7 | `WE01M10007`, `WE01X34600`, `279570`, `W11429587`        | 25 total; visible door-hardware inspection only; Bosch ventless kept distinct |
+| Refrigerator   |                           6 | `XWFE`, `EDR1RXD1`, `EDR4RXD1`, `DA97-17376B`, `LT1000P` | 33 total; model guidance controls location/mechanism assumptions              |
 
 “Purchase-ready” means that a complete product code maps to a manufacturer or authorized-parts source and a dated seller or Shopify UCP handoff. It does not mean Clunk confirms the diagnosis, guarantees stock, certifies a merchant claim, or completes payment. “Guided checks only” is visible before model selection and never silently borrows another model's part.
 
@@ -26,11 +26,13 @@ All of these remain static data and deterministic state transitions.
 
 ## Expansion effort observed
 
-- Nine of the 19 additions were mechanically straightforward after official model verification: four hose-only washer paths and five visible dryer-door paths fit existing conservative profiles.
-- Ten required topology/access evidence: each dishwasher needed documented user-filter access, while each refrigerator needed its filter location/mechanism checked. The Maytag `MDB4949SKZ` candidate was removed because its chopper-style filtration did not support the existing removable-filter instruction; Amana `ADB1400AGW` replaced it with an official triple-filter manual.
-- Eight models were upgraded only after complete-code-to-SKU evidence was located. The live Shopify lookup was mechanically easy once an exact SKU existed; compatibility research remained the expensive step. Ten unique SKU queries returned 5–20 exact available offers during the 2026-08-27 audit.
+- The 81 additions share 49 source-backed profiles. Each model still owns its official URL, aliases, complete-code rule, category, topology, symptom, and retrieval record; the profile only deduplicates conservative repair behavior and source metadata.
+- All new dishwashers use the sink/air-gap/drain-connection check. The three exact-code upgrades can reveal their verified professional-install pump after that external path is clear; guided entries still stop at service. No removable-filter instruction was generalized across families.
+- Bosch `WTG86403UC/01` retains a distinct compact ventless topology even though its only supported action is the same visible door-hardware check used by vented electric dryers.
+- Thirteen additions became purchase-ready only after an exact complete-code-to-SKU mapping was found on a manufacturer or authorized-parts page. The other 68 additions remain guided-only; ambiguous Samsung/LG pump pages, refrigerator filter pages with multiple candidates, and Bosch revision conflicts were not promoted.
+- Ten no-store Shopify queries for the upgrade SKUs returned 10–20 available exact-number offers during the 2026-08-27 pass. Clunk rejected 24 available neighboring listings before recording those counts.
 
-The entry factory, explicit capability field, schema-v5 pack generator, catalog validator, and reusable UCP descriptor mean the next catalog batch is primarily data work after the evidence review. Brand unions and prose counts still require an intentional review so public claims cannot drift silently.
+The JSON expansion file, documented JSON Schema, runtime validator, explicit capability field, schema-v5 pack generator, catalog validator, and reusable UCP descriptor make the next catalog batch primarily data work after evidence review. Public counts are derived in the app and covered by tests; prose counts still require an intentional review so documentation cannot drift silently.
 
 ## What requires explicit product and safety review
 
@@ -47,7 +49,7 @@ Clunk will not add gas work, live electrical tests, refrigerant or sealed-compre
 
 ## Recommended next expansion
 
-1. Verify purchase-ready parts for one guided model at a time, prioritizing common U.S. engineering revisions.
+1. Continue one complete engineering revision at a time, prioritizing the remaining Samsung/LG washer, Maytag/Amana refrigerator, and Bosch filter gaps only when one authoritative page resolves one exact SKU.
 2. Add model-specific visual manifests only where the general category location guide is materially misleading.
 3. Add one additional safe symptom per category after source and safety review—for example, a washer door-strike or dishwasher rack-wheel problem rather than energized/internal diagnosis.
 4. Automate source-link and exact-SKU offer re-verification without caching Shopify results or changing the static judge experience.

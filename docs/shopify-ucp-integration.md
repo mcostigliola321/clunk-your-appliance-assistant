@@ -44,15 +44,24 @@ Anonymous Global Catalog searches returned the following counts of available lis
 
 | Exact SKU     | Exact available offers observed |
 | ------------- | ------------------------------: |
-| `WH11X39237`  |                               6 |
-| `W11412291`   |                               7 |
-| `WE01M10007`  |                              14 |
-| `XWFE`        |                              20 |
-| `DC97-20621A` |                              17 |
+| `WH11X39237`  |                              19 |
+| `WH23X28418`  |                              20 |
+| `W11399437`   |                              20 |
+| `W11412291`   |                               9 |
+| `W10876537`   |                              20 |
+| `W11497943`   |                              20 |
+| `W11462456`   |                              13 |
+| `WE01M10007`  |                              19 |
+| `WE01X34600`  |                              10 |
+| `XWFE`        |                              19 |
+| `DC97-20621A` |                              19 |
 | `279570`      |                              20 |
-| `W11429587`   |                               5 |
+| `W11429587`   |                              13 |
 | `EDR1RXD1`    |                              20 |
-| `DA97-17376B` |                              12 |
+| `EDR4RXD1`    |                              20 |
+| `DA97-17376B` |                              20 |
 | `LT1000P`     |                              20 |
+
+The dedicated upgrade batch issued 10 fresh no-store exact-SKU queries. All returned HTTP 200 and 10–20 qualifying offers. Clunk rejected 24 available neighboring listings: seven for `W11462456`, seven for `W11429587`, ten for `WE01X34600`, and none for the other seven upgrade SKUs. The table retains the earlier same-day counts for unchanged SKUs and uses the later observation for the three shared SKUs (`WH11X39237`, `W11429587`, and `EDR1RXD1`). No catalog response was cached or persisted.
 
 The catalog client, exact-SKU filter, schema validation, WebMCP handoff, retry state, and nearby-SKU rejection are covered by automated tests. Browser tests intercept the external request with an exact result plus a cheaper wrong SKU and verify that only the exact result reaches the screen.

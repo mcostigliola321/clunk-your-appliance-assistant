@@ -12,13 +12,13 @@ A judge should understand the product within five seconds and reach a real selle
 
 ## In scope
 
-- 50 source-backed U.S. model families across washers, dishwashers, electric dryers, and refrigerators.
+- 131 source-backed U.S. model families: 48 washers, 25 dishwashers, 25 electric dryers, and 33 refrigerators. This is bounded breadth, not exhaustive or universal compatibility.
 - Four purchase-ready flagships:
   - GE `GFW550SSN0WW` will not drain → `WH11X39237` drain pump/filter assembly.
   - Whirlpool `WDT750SAKZ1` will not drain → `W11412291` drain pump.
   - GE `GTD42EASJ2WW` door will not stay closed → `WE01M10007` visible strike.
   - GE `GSS25GYPFS` slow water flow → `XWFE` filter.
-- Eight more purchase-ready exact codes and 38 guided-only models labeled by evidence depth before selection; unsupported part links are never implied.
+- Twenty-one more purchase-ready exact revisions and 106 guided-only models labeled by evidence depth before selection; unsupported part links are never implied.
 - Original category-specific location guides with keyboard-accessible hotspots and persistent “not a service diagram” language.
 - Safe, bounded checks with deterministic order, result effects, likely-cause ranking, stopping conditions, and escalation.
 - Exact part name, SKU, compatible complete model code, location, source, Shopify UCP live offers, and external merchant cart when evidence permits.

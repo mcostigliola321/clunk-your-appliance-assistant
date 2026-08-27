@@ -74,13 +74,31 @@ describe("Clunk repair bench", () => {
     expect(
       screen.getByRole("heading", { name: "Tell Clunk what broke. Get the part to buy." }),
     ).toBeVisible();
-    expect(screen.getByText("50 supported models")).toBeVisible();
+    expect(screen.getByText("131 supported models")).toBeVisible();
     expect(screen.getByRole("button", { name: /01 Washer/ })).toBeVisible();
     expect(screen.getByRole("button", { name: /02 Dishwasher/ })).toBeVisible();
     expect(screen.getByRole("button", { name: /03 Electric dryer/ })).toBeVisible();
     expect(screen.getByRole("button", { name: /04 Refrigerator/ })).toBeVisible();
     expect(screen.getByRole("button", { name: "See the full answer" })).toBeVisible();
     expect(screen.getByRole("button", { name: /Find my model number/ })).toBeVisible();
+  });
+
+  it("filters the expanded catalog by honest evidence tier and brand", async () => {
+    const user = userEvent.setup();
+    renderClunk();
+    await user.click(
+      screen.getByText("Browse 25 supported electric dryer models", { exact: false }),
+    );
+    await user.click(screen.getByRole("button", { name: "Checks only 18" }));
+    await user.click(screen.getByRole("button", { name: "Bosch" }));
+    expect(
+      screen.getByRole("button", { name: /Bosch WTG86403UC\/01 Guided checks only/ }),
+    ).toBeVisible();
+    expect(
+      screen.queryByRole("button", { name: /GE GTD42EASJ2WW Purchase-ready/ }),
+    ).not.toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Purchase-ready 7" }));
+    expect(screen.getByText("No purchase-ready models in this view.")).toBeVisible();
   });
 
   it("makes model-label discovery a complete manual path", async () => {

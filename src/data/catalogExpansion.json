@@ -1,0 +1,1877 @@
+{
+  "schemaVersion": 1,
+  "retrievedOn": "2026-08-27",
+  "profiles": {
+    "ge-front-washer": {
+      "brand": "GE",
+      "kind": "washer",
+      "label": "front-load washer",
+      "productCodePrompt": "Enter the complete engineering model from the rating label; do not infer a revision from the public family code.",
+      "topology": "hose-only",
+      "profile": "washer-hose-only",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "front-load",
+      "checkProfile": "hose-then-service",
+      "troubleshootingSources": [
+        {
+          "id": "exp-ge-front-washer-drain",
+          "title": "GE front-load washer will-not-drain guidance",
+          "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=23081",
+          "publisher": "GE Appliances",
+          "appliesTo": "GE front-load washers"
+        }
+      ]
+    },
+    "ge-top-washer": {
+      "brand": "GE",
+      "kind": "washer",
+      "label": "top-load washer",
+      "productCodePrompt": "Enter the complete engineering model from the rating label; do not infer a revision from the public family code.",
+      "topology": "washer-top-load",
+      "profile": "washer-hose-only",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "top-load",
+      "checkProfile": "hose-then-service",
+      "troubleshootingSources": [
+        {
+          "id": "exp-ge-top-washer-drain",
+          "title": "GE top-load washer will-not-drain guidance",
+          "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=23080",
+          "publisher": "GE Appliances",
+          "appliesTo": "GE top-load washers"
+        }
+      ]
+    },
+    "hotpoint-top-washer": {
+      "brand": "Hotpoint",
+      "kind": "washer",
+      "label": "top-load washer",
+      "productCodePrompt": "Enter the complete engineering model from the rating label; do not infer a revision from the public family code.",
+      "topology": "washer-top-load",
+      "profile": "washer-hose-only",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "top-load",
+      "checkProfile": "hose-then-service",
+      "troubleshootingSources": [
+        {
+          "id": "exp-hotpoint-top-washer-drain",
+          "title": "GE Appliances top-load washer will-not-drain guidance",
+          "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=23080",
+          "publisher": "GE Appliances",
+          "appliesTo": "Hotpoint top-load washers"
+        }
+      ]
+    },
+    "whirlpool-front-washer": {
+      "brand": "Whirlpool",
+      "kind": "washer",
+      "label": "front-load washer",
+      "productCodePrompt": "Enter the complete model and final engineering suffix or digit from the rating label.",
+      "topology": "hose-only",
+      "profile": "washer-hose-only",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "front-load",
+      "checkProfile": "hose-then-service",
+      "troubleshootingSources": [
+        {
+          "id": "exp-whirlpool-front-washer-drain",
+          "title": "Whirlpool front-load washer not-draining guidance",
+          "url": "https://producthelp.whirlpool.com/Laundry/Washers/Front_Load_Washers/Cycle_Concerns/Not_Draining/Not_Draining_-_Front_Load_Washer",
+          "publisher": "Whirlpool",
+          "appliesTo": "Whirlpool front-load washers"
+        }
+      ]
+    },
+    "whirlpool-top-washer": {
+      "brand": "Whirlpool",
+      "kind": "washer",
+      "label": "top-load washer",
+      "productCodePrompt": "Enter the complete model and final engineering suffix or digit from the rating label.",
+      "topology": "washer-top-load",
+      "profile": "washer-hose-only",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "top-load",
+      "checkProfile": "hose-then-service",
+      "troubleshootingSources": [
+        {
+          "id": "exp-whirlpool-top-washer-drain",
+          "title": "Whirlpool top-load washer not-draining guidance",
+          "url": "https://producthelp.whirlpool.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Draining_-_Washer",
+          "publisher": "Whirlpool",
+          "appliesTo": "Whirlpool top-load washers"
+        }
+      ]
+    },
+    "maytag-front-washer": {
+      "brand": "Maytag",
+      "kind": "washer",
+      "label": "front-load washer",
+      "productCodePrompt": "Enter the complete model and final engineering suffix or digit from the rating label.",
+      "topology": "hose-only",
+      "profile": "washer-hose-only",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "front-load",
+      "checkProfile": "hose-then-service",
+      "troubleshootingSources": [
+        {
+          "id": "exp-maytag-front-washer-drain",
+          "title": "Maytag front-load washer not-draining guidance",
+          "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Cycle_Concerns/Not_Draining/Not_Draining_-_Front_Load_Washer",
+          "publisher": "Maytag",
+          "appliesTo": "Maytag front-load washers"
+        }
+      ]
+    },
+    "maytag-top-washer": {
+      "brand": "Maytag",
+      "kind": "washer",
+      "label": "top-load washer",
+      "productCodePrompt": "Enter the complete model and final engineering suffix or digit from the rating label.",
+      "topology": "washer-top-load",
+      "profile": "washer-hose-only",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "top-load",
+      "checkProfile": "hose-then-service",
+      "troubleshootingSources": [
+        {
+          "id": "exp-maytag-top-washer-drain",
+          "title": "Maytag washer not-draining or spinning guidance",
+          "url": "https://producthelp.maytag.com/Laundry/Washers/Product_Info/Washer_Product_Assistance/Washer_Not_Draining_or_Spinning%3F_Troubleshooting_Guide",
+          "publisher": "Maytag",
+          "appliesTo": "Maytag top-load washers"
+        }
+      ]
+    },
+    "amana-front-washer": {
+      "brand": "Amana",
+      "kind": "washer",
+      "label": "front-load washer",
+      "productCodePrompt": "Enter the complete model and final engineering suffix or digit from the rating label.",
+      "topology": "hose-only",
+      "profile": "washer-hose-only",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "front-load",
+      "checkProfile": "hose-then-service",
+      "troubleshootingSources": [
+        {
+          "id": "exp-amana-front-washer-drain",
+          "title": "Amana front-load washer not-draining guidance",
+          "url": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Cycle_Concerns/Not_Draining/Not_Draining_-_Front_Load_Washer",
+          "publisher": "Amana",
+          "appliesTo": "Amana front-load washers"
+        }
+      ]
+    },
+    "samsung-front-washer": {
+      "brand": "Samsung",
+      "kind": "washer",
+      "label": "front-load washer",
+      "productCodePrompt": "Enter the complete Samsung model code exactly as printed, including any slash or country suffix.",
+      "topology": "front-filter",
+      "profile": "washer-front-drain",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "front-load",
+      "checkProfile": "filter-access",
+      "troubleshootingSources": [
+        {
+          "id": "exp-samsung-washer-drain",
+          "title": "Samsung washing machine will-not-drain guidance",
+          "url": "https://www.samsung.com/us/support/troubleshoot/TSG10007110/",
+          "publisher": "Samsung",
+          "appliesTo": "Samsung washers"
+        },
+        {
+          "id": "exp-samsung-washer-filter",
+          "title": "Samsung washer pump-filter cleaning",
+          "url": "https://www.samsung.com/us/support/answer/ANS10003197/",
+          "publisher": "Samsung",
+          "appliesTo": "Samsung front-load washers with the documented access door"
+        }
+      ]
+    },
+    "samsung-top-washer": {
+      "brand": "Samsung",
+      "kind": "washer",
+      "label": "top-load washer",
+      "productCodePrompt": "Enter the complete Samsung model code exactly as printed, including any slash or country suffix.",
+      "topology": "washer-top-load",
+      "profile": "washer-hose-only",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "top-load",
+      "checkProfile": "hose-then-service",
+      "troubleshootingSources": [
+        {
+          "id": "exp-samsung-top-washer-drain",
+          "title": "Samsung washing machine will-not-drain guidance",
+          "url": "https://www.samsung.com/us/support/troubleshoot/TSG10007110/",
+          "publisher": "Samsung",
+          "appliesTo": "Samsung top-load washers"
+        }
+      ]
+    },
+    "lg-front-washer": {
+      "brand": "LG",
+      "kind": "washer",
+      "label": "front-load washer",
+      "productCodePrompt": "Enter the complete dotted LG product suffix exactly as printed; neighboring suffixes are separate revisions.",
+      "topology": "front-filter",
+      "profile": "washer-front-drain",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "front-load",
+      "checkProfile": "filter-access",
+      "troubleshootingSources": [
+        {
+          "id": "exp-lg-front-washer-drain",
+          "title": "LG washer water-not-draining guidance",
+          "url": "https://www.lg.com/us/support/help-library/lg-washing-machine-water-not-draining--20154726902590",
+          "publisher": "LG",
+          "appliesTo": "LG front-load washers"
+        },
+        {
+          "id": "exp-lg-front-washer-filter",
+          "title": "LG drain-pump filter cleaning",
+          "url": "https://www.lg.com/us/support/help-library/lg-washer-how-to-clean-the-drain-pump-filter--20150206838321",
+          "publisher": "LG",
+          "appliesTo": "LG front-load washers with the documented filter door"
+        }
+      ]
+    },
+    "lg-top-washer": {
+      "brand": "LG",
+      "kind": "washer",
+      "label": "top-load washer",
+      "productCodePrompt": "Enter the complete dotted LG product suffix exactly as printed; neighboring suffixes are separate revisions.",
+      "topology": "washer-top-load",
+      "profile": "washer-hose-only",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "top-load",
+      "checkProfile": "hose-then-service",
+      "troubleshootingSources": [
+        {
+          "id": "exp-lg-top-washer-drain",
+          "title": "LG top-load washer OE/no-drain guidance",
+          "url": "https://www.lg.com/us/support/help-library/lg-top-load-washer-troubleshooting-an-oe-error-code-CT00000305-1425330996723",
+          "publisher": "LG",
+          "appliesTo": "LG top-load washers"
+        }
+      ]
+    },
+    "electrolux-front-washer": {
+      "brand": "Electrolux",
+      "kind": "washer",
+      "label": "front-load washer",
+      "productCodePrompt": "Enter the complete product number or PNC from the rating label; do not infer it from the public model family.",
+      "topology": "hose-only",
+      "profile": "washer-hose-only",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "front-load",
+      "checkProfile": "hose-then-service",
+      "troubleshootingSources": [
+        {
+          "id": "exp-electrolux-front-washer-drain",
+          "title": "Electrolux E21 long pump-out guidance",
+          "url": "https://owner.electrolux.com/support-articles/article/1820072-laundry-front-loading-washer-displaying-error-code-e21-long-pump-out-time-",
+          "publisher": "Electrolux",
+          "appliesTo": "Electrolux front-load washers"
+        }
+      ]
+    },
+    "ge-french-refrigerator": {
+      "brand": "GE",
+      "kind": "refrigerator",
+      "label": "French-door refrigerator",
+      "productCodePrompt": "Enter the complete engineering model from the fresh-food rating label.",
+      "topology": "french-door-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-ge-refrigerator-water",
+          "title": "GE refrigerator water-filter guidance",
+          "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17409",
+          "publisher": "GE Appliances",
+          "appliesTo": "GE refrigerators with a water dispenser"
+        }
+      ]
+    },
+    "ge-side-refrigerator": {
+      "brand": "GE",
+      "kind": "refrigerator",
+      "label": "side-by-side refrigerator",
+      "productCodePrompt": "Enter the complete engineering model from the fresh-food rating label.",
+      "topology": "side-by-side-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-ge-side-refrigerator-water",
+          "title": "GE refrigerator water-filter guidance",
+          "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17409",
+          "publisher": "GE Appliances",
+          "appliesTo": "GE side-by-side refrigerators with a water dispenser"
+        }
+      ]
+    },
+    "whirlpool-side-refrigerator": {
+      "brand": "Whirlpool",
+      "kind": "refrigerator",
+      "label": "side-by-side refrigerator",
+      "productCodePrompt": "Enter the complete model including its final engineering digits from the fresh-food rating label.",
+      "topology": "side-by-side-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-whirlpool-refrigerator-water",
+          "title": "Whirlpool water-filter replacement guidance",
+          "url": "https://producthelp.whirlpool.com/Refrigeration/Water_Filter_Information/Product_Assistance/Does_the_Water_Filter_Need_to_be_Replaced%253F",
+          "publisher": "Whirlpool",
+          "appliesTo": "Whirlpool refrigerators with a water filter"
+        }
+      ]
+    },
+    "whirlpool-french-refrigerator": {
+      "brand": "Whirlpool",
+      "kind": "refrigerator",
+      "label": "French-door refrigerator",
+      "productCodePrompt": "Enter the complete model including its final engineering digits from the fresh-food rating label.",
+      "topology": "french-door-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-whirlpool-french-refrigerator-water",
+          "title": "Whirlpool water-filter replacement guidance",
+          "url": "https://producthelp.whirlpool.com/Refrigeration/Water_Filter_Information/Product_Assistance/Does_the_Water_Filter_Need_to_be_Replaced%253F",
+          "publisher": "Whirlpool",
+          "appliesTo": "Whirlpool French-door refrigerators with a water filter"
+        }
+      ]
+    },
+    "maytag-side-refrigerator": {
+      "brand": "Maytag",
+      "kind": "refrigerator",
+      "label": "side-by-side refrigerator",
+      "productCodePrompt": "Enter the complete model including its final engineering digits from the fresh-food rating label.",
+      "topology": "side-by-side-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-maytag-refrigerator-water",
+          "title": "Maytag water-filter replacement guidance",
+          "url": "https://producthelp.maytag.com/Refrigeration/Water_Filter_Information/Product_Assistance/Does_the_Water_Filter_Need_to_be_Replaced%3F",
+          "publisher": "Maytag",
+          "appliesTo": "Maytag refrigerators with a water filter"
+        }
+      ]
+    },
+    "maytag-french-refrigerator": {
+      "brand": "Maytag",
+      "kind": "refrigerator",
+      "label": "French-door refrigerator",
+      "productCodePrompt": "Enter the complete model including its final engineering digits from the fresh-food rating label.",
+      "topology": "french-door-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-maytag-french-refrigerator-water",
+          "title": "Maytag water-filter replacement guidance",
+          "url": "https://producthelp.maytag.com/Refrigeration/Water_Filter_Information/Product_Assistance/Does_the_Water_Filter_Need_to_be_Replaced%3F",
+          "publisher": "Maytag",
+          "appliesTo": "Maytag French-door refrigerators with a water filter"
+        }
+      ]
+    },
+    "kitchenaid-french-refrigerator": {
+      "brand": "KitchenAid",
+      "kind": "refrigerator",
+      "label": "French-door refrigerator",
+      "productCodePrompt": "Enter the complete model including its final engineering digits from the fresh-food rating label.",
+      "topology": "french-door-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-kitchenaid-refrigerator-water",
+          "title": "KitchenAid water-filter replacement guidance",
+          "url": "https://producthelp.kitchenaid.com/Refrigeration/Water_Filter_Information/Product_Assistance/Does_the_Water_Filter_Need_to_be_Replaced%253F",
+          "publisher": "KitchenAid",
+          "appliesTo": "KitchenAid refrigerators with a water filter"
+        }
+      ]
+    },
+    "amana-side-refrigerator": {
+      "brand": "Amana",
+      "kind": "refrigerator",
+      "label": "side-by-side refrigerator",
+      "productCodePrompt": "Enter the complete model including its final engineering digits from the fresh-food rating label.",
+      "topology": "side-by-side-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-amana-refrigerator-water",
+          "title": "Amana water-filter replacement guidance",
+          "url": "https://producthelp.amana.com/Refrigeration/Water_Filter/Installation_Support/When_to_Change_the_Water_Filter",
+          "publisher": "Amana",
+          "appliesTo": "Amana side-by-side refrigerators with a water filter"
+        }
+      ]
+    },
+    "samsung-side-refrigerator": {
+      "brand": "Samsung",
+      "kind": "refrigerator",
+      "label": "side-by-side refrigerator",
+      "productCodePrompt": "Enter the complete Samsung model code including the slash suffix from the fresh-food rating label.",
+      "topology": "side-by-side-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-samsung-refrigerator-water",
+          "title": "Samsung refrigerator water-dispenser troubleshooting",
+          "url": "https://www.samsung.com/us/support/troubleshoot/TSG10003791/",
+          "publisher": "Samsung",
+          "appliesTo": "Samsung refrigerators with a water dispenser"
+        }
+      ]
+    },
+    "samsung-french-refrigerator": {
+      "brand": "Samsung",
+      "kind": "refrigerator",
+      "label": "French-door refrigerator",
+      "productCodePrompt": "Enter the complete Samsung model code including the slash suffix from the fresh-food rating label.",
+      "topology": "french-door-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-samsung-french-refrigerator-water",
+          "title": "Samsung refrigerator water-dispenser troubleshooting",
+          "url": "https://www.samsung.com/us/support/troubleshoot/TSG10003791/",
+          "publisher": "Samsung",
+          "appliesTo": "Samsung French-door refrigerators with a water dispenser"
+        }
+      ]
+    },
+    "lg-french-refrigerator": {
+      "brand": "LG",
+      "kind": "refrigerator",
+      "label": "French-door refrigerator",
+      "productCodePrompt": "Enter the complete dotted LG product suffix; each suffix remains a separate engineering revision.",
+      "topology": "french-door-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-lg-refrigerator-water",
+          "title": "LG refrigerator slow-water guidance",
+          "url": "https://www.lg.com/us/support/help-library/lg-refrigerator-water-dispensing-slowly-CT10000021-1337887886789",
+          "publisher": "LG",
+          "appliesTo": "LG refrigerators with a water dispenser"
+        }
+      ]
+    },
+    "lg-side-refrigerator": {
+      "brand": "LG",
+      "kind": "refrigerator",
+      "label": "side-by-side refrigerator",
+      "productCodePrompt": "Enter the complete dotted LG product suffix; each suffix remains a separate engineering revision.",
+      "topology": "side-by-side-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-lg-side-refrigerator-water",
+          "title": "LG refrigerator slow-water guidance",
+          "url": "https://www.lg.com/us/support/help-library/lg-refrigerator-water-dispensing-slowly-CT10000021-1337887886789",
+          "publisher": "LG",
+          "appliesTo": "LG side-by-side refrigerators with a water dispenser"
+        }
+      ]
+    },
+    "frigidaire-french-refrigerator": {
+      "brand": "Frigidaire",
+      "kind": "refrigerator",
+      "label": "French-door refrigerator",
+      "productCodePrompt": "Enter the complete product number or PNC from the fresh-food rating label.",
+      "topology": "french-door-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-frigidaire-refrigerator-water",
+          "title": "Frigidaire refrigerator dispenser troubleshooting",
+          "url": "https://owner.frigidaire.com/support-articles/article/1853039-what-should-i-do-if-the-dispenser-on-my-refrigerator-is-not-dispensing-water-",
+          "publisher": "Frigidaire",
+          "appliesTo": "Frigidaire refrigerators with a water dispenser"
+        }
+      ]
+    },
+    "frigidaire-side-refrigerator": {
+      "brand": "Frigidaire",
+      "kind": "refrigerator",
+      "label": "side-by-side refrigerator",
+      "productCodePrompt": "Enter the complete product number or PNC from the fresh-food rating label.",
+      "topology": "side-by-side-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-frigidaire-side-refrigerator-water",
+          "title": "Frigidaire refrigerator dispenser troubleshooting",
+          "url": "https://owner.frigidaire.com/support-articles/article/1853039-what-should-i-do-if-the-dispenser-on-my-refrigerator-is-not-dispensing-water-",
+          "publisher": "Frigidaire",
+          "appliesTo": "Frigidaire side-by-side refrigerators with a water dispenser"
+        }
+      ]
+    },
+    "electrolux-french-refrigerator": {
+      "brand": "Electrolux",
+      "kind": "refrigerator",
+      "label": "French-door refrigerator",
+      "productCodePrompt": "Enter the complete product number or PNC from the fresh-food rating label.",
+      "topology": "french-door-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-electrolux-refrigerator-water",
+          "title": "Electrolux refrigerator dispenser troubleshooting",
+          "url": "https://owner.electrolux.com/support-articles/article/1853039-what-should-i-do-if-the-dispenser-on-my-refrigerator-is-not-dispensing-water-",
+          "publisher": "Electrolux",
+          "appliesTo": "Electrolux refrigerators with a water dispenser"
+        }
+      ]
+    },
+    "bosch-french-refrigerator": {
+      "brand": "Bosch",
+      "kind": "refrigerator",
+      "label": "French-door refrigerator",
+      "productCodePrompt": "Enter the complete Bosch E-Nr including the slash and two-digit revision; each revision remains separate.",
+      "topology": "french-door-refrigerator",
+      "profile": "refrigerator-water-filter",
+      "supportedSymptom": "slow-water-flow",
+      "troubleshootingSources": [
+        {
+          "id": "exp-bosch-refrigerator-water",
+          "title": "Bosch refrigerator water-filter replacement guidance",
+          "url": "https://www.bosch-home.com/us/experience-bosch/heart-of-the-home/tips-and-tricks/refrigeration-tips/replace-water-filter",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch refrigerators with a water filter"
+        }
+      ]
+    },
+    "ge-dishwasher": {
+      "brand": "GE",
+      "kind": "dishwasher",
+      "label": "24-inch built-in dishwasher",
+      "productCodePrompt": "Enter the complete door-label engineering model; do not synthesize an inserted revision digit.",
+      "topology": "dishwasher",
+      "profile": "dishwasher-drain",
+      "supportedSymptom": "will-not-drain",
+      "troubleshootingSources": [
+        {
+          "id": "exp-ge-dishwasher-drain",
+          "title": "GE dishwasher not-draining guidance",
+          "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=16240",
+          "publisher": "GE Appliances",
+          "appliesTo": "GE built-in dishwashers"
+        }
+      ]
+    },
+    "hotpoint-dishwasher": {
+      "brand": "Hotpoint",
+      "kind": "dishwasher",
+      "label": "24-inch built-in dishwasher",
+      "productCodePrompt": "Enter the complete door-label engineering model; do not synthesize an inserted revision digit.",
+      "topology": "dishwasher",
+      "profile": "dishwasher-drain",
+      "supportedSymptom": "will-not-drain",
+      "troubleshootingSources": [
+        {
+          "id": "exp-hotpoint-dishwasher-drain",
+          "title": "GE Appliances dishwasher not-draining guidance",
+          "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=16240",
+          "publisher": "GE Appliances",
+          "appliesTo": "Hotpoint built-in dishwashers"
+        }
+      ]
+    },
+    "whirlpool-dishwasher": {
+      "brand": "Whirlpool",
+      "kind": "dishwasher",
+      "label": "24-inch built-in dishwasher",
+      "productCodePrompt": "Enter the complete door-label model including the trailing engineering digit.",
+      "topology": "dishwasher",
+      "profile": "dishwasher-drain",
+      "supportedSymptom": "will-not-drain",
+      "troubleshootingSources": [
+        {
+          "id": "exp-whirlpool-dishwasher-drain",
+          "title": "Whirlpool dishwasher water-remains guidance",
+          "url": "https://producthelp.whirlpool.com/Dishwashers/Dishwasher/Operation/Not_Draining%2F%2FWater_Remains",
+          "publisher": "Whirlpool",
+          "appliesTo": "Whirlpool built-in dishwashers"
+        }
+      ]
+    },
+    "maytag-dishwasher": {
+      "brand": "Maytag",
+      "kind": "dishwasher",
+      "label": "24-inch built-in dishwasher",
+      "productCodePrompt": "Enter the complete door-label model including the trailing engineering digit.",
+      "topology": "dishwasher",
+      "profile": "dishwasher-drain",
+      "supportedSymptom": "will-not-drain",
+      "troubleshootingSources": [
+        {
+          "id": "exp-maytag-dishwasher-drain",
+          "title": "Maytag dishwasher not-draining guidance",
+          "url": "https://producthelp.maytag.com/Dishwashers/Product_Info/Dishwasher_Product_Assistance/Dishwasher_Not_Draining",
+          "publisher": "Maytag",
+          "appliesTo": "Maytag built-in dishwashers"
+        }
+      ]
+    },
+    "kitchenaid-dishwasher": {
+      "brand": "KitchenAid",
+      "kind": "dishwasher",
+      "label": "24-inch built-in dishwasher",
+      "productCodePrompt": "Enter the complete door-label model including the trailing engineering digit.",
+      "topology": "dishwasher",
+      "profile": "dishwasher-drain",
+      "supportedSymptom": "will-not-drain",
+      "troubleshootingSources": [
+        {
+          "id": "exp-kitchenaid-dishwasher-drain",
+          "title": "KitchenAid dishwasher water-remains guidance",
+          "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Operation/Not_Draining%2F%2FWater_Remains",
+          "publisher": "KitchenAid",
+          "appliesTo": "KitchenAid built-in dishwashers"
+        }
+      ]
+    },
+    "samsung-dishwasher": {
+      "brand": "Samsung",
+      "kind": "dishwasher",
+      "label": "24-inch built-in dishwasher",
+      "productCodePrompt": "Enter the complete Samsung model code including its slash suffix; other country suffixes are separate revisions.",
+      "topology": "dishwasher",
+      "profile": "dishwasher-drain",
+      "supportedSymptom": "will-not-drain",
+      "troubleshootingSources": [
+        {
+          "id": "exp-samsung-dishwasher-drain",
+          "title": "Samsung dishwasher not-draining guidance",
+          "url": "https://www.samsung.com/us/support/troubleshoot/TSG10004498/",
+          "publisher": "Samsung",
+          "appliesTo": "Samsung built-in dishwashers"
+        }
+      ]
+    },
+    "lg-dishwasher": {
+      "brand": "LG",
+      "kind": "dishwasher",
+      "label": "24-inch built-in dishwasher",
+      "productCodePrompt": "Enter the complete dotted LG product suffix; other suffixes are separate revisions.",
+      "topology": "dishwasher",
+      "profile": "dishwasher-drain",
+      "supportedSymptom": "will-not-drain",
+      "troubleshootingSources": [
+        {
+          "id": "exp-lg-dishwasher-drain",
+          "title": "LG dishwasher not-draining guidance",
+          "url": "https://www.lg.com/us/support/help-library/how-to-fix-an-lg-dishwasher-that-is-not-draining--20155352254013",
+          "publisher": "LG",
+          "appliesTo": "LG built-in dishwashers"
+        }
+      ]
+    },
+    "frigidaire-dishwasher": {
+      "brand": "Frigidaire",
+      "kind": "dishwasher",
+      "label": "24-inch built-in dishwasher",
+      "productCodePrompt": "Enter the complete door-label model, product number, or PNC before any parts work.",
+      "topology": "dishwasher",
+      "profile": "dishwasher-drain",
+      "supportedSymptom": "will-not-drain",
+      "troubleshootingSources": [
+        {
+          "id": "exp-frigidaire-dishwasher-drain",
+          "title": "Frigidaire dishwasher not-draining guidance",
+          "url": "https://owner.frigidaire.com/support-articles/article/dishwashers-not-draining",
+          "publisher": "Frigidaire",
+          "appliesTo": "Frigidaire built-in dishwashers"
+        }
+      ]
+    },
+    "electrolux-dishwasher": {
+      "brand": "Electrolux",
+      "kind": "dishwasher",
+      "label": "24-inch built-in dishwasher",
+      "productCodePrompt": "Enter the complete door-label model, product number, or PNC before any parts work.",
+      "topology": "dishwasher",
+      "profile": "dishwasher-drain",
+      "supportedSymptom": "will-not-drain",
+      "troubleshootingSources": [
+        {
+          "id": "exp-electrolux-dishwasher-drain",
+          "title": "Electrolux dishwasher not-draining guidance",
+          "url": "https://owner.electrolux.com/support-articles/article/1853203-what-to-do-if-your-electrolux-dishwasher-is-not-draining",
+          "publisher": "Electrolux",
+          "appliesTo": "Electrolux built-in dishwashers"
+        }
+      ]
+    },
+    "bosch-dishwasher": {
+      "brand": "Bosch",
+      "kind": "dishwasher",
+      "label": "24-inch built-in dishwasher",
+      "productCodePrompt": "Enter the complete Bosch E-Nr including the slash revision; adjacent revisions are separate entries.",
+      "topology": "dishwasher",
+      "profile": "dishwasher-drain",
+      "supportedSymptom": "will-not-drain",
+      "troubleshootingSources": [
+        {
+          "id": "exp-bosch-dishwasher-drain",
+          "title": "Bosch dishwasher not-draining guidance",
+          "url": "https://www.bosch-home.com/us/owner-support/dishwashers/troubleshooting",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch built-in dishwashers"
+        }
+      ]
+    },
+    "ge-electric-dryer": {
+      "brand": "GE",
+      "kind": "dryer",
+      "label": "full-size vented electric dryer",
+      "productCodePrompt": "Enter the complete door-label engineering model; do not synthesize an inserted revision digit.",
+      "topology": "electric-dryer",
+      "profile": "dryer-door-strike",
+      "supportedSymptom": "door-will-not-close",
+      "troubleshootingSources": [
+        {
+          "id": "exp-ge-dryer-start",
+          "title": "GE dryer will-not-start guidance",
+          "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17381",
+          "publisher": "GE Appliances",
+          "appliesTo": "GE electric dryers"
+        }
+      ]
+    },
+    "hotpoint-electric-dryer": {
+      "brand": "Hotpoint",
+      "kind": "dryer",
+      "label": "full-size vented electric dryer",
+      "productCodePrompt": "Enter the complete door-label engineering model; do not synthesize an inserted revision digit.",
+      "topology": "electric-dryer",
+      "profile": "dryer-door-strike",
+      "supportedSymptom": "door-will-not-close",
+      "troubleshootingSources": [
+        {
+          "id": "exp-hotpoint-dryer-start",
+          "title": "GE Appliances dryer will-not-start guidance",
+          "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17381",
+          "publisher": "GE Appliances",
+          "appliesTo": "Hotpoint electric dryers"
+        }
+      ]
+    },
+    "whirlpool-electric-dryer": {
+      "brand": "Whirlpool",
+      "kind": "dryer",
+      "label": "full-size vented electric dryer",
+      "productCodePrompt": "Enter the complete door-label model including the trailing engineering digit.",
+      "topology": "electric-dryer",
+      "profile": "dryer-door-strike",
+      "supportedSymptom": "door-will-not-close",
+      "troubleshootingSources": [
+        {
+          "id": "exp-whirlpool-dryer-start",
+          "title": "Whirlpool dryer not-starting guidance",
+          "url": "https://producthelp.whirlpool.com/Laundry/Dryers/Product_Info/Dryer_Product_Assistance/Dryer_Not_Starting_or_No_Operation",
+          "publisher": "Whirlpool",
+          "appliesTo": "Whirlpool electric dryers"
+        }
+      ]
+    },
+    "maytag-electric-dryer": {
+      "brand": "Maytag",
+      "kind": "dryer",
+      "label": "full-size vented electric dryer",
+      "productCodePrompt": "Enter the complete door-label model including the trailing engineering digit.",
+      "topology": "electric-dryer",
+      "profile": "dryer-door-strike",
+      "supportedSymptom": "door-will-not-close",
+      "troubleshootingSources": [
+        {
+          "id": "exp-maytag-dryer-start",
+          "title": "Maytag dryer not-starting guidance",
+          "url": "https://producthelp.maytag.com/Laundry/Dryers/Product_Info/Dryer_Product_Assistance/Dryer_Not_Starting_or_No_Operation",
+          "publisher": "Maytag",
+          "appliesTo": "Maytag electric dryers"
+        }
+      ]
+    },
+    "amana-electric-dryer": {
+      "brand": "Amana",
+      "kind": "dryer",
+      "label": "full-size vented electric dryer",
+      "productCodePrompt": "Enter the complete door-label model including the trailing engineering digit.",
+      "topology": "electric-dryer",
+      "profile": "dryer-door-strike",
+      "supportedSymptom": "door-will-not-close",
+      "troubleshootingSources": [
+        {
+          "id": "exp-amana-dryer-start",
+          "title": "Amana dryer not-starting guidance",
+          "url": "https://producthelp.amana.com/Laundry/Dryers/Product_Info/Dryer_Product_Assistance/Dryer_Not_Starting_or_No_Operation",
+          "publisher": "Amana",
+          "appliesTo": "Amana electric dryers"
+        }
+      ]
+    },
+    "samsung-electric-dryer": {
+      "brand": "Samsung",
+      "kind": "dryer",
+      "label": "full-size vented electric dryer",
+      "productCodePrompt": "Enter the complete Samsung model code including the /A3 suffix; other suffixes are separate revisions.",
+      "topology": "electric-dryer",
+      "profile": "dryer-door-strike",
+      "supportedSymptom": "door-will-not-close",
+      "troubleshootingSources": [
+        {
+          "id": "exp-samsung-dryer-door",
+          "title": "Samsung dryer door-error guidance",
+          "url": "https://www.samsung.com/us/support/troubleshoot/TSG10001006/",
+          "publisher": "Samsung",
+          "appliesTo": "Samsung electric dryers"
+        }
+      ]
+    },
+    "lg-electric-dryer": {
+      "brand": "LG",
+      "kind": "dryer",
+      "label": "full-size vented electric dryer",
+      "productCodePrompt": "Enter the complete dotted LG product suffix; other suffixes are separate revisions.",
+      "topology": "electric-dryer",
+      "profile": "dryer-door-strike",
+      "supportedSymptom": "door-will-not-close",
+      "troubleshootingSources": [
+        {
+          "id": "exp-lg-dryer-door",
+          "title": "LG dryer door-error guidance",
+          "url": "https://www.lg.com/us/support/help-library/lg-dryer-error-code-list--20152310891742",
+          "publisher": "LG",
+          "appliesTo": "LG electric dryers"
+        }
+      ]
+    },
+    "electrolux-electric-dryer": {
+      "brand": "Electrolux",
+      "kind": "dryer",
+      "label": "full-size vented electric dryer",
+      "productCodePrompt": "Enter the complete model, product number, or PNC from the door rating label.",
+      "topology": "electric-dryer",
+      "profile": "dryer-door-strike",
+      "supportedSymptom": "door-will-not-close",
+      "troubleshootingSources": [
+        {
+          "id": "exp-electrolux-dryer-start",
+          "title": "Electrolux dryer not-starting guidance",
+          "url": "https://owner.electrolux.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+          "publisher": "Electrolux",
+          "appliesTo": "Electrolux electric dryers"
+        }
+      ]
+    },
+    "frigidaire-electric-dryer": {
+      "brand": "Frigidaire",
+      "kind": "dryer",
+      "label": "full-size vented electric dryer",
+      "productCodePrompt": "Enter the complete model, product number, or PNC from the door rating label.",
+      "topology": "electric-dryer",
+      "profile": "dryer-door-strike",
+      "supportedSymptom": "door-will-not-close",
+      "troubleshootingSources": [
+        {
+          "id": "exp-frigidaire-dryer-start",
+          "title": "Frigidaire dryer not-starting guidance",
+          "url": "https://owner.frigidaire.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+          "publisher": "Frigidaire",
+          "appliesTo": "Frigidaire electric dryers"
+        }
+      ]
+    },
+    "bosch-compact-electric-dryer": {
+      "brand": "Bosch",
+      "kind": "dryer",
+      "label": "24-inch compact ventless condensation electric dryer",
+      "productCodePrompt": "Enter the complete Bosch E-Nr including the slash revision; adjacent revisions are separate entries.",
+      "topology": "compact-ventless-electric-dryer",
+      "profile": "dryer-door-strike",
+      "supportedSymptom": "door-will-not-close",
+      "troubleshootingSources": [
+        {
+          "id": "exp-bosch-compact-dryer-support",
+          "title": "Bosch WTG86403UC/01 product support and self-help",
+          "url": "https://www.bosch-home.com/us/en/productservice/WTG86403UC-01",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch WTG86403UC/01 visible door checks"
+        }
+      ]
+    }
+  },
+  "models": [
+    {
+      "id": "ge-gfw655ssvww",
+      "profile": "ge-front-washer",
+      "model": "GFW655SSVWW",
+      "aliases": ["GFW655SSVWW", "GFW655SSV0WW"],
+      "verifiedProductCodes": ["GFW655SSV0WW"],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GFW655SSVWW/support",
+      "exactPart": {
+        "id": "ge-wh11x39237-gfw655ssv0ww",
+        "componentId": "drain-pump",
+        "name": "Drain pump and filter assembly",
+        "sku": "WH11X39237",
+        "compatibleProductCodes": ["GFW655SSV0WW"],
+        "compatibleModel": "GE GFW655SSV0WW",
+        "location": "Low front pump and filter area",
+        "installBoundary": "professional-only",
+        "source": {
+          "id": "encompass-gfw655ssv0ww-wh11x39237",
+          "kind": "authorized-parts",
+          "title": "GFW655SSV0WW authorized model-parts listing for WH11X39237",
+          "url": "https://partstore.encompass.com/model/HOTGFW655SSV0WW",
+          "publisher": "Encompass",
+          "appliesTo": "GFW655SSV0WW"
+        },
+        "commerce": {
+          "query": "GE WH11X39237 washer drain pump exact part",
+          "exactSku": "WH11X39237",
+          "offerCountAtVerification": 19
+        }
+      }
+    },
+    {
+      "id": "ge-gfw850spnrs",
+      "profile": "ge-front-washer",
+      "model": "GFW850SPNRS",
+      "aliases": ["GFW850SPNRS", "GFW850SPN0RS"],
+      "verifiedProductCodes": ["GFW850SPN0RS"],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GFW850SPNRS/support",
+      "exactPart": {
+        "id": "ge-wh11x39237-gfw850spn0rs",
+        "componentId": "drain-pump",
+        "name": "Drain pump and filter assembly",
+        "sku": "WH11X39237",
+        "compatibleProductCodes": ["GFW850SPN0RS"],
+        "compatibleModel": "GE GFW850SPN0RS",
+        "location": "Low front pump and filter area",
+        "installBoundary": "professional-only",
+        "source": {
+          "id": "ge-gfw850spn0rs-wh11x39237",
+          "kind": "manufacturer-part",
+          "title": "GFW850SPN0RS cabinet diagram and current drain-pump replacement",
+          "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GFW850SPN0RS/4/0/0/0/CABINET_%281%29",
+          "publisher": "GE Appliances",
+          "appliesTo": "GFW850SPN0RS"
+        },
+        "commerce": {
+          "query": "GE WH11X39237 washer drain pump exact part",
+          "exactSku": "WH11X39237",
+          "offerCountAtVerification": 19
+        }
+      }
+    },
+    {
+      "id": "ge-gtw335asnww",
+      "profile": "ge-top-washer",
+      "model": "GTW335ASNWW",
+      "aliases": ["GTW335ASNWW", "GTW335ASN1WW"],
+      "verifiedProductCodes": ["GTW335ASN1WW"],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GTW335ASNWW/support",
+      "exactPart": {
+        "id": "ge-wh23x28418-gtw335asn1ww",
+        "componentId": "drain-pump",
+        "name": "Drain pump assembly",
+        "sku": "WH23X28418",
+        "compatibleProductCodes": ["GTW335ASN1WW"],
+        "compatibleModel": "GE GTW335ASN1WW",
+        "location": "Under the tub at the drain outlet",
+        "installBoundary": "professional-only",
+        "source": {
+          "id": "ge-gtw335asn1ww-wh23x28418",
+          "kind": "manufacturer-part",
+          "title": "GTW335ASN1WW tub and motor diagram with drain pump WH23X28418",
+          "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTW335ASN1WW/3/0/0/0/TUB_%26_MOTOR",
+          "publisher": "GE Appliances",
+          "appliesTo": "GTW335ASN1WW"
+        },
+        "commerce": {
+          "query": "GE WH23X28418 washer drain pump exact part",
+          "exactSku": "WH23X28418",
+          "offerCountAtVerification": 20
+        }
+      }
+    },
+    {
+      "id": "ge-gtw485aswwb",
+      "profile": "ge-top-washer",
+      "model": "GTW485ASWWB",
+      "aliases": ["GTW485ASWWB"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GTW485ASWWB/support"
+    },
+    {
+      "id": "hotpoint-htw265aswww",
+      "profile": "hotpoint-top-washer",
+      "model": "HTW265ASWWW",
+      "aliases": ["HTW265ASWWW", "HTW265ASW0WW"],
+      "verifiedProductCodes": ["HTW265ASW0WW"],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/HTW265ASWWW/support",
+      "exactPart": {
+        "id": "hotpoint-wh23x28418-htw265asw0ww",
+        "componentId": "drain-pump",
+        "name": "Drain pump assembly",
+        "sku": "WH23X28418",
+        "compatibleProductCodes": ["HTW265ASW0WW"],
+        "compatibleModel": "Hotpoint HTW265ASW0WW",
+        "location": "Under the tub at the drain outlet",
+        "installBoundary": "professional-only",
+        "source": {
+          "id": "encompass-htw265asw0ww-wh23x28418",
+          "kind": "authorized-parts",
+          "title": "HTW265ASW0WW authorized model-parts listing for WH23X28418",
+          "url": "https://partstore.encompass.com/model/HOTHTW265ASW0WW",
+          "publisher": "Encompass",
+          "appliesTo": "HTW265ASW0WW"
+        },
+        "commerce": {
+          "query": "GE WH23X28418 washer drain pump exact part",
+          "exactSku": "WH23X28418",
+          "offerCountAtVerification": 20
+        }
+      }
+    },
+    {
+      "id": "hotpoint-htw2065sbww",
+      "profile": "hotpoint-top-washer",
+      "model": "HTW2065SBWW",
+      "aliases": ["HTW2065SBWW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/HTW2065SBWW/support"
+    },
+    {
+      "id": "whirlpool-wtw5010lw",
+      "profile": "whirlpool-top-washer",
+      "model": "WTW5010LW",
+      "aliases": ["WTW5010LW", "WTW5010LW0"],
+      "verifiedProductCodes": ["WTW5010LW0"],
+      "officialUrl": "https://www.whirlpool.com/owners-center-pdp.WTW5010LW.html",
+      "exactPart": {
+        "id": "whirlpool-w11399437-wtw5010lw0",
+        "componentId": "drain-pump",
+        "name": "Drain pump assembly",
+        "sku": "W11399437",
+        "compatibleProductCodes": ["WTW5010LW0"],
+        "compatibleModel": "Whirlpool WTW5010LW0",
+        "location": "Under the tub at the drain outlet",
+        "installBoundary": "professional-only",
+        "source": {
+          "id": "whirlpoolparts-wtw5010lw0-w11399437",
+          "kind": "authorized-parts",
+          "title": "WTW5010LW0 drain-pump category with one exact pump result",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a11b5i168d2461121/Model-WTW5010LW0-Whirlpool-Washing-Machine-Drain-Pump-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "WTW5010LW0"
+        },
+        "commerce": {
+          "query": "Whirlpool W11399437 washer drain pump exact part",
+          "exactSku": "W11399437",
+          "offerCountAtVerification": 20
+        }
+      }
+    },
+    {
+      "id": "whirlpool-wtw5105lw",
+      "profile": "whirlpool-top-washer",
+      "model": "WTW5105LW",
+      "aliases": ["WTW5105LW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.whirlpool.com/owners-center-pdp.WTW5105LW.html"
+    },
+    {
+      "id": "whirlpool-wfw4720rw",
+      "profile": "whirlpool-front-washer",
+      "model": "WFW4720RW",
+      "aliases": ["WFW4720RW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.whirlpool.com/laundry/washers/front-load/p.WFW4720RW.html"
+    },
+    {
+      "id": "maytag-mvw4505mw",
+      "profile": "maytag-top-washer",
+      "model": "MVW4505MW",
+      "aliases": ["MVW4505MW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.maytag.com/owners-center-pdp.MVW4505MW.html"
+    },
+    {
+      "id": "maytag-mhw5500fw",
+      "profile": "maytag-front-washer",
+      "model": "MHW5500FW",
+      "aliases": ["MHW5500FW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.maytag.com/owners-center-pdp.MHW5500FW.html"
+    },
+    {
+      "id": "amana-nfw5800hw",
+      "profile": "amana-front-washer",
+      "model": "NFW5800HW",
+      "aliases": ["NFW5800HW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.amana.com/laundry/washers/top-load/p.4.3-cu.-ft.-front-load-washer-with-large-capacity.nfw5800hw.html"
+    },
+    {
+      "id": "samsung-wf46bg6500av",
+      "profile": "samsung-front-washer",
+      "model": "WF46BG6500AV",
+      "aliases": ["WF46BG6500AV", "WF46BG6500AVUS"],
+      "verifiedProductCodes": ["WF46BG6500AVUS"],
+      "officialUrl": "https://www.samsung.com/us/support/service/warranty/WF46BG6500AVUS/"
+    },
+    {
+      "id": "samsung-wf53bb8700at",
+      "profile": "samsung-front-washer",
+      "model": "WF53BB8700AT",
+      "aliases": ["WF53BB8700AT", "WF53BB8700ATUS"],
+      "verifiedProductCodes": ["WF53BB8700ATUS"],
+      "officialUrl": "https://www.samsung.com/us/support/service/warranty/WF53BB8700ATUS/"
+    },
+    {
+      "id": "samsung-wa50r5200aw",
+      "profile": "samsung-top-washer",
+      "model": "WA50R5200AW",
+      "aliases": ["WA50R5200AW", "WA50R5200AW/US"],
+      "verifiedProductCodes": ["WA50R5200AW/US"],
+      "officialUrl": "https://www.samsung.com/us/support/service/warranty/WA50R5200AW/US/"
+    },
+    {
+      "id": "samsung-wa54cg7105aw",
+      "profile": "samsung-top-washer",
+      "model": "WA54CG7105AW",
+      "aliases": ["WA54CG7105AW", "WA54CG7105AWUS"],
+      "verifiedProductCodes": ["WA54CG7105AWUS"],
+      "officialUrl": "https://www.samsung.com/us/home-appliances/washers/top-load/5-4-cu-ft-extra-large-capacity-smart-top-load-washer-with-activewave-agitator-and-super-speed-wash-in-white-wa54cg7105awus/"
+    },
+    {
+      "id": "samsung-wa55cg7100aw",
+      "profile": "samsung-top-washer",
+      "model": "WA55CG7100AW",
+      "aliases": ["WA55CG7100AW", "WA55CG7100AWUS"],
+      "verifiedProductCodes": ["WA55CG7100AWUS"],
+      "officialUrl": "https://www.samsung.com/us/home-appliances/washers/top-load/5-5-cu-ft-extra-large-capacity-smart-top-load-washer-with-super-speed-wash-in-white-wa55cg7100awus/"
+    },
+    {
+      "id": "lg-wm3600hwa",
+      "profile": "lg-front-washer",
+      "model": "WM3600HWA",
+      "aliases": ["WM3600HWA", "WM3600HWA.ABWEUUS"],
+      "verifiedProductCodes": ["WM3600HWA.ABWEUUS"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-WM3600HWA.ABWEUUS"
+    },
+    {
+      "id": "lg-wm5500hwa",
+      "profile": "lg-front-washer",
+      "model": "WM5500HWA",
+      "aliases": ["WM5500HWA", "WM5500HWA.ABWEUUS"],
+      "verifiedProductCodes": ["WM5500HWA.ABWEUUS"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-WM5500HWA.ABWEUUS"
+    },
+    {
+      "id": "lg-wm6700hba",
+      "profile": "lg-front-washer",
+      "model": "WM6700HBA",
+      "aliases": ["WM6700HBA", "WM6700HBA.ABLEVUS"],
+      "verifiedProductCodes": ["WM6700HBA.ABLEVUS"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-WM6700HBA.ABLEVUS"
+    },
+    {
+      "id": "lg-wt6105cw",
+      "profile": "lg-top-washer",
+      "model": "WT6105CW",
+      "aliases": ["WT6105CW", "WT6105CW.BBWETUS"],
+      "verifiedProductCodes": ["WT6105CW.BBWETUS"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-WT6105CW"
+    },
+    {
+      "id": "lg-wt7150cw",
+      "profile": "lg-top-washer",
+      "model": "WT7150CW",
+      "aliases": ["WT7150CW", "WT7150CW.ABWETUS"],
+      "verifiedProductCodes": ["WT7150CW.ABWETUS"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-WT7150CW.ABWETUS"
+    },
+    {
+      "id": "lg-wt7300cw",
+      "profile": "lg-top-washer",
+      "model": "WT7300CW",
+      "aliases": ["WT7300CW", "WT7300CW.ABWEUCI"],
+      "verifiedProductCodes": ["WT7300CW.ABWEUCI"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-WT7300CW.ABWEUCI"
+    },
+    {
+      "id": "electrolux-elfw7337aw",
+      "profile": "electrolux-front-washer",
+      "model": "ELFW7337AW",
+      "aliases": ["ELFW7337AW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7337AW"
+    },
+    {
+      "id": "electrolux-elfw7738aa",
+      "profile": "electrolux-front-washer",
+      "model": "ELFW7738AA",
+      "aliases": ["ELFW7738AA"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7738AA"
+    },
+    {
+      "id": "ge-gfe28gynfs",
+      "profile": "ge-french-refrigerator",
+      "model": "GFE28GYNFS",
+      "aliases": ["GFE28GYNFS"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GFE28GYNFS/support"
+    },
+    {
+      "id": "ge-gne27jymfs",
+      "profile": "ge-french-refrigerator",
+      "model": "GNE27JYMFS",
+      "aliases": ["GNE27JYMFS"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GNE27JYMFS/support"
+    },
+    {
+      "id": "ge-pvd28bynfs",
+      "profile": "ge-french-refrigerator",
+      "model": "PVD28BYNFS",
+      "aliases": ["PVD28BYNFS"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/PVD28BYNFS/support"
+    },
+    {
+      "id": "ge-gss23gypfs",
+      "profile": "ge-side-refrigerator",
+      "model": "GSS23GYPFS",
+      "aliases": ["GSS23GYPFS"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GSS23GYPFS/support"
+    },
+    {
+      "id": "whirlpool-wrs588fihz",
+      "profile": "whirlpool-side-refrigerator",
+      "model": "WRS588FIHZ",
+      "aliases": ["WRS588FIHZ", "WRS588FIHZ00"],
+      "verifiedProductCodes": ["WRS588FIHZ00"],
+      "officialUrl": "https://www.whirlpool.com/owners-center-pdp.WRS588FIHZ.html",
+      "exactPart": {
+        "id": "whirlpool-edr1rxd1-wrs588fihz00",
+        "componentId": "water-filter",
+        "name": "EveryDrop refrigerator water filter 1",
+        "sku": "EDR1RXD1",
+        "compatibleProductCodes": ["WRS588FIHZ00"],
+        "compatibleModel": "Whirlpool WRS588FIHZ00",
+        "location": "Upper-right refrigerator compartment filter housing",
+        "installBoundary": "user-replaceable",
+        "source": {
+          "id": "whirlpoolparts-wrs588fihz00-edr1rxd1",
+          "kind": "authorized-parts",
+          "title": "WRS588FIHZ00 filter listing identifying EDR1RXD1",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a4b5c43d2269249/Model-WRS588FIHZ00-Whirlpool-Refrigerator-Filter-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "WRS588FIHZ00"
+        },
+        "commerce": {
+          "query": "EveryDrop EDR1RXD1 refrigerator water filter exact part",
+          "exactSku": "EDR1RXD1",
+          "offerCountAtVerification": 20
+        }
+      }
+    },
+    {
+      "id": "whirlpool-wrx735sdhz",
+      "profile": "whirlpool-french-refrigerator",
+      "model": "WRX735SDHZ",
+      "aliases": ["WRX735SDHZ"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.whirlpool.com/owners-center-pdp.WRX735SDHZ.html"
+    },
+    {
+      "id": "maytag-mss25c4mgz",
+      "profile": "maytag-side-refrigerator",
+      "model": "MSS25C4MGZ",
+      "aliases": ["MSS25C4MGZ", "MSS25C4MGZ03"],
+      "verifiedProductCodes": ["MSS25C4MGZ03"],
+      "officialUrl": "https://www.maytag.com/owners-center-pdp.MSS25C4MGZ.html"
+    },
+    {
+      "id": "maytag-mft2772hez",
+      "profile": "maytag-french-refrigerator",
+      "model": "MFT2772HEZ",
+      "aliases": ["MFT2772HEZ"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.maytag.com/owners-center-pdp.MFT2772HEZ.html"
+    },
+    {
+      "id": "kitchenaid-krfc300ess",
+      "profile": "kitchenaid-french-refrigerator",
+      "model": "KRFC300ESS",
+      "aliases": ["KRFC300ESS", "KRFC300ESS08"],
+      "verifiedProductCodes": ["KRFC300ESS08"],
+      "officialUrl": "https://www.kitchenaid.com/owners-center-pdp.KRFC300ESS08.html",
+      "exactPart": {
+        "id": "kitchenaid-edr4rxd1-krfc300ess08",
+        "componentId": "water-filter",
+        "name": "EveryDrop refrigerator water filter 4",
+        "sku": "EDR4RXD1",
+        "compatibleProductCodes": ["KRFC300ESS08"],
+        "compatibleModel": "KitchenAid KRFC300ESS08",
+        "location": "Upper-right refrigerator compartment filter housing",
+        "installBoundary": "user-replaceable",
+        "source": {
+          "id": "whirlpoolparts-krfc300ess08-edr4rxd1",
+          "kind": "authorized-parts",
+          "title": "KRFC300ESS08 authorized model-parts listing for water filter EDR4RXD1",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a4b121d2463919/Model-KRFC300ESS08-Kitchenaid-Refrigerator-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "KRFC300ESS08"
+        },
+        "commerce": {
+          "query": "EveryDrop EDR4RXD1 refrigerator water filter exact part",
+          "exactSku": "EDR4RXD1",
+          "offerCountAtVerification": 20
+        }
+      }
+    },
+    {
+      "id": "amana-asi2575grs",
+      "profile": "amana-side-refrigerator",
+      "model": "ASI2575GRS",
+      "aliases": ["ASI2575GRS", "ASI2575GRS05"],
+      "verifiedProductCodes": ["ASI2575GRS05"],
+      "officialUrl": "https://www.amana.com/refrigerators/side-by-side/p.36-inch-side-by-side-refrigerator-with-dual-pad-external-ice-and-water-dispenser.asi2575grs.html"
+    },
+    {
+      "id": "samsung-rs27t5200sr",
+      "profile": "samsung-side-refrigerator",
+      "model": "RS27T5200SR",
+      "aliases": ["RS27T5200SR", "RS27T5200SR/AA"],
+      "verifiedProductCodes": ["RS27T5200SR/AA"],
+      "officialUrl": "https://www.samsung.com/us/support/service/warranty/RS27T5200SR/AA/"
+    },
+    {
+      "id": "samsung-rf23r6201sr",
+      "profile": "samsung-french-refrigerator",
+      "model": "RF23R6201SR",
+      "aliases": ["RF23R6201SR", "RF23R6201SR/AA"],
+      "verifiedProductCodes": ["RF23R6201SR/AA"],
+      "officialUrl": "https://www.samsung.com/us/support/service/warranty/RF23R6201SR/AA/"
+    },
+    {
+      "id": "samsung-rf28r7201sr",
+      "profile": "samsung-french-refrigerator",
+      "model": "RF28R7201SR",
+      "aliases": ["RF28R7201SR", "RF28R7201SR/AA"],
+      "verifiedProductCodes": ["RF28R7201SR/AA"],
+      "officialUrl": "https://www.samsung.com/us/support/service/warranty/RF28R7201SR/AA/"
+    },
+    {
+      "id": "lg-lfxs26973s",
+      "profile": "lg-french-refrigerator",
+      "model": "LFXS26973S",
+      "aliases": ["LFXS26973S", "LFXS26973S.ASTCNA2"],
+      "verifiedProductCodes": ["LFXS26973S.ASTCNA2"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-LFXS26973S.ASTCNA2"
+    },
+    {
+      "id": "lg-lmxs28626s",
+      "profile": "lg-french-refrigerator",
+      "model": "LMXS28626S",
+      "aliases": ["LMXS28626S", "LMXS28626S.ASTCNA1"],
+      "verifiedProductCodes": ["LMXS28626S.ASTCNA1"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-LMXS28626S.ASTCNA1"
+    },
+    {
+      "id": "lg-lrfws2906s",
+      "profile": "lg-french-refrigerator",
+      "model": "LRFWS2906S",
+      "aliases": ["LRFWS2906S", "LRFWS2906S.ASTCNA1"],
+      "verifiedProductCodes": ["LRFWS2906S.ASTCNA1"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-LRFWS2906S.ASTCNA1"
+    },
+    {
+      "id": "lg-lrsxs2706s",
+      "profile": "lg-side-refrigerator",
+      "model": "LRSXS2706S",
+      "aliases": ["LRSXS2706S", "LRSXS2706S.ASTCNA0"],
+      "verifiedProductCodes": ["LRSXS2706S.ASTCNA0"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-LRSXS2706S.ASTCNA0"
+    },
+    {
+      "id": "frigidaire-grfs2853af",
+      "profile": "frigidaire-french-refrigerator",
+      "model": "GRFS2853AF",
+      "aliases": ["GRFS2853AF"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.frigidaire.com/en/p/owner-center/product-support/GRFS2853AF"
+    },
+    {
+      "id": "frigidaire-frfs2823as",
+      "profile": "frigidaire-french-refrigerator",
+      "model": "FRFS2823AS",
+      "aliases": ["FRFS2823AS"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.frigidaire.com/en/p/owner-center/product-support/FRFS2823AS"
+    },
+    {
+      "id": "frigidaire-grss2652af",
+      "profile": "frigidaire-side-refrigerator",
+      "model": "GRSS2652AF",
+      "aliases": ["GRSS2652AF"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.frigidaire.com/en/p/owner-center/product-support/GRSS2652AF"
+    },
+    {
+      "id": "electrolux-ermc2295as",
+      "profile": "electrolux-french-refrigerator",
+      "model": "ERMC2295AS",
+      "aliases": ["ERMC2295AS"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.electrolux.com/en/p/kitchen/refrigerators/french-door-refrigerators/ERMC2295AS"
+    },
+    {
+      "id": "bosch-b36ct80sns01",
+      "profile": "bosch-french-refrigerator",
+      "model": "B36CT80SNS/01",
+      "aliases": ["B36CT80SNS", "B36CT80SNS/01"],
+      "verifiedProductCodes": ["B36CT80SNS/01"],
+      "officialUrl": "https://www.bosch-home.com/us/en/productservice/B36CT80SNS-01"
+    },
+    {
+      "id": "bosch-b36cd50sns01",
+      "profile": "bosch-french-refrigerator",
+      "model": "B36CD50SNS/01",
+      "aliases": ["B36CD50SNS", "B36CD50SNS/01"],
+      "verifiedProductCodes": ["B36CD50SNS/01"],
+      "officialUrl": "https://www.bosch-home.com/us/en/productservice/B36CD50SNS-01"
+    },
+    {
+      "id": "bosch-b36fd50sns01",
+      "profile": "bosch-french-refrigerator",
+      "model": "B36FD50SNS/01",
+      "aliases": ["B36FD50SNS", "B36FD50SNS/01"],
+      "verifiedProductCodes": ["B36FD50SNS/01"],
+      "officialUrl": "https://www.bosch-home.com/us/en/productservice/B36FD50SNS-01"
+    },
+    {
+      "id": "ge-gdt550pyrfs",
+      "profile": "ge-dishwasher",
+      "model": "GDT550PYRFS",
+      "aliases": ["GDT550PYRFS"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GDT550PYRFS/support"
+    },
+    {
+      "id": "hotpoint-hdf310pgrww",
+      "profile": "hotpoint-dishwasher",
+      "model": "HDF310PGRWW",
+      "aliases": ["HDF310PGRWW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/HDF310PGRWW/support"
+    },
+    {
+      "id": "ge-gdt225sslss",
+      "profile": "ge-dishwasher",
+      "model": "GDT225SSLSS",
+      "aliases": ["GDT225SSLSS"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GDT225SSLSS/support"
+    },
+    {
+      "id": "whirlpool-wdt730hamz",
+      "profile": "whirlpool-dishwasher",
+      "model": "WDT730HAMZ",
+      "aliases": ["WDT730HAMZ", "WDT730HAMZ0"],
+      "verifiedProductCodes": ["WDT730HAMZ0"],
+      "officialUrl": "https://www.whirlpool.com/kitchen/dishwasher-and-cleaning/dishwashers/built-in-hidden-control-console/p.quiet-dishwasher-with-3rd-rack.wdt730hamz.html",
+      "exactPart": {
+        "id": "whirlpool-w10876537-wdt730hamz0",
+        "componentId": "drain-pump",
+        "name": "Dishwasher drain pump",
+        "sku": "W10876537",
+        "compatibleProductCodes": ["WDT730HAMZ0"],
+        "compatibleModel": "Whirlpool WDT730HAMZ0",
+        "location": "Under the tub at the sump outlet",
+        "installBoundary": "professional-only",
+        "source": {
+          "id": "whirlpoolparts-wdt730hamz0-w10876537",
+          "kind": "authorized-parts",
+          "title": "WDT730HAMZ0 drain-pump category with one exact pump result",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b5i168d2454271/Model-WDT730HAMZ0-Whirlpool-Dishwasher-Drain-Pump-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "WDT730HAMZ0"
+        },
+        "commerce": {
+          "query": "Whirlpool W10876537 dishwasher drain pump exact part",
+          "exactSku": "W10876537",
+          "offerCountAtVerification": 20
+        }
+      }
+    },
+    {
+      "id": "whirlpool-wdf331pams",
+      "profile": "whirlpool-dishwasher",
+      "model": "WDF331PAMS",
+      "aliases": ["WDF331PAMS"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.whirlpool.com/owners-center-pdp.WDF331PAMS.html"
+    },
+    {
+      "id": "maytag-mdb4949skz",
+      "profile": "maytag-dishwasher",
+      "model": "MDB4949SKZ",
+      "aliases": ["MDB4949SKZ", "MDB4949SKZ1"],
+      "verifiedProductCodes": ["MDB4949SKZ1"],
+      "officialUrl": "https://www.maytag.com/owners-center-pdp.MDB4949SKZ.html",
+      "exactPart": {
+        "id": "maytag-w11497943-mdb4949skz1",
+        "componentId": "drain-pump",
+        "name": "Dishwasher drain pump",
+        "sku": "W11497943",
+        "compatibleProductCodes": ["MDB4949SKZ1"],
+        "compatibleModel": "Maytag MDB4949SKZ1",
+        "location": "Under the tub at the sump outlet",
+        "installBoundary": "professional-only",
+        "source": {
+          "id": "whirlpoolparts-mdb4949skz1-w11497943",
+          "kind": "authorized-parts",
+          "title": "MDB4949SKZ1 pump category identifying drain pump W11497943",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b4c36d2463970/Model-MDB4949SKZ1-Maytag-Dishwasher-Pump-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "MDB4949SKZ1"
+        },
+        "commerce": {
+          "query": "Maytag W11497943 dishwasher drain pump exact part",
+          "exactSku": "W11497943",
+          "offerCountAtVerification": 20
+        }
+      }
+    },
+    {
+      "id": "kitchenaid-kdfe204kps",
+      "profile": "kitchenaid-dishwasher",
+      "model": "KDFE204KPS",
+      "aliases": ["KDFE204KPS", "KDFE204KPS0"],
+      "verifiedProductCodes": ["KDFE204KPS0"],
+      "officialUrl": "https://www.kitchenaid.com/major-appliances/dishwashers/front-controls/p.third-level-utensil-rack-dishwasher-with-30%2B-total-wash-jets%2C-39-dba-.kdfe204kps.html",
+      "exactPart": {
+        "id": "kitchenaid-w11462456-kdfe204kps0",
+        "componentId": "drain-pump",
+        "name": "Dishwasher drain pump",
+        "sku": "W11462456",
+        "compatibleProductCodes": ["KDFE204KPS0"],
+        "compatibleModel": "KitchenAid KDFE204KPS0",
+        "location": "Under the tub at the sump outlet",
+        "installBoundary": "professional-only",
+        "source": {
+          "id": "whirlpoolparts-kdfe204kps0-w11462456",
+          "kind": "authorized-parts",
+          "title": "KDFE204KPS0 authorized model-parts listing for drain pump W11462456",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b121d2248070/Model-KDFE204KPS0-Kitchenaid-Dishwasher-Parts?n=3",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "KDFE204KPS0"
+        },
+        "commerce": {
+          "query": "KitchenAid W11462456 dishwasher drain pump exact part",
+          "exactSku": "W11462456",
+          "offerCountAtVerification": 13
+        }
+      }
+    },
+    {
+      "id": "samsung-dw80r2031usaa",
+      "profile": "samsung-dishwasher",
+      "model": "DW80R2031US/AA",
+      "aliases": ["DW80R2031US", "DW80R2031US/AA"],
+      "verifiedProductCodes": ["DW80R2031US/AA"],
+      "officialUrl": "https://www.samsung.com/us/support/service/warranty/DW80R2031US/AA/"
+    },
+    {
+      "id": "samsung-dw80b6060usaa",
+      "profile": "samsung-dishwasher",
+      "model": "DW80B6060US/AA",
+      "aliases": ["DW80B6060US", "DW80B6060US/AA"],
+      "verifiedProductCodes": ["DW80B6060US/AA"],
+      "officialUrl": "https://www.samsung.com/us/support/home-appliances/dishwashers/?modelCode=DW80B6060US%2FAA"
+    },
+    {
+      "id": "lg-ldfn3432t",
+      "profile": "lg-dishwasher",
+      "model": "LDFN3432T",
+      "aliases": ["LDFN3432T", "LDFN3432T.ASTEEUS"],
+      "verifiedProductCodes": ["LDFN3432T.ASTEEUS"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-LDFN3432T"
+    },
+    {
+      "id": "lg-ldth7972s",
+      "profile": "lg-dishwasher",
+      "model": "LDTH7972S",
+      "aliases": ["LDTH7972S", "LDTH7972S.ASSESNA"],
+      "verifiedProductCodes": ["LDTH7972S.ASSESNA"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-LDTH7972S.ASSESNA?tab=1"
+    },
+    {
+      "id": "frigidaire-fdpc4314as",
+      "profile": "frigidaire-dishwasher",
+      "model": "FDPC4314AS",
+      "aliases": ["FDPC4314AS"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.frigidaire.com/en/p/owner-center/product-support/FDPC4314AS"
+    },
+    {
+      "id": "electrolux-edsh4944as",
+      "profile": "electrolux-dishwasher",
+      "model": "EDSH4944AS",
+      "aliases": ["EDSH4944AS"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.electrolux.com/en/p/dishwasher/EDSH4944AS"
+    },
+    {
+      "id": "bosch-shx78cm5n01",
+      "profile": "bosch-dishwasher",
+      "model": "SHX78CM5N/01",
+      "aliases": ["SHX78CM5N", "SHX78CM5N/01"],
+      "verifiedProductCodes": ["SHX78CM5N/01"],
+      "officialUrl": "https://www.bosch-home.com/us/en/productservice/SHX78CM5N-01"
+    },
+    {
+      "id": "bosch-shp65cm5n24",
+      "profile": "bosch-dishwasher",
+      "model": "SHP65CM5N/24",
+      "aliases": ["SHP65CM5N", "SHP65CM5N/24"],
+      "verifiedProductCodes": ["SHP65CM5N/24"],
+      "officialUrl": "https://www.bosch-home.com/us/en/productservice/SHP65CM5N-24"
+    },
+    {
+      "id": "bosch-she53b75uc75",
+      "profile": "bosch-dishwasher",
+      "model": "SHE53B75UC/75",
+      "aliases": ["SHE53B75UC", "SHE53B75UC/75"],
+      "verifiedProductCodes": ["SHE53B75UC/75"],
+      "officialUrl": "https://www.bosch-home.com/us/en/productservice/SHE53B75UC-75"
+    },
+    {
+      "id": "ge-gfd55essnww",
+      "profile": "ge-electric-dryer",
+      "model": "GFD55ESSNWW",
+      "aliases": ["GFD55ESSNWW", "GFD55ESSN0WW"],
+      "verifiedProductCodes": ["GFD55ESSN0WW"],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GFD55ESSNWW/support",
+      "exactPart": {
+        "id": "ge-we01x34600-gfd55essn0ww",
+        "componentId": "door-strike",
+        "name": "White dryer door strike",
+        "sku": "WE01X34600",
+        "compatibleProductCodes": ["GFD55ESSN0WW"],
+        "compatibleModel": "GE GFD55ESSN0WW",
+        "location": "Front-panel door opening",
+        "installBoundary": "user-replaceable",
+        "source": {
+          "id": "ge-gfd55essn0ww-we01x34600",
+          "kind": "manufacturer-part",
+          "title": "GFD55ESSN0WW front-panel diagram and current white door-strike replacement",
+          "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GFD55ESSN0WW/2/0/0/0/FRONT_PANEL",
+          "publisher": "GE Appliances",
+          "appliesTo": "GFD55ESSN0WW"
+        },
+        "commerce": {
+          "query": "GE WE01X34600 dryer door strike exact part",
+          "exactSku": "WE01X34600",
+          "offerCountAtVerification": 10
+        }
+      }
+    },
+    {
+      "id": "ge-ptd70ebstws",
+      "profile": "ge-electric-dryer",
+      "model": "PTD70EBSTWS",
+      "aliases": ["PTD70EBSTWS"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/PTD70EBSTWS/support"
+    },
+    {
+      "id": "ge-gtx33easkww",
+      "profile": "ge-electric-dryer",
+      "model": "GTX33EASKWW",
+      "aliases": ["GTX33EASKWW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GTX33EASKWW/support"
+    },
+    {
+      "id": "hotpoint-htx26easwww",
+      "profile": "hotpoint-electric-dryer",
+      "model": "HTX26EASWWW",
+      "aliases": ["HTX26EASWWW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://products.geappliances.com/appliance/hotpoint-specs/HTX26EASWWW"
+    },
+    {
+      "id": "whirlpool-wed4815ew",
+      "profile": "whirlpool-electric-dryer",
+      "model": "WED4815EW",
+      "aliases": ["WED4815EW", "WED4815EW1"],
+      "verifiedProductCodes": ["WED4815EW1"],
+      "officialUrl": "https://www.whirlpool.com/owners-center-pdp.WED4815EW.html",
+      "exactPart": {
+        "id": "whirlpool-w11429587-wed4815ew1",
+        "componentId": "door-strike",
+        "name": "Dryer door catch",
+        "sku": "W11429587",
+        "compatibleProductCodes": ["WED4815EW1"],
+        "compatibleModel": "Whirlpool WED4815EW1",
+        "location": "Front-panel door opening",
+        "installBoundary": "user-replaceable",
+        "source": {
+          "id": "whirlpoolparts-wed4815ew1-w11429587",
+          "kind": "authorized-parts",
+          "title": "WED4815EW1 catch category with one exact catch result",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a8i2691d2145566/Model-WED4815EW1-Dryer-Catch-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "WED4815EW1"
+        },
+        "commerce": {
+          "query": "Whirlpool W11429587 dryer door catch exact part",
+          "exactSku": "W11429587",
+          "offerCountAtVerification": 13
+        }
+      }
+    },
+    {
+      "id": "whirlpool-wed5050lw",
+      "profile": "whirlpool-electric-dryer",
+      "model": "WED5050LW",
+      "aliases": ["WED5050LW", "WED5050LW0"],
+      "verifiedProductCodes": ["WED5050LW0"],
+      "officialUrl": "https://www.whirlpool.com/laundry/dryers/electric/p.7.0-cu.-ft.-top-load-electric-moisture-sensing-dryer-with-steam.wed5050lw.html",
+      "exactPart": {
+        "id": "whirlpool-w11429587-wed5050lw0",
+        "componentId": "door-strike",
+        "name": "Dryer door catch",
+        "sku": "W11429587",
+        "compatibleProductCodes": ["WED5050LW0"],
+        "compatibleModel": "Whirlpool WED5050LW0",
+        "location": "Front-panel door opening",
+        "installBoundary": "user-replaceable",
+        "source": {
+          "id": "whirlpoolparts-wed5050lw0-w11429587",
+          "kind": "authorized-parts",
+          "title": "WED5050LW0 latch listing superseding W11224630 with W11429587",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a8b5c72d2454284/Model-WED5050LW0-Whirlpool-Dryer-Latch-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "WED5050LW0"
+        },
+        "commerce": {
+          "query": "Whirlpool W11429587 dryer door catch exact part",
+          "exactSku": "W11429587",
+          "offerCountAtVerification": 13
+        }
+      }
+    },
+    {
+      "id": "maytag-med6230hw",
+      "profile": "maytag-electric-dryer",
+      "model": "MED6230HW",
+      "aliases": ["MED6230HW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.maytag.com/owners-center-pdp.MED6230HW.html"
+    },
+    {
+      "id": "maytag-med7230hw",
+      "profile": "maytag-electric-dryer",
+      "model": "MED7230HW",
+      "aliases": ["MED7230HW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.maytag.com/owners-center-pdp.MED7230HW.html"
+    },
+    {
+      "id": "amana-ned5800hw",
+      "profile": "amana-electric-dryer",
+      "model": "NED5800HW",
+      "aliases": ["NED5800HW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.amana.com/laundry/dryers/dryer-comparison-chart.html"
+    },
+    {
+      "id": "samsung-dve50t5300ca3",
+      "profile": "samsung-electric-dryer",
+      "model": "DVE50T5300C/A3",
+      "aliases": ["DVE50T5300C", "DVE50T5300C/A3"],
+      "verifiedProductCodes": ["DVE50T5300C/A3"],
+      "officialUrl": "https://www.samsung.com/us/support/service/warranty/DVE50T5300C/A3/"
+    },
+    {
+      "id": "samsung-dve45b6300pa3",
+      "profile": "samsung-electric-dryer",
+      "model": "DVE45B6300P/A3",
+      "aliases": ["DVE45B6300P", "DVE45B6300P/A3"],
+      "verifiedProductCodes": ["DVE45B6300P/A3"],
+      "officialUrl": "https://www.samsung.com/us/laundry/dryers/electric-dv6300b-front-load-smart-electric-dryer-with-steam-sanitize-7-5-cu-ft-platinum-sku-dve45b6300p-a3/"
+    },
+    {
+      "id": "lg-dle6100w",
+      "profile": "lg-electric-dryer",
+      "model": "DLE6100W",
+      "aliases": ["DLE6100W", "DLE6100W.ABWETUS"],
+      "verifiedProductCodes": ["DLE6100W.ABWETUS"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-DLE6100W.ABWETUS"
+    },
+    {
+      "id": "lg-dlex4000w",
+      "profile": "lg-electric-dryer",
+      "model": "DLEX4000W",
+      "aliases": ["DLEX4000W", "DLEX4000W.ABWEUUS"],
+      "verifiedProductCodes": ["DLEX4000W.ABWEUUS"],
+      "officialUrl": "https://www.lg.com/us/support/product/lg-DLEX4000W.ABWEUUS"
+    },
+    {
+      "id": "electrolux-elfe7337aw",
+      "profile": "electrolux-electric-dryer",
+      "model": "ELFE7337AW",
+      "aliases": ["ELFE7337AW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.electrolux.com/en/p/washers-dryers/dryer/ELFE7337AW"
+    },
+    {
+      "id": "frigidaire-flve7000aw",
+      "profile": "frigidaire-electric-dryer",
+      "model": "FLVE7000AW",
+      "aliases": ["FLVE7000AW"],
+      "verifiedProductCodes": [],
+      "officialUrl": "https://www.frigidaire.com/en/p/Laundry-Care/Dryers/FLVE7000AW"
+    },
+    {
+      "id": "bosch-wtg86403uc01",
+      "profile": "bosch-compact-electric-dryer",
+      "model": "WTG86403UC/01",
+      "aliases": ["WTG86403UC", "WTG86403UC/01"],
+      "verifiedProductCodes": ["WTG86403UC/01"],
+      "officialUrl": "https://www.bosch-home.com/us/en/productservice/WTG86403UC-01"
+    }
+  ]
+}

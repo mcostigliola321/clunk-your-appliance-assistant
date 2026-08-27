@@ -1,6 +1,7 @@
 export type ApplianceId = string;
 export type ApplianceKind = "washer" | "dishwasher" | "dryer" | "refrigerator";
 export type SymptomId = string;
+export type SupportedSymptomId = "will-not-drain" | "door-will-not-close" | "slow-water-flow";
 export type ComponentId = string;
 export type CheckId = string;
 export type ResultId = string;
@@ -31,6 +32,7 @@ export type DiagramTopology =
   | "washer-top-load"
   | "dishwasher"
   | "electric-dryer"
+  | "compact-ventless-electric-dryer"
   | "side-by-side-refrigerator"
   | "french-door-refrigerator";
 
@@ -92,6 +94,7 @@ export interface ApplianceCatalogEntry {
   aliases: string[];
   verifiedProductCodes: string[];
   productCodePrompt: string;
+  supportedSymptom: SupportedSymptomId;
   capability: CapabilityTier;
   profile: RepairProfile;
   loadStyle?: WasherLoadStyle;
@@ -250,7 +253,16 @@ export interface RepairSnapshot {
   catalogResults: Array<
     Pick<
       ApplianceCatalogEntry,
-      "id" | "kind" | "brand" | "model" | "label" | "productCodePrompt" | "capability"
+      | "id"
+      | "kind"
+      | "brand"
+      | "model"
+      | "label"
+      | "productCodePrompt"
+      | "supportedSymptom"
+      | "topology"
+      | "modelSource"
+      | "capability"
     >
   >;
   appliance: string | null;

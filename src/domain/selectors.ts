@@ -168,6 +168,9 @@ export function getRepairSnapshot(state: RepairState): RepairSnapshot {
         model: entry.model,
         label: entry.label,
         productCodePrompt: entry.productCodePrompt,
+        supportedSymptom: entry.supportedSymptom,
+        ...(entry.topology ? { topology: entry.topology } : {}),
+        modelSource: entry.modelSource,
         capability: entry.capability,
       };
     }),
@@ -257,11 +260,18 @@ export function getWebMcpTaskSnapshot(state: RepairState) {
       candidateProductCodes: !state.applianceId ? catalogAnalysis.candidateProductCodes : undefined,
       results:
         !state.applianceId && catalogActive
-          ? snapshot.catalogResults.slice(0, 6).map((item) => ({
+          ? snapshot.catalogResults.slice(0, 4).map((item) => ({
               applianceId: item.id,
               brand: item.brand,
               model: item.model,
+              topology: item.topology,
+              supportedSymptom: item.supportedSymptom,
               capability: item.capability,
+              fullCodeRule: item.productCodePrompt,
+              source: {
+                url: item.modelSource.url,
+                checkedOn: item.modelSource.lastVerified,
+              },
             }))
           : [],
       modelNumberHandoff:

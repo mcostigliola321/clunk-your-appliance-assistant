@@ -84,7 +84,7 @@ test("makes the outcome and four categories immediately clear", async ({ page })
   await expect(
     page.getByRole("heading", { name: "Tell Clunk what broke. Get the part to buy." }),
   ).toBeVisible();
-  await expect(page.getByText("50 supported models")).toBeVisible();
+  await expect(page.getByText("131 supported models")).toBeVisible();
   for (const label of [/01 Washer/, /02 Dishwasher/, /03 Electric dryer/, /04 Refrigerator/]) {
     await expect(page.getByRole("button", { name: label })).toBeVisible();
   }
@@ -95,6 +95,17 @@ test("makes the outcome and four categories immediately clear", async ({ page })
     () => document.documentElement.scrollWidth - window.innerWidth,
   );
   expect(overflow).toBeLessThanOrEqual(1);
+});
+
+test("filters the 131-model catalog without blurring evidence tiers", async ({ page }) => {
+  await page.getByText("Browse 25 supported electric dryer models", { exact: false }).click();
+  await page.getByRole("button", { name: "Checks only 18" }).click();
+  await page.getByRole("button", { name: "Bosch" }).click();
+  await expect(
+    page.getByRole("button", { name: /Bosch WTG86403UC\/01 Guided checks only/ }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Purchase-ready 7" }).click();
+  await expect(page.getByText("No purchase-ready models in this view.")).toBeVisible();
 });
 
 test("finds the physical label, narrows a partial code, and preserves the exactness boundary", async ({

@@ -52,12 +52,12 @@ describe("state-dependent WebMCP registration", () => {
       structuredContent: Record<string, unknown>;
     };
     const serialized = JSON.stringify(stateOutput.structuredContent);
-    expect(serialized.length).toBeLessThan(2200);
+    expect(serialized.length).toBeLessThan(2800);
     expect(serialized).not.toContain("likelyCauses");
     expect(serialized).not.toContain("catalogResults");
     expect(stateOutput.structuredContent).toMatchObject({
       catalog: {
-        supportedModelCount: 50,
+        supportedModelCount: 131,
         modelNumberHandoff: {
           humanAction: expect.stringContaining("Model"),
           rejectLabels: ["Serial", "S/N"],

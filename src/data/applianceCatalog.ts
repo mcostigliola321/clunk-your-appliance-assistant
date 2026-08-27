@@ -1,6 +1,8 @@
 import type { ApplianceCatalogEntry, BrandName, SourceReference } from "@/domain/types";
 import { isPurchaseReadyPart } from "@/domain/purchase";
 
+import { CATALOG_EXPANSION } from "./catalogExpansion";
+
 const VERIFIED_ON = "2026-08-27";
 
 function source(
@@ -491,10 +493,17 @@ function entry(input: EntryInput): ApplianceCatalogEntry {
   const profile =
     input.profile ??
     (input.checkProfile === "filter-access" ? "washer-front-drain" : "washer-hose-only");
+  const supportedSymptom =
+    kind === "dryer"
+      ? "door-will-not-close"
+      : kind === "refrigerator"
+        ? "slow-water-flow"
+        : "will-not-drain";
   return {
     ...rest,
     kind,
     profile,
+    supportedSymptom,
     capability:
       capability ??
       (exactPart
@@ -570,7 +579,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
       commerce: shopifyCommerce(
         "DC97-20621A",
         "Samsung DC97-20621A washer drain pump exact part",
-        17,
+        19,
       ),
     },
   }),
@@ -599,7 +608,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
       commerce: shopifyCommerce(
         "DC97-20621A",
         "Samsung DC97-20621A washer drain pump exact part",
-        17,
+        19,
       ),
     },
   }),
@@ -626,7 +635,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
       location: "Low front pump and filter area",
       installBoundary: "professional-only",
       source: geWasherPumpSource,
-      commerce: shopifyCommerce("WH11X39237", "GE WH11X39237 washer drain pump exact part", 6),
+      commerce: shopifyCommerce("WH11X39237", "GE WH11X39237 washer drain pump exact part", 14),
       purchase: {
         seller: "GE Appliances Parts",
         url: "https://www.geapplianceparts.com/store/parts/spec/WH11X39237",
@@ -842,7 +851,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
       commerce: shopifyCommerce(
         "W11412291",
         "Whirlpool W11412291 dishwasher drain pump exact part",
-        7,
+        9,
       ),
       purchase: {
         seller: "Whirlpool Parts",
@@ -917,7 +926,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
       location: "On the visible edge of the dryer door",
       installBoundary: "user-replaceable",
       source: geDryerStrikeSource,
-      commerce: shopifyCommerce("WE01M10007", "GE WE01M10007 dryer door strike exact part", 14),
+      commerce: shopifyCommerce("WE01M10007", "GE WE01M10007 dryer door strike exact part", 19),
       purchase: {
         seller: "GE Appliances Parts",
         url: "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTD42EASJ2WW/2/0/0/0/FRONT_PANEL_%26_DOOR",
@@ -976,7 +985,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
       location: "On the visible edge of the dryer door opening",
       installBoundary: "user-replaceable",
       source: maytagDryerCatchSource,
-      commerce: shopifyCommerce("W11429587", "Maytag W11429587 dryer door catch exact part", 5),
+      commerce: shopifyCommerce("W11429587", "Maytag W11429587 dryer door catch exact part", 7),
     },
   }),
   entry({
@@ -1015,7 +1024,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
       location: "Upper rear of the fresh-food compartment",
       installBoundary: "user-replaceable",
       source: geFilterSource,
-      commerce: shopifyCommerce("XWFE", "GE XWFE refrigerator water filter exact part", 20),
+      commerce: shopifyCommerce("XWFE", "GE XWFE refrigerator water filter exact part", 19),
       purchase: {
         seller: "GE Appliances Parts",
         url: "https://www.geapplianceparts.com/store/parts/spec/XWFE",
@@ -1051,7 +1060,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
       commerce: shopifyCommerce(
         "EDR1RXD1",
         "Whirlpool EveryDrop EDR1RXD1 refrigerator water filter exact part",
-        20,
+        16,
       ),
     },
   }),
@@ -1082,7 +1091,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
       commerce: shopifyCommerce(
         "DA97-17376B",
         "Samsung HAF-QIN DA97-17376B refrigerator water filter exact part",
-        12,
+        20,
       ),
     },
   }),
@@ -1317,7 +1326,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
       location: "On the visible edge of the dryer door opening",
       installBoundary: "user-replaceable",
       source: amanaDryerCatchSource,
-      commerce: shopifyCommerce("W11429587", "Amana W11429587 dryer door catch exact part", 5),
+      commerce: shopifyCommerce("W11429587", "Amana W11429587 dryer door catch exact part", 7),
     },
   }),
   entry({
@@ -1407,4 +1416,5 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
     troubleshootingSources: [help.boschRefrigeratorSupport],
     capability: "guided-checks",
   }),
+  ...CATALOG_EXPANSION,
 ];

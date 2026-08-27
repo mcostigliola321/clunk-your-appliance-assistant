@@ -15,7 +15,7 @@ catalog entry ─> validated repair pack ─> checks, causes, sources, component
 
 ## Layers
 
-- `src/data/applianceCatalog.ts` contains the bounded 50-model catalog, explicit capability tiers, official source references, category/profile metadata, exact part mappings, and dated Shopify UCP query descriptors.
+- `src/data/applianceCatalog.ts` composes the bounded 131-model catalog, explicit capability tiers, official source references, category/profile metadata, exact part mappings, and dated Shopify UCP query descriptors. `src/data/catalogExpansion.json` adds 81 models through 49 reusable profiles, including 13 exact-code part records stored on individual model rows; `src/data/catalogExpansion.ts` validates revision isolation and materializes that data before repair-pack generation.
 - `src/data/modelNumberGuides.ts` contains manufacturer-backed common rating-label locations, identifier examples, and retrieval dates. The UI renders these as original Clunk diagrams rather than copied manufacturer artwork.
 - `src/domain/modelSearch.ts` normalizes case and punctuation, ranks partial suggestions, exposes family/revision ambiguity, and rejects text explicitly labeled as a serial number. It never uses reverse containment to turn extra unsupported text into a match.
 - `src/domain/repairPack.ts` converts catalog entries into schema-v5 repair packs and validates catalog identities, explicit capability tiers, source links, result transitions, part evidence, static/live commerce handoffs, component/cause references, and forbidden safety tags.

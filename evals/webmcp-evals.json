@@ -4,7 +4,7 @@
   "fictional": false,
   "artifactType": "deterministic-scenario-fixtures",
   "evidenceStatus": "These fixtures verify deterministic tool contracts and state transitions. They are not real-agent evaluation results.",
-  "scope": "50 source-backed US appliance models across washers, dishwashers, electric dryers, and refrigerators; 12 purchase-ready exact-model flows with Shopify UCP live-offer handoffs",
+  "scope": "131 source-backed US appliance models across washers, dishwashers, electric dryers, and refrigerators; 25 purchase-ready exact-model flows with Shopify UCP live-offer handoffs and 106 guided-only families",
   "instructions": "Replay each case through the deterministic transition engine. Physical observations in setup are labeled fixture inputs, not agent inferences. Use the separate manual agent runbook for probabilistic agent evaluation.",
   "cases": [
     {
@@ -14,11 +14,11 @@
       "prompt": "What appliance categories and models does Clunk support, and what can I do next?",
       "expectedCalls": [{ "name": "get_repair_state", "arguments": {} }],
       "expectedVisible": [
-        "50 supported models",
-        "23 washers",
-        "9 dishwashers",
-        "9 dryers",
-        "9 refrigerators",
+        "131 supported models",
+        "48 washers",
+        "25 dishwashers",
+        "25 dryers",
+        "33 refrigerators",
         "nextTools"
       ],
       "mustNot": ["Claim universal support", "Select a model without the human"]
@@ -203,6 +203,129 @@
         "Upper rear of the fresh-food compartment"
       ],
       "mustNot": ["Discuss refrigerant", "Move the refrigerator"]
+    },
+    {
+      "id": "upgraded-top-load-washer-pump",
+      "category": "exact-part",
+      "setup": [
+        {
+          "name": "select_appliance",
+          "arguments": { "applianceId": "whirlpool-wtw5010lw", "productCode": "WTW5010LW0" }
+        },
+        { "name": "start_diagnosis", "arguments": { "symptomId": "will-not-drain" } },
+        {
+          "name": "record_observation",
+          "arguments": { "checkId": "safety-check", "resultId": "safe-ready" }
+        }
+      ],
+      "prompt": "The external drain hose is clear. Show the exact-code pump handoff without telling me to open the washer.",
+      "expectedCalls": [
+        {
+          "name": "record_observation",
+          "arguments": { "checkId": "inspect-drain-hose", "resultId": "hose-clear" }
+        },
+        { "name": "find_compatible_part", "arguments": {} }
+      ],
+      "expectedVisible": ["W11399437", "WTW5010LW0", "professional-only", "Shopify Global Catalog"],
+      "mustNot": ["Give pump-installation instructions", "Apply the part to WTW5010LW1"]
+    },
+    {
+      "id": "upgraded-sink-only-dishwasher-pump",
+      "category": "exact-part",
+      "setup": [
+        {
+          "name": "select_appliance",
+          "arguments": { "applianceId": "whirlpool-wdt730hamz", "productCode": "WDT730HAMZ0" }
+        },
+        { "name": "start_diagnosis", "arguments": { "symptomId": "will-not-drain" } },
+        {
+          "name": "record_observation",
+          "arguments": { "checkId": "safety-check", "resultId": "safe-ready" }
+        }
+      ],
+      "prompt": "The sink and visible dishwasher hose are clear. Show only the separately verified exact pump.",
+      "expectedCalls": [
+        {
+          "name": "record_observation",
+          "arguments": { "checkId": "inspect-drain-connection", "resultId": "connection-clear" }
+        },
+        { "name": "find_compatible_part", "arguments": {} }
+      ],
+      "expectedVisible": [
+        "W10876537",
+        "WDT730HAMZ0",
+        "professional-only",
+        "Shopify Global Catalog"
+      ],
+      "mustNot": ["Assume a removable filter", "Apply the part to WDT730HAMZ1"]
+    },
+    {
+      "id": "upgraded-dryer-catch",
+      "category": "exact-part",
+      "setup": [
+        {
+          "name": "select_appliance",
+          "arguments": { "applianceId": "whirlpool-wed5050lw", "productCode": "WED5050LW0" }
+        },
+        { "name": "start_diagnosis", "arguments": { "symptomId": "door-will-not-close" } },
+        {
+          "name": "record_observation",
+          "arguments": { "checkId": "safety-check", "resultId": "safe-ready" }
+        }
+      ],
+      "prompt": "The visible catch is cracked. Return the current exact replacement and reject neighboring latch SKUs.",
+      "expectedCalls": [
+        {
+          "name": "record_observation",
+          "arguments": { "checkId": "inspect-door-strike", "resultId": "strike-broken" }
+        },
+        { "name": "find_compatible_part", "arguments": {} }
+      ],
+      "expectedVisible": ["W11429587", "WED5050LW0", "Shopify Global Catalog"],
+      "mustNot": ["Return W11224630", "Give energized-test instructions"]
+    },
+    {
+      "id": "upgraded-refrigerator-filter",
+      "category": "exact-part",
+      "setup": [
+        {
+          "name": "select_appliance",
+          "arguments": { "applianceId": "kitchenaid-krfc300ess", "productCode": "KRFC300ESS08" }
+        },
+        { "name": "start_diagnosis", "arguments": { "symptomId": "slow-water-flow" } },
+        {
+          "name": "record_observation",
+          "arguments": { "checkId": "safety-check", "resultId": "safe-ready" }
+        }
+      ],
+      "prompt": "The filter is overdue and there is no leak. Show the exact filter for this complete revision.",
+      "expectedCalls": [
+        {
+          "name": "record_observation",
+          "arguments": { "checkId": "inspect-water-filter", "resultId": "filter-overdue" }
+        },
+        { "name": "find_compatible_part", "arguments": {} }
+      ],
+      "expectedVisible": ["EDR4RXD1", "KRFC300ESS08", "Shopify Global Catalog"],
+      "mustNot": ["Return EDR1RXD1", "Apply the filter to an unverified KRFC300ESS revision"]
+    },
+    {
+      "id": "reject-sibling-revision-carryover",
+      "category": "invalid-call",
+      "setup": [],
+      "prompt": "The label says KDFE204KPS1, not the evidenced zero revision. Do not carry the pump across revisions.",
+      "expectedCalls": [
+        {
+          "name": "select_appliance",
+          "arguments": {
+            "applianceId": "kitchenaid-kdfe204kps",
+            "productCode": "KDFE204KPS1"
+          },
+          "expectedOk": false
+        }
+      ],
+      "expectedVisible": ["identifier does not confirm the selected model", "KDFE204KPS0"],
+      "mustNot": ["Return W11462456 as compatible", "Create a Shopify query"]
     },
     {
       "id": "show-current-location",

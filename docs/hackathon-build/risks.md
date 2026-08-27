@@ -124,7 +124,7 @@
 
 - Probability: Medium
 - Impact: High
-- Risk: A 50-model catalog could imply that every path ends with a purchasable exact part.
+- Risk: A 131-model catalog could imply exhaustive coverage or that every path ends with a purchasable exact part.
 - Mitigation: Label models before selection as Purchase-ready, Verified part unavailable, or Guided checks only. Keep one complete flagship per category and require exact codes for every part claim.
 - Verification: Catalog/UI tests cover labels; engine tests prove guided-only paths cannot select a part.
 
