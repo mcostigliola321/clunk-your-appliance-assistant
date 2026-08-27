@@ -14,15 +14,11 @@ function renderClunk() {
 }
 
 async function selectLg(user: ReturnType<typeof userEvent.setup>, query = "WM3400CW.ABWEVUS") {
-  const input = screen.getByRole("textbox", { name: "Model number" });
+  const input = screen.getByRole("textbox", { name: "Washer model number" });
   await user.clear(input);
   await user.type(input, query);
-  await user.click(screen.getByRole("button", { name: "Find it" }));
-  await user.click(
-    screen.getByRole("button", {
-      name: "LG WM3400CW Part match available",
-    }),
-  );
+  await user.click(screen.getByRole("button", { name: "Find model" }));
+  await user.click(screen.getByRole("button", { name: /LG WM3400CW Purchase-ready/ }));
 }
 
 describe("Clunk repair bench", () => {
@@ -31,71 +27,77 @@ describe("Clunk repair bench", () => {
     Reflect.deleteProperty(document, "modelContext");
   });
 
-  it("makes the problem, model finder, and complete demo immediately visible", () => {
+  it("makes the promise and four appliance categories immediately clear", () => {
     renderClunk();
     expect(
-      screen.getByRole("heading", { name: "Your washer won't drain. Let's fix that." }),
+      screen.getByRole("heading", { name: "Tell Clunk what broke. Get the part to buy." }),
     ).toBeVisible();
-    expect(screen.getByText("19 washers supported")).toBeVisible();
-    expect(screen.getByText("Guided mode")).toBeVisible();
-    expect(screen.getByRole("button", { name: /See the complete answer/ })).toBeVisible();
+    expect(screen.getByText("31 supported models")).toBeVisible();
+    expect(screen.getByRole("button", { name: /01 Washer/ })).toBeVisible();
+    expect(screen.getByRole("button", { name: /02 Dishwasher/ })).toBeVisible();
+    expect(screen.getByRole("button", { name: /03 Electric dryer/ })).toBeVisible();
+    expect(screen.getByRole("button", { name: /04 Refrigerator/ })).toBeVisible();
+    expect(screen.getByRole("button", { name: "See the full answer" })).toBeVisible();
   });
 
-  it("completes a no-part-needed blocked-filter path", async () => {
+  it("takes one click directly to an exact washer part and seller", async () => {
     const user = userEvent.setup();
     renderClunk();
-    await selectLg(user);
-    await user.click(
-      screen.getByRole("button", { name: "Washer is unplugged and the water is cool" }),
-    );
-    await user.click(screen.getByRole("button", { name: "Hose looks clear" }));
-    await user.click(screen.getByRole("button", { name: "I found debris in the filter" }));
-    expect(screen.getByRole("heading", { name: "You probably don't need a part" })).toBeVisible();
-  });
-
-  it("takes the complete demo directly to a part and buy link", async () => {
-    const user = userEvent.setup();
-    renderClunk();
-    await user.click(screen.getByRole("button", { name: /See the complete answer/ }));
-    await user.click(
-      screen.getByRole("button", { name: "Washer is unplugged and the water is cool" }),
-    );
-    await user.click(screen.getByRole("button", { name: "Hose looks clear" }));
-    await user.click(screen.getByRole("button", { name: "The filter looks clear" }));
+    await user.click(screen.getByRole("button", { name: "See the full answer" }));
     expect(screen.getByRole("heading", { name: "This is the part for your washer" })).toBeVisible();
     expect(screen.getByText("Part #AHA75693425")).toBeVisible();
     expect(screen.getByRole("link", { name: /Buy this part/ })).toHaveAttribute(
       "href",
       "https://encompass.com/item/12525362/LG/AHA75693425/",
     );
+    expect(screen.getByText("Example answer")).toBeVisible();
   });
 
-  it("switches the repair bench to the top-load topology for a top-load model", async () => {
+  it("switches to a dishwasher flagship and reaches its seller link", async () => {
     const user = userEvent.setup();
     renderClunk();
-    const input = screen.getByRole("textbox", { name: "Model number" });
-    await user.type(input, "GTW585BSVWS");
-    await user.click(screen.getByRole("button", { name: "Find it" }));
-    await user.click(screen.getByRole("button", { name: /GE GTW585BSVWS/ }));
-    expect(screen.getByAltText(/for GE GTW585BSVWS/)).toHaveAttribute(
-      "src",
-      "/assets/clunk-washer-top-load-topology-v2.png",
+    await user.click(screen.getByRole("button", { name: /02 Dishwasher/ }));
+    await user.click(screen.getByRole("button", { name: "See the full answer" }));
+    expect(
+      screen.getByRole("heading", { name: "This is the part for your dishwasher" }),
+    ).toBeVisible();
+    expect(screen.getByText("Part #W11412291")).toBeVisible();
+    expect(screen.getByRole("link", { name: /Buy this part/ })).toHaveAttribute(
+      "href",
+      "https://www.whirlpoolparts.com/PartDetail/Drain-Pump/W11412291/4960707",
     );
   });
 
-  it("shows a terminal stop state for a reported hazard", async () => {
+  it("completes a real no-part-needed blocked-filter path", async () => {
     const user = userEvent.setup();
     renderClunk();
     await selectLg(user);
-    await user.click(screen.getByRole("button", { name: "Smoke or burning smell" }));
-    expect(screen.getByRole("heading", { name: "A professional should continue." })).toBeVisible();
+    await user.click(screen.getByRole("button", { name: "Safe to continue" }));
+    await user.click(screen.getByRole("button", { name: "The hose looks clear" }));
+    await user.click(screen.getByRole("button", { name: "I found debris" }));
+    expect(
+      screen.getByRole("heading", { name: "The blockage is the likely problem" }),
+    ).toBeVisible();
+    expect(screen.queryByRole("link", { name: /Buy this part/ })).not.toBeInTheDocument();
   });
 
-  it("runs the currently available manual tool through shared activity", async () => {
+  it("switches the visual to a top-load model", async () => {
     const user = userEvent.setup();
     renderClunk();
-    await user.click(screen.getByText("Behind the scenes"));
-    await user.click(screen.getByText("Select an exact washer family"));
+    const input = screen.getByRole("textbox", { name: "Washer model number" });
+    await user.type(input, "GTW585BSVWS");
+    await user.click(screen.getByRole("button", { name: "Find model" }));
+    await user.click(screen.getByRole("button", { name: /GE GTW585BSVWS Guided checks only/ }));
+    expect(
+      screen.getByAltText("Open top-load washer showing the basket and drain path"),
+    ).toHaveAttribute("src", "/assets/clunk-washer-top-load-topology-v2.png");
+  });
+
+  it("runs an available manual WebMCP tool through shared activity", async () => {
+    const user = userEvent.setup();
+    renderClunk();
+    await user.click(screen.getByText("Agent activity"));
+    await user.click(screen.getByText("Select an exact appliance model"));
     const inspector = screen.getByRole("region", { name: "WebMCP tools" });
     await user.click(
       within(inspector).getByRole("button", { name: "Run sample for select_appliance" }),

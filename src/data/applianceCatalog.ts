@@ -126,6 +126,102 @@ const help = {
     "Electrolux",
     "Electrolux front-load washers",
   ),
+  whirlpoolDishwasherDrain: source(
+    "whirlpool-dishwasher-drain",
+    "manufacturer-troubleshooting",
+    "Whirlpool dishwasher: water remains after a cycle",
+    "https://producthelp.whirlpool.com/Dishwashers/Dishwasher/Operation/Not_Draining%2F%2FWater_Remains/Water_Remains_at_End_of_Cycle_-_Dishwasher",
+    "Whirlpool",
+    "Whirlpool built-in dishwashers",
+  ),
+  boschDishwasherDrain: source(
+    "bosch-dishwasher-drain",
+    "manufacturer-troubleshooting",
+    "Bosch dishwasher not draining",
+    "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dishwasher-not-draining",
+    "Bosch",
+    "Bosch dishwashers",
+  ),
+  geDishwasherSupport: source(
+    "ge-dishwasher-support",
+    "manufacturer-troubleshooting",
+    "GE dishwasher support",
+    "https://www.geappliances.com/ge/service-and-support/dishwashers.htm",
+    "GE Appliances",
+    "GE dishwashers",
+  ),
+  kitchenaidDishwasherSupport: source(
+    "kitchenaid-dishwasher-support",
+    "manufacturer-troubleshooting",
+    "KitchenAid dishwasher not draining",
+    "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Operation/Not_Draining%2F%2FWater_Remains",
+    "KitchenAid",
+    "KitchenAid dishwashers",
+  ),
+  geDryerDoor: source(
+    "ge-dryer-door",
+    "manufacturer-troubleshooting",
+    "GE dryer door support",
+    "https://products.geappliances.com/appliance/gea-support-search-content?contentId=16635",
+    "GE Appliances",
+    "GE electric dryers",
+  ),
+  whirlpoolDryerSupport: source(
+    "whirlpool-dryer-support",
+    "manufacturer-troubleshooting",
+    "Whirlpool electric dryer support",
+    "https://producthelp.whirlpool.com/Laundry/Dryers/Electric_Dryer",
+    "Whirlpool",
+    "Whirlpool electric dryers",
+  ),
+  maytagDryerSupport: source(
+    "maytag-dryer-support",
+    "manufacturer-troubleshooting",
+    "Maytag electric dryer support",
+    "https://producthelp.maytag.com/Laundry/Dryers/Electric_Dryers",
+    "Maytag",
+    "Maytag electric dryers",
+  ),
+  lgDryerSupport: source(
+    "lg-dryer-support",
+    "manufacturer-troubleshooting",
+    "LG electric dryer support",
+    "https://www.lg.com/us/support/product/lg-DLE3400W.ABWETUS",
+    "LG",
+    "LG DLE3400W",
+  ),
+  geRefrigeratorWater: source(
+    "ge-refrigerator-water",
+    "manufacturer-troubleshooting",
+    "GE refrigerator water-filter guidance",
+    "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17409",
+    "GE Appliances",
+    "GE refrigerators with XWFE filters",
+  ),
+  whirlpoolRefrigeratorSupport: source(
+    "whirlpool-refrigerator-support",
+    "manufacturer-troubleshooting",
+    "Whirlpool refrigerator water and filter support",
+    "https://producthelp.whirlpool.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Water_Filter_Information",
+    "Whirlpool",
+    "Whirlpool refrigerators",
+  ),
+  samsungRefrigeratorSupport: source(
+    "samsung-refrigerator-support",
+    "manufacturer-troubleshooting",
+    "Samsung refrigerator water-filter support",
+    "https://www.samsung.com/us/support/answer/ANS10005739/",
+    "Samsung",
+    "Samsung refrigerators",
+  ),
+  lgRefrigeratorSupport: source(
+    "lg-refrigerator-support",
+    "manufacturer-troubleshooting",
+    "LG refrigerator water-filter support",
+    "https://www.lg.com/us/support/help-library/lg-refrigerator-how-to-replace-the-water-filter--20153120724998",
+    "LG",
+    "LG refrigerators",
+  ),
 };
 
 const lgPumpSource = source(
@@ -161,8 +257,36 @@ const samsungPumpPurchase = {
   lastVerified: VERIFIED_ON,
 };
 
+const whirlpoolDishwasherPumpSource = source(
+  "whirlpool-w11412291",
+  "authorized-parts",
+  "Whirlpool W11412291 drain-pump model listing",
+  "https://www.whirlpoolparts.com/PartDetail/Drain-Pump/W11412291/4960707",
+  "Whirlpool Parts",
+  "Whirlpool WDT750SAKZ1",
+);
+
+const geDryerStrikeSource = source(
+  "ge-we01m10007",
+  "manufacturer-part",
+  "GE GTD42EASJ2WW front panel and door parts",
+  "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTD42EASJ2WW/2/0/0/0/FRONT_PANEL_%26_DOOR",
+  "GE Appliances",
+  "GE GTD42EASJ2WW",
+);
+
+const geFilterSource = source(
+  "ge-xwfe",
+  "manufacturer-part",
+  "GE XWFE refrigerator water filter",
+  "https://www.geapplianceparts.com/store/parts/spec/XWFE",
+  "GE Appliances",
+  "GE GSS25GYPFS",
+);
+
 interface EntryInput {
   id: string;
+  kind?: ApplianceCatalogEntry["kind"];
   brand: BrandName;
   model: string;
   label: string;
@@ -170,19 +294,38 @@ interface EntryInput {
   verifiedProductCodes?: string[];
   productCodePrompt: string;
   loadStyle?: ApplianceCatalogEntry["loadStyle"];
-  topology: ApplianceCatalogEntry["topology"];
-  checkProfile: ApplianceCatalogEntry["checkProfile"];
+  topology?: ApplianceCatalogEntry["topology"];
+  checkProfile?: ApplianceCatalogEntry["checkProfile"];
+  profile?: ApplianceCatalogEntry["profile"];
   modelUrl: string;
   troubleshootingSources: SourceReference[];
   exactPart?: ApplianceCatalogEntry["exactPart"];
 }
 
 function entry(input: EntryInput): ApplianceCatalogEntry {
-  const { modelUrl, exactPart, ...rest } = input;
+  const {
+    modelUrl,
+    exactPart,
+    kind: _kind,
+    profile: _profile,
+    loadStyle,
+    topology,
+    checkProfile,
+    verifiedProductCodes,
+    ...rest
+  } = input;
+  const kind = input.kind ?? "washer";
+  const profile =
+    input.profile ??
+    (input.checkProfile === "filter-access" ? "washer-front-drain" : "washer-hose-only");
   return {
     ...rest,
-    loadStyle: input.loadStyle ?? "front-load",
-    verifiedProductCodes: input.verifiedProductCodes ?? [],
+    kind,
+    profile,
+    ...(kind === "washer" ? { loadStyle: loadStyle ?? "front-load" } : {}),
+    ...(topology ? { topology } : {}),
+    ...(checkProfile ? { checkProfile } : {}),
+    verifiedProductCodes: verifiedProductCodes ?? [],
     modelSource: source(
       `${input.id}-model`,
       "manufacturer-model",
@@ -484,5 +627,222 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
     checkProfile: "hose-then-service",
     modelUrl: "https://www.maytag.com/owners-center-pdp.MVW5430MW.html",
     troubleshootingSources: [help.maytagTopDrain],
+  }),
+  entry({
+    id: "whirlpool-wdt750sakz1",
+    kind: "dishwasher",
+    brand: "Whirlpool",
+    model: "WDT750SAKZ1",
+    label: "24-inch stainless dishwasher",
+    aliases: ["WDT750SAKZ", "WDT750SAKZ1"],
+    verifiedProductCodes: ["WDT750SAKZ1"],
+    productCodePrompt: "Enter the complete model number, including the final engineering digit.",
+    topology: "dishwasher",
+    profile: "dishwasher-drain",
+    modelUrl:
+      "https://www.whirlpool.com/kitchen/dishwasher-and-cleaning/dishwashers/built-in-hidden-control-console/p.24%E2%80%9D-stainless-steel-dishwasher-with-ai-intelligent-wash-47-dba.wdt750sakz.html",
+    troubleshootingSources: [help.whirlpoolDishwasherDrain],
+    exactPart: {
+      id: "whirlpool-w11412291-wdt750",
+      componentId: "drain-pump",
+      name: "Dishwasher drain pump",
+      sku: "W11412291",
+      compatibleProductCodes: ["WDT750SAKZ1"],
+      compatibleModel: "Whirlpool WDT750SAKZ1",
+      location: "Below the filter and sump at the bottom of the tub",
+      installBoundary: "professional-only",
+      source: whirlpoolDishwasherPumpSource,
+      purchase: {
+        seller: "Whirlpool Parts",
+        url: "https://www.whirlpoolparts.com/PartDetail/Drain-Pump/W11412291/4960707",
+        priceAtVerification: "$96.67",
+        availabilityAtVerification: "In stock",
+        lastVerified: VERIFIED_ON,
+      },
+    },
+  }),
+  entry({
+    id: "bosch-shpm65z55n20",
+    kind: "dishwasher",
+    brand: "Bosch",
+    model: "SHPM65Z55N/20",
+    label: "500 Series pocket-handle dishwasher",
+    aliases: ["SHPM65Z55N", "SHPM65Z55N/20"],
+    productCodePrompt: "Enter the complete E-Nr, including the number after the slash.",
+    topology: "dishwasher",
+    profile: "dishwasher-drain",
+    modelUrl: "https://www.bosch-home.com/us/en/productservice/SHPM65Z55N-20",
+    troubleshootingSources: [help.boschDishwasherDrain],
+  }),
+  entry({
+    id: "ge-gdf670syvfs",
+    kind: "dishwasher",
+    brand: "GE",
+    model: "GDF670SYVFS",
+    label: "Top-control stainless dishwasher",
+    aliases: ["GDF670SYVFS"],
+    productCodePrompt: "Enter the complete model and engineering revision from the tub label.",
+    topology: "dishwasher",
+    profile: "dishwasher-drain",
+    modelUrl: "https://products.geappliances.com/appliance/gea-specs/GDF670SYVFS/support",
+    troubleshootingSources: [help.geDishwasherSupport],
+  }),
+  entry({
+    id: "kitchenaid-kdtm404kps",
+    kind: "dishwasher",
+    brand: "KitchenAid",
+    model: "KDTM404KPS",
+    label: "Top-control dishwasher with FreeFlex rack",
+    aliases: ["KDTM404KPS"],
+    productCodePrompt: "Enter the complete model number and final engineering digit.",
+    topology: "dishwasher",
+    profile: "dishwasher-drain",
+    modelUrl:
+      "https://www.kitchenaid.com/major-appliances/dishwashers/integrated-control/p.44-dba-dishwasher-in-printshield-finish-with-freeflex-third-rack.kdtm404kps.html",
+    troubleshootingSources: [help.kitchenaidDishwasherSupport],
+  }),
+  entry({
+    id: "ge-gtd42easj2ww",
+    kind: "dryer",
+    brand: "GE",
+    model: "GTD42EASJ2WW",
+    label: "7.2 cu. ft. electric dryer",
+    aliases: ["GTD42EASJWW", "GTD42EASJ2WW"],
+    verifiedProductCodes: ["GTD42EASJ2WW"],
+    productCodePrompt:
+      "Enter the complete model number, including the engineering digit before WW.",
+    topology: "electric-dryer",
+    profile: "dryer-door-strike",
+    modelUrl: "https://products.geappliances.com/appliance/gea-specs/GTD42EASJWW/support",
+    troubleshootingSources: [help.geDryerDoor],
+    exactPart: {
+      id: "ge-we01m10007-gtd42",
+      componentId: "door-strike",
+      name: "Dryer door strike",
+      sku: "WE01M10007",
+      compatibleProductCodes: ["GTD42EASJ2WW"],
+      compatibleModel: "GE GTD42EASJ2WW",
+      location: "On the visible edge of the dryer door",
+      installBoundary: "user-replaceable",
+      source: geDryerStrikeSource,
+      purchase: {
+        seller: "GE Appliances Parts",
+        url: "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTD42EASJ2WW/2/0/0/0/FRONT_PANEL_%26_DOOR",
+        priceAtVerification: "$6.90",
+        availabilityAtVerification: "In stock",
+        lastVerified: VERIFIED_ON,
+      },
+    },
+  }),
+  entry({
+    id: "whirlpool-wed4950hw",
+    kind: "dryer",
+    brand: "Whirlpool",
+    model: "WED4950HW",
+    label: "7.0 cu. ft. electric dryer",
+    aliases: ["WED4950HW"],
+    productCodePrompt: "Enter the complete model number and engineering digit from the door label.",
+    topology: "electric-dryer",
+    profile: "dryer-door-strike",
+    modelUrl: "https://www.whirlpool.com/owners-center-pdp.WED4950HW.html",
+    troubleshootingSources: [help.whirlpoolDryerSupport],
+  }),
+  entry({
+    id: "maytag-med4500mw",
+    kind: "dryer",
+    brand: "Maytag",
+    model: "MED4500MW",
+    label: "7.0 cu. ft. electric dryer",
+    aliases: ["MED4500MW"],
+    productCodePrompt: "Enter the complete model number and engineering digit from the door label.",
+    topology: "electric-dryer",
+    profile: "dryer-door-strike",
+    modelUrl: "https://www.maytag.com/owners-center-pdp.MED4500MW.html",
+    troubleshootingSources: [help.maytagDryerSupport],
+  }),
+  entry({
+    id: "lg-dle3400w",
+    kind: "dryer",
+    brand: "LG",
+    model: "DLE3400W",
+    label: "7.4 cu. ft. electric dryer",
+    aliases: ["DLE3400W", "DLE3400W.ABWETUS"],
+    productCodePrompt: "Enter the complete suffix printed after DLE3400W.",
+    topology: "electric-dryer",
+    profile: "dryer-door-strike",
+    modelUrl: "https://www.lg.com/us/support/product/lg-DLE3400W.ABWETUS",
+    troubleshootingSources: [help.lgDryerSupport],
+  }),
+  entry({
+    id: "ge-gss25gypfs",
+    kind: "refrigerator",
+    brand: "GE",
+    model: "GSS25GYPFS",
+    label: "25.3 cu. ft. side-by-side refrigerator",
+    aliases: ["GSS25GYPFS"],
+    verifiedProductCodes: ["GSS25GYPFS"],
+    productCodePrompt: "Enter the complete model number from the fresh-food compartment label.",
+    topology: "side-by-side-refrigerator",
+    profile: "refrigerator-water-filter",
+    modelUrl: "https://products.geappliances.com/appliance/gea-specs/gss25gypfs/parts",
+    troubleshootingSources: [help.geRefrigeratorWater],
+    exactPart: {
+      id: "ge-xwfe-gss25",
+      componentId: "water-filter",
+      name: "XWFE refrigerator water filter",
+      sku: "XWFE",
+      compatibleProductCodes: ["GSS25GYPFS"],
+      compatibleModel: "GE GSS25GYPFS",
+      location: "Upper rear of the fresh-food compartment",
+      installBoundary: "user-replaceable",
+      source: geFilterSource,
+      purchase: {
+        seller: "GE Appliances Parts",
+        url: "https://www.geapplianceparts.com/store/parts/spec/XWFE",
+        priceAtVerification: "$54.99",
+        availabilityAtVerification: "In stock",
+        lastVerified: VERIFIED_ON,
+      },
+    },
+  }),
+  entry({
+    id: "whirlpool-wrs315sdhz",
+    kind: "refrigerator",
+    brand: "Whirlpool",
+    model: "WRS315SDHZ",
+    label: "24.6 cu. ft. side-by-side refrigerator",
+    aliases: ["WRS315SDHZ"],
+    productCodePrompt: "Enter the complete model number and final engineering digit.",
+    topology: "side-by-side-refrigerator",
+    profile: "refrigerator-water-filter",
+    modelUrl: "https://www.whirlpool.com/owners-center-pdp.WRS315SDHZ.html",
+    troubleshootingSources: [help.whirlpoolRefrigeratorSupport],
+  }),
+  entry({
+    id: "samsung-rf28t5001sr",
+    kind: "refrigerator",
+    brand: "Samsung",
+    model: "RF28T5001SR",
+    label: "28 cu. ft. French-door refrigerator",
+    aliases: ["RF28T5001SR", "RF28T5001SR/AA"],
+    productCodePrompt: "Enter the complete model code, including the suffix after the slash.",
+    topology: "side-by-side-refrigerator",
+    profile: "refrigerator-water-filter",
+    modelUrl:
+      "https://www.samsung.com/us/home-appliances/refrigerators/3-door-french-door/28-cu-ft-large-capacity-3-door-french-door-refrigerator-in-stainless-steel-rf28t5001sr-aa/",
+    troubleshootingSources: [help.samsungRefrigeratorSupport],
+  }),
+  entry({
+    id: "lg-lrflc2706s",
+    kind: "refrigerator",
+    brand: "LG",
+    model: "LRFLC2706S",
+    label: "27 cu. ft. counter-depth refrigerator",
+    aliases: ["LRFLC2706S", "LRFLC2706S.ASTCNA0"],
+    productCodePrompt: "Enter the complete model suffix from the compartment label.",
+    topology: "side-by-side-refrigerator",
+    profile: "refrigerator-water-filter",
+    modelUrl: "https://www.lg.com/us/refrigerators/lg-lrflc2706s-french-3-door-refrigerator",
+    troubleshootingSources: [help.lgRefrigeratorSupport],
   }),
 ];

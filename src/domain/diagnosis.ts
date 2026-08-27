@@ -1,94 +1,35 @@
 import { getRepairPack } from "./repairPack";
-import type { CauseId, RankedCause, RepairState, ResultId } from "./types";
+import type { RankedCause, RepairState } from "./types";
 
-interface CauseEvidence {
-  score: number;
-  confidence: RankedCause["confidence"];
-  explanation: string;
-}
-
-function initialEvidence(hasFilterCheck: boolean): Record<CauseId, CauseEvidence> {
-  return {
-    "blocked-filter": {
-      score: hasFilterCheck ? 40 : 22,
-      confidence: "possible",
-      explanation: hasFilterCheck
-        ? "Coins, lint, or other debris may be blocking the drain filter."
-        : "Something inside the drain path may be blocked, but this washer has no outside filter to check.",
-    },
-    "kinked-hose": {
-      score: 35,
-      confidence: "likely",
-      explanation: "A bent or badly placed hose can stop water from leaving the washer.",
-    },
-    "drain-pump-failure": {
-      score: 25,
-      confidence: "possible",
-      explanation: "The drain pump may not be pushing water out of the washer.",
-    },
-    "control-fault": {
-      score: 10,
-      confidence: "possible",
-      explanation: "The washer's controls may need to be checked by a technician.",
-    },
-  };
-}
-
-function applyResult(evidence: Record<CauseId, CauseEvidence>, result: ResultId): void {
-  if (result === "hose-kinked" || result === "hose-disconnected") {
-    evidence["kinked-hose"] = {
-      score: 100,
-      confidence: "strong match",
-      explanation: "The hose you saw can explain why the washer is not draining.",
-    };
-    evidence["blocked-filter"].score = 10;
-    evidence["drain-pump-failure"].score = 8;
-  }
-  if (result === "hose-clear") {
-    evidence["kinked-hose"] = {
-      score: 5,
-      confidence: "possible",
-      explanation: "The hose looks clear, so the problem is probably somewhere else.",
-    };
-    evidence["blocked-filter"].score += 20;
-    evidence["drain-pump-failure"].score += 25;
-  }
-  if (result === "filter-blocked") {
-    evidence["blocked-filter"] = {
-      score: 100,
-      confidence: "strong match",
-      explanation: "The debris you found can stop the washer from draining.",
-    };
-    evidence["drain-pump-failure"].score = 10;
-    evidence["control-fault"].score = 5;
-  }
-  if (result === "filter-clear") {
-    evidence["blocked-filter"] = {
-      score: 5,
-      confidence: "possible",
-      explanation: "The filter looks clear, so a blockage there is less likely.",
-    };
-    evidence["drain-pump-failure"] = {
-      score: 100,
-      confidence: "strong match",
-      explanation:
-        "With the hose and filter clear, the drain pump is the most likely part to check next.",
-    };
-    evidence["control-fault"] = {
-      score: 45,
-      confidence: "possible",
-      explanation: "The washer's controls are another possibility and need a technician to check.",
-    };
-  }
+function confidence(score: number): RankedCause["confidence"] {
+  if (score >= 80) return "strong match";
+  if (score >= 45) return "likely";
+  return "possible";
 }
 
 export function deriveCauses(state: RepairState): RankedCause[] {
   if (!state.packId) return [];
   const pack = getRepairPack(state.packId);
-  const evidence = initialEvidence(pack.checks.some((check) => check.id === "inspect-pump-filter"));
-  for (const result of Object.values(state.completedChecks))
-    if (result) applyResult(evidence, result);
+  const observed = Object.values(state.completedChecks).filter((item): item is string =>
+    Boolean(item),
+  );
   return pack.causes
-    .map((cause) => ({ ...cause, ...evidence[cause.id] }))
+    .map((cause) => {
+      let score = cause.baseRank;
+      let explanation = cause.defaultExplanation;
+      for (const resultId of observed) {
+        score += cause.resultScores?.[resultId] ?? 0;
+        explanation = cause.resultExplanations?.[resultId] ?? explanation;
+      }
+      score = Math.max(0, Math.min(100, score));
+      return {
+        id: cause.id,
+        label: cause.label,
+        componentId: cause.componentId,
+        score,
+        confidence: confidence(score),
+        explanation,
+      };
+    })
     .sort((left, right) => right.score - left.score);
 }

@@ -7,61 +7,69 @@ import {
   getRepairPack,
   normalizeModel,
 } from "./repairPack";
-import type { PartOutcome, RepairSnapshot, RepairState, RepairToolName } from "./types";
+import type {
+  PartOutcome,
+  RepairPackResult,
+  RepairSnapshot,
+  RepairState,
+  RepairToolName,
+} from "./types";
 
 export const REAL_DATA_DISCLAIMER =
-  "Check the full model number before ordering. If anything looks unsafe, stop and call a qualified appliance technician.";
+  "Confirm the complete model number on the seller page before ordering. Clunk shows safe checks and purchase links—not a guaranteed diagnosis or a substitute for a qualified technician.";
+
+function terminalResult(state: RepairState): RepairPackResult | null {
+  if (!state.packId) return null;
+  const pack = getRepairPack(state.packId);
+  for (const check of [...pack.checks].reverse()) {
+    const resultId = state.completedChecks[check.id];
+    if (!resultId) continue;
+    const match = check.results.find((item) => item.id === resultId);
+    if (match && match.effect !== "continue") return match;
+  }
+  return null;
+}
 
 export function getPartOutcome(state: RepairState): PartOutcome | null {
   if (!state.packId || state.phase !== "result") return null;
   const pack = getRepairPack(state.packId);
-  const hose = state.completedChecks["inspect-drain-hose"];
-  const filter = state.completedChecks["inspect-pump-filter"];
-
-  if (hose === "hose-kinked") {
+  const observed = terminalResult(state);
+  const noun = pack.appliance.noun;
+  const source = pack.sources.find((item) => item.kind === "manufacturer-troubleshooting") ?? null;
+  if (!observed) {
     return {
-      status: "no-part-needed",
-      title: "You probably don't need a part",
-      message:
-        "Straighten the visible drain hose without moving the washer, then run a short drain cycle.",
+      status: "not-ready",
+      title: "One more check needed",
+      message: "Finish the check on screen and Clunk will show the next step.",
+      applianceNoun: noun,
       part: null,
       requiredProductCode: null,
-      source: pack.sources.find((item) => item.kind === "manufacturer-troubleshooting") ?? null,
+      source: null,
     };
   }
-  if (hose === "hose-disconnected") {
-    return {
-      status: "professional-only",
-      title: "Stop here and call a technician",
-      message: "The hose looks loose or damaged and could leak if the washer runs.",
-      part: null,
-      requiredProductCode: pack.productCodePrompt,
-      source: pack.sources.find((item) => item.kind === "manufacturer-troubleshooting") ?? null,
-    };
-  }
-  if (filter === "filter-blocked") {
+  if (observed.effect === "no-part-needed") {
     return {
       status: "no-part-needed",
-      title: "You probably don't need a part",
-      message:
-        "The blockage you found can keep the washer from draining. Clean the filter, reinstall it, and test the washer.",
+      title: observed.outcomeTitle ?? "You probably do not need a part",
+      message: observed.outcomeMessage ?? "The visible issue can explain the symptom.",
+      applianceNoun: noun,
       part: null,
       requiredProductCode: null,
-      source: pack.sources.find((item) => item.id.includes("filter")) ?? null,
+      source,
     };
   }
-  if (hose === "hose-clear" && !pack.checks.some((check) => check.id === "inspect-pump-filter")) {
+  if (observed.effect === "professional-only") {
     return {
       status: "professional-only",
-      title: "A technician needs to check inside",
-      message:
-        "The outside hose looks clear, but this washer has no filter you can safely check from the outside.",
+      title: observed.outcomeTitle ?? "A professional should continue",
+      message: observed.outcomeMessage ?? "The next check is beyond Clunk's user-safe boundary.",
+      applianceNoun: noun,
       part: null,
       requiredProductCode: pack.productCodePrompt,
-      source: pack.sources.find((item) => item.kind === "manufacturer-troubleshooting") ?? null,
+      source,
     };
   }
-  if (hose === "hose-clear" && filter === "filter-clear") {
+  if (observed.effect === "part-candidate") {
     const part = pack.parts[0] ?? null;
     const exact = Boolean(
       part &&
@@ -71,9 +79,10 @@ export function getPartOutcome(state: RepairState): PartOutcome | null {
     if (exact && part) {
       return {
         status: "exact",
-        title: "This is the part for your washer",
+        title: `This is the part for your ${noun}`,
         message:
-          "The hose and filter look clear, so the drain pump is the most likely part to check next.",
+          observed.outcomeMessage ?? `The observations point to this ${part.name.toLowerCase()}.`,
+        applianceNoun: noun,
         part,
         requiredProductCode: null,
         source: part.source,
@@ -81,10 +90,13 @@ export function getPartOutcome(state: RepairState): PartOutcome | null {
     }
     return {
       status: "variant-needed",
-      title: "We need the full model number",
+      title: part
+        ? "Confirm the full model number"
+        : "Clunk has not verified a part for this model yet",
       message: part
-        ? "The letters after the main model number can change which part fits. Find the complete number on the appliance label."
-        : "The outside checks point to a problem inside the washer, but Clunk does not have a verified part link for this model yet.",
+        ? "Small letters and engineering digits can change which part fits. Enter the complete number from the appliance label."
+        : "The safe checks reached a likely component, but this model is currently guided checks only—there is no verified purchase link.",
+      applianceNoun: noun,
       part: null,
       requiredProductCode: pack.productCodePrompt,
       source: pack.sources.find((item) => item.kind === "manufacturer-model") ?? null,
@@ -93,7 +105,8 @@ export function getPartOutcome(state: RepairState): PartOutcome | null {
   return {
     status: "not-ready",
     title: "One more check needed",
-    message: "Finish the check on screen and Clunk will show the best next step.",
+    message: "Finish the check on screen and Clunk will show the next step.",
+    applianceNoun: noun,
     part: null,
     requiredProductCode: null,
     source: null,
@@ -102,11 +115,12 @@ export function getPartOutcome(state: RepairState): PartOutcome | null {
 
 export function getProgress(state: RepairState): number {
   if (state.escalation || state.partOutcomeRevealed) return 100;
-  if (state.phase === "result") return 90;
-  if (state.completedChecks["inspect-pump-filter"]) return 80;
-  if (state.completedChecks["inspect-drain-hose"]) return 60;
-  if (state.completedChecks["prepare-power"]) return 40;
-  if (state.phase === "preparing" || state.phase === "checking") return 25;
+  if (!state.packId) return 0;
+  if (state.phase === "result") return 92;
+  const pack = getRepairPack(state.packId);
+  const completed = Object.keys(state.completedChecks).length;
+  if (state.currentStepId)
+    return Math.min(84, 20 + Math.round((completed / pack.checks.length) * 64));
   if (state.applianceId) return 10;
   return 0;
 }
@@ -139,10 +153,12 @@ export function getRepairSnapshot(state: RepairState): RepairSnapshot {
   const outcome = getPartOutcome(state);
   return {
     catalogQuery: state.catalogQuery,
+    catalogKind: state.catalogKind,
     catalogResults: state.catalogResultIds.map((id) => {
       const entry = getCatalogEntry(id);
       return {
         id: entry.id,
+        kind: entry.kind,
         brand: entry.brand,
         model: entry.model,
         label: entry.label,
@@ -150,14 +166,18 @@ export function getRepairSnapshot(state: RepairState): RepairSnapshot {
       };
     }),
     appliance: pack ? `${pack.appliance.brand} ${pack.appliance.model}` : null,
+    applianceKind: pack?.appliance.kind ?? null,
+    applianceKindLabel: pack?.appliance.kindLabel ?? null,
+    applianceNoun: pack?.appliance.noun ?? "appliance",
     productCode: state.productCode,
     verificationLabel: pack
       ? state.productCode &&
         pack.verifiedProductCodes.map(normalizeModel).includes(normalizeModel(state.productCode))
         ? "Full model number confirmed"
-        : "Washer model found"
+        : `${pack.appliance.kindLabel} model found`
       : null,
     symptom: state.symptomId ? (pack?.symptom.label ?? null) : null,
+    symptomShortLabel: state.symptomId ? (pack?.symptom.shortLabel ?? null) : null,
     phase: state.phase,
     progress: getProgress(state),
     currentStep:
@@ -170,6 +190,8 @@ export function getRepairSnapshot(state: RepairState): RepairSnapshot {
       state.selectedPartId && state.packId ? getPart(state.packId, state.selectedPartId) : null,
     sources: pack?.sources ?? [],
     escalation: state.escalation,
+    exampleMode: state.exampleMode,
+    exampleSummary: state.exampleMode ? (pack?.example?.summary ?? null) : null,
     webMcpStatus: state.webMcpStatus,
     validNextActions: getValidNextActions(state),
     disclaimer: REAL_DATA_DISCLAIMER,

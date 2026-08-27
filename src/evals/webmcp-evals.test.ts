@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import evalFixture from "../../evals/webmcp-evals.json";
 import { REPAIR_TOOL_NAMES, type RepairToolName } from "@/domain/types";
+import { createInitialRepairState, executeRepairTool } from "@/domain/engine";
 import { REPAIR_TOOL_CONTRACTS } from "@/webmcp/contracts";
 
 interface EvalCall {
@@ -18,7 +19,7 @@ function allCalls() {
 
 describe("WebMCP eval fixtures", () => {
   it("uses unique, fully described cases", () => {
-    expect(evalFixture.schemaVersion).toBe(2);
+    expect(evalFixture.schemaVersion).toBe(3);
     expect(evalFixture.fictional).toBe(false);
     expect(new Set(evalFixture.cases.map((evalCase) => evalCase.id)).size).toBe(
       evalFixture.cases.length,
@@ -40,7 +41,7 @@ describe("WebMCP eval fixtures", () => {
       expect(contract).toBeDefined();
 
       const schema = contract?.inputSchema as {
-        properties?: Record<string, unknown>;
+        properties?: Record<string, { enum?: unknown[] }>;
         required?: string[];
         additionalProperties?: boolean;
       };
@@ -49,6 +50,10 @@ describe("WebMCP eval fixtures", () => {
         true,
       );
       expect((schema.required ?? []).every((key) => key in call.arguments)).toBe(true);
+      for (const [key, value] of Object.entries(call.arguments)) {
+        const allowed = schema.properties?.[key]?.enum;
+        if (allowed) expect(allowed).toContain(value);
+      }
     }
   });
 
@@ -60,5 +65,26 @@ describe("WebMCP eval fixtures", () => {
 
     expect(evalFixture.cases.some((evalCase) => evalCase.category === "safety")).toBe(true);
     expect(evalFixture.cases.some((evalCase) => evalCase.category === "invalid-call")).toBe(true);
+  });
+
+  it("replays every fixture call through the deterministic engine", () => {
+    for (const evalCase of evalFixture.cases) {
+      let state = createInitialRepairState("unavailable");
+      for (const call of [
+        ...(evalCase.setup as EvalCall[]),
+        ...(evalCase.expectedCalls as EvalCall[]),
+      ]) {
+        const result = executeRepairTool(
+          state,
+          call.name as RepairToolName,
+          call.arguments,
+          "agent",
+        );
+        expect(result.ok, `${evalCase.id}: ${call.name} rejected with ${result.message}`).toBe(
+          true,
+        );
+        state = result.state;
+      }
+    }
   });
 });

@@ -10,17 +10,27 @@ import { SourcePanel } from "@/components/SourcePanel";
 import { StatusPill } from "@/components/StatusPill";
 import { ToolInspector } from "@/components/ToolInspector";
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
-import { getCatalogEntry, normalizeModel } from "@/domain/repairPack";
-import type { BrandName, ComponentId, RepairToolName, ResultId } from "@/domain/types";
+import { getCatalogEntry, getRepairPack, normalizeModel } from "@/domain/repairPack";
+import type {
+  ApplianceKind,
+  BrandName,
+  ComponentId,
+  RepairToolName,
+  ResultId,
+} from "@/domain/types";
 import { useRepair } from "@/state/RepairProvider";
 
 export function App() {
   const { state, snapshot, invokeTool, reset } = useRepair();
   const latestMessage = state.activity.at(-1)?.message ?? "Repair catalog ready.";
-  const hasSession = Boolean(state.applianceId || state.catalogQuery || state.activity.length > 1);
+  const hasSession = Boolean(state.applianceId || state.activity.length > 1);
 
-  const searchModels = (modelQuery: string, brand: BrandName | null) => {
-    invokeTool("search_supported_appliances", { modelQuery, ...(brand ? { brand } : {}) }, "human");
+  const searchModels = (modelQuery: string, brand: BrandName | null, kind: ApplianceKind) => {
+    invokeTool(
+      "search_supported_appliances",
+      { modelQuery, kind, ...(brand ? { brand } : {}) },
+      "human",
+    );
   };
 
   const selectModel = (applianceId: string, suppliedProductCode?: string) => {
@@ -35,14 +45,38 @@ export function App() {
       { applianceId, ...(exactCode ? { productCode: exactCode } : {}) },
       "human",
     );
-    if (selection.ok && exactCode) {
-      invokeTool("start_diagnosis", { symptomId: "will-not-drain" }, "human");
+    if (selection.ok && exactCode)
+      invokeTool("start_diagnosis", { symptomId: getRepairPack(applianceId).symptom.id }, "human");
+  };
+
+  const showExample = (applianceId: string) => {
+    const pack = getRepairPack(applianceId);
+    if (!pack.example) return;
+    invokeTool(
+      "select_appliance",
+      { applianceId, productCode: pack.example.productCode },
+      "example",
+    );
+    invokeTool("start_diagnosis", { symptomId: pack.symptom.id }, "example");
+    for (const observation of pack.example.observations) {
+      invokeTool("record_observation", observation, "example");
     }
+    invokeTool("find_compatible_part", {}, "example");
+    requestAnimationFrame(() => {
+      const bench = document.getElementById("repair-bench");
+      bench?.focus({ preventScroll: true });
+      if (typeof bench?.scrollIntoView === "function")
+        bench.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   };
 
   const startDiagnosis = () => {
     if (!state.applianceId) return;
-    invokeTool("start_diagnosis", { symptomId: "will-not-drain" }, "human");
+    invokeTool(
+      "start_diagnosis",
+      { symptomId: getRepairPack(state.applianceId).symptom.id },
+      "human",
+    );
   };
 
   const recordResult = (resultId: ResultId) => {
@@ -52,9 +86,8 @@ export function App() {
       { checkId: state.currentStepId, resultId },
       "human",
     );
-    if (observation.ok && observation.state.phase === "result") {
+    if (observation.ok && observation.state.phase === "result")
       invokeTool("find_compatible_part", {}, "human");
-    }
   };
 
   const continueWithProductCode = (productCode: string) => {
@@ -64,18 +97,18 @@ export function App() {
       { applianceId: state.applianceId, productCode },
       "human",
     );
-    if (selection.ok) {
-      invokeTool("start_diagnosis", { symptomId: "will-not-drain" }, "human");
-    }
+    if (selection.ok)
+      invokeTool(
+        "start_diagnosis",
+        { symptomId: getRepairPack(state.applianceId).symptom.id },
+        "human",
+      );
   };
 
-  const highlightComponent = (componentId: ComponentId) => {
+  const highlightComponent = (componentId: ComponentId) =>
     invokeTool("show_component", { componentId }, "human");
-  };
-
-  const runManualTool = (name: RepairToolName, input: Record<string, unknown>) => {
+  const runManualTool = (name: RepairToolName, input: Record<string, unknown>) =>
     invokeTool(name, input, "manual");
-  };
 
   return (
     <div className="app-shell">
@@ -88,13 +121,12 @@ export function App() {
         </a>
         <div className="topbar__meta">
           <span className="model-badge">
-            {snapshot.appliance ?? `${APPLIANCE_CATALOG.length} washers supported`}
+            {snapshot.appliance ?? `${APPLIANCE_CATALOG.length} supported models`}
           </span>
           <StatusPill status={state.webMcpStatus} />
           {hasSession ? (
             <button className="reset-button" type="button" onClick={reset}>
-              <RotateCcw size={16} aria-hidden="true" />
-              Reset
+              <RotateCcw size={16} aria-hidden="true" /> Reset
             </button>
           ) : null}
         </div>
@@ -102,50 +134,68 @@ export function App() {
 
       <main id="main-content">
         {!snapshot.appliance ? (
-          <>
-            <section className="intro-band" aria-labelledby="intro-title">
-              <div className="intro-copy">
-                <h1 id="intro-title">Your washer won&apos;t drain. Let&apos;s fix that.</h1>
-                <p>
-                  Find your model. Clunk shows where to look and gives you the exact replacement
-                  part when you need one.
-                </p>
-                <div className="hero-proof">
-                  <span>Clear checks · real part links · no login</span>
-                </div>
+          <section className="intro-band" aria-labelledby="intro-title">
+            <div className="intro-copy intro-copy--centered">
+              <span className="hero-kicker">A visual appliance diagnosis an AI can operate</span>
+              <h1 id="intro-title">
+                Tell Clunk what broke.
+                <br />
+                Get the part to buy.
+              </h1>
+              <p>
+                Clunk shows the exact place to look, records what you see, and ends with a verified
+                part link when the evidence supports one.
+              </p>
+              <div className="hero-flow" aria-label="How Clunk works">
+                <span>
+                  <b>1</b> Pick the problem
+                </span>
+                <i aria-hidden="true">→</i>
+                <span>
+                  <b>2</b> Look where shown
+                </span>
+                <i aria-hidden="true">→</i>
+                <span>
+                  <b>3</b> Open the part
+                </span>
               </div>
-              <figure className="intro-machine">
-                <img
-                  src="/assets/clunk-washer-front-load-topology-v3.png"
-                  alt="Front-load washer interior showing the drain path"
-                  width="1305"
-                  height="1205"
-                />
-                <figcaption>Clunk points to each place to check.</figcaption>
-              </figure>
-              <ModelFinder
-                snapshot={snapshot}
-                selectedId={state.applianceId}
-                onSearch={searchModels}
-                onSelect={selectModel}
-              />
-            </section>
-          </>
+            </div>
+            <ModelFinder
+              snapshot={snapshot}
+              selectedId={state.applianceId}
+              onSearch={searchModels}
+              onSelect={selectModel}
+              onExample={showExample}
+            />
+          </section>
         ) : (
           <>
+            {snapshot.exampleMode ? (
+              <div className="example-banner" role="status">
+                <strong>Example answer</strong>
+                <span>
+                  {snapshot.exampleSummary}. These observations are prefilled so you can see the
+                  complete WebMCP outcome immediately.
+                </span>
+              </div>
+            ) : null}
             <section className="selected-appliance" aria-label="Selected appliance">
               <div>
-                <h1>{snapshot.appliance} won&apos;t drain</h1>
+                <span className="section-kicker">{snapshot.applianceKindLabel}</span>
+                <h1>{snapshot.appliance}</h1>
                 <p>
                   {snapshot.productCode
                     ? `Full model number: ${snapshot.productCode}`
-                    : "Add the full model number to get the right part."}
+                    : "Enter the full model number before ordering a part."}
                 </p>
               </div>
               <div className="selected-appliance__action">
                 <span>
                   <small>Problem</small>
-                  <strong>Water stays in the washer</strong>
+                  <strong>
+                    {snapshot.symptomShortLabel ??
+                      getRepairPack(state.applianceId!).symptom.shortLabel}
+                  </strong>
                 </span>
               </div>
             </section>
@@ -164,7 +214,8 @@ export function App() {
             <section
               className="repair-bench"
               id="repair-bench"
-              aria-label="Washer check and answer"
+              aria-label="Appliance location and answer"
+              tabIndex={-1}
             >
               <ApplianceDiagram
                 packId={state.packId}
@@ -191,8 +242,7 @@ export function App() {
                 {snapshot.partOutcome ? (
                   <details className="answer-details">
                     <summary>
-                      Why Clunk gave this answer
-                      <ChevronDown size={18} aria-hidden="true" />
+                      Why this answer <ChevronDown size={18} aria-hidden="true" />
                     </summary>
                     <CauseStack causes={snapshot.likelyCauses} visible />
                     <SourcePanel sources={snapshot.sources} />
@@ -206,12 +256,11 @@ export function App() {
         <details className="protocol-disclosure">
           <summary>
             <span>
-              <strong>Behind the scenes</strong>
+              <strong>Agent activity</strong>
               <small>{latestMessage}</small>
             </span>
             <span>
-              View activity
-              <ChevronDown size={18} aria-hidden="true" />
+              View WebMCP calls <ChevronDown size={18} aria-hidden="true" />
             </span>
           </summary>
           <section className="protocol-band" aria-label="Agent activity and tool inspector">

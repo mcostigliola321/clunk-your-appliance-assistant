@@ -7,6 +7,7 @@ const SOURCE_LABELS: Record<ActivityEvent["source"], string> = {
   human: "You",
   manual: "Inspector",
   system: "Clunk",
+  example: "Example",
 };
 
 function SourceIcon({ source }: { source: ActivityEvent["source"] }) {

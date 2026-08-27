@@ -2,17 +2,17 @@ import type { Escalation, EscalationReason, RepairPackCheck, ResultId } from "./
 
 const ESCALATION_COPY: Record<EscalationReason, string> = {
   electrical:
-    "Stop using the washer, keep it disconnected from power, and contact a qualified appliance professional.",
+    "Stop using the appliance, keep it disconnected from power when it is safe to do so, and contact a qualified appliance professional.",
   "burning-smell":
-    "Stop. Keep the washer disconnected from power and contact a qualified appliance professional about the smoke or burning smell.",
+    "Stop. Keep the appliance disconnected from power and contact a qualified appliance professional about the smoke or burning smell.",
   "hot-water":
-    "Stop. Do not open the filter while the washer or retained water is hot. Contact a qualified appliance professional.",
+    "Stop. Do not open a filter or drain area while the appliance or retained water is hot. Contact a qualified appliance professional.",
   "active-leak":
     "Stop. Keep clear of water near power, disconnect power only if it is already safe to do so, and contact a qualified professional.",
   "internal-access":
-    "Stop at the user-access boundary. Do not move the washer or remove panels; a qualified appliance professional should continue.",
+    "Stop at the user-access boundary. Do not move the appliance or remove panels; a qualified appliance professional should continue.",
   unresolved:
-    "The safe visible checks did not isolate a user-serviceable cause. Keep the washer disconnected and contact a qualified appliance professional.",
+    "The safe visible checks did not isolate a user-serviceable cause. Stop using the appliance and contact a qualified appliance professional.",
 };
 
 const RESULT_ESCALATIONS: Partial<Record<ResultId, EscalationReason>> = {
@@ -31,6 +31,9 @@ const PERMITTED_SAFETY_TAGS = new Set([
   "no-disassembly",
   "spill-control",
   "user-accessible-filter",
+  "user-replaceable-filter",
+  "visible-door-hardware",
+  "sink-check",
 ]);
 
 export function escalationForReason(reason: EscalationReason): Escalation {

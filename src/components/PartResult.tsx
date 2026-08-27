@@ -41,7 +41,10 @@ export function PartResult({ outcome }: { outcome: PartOutcome | null }) {
               </div>
               <div>
                 <dt>Where it is</dt>
-                <dd>Lower front of the washer, behind the filter area</dd>
+                <dd>
+                  {outcome.part?.location ??
+                    `Inside the highlighted area of the ${outcome.applianceNoun}`}
+                </dd>
               </div>
             </dl>
             <div className="purchase-handoff">
@@ -87,8 +90,10 @@ export function PartResult({ outcome }: { outcome: PartOutcome | null }) {
         ) : null}
         {exact ? (
           <p className="part-disclaimer">
-            Confirm the full model number again on the seller page before ordering. Replacing an
-            internal pump is a job for a qualified appliance technician.
+            Confirm the full model number again on the seller page before ordering.{" "}
+            {outcome.part?.installBoundary === "professional-only"
+              ? "This is an internal repair for a qualified appliance technician."
+              : "Follow the manufacturer or seller instructions and stop if the visible part does not match."}
           </p>
         ) : null}
       </div>

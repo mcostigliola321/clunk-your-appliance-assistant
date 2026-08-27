@@ -4,17 +4,19 @@ import {
   getCatalogEntry,
   getCheck,
   getRepairPack,
+  isApplianceKind,
   isBrandName,
   isCheckId,
   isComponentId,
   isResultForCheck,
   searchCatalog,
 } from "./repairPack";
-import { escalationForReason, escalationForResult } from "./safety";
+import { escalationForReason } from "./safety";
 import { getPartOutcome, getRepairSnapshot } from "./selectors";
 import type {
   ActivityEvent,
   ActivitySource,
+  ApplianceKind,
   BrandName,
   CheckId,
   ComponentId,
@@ -44,7 +46,7 @@ export function createInitialRepairState(webMcpStatus: WebMcpStatus = "detecting
     action: "catalog_ready",
     arguments: {},
     outcome: "accepted",
-    message: `${APPLIANCE_CATALOG.length} washers are ready to search.`,
+    message: `${APPLIANCE_CATALOG.length} appliances across four categories are ready.`,
   };
   return {
     packId: null,
@@ -52,6 +54,7 @@ export function createInitialRepairState(webMcpStatus: WebMcpStatus = "detecting
     productCode: null,
     catalogQuery: "",
     catalogBrand: null,
+    catalogKind: null,
     catalogResultIds: APPLIANCE_CATALOG.map((entry) => entry.id),
     symptomId: null,
     phase: "catalog",
@@ -60,6 +63,7 @@ export function createInitialRepairState(webMcpStatus: WebMcpStatus = "detecting
     completedChecks: {},
     selectedPartId: null,
     partOutcomeRevealed: false,
+    exampleMode: false,
     escalation: null,
     webMcpStatus,
     activity: [initialEvent],
@@ -98,7 +102,7 @@ function appendEvent(
   };
 }
 
-function result(
+function response(
   state: RepairState,
   source: ActivitySource,
   action: RepairToolName,
@@ -123,15 +127,15 @@ function reject(
   action: RepairToolName,
   input: Record<string, unknown>,
   message: string,
-): ToolExecutionResult {
-  return result(state, source, action, input, false, message);
+) {
+  return response(state, source, action, input, false, message);
 }
 
 function searchSupportedAppliances(
   state: RepairState,
   input: Record<string, unknown>,
   source: ActivitySource,
-): ToolExecutionResult {
+) {
   if (input["modelQuery"] !== undefined && typeof input["modelQuery"] !== "string")
     return reject(
       state,
@@ -141,34 +145,39 @@ function searchSupportedAppliances(
       "modelQuery must be a string.",
     );
   if (input["brand"] !== undefined && !isBrandName(input["brand"]))
+    return reject(state, source, "search_supported_appliances", input, "Choose a supported brand.");
+  if (input["kind"] !== undefined && !isApplianceKind(input["kind"]))
     return reject(
       state,
       source,
       "search_supported_appliances",
       input,
-      "Choose one of the six supported brands.",
+      "Choose washer, dishwasher, dryer, or refrigerator.",
     );
   const query =
     typeof input["modelQuery"] === "string" ? input["modelQuery"].trim().slice(0, 64) : "";
   const brand = (input["brand"] as BrandName | undefined) ?? null;
-  const matches = searchCatalog(query, brand);
+  const kind = (input["kind"] as ApplianceKind | undefined) ?? null;
+  const matches = searchCatalog(query, brand, kind);
   const nextState = {
     ...state,
     catalogQuery: query,
     catalogBrand: brand,
+    catalogKind: kind,
     catalogResultIds: matches.map((entry) => entry.id),
   };
+  const noun = kind ?? "appliance";
   const message = matches.length
-    ? `Found ${matches.length} matching washer${matches.length === 1 ? "" : "s"}.`
-    : "No matching washer found.";
-  return result(nextState, source, "search_supported_appliances", input, true, message);
+    ? `Found ${matches.length} matching ${noun}${matches.length === 1 ? "" : "s"}.`
+    : `No matching ${noun} found.`;
+  return response(nextState, source, "search_supported_appliances", input, true, message);
 }
 
 function selectAppliance(
   state: RepairState,
   input: Record<string, unknown>,
   source: ActivitySource,
-): ToolExecutionResult {
+) {
   if (
     typeof input["applianceId"] !== "string" ||
     !APPLIANCE_CATALOG.some((entry) => entry.id === input["applianceId"])
@@ -201,6 +210,7 @@ function selectAppliance(
     packId: entry.id,
     applianceId: entry.id,
     productCode,
+    catalogKind: entry.kind,
     symptomId: null,
     phase: "idle",
     currentStepId: null,
@@ -208,9 +218,10 @@ function selectAppliance(
     completedChecks: {},
     selectedPartId: null,
     partOutcomeRevealed: false,
+    exampleMode: source === "example",
     escalation: null,
   };
-  return result(
+  return response(
     nextState,
     source,
     "select_appliance",
@@ -224,7 +235,7 @@ function startDiagnosis(
   state: RepairState,
   input: Record<string, unknown>,
   source: ActivitySource,
-): ToolExecutionResult {
+) {
   if (!state.applianceId || !state.packId)
     return reject(
       state,
@@ -240,34 +251,32 @@ function startDiagnosis(
       source,
       "start_diagnosis",
       input,
-      "This build supports the washer-will-not-drain symptom.",
+      `This repair pack supports: ${pack.symptom.label}.`,
     );
+  const firstCheck = pack.checks[0]!;
   const nextState: RepairState = {
     ...state,
     symptomId: input["symptomId"] as SymptomId,
     phase: "preparing",
-    currentStepId: "prepare-power",
-    highlightedComponentId: "machine",
+    currentStepId: firstCheck.id,
+    highlightedComponentId: firstCheck.componentId,
     completedChecks: {},
     selectedPartId: null,
     partOutcomeRevealed: false,
+    exampleMode: source === "example" ? true : false,
     escalation: null,
   };
-  return result(
+  return response(
     nextState,
     source,
     "start_diagnosis",
     input,
     true,
-    "Started with the safety check.",
+    `Started ${pack.symptom.label.toLowerCase()} with the safety check.`,
   );
 }
 
-function showComponent(
-  state: RepairState,
-  input: Record<string, unknown>,
-  source: ActivitySource,
-): ToolExecutionResult {
+function showComponent(state: RepairState, input: Record<string, unknown>, source: ActivitySource) {
   if (!isComponentId(state.packId, input["componentId"]))
     return reject(
       state,
@@ -276,9 +285,8 @@ function showComponent(
       input,
       "Choose a component from the selected repair pack.",
     );
-  const nextState = { ...state, highlightedComponentId: input["componentId"] as ComponentId };
-  return result(
-    nextState,
+  return response(
+    { ...state, highlightedComponentId: input["componentId"] as ComponentId },
     source,
     "show_component",
     input,
@@ -291,7 +299,7 @@ function recordObservation(
   state: RepairState,
   input: Record<string, unknown>,
   source: ActivitySource,
-): ToolExecutionResult {
+) {
   if (
     !state.packId ||
     !isCheckId(state.packId, input["checkId"]) ||
@@ -302,7 +310,7 @@ function recordObservation(
       source,
       "record_observation",
       input,
-      "Provide the current checkId and one listed human observation.",
+      "Provide the current checkId and one listed observation.",
     );
   const checkId = input["checkId"] as CheckId;
   const resultId = input["resultId"] as ResultId;
@@ -322,30 +330,29 @@ function recordObservation(
       input,
       "That observation does not belong to the current check.",
     );
-  const completedChecks = { ...state.completedChecks, [checkId]: resultId };
+  const check = getCheck(state.packId, checkId);
+  const observed = check.results.find((item) => item.id === resultId)!;
   let nextState: RepairState = {
     ...state,
-    completedChecks,
+    completedChecks: { ...state.completedChecks, [checkId]: resultId },
     selectedPartId: null,
     partOutcomeRevealed: false,
+    exampleMode: source === "example" ? true : false,
   };
-  const escalation = escalationForResult(resultId);
-  if (escalation) {
+  if (observed.effect === "hazard") {
+    const escalation = escalationForReason(observed.escalationReason ?? "unresolved");
     nextState = { ...nextState, phase: "escalated", currentStepId: null, escalation };
-    return result(nextState, source, "record_observation", input, true, escalation.message);
+    return response(nextState, source, "record_observation", input, true, escalation.message);
   }
-  const pack = getRepairPack(state.packId);
-  const currentIndex = pack.checks.findIndex((check) => check.id === checkId);
-  const shouldAdvance = resultId === "acknowledged" || resultId === "hose-clear";
-  const nextCheck = shouldAdvance ? pack.checks[currentIndex + 1] : undefined;
-  if (nextCheck) {
+  if (observed.effect === "continue" && observed.nextCheckId) {
+    const nextCheck = getCheck(state.packId, observed.nextCheckId);
     nextState = {
       ...nextState,
       phase: "checking",
       currentStepId: nextCheck.id,
       highlightedComponentId: nextCheck.componentId,
     };
-    return result(
+    return response(
       nextState,
       source,
       "record_observation",
@@ -358,15 +365,15 @@ function recordObservation(
     ...nextState,
     phase: "result",
     currentStepId: null,
-    highlightedComponentId: checkId === "inspect-drain-hose" ? "drain-hose" : "pump-filter",
+    highlightedComponentId: observed.focusComponentId ?? check.componentId,
   };
-  return result(
+  return response(
     nextState,
     source,
     "record_observation",
     input,
     true,
-    "Checks complete. Showing the answer.",
+    observed.outcomeMessage ?? "Checks complete. The answer is ready.",
   );
 }
 
@@ -374,7 +381,7 @@ function findCompatiblePart(
   state: RepairState,
   input: Record<string, unknown>,
   source: ActivitySource,
-): ToolExecutionResult {
+) {
   const outcome = getPartOutcome(state);
   if (!outcome || outcome.status === "not-ready")
     return reject(
@@ -389,16 +396,19 @@ function findCompatiblePart(
     partOutcomeRevealed: true,
     selectedPartId: outcome.status === "exact" ? (outcome.part?.id ?? null) : null,
     highlightedComponentId:
-      outcome.status === "exact" ? "drain-pump" : state.highlightedComponentId,
+      outcome.status === "exact"
+        ? (outcome.part?.componentId ?? state.highlightedComponentId)
+        : state.highlightedComponentId,
+    exampleMode: source === "example" ? true : false,
   };
-  return result(nextState, source, "find_compatible_part", input, true, outcome.message);
+  return response(nextState, source, "find_compatible_part", input, true, outcome.message);
 }
 
 function stopAndEscalate(
   state: RepairState,
   input: Record<string, unknown>,
   source: ActivitySource,
-): ToolExecutionResult {
+) {
   if (
     typeof input["reason"] !== "string" ||
     !ESCALATION_REASONS.has(input["reason"] as EscalationReason)
@@ -411,8 +421,14 @@ function stopAndEscalate(
       "Choose a supported safety or service reason.",
     );
   const escalation = escalationForReason(input["reason"] as EscalationReason);
-  const nextState: RepairState = { ...state, phase: "escalated", currentStepId: null, escalation };
-  return result(nextState, source, "stop_and_escalate", input, true, escalation.message);
+  const nextState: RepairState = {
+    ...state,
+    phase: "escalated",
+    currentStepId: null,
+    escalation,
+    exampleMode: false,
+  };
+  return response(nextState, source, "stop_and_escalate", input, true, escalation.message);
 }
 
 export function executeRepairTool(
@@ -427,13 +443,13 @@ export function executeRepairTool(
     case "select_appliance":
       return selectAppliance(state, input, source);
     case "get_repair_state":
-      return result(
+      return response(
         state,
         source,
         action,
         input,
         true,
-        "Returned current state, visible catalog results, sources, and permitted next tools.",
+        "Returned the current shared repair state and permitted next tools.",
       );
     case "start_diagnosis":
       return startDiagnosis(state, input, source);

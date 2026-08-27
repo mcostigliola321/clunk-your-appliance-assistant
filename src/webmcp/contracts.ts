@@ -1,4 +1,5 @@
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
+import { REPAIR_PACKS } from "@/domain/repairPack";
 import type { RepairToolName } from "@/domain/types";
 
 export interface RepairToolContract {
@@ -11,14 +12,24 @@ export interface RepairToolContract {
 }
 
 const empty = { type: "object", properties: {}, additionalProperties: false };
-const brands = ["LG", "Samsung", "GE", "Whirlpool", "Maytag", "Electrolux"];
+const brands = [...new Set(APPLIANCE_CATALOG.map((entry) => entry.brand))];
+const kinds = [...new Set(APPLIANCE_CATALOG.map((entry) => entry.kind))];
+const packs = [...REPAIR_PACKS.values()];
+const symptomIds = [...new Set(packs.map((pack) => pack.symptom.id))];
+const componentIds = [...new Set(packs.flatMap((pack) => pack.components.map((item) => item.id)))];
+const checkIds = [...new Set(packs.flatMap((pack) => pack.checks.map((item) => item.id)))];
+const resultIds = [
+  ...new Set(
+    packs.flatMap((pack) => pack.checks.flatMap((check) => check.results.map((item) => item.id))),
+  ),
+];
 
 export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
   {
     name: "search_supported_appliances",
-    title: "Search supported washers",
+    title: "Search supported appliances",
     purpose:
-      "Search Clunk's visible source-backed catalog by brand or model text. Use this before selecting a washer; never substitute a similar model when no match is returned.",
+      "Search Clunk's visible source-backed catalog by appliance kind, brand, or model text. Use this before selecting a model; never substitute a similar model when no match is returned.",
     inputSchema: {
       type: "object",
       properties: {
@@ -28,6 +39,7 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
           description: "Full or partial model text, such as WM3400CW or WF45T6000AW/A5.",
         },
         brand: { type: "string", enum: brands },
+        kind: { type: "string", enum: kinds },
       },
       additionalProperties: false,
     },
@@ -36,7 +48,7 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
   },
   {
     name: "select_appliance",
-    title: "Select an exact washer family",
+    title: "Select an exact appliance model",
     purpose:
       "Select an applianceId returned by catalog search. Include the complete productCode exactly as reported by the human when available; never invent a suffix or revision.",
     inputSchema: {
@@ -66,12 +78,12 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
   },
   {
     name: "start_diagnosis",
-    title: "Start no-drain diagnosis",
+    title: "Start the selected diagnosis",
     purpose:
-      "Begin the selected model family's will-not-drain path. This always starts with the deterministic power, heat, and leak boundary.",
+      "Begin the selected model's supported symptom path. This always starts with a deterministic safety boundary.",
     inputSchema: {
       type: "object",
-      properties: { symptomId: { type: "string", enum: ["will-not-drain"] } },
+      properties: { symptomId: { type: "string", enum: symptomIds } },
       required: ["symptomId"],
       additionalProperties: false,
     },
@@ -88,15 +100,7 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
       properties: {
         componentId: {
           type: "string",
-          enum: [
-            "machine",
-            "drum",
-            "sump",
-            "pump-filter",
-            "drain-pump",
-            "drain-hose",
-            "control-module",
-          ],
+          enum: componentIds,
         },
       },
       required: ["componentId"],
@@ -115,30 +119,17 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
       properties: {
         checkId: {
           type: "string",
-          enum: ["prepare-power", "inspect-drain-hose", "inspect-pump-filter"],
+          enum: checkIds,
         },
         resultId: {
           type: "string",
-          enum: [
-            "acknowledged",
-            "hazard-burning",
-            "hazard-hot-water",
-            "hazard-active-leak",
-            "hose-kinked",
-            "hose-clear",
-            "hose-disconnected",
-            "unsafe-to-reach",
-            "filter-blocked",
-            "filter-clear",
-            "filter-damaged",
-            "unsafe-to-open",
-          ],
+          enum: resultIds,
         },
       },
       required: ["checkId", "resultId"],
       additionalProperties: false,
     },
-    sampleInput: { checkId: "prepare-power", resultId: "acknowledged" },
+    sampleInput: { checkId: "safety-check", resultId: "safe-ready" },
     mutatesDiagnosis: true,
   },
   {

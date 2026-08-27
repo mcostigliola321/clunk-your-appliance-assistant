@@ -20,7 +20,7 @@ describe("deterministic safety boundary", () => {
     state = executeRepairTool(state, "select_appliance", { applianceId: "lg-wm3400cw" }).state;
     state = executeRepairTool(state, "start_diagnosis", { symptomId: "will-not-drain" }).state;
     const stopped = executeRepairTool(state, "record_observation", {
-      checkId: "prepare-power",
+      checkId: "safety-check",
       resultId: "hazard-burning",
     });
     expect(stopped.state.phase).toBe("escalated");
@@ -34,8 +34,8 @@ describe("deterministic safety boundary", () => {
   });
 
   it("allows only bounded, external or user-accessible steps", () => {
-    const check = getCheck("lg-wm3400cw", "prepare-power");
-    expect(assertSafeRepairStep(check).id).toBe("prepare-power");
+    const check = getCheck("lg-wm3400cw", "safety-check");
+    expect(assertSafeRepairStep(check).id).toBe("safety-check");
     expect(() => assertSafeRepairStep({ ...check, safetyTags: ["energized-test"] })).toThrow(
       "unsupported safety tag",
     );
