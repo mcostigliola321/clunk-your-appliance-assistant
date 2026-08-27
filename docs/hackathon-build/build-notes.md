@@ -124,3 +124,19 @@
 - The front-load orientation now shows one basket and outer tub, suspension, and one connected tub-to-pump-to-drain path with the filter cap integrated into the low-front pump housing.
 - The top-load orientation now shows a rear control console, basket and outer tub, center agitator, four suspension rods, a plausible belt-drive assembly, and one connected drain pump path.
 - Updated every active customer-facing label to state that the illustration is a topology orientation rather than a model-specific service diagram and that placement varies by engineering revision.
+
+## 2026-08-26 — Direction A overnight sprint
+
+- The participant rejected the misleading **See the complete answer** behavior after confirming that it opened at the first safety question with no purchase link visible.
+- Live reproduction confirmed the defect: one click produced zero buy links and moved the page to “Make the washer safe.”
+- Official live judging criteria were rechecked. The order is WebMCP Leverage, Execution, Potential Impact, and Creativity & Ambition; the sprint therefore prioritizes four complete outcomes over a large checks-only catalog.
+- The participant selected Direction A: one purchase-ready flagship story each for washer, dishwasher, electric dryer, and refrigerator, backed by honest additional breadth.
+- The visual direction remains an OpenAI-showcase-like, brutally clear product surface. The extraordinary moment is functional: one action transforms the appliance into an explained, purchase-ready answer while the same state remains operable by a browser agent.
+- Autonomous build mode remains active. Checklist items 20–26 define the sprint and supersede the previous submission-handoff timing.
+- Replaced the washer-specific domain with schema-v3, data-driven repair packs for washers, dishwashers, electric dryers, and refrigerators while keeping the original eight public WebMCP tools.
+- Added 12 sourced models for a total of 31 and one in-stock purchase-ready flagship per category. Guided-only and currently unavailable part states are labeled before selection.
+- Rebuilt the home screen around the literal outcome: four problems, four flagships, and one-click example answers that immediately expose the location, SKU, dated seller snapshot, and outbound part link.
+- The example control now replays `select_appliance`, `start_diagnosis`, bounded `record_observation` calls, and `find_compatible_part` through the shared engine with `example` activity provenance.
+- Added original category location guides for the dishwasher, electric dryer, and refrigerator and documented their generation prompts plus evidence/accuracy boundary.
+- Local browser use confirmed all four one-click flows end with the expected SKU, category illustration, and seller link. The in-app browser reported WebMCP ready on the local build.
+- The complete quality gate passed: typecheck, lint, 28 deterministic unit/integration/eval tests, production build, and 16 Playwright scenarios across desktop and Pixel 7. Browser checks include all category handoffs, 320px overflow, keyboard access, 44px touch targets, reduced motion, and automated WCAG A/AA.

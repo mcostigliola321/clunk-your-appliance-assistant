@@ -127,3 +127,47 @@
       What to build: Surface an exact seller product listing with dated price and availability evidence, preserve external human-controlled checkout, add two source-backed top-load families, and select a mechanically constrained front-load or top-load topology orientation from the repair pack.
       Acceptance: The LG exact-part path shows a working seller destination; top-load models show the correct topology orientation and omit unsupported filter checks; WebMCP and human actions reveal the same state.
       Verify: Unit and UI tests cover seller metadata, outbound link, top-load pack shape, and asset switching; production build and visual browser checks pass.
+
+## Four-appliance overnight sprint
+
+- [x] **20. Make the complete example truthful and immediate**
+      Spec ref: Direction A approval on 2026-08-26
+      What to build: Separate the instant example from the live diagnosis. One click must load a clearly labeled example result with the illustrated component, exact part, dated seller snapshot, and purchase link already visible.
+      Acceptance: The control no longer opens at the first safety question; the resulting page states which example observations were prefilled and never presents them as the participant's observations.
+      Verify: UI and browser tests assert that a single click creates a visible purchase link and example disclosure.
+
+- [x] **21. Generalize repair packs across appliance categories and symptoms**
+      Spec ref: Direction A approval on 2026-08-26
+      What to build: Add appliance kind, category-safe symptom identity, illustration metadata, component locations, data-driven checks, and result transitions without adding a backend or app-side model call.
+      Acceptance: Washer, dishwasher, electric dryer, and refrigerator packs execute through the same state engine and eight WebMCP tools.
+      Verify: Parameterized engine tests cover one purchase-ready path and one safety/refusal path per category.
+
+- [x] **22. Add four sourced purchase-ready flagship stories**
+      Spec ref: Direction A approval on 2026-08-26
+      What to build: Retain the LG washer flagship and add one dishwasher, electric dryer, and refrigerator flagship with a complete model code, official troubleshooting source, authorized or manufacturer part source, dated seller handoff, and conservative external observations.
+      Acceptance: Every flagship ends at an exact part link after its documented observations; internal work remains technician-only and refrigerator guidance excludes refrigerant or sealed-system work.
+      Verify: Source validation, exact-code matching, outbound-link, and no-guess tests pass for all four flagships.
+
+- [x] **23. Add honest breadth without dead-end promises**
+      Spec ref: Direction A approval on 2026-08-26
+      What to build: Add additional common U.S. model families per category only where an official model/support source exists. Label each result as purchase-ready or guided checks before selection.
+      Acceptance: Category and model browsing are immediately understandable; no checks-only family is promoted as ending in a part.
+      Verify: Catalog counts, filtering, unsupported-model refusal, and capability labels are covered by tests.
+
+- [x] **24. Create the four-appliance visual repair bench**
+      Spec ref: PRODUCT.md visual direction
+      What to build: Generate original, unbranded, mechanically conservative appliance illustrations and pair them with category-specific component hotspots, plain location copy, purposeful transitions, reduced-motion fallback, and responsive layouts.
+      Acceptance: The selected category is visually obvious; the final part location is highlighted without claiming a model-specific service diagram.
+      Verify: Desktop, 390px, 320px, keyboard, reduced-motion, and WCAG A/AA browser checks pass.
+
+- [x] **25. Strengthen the WebMCP judge story and evals**
+      Spec ref: Official WebMCP Leverage judging criterion
+      What to build: Make discovery category-aware, keep registrations state-dependent, expose prefilled example state honestly, add four natural-language fixtures, and show a concise visible narrative of person observations and agent actions.
+      Acceptance: A judge can understand why the person and agent need each other within thirty seconds; every agent call updates the same visible state as the human path.
+      Verify: Registry, action-equivalence, activity-source, lifecycle, and eval-fixture tests pass.
+
+- [ ] **26. Publish and prove the four-appliance build**
+      Spec ref: Official execution and submission requirements
+      What to build: Refresh README and demo instructions, push verified commits under the participant's configured identity, publish through Lovable, and test the production URL in the in-app browser plus Chrome/WebMCP.
+      Acceptance: The live URL needs no credentials; all four instant examples and real flows work; repo and site tell the same story.
+      Verify: Full verify command, clean diff, production browser walkthroughs, tool inventory, and seller links are recorded.

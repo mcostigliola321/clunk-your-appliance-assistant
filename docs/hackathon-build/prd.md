@@ -1,258 +1,113 @@
-# Product Requirements Document
+# Product requirements document
 
-## Product Summary
+## Product summary
 
-Clunk is a single-page, static WebMCP product that helps a person and a browser agent work through one fictional “washer will not drain” diagnosis together. The UI is the shared source of truth. Human actions and agent tool calls must produce the same visible state transitions.
+Clunk is a static WebMCP application for visually diagnosing a bounded appliance problem with a person. The browser agent supplies structured reasoning and tool sequencing; the person beside the appliance supplies the model label and physical observations. Both operate one visible repair state.
 
-The product is educational demonstration software. It does not diagnose or claim compatibility with any real appliance.
+The primary promise is concrete: **problem → physical location → exact part → seller link**. If the evidence does not support a part, Clunk must say so plainly.
 
-## Target User
+## Users
 
-### Primary user
+- **Homeowner:** stressed, non-technical, beside a broken appliance, and looking for a useful next action rather than repair jargon.
+- **Judge:** needs a credential-free proof of meaningful WebMCP leverage, coherent execution, impact, and ambition in under three minutes.
+- **Browser agent:** needs a small, bounded action surface with explicit current state, enums, and safety stops.
 
-A person standing near a broken household appliance who wants a calm answer to three questions:
+## Experience principles
 
-1. What should I check next?
-2. What evidence makes one cause more likely?
-3. If a part is implicated, which exact part fits this fictional model?
+- Make the outcome understandable in five seconds.
+- Use everyday language; put protocol detail behind **Agent activity**.
+- Show the physical location and the answer together.
+- Never present a general illustration as an exact service diagram.
+- Never call likelihood a confirmed diagnosis.
+- Make evidence depth visible before model selection: **Purchase-ready**, **Verified part unavailable**, or **Guided checks only**.
+- Keep checkout human-controlled on the seller’s site.
+- Make safety deterministic and independent of agent reasoning.
 
-### Judge
+## Required journeys
 
-A hackathon evaluator who needs to see a non-trivial, working WebMCP implementation without credentials, setup, or prior knowledge of appliance repair.
+### Instant example
 
-## Experience Principles
+1. User picks an appliance category.
+2. The category shows one purchase-ready real flagship and the supported problem.
+3. **See the full answer** replays select, start, observations, and part resolution through the shared action layer.
+4. The result is explicitly labeled **Example answer** and lists the prefilled observation summary.
+5. The page simultaneously shows the highlighted location, exact part/SKU, compatible full model, price/availability snapshot, seller, and **Buy this part** link.
 
-- Lead with the appliance and next action, not explanatory copy.
-- Keep state visible: progress, highlighted component, observations, causes, and tool calls.
-- Use plain language first and component terminology second.
-- Explain uncertainty; never present a cause as confirmed without the required evidence.
-- Put deterministic safety checks before all diagnostic instructions.
-- Keep the fictional-demo boundary persistent, not buried in a footer.
+Acceptance:
 
-## Core User Journey
+- Exactly one click from the home state reaches the seller link.
+- Every replayed activity is visible and tagged `example`.
+- The example never implies the participant personally supplied those observations.
 
-### First load
+### Diagnose mine
 
-The user sees:
+1. User selects category, searches a complete model number, and chooses an exact returned model.
+2. Purchase-ready models require the complete verified code; guided-only models disclose their limit before checks begin.
+3. Clunk shows one safety or observation step and one highlighted location at a time.
+4. User chooses a bounded plain-language result.
+5. Terminal outcomes are no part needed, exact part, complete code required, or professional service.
 
-- Clunk and the five-second pitch.
-- Demo appliance · Clunk WM-01 and Fictional model labeling.
-- A large original washing-machine diagram.
-- The selected symptom, “Will not drain.”
-- A single dominant action: Start diagnosis.
-- A compact message explaining that a browser agent can operate the same bench through WebMCP and that manual demo mode is always available.
+Acceptance:
 
-### Diagnosis
+- Invalid order, unknown IDs, extra schema properties, and unsupported model searches cannot advance state.
+- Human, agent, manual-inspector, and example calls produce equivalent state transitions.
+- A part is exact only after complete-code comparison against source-backed compatibility data.
 
-Starting the diagnosis moves the product into a guided sequence. The next safe check is prominent. The relevant component is highlighted on the diagram and announced to assistive technology. The user records one of the supported observations.
+### Safety stop
 
-### Evidence and result
+Smoke, burning smell, heat, active leak near power, unsafe reach, mismatched access, damaged filter housing, exposed sharp debris, protection bypass, or an unresolved internal check ends at professional service.
 
-Each recorded result changes the diagnostic evidence. Likely causes re-rank with a short “because” explanation. Clunk advances only along valid transitions. Once a cause has sufficient evidence, Clunk reveals a compatible fictional part or an escalation.
+Acceptance:
 
-### Reset and alternate path
+- The terminal state removes observation and part-resolution tools.
+- No gas, energized, high-voltage, refrigerant, sealed-system, protection-bypass, wiring, control-board, or panel-removal instruction can appear in a pack.
 
-The user can reset the demo at any time. Manual judge mode exposes the same tool names and sample arguments, allowing each tool to be invoked without an agent.
+## Category requirements
 
-## Epics And User Stories
+| Category | Flagship symptom | Required visible checks | Exact outcome |
+| --- | --- | --- | --- |
+| Washer | Will not drain | Safe state, outside hose, documented lower filter | LG AHA75693425 pump; professional installation |
+| Dishwasher | Will not drain | Cool/off, under-sink drain, user filter/sump | Whirlpool W11412291 pump; professional installation |
+| Electric dryer | Door will not stay closed | Unplugged, visible door strike | GE WE01M10007 strike; user-replaceable boundary |
+| Refrigerator | Slow dispenser flow | No active leak, filter age/status | GE XWFE filter; user-replaceable boundary |
 
-### Epic 1: Understand Clunk immediately
+## WebMCP requirements
 
-- As a first-time visitor, I want to understand the appliance, symptom, and product promise immediately so that I know what to do.
+The app contains these eight literal registrations and no redundant category-specific copies:
 
-Acceptance criteria:
+1. `search_supported_appliances`
+2. `select_appliance`
+3. `get_repair_state`
+4. `start_diagnosis`
+5. `show_component`
+6. `record_observation`
+7. `find_compatible_part`
+8. `stop_and_escalate`
 
-- At 1440px, 1024px, 768px, and 390px widths, the name, fictional model, symptom, appliance visual, and start action are visible without ambiguity.
-- The page does not require a login, API key, modal, tutorial, or chat input.
-- “Fictional demo model” appears in the primary workspace and all part results.
-- The first dominant action is Start diagnosis.
+Tool schemas are pack-derived, bounded, and `additionalProperties: false`. Registration is feature-detected, state-dependent, and lifecycle-owned by an `AbortController`. Structured tool output mirrors the visible snapshot.
 
-### Epic 2: Share one repair state
+## Accessibility and responsive requirements
 
-- As a person working with an agent, I want every action to update the same repair state so that the UI never disagrees with the conversation.
+- Full keyboard path and obvious focus state.
+- Minimum 44×44px visible button targets on mobile.
+- Text/non-color component focus label.
+- Reflow without horizontal overflow at 320px and 200% zoom.
+- Reduced-motion mode removes meaningful translations/animation duration.
+- Automated WCAG A/AA scan passes in the final result state.
+- Accurate alt text identifies the generalized location guide, not the exact named model.
 
-Acceptance criteria:
+## Evidence and content requirements
 
-- Human buttons and WebMCP tool callbacks dispatch through one public action layer.
-- Progress, current step, highlighted component, observations, ranked causes, part result, and activity log derive from the same state.
-- State queries return a serializable snapshot that matches what is visible.
-- A reset returns the product to the exact documented initial state.
-
-### Epic 3: Inspect the appliance visually
-
-- As a non-expert, I want the relevant part highlighted on an exploded view so that unfamiliar terminology maps to something visible.
-
-Acceptance criteria:
-
-- The diagram includes at least the drum, sump, pump filter, drain pump, drain hose, and control module.
-- Every component is keyboard focusable and has an accessible name and short explanation.
-- The current component uses color, stroke, label, and motion-independent emphasis.
-- Selecting a component manually records the same highlight action as highlight_component.
-- Reduced-motion mode removes animated separation or pulsing while preserving emphasis.
-
-### Epic 4: Record physical observations safely
-
-- As the person near the washer, I want to report simple observations so that the agent can use evidence it cannot see.
-
-Acceptance criteria:
-
-- Supported checks use bounded result options; no free text is required for the main path.
-- A safety preparation must be acknowledged before filter access is shown.
-- Results that indicate heat, burning smell, electrical fault, active leak near power, or an unsupported internal procedure immediately escalate.
-- Invalid, out-of-order, or contradictory results return a safe error and do not mutate diagnosis state.
-- Safety copy uses imperative, plain language and includes a stop condition.
-
-### Epic 5: See likely causes and what changed
-
-- As a user, I want causes to re-rank after each observation so that I understand how the diagnosis is narrowing.
-
-Acceptance criteria:
-
-- Likely causes always show a label, confidence band (possible, likely, or strong match), and evidence explanation.
-- No percentage implies calibrated real-world probability.
-- A clear hose result reduces the kinked-hose cause.
-- A blocked-filter result promotes the blocked-filter cause to the strongest match.
-- A clear hose and clear filter promote drain-pump failure while requiring professional service for replacement.
-
-### Epic 6: Find the exact fictional part
-
-- As a user, I want a precise part result for the demo model so that the value of structured compatibility is obvious.
-
-Acceptance criteria:
-
-- Part lookup requires the identified fictional model and implicated component.
-- The result shows part name, fictional SKU, compatible model, illustrative effort and cost band, and install boundary.
-- The blocked-filter path returns CL-PF-220.
-- A pump result returns CL-DP-420 and labels installation professional-only.
-- Every result says it is fictional demonstration data and cannot be used for a real purchase.
-
-### Epic 7: Understand repair versus replace context
-
-- As a user, I want concise context around effort and escalation so that the result is more useful than a part number.
-
-Acceptance criteria:
-
-- The final view compares low-effort user-cleanable issues, professional part replacement, and replacement context using illustrative ranges.
-- No real currency, savings promise, environmental claim, or appliance-lifespan claim is presented as factual.
-- Hazardous or unsupported paths favor professional escalation.
-
-### Epic 8: Let a browser agent operate Clunk
-
-- As a browser agent, I want a small set of unambiguous WebMCP tools so that I can reason with the user and manipulate the shared repair state reliably.
-
-Acceptance criteria:
-
-- Source code contains literal document.modelContext.registerTool({ registrations.
-- Tools have unique names, explicit descriptions, bounded JSON Schemas, required fields, and additionalProperties set to false.
-- Registration is feature-detected and owned by an AbortController.
-- Tool callbacks return structured and text results and use the same action layer as manual UI controls.
-- The app functions fully when document.modelContext does not exist.
-- Tool availability status is visible.
-
-### Epic 9: Inspect and demo the protocol
-
-- As a judge, I want to see tools and calls in the product so that I can verify the WebMCP work quickly.
-
-Acceptance criteria:
-
-- The activity log distinguishes agent, human, manual demo, and system events.
-- Each event includes time, tool or action name, concise arguments, and outcome.
-- A tool inspector lists every registered tool with its purpose and sample input.
-- Manual demo mode can invoke each mutating tool through the same public action layer.
-- The inspector does not expose internal reasoning or hidden data.
-
-### Epic 10: Recover from unsupported states
-
-- As a user, I want clear recovery when an action is unavailable so that the demo never dead-ends.
-
-Acceptance criteria:
-
-- Unsupported browsers show “WebMCP unavailable · Manual demo ready.”
-- Invalid agent calls return a helpful result and add a non-alarming rejected event to the log.
-- Reset is always available and keyboard accessible.
-- A top-level error boundary provides a reload or reset action without losing the safety disclaimer.
-
-## Edge Cases
-
-- WebMCP is undefined, registration rejects, or only some tools register.
-- The agent invokes a tool before the appliance is identified or diagnosis started.
-- The agent sends an unknown enum value or an extra property.
-- The user clicks a later check before acknowledging preparation.
-- The user records a new result for an already-completed check.
-- The user changes a result after downstream evidence exists; downstream state must be recomputed or explicitly reset.
-- The user selects a component unrelated to the current step; highlighting changes but diagnostic progress does not.
-- The viewport is narrow or zoomed to 200%.
-- Reduced motion and high-contrast preferences are active.
-- Local date or time formatting is unavailable; activity order remains readable.
-- A tool is invoked while another action is processing; actions are synchronous and serialized.
-
-## What We Are Building
-
-The MVP includes all ten epics for a single deterministic scenario and no persistent backend.
-
-## What We Would Add With More Time
-
-- Additional fictional models and symptom packs loaded through the documented extension schema.
-- Authoring and validation tools for community-contributed repair packs.
-- Local-only session persistence and shareable diagnostic summaries.
-- Localization and reading-level variants.
-- More sophisticated deterministic evidence explanations.
-- Additional WebMCP declarative-form experiments after the imperative API is stable.
-
-## Submission Proof Points
-
-- Literal WebMCP registration visible in source.
-- Eight tools, each mapped to one user-visible product behavior.
-- One state reducer shared by agent and human actions.
-- No LLM or API credential in the app.
-- A safety policy that blocks hazardous instructions in code and tests.
-- Manual judge mode proving the experience without WebMCP.
-- Original diagram, fictional model, fictional parts, and explicit extension schema.
-- Deterministic test suite and eval fixtures.
-- Live Lovable URL, public GitHub repository, visible license, and sub-three-minute narrated demo.
-
-## Real-model expansion addendum
-
-This addendum supersedes fictional-only language above while preserving the proven interaction and safety requirements.
-
-### Catalog and selection
-
-- First load provides model search plus scannable supported-brand families.
-- Search normalizes case, spaces, hyphens, and suffix punctuation without fuzzy-matching an unsupported model into a supported one.
-- A model result states its verification tier before selection.
-- Unsupported models return an explicit no-match state and manufacturer-support direction; they are never mapped to the nearest repair pack.
-
-### Source-backed repair packs
-
-- Ship nineteen real model families—12 front-load and seven top-load—across six brands for the no-drain symptom, with top-load coverage for five brands.
-- Every family stores an official model source, one or more troubleshooting sources, a last-verified date, a topology, and a product-code requirement.
-- Guidance remains limited to external inspection, cancellation/disconnection, spill preparation, visible hose checks, and manufacturer-documented user-accessible filter cleaning.
-- Where a manufacturer does not document a user-accessible filter, Clunk ends that branch at professional service instead of reusing another brand's instructions.
-
-### Compatibility outcomes
-
-- `exact`: the observed evidence implicates a component and an official or authorized-parts source maps the part to the complete selected product code.
-- `no-part-needed`: the observation identifies a user-cleanable blockage or correctable external hose issue.
-- `variant-needed`: safe diagnosis can continue, but the model suffix, production revision, or product number is insufficient for an exact part.
-- `professional-only`: Clunk can identify a likely internal component but provides no installation procedure.
-
-### Seller handoff and topology addendum
-
-- Exact outcomes surface the product name, SKU, seller, dated price/availability snapshot, verification date, and a direct seller link.
-- Checkout, tax, delivery, payment, returns, and live availability remain on the seller’s site.
-- The selected model chooses a generalized front-load or top-load topology orientation and a topology-specific hotspot map, explicitly distinguished from a model service diagram.
-- Top-load packs omit the front pump-filter check when the manufacturer path only supports an external hose observation.
-
-### WebMCP collaboration
-
-- The agent discovers model families instead of assuming a hard-coded appliance.
-- Tool availability mirrors the current UI state; unavailable future actions are absent rather than merely rejected.
-- Every tool call updates the visible model results, selected appliance, diagram focus, observation history, part result, escalation, or activity log.
-- Structured results include the currently permitted actions, bounded identifiers, provenance, confidence, and any missing product-code requirement.
-- Natural-language evaluations must prove exact-match, cleanable blockage, variant-needed, hazard, and unsupported-model paths.
-
-### Expansion success criteria
-
-- A contributor adds a repair pack through data and validation without editing engine or WebMCP registration switch statements.
-- Model selection and the first safe check take under fifteen seconds in the hero demo.
-- The repository and UI never claim that Clunk supports all appliances or guarantees a diagnosis or repair.
+- Each model has an official manufacturer page and verification date.
+- Each check references one or more pack sources.
+- Exact parts require a manufacturer or authorized-parts source plus complete compatible code.
+- Seller handoffs use HTTPS and record seller, URL, dated price, dated availability, and last verification date.
+- Customer copy calls price/stock a snapshot and requires final confirmation on the seller page.
+
+## Submission proof
+
+- Public GitHub repository and MIT license.
+- Static live Lovable URL with no credentials.
+- Literal registration source and visible tool inspector.
+- Current README, source ledger, schema, safety policy, eval fixtures, and demo script.
+- Under-three-minute video covering one instant answer, agent activity, a real human observation, and a safety boundary.

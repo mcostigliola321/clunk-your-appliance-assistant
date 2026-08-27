@@ -1,115 +1,63 @@
-# Project Scope
+# Project scope
 
-## Project Name
+## Product
 
-**Clunk**
+**Clunk** — “Tell it what’s broken. It shows you what to check and finds the exact part.”
 
-## One-Line Summary
+Clunk is a shared visual repair bench where a person supplies physical observations and a browser agent operates eight bounded WebMCP tools against the same visible, deterministic state. The application itself never calls an LLM.
 
-Clunk is a shared visual repair bench where a person reports physical observations and an AI uses WebMCP tools to select a source-backed washer repair pack, show the next safe check, and identify an exact part only when model-specific compatibility evidence is available.
+## Submission outcome
 
-## Five-Second Pitch
+A judge should understand the product within five seconds and reach a real seller link in one click. That click runs a clearly labeled example fixture through the same actions as the real diagnosis; it does not fake a separate result.
 
-“Tell it what’s broken. It shows you what to check and finds the exact part.”
+## In scope
 
-## Target User
+- 31 source-backed U.S. model families across washers, dishwashers, electric dryers, and refrigerators.
+- Four purchase-ready flagships:
+  - LG `WM3400CW.ABWEVUS` will not drain → `AHA75693425` drain pump.
+  - Whirlpool `WDT750SAKZ1` will not drain → `W11412291` drain pump.
+  - GE `GTD42EASJ2WW` door will not stay closed → `WE01M10007` visible strike.
+  - GE `GSS25GYPFS` slow water flow → `XWFE` filter.
+- 27 additional models labeled by evidence depth before selection; unsupported part links are never implied.
+- Original category-specific location guides with keyboard-accessible hotspots and persistent “not a service diagram” language.
+- Safe, bounded checks with deterministic order, result effects, likely-cause ranking, stopping conditions, and escalation.
+- Exact part name, SKU, compatible complete model code, location, dated price/availability snapshot, and external seller link when evidence permits.
+- Eight literal, state-dependent `document.modelContext.registerTool` registrations.
+- Manual/judge controls and one-click examples using the same public action layer.
+- Visible activity log, tool inspector, source panels, deterministic tests, and WebMCP eval fixtures.
+- Static Lovable hosting, public GitHub repository, MIT license, README, submission copy, and sub-three-minute demo.
+- Mobile responsiveness, keyboard access, reduced motion, plain language, and WCAG A/AA automated checks.
 
-A household appliance owner who is stressed by a non-working washer, does not know appliance terminology, and wants to understand what can be checked safely before deciding whether to repair, replace, or call a professional.
+## Out of scope
 
-The hackathon judge is a second critical user: they need a credential-free path that demonstrates the person–agent collaboration and WebMCP implementation within seconds.
+- Universal model coverage, fuzzy model substitution, or guaranteed diagnosis.
+- App-side LLM calls, OCR, image/audio diagnosis, sensor input, accounts, auth, databases, server functions, persistence, or analytics.
+- In-app payment, automated checkout/cart mutation, affiliate claims, or live price scraping.
+- Gas, mains/high-voltage, energized tests, refrigerant, sealed compressors, protection bypasses, internal wiring, control boards, or professional-only instructions.
+- Panel-removal or internal pump-installation guidance.
+- Claims that the original illustrations exactly reproduce a named model.
 
-## Problem
+## Person–agent workflow
 
-Repair information is fragmented across generic search results, long videos, model-number tables, and expert forums. A person standing next to an appliance has information an AI cannot observe—the sound, smell, water level, hose position, or debris they can physically inspect. The AI has a complementary strength: it can maintain a structured diagnostic state, choose the next check, explain why it matters, and keep the visual model synchronized.
+1. The person names the category/model and reads the complete rating-label code.
+2. The agent searches and selects only a returned catalog ID.
+3. The site exposes only the tools valid for the current state.
+4. Clunk highlights the next location and shows a bounded observation choice.
+5. The person reports what they physically see; the agent records only that result.
+6. The deterministic engine advances, ends with no part, requests a complete code, resolves a verified part, or stops at professional service.
+7. Every accepted or rejected action updates the activity log and shared snapshot.
 
-Clunk makes those roles explicit. It does not pretend the browser can inspect the real machine and does not ask the website to call an LLM. The browser exposes a small, structured repair surface through WebMCP; the browser agent reasons, while the human provides the physical evidence.
+## Success criteria
 
-## Time Budget
+- One click on any category flagship shows the highlighted location, exact part, price, seller, and working outbound link.
+- A real observation path can end with no purchase when debris or an outside blockage explains the symptom.
+- Guided-only models never receive a flagship part by similarity.
+- Hazard and out-of-order calls cannot cross the safety boundary.
+- All four categories execute through the same eight tools and static architecture.
+- Desktop/mobile browser tests, keyboard/touch sizing, reduced motion, automated WCAG A/AA, unit/integration/eval tests, lint, typecheck, and production build pass.
 
-- Build window: August 26–September 2, 2026.
-- Internal submission-ready target: September 2 at 1:00 PM PT, one day before the official deadline.
-- Exact participant hours are not specified; the implementation is scoped for an autonomous, static-first build with no backend dependencies.
-- Freeze the submitted repository and live site after September 3 at 1:00 PM PT.
+## Schedule
 
-## Core Workflow
-
-1. The page immediately explains the no-drain repair flow and exposes a searchable catalog of supported washer model families.
-2. The user or agent selects the exact model family and starts the diagnosis.
-3. Clunk shows the first safety preparation and the component relevant to the next check.
-4. The person performs a safe physical observation and records the result.
-5. The diagnostic state updates: progress, highlighted component, likely causes, next safe check, and agent activity all change together.
-6. The agent can inspect state or invoke the same actions through WebMCP tools.
-7. Once evidence is sufficient, Clunk shows the leading cause, source provenance, repair context, and either an evidence-backed exact part or an explicit model-variant verification requirement.
-8. Any hazardous observation or unsupported repair path deterministically escalates to a professional.
-
-## What We Are Building
-
-- Nineteen real washer model families—12 front-load and seven top-load—across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux; top-load coverage spans five brands.
-- One hero symptom: washer will not drain.
-- Original, mechanically constrained front-load and top-load topology orientations with interactive, keyboard-accessible component hotspots; no manufacturer diagram is copied or presented as model-specific, and the UI states that component placement varies by revision.
-- A static, schema-validated repair-pack catalog with official manufacturer support sources, last-verified dates, and compatibility confidence.
-- A deterministic diagnosis state machine with progress and evidence.
-- Likely causes that update from recorded observations.
-- Safe next checks with explicit preconditions and stop conditions.
-- Exact real part results only for fully verified model/product-code matches; those results may surface a dated seller listing and outbound checkout handoff. All other paths stop at a compatibility verification boundary.
-- Repair context clearly labeled as educational and non-diagnostic.
-- Eight literal document.modelContext.registerTool() tools:
-  - search_supported_appliances
-  - select_appliance
-  - get_repair_state
-  - start_diagnosis
-  - show_component
-  - record_observation
-  - find_compatible_part
-  - stop_and_escalate
-- A manual judge mode that invokes the same application actions when WebMCP is unavailable.
-- A visible activity log and tool inspector.
-- Deterministic unit/integration tests and WebMCP evaluation fixtures.
-- Responsive, keyboard-accessible, reduced-motion-aware UI.
-- Public open-source repository, license, live Lovable URL, README, and demo/submission materials.
-
-## What We Are Not Building
-
-- Universal appliance coverage or unsupported-model inference.
-- Additional appliance types or symptoms in the submission build.
-- Image upload, OCR, computer vision, sound classification, or sensor integrations.
-- A chatbot or any application-side LLM/API call.
-- Accounts, authentication, database, server functions, analytics, payment handling, or in-app checkout.
-- Affiliate monetization, live price scraping, seller-side cart mutation, or a claim that a part fits without the required complete model code.
-- Crowdsourced repair records or user persistence beyond an optional local session reset.
-- Instructions involving gas, mains/high voltage, refrigerant, sealed compressors, bypassing protections, wiring, internal control boards, or professional-only procedures.
-- Internal panel removal or drain-pump replacement instructions; the MVP can identify an evidence-backed pump listing while escalating installation.
-- Production guarantees, warranties, or claims that Clunk replaces a technician.
-
-## Inspiration And References
-
-- [OpenAI Developers Showcase](https://developers.openai.com/showcase?view=webmcp-apps): restrained black/white palette, generous spacing, direct hierarchy, and product screenshots that explain themselves.
-- Margin Editor: a clean shared surface where an agent acts on the same artifact the person sees.
-- Crossword Desk: a constrained visual model whose state is naturally collaborative.
-- Sunday Table and WanderNote: visible, editable plans that make agent actions legible rather than hiding them in chat.
-
-Clunk will borrow the clarity and restraint, not copy proprietary assets, layouts, or branding.
-
-## Demo Path
-
-1. Open Clunk; the model, symptom, and promise are visible immediately.
-2. Ask the browser agent to diagnose why the washer will not drain.
-3. Agent calls get_repair_state, identify_appliance, and start_diagnosis; the activity log and progress rail update.
-4. Agent highlights the drain hose and asks the person whether it is kinked.
-5. Person reports “hose is clear”; the agent records the result.
-6. Agent highlights the pump filter and shows the safe check.
-7. Person reports “filter is blocked”; the likely cause jumps to the top and the exact CL-PF-220 fictional filter appears.
-8. Show the tool inspector and reset to manual demo mode to prove the same state transitions work without WebMCP.
-
-## Submission Story
-
-The wow moment is not a chatbot answer. It is the instant when the agent invokes a structured tool and the exact physical component lights up while the diagnostic rail, next check, likely causes, and activity log all move together. Clunk demonstrates why WebMCP matters: the agent gains a safe, domain-specific action surface, and the person remains the source of real-world observations.
-
-## Success Criteria
-
-- A first-time visitor can explain Clunk’s purpose within five seconds.
-- The main demo reaches a fictional compatible part in under two minutes.
-- Every WebMCP call visibly updates the shared UI or returns its current state.
-- Manual and agent actions use the same reducer and yield identical states.
-- Safety-blocked requests cannot reveal hazardous instructions.
-- The live experience works without credentials and without any network request after initial static assets load.
+- Submission-ready target: September 2, 2026 at 1:00 PM PT.
+- Official deadline: September 3, 2026 at 1:00 PM PT.
+- Freeze the submitted repository and site after the official deadline.

@@ -14,7 +14,7 @@
   },
   "project": {
     "name": "Clunk",
-    "summary": "An open-source WebMCP repair bench where a person supplies physical observations and an AI navigates source-backed diagnostic packs for real US washer model families while the site enforces safety and compatibility boundaries.",
+    "summary": "An open-source WebMCP repair bench where a person supplies physical observations and an AI navigates source-backed appliance checks, highlights the physical location, and resolves an exact seller link when compatibility evidence is complete.",
     "ai_usage": "A compatible browser agent discovers supported appliances and invokes a state-dependent set of eight WebMCP tools against deterministic page state. The shipped site does not call a model. Lovable is used for hosting and GitHub sync.",
     "codex_usage": "Codex supported scoping, implementation, debugging, accessibility, deterministic testing, live browser verification, and open-source and Devpost documentation."
   },
@@ -30,7 +30,7 @@
   },
   "submission": {
     "draft_file": "devpost-submission.md",
-    "status": "needs-refresh"
+    "status": "refreshed-needs-video"
   },
   "next_command": "build-project"
 }

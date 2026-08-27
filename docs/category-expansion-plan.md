@@ -1,33 +1,43 @@
 # Category expansion plan
 
-Clunk’s tool layer is already appliance-neutral: an agent searches supported appliances, selects a repair pack, reads shared state, focuses a component, records a person-supplied observation, resolves a part outcome, or stops. The current implementation proves two visual and topology variants inside washers. Expanding beyond washers is primarily an evidence, safety, and content-model job—not a WebMCP rewrite.
+Clunk now ships the reusable multi-appliance foundation: 31 real model families across washers, dishwashers, electric dryers, and refrigerators; pack-derived tool enums; per-pack component hotspots, result effects, ranking rules, safety boundaries, sources, and optional purchase fixtures. The eight public WebMCP tools did not change as categories expanded.
 
-## Honest effort
+## Submission slice
 
-| Expansion                    | Credible submission slice                                                                  | Engineering effort | Main work                                                                                                                           |
-| ---------------------------- | ------------------------------------------------------------------------------------------ | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
-| Dishwashers                  | One symptom (`will-not-drain`), 4–6 common model families                                  | 2–3 focused days   | New cutaway and hotspots; filter, sump, and drain-hose checks; leak and hot-water boundaries; model/part research; tests            |
-| Refrigerators                | One safe symptom such as `water-dispenser-slow` or `ice-maker-not-producing`, 4–6 families | 4–6 focused days   | New visual system; water-filter, inlet, and external-temperature observations; much stricter category safety; parts evidence; tests |
-| Broad multi-symptom coverage | Several symptoms across all three categories                                               | 2–4 weeks          | Source curation, safety review, category-specific state paths, compatibility maintenance, and much larger evaluation coverage       |
+| Category | Purchase-ready flagship | Supported outcome | Additional breadth |
+| --- | --- | --- | --- |
+| Washer | LG WM3400CW.ABWEVUS | Will not drain → AHA75693425 drain pump | 18 additional models; front- and top-load location guides |
+| Dishwasher | Whirlpool WDT750SAKZ1 | Will not drain → W11412291 drain pump | Bosch, GE, and KitchenAid guided checks |
+| Electric dryer | GE GTD42EASJ2WW | Door will not stay closed → WE01M10007 strike | Whirlpool, Maytag, and LG guided checks |
+| Refrigerator | GE GSS25GYPFS | Slow dispenser flow → XWFE filter | Whirlpool, Samsung, and LG guided checks |
 
-Dishwashers are the natural next category because the no-drain reasoning pattern transfers: make safe, inspect the visible drain path, check only manufacturer-documented user-accessible filters, and stop before internal pumps or wiring.
+“Purchase-ready” means that a complete product code maps to a manufacturer or authorized-parts source and a dated seller handoff. It does not mean Clunk confirms the diagnosis, guarantees stock, or completes payment. “Guided checks only” is visible before model selection and never silently borrows a flagship part.
 
-Refrigerators are deliberately narrower. Clunk should not diagnose sealed-system cooling, refrigerant, compressor, start-device, control-board, or live electrical faults. A first refrigerator pack should focus on a safe consumer-maintenance job such as an exact water-filter match, dispenser flow, door-seal observation, or ice-maker setup, with immediate professional escalation for cooling-system symptoms.
+## What can expand without changing the protocol
 
-## Architecture work before category two
+- More model entries using an existing category profile.
+- More exact parts after compatibility evidence is verified.
+- Additional original location-guide variants for materially different layouts.
+- New example fixtures that replay the existing public tools.
 
-1. Replace washer-specific TypeScript unions with namespaced string IDs validated by each repair pack.
-2. Add `category`, `format`, `symptoms`, and a visual manifest containing an original asset plus component hotspot coordinates.
-3. Move cause scoring from the washer-specific diagnosis module into per-symptom deterministic rules.
-4. Add category safety profiles so refrigerator refrigerant and sealed-system bans, and dishwasher heat and leak boundaries, are structural.
-5. Keep the current eight WebMCP tools. Their inputs become pack-derived enums; no new tool is needed merely because the appliance category changes.
-6. Preserve the purchase object as an optional exact-part result with a dated seller snapshot and human-controlled checkout handoff.
+All of these remain static data and deterministic state transitions.
 
-## Recommended sequence
+## What requires explicit product and safety review
 
-1. Ship and record the washer submission with front-load, top-load, no-part, exact-part purchase handoff, and safety-stop proof.
-2. Generalize IDs and visual manifests without changing the visible washer behavior.
-3. Add a small dishwasher no-drain catalog as the second category.
-4. Add a refrigerator water-filter or ice-maker flow only after its safety profile and evidence ledger pass review.
+- A new symptom path or repair profile.
+- A new appliance category.
+- Any user action beyond visible observation or a clearly documented consumer-maintenance boundary.
+- Any new seller, compatibility, price, or stock claim.
 
-This sequence reserves broad appliance optionality while keeping the hackathon demo understandable in under three minutes.
+Every such change needs primary-source evidence, a category safety review, original visual work, schema/runtime validation, unit coverage, WebMCP eval fixtures, and desktop/mobile browser tests.
+
+## Deliberately excluded
+
+Clunk will not add gas work, live electrical tests, refrigerant or sealed-compressor diagnosis, protection-bypass instructions, internal wiring, control-board work, OCR/image diagnosis, app-side LLM calls, checkout automation, payments, accounts, or a hidden repair database merely to appear broader.
+
+## Recommended next expansion
+
+1. Verify purchase-ready parts for one guided model at a time, prioritizing common U.S. engineering revisions.
+2. Add model-specific visual manifests only where the general category location guide is materially misleading.
+3. Add one additional safe symptom per category after source and safety review—for example, a washer door-strike or dishwasher rack-wheel problem rather than energized/internal diagnosis.
+4. Automate source-link and seller-snapshot re-verification without changing the static judge experience.

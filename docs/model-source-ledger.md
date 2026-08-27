@@ -1,6 +1,6 @@
 # Clunk model source ledger
 
-This ledger defines the first real-model catalog. It is deliberately conservative: a model can have verified troubleshooting without having an exact verified replacement part.
+This ledger defines the 31-model real-appliance catalog. It is deliberately conservative: a model can have verified troubleshooting without having an exact verified replacement part. The interface labels those entries **Guided checks only**.
 
 ## Verification vocabulary
 
@@ -9,7 +9,7 @@ This ledger defines the first real-model catalog. It is deliberately conservativ
 - **Exact-part verified:** a manufacturer or authorized parts source maps a specific part number to the complete model/product code.
 - **Variant needed:** Clunk can guide external observations but will not name a part until the complete suffix or engineering revision is known.
 
-## Initial catalog
+## Washer catalog (19 models)
 
 | Brand      | Model family | Product-code requirement              | Model/support source                                                                                                                                            | Part state                                                              |
 | ---------- | ------------ | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
@@ -33,6 +33,33 @@ This ledger defines the first real-model catalog. It is deliberately conservativ
 | Whirlpool  | WTW5057LW    | Engineering revision required         | https://www.whirlpool.com/owners-center-pdp.WTW5057LW.html                                                                                                      | Top-load visible hose path; service boundary                            |
 | Maytag     | MVW5430MW    | Engineering revision required         | https://www.maytag.com/owners-center-pdp.MVW5430MW.html                                                                                                         | Top-load visible hose path; service boundary                            |
 
+## Dishwasher catalog (4 models)
+
+| Brand | Model | Supported symptom | Model/support source | Part state |
+| --- | --- | --- | --- | --- |
+| Whirlpool | WDT750SAKZ1 | Will not drain | https://www.whirlpool.com/kitchen/dishwasher-and-cleaning/dishwashers/built-in-hidden-control-console/p.24%E2%80%9D-stainless-steel-dishwasher-with-ai-intelligent-wash-47-dba.wdt750sakz.html | **Purchase-ready:** W11412291 drain pump; internal/professional installation |
+| Bosch | SHPM65Z55N/20 | Will not drain | https://www.bosch-home.com/us/en/productservice/SHPM65Z55N-20 | Guided checks only |
+| GE | GDF670SYVFS | Will not drain | https://products.geappliances.com/appliance/gea-specs/GDF670SYVFS/support | Guided checks only |
+| KitchenAid | KDTM404KPS | Will not drain | https://www.kitchenaid.com/major-appliances/dishwashers/integrated-control/p.44-dba-dishwasher-in-printshield-finish-with-freeflex-third-rack.kdtm404kps.html | Guided checks only |
+
+## Electric dryer catalog (4 models)
+
+| Brand | Model | Supported symptom | Model/support source | Part state |
+| --- | --- | --- | --- | --- |
+| GE | GTD42EASJ2WW | Door will not stay closed | https://products.geappliances.com/appliance/gea-specs/GTD42EASJWW/support | **Purchase-ready:** WE01M10007 visible door strike |
+| Whirlpool | WED4950HW | Door will not stay closed | https://www.whirlpool.com/owners-center-pdp.WED4950HW.html | Guided checks only |
+| Maytag | MED4500MW | Door will not stay closed | https://www.maytag.com/owners-center-pdp.MED4500MW.html | Guided checks only |
+| LG | DLE3400W | Door will not stay closed | https://www.lg.com/us/support/product/lg-DLE3400W.ABWETUS | Guided checks only |
+
+## Refrigerator catalog (4 models)
+
+| Brand | Model | Supported symptom | Model/support source | Part state |
+| --- | --- | --- | --- | --- |
+| GE | GSS25GYPFS | Slow water-dispenser flow | https://products.geappliances.com/appliance/gea-specs/gss25gypfs/parts | **Purchase-ready:** XWFE user-replaceable water filter |
+| Whirlpool | WRS315SDHZ | Slow water-dispenser flow | https://www.whirlpool.com/owners-center-pdp.WRS315SDHZ.html | Guided checks only |
+| Samsung | RF28T5001SR | Slow water-dispenser flow | https://www.samsung.com/us/home-appliances/refrigerators/3-door-french-door/28-cu-ft-large-capacity-3-door-french-door-refrigerator-in-stainless-steel-rf28t5001sr-aa/ | Guided checks only |
+| LG | LRFLC2706S | Slow water-dispenser flow | https://www.lg.com/us/refrigerators/lg-lrflc2706s-french-3-door-refrigerator | Guided checks only |
+
 ## Shared official troubleshooting sources
 
 - LG no-drain guidance: https://www.lg.com/us/support/help-library/lg-washing-machine-water-not-draining--20154726902590
@@ -48,5 +75,8 @@ This ledger defines the first real-model catalog. It is deliberately conservativ
 
 - LG authorized replacement drain-pump listing: https://encompass.com/item/12525362/LG/AHA75693425/
 - Samsung authorized-parts compatibility source: https://encompass.com/item/11667691/Samsung/DC97-20621A/
+- Whirlpool WDT750SAKZ1 drain-pump compatibility and seller source: https://www.whirlpoolparts.com/PartDetail/Drain-Pump/W11412291/4960707
+- GE GTD42EASJ2WW front-panel/door assembly and WE01M10007 seller source: https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTD42EASJ2WW/2/0/0/0/FRONT_PANEL_%26_DOOR
+- GE XWFE water-filter source and seller page: https://www.geapplianceparts.com/store/parts/spec/XWFE
 
 All entries and seller snapshots were last reviewed on 2026-08-26. Clunk links to sources but does not copy manufacturer diagrams or manuals. Seller price and availability can change; checkout always happens on the seller’s site.

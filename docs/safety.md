@@ -1,6 +1,6 @@
 # Deterministic safety model
 
-Clunk is a bounded troubleshooting aid for the listed washer model families and one symptom: will not drain. It does not confirm a diagnosis, replace the manufacturer manual, or certify that a repair is safe for a particular home or person.
+Clunk is a bounded troubleshooting aid for the listed washer, dishwasher, electric-dryer, and refrigerator model families and each model’s one supported symptom. It does not confirm a diagnosis, replace the manufacturer manual, or certify that a repair is safe for a particular home or person.
 
 Safety is enforced before presentation:
 
@@ -10,7 +10,7 @@ Safety is enforced before presentation:
 4. A person must explicitly supply every physical observation; the agent must not infer one from prior likelihoods.
 5. Smoke, a burning smell, hot water, a leak near power, damaged access, mismatched access, or unsafe reach immediately enters a terminal professional state.
 6. A suggested part is not a confirmed diagnosis. Exact matches require a complete verified product code and manufacturer or authorized-parts evidence.
-7. Internal parts always retain a professional-only installation boundary.
+7. Internal parts always retain a professional-only installation boundary. Only explicitly visible consumer parts, such as the dryer door strike and refrigerator water filter, may be labeled user-replaceable.
 8. Invalid and out-of-order calls are visibly logged as rejected without advancing the diagnosis.
 
 ## Never in scope
@@ -39,6 +39,10 @@ The original diagram may identify an internal component to explain why service i
 | Accessible filter contains debris                     | No-part-needed outcome; clean only within the manufacturer’s documented user-access procedure  |
 | Visible hose and documented filter are clear          | Show the sourced part result when an exact product-code match exists; no internal repair steps |
 | Manufacturer guidance exposes no consumer filter step | Check only the visible hose, then stop at service                                              |
+| Dishwasher filter area contains loose safe debris     | No-part-needed outcome; never reach into the pump opening                                      |
+| Dryer’s visible door strike is cracked or missing     | Show an exact strike only after the complete model match; no front-panel removal               |
+| Refrigerator filter is old or shows Replace           | Show an exact user-replaceable filter after the complete model match                           |
+| Refrigerator filter is recent or its housing leaks    | Stop at service; no valve, refrigerant, compressor, or sealed-system instructions              |
 
 ## Customer-facing language
 

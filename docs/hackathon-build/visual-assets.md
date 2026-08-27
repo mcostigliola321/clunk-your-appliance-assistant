@@ -2,7 +2,7 @@
 
 ## Accuracy boundary
 
-Clunk uses original topology orientations, not model-specific service diagrams. They show how a real front-load or conventional U.S. top-load washer is normally organized, while the interface states plainly that exact component placement varies by model and engineering revision.
+Clunk uses original topology orientations, not model-specific service diagrams. They show recognizable, mechanically conservative appliance layouts while the interface states plainly that exact panel shapes and component placement vary by model and engineering revision.
 
 The mechanical review used manufacturer evidence rather than the previous generated images alone:
 
@@ -11,6 +11,49 @@ The mechanical review used manufacturer evidence rather than the previous genera
 - GE's official front-load parts catalog identifies a suspended outer tub, tub-to-pump hose, single drain pump, and drain hose: https://www.geapplianceparts.com/store/parts/ModelSectionParts/GFQ14ESSN0WW/3/0/0/0/TUB
 
 The HTML hotspots are explanatory overlays. They never claim that a generated pixel is a verified service location.
+
+The multi-appliance review also used the exact flagship parts pages as location constraints:
+
+- Whirlpool `WDT750SAKZ1` and drain pump `W11412291`: https://www.whirlpoolparts.com/Shop-For-Parts/a9b5d2464064/Model-WDT750SAKZ1-Whirlpool-Dishwasher-Parts
+- GE `GTD42EASJ2WW` front panel, door, and strike `WE01M10007`: https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTD42EASJ2WW/2/0/0/0/FRONT_PANEL_%26_DOOR
+- GE `GSS25GYPFS` and user-replaceable XWFE water filter: https://products.geappliances.com/appliance/gea-specs/gss25gypfs/parts
+
+## Dishwasher topology v1
+
+- File: `public/assets/clunk-dishwasher-topology-v1.png`
+- Mode: built-in image generation
+- Generated: 2026-08-26
+- Purpose: recognizable location guide for the user-accessible filter/sump, internal drain pump, and external under-sink connection
+
+### Prompt
+
+> Create an original, unbranded, technically conservative educational cutaway of a modern 24-inch built-in dishwasher with its door open and lower rack pulled forward. Show a plausible stainless tub, removable cylindrical filter and sump at the tub floor, one compact drain pump directly below the sump, and one connected drain hose routing out toward an under-sink connection. Keep the pump internal and the filter visibly user-accessible. Clean semi-realistic 3D product illustration, warm white and graphite materials with restrained amber service accents, centered square composition, transparent background. No text, labels, arrows, logos, people, tools, loose wiring, duplicated plumbing, floating components, or claim of exact model fidelity.
+
+## Electric dryer topology v2
+
+- File: `public/assets/clunk-electric-dryer-topology-v2.png`
+- Mode: built-in image generation followed by a targeted no-glow correction and background extraction
+- Generated: 2026-08-26
+- Purpose: visible door-strike flow only; internal drum, belt, motor, blower, and cold electric heater establish a credible electric-dryer silhouette but are not interactive repair instructions
+
+### Prompt set
+
+> Create an original, unbranded educational cutaway of a conventional U.S. electric clothes dryer with the round door open. Make the small door strike on the visible door edge easy to recognize and use a restrained amber service accent only on that strike. Show one drum, belt, idler, low motor, blower housing, exhaust route, and a clearly electric heater enclosure with no flame. Centered three-quarter view, clean semi-realistic 3D product illustration, transparent background. No gas line, burner, glowing heater, exposed energized wiring, labels, arrows, logos, people, or tools.
+
+> Remove the orange/red glow from the heater so the appliance is visibly unpowered. Preserve the visible amber door strike and all other geometry.
+
+> Extract the appliance onto genuine transparency without changing any component. Remove the dark backdrop and preserve clean edges.
+
+## Refrigerator topology v1
+
+- File: `public/assets/clunk-refrigerator-topology-v1.png`
+- Mode: built-in image generation
+- Generated: 2026-08-26
+- Purpose: recognizable side-by-side layout showing the upper fresh-food water filter, door dispenser, and general supply route; no sealed-system components or instructions
+
+### Prompt
+
+> Create an original, unbranded educational cutaway of a U.S. side-by-side refrigerator with both doors open. Clearly show a twist-in water-filter canister high in the fresh-food compartment and the door water dispenser it serves, with a restrained connected water path for orientation. The filter must be user-accessible without panel removal. Clean semi-realistic 3D product illustration, warm white cabinet, graphite interior structure, restrained amber highlight on the filter, centered square composition, transparent background. No text, labels, arrows, logos, people, tools, refrigerant lines, compressor work, exposed wiring, floating components, or claim of exact model fidelity.
 
 ## Front-load topology v3
 

@@ -4,35 +4,35 @@
 
 [Open the live repair bench](https://clunk-appliance-assistant.lovable.app) · [Review the source ledger](./docs/model-source-ledger.md) · [Read the safety model](./docs/safety.md)
 
-Clunk is a lightweight, open-source WebMCP app where a person and a browser agent investigate a washer that will not drain. The person supplies physical observations. The agent searches Clunk’s supported catalog, reads the shared repair state, focuses the relevant component, and records only what the person reports.
+Clunk is a lightweight, open-source WebMCP app where a person and a browser agent investigate a broken household appliance together. The person supplies physical observations. The agent searches Clunk’s supported catalog, reads the shared repair state, focuses the relevant location, and records only what the person reports.
 
-The current catalog covers 19 real washer model families—12 front-load and seven top-load—across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux. Five brands now include top-load coverage; each repair pack links to manufacturer support evidence and chooses a mechanically constrained topology orientation. Clunk never presents that orientation as a model-specific service diagram, substitutes a similar model, treats a likely cause as a confirmed diagnosis, or reveals an exact part without a complete verified product-code match.
+The catalog covers 31 real U.S. model families: 19 washers, four dishwashers, four electric dryers, and four refrigerators. One flagship in every category has a complete purchase-ready path backed by a manufacturer or authorized parts source. Additional models are plainly labeled **Guided checks only** until their exact compatibility data is verified. The illustrations are original location guides—not model-specific service diagrams.
 
 No account, API key, model call, database, server function, or runtime API is required. If WebMCP is unavailable, the entire experience remains usable in manual mode.
 
-> **Important:** Clunk is a bounded troubleshooting aid, not a diagnostic authority. It currently supports one symptom—will not drain—and only the listed model families. Always follow the manufacturer’s manual. Stop for heat, smoke, a burning smell, an active leak near power, unsafe access, or any step that does not match the appliance.
+> **Important:** Clunk is a bounded troubleshooting aid, not a diagnostic authority. It supports only the listed symptom for each listed model. Always follow the manufacturer’s manual. Stop for heat, smoke, a burning smell, an active leak near power, unsafe access, or any step that does not match the appliance.
 
 ## Judge it in under three minutes
 
-1. Choose **See the complete answer** on the home screen.
-2. Confirm **Washer is unplugged and the water is cool**.
-3. Report **Hose looks clear**.
-4. Report either **I found debris in the filter** for the no-purchase answer or **The filter looks clear** for the exact-part answer.
-5. Clunk automatically shows where the part is, its part number, price, availability, and a **Buy this part** link.
-6. Open **Behind the scenes** only if you want to inspect the WebMCP activity and tools.
+1. Pick Washer, Dishwasher, Electric dryer, or Refrigerator.
+2. Choose **See the full answer**. One click replays a complete, labeled example through the same shared WebMCP actions and lands on the exact part, price, seller, and **Buy this part** link.
+3. Open **Agent activity** to see the model selection, safety boundary, recorded observations, component focus, compatibility resolution, and active tool inventory.
+4. Reset and use **Diagnose yours** to supply real observations instead of the example fixture.
 
 The same sequence can be driven by a person, the manual judge controls, or a WebMCP-capable browser agent. Every accepted and rejected action appears in the shared activity log.
 
-Try three proof cases:
+Try four purchase-ready proof cases:
 
-- **No part needed:** report debris blocking the accessible filter.
-- **Part and purchase link:** complete the three visible checks for `WM3400CW.ABWEVUS`; Clunk points to the drain-pump location and shows the sourced part listing and seller link.
-- **Topology switch:** search `GTW585BSVWS`; the GE repair bench changes to the top-load orientation and removes the unsupported filter check.
-- **Safety stop:** report smoke or a burning smell; Clunk ends the flow immediately and removes further repair actions.
+- **Washer:** LG `WM3400CW.ABWEVUS` → drain pump `AHA75693425`.
+- **Dishwasher:** Whirlpool `WDT750SAKZ1` → drain pump `W11412291`.
+- **Electric dryer:** GE `GTD42EASJ2WW` → visible door strike `WE01M10007`.
+- **Refrigerator:** GE `GSS25GYPFS` → water filter `XWFE`.
+
+For a no-purchase answer, run the washer or dishwasher flow and report the visible debris. For a deterministic safety stop, report smoke or a burning smell.
 
 ## Why WebMCP fits
 
-Washer troubleshooting crosses a physical boundary. An agent can reason over structured evidence, but only the person beside the machine can see the rating label, hose, water, and filter. WebMCP lets both parties operate one visible, deterministic repair state instead of hiding the work behind a chat transcript or private API.
+Appliance troubleshooting crosses a physical boundary. An agent can reason over structured evidence, but only the person beside the appliance can see the rating label, hose, filter, door catch, or leak. WebMCP lets both parties operate one visible, deterministic repair state instead of hiding the work behind a chat transcript or private API.
 
 - The available tools change with the page state, so the agent sees only valid next actions.
 - Search and selection are model-aware; unsupported models produce a visible refusal.
@@ -47,10 +47,10 @@ The app contains eight literal `document.modelContext.registerTool` registration
 
 | Tool                          | Purpose                                                                                                    |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `search_supported_appliances` | Search the bounded catalog by model code and optional brand without fuzzy substitution.                    |
+| `search_supported_appliances` | Search the bounded catalog by appliance kind, model code, and optional brand without substitution.       |
 | `select_appliance`            | Select an exact supported family and optionally provide the complete rating-label code.                    |
 | `get_repair_state`            | Read the visible catalog, evidence, current check, likely causes, sources, result, and valid next actions. |
-| `start_diagnosis`             | Start the one supported symptom flow after a model is selected.                                            |
+| `start_diagnosis`             | Start the selected model’s one supported symptom flow.                                                     |
 | `show_component`              | Focus the shared original topology orientation without claiming a physical observation.                    |
 | `record_observation`          | Record one explicit person-supplied result for the current check.                                          |
 | `find_compatible_part`        | Return no-part, variant-needed, or exact-source-backed outcomes, including a dated seller handoff.         |

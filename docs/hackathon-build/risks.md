@@ -48,13 +48,13 @@
 - Mitigation: No generated runtime content. Deny-list hazardous capability tags, validate pack invariants, gate filter access on disconnected power, escalate hazard observations, and omit internal repair instructions.
 - Verification: Safety tests cover every forbidden tag and hazard result; copy review checks stop conditions.
 
-## R7 — Fictional data appears real
+## R7 — A generalized illustration appears model-exact
 
 - Probability: Medium
 - Impact: High
-- Risk: A user could treat the demo SKU or diagnosis as real compatibility guidance.
-- Mitigation: Persistent fictional-model badge, disclaimer in every part result and tool result, original model naming, no purchase links, and no real brand references.
-- Verification: Text assertions and manual review at all breakpoints.
+- Risk: A user could treat an original location guide as a manufacturer service diagram for the selected model.
+- Mitigation: Every visual is original, mechanically reviewed, and labeled “Location guide, not a service diagram.” Exact part compatibility comes only from source data, never image geometry.
+- Verification: Visual documentation records prompts and primary-source constraints; browser tests assert category assets and plain accuracy notes.
 
 ## R8 — Eight tools feel redundant
 
@@ -119,3 +119,19 @@
 - Risk: Registering every action at every state makes the tools look like button wrappers and permits irrelevant calls.
 - Mitigation: Re-register from a state-derived availability key and expose only actions useful in the current repair phase.
 - Verification: Lifecycle tests assert catalog, active-diagnosis, result, and terminal tool inventories.
+
+## R16 — Breadth creates dead-end promises
+
+- Probability: Medium
+- Impact: High
+- Risk: A 31-model catalog could imply that every path ends with a purchasable exact part.
+- Mitigation: Label models before selection as Purchase-ready, Verified part unavailable, or Guided checks only. Keep one complete flagship per category and require exact codes for every part claim.
+- Verification: Catalog/UI tests cover labels; engine tests prove guided-only paths cannot select a part.
+
+## R17 — Seller snapshots become stale
+
+- Probability: High
+- Impact: Medium
+- Risk: Price, availability, URL, or seller catalog structure can change after verification.
+- Mitigation: Show the verification date next to price/stock, make checkout external and human-controlled, and require the user to reconfirm the complete model on the seller page.
+- Verification: Re-open every flagship link immediately before submission and record the result in build notes.

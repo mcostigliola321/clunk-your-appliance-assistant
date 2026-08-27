@@ -16,32 +16,68 @@
     "checks",
     "causes",
     "parts",
-    "sources"
+    "sources",
+    "example"
   ],
   "properties": {
     "id": { "$ref": "#/$defs/identifier" },
-    "schemaVersion": { "const": 2 },
+    "schemaVersion": { "const": 3 },
     "appliance": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["brand", "model", "type", "loadStyle", "topology"],
+      "required": [
+        "kind",
+        "kindLabel",
+        "noun",
+        "brand",
+        "model",
+        "type",
+        "topology",
+        "illustration",
+        "diagramNote"
+      ],
       "properties": {
+        "kind": { "enum": ["washer", "dishwasher", "dryer", "refrigerator"] },
+        "kindLabel": { "$ref": "#/$defs/shortText" },
+        "noun": { "$ref": "#/$defs/shortText" },
         "brand": {
-          "enum": ["LG", "Samsung", "GE", "Whirlpool", "Maytag", "Electrolux"]
+          "enum": [
+            "LG",
+            "Samsung",
+            "GE",
+            "Whirlpool",
+            "Maytag",
+            "Electrolux",
+            "Bosch",
+            "KitchenAid"
+          ]
         },
         "model": { "$ref": "#/$defs/shortText" },
-        "type": { "enum": ["front-load washer", "top-load washer"] },
+        "type": { "$ref": "#/$defs/shortText" },
         "loadStyle": { "enum": ["front-load", "top-load"] },
-        "topology": { "enum": ["front-filter", "drawer-filter", "hose-only"] }
+        "topology": { "$ref": "#/$defs/shortText" },
+        "illustration": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["src", "width", "height", "alt"],
+          "properties": {
+            "src": { "type": "string", "pattern": "^/assets/" },
+            "width": { "type": "integer", "minimum": 1 },
+            "height": { "type": "integer", "minimum": 1 },
+            "alt": { "$ref": "#/$defs/shortText" }
+          }
+        },
+        "diagramNote": { "$ref": "#/$defs/bodyText" }
       }
     },
     "symptom": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "label"],
+      "required": ["id", "label", "shortLabel"],
       "properties": {
-        "id": { "const": "will-not-drain" },
-        "label": { "$ref": "#/$defs/shortText" }
+        "id": { "$ref": "#/$defs/identifier" },
+        "label": { "$ref": "#/$defs/shortText" },
+        "shortLabel": { "$ref": "#/$defs/shortText" }
       }
     },
     "productCodePrompt": { "$ref": "#/$defs/bodyText" },
@@ -57,12 +93,21 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "label", "description", "access"],
+        "required": ["id", "label", "description", "access", "hotspot"],
         "properties": {
           "id": { "$ref": "#/$defs/identifier" },
           "label": { "$ref": "#/$defs/shortText" },
           "description": { "$ref": "#/$defs/bodyText" },
-          "access": { "enum": ["visible", "user-accessible", "professional-only"] }
+          "access": { "enum": ["visible", "user-accessible", "professional-only"] },
+          "hotspot": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["x", "y"],
+            "properties": {
+              "x": { "type": "number", "minimum": 0, "maximum": 100 },
+              "y": { "type": "number", "minimum": 0, "maximum": 100 }
+            }
+          }
         }
       }
     },
@@ -102,7 +147,10 @@
                 "external-observation",
                 "no-disassembly",
                 "spill-control",
-                "user-accessible-filter"
+                "user-accessible-filter",
+                "user-replaceable-filter",
+                "visible-door-hardware",
+                "sink-check"
               ]
             }
           },
@@ -119,10 +167,33 @@
             "items": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["id", "label"],
+              "required": ["id", "label", "effect"],
               "properties": {
                 "id": { "$ref": "#/$defs/identifier" },
-                "label": { "$ref": "#/$defs/shortText" }
+                "label": { "$ref": "#/$defs/shortText" },
+                "effect": {
+                  "enum": [
+                    "continue",
+                    "no-part-needed",
+                    "part-candidate",
+                    "professional-only",
+                    "hazard"
+                  ]
+                },
+                "nextCheckId": { "$ref": "#/$defs/identifier" },
+                "focusComponentId": { "$ref": "#/$defs/identifier" },
+                "escalationReason": {
+                  "enum": [
+                    "electrical",
+                    "burning-smell",
+                    "hot-water",
+                    "active-leak",
+                    "internal-access",
+                    "unresolved"
+                  ]
+                },
+                "outcomeTitle": { "$ref": "#/$defs/shortText" },
+                "outcomeMessage": { "$ref": "#/$defs/bodyText" }
               }
             }
           }
@@ -136,12 +207,18 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "label", "componentId", "baseRank"],
+        "required": ["id", "label", "componentId", "baseRank", "defaultExplanation"],
         "properties": {
           "id": { "$ref": "#/$defs/identifier" },
           "label": { "$ref": "#/$defs/shortText" },
           "componentId": { "$ref": "#/$defs/identifier" },
-          "baseRank": { "type": "integer", "minimum": 1, "maximum": 100 }
+          "baseRank": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "defaultExplanation": { "$ref": "#/$defs/bodyText" },
+          "resultScores": { "type": "object", "additionalProperties": { "type": "number" } },
+          "resultExplanations": {
+            "type": "object",
+            "additionalProperties": { "$ref": "#/$defs/bodyText" }
+          }
         }
       }
     },
@@ -155,6 +232,34 @@
       "minItems": 1,
       "uniqueItems": true,
       "items": { "$ref": "#/$defs/source" }
+    },
+    "example": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["title", "summary", "productCode", "observations"],
+          "properties": {
+            "title": { "$ref": "#/$defs/shortText" },
+            "summary": { "$ref": "#/$defs/shortText" },
+            "productCode": { "$ref": "#/$defs/shortText" },
+            "observations": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["checkId", "resultId"],
+                "properties": {
+                  "checkId": { "$ref": "#/$defs/identifier" },
+                  "resultId": { "$ref": "#/$defs/identifier" }
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "$defs": {
@@ -212,7 +317,8 @@
           "items": { "type": "string", "minLength": 3, "maxLength": 80 }
         },
         "compatibleModel": { "$ref": "#/$defs/shortText" },
-        "installBoundary": { "const": "professional-only" },
+        "location": { "$ref": "#/$defs/shortText" },
+        "installBoundary": { "enum": ["user-replaceable", "professional-only"] },
         "source": { "$ref": "#/$defs/source" },
         "purchase": {
           "type": "object",
