@@ -1,4 +1,6 @@
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
+import { isPurchaseReadyPart } from "@/domain/purchase";
+import { hasExactPartNumber } from "@/domain/shopifyCatalog";
 
 import type {
   ApplianceCatalogEntry,
@@ -325,7 +327,9 @@ function washerProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
           },
     diagramNote: "Location guide, not a service diagram. Exact panel shapes vary by model.",
     example:
-      entry.exactPart && entry.profile === "washer-front-drain"
+      entry.capability === "purchase-ready" &&
+      entry.exactPart &&
+      entry.profile === "washer-front-drain"
         ? {
             title: "See a complete washer answer",
             summary: "Clear hose + clear filter → verified drain-pump link",
@@ -341,6 +345,113 @@ function washerProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
 }
 
 function dishwasherProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
+  if (entry.checkProfile === "sink-then-service") {
+    return {
+      components: [
+        component("machine", "Dishwasher", "The selected built-in dishwasher.", "visible", 50, 50),
+        component(
+          "drain-connection",
+          "Under-sink drain connection",
+          "The visible hose connection under the sink; do not disconnect it.",
+          "visible",
+          82,
+          66,
+        ),
+        component(
+          "drain-pump",
+          "Internal drain system",
+          "Internal filters, choppers, and pumps vary by exact model.",
+          "professional-only",
+          50,
+          76,
+        ),
+      ],
+      checks: [
+        prepareCheck(entry, sourceIds, "inspect-drain-connection"),
+        {
+          id: "inspect-drain-connection",
+          label: "Check the sink drain",
+          componentId: "drain-connection",
+          instruction:
+            "Run the sink briefly and look at the dishwasher hose connection under it. Check for a backed-up sink, a visibly pinched hose, or a recently installed disposal plug. Do not disconnect anything or reach into the dishwasher filter area.",
+          why: "The dishwasher cannot drain if the shared sink drain is blocked.",
+          stop: "the cabinet is wet, wiring is visible, or the connection must be removed.",
+          safetyTags: ["external-observation", "no-disassembly", "sink-check"],
+          sourceIds,
+          results: [
+            result("sink-blocked", "The sink or disposal is backed up", "no-part-needed", {
+              focusComponentId: "drain-connection",
+              outcomeTitle: "Clear the sink drain first",
+              outcomeMessage:
+                "A backed-up sink or disposal can keep the dishwasher from draining. Clear that household drain before testing again.",
+            }),
+            result(
+              "connection-clear",
+              "The sink and visible hose look clear",
+              "professional-only",
+              {
+                focusComponentId: "drain-pump",
+                outcomeTitle: "Use the model-specific owner guide next",
+                outcomeMessage:
+                  "Internal filter and pump access differs by model. The official source below can confirm the next owner-safe step; Clunk will not assume a removable filter.",
+              },
+            ),
+            result(
+              "connection-damaged",
+              "The hose is loose, wet, or damaged",
+              "professional-only",
+              {
+                focusComponentId: "drain-connection",
+                outcomeTitle: "Do not run the dishwasher",
+                outcomeMessage:
+                  "The drain connection may leak. A technician or plumber should repair it first.",
+              },
+            ),
+            result("unsafe-under-sink", "I cannot see it safely", "hazard", {
+              escalationReason: "internal-access",
+            }),
+          ],
+        },
+      ] satisfies RepairPackCheck[],
+      causes: [
+        {
+          id: "dishwasher-sink",
+          label: "Blocked sink drain",
+          componentId: "drain-connection",
+          baseRank: 45,
+          defaultExplanation: "A shared sink blockage can stop dishwasher drainage.",
+          resultScores: { "sink-blocked": 90, "connection-clear": -35 },
+        },
+        {
+          id: "dishwasher-internal",
+          label: "Model-specific internal drain issue",
+          componentId: "drain-pump",
+          baseRank: 25,
+          defaultExplanation: "Internal filter and pump layouts differ by model.",
+          resultScores: { "connection-clear": 65 },
+          resultExplanations: {
+            "connection-clear":
+              "The outside drain path looks clear, so use the official model guide or a technician before opening anything.",
+          },
+        },
+      ] satisfies RepairPackCause[],
+      symptom: {
+        id: "will-not-drain",
+        label: "Dishwasher will not drain",
+        shortLabel: "Water stays in the dishwasher",
+      },
+      illustration: {
+        src: "/assets/clunk-dishwasher-topology-v1.png",
+        width: 1254,
+        height: 1254,
+        alt: "Open dishwasher showing the tub and external drain connection",
+      },
+      diagramNote:
+        "Location guide, not a service diagram. Internal filter and pump access varies; no panel or filter removal is assumed.",
+      example: null,
+    };
+  }
+
   return {
     components: [
       component("machine", "Dishwasher", "The selected built-in dishwasher.", "visible", 50, 50),
@@ -478,18 +589,19 @@ function dishwasherProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
     },
     diagramNote:
       "Location guide, not a service diagram. The pump is shown for orientation only; do not remove panels.",
-    example: entry.exactPart
-      ? {
-          title: "See a complete dishwasher answer",
-          summary: "Clear sink + clear filter → verified drain-pump link",
-          productCode: entry.verifiedProductCodes[0] ?? entry.model,
-          observations: [
-            { checkId: "safety-check", resultId: "safe-ready" },
-            { checkId: "inspect-drain-connection", resultId: "connection-clear" },
-            { checkId: "inspect-sump-filter", resultId: "sump-clear" },
-          ],
-        }
-      : null,
+    example:
+      entry.capability === "purchase-ready" && entry.exactPart
+        ? {
+            title: "See a complete dishwasher answer",
+            summary: "Clear sink + clear filter → verified drain-pump link",
+            productCode: entry.verifiedProductCodes[0] ?? entry.model,
+            observations: [
+              { checkId: "safety-check", resultId: "safe-ready" },
+              { checkId: "inspect-drain-connection", resultId: "connection-clear" },
+              { checkId: "inspect-sump-filter", resultId: "sump-clear" },
+            ],
+          }
+        : null,
   };
 }
 
@@ -597,17 +709,18 @@ function dryerProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
     },
     diagramNote:
       "Location guide, not a service diagram. This flow covers visible door hardware only—never gas, wiring, or energized tests.",
-    example: entry.exactPart
-      ? {
-          title: "See a complete dryer answer",
-          summary: "Broken visible catch → verified $7 part link",
-          productCode: entry.verifiedProductCodes[0] ?? entry.model,
-          observations: [
-            { checkId: "safety-check", resultId: "safe-ready" },
-            { checkId: "inspect-door-strike", resultId: "strike-broken" },
-          ],
-        }
-      : null,
+    example:
+      entry.capability === "purchase-ready" && entry.exactPart
+        ? {
+            title: "See a complete dryer answer",
+            summary: "Broken visible catch → verified $7 part link",
+            productCode: entry.verifiedProductCodes[0] ?? entry.model,
+            observations: [
+              { checkId: "safety-check", resultId: "safe-ready" },
+              { checkId: "inspect-door-strike", resultId: "strike-broken" },
+            ],
+          }
+        : null,
   };
 }
 
@@ -625,7 +738,7 @@ function refrigeratorProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) 
       component(
         "water-filter",
         "Water filter",
-        "The twist-in filter inside the fresh-food compartment.",
+        "The water-filter housing in the location shown by the official owner guidance.",
         "user-accessible",
         63,
         22,
@@ -654,7 +767,7 @@ function refrigeratorProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) 
         label: "Check the filter age",
         componentId: "water-filter",
         instruction:
-          "Open the fresh-food compartment and locate the twist-in filter. Check the replacement indicator or when it was last changed. Do not force or remove a stuck filter.",
+          "Use the official model source below to confirm the filter location, then check the replacement indicator or when it was last changed. Do not force, remove, or order a filter if the location or cartridge does not match.",
         why: "An old or clogged filter is a common cause of slow dispenser flow.",
         stop: "the housing is wet, cracked, stuck, or does not match the location shown.",
         safetyTags: ["external-observation", "spill-control", "user-replaceable-filter"],
@@ -735,18 +848,19 @@ function refrigeratorProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) 
       alt: "Open refrigerator showing the fresh-food water filter and door dispenser",
     },
     diagramNote:
-      "Location guide, not a service diagram. This flow never covers refrigerant, compressors, or sealed-system work.",
-    example: entry.exactPart
-      ? {
-          title: "See a complete refrigerator answer",
-          summary: "Old filter → verified replacement link",
-          productCode: entry.verifiedProductCodes[0] ?? entry.model,
-          observations: [
-            { checkId: "safety-check", resultId: "safe-ready" },
-            { checkId: "inspect-water-filter", resultId: "filter-overdue" },
-          ],
-        }
-      : null,
+      "Location guide, not a service diagram. Filter positions and release mechanisms vary by model; this flow never covers refrigerant, compressors, or sealed-system work.",
+    example:
+      entry.capability === "purchase-ready" && entry.exactPart
+        ? {
+            title: "See a complete refrigerator answer",
+            summary: "Old filter → verified replacement link",
+            productCode: entry.verifiedProductCodes[0] ?? entry.model,
+            observations: [
+              { checkId: "safety-check", resultId: "safe-ready" },
+              { checkId: "inspect-water-filter", resultId: "filter-overdue" },
+            ],
+          }
+        : null,
   };
 }
 
@@ -764,7 +878,7 @@ function buildPack(entry: ApplianceCatalogEntry): RepairPack {
           : refrigeratorProfile(entry, sourceIds);
   return {
     id: entry.id,
-    schemaVersion: 3,
+    schemaVersion: 5,
     appliance: {
       kind: entry.kind,
       kindLabel: KIND_LABELS[entry.kind],
@@ -772,6 +886,7 @@ function buildPack(entry: ApplianceCatalogEntry): RepairPack {
       brand: entry.brand,
       model: entry.model,
       type: entry.label,
+      capability: entry.capability,
       ...(entry.loadStyle ? { loadStyle: entry.loadStyle } : {}),
       topology: entry.topology ?? "washer-front-filter",
       illustration: profile.illustration,
@@ -790,8 +905,8 @@ function buildPack(entry: ApplianceCatalogEntry): RepairPack {
 }
 
 export function assertRepairPack(pack: RepairPack): RepairPack {
-  if (pack.schemaVersion !== 3 || !pack.appliance.brand || !pack.appliance.model)
-    throw new Error("Repair packs require schema version 3 and a real model identity.");
+  if (pack.schemaVersion !== 5 || !pack.appliance.brand || !pack.appliance.model)
+    throw new Error("Repair packs require schema version 5 and a real model identity.");
   const componentIds = new Set(pack.components.map((item) => item.id));
   const checkIds = new Set(pack.checks.map((item) => item.id));
   const sourceIds = new Set(pack.sources.map((item) => item.id));
@@ -835,39 +950,81 @@ export function assertRepairPack(pack: RepairPack): RepairPack {
       throw new Error(`Part ${part.id} lacks component or compatibility evidence.`);
     if (!["manufacturer-part", "authorized-parts"].includes(part.source.kind))
       throw new Error(`Part ${part.id} requires manufacturer or authorized-parts evidence.`);
+    if (!part.purchase && !part.commerce)
+      throw new Error(`Part ${part.id} requires a seller or live-commerce handoff.`);
     if (
-      !part.purchase.url.startsWith("https://") ||
-      !/^\d{4}-\d{2}-\d{2}$/.test(part.purchase.lastVerified)
+      part.purchase &&
+      (!part.purchase.url.startsWith("https://") ||
+        !/^\d{4}-\d{2}-\d{2}$/.test(part.purchase.lastVerified))
     )
-      throw new Error(`Part ${part.id} requires a secure, dated seller handoff.`);
+      throw new Error(`Part ${part.id} has an invalid seller handoff.`);
+    if (
+      part.commerce &&
+      (part.commerce.provider !== "shopify-global-catalog" ||
+        part.commerce.protocol !== "UCP" ||
+        part.commerce.exactSku.toUpperCase() !== part.sku.toUpperCase() ||
+        !hasExactPartNumber(part.commerce.query, part.sku) ||
+        !Number.isInteger(part.commerce.offerCountAtVerification) ||
+        part.commerce.offerCountAtVerification < 0 ||
+        !/^\d{4}-\d{2}-\d{2}$/.test(part.commerce.lastVerified))
+    )
+      throw new Error(`Part ${part.id} has an invalid Shopify UCP handoff.`);
+  }
+  if (pack.appliance.capability === "purchase-ready") {
+    if (pack.parts.length !== 1 || !isPurchaseReadyPart(pack.parts[0]))
+      throw new Error(`Purchase-ready pack ${pack.id} requires one available exact part.`);
+  } else if (pack.appliance.capability === "verified-part-unavailable") {
+    if (pack.parts.length !== 1 || isPurchaseReadyPart(pack.parts[0]))
+      throw new Error(`Unavailable pack ${pack.id} requires one checked unavailable exact part.`);
+  } else if (pack.parts.length !== 0) {
+    throw new Error(`Guided-check pack ${pack.id} cannot make an exact-part claim.`);
   }
   return pack;
 }
+
+export function assertCatalog(entries: ApplianceCatalogEntry[]): ApplianceCatalogEntry[] {
+  const ids = new Set<string>();
+  const identities = new Set<string>();
+  for (const entry of entries) {
+    const identity = `${entry.brand}:${entry.kind}:${entry.model}`.toUpperCase();
+    if (ids.has(entry.id) || identities.has(identity))
+      throw new Error(`Catalog contains a duplicate ID or model identity: ${entry.id}.`);
+    ids.add(entry.id);
+    identities.add(identity);
+    if (entry.modelSource.kind !== "manufacturer-model")
+      throw new Error(`Catalog entry ${entry.id} requires an authoritative model source.`);
+    if (!entry.topology || !entry.profile || entry.troubleshootingSources.length === 0)
+      throw new Error(
+        `Catalog entry ${entry.id} is missing topology, profile, or symptom evidence.`,
+      );
+    const sources = [entry.modelSource, ...entry.troubleshootingSources];
+    if (
+      sources.some(
+        (source) =>
+          !source.url.startsWith("https://") || !/^\d{4}-\d{2}-\d{2}$/.test(source.lastVerified),
+      )
+    )
+      throw new Error(`Catalog entry ${entry.id} has an undated or insecure source.`);
+    if (entry.exactPart) {
+      const normalizedCodes = new Set(entry.verifiedProductCodes.map((code) => code.toUpperCase()));
+      if (
+        entry.exactPart.compatibleProductCodes.some(
+          (code) => !normalizedCodes.has(code.toUpperCase()),
+        )
+      )
+        throw new Error(`Catalog entry ${entry.id} has part codes outside its verified codes.`);
+    }
+  }
+  return entries;
+}
+
+assertCatalog(APPLIANCE_CATALOG);
 
 export const REPAIR_PACKS = new Map(
   APPLIANCE_CATALOG.map((entry) => [entry.id, assertRepairPack(buildPack(entry))]),
 );
 
-export function normalizeModel(value: string): string {
-  return value.toUpperCase().replace(/[^A-Z0-9]/g, "");
-}
-
-export function searchCatalog(
-  query = "",
-  brand?: BrandName | null,
-  kind?: ApplianceKind | null,
-): ApplianceCatalogEntry[] {
-  const needle = normalizeModel(query);
-  return APPLIANCE_CATALOG.filter((entry) => {
-    if (brand && entry.brand !== brand) return false;
-    if (kind && entry.kind !== kind) return false;
-    if (!needle) return true;
-    const haystacks = [entry.brand, entry.model, entry.label, entry.kind, ...entry.aliases].map(
-      normalizeModel,
-    );
-    return haystacks.some((value) => value.includes(needle) || needle.includes(value));
-  });
-}
+export { normalizeModel, searchCatalog } from "./modelSearch";
 
 export function getCatalogEntry(applianceId: ApplianceId): ApplianceCatalogEntry {
   const entry = APPLIANCE_CATALOG.find((item) => item.id === applianceId);
@@ -927,12 +1084,7 @@ export function isCheckId(packId: ApplianceId | null, value: unknown): value is 
 }
 
 export function isBrandName(value: unknown): value is BrandName {
-  return (
-    typeof value === "string" &&
-    ["LG", "Samsung", "GE", "Whirlpool", "Maytag", "Electrolux", "Bosch", "KitchenAid"].includes(
-      value,
-    )
-  );
+  return typeof value === "string" && APPLIANCE_CATALOG.some((entry) => entry.brand === value);
 }
 
 export function isApplianceKind(value: unknown): value is ApplianceKind {

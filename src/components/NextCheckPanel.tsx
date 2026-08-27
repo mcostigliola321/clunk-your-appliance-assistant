@@ -8,7 +8,7 @@ interface NextCheckPanelProps {
   onStart: () => void;
   onResult: (resultId: ResultId) => void;
   onFindPart: () => void;
-  onUseProductCode: (productCode: string) => void;
+  onUseProductCode: (productCode: string) => { ok: boolean; message: string } | null;
   exactPartAvailable: boolean;
   exampleProductCode: string | null;
 }
@@ -21,6 +21,7 @@ function ModelCodeStep({
   exampleProductCode,
 }: NextCheckPanelProps) {
   const [productCode, setProductCode] = useState("");
+  const [modelError, setModelError] = useState<string | null>(null);
   if (!exactPartAvailable) {
     return (
       <section className="next-check" aria-labelledby="next-check-title">
@@ -52,7 +53,10 @@ function ModelCodeStep({
         className="product-code-form"
         onSubmit={(event) => {
           event.preventDefault();
-          if (productCode.trim()) onUseProductCode(productCode.trim());
+          if (productCode.trim()) {
+            const result = onUseProductCode(productCode.trim());
+            setModelError(result && !result.ok ? result.message : null);
+          }
         }}
       >
         <label htmlFor="product-code">Full model number</label>
@@ -66,12 +70,20 @@ function ModelCodeStep({
         <button className="button button--primary button--wide" type="submit">
           Start diagnosis <ArrowRight size={18} aria-hidden="true" />
         </button>
+        {modelError ? (
+          <p className="product-code-error" role="alert">
+            {modelError}
+          </p>
+        ) : null}
       </form>
       {exampleProductCode ? (
         <button
           className="demo-code-button"
           type="button"
-          onClick={() => onUseProductCode(exampleProductCode)}
+          onClick={() => {
+            const result = onUseProductCode(exampleProductCode);
+            setModelError(result && !result.ok ? result.message : null);
+          }}
         >
           Use verified demo model {exampleProductCode}
         </button>

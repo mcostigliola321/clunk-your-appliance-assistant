@@ -31,17 +31,17 @@ The primary promise is concrete: **problem → physical location → exact part 
 2. The category shows one purchase-ready real flagship and the supported problem.
 3. **See the full answer** replays select, start, observations, and part resolution through the shared action layer.
 4. The result is explicitly labeled **Example answer** and lists the prefilled observation summary.
-5. The page simultaneously shows the highlighted location, exact part/SKU, compatible full model, price/availability snapshot, seller, and **Buy this part** link.
+5. The page simultaneously shows the highlighted location, exact part/SKU, compatible full model, a visible fit-proof boundary, current exact-SKU Shopify offers, and external **Open cart** links.
 
 Acceptance:
 
-- Exactly one click from the home state reaches the seller link.
+- Exactly one click from the home state reaches the exact result and initiates the live offer lookup.
 - Every replayed activity is visible and tagged `example`.
 - The example never implies the participant personally supplied those observations.
 
 ### Diagnose mine
 
-1. User selects category, searches a complete model number, and chooses an exact returned model.
+1. User selects a category, either follows **Find my model number** or types a known value, narrows partial suggestions, and chooses the exact label match without guessed suffixes.
 2. Purchase-ready models require the complete verified code; guided-only models disclose their limit before checks begin.
 3. Clunk shows one safety or observation step and one highlighted location at a time.
 4. User chooses a bounded plain-language result.
@@ -101,8 +101,8 @@ Tool schemas are pack-derived, bounded, and `additionalProperties: false`. Regis
 - Each model has an official manufacturer page and verification date.
 - Each check references one or more pack sources.
 - Exact parts require a manufacturer or authorized-parts source plus complete compatible code.
-- Seller handoffs use HTTPS and record seller, URL, dated price, dated availability, and last verification date.
-- Customer copy calls price/stock a snapshot and requires final confirmation on the seller page.
+- Seller handoffs either use a secure dated fixed snapshot or a dated Shopify UCP query for an already verified exact SKU.
+- Live Shopify results are not cached, exclude nearby SKUs, label merchant claims, and require final confirmation on the seller page.
 
 ## Submission proof
 

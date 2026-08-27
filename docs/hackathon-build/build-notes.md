@@ -157,3 +157,23 @@
 - Relabeled `evals/webmcp-evals.json` as deterministic scenario fixtures and added a separate real-agent matrix/runbook. No natural-language agent run was manufactured; the matrix remains Not run until a supported prompt interface is available and recorded.
 - Refreshed the Devpost story and demo shot list around the GE dryer handoff, terminal safety, no-part trust proof, and the closing line: “Clunk is a repair bench a person and their agent operate together.”
 - Final local verification passed typecheck, lint, 33 deterministic unit/integration/scenario-fixture tests, a production build, and 18 Playwright tests across desktop and mobile, including the tool swap, terminal tool absence, 320px overflow, touch sizing, reduced motion, and automated WCAG A/AA.
+
+## 2026-08-27 — Model-label handoff and 50-model expansion
+
+- Added **Find my model number** as an equal entry path. Category/form-factor guidance, original inline location drawings, Model-versus-Serial explanations, examples, and dated manufacturer sources remain fully usable in manual mode.
+- Moved normalization and ranking into a dedicated model-search domain module. Search is case/punctuation-insensitive, suggests partials, reports suffix ambiguity, rejects explicitly labeled Serial/S/N text, and no longer lets extra unsupported text match a shorter model by reverse containment.
+- Extended the existing catalog-state WebMCP output with model-number handoff instructions, query status, ambiguity, capability labels, and category/tier counts. The existing eight-tool surface remains unchanged.
+- Expanded the source-backed catalog by 19 guided entries to 50 total: 23 washers, nine dishwashers, nine electric dryers, and nine refrigerators across 11 brands. Final tiers are four purchase-ready, 44 guided checks, and two verified-part-unavailable.
+- Replaced a drafted chopper-style Maytag dishwasher with Amana `ADB1400AGW` after the official triple-filter manual proved the user-access path. Removed universal refrigerator twist-in/location wording because the expanded set includes a base-grille Amana and push-in Frigidaire design.
+- Bumped repair packs to schema v4 with an explicit capability tier and catalog/pack consistency validation. All four established purchase-ready flagships remain unchanged.
+- Audited every added evidence URL and recorded retrieval date/status in `docs/source-url-audit.md`; drafted dead category URLs were replaced before release review.
+- Local verification for this isolated worktree passed typecheck, lint, 43 deterministic unit/integration/scenario-fixture tests, production build, and 22 Playwright cases across desktop and Pixel 7. Desktop/mobile model-locator screenshots were visually inspected. This worktree was not pushed or deployed.
+
+## 2026-08-27 — Shopify Global Catalog/UCP purchase expansion
+
+- Separated fit proof from offer discovery: manufacturer or authorized-parts evidence still maps a complete appliance code to one exact SKU; Shopify Global Catalog only finds current listings for that SKU.
+- Added a credential-free UCP `search_catalog` client, hosted agent profile, no-cache request policy, loading/error/empty states, exact-SKU filtering, seller-claim labels, and external cart handoff. Nearby SKUs are rejected even when returned by the catalog.
+- Verified 10 SKU queries against the live endpoint. Each returned 5–20 available exact-number offers after Clunk's filter on 2026-08-27.
+- Upgraded eight exact models after evidence review: two Samsung washers, three visible dryer catches, and three refrigerator filters. Final tiers are 12 purchase-ready, 38 guided checks, and zero verified-part-unavailable.
+- Bumped repair packs to schema v5, added the same narrow commerce handoff to WebMCP structured output, and kept the public tool count at eight.
+- Added focused UCP parsing/request tests and desktop/mobile mocked-catalog coverage that injects a cheaper wrong SKU and proves it never reaches the UI.

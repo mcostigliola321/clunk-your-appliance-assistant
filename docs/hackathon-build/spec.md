@@ -2,7 +2,7 @@
 
 ## Runtime architecture
 
-Static React + TypeScript + Vite. No backend, API key, model SDK, database, auth, server function, runtime source fetch, or payment integration.
+Static React + TypeScript + Vite. No backend, API key, model SDK, database, auth, server function, or payment integration. Exact outcomes can make one optional keyless Shopify Global Catalog request for current offers.
 
 ```text
 human controls ─┐
@@ -10,7 +10,9 @@ example replay ─┼─> invokeTool ─> deterministic engine ─> RepairState 
 manual inspector┤                         │
 WebMCP callback ┘                         └─> accepted/rejected activity event
 
-catalog entry ─> schema-v3 repair-pack generator ─> checks + results + sources + parts
+catalog entry ─> schema-v5 repair-pack generator ─> checks + results + sources + exact SKU
+                                                                        │
+                                                                        └─> Shopify UCP offers
 ```
 
 `RepairProvider` keeps a synchronous state ref so every callback returns the exact state it dispatches to React.
@@ -24,9 +26,9 @@ catalog entry ─> schema-v3 repair-pack generator ─> checks + results + sourc
 - Complete verified product codes and label prompt.
 - Diagram topology/load style when applicable.
 - Official model source and troubleshooting sources.
-- Optional exact part with compatibility codes, location, install boundary, source, and dated purchase snapshot.
+- Optional exact part with compatibility codes, location, install boundary, source, and a dated fixed seller and/or Shopify UCP handoff.
 
-### Repair pack v3
+### Repair pack v5
 
 - Category identity and plain-language noun.
 - One symptom ID/label/short label.
@@ -43,7 +45,7 @@ catalog entry ─> schema-v3 repair-pack generator ─> checks + results + sourc
 - Cause ranking rules expressed as per-result score/explanation maps.
 - Optional example fixture containing complete model code plus ordered observation calls.
 
-Runtime invariants verify schema version, unique IDs, component/check/source/result references, allowed source URLs/dates, forbidden safety tags, exact part evidence, secure seller URLs, and complete compatibility codes.
+Runtime invariants verify schema version, unique IDs, component/check/source/result references, allowed source URLs/dates, forbidden safety tags, exact part evidence, secure seller URLs, exact-SKU UCP descriptors, and complete compatibility codes.
 
 ## Profiles
 
@@ -78,7 +80,7 @@ Runtime invariants verify schema version, unique IDs, component/check/source/res
 - Other effects enter result state and preserve the declared focus component/copy.
 - Exact part resolution requires both a `part-candidate` terminal result and a normalized complete-code match.
 - Missing code or evidence returns `variant-needed`; guided-only models never borrow parts.
-- Seller link reveal is a state mutation and is recorded in activity.
+- Exact part reveal is a state mutation and is recorded in activity; live offer fetching cannot change the outcome.
 
 ## Public WebMCP tools
 
@@ -111,13 +113,14 @@ Every call uses source `example`, reaches the same engine, and is logged. The UI
 - Four category controls, one flagship card, model search, and evidence labels.
 - Selected state pairs the location guide with the current safe action or part answer.
 - Hotspots use regular buttons, accessible names, `aria-pressed`, text labels, and non-color emphasis.
-- Part result includes name, SKU, full compatible model, location, snapshot price/stock, seller, external link, source, and install boundary.
+- Part result includes name, SKU, full compatible model, location, source, install boundary, and accessible Shopify loading/error/empty/seller states. Merchant labels are disclosed and only exact-SKU offers are rendered.
 - Activity/tool detail stays collapsed until requested.
 - Reduced motion globally collapses transitions to 0.01ms.
 
 ## Test strategy
 
-- Repair-pack invariant tests across all 31 entries.
+- Catalog/repair-pack invariant tests across all 50 entries and three capability labels.
+- Shopify UCP extraction tests for punctuation-insensitive exact SKU, nearby-SKU rejection, availability, request shape, and WebMCP handoff equivalence.
 - Exact example replay for all four flagships.
 - No-part, guided-only, complete-code, unsupported-model, invalid-order, and hazard tests.
 - Literal registration, dynamic inventory, and shared callback tests.

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
 
 import { createInitialRepairState, executeRepairTool } from "./engine";
-import { getRepairPack, REPAIR_PACKS } from "./repairPack";
+import { assertCatalog, getRepairPack, REPAIR_PACKS } from "./repairPack";
 import { getWebMcpTaskSnapshot } from "./selectors";
 
 function selectAndStart(applianceId: string, productCode?: string) {
@@ -69,16 +69,48 @@ function runExample(applianceId: string) {
 }
 
 describe("source-backed multi-appliance repair engine", () => {
-  it("validates 31 repair packs across four categories", () => {
-    expect(APPLIANCE_CATALOG).toHaveLength(31);
-    expect(REPAIR_PACKS.size).toBe(31);
+  it("validates 50 repair packs, explicit tiers, and four categories", () => {
+    expect(assertCatalog(APPLIANCE_CATALOG)).toBe(APPLIANCE_CATALOG);
+    expect(APPLIANCE_CATALOG).toHaveLength(50);
+    expect(REPAIR_PACKS.size).toBe(50);
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.kind))).toEqual(
       new Set(["washer", "dishwasher", "dryer", "refrigerator"]),
     );
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "washer")).toHaveLength(19);
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dishwasher")).toHaveLength(4);
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dryer")).toHaveLength(4);
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "refrigerator")).toHaveLength(4);
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "washer")).toHaveLength(23);
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dishwasher")).toHaveLength(9);
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dryer")).toHaveLength(9);
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "refrigerator")).toHaveLength(9);
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.capability === "purchase-ready")).toHaveLength(
+      12,
+    );
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.capability === "guided-checks")).toHaveLength(
+      38,
+    );
+    expect(
+      APPLIANCE_CATALOG.filter((entry) => entry.capability === "verified-part-unavailable"),
+    ).toHaveLength(0);
+    expect(
+      Object.fromEntries(
+        (["washer", "dishwasher", "dryer", "refrigerator"] as const).map((kind) => [
+          kind,
+          {
+            purchaseReady: APPLIANCE_CATALOG.filter(
+              (entry) => entry.kind === kind && entry.capability === "purchase-ready",
+            ).length,
+            guided: APPLIANCE_CATALOG.filter(
+              (entry) => entry.kind === kind && entry.capability === "guided-checks",
+            ).length,
+          },
+        ]),
+      ),
+    ).toEqual({
+      washer: { purchaseReady: 3, guided: 20 },
+      dishwasher: { purchaseReady: 1, guided: 8 },
+      dryer: { purchaseReady: 4, guided: 5 },
+      refrigerator: { purchaseReady: 4, guided: 5 },
+    });
+    expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.brand)).size).toBe(11);
+    expect([...REPAIR_PACKS.values()].every((pack) => pack.schemaVersion === 5)).toBe(true);
   });
 
   it("reaches an exact seller link in every flagship example", () => {
@@ -93,13 +125,38 @@ describe("source-backed multi-appliance repair engine", () => {
       expect(result.ok).toBe(true);
       expect(result.snapshot.partOutcome?.status).toBe("exact");
       expect(result.snapshot.selectedPart?.sku).toBe(sku);
-      expect(result.snapshot.selectedPart?.purchase.url).toMatch(/^https:\/\//);
-      expect(result.snapshot.selectedPart?.purchase.lastVerified).toBe("2026-08-27");
+      expect(result.snapshot.selectedPart?.commerce?.provider).toBe("shopify-global-catalog");
+      expect(result.snapshot.selectedPart?.commerce?.exactSku).toBe(sku);
+      expect(result.snapshot.selectedPart?.commerce?.lastVerified).toBe("2026-08-27");
       expect(result.snapshot.exampleMode).toBe(true);
     }
     expect(
       APPLIANCE_CATALOG.find((entry) => entry.id === "lg-wm3400cw")?.exactPart,
     ).toBeUndefined();
+  });
+
+  it("keeps every newly purchase-ready model on its separately evidenced exact code", () => {
+    const upgraded = [
+      ["samsung-wf45t6000aw", "DC97-20621A"],
+      ["samsung-wf45b6300aw", "DC97-20621A"],
+      ["whirlpool-wed4950hw", "279570"],
+      ["maytag-med4500mw", "W11429587"],
+      ["amana-ned4655ew", "W11429587"],
+      ["whirlpool-wrs315sdhz", "EDR1RXD1"],
+      ["samsung-rf28t5001sr", "DA97-17376B"],
+      ["lg-lrflc2706s", "LT1000P"],
+    ] as const;
+
+    for (const [applianceId, sku] of upgraded) {
+      const result = runExample(applianceId);
+      expect(result.ok, applianceId).toBe(true);
+      expect(result.snapshot.partOutcome?.status, applianceId).toBe("exact");
+      expect(result.snapshot.selectedPart?.sku, applianceId).toBe(sku);
+      expect(
+        result.snapshot.selectedPart?.commerce?.offerCountAtVerification,
+        applianceId,
+      ).toBeGreaterThan(0);
+    }
   });
 
   it("returns no-part-needed when the washer filter is blocked", () => {
@@ -131,7 +188,17 @@ describe("source-backed multi-appliance repair engine", () => {
     const exact = executeRepairTool(exactState, "find_compatible_part", {}, "agent");
     expect(exact.snapshot.partOutcome?.status).toBe("exact");
     expect(exact.snapshot.selectedPart?.sku).toBe("WH11X39237");
-    expect(JSON.stringify(getWebMcpTaskSnapshot(exact.state)).length).toBeLessThan(1500);
+    const webMcpSnapshot = getWebMcpTaskSnapshot(exact.state);
+    expect(webMcpSnapshot.task?.outcome?.part?.commerceHandoff).toMatchObject({
+      provider: "Shopify Global Catalog",
+      protocol: "UCP",
+      exactSku: "WH11X39237",
+      liveAvailability: true,
+    });
+    expect(webMcpSnapshot.task?.outcome?.part?.commerceHandoff?.rule).toContain(
+      "Never substitute a nearby SKU",
+    );
+    expect(JSON.stringify(webMcpSnapshot).length).toBeLessThan(2200);
     const incomplete = executeRepairTool(
       runWasherPath(undefined, "filter-clear"),
       "find_compatible_part",
@@ -144,7 +211,7 @@ describe("source-backed multi-appliance repair engine", () => {
   it("keeps an active human-observation task compact for WebMCP", () => {
     const state = selectAndStart("ge-gtd42easj2ww", "GTD42EASJ2WW");
     const output = getWebMcpTaskSnapshot(state);
-    expect(JSON.stringify(output).length).toBeLessThan(1500);
+    expect(JSON.stringify(output).length).toBeLessThan(1600);
     expect(output.handoff).toBe("human-observation-required");
     expect(output.catalog.results).toEqual([]);
     expect(output.task?.currentCheck?.observations).toEqual(
@@ -160,15 +227,35 @@ describe("source-backed multi-appliance repair engine", () => {
       kind: "washer",
     }).state;
     const output = getWebMcpTaskSnapshot(state);
-    expect(output.catalog.resultCount).toBe(19);
-    expect(output.catalog.results).toHaveLength(10);
-    expect(JSON.stringify(output).length).toBeLessThan(1500);
+    expect(output.catalog.resultCount).toBe(23);
+    expect(output.catalog.results).toHaveLength(6);
+    expect(JSON.stringify(output).length).toBeLessThan(2200);
+    expect(output.catalog.counts).toEqual({
+      byKind: { washer: 23, dishwasher: 9, dryer: 9, refrigerator: 9 },
+      byCapability: {
+        "purchase-ready": 12,
+        "guided-checks": 38,
+        "verified-part-unavailable": 0,
+      },
+    });
   });
 
   it("keeps top-load models on the safe hose-only path", () => {
     const pack = getRepairPack("ge-gtw585bsvws");
     expect(pack.appliance.loadStyle).toBe("top-load");
     expect(pack.checks.map((check) => check.id)).toEqual(["safety-check", "inspect-drain-hose"]);
+  });
+
+  it("keeps expanded dishwasher and refrigerator access model-aware", () => {
+    expect(APPLIANCE_CATALOG.some((entry) => entry.id === "maytag-mdb4949skz")).toBe(false);
+    expect(getRepairPack("amana-adb1400agw").checks.map((check) => check.id)).toContain(
+      "inspect-sump-filter",
+    );
+    const refrigerator = getRepairPack("amana-asi2175grs");
+    expect(
+      refrigerator.checks.find((check) => check.id === "inspect-water-filter")?.instruction,
+    ).toContain("official model source");
+    expect(JSON.stringify(refrigerator)).not.toContain("twist-in filter");
   });
 
   it("does not claim purchase readiness for guided-only models", () => {
@@ -200,7 +287,30 @@ describe("source-backed multi-appliance repair engine", () => {
       modelQuery: "NOT-A-REAL-MATCH-999",
     });
     expect(missing.snapshot.catalogResults).toEqual([]);
-    expect(missing.message).toBe("No matching dryer found.");
+    expect(missing.message).toContain("No supported model matches");
+  });
+
+  it("rejects serial labels and incomplete product codes before compatibility claims", () => {
+    const serialSearch = executeRepairTool(
+      createInitialRepairState(),
+      "search_supported_appliances",
+      { kind: "washer", modelQuery: "S/N: 0A12BC34" },
+    );
+    expect(serialSearch.ok).toBe(false);
+    expect(serialSearch.message).toContain("serial number");
+
+    const partialSelection = executeRepairTool(createInitialRepairState(), "select_appliance", {
+      applianceId: "lg-wt7400cw",
+      productCode: "WT7400CW",
+    });
+    expect(partialSelection.ok).toBe(false);
+    expect(partialSelection.message).toContain("family code");
+
+    const guidedSelection = executeRepairTool(createInitialRepairState(), "select_appliance", {
+      applianceId: "amana-ntw4519jw",
+    });
+    expect(guidedSelection.ok).toBe(true);
+    expect(guidedSelection.snapshot.verificationLabel).toBe("Washer model found");
   });
 
   it("rejects out-of-order observations and preserves deterministic activity", () => {

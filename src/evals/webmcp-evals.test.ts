@@ -8,6 +8,7 @@ import { REPAIR_TOOL_CONTRACTS } from "@/webmcp/contracts";
 interface EvalCall {
   name: string;
   arguments: Record<string, unknown>;
+  expectedOk?: boolean;
 }
 
 function allCalls() {
@@ -19,7 +20,7 @@ function allCalls() {
 
 describe("deterministic WebMCP scenario fixtures", () => {
   it("uses unique, fully described cases", () => {
-    expect(evalFixture.schemaVersion).toBe(4);
+    expect(evalFixture.schemaVersion).toBe(5);
     expect(evalFixture.fictional).toBe(false);
     expect(evalFixture.artifactType).toBe("deterministic-scenario-fixtures");
     expect(evalFixture.evidenceStatus).toContain("not real-agent evaluation results");
@@ -82,8 +83,8 @@ describe("deterministic WebMCP scenario fixtures", () => {
           call.arguments,
           "agent",
         );
-        expect(result.ok, `${evalCase.id}: ${call.name} rejected with ${result.message}`).toBe(
-          true,
+        expect(result.ok, `${evalCase.id}: ${call.name} returned: ${result.message}`).toBe(
+          call.expectedOk ?? true,
         );
         state = result.state;
       }

@@ -84,9 +84,9 @@
 
 - Probability: Low
 - Impact: Critical
-- Risk: Judges cannot use the app or runtime costs appear.
-- Mitigation: Static build, local repair pack, no API calls, no database, no auth, and no environment variables.
-- Verification: Incognito load, network inspection, and build output audit.
+- Risk: Judges cannot use the app, Shopify throttles/fails, or runtime costs appear.
+- Mitigation: Static build, local repair pack, no database/auth/environment variables, and one optional keyless Shopify request only after exact compatibility is resolved. Failure preserves the result and shows retry/no-offer copy.
+- Verification: Incognito load, network inspection, forced Shopify failure, and build output audit.
 
 ## R12 — Submission assets lag behind the build
 
@@ -124,7 +124,7 @@
 
 - Probability: Medium
 - Impact: High
-- Risk: A 31-model catalog could imply that every path ends with a purchasable exact part.
+- Risk: A 50-model catalog could imply that every path ends with a purchasable exact part.
 - Mitigation: Label models before selection as Purchase-ready, Verified part unavailable, or Guided checks only. Keep one complete flagship per category and require exact codes for every part claim.
 - Verification: Catalog/UI tests cover labels; engine tests prove guided-only paths cannot select a part.
 

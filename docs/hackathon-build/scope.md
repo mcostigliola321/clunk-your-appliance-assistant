@@ -12,16 +12,16 @@ A judge should understand the product within five seconds and reach a real selle
 
 ## In scope
 
-- 31 source-backed U.S. model families across washers, dishwashers, electric dryers, and refrigerators.
+- 50 source-backed U.S. model families across washers, dishwashers, electric dryers, and refrigerators.
 - Four purchase-ready flagships:
   - GE `GFW550SSN0WW` will not drain → `WH11X39237` drain pump/filter assembly.
   - Whirlpool `WDT750SAKZ1` will not drain → `W11412291` drain pump.
   - GE `GTD42EASJ2WW` door will not stay closed → `WE01M10007` visible strike.
   - GE `GSS25GYPFS` slow water flow → `XWFE` filter.
-- 27 additional models labeled by evidence depth before selection; unsupported part links are never implied.
+- Eight more purchase-ready exact codes and 38 guided-only models labeled by evidence depth before selection; unsupported part links are never implied.
 - Original category-specific location guides with keyboard-accessible hotspots and persistent “not a service diagram” language.
 - Safe, bounded checks with deterministic order, result effects, likely-cause ranking, stopping conditions, and escalation.
-- Exact part name, SKU, compatible complete model code, location, dated price/availability snapshot, and external seller link when evidence permits.
+- Exact part name, SKU, compatible complete model code, location, source, Shopify UCP live offers, and external merchant cart when evidence permits.
 - Eight literal, state-dependent `document.modelContext.registerTool` registrations.
 - Manual/judge controls and one-click examples using the same public action layer.
 - Visible collaboration milestones, tool-transition handoff, technical inspector, source panels, deterministic tests, and accurately labeled scenario fixtures.
@@ -32,7 +32,7 @@ A judge should understand the product within five seconds and reach a real selle
 
 - Universal model coverage, fuzzy model substitution, or guaranteed diagnosis.
 - App-side LLM calls, OCR, image/audio diagnosis, sensor input, accounts, auth, databases, server functions, persistence, or analytics.
-- In-app payment, automated checkout/cart mutation, affiliate claims, or live price scraping.
+- In-app payment, automated checkout/cart mutation, affiliate claims, cached catalog results, or live source-page scraping.
 - Gas, mains/high-voltage, energized tests, refrigerant, sealed compressors, protection bypasses, internal wiring, control boards, or professional-only instructions.
 - Panel-removal or internal pump-installation guidance.
 - Claims that the original illustrations exactly reproduce a named model.
@@ -49,7 +49,7 @@ A judge should understand the product within five seconds and reach a real selle
 
 ## Success criteria
 
-- One click on any category flagship shows the highlighted location, exact part, price, seller, and working outbound link.
+- One click on any category flagship shows the highlighted location and exact part, then loads exact-SKU Shopify offers with working outbound links when available.
 - A real observation path can end with no purchase when debris or an outside blockage explains the symptom.
 - Guided-only models never receive a flagship part by similarity.
 - Hazard and out-of-order calls cannot cross the safety boundary.

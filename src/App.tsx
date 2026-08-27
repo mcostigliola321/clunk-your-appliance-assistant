@@ -93,7 +93,7 @@ export function App() {
   };
 
   const continueWithProductCode = (productCode: string) => {
-    if (!state.applianceId) return;
+    if (!state.applianceId) return null;
     const selection = invokeTool(
       "select_appliance",
       { applianceId: state.applianceId, productCode },
@@ -105,6 +105,7 @@ export function App() {
         { symptomId: getRepairPack(state.applianceId).symptom.id },
         "human",
       );
+    return selection;
   };
 
   const highlightComponent = (componentId: ComponentId) =>
@@ -186,9 +187,11 @@ export function App() {
                 <span className="section-kicker">{snapshot.applianceKindLabel}</span>
                 <h1>{snapshot.appliance}</h1>
                 <p>
-                  {snapshot.productCode
-                    ? `Full model number: ${snapshot.productCode}`
-                    : "Enter the full model number before ordering a part."}
+                  {snapshot.verificationLabel === "Full model number confirmed"
+                    ? `Confirmed model code: ${snapshot.productCode}`
+                    : snapshot.productCode
+                      ? `Label text recorded: ${snapshot.productCode}. Exact compatibility is not confirmed.`
+                      : "Model family selected. Confirm the complete label code before ordering a part."}
                 </p>
               </div>
               <div className="selected-appliance__action">

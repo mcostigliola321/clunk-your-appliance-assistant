@@ -8,7 +8,19 @@ export type CauseId = string;
 export type PartId = string;
 
 export type BrandName =
-  "LG" | "Samsung" | "GE" | "Whirlpool" | "Maytag" | "Electrolux" | "Bosch" | "KitchenAid";
+  | "LG"
+  | "Samsung"
+  | "GE"
+  | "Hotpoint"
+  | "Whirlpool"
+  | "Maytag"
+  | "Amana"
+  | "Electrolux"
+  | "Frigidaire"
+  | "Bosch"
+  | "KitchenAid";
+
+export type CapabilityTier = "purchase-ready" | "guided-checks" | "verified-part-unavailable";
 
 export type DiagramTopology =
   | "front-filter"
@@ -19,7 +31,8 @@ export type DiagramTopology =
   | "washer-top-load"
   | "dishwasher"
   | "electric-dryer"
-  | "side-by-side-refrigerator";
+  | "side-by-side-refrigerator"
+  | "french-door-refrigerator";
 
 export type WasherLoadStyle = "front-load" | "top-load";
 
@@ -46,7 +59,15 @@ export interface RepairPackPart {
   location?: string;
   installBoundary: "user-replaceable" | "professional-only";
   source: SourceReference;
-  purchase: {
+  commerce?: {
+    provider: "shopify-global-catalog";
+    protocol: "UCP";
+    query: string;
+    exactSku: string;
+    offerCountAtVerification: number;
+    lastVerified: string;
+  };
+  purchase?: {
     seller: string;
     url: string;
     priceAtVerification: string;
@@ -71,10 +92,11 @@ export interface ApplianceCatalogEntry {
   aliases: string[];
   verifiedProductCodes: string[];
   productCodePrompt: string;
+  capability: CapabilityTier;
   profile: RepairProfile;
   loadStyle?: WasherLoadStyle;
   topology?: DiagramTopology;
-  checkProfile?: "filter-access" | "hose-then-service";
+  checkProfile?: "filter-access" | "hose-then-service" | "sink-then-service";
   modelSource: SourceReference;
   troubleshootingSources: SourceReference[];
   exactPart?: RepairPackPart;
@@ -141,6 +163,7 @@ export interface RepairPack {
     brand: BrandName;
     model: string;
     type: string;
+    capability: CapabilityTier;
     loadStyle?: WasherLoadStyle;
     topology: DiagramTopology;
     illustration: { src: string; width: number; height: number; alt: string };
@@ -225,7 +248,10 @@ export interface RepairSnapshot {
   catalogQuery: string;
   catalogKind: ApplianceKind | null;
   catalogResults: Array<
-    Pick<ApplianceCatalogEntry, "id" | "kind" | "brand" | "model" | "label" | "productCodePrompt">
+    Pick<
+      ApplianceCatalogEntry,
+      "id" | "kind" | "brand" | "model" | "label" | "productCodePrompt" | "capability"
+    >
   >;
   appliance: string | null;
   applianceKind: ApplianceKind | null;

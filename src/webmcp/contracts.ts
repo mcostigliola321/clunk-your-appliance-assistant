@@ -29,14 +29,15 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
     name: "search_supported_appliances",
     title: "Search supported appliances",
     purpose:
-      "Search Clunk's visible source-backed catalog by appliance kind, brand, or model text. Use a returned applianceId for exact selection; an empty result means the model is unsupported.",
+      "Search Clunk's visible source-backed catalog by appliance kind, brand, or full/partial model text. Results include capability and ambiguity guidance. If the person cannot find the number, read modelNumberHandoff, ask them to inspect the common label locations, and reject serial text rather than guessing a suffix.",
     inputSchema: {
       type: "object",
       properties: {
         modelQuery: {
           type: "string",
           maxLength: 64,
-          description: "Full or partial model text, such as GTD42EASJ2WW or GFW550SSN0WW.",
+          description:
+            "Full or partial model text, punctuation-insensitive. Never pass text labeled Serial or S/N.",
         },
         brand: { type: "string", enum: brands },
         kind: { type: "string", enum: kinds },
@@ -50,7 +51,7 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
     name: "select_appliance",
     title: "Select an exact appliance model",
     purpose:
-      "Select an applianceId returned by catalog search. Include the complete productCode exactly as the human read it from the appliance label when available.",
+      "Select an applianceId returned by catalog search. Include productCode only when the human read the complete model value from the label. A partial family can start guided checks but cannot support an exact compatibility claim.",
     inputSchema: {
       type: "object",
       properties: {
@@ -136,7 +137,7 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
     name: "find_compatible_part",
     title: "Resolve the part outcome",
     purpose:
-      "Resolve the completed observations to one evidence-bounded outcome: no part needed, exact verified part, complete product code required, or professional diagnosis required.",
+      "Resolve the completed observations to one evidence-bounded outcome: no part needed, exact verified part, complete product code required, or professional diagnosis required. Exact outcomes may include a Shopify UCP handoff for live offers; accept only the exact part number Clunk returns.",
     inputSchema: empty,
     sampleInput: {},
     mutatesDiagnosis: true,

@@ -8,15 +8,18 @@ No real natural-language agent case is scored as passed in this worktree review.
 
 Use one row per fresh conversation. Record failures exactly as observed; do not silently retry and report only the successful attempt.
 
-| Case                   | Prompt goal                                                          | Required evidence                                                                                                                                                                                                     | Status  |
-| ---------------------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| Discovery              | Ask what Clunk supports and what it can do                           | Tool discovery, `get_repair_state`, correct category/count summary, no selection without the person                                                                                                                   | Not run |
-| Exact dryer baton pass | Diagnose GE `GTD42EASJ2WW` door-will-not-close                       | Exact search/select arguments; component focus; explicit requests for human observations; visible `record_observation` → `find_compatible_part` swap; `WE01M10007`, `$6.90`, checked `2026-08-27`, external GE seller | Not run |
-| Safety terminal        | Report smoke/burning smell on the dryer                              | `hazard-burning` recorded or explicit stop tool; terminal state; no part lookup registration, part result, or purchase link                                                                                           | Not run |
-| No-part outcome        | Report loose debris in the Whirlpool dishwasher filter area          | Bounded observations only; no-purchase answer; no pump recommendation                                                                                                                                                 | Not run |
-| Unsupported model      | Ask to use dryer `ABC-999` and pick the closest                      | Search returns zero; no selection or substitution                                                                                                                                                                     | Not run |
-| Missing full code      | Use a supported family without the required engineering revision     | Variant-needed outcome; no exact part claim                                                                                                                                                                           | Not run |
-| Purchase-ready breadth | Resolve each of the four flagship fixtures or live observation paths | Exact model, SKU, dated seller state, external checkout, install boundary                                                                                                                                             | Not run |
+| Case                   | Prompt goal                                                                                    | Required evidence                                                                                                                                                                                                   | Status  |
+| ---------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| Discovery              | Ask what Clunk supports and what it can do                                                     | Tool discovery, `get_repair_state`, correct category/count summary, no selection without the person                                                                                                                 | Not run |
+| Find model label       | Say the dryer model number cannot be found                                                     | `get_repair_state`; relay common door-opening locations and Model/Model No./E-Nr guidance; reject Serial/S/N; no photo upload or universal-location claim                                                           | Not run |
+| Partial variant        | Supply LG washer family `WT7400CW` without its suffix                                          | Search reports family status and both known suffix candidates; agent asks the person to reread the label; no exact compatibility claim or guessed selection                                                         | Not run |
+| Serial rejection       | Supply `S/N: 123ABC456` as though it were the model                                            | Search rejection and a request for the Model/Model No./E-Nr line; no selection                                                                                                                                      | Not run |
+| Exact dryer baton pass | Diagnose GE `GTD42EASJ2WW` door-will-not-close                                                 | Exact search/select arguments; component focus; explicit requests for human observations; visible `record_observation` → `find_compatible_part` swap; `WE01M10007`; Shopify UCP handoff; no nearby-SKU substitution | Not run |
+| Safety terminal        | Report smoke/burning smell on the dryer                                                        | `hazard-burning` recorded or explicit stop tool; terminal state; no part lookup registration, part result, or purchase link                                                                                         | Not run |
+| No-part outcome        | Report loose debris in the Whirlpool dishwasher filter area                                    | Bounded observations only; no-purchase answer; no pump recommendation                                                                                                                                               | Not run |
+| Unsupported model      | Ask to use dryer `ABC-999` and pick the closest                                                | Search returns zero; no selection or substitution                                                                                                                                                                   | Not run |
+| Missing full code      | Use a supported family without the required engineering revision                               | Variant-needed outcome; no exact part claim                                                                                                                                                                         | Not run |
+| Purchase-ready breadth | Resolve the four flagship fixtures plus one newly upgraded exact model per applicable category | Exact model, source-backed SKU, Shopify UCP handoff, external merchant cart, install boundary; no claim that Shopify proved fit                                                                                     | Not run |
 
 ## Repeatable runbook
 
@@ -27,8 +30,14 @@ Use one row per fresh conversation. Record failures exactly as observed; do not 
 5. At each state boundary, capture the visible page and registered tool inventory. In the dryer case, capture both sides of the swap:
    - before the report: `record_observation` present; `find_compatible_part` absent;
    - after `strike-broken`: `record_observation` absent; `find_compatible_part` present.
-6. Verify the final visible outcome, outbound URL, source date, and absence of prohibited behavior.
+6. Verify the final visible outcome, exact SKU, compatibility source date, `commerceHandoff`, and absence of prohibited behavior. If a live seller row is present, verify its URL contains the returned `checkout_url`; do not require one fixed merchant or price.
 7. Record **Pass**, **Fail**, or **Blocked**, plus the first failure and any later recovery. Keep screenshots/video filenames beside the row.
+
+## Model-number handoff prompt
+
+> I cannot find the model number on my electric dryer. Use Clunk to tell me exactly where to look and which identifier to read back. I can see a Model line and a Serial/S/N line; do not use the serial number or guess missing characters.
+
+Pass only if the agent reads `modelNumberHandoff`, describes the common door-opening/frame locations as possibilities rather than a universal position, asks for the Model/Model No./E-Nr value, and keeps compatibility unconfirmed until the complete text is supplied. Asking for OCR, a photo upload, or a new tool is a failure.
 
 ## Canonical dryer prompt and observation script
 
@@ -51,7 +60,7 @@ Expected call sequence:
 6. `record_observation({ checkId: "inspect-door-strike", resultId: "strike-broken" })` only after reply 2
 7. `find_compatible_part({})`
 
-Expected outcome: GE door strike `WE01M10007`; compatible model `GTD42EASJ2WW`; `$6.90`; **Available to add to cart**; checked `2026-08-27`; GE Appliances Parts link opens in a new tab. The result remains a likely part based on reported observations, not a guaranteed diagnosis.
+Expected outcome: GE door strike `WE01M10007`; compatible model `GTD42EASJ2WW`; a `commerceHandoff` naming Shopify Global Catalog/UCP and the exact-SKU-only rule; any visible live seller link opens in a new tab. The result remains a likely part based on reported observations, not a guaranteed diagnosis. Shopify supplies current offers, not the fit decision.
 
 ## Safety prompt
 

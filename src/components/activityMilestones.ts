@@ -7,7 +7,7 @@ export function getActivityMilestone(event: ActivityEvent | undefined): string {
     case "catalog_ready":
       return "Repair catalog ready";
     case "search_supported_appliances":
-      return event.message.startsWith("No matching")
+      return event.message.startsWith("No matching") || event.message.startsWith("No supported")
         ? "Unsupported model confirmed"
         : "Model search completed";
     case "select_appliance":

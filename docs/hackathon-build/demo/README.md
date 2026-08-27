@@ -7,16 +7,16 @@
 3. the exact `W11412291` part and external seller handoff;
 4. the visible shared action history and current WebMCP tool inventory;
 5. the real-model washer flow and deterministic smoke/burning-smell stop;
-6. the 31-model, four-flagship close.
+6. the earlier 50-model, four-flagship close; replace this stale tier shot in the final capture.
 
 The draft was recorded in a credential-free headless browser, so it correctly displays Guided mode. For the final Devpost upload, recapture the updated GE dryer baton pass after the reviewed changes are published, add the natural-language agent exchange and audio, and keep the finished video under three minutes.
 
 ## Capture-ready shot list
 
-1. Open on the final GE dryer result for `WE01M10007`, `$6.90`, dated availability, and external seller; finish this outcome shot by `0:12`.
+1. Open on the final GE dryer result for `WE01M10007`, the **Clunk confirmed the fit** boundary, live Shopify offers, and an external cart; finish this outcome shot by `0:16`.
 2. Reset and enter `GTD42EASJ2WW` through the agent. Capture the highlighted door strike and **Your turn — Clunk cannot see this**.
 3. Hold on the visible tool row before and after the human observation so `record_observation` disappears and `find_compatible_part` becomes available.
-4. Capture the exact part result and collaboration timeline, including Agent, You, and Clunk labels. Do not use the example fixture as the main WebMCP proof.
+4. Capture the exact part result, UCP exact-SKU line, merchant-claim disclosure, and collaboration timeline, including Agent, You, and Clunk labels. Do not use the example fixture as the main WebMCP proof.
 5. Capture the smoke/burning-smell terminal state with no purchase path.
 6. Capture either a no-part debris result or unsupported-model refusal.
 7. Close on the literal eight-tool registrations and the line: “Clunk is a repair bench a person and their agent operate together.”

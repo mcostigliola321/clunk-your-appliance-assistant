@@ -21,6 +21,8 @@ Clunk is a static, open-source visual repair bench for washers, dishwashers, ele
 
 The page—not the agent—enforces sequence, compatibility, and safety. Every human, example, manual-inspector, and agent action uses the same deterministic engine and visibly updates the same appliance, progress, result, and activity log.
 
+**Find my model number** makes the first physical handoff visible before diagnosis. The person chooses an appliance (and front/top load for washers), follows manufacturer-backed common label locations drawn with original Clunk artwork, and reads the Model/Model No./E-Nr line. Partial search ignores punctuation and case, suggests supported families, calls out ambiguous suffixes, and rejects text labeled Serial or S/N before any compatibility claim. The same guidance is present in compact WebMCP state, so an agent can ask for the right physical evidence without a separate tool.
+
 ## Five-second proof
 
 The home screen presents four recognizable problems and one purchase-ready flagship per category. **See the full answer** runs a clearly labeled example through the same WebMCP action layer and, in one click, shows:
@@ -28,8 +30,9 @@ The home screen presents four recognizable problems and one purchase-ready flags
 - where the part sits on the appliance;
 - the exact part name and SKU;
 - the compatible full model code;
-- dated price and availability;
-- a prominent external seller link.
+- a visible “Clunk confirmed the fit” boundary;
+- current exact-SKU offers from Shopify Global Catalog over UCP;
+- external merchant cart links, with merchant “OEM” and “compatible” language labeled as seller claims.
 
 The four flagship stories are:
 
@@ -38,7 +41,9 @@ The four flagship stories are:
 - GE `GTD42EASJ2WW` electric dryer → `WE01M10007` visible door strike.
 - GE `GSS25GYPFS` refrigerator → `XWFE` water filter.
 
-The broader catalog contains 31 real U.S. model families. Additional entries are labeled **Guided checks only** or **Verified part unavailable** before selection; Clunk never substitutes a similar model or borrows a flagship part.
+The broader catalog contains 50 real U.S. model families across 11 brands: 23 washers, nine dishwashers, nine electric dryers, and nine refrigerators. Twelve exact model codes are **Purchase-ready** and 38 are **Guided checks only** before selection; Clunk never substitutes a similar model or borrows a flagship part.
+
+Compatibility and commerce are deliberately separate. Manufacturer or authorized-parts evidence maps the complete appliance code to one exact SKU. Only then does Clunk call Shopify Global Catalog's keyless `search_catalog` tool over UCP. A cheaper or more relevant-looking nearby SKU is discarded. Live results are not cached, and a catalog failure cannot weaken or rewrite Clunk's deterministic fit decision.
 
 ## Why WebMCP
 
@@ -73,7 +78,7 @@ Schemas are bounded with pack-derived enums and `additionalProperties: false`. T
 
 Clunk never provides gas, live/high-voltage, energized-test, refrigerant, sealed-compressor, interlock-bypass, internal-wiring, control-board, or professional-only repair instructions. Smoke, burning smell, heat, an active leak near power, unsafe reach, or damaged/mismatched access enters a terminal professional state.
 
-Exact part results require a complete product-code match and a manufacturer or authorized-parts source. Seller checkout remains external and human-controlled. Price and stock are visibly dated snapshots, not live guarantees.
+Exact part results require a complete product-code match and a manufacturer or authorized-parts source. Shopify supplies current seller listings and cart URLs, not the compatibility decision. Seller checkout remains external and human-controlled; Clunk does not collect payment, certify merchant claims, or guarantee price or stock.
 
 The original appliance illustrations are mechanically conservative location guides, not copied manufacturer diagrams or claims of pixel-level model fidelity.
 
@@ -85,10 +90,12 @@ example replay ─┼─> shared action layer ─> deterministic engine ─> rep
 manual inspector┤                              │
 WebMCP call ────┘                              └─> visible activity event
 
-source-backed catalog ─> validated schema-v3 repair pack ─> checks + results + parts
+source-backed catalog ─> validated schema-v5 repair pack ─> checks + results + exact SKU
+                                                                         │
+                                                                         └─> Shopify UCP live offers
 ```
 
-The production app is static HTML, CSS, JavaScript, JSON, original images, and local fonts. It has no database, auth, backend, server function, runtime API, environment secret, model SDK, or app-side LLM call. Unsupported browsers retain the complete manual flow.
+The production app is static HTML, CSS, JavaScript, JSON, original images, and local fonts. It has no database, auth, backend, server function, environment secret, model SDK, or app-side LLM call. Its one external runtime request is the optional credential-free Shopify catalog lookup after an exact SKU is known. Unsupported browsers and catalog failures retain the complete manual diagnosis and evidence flow.
 
 ## Testing instructions
 
@@ -97,7 +104,7 @@ The production app is static HTML, CSS, JavaScript, JSON, original images, and l
 1. Open https://clunk-appliance-assistant.lovable.app.
 2. Pick any of the four appliance categories.
 3. Click **See the full answer**.
-4. Confirm the labeled example disclosure, highlighted location, exact SKU, compatible model, price/availability snapshot, and **Buy this part** link.
+4. Confirm the labeled example disclosure, highlighted location, exact SKU, compatible model, **Live offers from Shopify**, seller disclosure, and external **Open cart** link.
 5. Open **Human + agent activity** to inspect plain-language milestones, exact shared actions, and currently available WebMCP tools.
 6. Reset and use **Diagnose yours** to supply real observations. In the washer flow, report visible filter debris for a no-purchase answer, or report smoke/burning smell for the terminal safety proof.
 
@@ -119,7 +126,7 @@ npx playwright install chromium
 npm run verify
 ```
 
-The quality gate passes TypeScript, ESLint, **33 deterministic unit/integration/scenario-fixture tests**, a production build, and **18 desktop/mobile browser tests** covering all flagship links, the visible baton pass, real no-part flow, safety, top-load switching, 320px overflow, keyboard access, 44px touch targets, reduced motion, and automated WCAG A/AA.
+The quality gate passes TypeScript, ESLint, **48 deterministic unit/integration/scenario-fixture tests**, a production build, and **22 desktop/mobile browser tests** covering model-label discovery, partial/serial handling, all flagship links, Shopify UCP exact/nearby-SKU behavior, the visible baton pass, live-catalog failure fallback, real no-part flow, safety, top-load switching, 320px overflow, keyboard access, 44px touch targets, reduced motion, and automated WCAG A/AA.
 
 ## AI usage
 
@@ -127,8 +134,11 @@ AI is present at the browser-agent layer, not inside the shipped app. A compatib
 
 ## Key features
 
-- Four one-click, source-backed, purchase-ready flagship outcomes.
-- 31 real model families with honest pre-selection evidence labels.
+- Twelve source-backed purchase-ready exact-model outcomes, with four one-click category flagships.
+- 50 real model families across 11 brands with honest pre-selection evidence labels.
+- A first-class, original-illustration **Find my model number** flow shared with the browser agent.
+- Punctuation/case-insensitive partial suggestions with suffix ambiguity and serial-number rejection.
+- Shopify Global Catalog/UCP live offers with exact-SKU filtering, no caching, retry/empty states, and visible merchant-claim disclosure.
 - Original category/location visuals and interactive component hotspots.
 - Eight state-dependent WebMCP tools and one shared repair state.
 - Deterministic safety, ordering, compatibility, and rejection logic.
@@ -145,12 +155,12 @@ AI is present at the browser-agent layer, not inside the shipped app. A compatib
 
 ## Under-three-minute recording outline
 
-- **0:00–0:12 — Outcome first:** Open the GE dryer result on `WE01M10007`, `$6.90`, dated availability, and the external GE seller. “This is where Clunk ends when the evidence is exact.”
-- **0:12–0:30 — Physical boundary:** Reset and search `GTD42EASJ2WW`. “The agent can manage the workflow, but it cannot see the appliance.”
-- **0:30–1:18 — Live baton pass:** The agent selects the exact model, starts the flow, and highlights the door strike. Show **Your turn — Clunk cannot see this** with `record_observation` available and part lookup locked. The person reports each observation; show **Observation recorded — part lookup unlocked**, then the exact part and seller.
+- **0:00–0:16 — Outcome first:** Open the GE dryer result on `WE01M10007`. Show **Clunk confirmed the fit**, then live Shopify offers and an external merchant cart. “Clunk proves the part; Shopify finds who can sell it now.”
+- **0:12–0:30 — Physical boundary:** Reset, open **Find my model number**, and show the dryer-door label location plus Model-versus-Serial card. “The agent knows where to ask; the person reads the physical label.”
+- **0:30–1:18 — Live baton pass:** The agent selects the exact model, starts the flow, and highlights the door strike. Show **Your turn — Clunk cannot see this** with `record_observation` available and part lookup locked. The person reports each observation; show **Observation recorded — part lookup unlocked**, then the exact part and Shopify UCP handoff.
 - **1:18–1:42 — Safety proof:** Reset, report smoke/burning smell, and show the terminal stop. Confirm the purchase path and part tool are absent.
 - **1:42–2:02 — Trust proof:** Run a debris/no-part case or unsupported-model search. Show that Clunk declines the purchase or refuses substitution.
-- **2:02–2:28 — Implementation proof:** Open the collaboration timeline and inspector; show literal state-dependent tools, compact structured state, source date, original visual, and the 31-model catalog.
+- **2:02–2:30 — Implementation proof:** Open the collaboration timeline and inspector; show literal state-dependent tools, compact model-number and commerce handoffs, source date, original visual, and the 50-model tier counts.
 - **2:28–2:42 — Close:** “Clunk is a repair bench a person and their agent operate together.” Static, open source, no login, no API key, no app-side model.
 
 ## Official submission requirements — checked 2026-08-27
@@ -178,8 +188,9 @@ Official deadline: **September 3, 2026 at 1:00 PM Pacific Time**. No recent orga
 ## Known limitations
 
 - Each model currently supports one intentionally bounded symptom.
-- Four flagships are purchase-ready; the remaining breadth is explicitly guided-only or unavailable.
+- Twelve exact models are purchase-ready; the remaining 38 are explicitly guided-only.
 - Clunk does not confirm a diagnosis, guarantee stock or price, complete payment, or replace a technician.
+- Shopify Global Catalog coverage is broad but not universal; Clunk shows an honest no-offer/retry state and never substitutes a nearby SKU.
 - WebMCP is evolving; unsupported environments use the identical manual action layer.
 - The person remains responsible for reporting physical observations and confirming the complete model on the seller page.
 

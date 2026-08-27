@@ -52,9 +52,18 @@ describe("state-dependent WebMCP registration", () => {
       structuredContent: Record<string, unknown>;
     };
     const serialized = JSON.stringify(stateOutput.structuredContent);
-    expect(serialized.length).toBeLessThan(1500);
+    expect(serialized.length).toBeLessThan(2200);
     expect(serialized).not.toContain("likelyCauses");
     expect(serialized).not.toContain("catalogResults");
+    expect(stateOutput.structuredContent).toMatchObject({
+      catalog: {
+        supportedModelCount: 50,
+        modelNumberHandoff: {
+          humanAction: expect.stringContaining("Model"),
+          rejectLabels: ["Serial", "S/N"],
+        },
+      },
+    });
     expect(state.activity).toHaveLength(1);
     await tools[1]?.execute({
       applianceId: "lg-wm3400cw",
@@ -96,6 +105,16 @@ describe("state-dependent WebMCP registration", () => {
     expect(output.structuredContent).toMatchObject({
       ok: true,
       phase: "catalog",
+      catalog: {
+        queryStatus: "exact-code",
+        needsCompleteCode: false,
+        results: [
+          expect.objectContaining({
+            applianceId: "ge-gtd42easj2ww",
+            capability: "purchase-ready",
+          }),
+        ],
+      },
     });
     expect(state.activity.at(-1)).toMatchObject({
       action: "search_supported_appliances",

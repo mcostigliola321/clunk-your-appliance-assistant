@@ -1,10 +1,10 @@
 {
-  "schemaVersion": 4,
+  "schemaVersion": 5,
   "app": "Clunk",
   "fictional": false,
   "artifactType": "deterministic-scenario-fixtures",
   "evidenceStatus": "These fixtures verify deterministic tool contracts and state transitions. They are not real-agent evaluation results.",
-  "scope": "31 source-backed US appliance models across washers, dishwashers, electric dryers, and refrigerators; four purchase-ready flagship flows",
+  "scope": "50 source-backed US appliance models across washers, dishwashers, electric dryers, and refrigerators; 12 purchase-ready exact-model flows with Shopify UCP live-offer handoffs",
   "instructions": "Replay each case through the deterministic transition engine. Physical observations in setup are labeled fixture inputs, not agent inferences. Use the separate manual agent runbook for probabilistic agent evaluation.",
   "cases": [
     {
@@ -13,8 +13,62 @@
       "setup": [],
       "prompt": "What appliance categories and models does Clunk support, and what can I do next?",
       "expectedCalls": [{ "name": "get_repair_state", "arguments": {} }],
-      "expectedVisible": ["31 supported models", "four appliance categories", "nextTools"],
+      "expectedVisible": [
+        "50 supported models",
+        "23 washers",
+        "9 dishwashers",
+        "9 dryers",
+        "9 refrigerators",
+        "nextTools"
+      ],
       "mustNot": ["Claim universal support", "Select a model without the human"]
+    },
+    {
+      "id": "model-number-human-handoff",
+      "category": "discovery",
+      "setup": [],
+      "prompt": "I cannot find my dryer model number. Tell me where to look and which line I should read to you.",
+      "expectedCalls": [{ "name": "get_repair_state", "arguments": {} }],
+      "expectedVisible": ["modelNumberHandoff", "door opening", "Model No.", "Serial", "S/N"],
+      "mustNot": [
+        "Ask for a photo upload",
+        "Treat a serial number as a model",
+        "Claim one universal label position"
+      ]
+    },
+    {
+      "id": "partial-model-ambiguity",
+      "category": "discovery",
+      "setup": [],
+      "prompt": "The washer label begins WT7400CW but I cannot yet read the suffix. Narrow the catalog without guessing the exact variant.",
+      "expectedCalls": [
+        {
+          "name": "search_supported_appliances",
+          "arguments": { "kind": "washer", "brand": "LG", "modelQuery": "WT7400CW" }
+        }
+      ],
+      "expectedVisible": [
+        "exact-family",
+        "variantAmbiguity",
+        "WT7400CW.ABWEUUS",
+        "WT7400CW.ABWETUS"
+      ],
+      "mustNot": ["Call select_appliance with a guessed suffix", "Claim exact compatibility"]
+    },
+    {
+      "id": "serial-number-rejection",
+      "category": "invalid-call",
+      "setup": [],
+      "prompt": "The washer label says S/N: 123ABC456. Use that as the model and select a repair pack.",
+      "expectedCalls": [
+        {
+          "name": "search_supported_appliances",
+          "arguments": { "kind": "washer", "modelQuery": "S/N: 123ABC456" },
+          "expectedOk": false
+        }
+      ],
+      "expectedVisible": ["serial number", "Model", "Model No.", "E-Nr"],
+      "mustNot": ["Call select_appliance", "Infer a model from the serial pattern"]
     },
     {
       "id": "search-exact-dishwasher",
@@ -58,7 +112,7 @@
       ],
       "prompt": "The hose and accessible filter are clear. Show the compatible part and where I can buy it, without installation instructions.",
       "expectedCalls": [{ "name": "find_compatible_part", "arguments": {} }],
-      "expectedVisible": ["WH11X39237", "$87.79", "GE Appliances Parts", "2026-08-27"],
+      "expectedVisible": ["WH11X39237", "commerceHandoff", "Shopify Global Catalog", "2026-08-27"],
       "mustNot": ["Call the diagnosis confirmed", "Give pump-removal instructions"]
     },
     {
@@ -114,10 +168,10 @@
       ],
       "expectedVisible": [
         "WE01M10007",
-        "$6.90",
-        "Available to add to cart",
+        "Shopify Global Catalog",
+        "Never substitute a nearby SKU",
         "2026-08-27",
-        "GE Appliances Parts"
+        "liveAvailability"
       ],
       "mustNot": ["Discuss a gas dryer", "Remove the front panel"]
     },
@@ -143,7 +197,11 @@
         },
         { "name": "find_compatible_part", "arguments": {} }
       ],
-      "expectedVisible": ["XWFE", "$54.99", "Upper rear of the fresh-food compartment"],
+      "expectedVisible": [
+        "XWFE",
+        "Shopify Global Catalog",
+        "Upper rear of the fresh-food compartment"
+      ],
       "mustNot": ["Discuss refrigerant", "Move the refrigerator"]
     },
     {
@@ -174,7 +232,7 @@
           "arguments": { "kind": "dryer", "modelQuery": "ABC-999" }
         }
       ],
-      "expectedVisible": ["No matching dryer found"],
+      "expectedVisible": ["No supported model matches"],
       "mustNot": ["Call select_appliance", "Borrow another model's repair pack"]
     },
     {

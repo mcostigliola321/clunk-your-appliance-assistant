@@ -9,8 +9,8 @@ import {
   isCheckId,
   isComponentId,
   isResultForCheck,
-  searchCatalog,
 } from "./repairPack";
+import { analyzeModelQuery, isExplicitSerialNumber } from "./modelSearch";
 import { escalationForReason } from "./safety";
 import { getPartOutcome, getRepairSnapshot } from "./selectors";
 import type {
@@ -160,7 +160,10 @@ function searchSupportedAppliances(
     typeof input["modelQuery"] === "string" ? input["modelQuery"].trim().slice(0, 64) : "";
   const brand = (input["brand"] as BrandName | undefined) ?? null;
   const kind = (input["kind"] as ApplianceKind | undefined) ?? null;
-  const matches = searchCatalog(query, brand, kind);
+  const analysis = analyzeModelQuery(query, brand, kind);
+  if (analysis.status === "serial-number")
+    return reject(state, source, "search_supported_appliances", input, analysis.guidance);
+  const matches = analysis.matches;
   const nextState = {
     ...state,
     catalogQuery: query,
@@ -170,8 +173,8 @@ function searchSupportedAppliances(
   };
   const noun = kind ?? "appliance";
   const message = matches.length
-    ? `Found ${matches.length} matching ${noun}${matches.length === 1 ? "" : "s"}.`
-    : `No matching ${noun} found.`;
+    ? `Found ${matches.length} matching ${noun}${matches.length === 1 ? "" : "s"}. ${analysis.guidance}`
+    : analysis.guidance;
   return response(nextState, source, "search_supported_appliances", input, true, message);
 }
 
@@ -207,6 +210,41 @@ function selectAppliance(
   const entry = getCatalogEntry(input["applianceId"]);
   const productCode =
     typeof input["productCode"] === "string" ? input["productCode"].trim().toUpperCase() : null;
+  if (productCode && isExplicitSerialNumber(productCode))
+    return reject(
+      state,
+      source,
+      "select_appliance",
+      input,
+      "That text is labeled as a serial number. Use the value beside Model, Model No., E-Nr, or Product Code instead.",
+    );
+  const codeAnalysis = productCode ? analyzeModelQuery(productCode, entry.brand, entry.kind) : null;
+  if (
+    codeAnalysis &&
+    (!codeAnalysis.matches.some((match) => match.id === entry.id) ||
+      codeAnalysis.status === "partial" ||
+      codeAnalysis.status === "unsupported")
+  )
+    return reject(
+      state,
+      source,
+      "select_appliance",
+      input,
+      "That identifier does not confirm the selected model. Choose the matching suggestion or omit productCode to continue with guided checks only.",
+    );
+  if (
+    codeAnalysis?.status === "exact-family" &&
+    entry.verifiedProductCodes.some((code) => code.toUpperCase() !== productCode!.toUpperCase())
+  )
+    return reject(
+      state,
+      source,
+      "select_appliance",
+      input,
+      `${entry.brand} ${entry.model} is only a family code here. Copy the complete suffix or engineering revision from the label before claiming an exact match.`,
+    );
+  const exactCodeConfirmed =
+    codeAnalysis?.status === "exact-code" && codeAnalysis.exactEntryId === entry.id;
   const nextState: RepairState = {
     ...state,
     packId: entry.id,
@@ -229,7 +267,11 @@ function selectAppliance(
     "select_appliance",
     input,
     true,
-    `Selected ${entry.brand} ${entry.model}${productCode ? ` with full model number ${productCode}` : ""}.`,
+    exactCodeConfirmed
+      ? `Selected ${entry.brand} ${entry.model} with confirmed complete model code ${productCode}.`
+      : productCode
+        ? `Selected ${entry.brand} ${entry.model}; label text ${productCode} is recorded for guided checks, without an exact-part claim.`
+        : `Selected ${entry.brand} ${entry.model} for guided checks. Confirm the complete model code before any exact-part claim.`,
   );
 }
 

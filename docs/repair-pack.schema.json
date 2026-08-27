@@ -21,7 +21,7 @@
   ],
   "properties": {
     "id": { "$ref": "#/$defs/identifier" },
-    "schemaVersion": { "const": 3 },
+    "schemaVersion": { "const": 5 },
     "appliance": {
       "type": "object",
       "additionalProperties": false,
@@ -32,6 +32,7 @@
         "brand",
         "model",
         "type",
+        "capability",
         "topology",
         "illustration",
         "diagramNote"
@@ -45,15 +46,21 @@
             "LG",
             "Samsung",
             "GE",
+            "Hotpoint",
             "Whirlpool",
             "Maytag",
+            "Amana",
             "Electrolux",
+            "Frigidaire",
             "Bosch",
             "KitchenAid"
           ]
         },
         "model": { "$ref": "#/$defs/shortText" },
         "type": { "$ref": "#/$defs/shortText" },
+        "capability": {
+          "enum": ["purchase-ready", "guided-checks", "verified-part-unavailable"]
+        },
         "loadStyle": { "enum": ["front-load", "top-load"] },
         "topology": { "$ref": "#/$defs/shortText" },
         "illustration": {
@@ -302,9 +309,9 @@
         "compatibleProductCodes",
         "compatibleModel",
         "installBoundary",
-        "source",
-        "purchase"
+        "source"
       ],
+      "anyOf": [{ "required": ["purchase"] }, { "required": ["commerce"] }],
       "properties": {
         "id": { "$ref": "#/$defs/identifier" },
         "componentId": { "$ref": "#/$defs/identifier" },
@@ -320,6 +327,26 @@
         "location": { "$ref": "#/$defs/shortText" },
         "installBoundary": { "enum": ["user-replaceable", "professional-only"] },
         "source": { "$ref": "#/$defs/source" },
+        "commerce": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "provider",
+            "protocol",
+            "query",
+            "exactSku",
+            "offerCountAtVerification",
+            "lastVerified"
+          ],
+          "properties": {
+            "provider": { "const": "shopify-global-catalog" },
+            "protocol": { "const": "UCP" },
+            "query": { "$ref": "#/$defs/bodyText" },
+            "exactSku": { "type": "string", "pattern": "^[A-Za-z0-9-]{3,40}$" },
+            "offerCountAtVerification": { "type": "integer", "minimum": 0 },
+            "lastVerified": { "type": "string", "format": "date" }
+          }
+        },
         "purchase": {
           "type": "object",
           "additionalProperties": false,

@@ -1,9 +1,10 @@
-import { ArrowRight, BadgeCheck, Search, ShoppingBag } from "lucide-react";
-import { useMemo, useState } from "react";
+import { ArrowRight, BadgeCheck, MapPin, Search, ShoppingBag } from "lucide-react";
+import { useMemo, useRef, useState } from "react";
 
+import { ModelNumberGuide } from "@/components/ModelNumberGuide";
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
-import { isPurchaseReadyAvailability } from "@/domain/purchase";
-import type { ApplianceKind, BrandName, RepairSnapshot } from "@/domain/types";
+import { analyzeModelQuery, capabilityLabel } from "@/domain/modelSearch";
+import type { ApplianceKind, BrandName, RepairSnapshot, WasherLoadStyle } from "@/domain/types";
 
 const KINDS: Array<{ id: ApplianceKind; label: string; problem: string; glyph: string }> = [
   { id: "washer", label: "Washer", problem: "Won't drain", glyph: "01" },
@@ -11,6 +12,13 @@ const KINDS: Array<{ id: ApplianceKind; label: string; problem: string; glyph: s
   { id: "dryer", label: "Electric dryer", problem: "Door won't close", glyph: "03" },
   { id: "refrigerator", label: "Refrigerator", problem: "Water is slow", glyph: "04" },
 ];
+
+const FLAGSHIP_IDS: Record<ApplianceKind, string> = {
+  washer: "ge-gfw550ssnww",
+  dishwasher: "whirlpool-wdt750sakz1",
+  dryer: "ge-gtd42easj2ww",
+  refrigerator: "ge-gss25gypfs",
+};
 
 interface ModelFinderProps {
   snapshot: RepairSnapshot;
@@ -30,22 +38,32 @@ export function ModelFinder({
   const [query, setQuery] = useState(snapshot.catalogQuery);
   const [brand, setBrand] = useState<BrandName | null>(null);
   const [kind, setKind] = useState<ApplianceKind>(snapshot.catalogKind ?? "dryer");
+  const [showGuide, setShowGuide] = useState(false);
+  const [washerStyle, setWasherStyle] = useState<WasherLoadStyle>("front-load");
+  const inputRef = useRef<HTMLInputElement>(null);
   const activeKind = KINDS.find((item) => item.id === kind)!;
   const categoryEntries = APPLIANCE_CATALOG.filter((entry) => entry.kind === kind);
   const brands = [...new Set(categoryEntries.map((entry) => entry.brand))];
-  const flagship = categoryEntries.find((entry) =>
-    isPurchaseReadyAvailability(entry.exactPart?.purchase.availabilityAtVerification),
-  );
-  const results = useMemo(
-    () => snapshot.catalogResults.filter((item) => item.kind === kind),
-    [kind, snapshot.catalogResults],
+  const flagship = categoryEntries.find((entry) => entry.id === FLAGSHIP_IDS[kind]);
+  const analysis = useMemo(() => analyzeModelQuery(query, brand, kind), [brand, kind, query]);
+  const results = analysis.matches;
+  const tierCounts = categoryEntries.reduce(
+    (counts, entry) => ({ ...counts, [entry.capability]: counts[entry.capability] + 1 }),
+    { "purchase-ready": 0, "guided-checks": 0, "verified-part-unavailable": 0 },
   );
 
   const chooseKind = (next: ApplianceKind) => {
     setKind(next);
     setBrand(null);
     setQuery("");
+    setShowGuide(false);
     onSearch("", null, next);
+  };
+
+  const focusModelInput = () => {
+    inputRef.current?.focus();
+    setShowGuide(false);
+    requestAnimationFrame(() => inputRef.current?.focus());
   };
 
   return (
@@ -73,6 +91,47 @@ export function ModelFinder({
         ))}
       </div>
 
+      <div className="model-entry-paths" aria-label="How do you want to identify the model?">
+        <button
+          className={!showGuide ? "is-active" : ""}
+          type="button"
+          aria-pressed={!showGuide}
+          onClick={focusModelInput}
+        >
+          <Search size={18} aria-hidden="true" />
+          <span>
+            <strong>I have the number</strong>
+            <small>Type all or part of it</small>
+          </span>
+        </button>
+        <button
+          className={showGuide ? "is-active" : ""}
+          type="button"
+          aria-pressed={showGuide}
+          aria-expanded={showGuide}
+          aria-controls="model-number-guide"
+          onClick={() => setShowGuide(true)}
+        >
+          <MapPin size={18} aria-hidden="true" />
+          <span>
+            <strong>Find my model number</strong>
+            <small>Show me where the label is</small>
+          </span>
+        </button>
+      </div>
+
+      {showGuide ? (
+        <ModelNumberGuide
+          kind={kind}
+          brand={brand}
+          brands={brands}
+          onBrandChange={setBrand}
+          washerStyle={washerStyle}
+          onWasherStyleChange={setWasherStyle}
+          onReady={focusModelInput}
+        />
+      ) : null}
+
       {flagship ? (
         <article className="flagship-answer">
           <div className="flagship-answer__copy">
@@ -82,7 +141,7 @@ export function ModelFinder({
             <h3>{activeKind.problem}</h3>
             <p>
               {flagship.brand} {flagship.verifiedProductCodes[0] ?? flagship.model} · exact model,
-              part, price, and seller
+              part, and live Shopify offers
             </p>
           </div>
           <button
@@ -113,20 +172,45 @@ export function ModelFinder({
         <div className="model-search__row">
           <Search size={18} aria-hidden="true" />
           <input
+            ref={inputRef}
             id="model-query"
             value={query}
+            role="combobox"
+            aria-autocomplete="list"
+            aria-controls="model-suggestions"
+            aria-expanded={Boolean(query && results.length)}
+            aria-describedby="model-search-guidance"
+            autoComplete="off"
             onChange={(event) => setQuery(event.target.value)}
             placeholder={`Example: ${flagship?.verifiedProductCodes[0] ?? categoryEntries[0]?.model ?? "model number"}`}
           />
           <button type="submit">Find model</button>
         </div>
+        <p
+          id="model-search-guidance"
+          className={`model-search__guidance is-${analysis.status}`}
+          role={analysis.status === "serial-number" ? "alert" : "status"}
+        >
+          {analysis.guidance}
+        </p>
+        {analysis.candidateProductCodes.length ? (
+          <p className="model-search__variants">
+            Known complete codes: {analysis.candidateProductCodes.join(" · ")}
+          </p>
+        ) : null}
       </form>
 
-      <details className="model-browser" open={Boolean(snapshot.catalogQuery || brand)}>
+      <details className="model-browser" open={Boolean(query || brand)}>
         <summary>
           Browse {categoryEntries.length} supported {activeKind.label.toLowerCase()} models{" "}
           <ArrowRight size={17} aria-hidden="true" />
         </summary>
+        <p className="model-browser__tiers">
+          {tierCounts["purchase-ready"]} purchase-ready · {tierCounts["guided-checks"]} guided
+          {tierCounts["verified-part-unavailable"] > 0
+            ? ` · ${tierCounts["verified-part-unavailable"]} checked unavailable`
+            : ""}
+        </p>
         <div className="brand-filters" aria-label="Filter by brand">
           {brands.map((name) => (
             <button
@@ -134,49 +218,45 @@ export function ModelFinder({
               type="button"
               aria-pressed={brand === name}
               key={name}
-              onClick={() => {
-                const next = brand === name ? null : name;
-                setBrand(next);
-                onSearch(query, next, kind);
-              }}
+              onClick={() => setBrand(brand === name ? null : name)}
             >
               {name}
             </button>
           ))}
         </div>
-        <div className="model-results" aria-live="polite">
+        <div className="model-results" id="model-suggestions" aria-live="polite">
           {results.length ? (
-            results.slice(0, 8).map((item) => {
-              const entry = APPLIANCE_CATALOG.find((candidate) => candidate.id === item.id)!;
-              const purchaseReady = Boolean(
-                isPurchaseReadyAvailability(entry.exactPart?.purchase.availabilityAtVerification),
-              );
-              const evidenceLabel = purchaseReady
-                ? "Purchase-ready"
-                : entry.exactPart
-                  ? "Verified part unavailable"
-                  : "Guided checks only";
-              return (
-                <button
-                  className={selectedId === item.id ? "model-result is-selected" : "model-result"}
-                  type="button"
-                  key={item.id}
-                  onClick={() => onSelect(item.id)}
-                >
-                  <span>
-                    <strong>
-                      {item.brand} {item.model}
-                    </strong>
-                    <small>{evidenceLabel}</small>
-                  </span>
-                  <ArrowRight size={17} aria-hidden="true" />
-                </button>
-              );
-            })
+            results.slice(0, 10).map((entry) => (
+              <button
+                className={selectedId === entry.id ? "model-result is-selected" : "model-result"}
+                type="button"
+                key={entry.id}
+                onClick={() =>
+                  onSelect(
+                    entry.id,
+                    analysis.status === "exact-code" && analysis.exactEntryId === entry.id
+                      ? query
+                      : undefined,
+                  )
+                }
+              >
+                <span>
+                  <strong>
+                    {entry.brand} {entry.model}
+                  </strong>
+                  <small>{capabilityLabel(entry.capability)}</small>
+                </span>
+                <ArrowRight size={17} aria-hidden="true" />
+              </button>
+            ))
           ) : (
             <div className="model-empty">
-              <strong>That model is not in Clunk yet.</strong>
-              <span>Check the label and try the complete number.</span>
+              <strong>
+                {analysis.status === "serial-number"
+                  ? "That looks like the serial line."
+                  : "That model is not in Clunk yet."}
+              </strong>
+              <span>{analysis.guidance}</span>
             </div>
           )}
         </div>

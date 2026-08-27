@@ -7,6 +7,7 @@ import {
   Wrench,
 } from "lucide-react";
 
+import { LivePartOffers } from "@/components/LivePartOffers";
 import type { PartOutcome } from "@/domain/types";
 import { isPurchaseReadyAvailability } from "@/domain/purchase";
 
@@ -26,6 +27,10 @@ export function PartResult({ outcome }: { outcome: PartOutcome | null }) {
         <h2 id="part-title">{outcome.title}</h2>
         {exact ? (
           <>
+            <p className="part-fit-proof">
+              <BadgeCheck size={16} aria-hidden="true" /> Clunk confirmed the fit for the complete
+              model number
+            </p>
             <div className="part-name">{outcome.part?.name}</div>
             <div className="part-sku">Part #{outcome.part?.sku}</div>
           </>
@@ -48,33 +53,36 @@ export function PartResult({ outcome }: { outcome: PartOutcome | null }) {
                 </dd>
               </div>
             </dl>
-            <div className="purchase-handoff">
-              <div className="purchase-handoff__summary">
-                <span>
-                  <small>{purchase?.seller}</small>
-                  <strong>{purchase?.priceAtVerification}</strong>
-                </span>
-                <span
-                  className={`purchase-availability${available ? "" : " purchase-availability--unavailable"}`}
+            {outcome.part?.commerce ? <LivePartOffers part={outcome.part} /> : null}
+            {purchase && !outcome.part?.commerce ? (
+              <div className="purchase-handoff">
+                <div className="purchase-handoff__summary">
+                  <span>
+                    <small>{purchase.seller}</small>
+                    <strong>{purchase.priceAtVerification}</strong>
+                  </span>
+                  <span
+                    className={`purchase-availability${available ? "" : " purchase-availability--unavailable"}`}
+                  >
+                    {purchase.availabilityAtVerification}
+                  </span>
+                </div>
+                <a
+                  className="button button--purchase"
+                  href={purchase.url}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  {purchase?.availabilityAtVerification}
-                </span>
+                  <ShoppingCart size={17} aria-hidden="true" />
+                  {available ? "Buy this part" : "View this part"}
+                  <ExternalLink size={14} aria-hidden="true" />
+                </a>
+                <small className="purchase-verified">
+                  Opens {purchase.seller} in a new tab. Price and availability were checked{" "}
+                  {purchase.lastVerified}.
+                </small>
               </div>
-              <a
-                className="button button--purchase"
-                href={purchase?.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <ShoppingCart size={17} aria-hidden="true" />
-                {available ? "Buy this part" : "View this part"}
-                <ExternalLink size={14} aria-hidden="true" />
-              </a>
-              <small className="purchase-verified">
-                Opens {purchase?.seller} in a new tab. Price and availability were checked{" "}
-                {purchase?.lastVerified}.
-              </small>
-            </div>
+            ) : null}
           </>
         ) : null}
         {outcome.requiredProductCode ? (

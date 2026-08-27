@@ -1,6 +1,9 @@
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
+import { getBrandIdentifierHint, getModelNumberGuide } from "@/data/modelNumberGuides";
 
 import { deriveCauses } from "./diagnosis";
+import { analyzeModelQuery } from "./modelSearch";
+import { SHOPIFY_GLOBAL_CATALOG_ENDPOINT } from "./shopifyCatalog";
 import {
   getCatalogEntry,
   getCheck,
@@ -165,6 +168,7 @@ export function getRepairSnapshot(state: RepairState): RepairSnapshot {
         model: entry.model,
         label: entry.label,
         productCodePrompt: entry.productCodePrompt,
+        capability: entry.capability,
       };
     }),
     appliance: pack ? `${pack.appliance.brand} ${pack.appliance.model}` : null,
@@ -203,6 +207,26 @@ export function getRepairSnapshot(state: RepairState): RepairSnapshot {
 export function getWebMcpTaskSnapshot(state: RepairState) {
   const snapshot = getRepairSnapshot(state);
   const catalogActive = Boolean(state.catalogQuery || state.catalogKind || state.catalogBrand);
+  const catalogAnalysis = analyzeModelQuery(
+    state.catalogQuery,
+    state.catalogBrand,
+    state.catalogKind,
+  );
+  const categoryCounts = Object.fromEntries(
+    (["washer", "dishwasher", "dryer", "refrigerator"] as const).map((kind) => [
+      kind,
+      APPLIANCE_CATALOG.filter((entry) => entry.kind === kind).length,
+    ]),
+  );
+  const capabilityCounts = Object.fromEntries(
+    (["purchase-ready", "guided-checks", "verified-part-unavailable"] as const).map(
+      (capability) => [
+        capability,
+        APPLIANCE_CATALOG.filter((entry) => entry.capability === capability).length,
+      ],
+    ),
+  );
+  const modelGuide = state.catalogKind ? getModelNumberGuide(state.catalogKind) : null;
   const handoff = state.escalation
     ? "safety-stop"
     : state.currentStepId
@@ -220,23 +244,43 @@ export function getWebMcpTaskSnapshot(state: RepairState) {
     handoff,
     catalog: {
       supportedModelCount: APPLIANCE_CATALOG.length,
-      supportedKinds: ["washer", "dishwasher", "dryer", "refrigerator"],
+      counts: !state.applianceId
+        ? { byKind: categoryCounts, byCapability: capabilityCounts }
+        : undefined,
       query: state.catalogQuery,
       kind: state.catalogKind,
       resultCount: state.catalogResultIds.length,
+      queryStatus: !state.applianceId ? catalogAnalysis.status : undefined,
+      guidance: !state.applianceId ? catalogAnalysis.guidance : undefined,
+      needsCompleteCode: !state.applianceId ? catalogAnalysis.needsCompleteCode : undefined,
+      variantAmbiguity: !state.applianceId ? catalogAnalysis.variantAmbiguity : undefined,
+      candidateProductCodes: !state.applianceId ? catalogAnalysis.candidateProductCodes : undefined,
       results:
         !state.applianceId && catalogActive
-          ? snapshot.catalogResults.slice(0, 10).map((item) => ({
+          ? snapshot.catalogResults.slice(0, 6).map((item) => ({
               applianceId: item.id,
               brand: item.brand,
               model: item.model,
+              capability: item.capability,
             }))
           : [],
+      modelNumberHandoff:
+        !state.applianceId && modelGuide
+          ? {
+              humanAction: "Read the value beside Model, Model No., E-Nr, or Product Code.",
+              agentAction: "Request the full text, then search it without guessing a suffix.",
+              commonLocations: modelGuide.locations.map((location) => location.instruction),
+              examples: modelGuide.examples,
+              brandHint: getBrandIdentifierHint(state.catalogBrand),
+              rejectLabels: ["Serial", "S/N"],
+            }
+          : null,
     },
     task: state.applianceId
       ? {
           applianceId: state.applianceId,
           appliance: snapshot.appliance,
+          capability: state.applianceId ? getCatalogEntry(state.applianceId).capability : null,
           productCode: snapshot.productCode,
           verification: snapshot.verificationLabel,
           symptomId: state.symptomId,
@@ -270,11 +314,28 @@ export function getWebMcpTaskSnapshot(state: RepairState) {
                       name: snapshot.partOutcome.part.name,
                       compatibleModel: snapshot.partOutcome.part.compatibleModel,
                       source: snapshot.partOutcome.part.source.url,
-                      seller: snapshot.partOutcome.part.purchase.seller,
-                      purchaseUrl: snapshot.partOutcome.part.purchase.url,
-                      price: snapshot.partOutcome.part.purchase.priceAtVerification,
-                      availability: snapshot.partOutcome.part.purchase.availabilityAtVerification,
-                      checkedOn: snapshot.partOutcome.part.purchase.lastVerified,
+                      seller: snapshot.partOutcome.part.purchase?.seller,
+                      purchaseUrl: snapshot.partOutcome.part.purchase?.url,
+                      price: snapshot.partOutcome.part.purchase?.priceAtVerification,
+                      availability: snapshot.partOutcome.part.purchase?.availabilityAtVerification,
+                      checkedOn: snapshot.partOutcome.part.purchase?.lastVerified,
+                      commerceHandoff: snapshot.partOutcome.part.commerce
+                        ? {
+                            provider: "Shopify Global Catalog",
+                            protocol: snapshot.partOutcome.part.commerce.protocol,
+                            endpoint: SHOPIFY_GLOBAL_CATALOG_ENDPOINT,
+                            agentProfile: "/ucp-agent-profile.json",
+                            query: snapshot.partOutcome.part.commerce.query,
+                            exactSku: snapshot.partOutcome.part.commerce.exactSku,
+                            exactOfferCountAtVerification:
+                              snapshot.partOutcome.part.commerce.offerCountAtVerification,
+                            checkedOn: snapshot.partOutcome.part.commerce.lastVerified,
+                            liveAvailability: true,
+                            rule: "Accept only available offers whose listing contains the exact normalized part number. Never substitute a nearby SKU.",
+                            humanAction:
+                              "Review the seller, listing type, price, and exact part number before opening checkout_url.",
+                          }
+                        : null,
                     }
                   : null,
               }
