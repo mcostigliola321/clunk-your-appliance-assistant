@@ -162,5 +162,5 @@ AI is present at the browser-agent layer, not inside the shipped app. A compatib
 
 ## Remaining submission tasks
 
-- Record/upload the public narrated video and replace the TODO.
+- Record the final Chrome 149 natural-language WebMCP exchange, add narration to the prepared 45-second captioned draft in `docs/hackathon-build/demo/`, upload it publicly, and replace the TODO.
 - Complete participant-specific Devpost form fields: submitter type, country, learning level, and reusable-career-value answer.
