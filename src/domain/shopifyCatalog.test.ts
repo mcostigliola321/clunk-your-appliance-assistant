@@ -106,12 +106,26 @@ describe("Shopify Global Catalog handoff", () => {
     const offers = await searchShopifyPartOffers(part!, { fetchImpl });
     const [url, init] = fetchImpl.mock.calls[0] ?? [];
     const body = JSON.parse(String(init?.body)) as {
-      params: { name: string; arguments: { catalog: { query: string; filters: unknown } } };
+      params: {
+        name: string;
+        arguments: {
+          meta: { "ucp-agent": { profile: string } };
+          catalog: { query: string; filters: unknown };
+        };
+      };
     };
 
     expect(url).toBe("https://catalog.shopify.com/api/ucp/mcp");
-    expect(init).toMatchObject({ method: "POST", credentials: "omit", cache: "no-store" });
+    expect(init).toMatchObject({
+      method: "POST",
+      headers: { "content-type": "text/plain;charset=UTF-8" },
+      credentials: "omit",
+      cache: "no-store",
+    });
     expect(body.params.name).toBe("search_catalog");
+    expect(body.params.arguments.meta["ucp-agent"].profile).toBe(
+      "https://shopify.dev/ucp/agent-profiles/2026-04-08/valid-with-capabilities.json",
+    );
     expect(body.params.arguments.catalog.query).toContain("WH11X39237");
     expect(body.params.arguments.catalog.filters).toEqual({
       available: true,

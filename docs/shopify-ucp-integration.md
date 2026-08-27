@@ -23,7 +23,7 @@ This boundary matters because a catalog search can return relevant-looking neigh
 - Result: up to five exact-SKU seller rows with current price and a merchant `checkout_url`
 - Failure behavior: an inline retry or an honest no-live-offer message; the static compatibility result remains intact
 
-Clunk hosts [`public/ucp-agent-profile.json`](../public/ucp-agent-profile.json) and uses Shopify's reference profile while running on localhost. The repair pack records the query, exact SKU, retrieval date, and number of exact available offers observed during evidence review. Live results themselves are not persisted.
+Clunk hosts [`public/ucp-agent-profile.json`](../public/ucp-agent-profile.json) as an inspectable declaration of its shopping capabilities. Catalog requests use Shopify's capability-equivalent reference profile because UCP discovery requires explicit cache headers that the current static Lovable host cannot set for individual assets. The JSON-RPC body is sent with Shopify's accepted `text/plain` content type so a static browser client does not trigger the catalog endpoint's unsupported CORS preflight. The repair pack records the query, exact SKU, retrieval date, and number of exact available offers observed during evidence review. Live results themselves are not persisted.
 
 Shopify documents Global Catalog as a cross-merchant UCP catalog that requires an agent profile but no API key. Its guidance also says not to cache catalog search results and warns that inferred fields can vary in accuracy. Clunk therefore treats the catalog as current offer discovery, not compatibility evidence:
 

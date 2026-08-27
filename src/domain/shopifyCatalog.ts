@@ -130,10 +130,10 @@ export function extractShopifyPartOffers(
 }
 
 export function getClunkUcpProfileUrl(): string {
-  if (typeof window === "undefined") return SHOPIFY_REFERENCE_PROFILE_URL;
-  if (["localhost", "127.0.0.1"].includes(window.location.hostname))
-    return SHOPIFY_REFERENCE_PROFILE_URL;
-  return `${window.location.origin}/ucp-agent-profile.json`;
+  // Shopify discovery requires cache headers that static Lovable assets cannot
+  // currently declare. The official capability-equivalent reference profile
+  // keeps the credential-free browser lookup portable across static hosts.
+  return SHOPIFY_REFERENCE_PROFILE_URL;
 }
 
 export async function searchShopifyPartOffers(
@@ -144,7 +144,10 @@ export async function searchShopifyPartOffers(
   const fetchImpl = options.fetchImpl ?? fetch;
   const response = await fetchImpl(SHOPIFY_GLOBAL_CATALOG_ENDPOINT, {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    // Shopify accepts the JSON-RPC body as text/plain. Keeping this request
+    // CORS-safelisted avoids an OPTIONS preflight that the catalog endpoint
+    // currently rejects, which is required for a static browser-only client.
+    headers: { "content-type": "text/plain;charset=UTF-8" },
     credentials: "omit",
     cache: "no-store",
     ...(options.signal ? { signal: options.signal } : {}),
