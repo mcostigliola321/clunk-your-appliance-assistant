@@ -48,8 +48,7 @@ describe("state-dependent WebMCP registration", () => {
       "select_appliance",
       "get_repair_state",
     ]);
-    const executeSignal = new AbortController().signal;
-    const stateOutput = (await tools[2]?.execute({}, { signal: executeSignal })) as {
+    const stateOutput = (await tools[2]?.execute({})) as {
       structuredContent: Record<string, unknown>;
     };
     const serialized = JSON.stringify(stateOutput.structuredContent);
@@ -57,14 +56,51 @@ describe("state-dependent WebMCP registration", () => {
     expect(serialized).not.toContain("likelyCauses");
     expect(serialized).not.toContain("catalogResults");
     expect(state.activity).toHaveLength(1);
-    await tools[1]?.execute(
-      { applianceId: "lg-wm3400cw", productCode: "WM3400CW.ABWEVUS" },
-      { signal: executeSignal },
-    );
+    await tools[1]?.execute({
+      applianceId: "lg-wm3400cw",
+      productCode: "WM3400CW.ABWEVUS",
+    });
     expect(state.applianceId).toBe("lg-wm3400cw");
     expect(state.activity.at(-1)?.source).toBe("agent");
     controller?.abort();
     expect(signals.every((signal) => signal.aborted)).toBe(true);
+  });
+
+  it("supports workbenches that invoke execute with only the validated input", async () => {
+    const tools: WebMcpTool[] = [];
+    Object.defineProperty(document, "modelContext", {
+      configurable: true,
+      value: {
+        registerTool: vi.fn(async (tool: WebMcpTool) => {
+          tools.push(tool);
+        }),
+      },
+    });
+    let state = createInitialRepairState();
+    registerClunkTools(
+      (name, input, source) => {
+        const execution = executeRepairTool(state, name, input, source);
+        state = execution.state;
+        return execution;
+      },
+      () => undefined,
+      state,
+    );
+
+    const search = tools.find((tool) => tool.name === "search_supported_appliances");
+    const output = (await search?.execute({
+      modelQuery: "GTD42EASJ2WW",
+      kind: "dryer",
+    })) as { structuredContent: Record<string, unknown> };
+
+    expect(output.structuredContent).toMatchObject({
+      ok: true,
+      phase: "catalog",
+    });
+    expect(state.activity.at(-1)).toMatchObject({
+      action: "search_supported_appliances",
+      source: "agent",
+    });
   });
 
   it("changes inventory between selected, active, and result states", () => {

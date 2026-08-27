@@ -14,10 +14,6 @@ type InvokeTool = (
   source: "agent",
 ) => ToolExecutionResult;
 
-function assertNotAborted(signal: AbortSignal): void {
-  if (signal.aborted) throw new DOMException("The WebMCP tool call was cancelled.", "AbortError");
-}
-
 function asToolOutput(execution: ToolExecutionResult) {
   return {
     content: [{ type: "text" as const, text: execution.message }],
@@ -50,8 +46,7 @@ export function registerClunkTools(
           title: search.title,
           description: search.purpose,
           inputSchema: search.inputSchema,
-          execute: async (input, { signal }) => {
-            assertNotAborted(signal);
+          execute: async (input) => {
             return asToolOutput(invokeTool("search_supported_appliances", input, "agent"));
           },
         },
@@ -68,8 +63,7 @@ export function registerClunkTools(
           title: select.title,
           description: select.purpose,
           inputSchema: select.inputSchema,
-          execute: async (input, { signal }) => {
-            assertNotAborted(signal);
+          execute: async (input) => {
             return asToolOutput(invokeTool("select_appliance", input, "agent"));
           },
         },
@@ -87,8 +81,7 @@ export function registerClunkTools(
           description: getState.purpose,
           inputSchema: getState.inputSchema,
           annotations: { readOnlyHint: true, untrustedContentHint: false },
-          execute: async (input, { signal }) => {
-            assertNotAborted(signal);
+          execute: async (input) => {
             return asToolOutput(invokeTool("get_repair_state", input, "agent"));
           },
         },
@@ -105,8 +98,7 @@ export function registerClunkTools(
           title: start.title,
           description: start.purpose,
           inputSchema: start.inputSchema,
-          execute: async (input, { signal }) => {
-            assertNotAborted(signal);
+          execute: async (input) => {
             return asToolOutput(invokeTool("start_diagnosis", input, "agent"));
           },
         },
@@ -123,8 +115,7 @@ export function registerClunkTools(
           title: show.title,
           description: show.purpose,
           inputSchema: show.inputSchema,
-          execute: async (input, { signal }) => {
-            assertNotAborted(signal);
+          execute: async (input) => {
             return asToolOutput(invokeTool("show_component", input, "agent"));
           },
         },
@@ -141,8 +132,7 @@ export function registerClunkTools(
           title: record.title,
           description: record.purpose,
           inputSchema: record.inputSchema,
-          execute: async (input, { signal }) => {
-            assertNotAborted(signal);
+          execute: async (input) => {
             return asToolOutput(invokeTool("record_observation", input, "agent"));
           },
         },
@@ -159,8 +149,7 @@ export function registerClunkTools(
           title: findPart.title,
           description: findPart.purpose,
           inputSchema: findPart.inputSchema,
-          execute: async (input, { signal }) => {
-            assertNotAborted(signal);
+          execute: async (input) => {
             return asToolOutput(invokeTool("find_compatible_part", input, "agent"));
           },
         },
@@ -177,8 +166,7 @@ export function registerClunkTools(
           title: escalate.title,
           description: escalate.purpose,
           inputSchema: escalate.inputSchema,
-          execute: async (input, { signal }) => {
-            assertNotAborted(signal);
+          execute: async (input) => {
             return asToolOutput(invokeTool("stop_and_escalate", input, "agent"));
           },
         },

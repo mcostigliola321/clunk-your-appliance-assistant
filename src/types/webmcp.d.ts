@@ -1,7 +1,3 @@
-interface WebMcpToolExecuteOptions {
-  signal: AbortSignal;
-}
-
 interface WebMcpToolAnnotations {
   readOnlyHint?: boolean;
   untrustedContentHint?: boolean;
@@ -12,10 +8,7 @@ interface WebMcpTool {
   title?: string;
   description: string;
   inputSchema?: Record<string, unknown>;
-  execute: (
-    inputObject: Record<string, unknown>,
-    options: WebMcpToolExecuteOptions,
-  ) => Promise<unknown>;
+  execute: (inputObject: Record<string, unknown>) => Promise<unknown>;
   annotations?: WebMcpToolAnnotations;
 }
 
