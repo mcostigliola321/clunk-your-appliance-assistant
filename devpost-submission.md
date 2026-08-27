@@ -162,7 +162,6 @@ AI is present at the browser-agent layer, not inside the shipped app. A compatib
 
 ## Remaining submission tasks
 
-- Confirm the repository is public and GitHub detects the MIT license.
 - Record/upload the public narrated video and replace the TODO.
-- Refresh screenshot gallery with home, purchase answer, activity/tools, mobile, and safety frames.
+- Capture the final activity/tools and safety frames for the screenshot gallery; current home and mobile frames are in `docs/hackathon-build/screenshots/`.
 - Complete participant-specific Devpost form fields: submitter type, country, learning level, and reusable-career-value answer.

@@ -94,7 +94,7 @@ The app validates repair packs, rejects out-of-order calls, requires person-supp
 - **WebMCP-capable browser:** enable the browser’s WebMCP testing support and open the live URL.
 - **Any other modern browser:** Clunk reports **Manual mode ready**. Use the normal controls or Tool inspector; both reach the same state and log.
 
-The source-backed production build was verified in Chrome 149 with WebMCP testing enabled and in the in-app browser fallback. Chrome reported **Agent tools ready**, changed its active inventory as the repair state advanced, and completed the exact-code LG path with no console errors. The in-app browser reported **Manual mode ready** and exposed the same credential-free judge controls. A recorded natural-language agent session remains part of the final submission capture.
+The current four-appliance production build was verified in Chrome 149 with WebMCP testing enabled and in the in-app browser. Chrome reported **AI connected** and completed the Whirlpool dishwasher example at part `W11412291`; the in-app browser completed all four purchase-ready examples at their expected exact model, SKU, and seller URL. Every seller link opens in a new tab, and the complete credential-free manual controls remain available when WebMCP is unavailable. A recorded natural-language agent session remains part of the final submission capture.
 
 ## Run locally
 

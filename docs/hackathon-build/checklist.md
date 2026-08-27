@@ -116,7 +116,7 @@
       Acceptance: Tool discovery and state lifecycle work on the top-level production URL; every call is visible in Clunk.
       Verify: Record prompt, discovered tool sequence, visible final state, browser version, console/network findings, and screenshots.
 
-- [ ] **18. Refresh the competition handoff**
+- [x] **18. Refresh the competition handoff**
       Spec ref: prd.md > Submission Proof Points
       What to build: Rewrite the README opening, Devpost draft, demo beat sheet, screenshots, and proof checklist around source-backed breadth and the human-senses/agent-structure collaboration.
       Acceptance: The public story makes the WebMCP advantage clear in under three minutes and avoids universal-diagnosis or compatibility claims.
@@ -166,7 +166,7 @@
       Acceptance: A judge can understand why the person and agent need each other within thirty seconds; every agent call updates the same visible state as the human path.
       Verify: Registry, action-equivalence, activity-source, lifecycle, and eval-fixture tests pass.
 
-- [ ] **26. Publish and prove the four-appliance build**
+- [x] **26. Publish and prove the four-appliance build**
       Spec ref: Official execution and submission requirements
       What to build: Refresh README and demo instructions, push verified commits under the participant's configured identity, publish through Lovable, and test the production URL in the in-app browser plus Chrome/WebMCP.
       Acceptance: The live URL needs no credentials; all four instant examples and real flows work; repo and site tell the same story.
