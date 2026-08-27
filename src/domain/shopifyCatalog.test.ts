@@ -116,7 +116,12 @@ describe("Shopify Global Catalog handoff", () => {
     };
 
     expect(url).toBe("https://catalog.shopify.com/api/ucp/mcp");
-    expect(init).toMatchObject({ method: "POST", credentials: "omit", cache: "no-store" });
+    expect(init).toMatchObject({
+      method: "POST",
+      headers: { "content-type": "text/plain;charset=UTF-8" },
+      credentials: "omit",
+      cache: "no-store",
+    });
     expect(body.params.name).toBe("search_catalog");
     expect(body.params.arguments.meta["ucp-agent"].profile).toBe(
       "https://shopify.dev/ucp/agent-profiles/2026-04-08/valid-with-capabilities.json",

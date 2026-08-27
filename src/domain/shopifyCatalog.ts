@@ -144,7 +144,10 @@ export async function searchShopifyPartOffers(
   const fetchImpl = options.fetchImpl ?? fetch;
   const response = await fetchImpl(SHOPIFY_GLOBAL_CATALOG_ENDPOINT, {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    // Shopify accepts the JSON-RPC body as text/plain. Keeping this request
+    // CORS-safelisted avoids an OPTIONS preflight that the catalog endpoint
+    // currently rejects, which is required for a static browser-only client.
+    headers: { "content-type": "text/plain;charset=UTF-8" },
     credentials: "omit",
     cache: "no-store",
     ...(options.signal ? { signal: options.signal } : {}),
