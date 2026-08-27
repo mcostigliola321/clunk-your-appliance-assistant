@@ -14,7 +14,7 @@ A judge should understand the product within five seconds and reach a real selle
 
 - 31 source-backed U.S. model families across washers, dishwashers, electric dryers, and refrigerators.
 - Four purchase-ready flagships:
-  - LG `WM3400CW.ABWEVUS` will not drain → `AHA75693425` drain pump.
+  - GE `GFW550SSN0WW` will not drain → `WH11X39237` drain pump/filter assembly.
   - Whirlpool `WDT750SAKZ1` will not drain → `W11412291` drain pump.
   - GE `GTD42EASJ2WW` door will not stay closed → `WE01M10007` visible strike.
   - GE `GSS25GYPFS` slow water flow → `XWFE` filter.
@@ -24,7 +24,7 @@ A judge should understand the product within five seconds and reach a real selle
 - Exact part name, SKU, compatible complete model code, location, dated price/availability snapshot, and external seller link when evidence permits.
 - Eight literal, state-dependent `document.modelContext.registerTool` registrations.
 - Manual/judge controls and one-click examples using the same public action layer.
-- Visible activity log, tool inspector, source panels, deterministic tests, and WebMCP eval fixtures.
+- Visible collaboration milestones, tool-transition handoff, technical inspector, source panels, deterministic tests, and accurately labeled scenario fixtures.
 - Static Lovable hosting, public GitHub repository, MIT license, README, submission copy, and sub-three-minute demo.
 - Mobile responsiveness, keyboard access, reduced motion, plain language, and WCAG A/AA automated checks.
 

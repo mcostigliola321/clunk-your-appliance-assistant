@@ -95,7 +95,7 @@
 - [x] **14. Bake out the state-dependent WebMCP surface**
       Spec ref: spec.md > Real-model expansion addendum
       What to build: Register the eight v2 tools with literal registerTool calls, current-state schemas/descriptions, dynamic availability, structured provenance, and visible accepted/rejected activity.
-      Acceptance: Irrelevant tools are not registered; part lookup cannot appear before evidence; natural-language eval fixtures cover discovery, observation, compatibility, and refusal.
+      Acceptance: Irrelevant tools are not registered; part lookup cannot appear before evidence; deterministic scenario fixtures cover discovery, observation, compatibility, and refusal.
       Verify: Registry lifecycle tests assert tool sets at catalog, diagnosis, result, and terminal states.
 
 - [x] **15. Redesign the bench around model discovery and evidence**
@@ -144,7 +144,7 @@
 
 - [x] **22. Add four sourced purchase-ready flagship stories**
       Spec ref: Direction A approval on 2026-08-26
-      What to build: Retain the LG washer flagship and add one dishwasher, electric dryer, and refrigerator flagship with a complete model code, official troubleshooting source, authorized or manufacturer part source, dated seller handoff, and conservative external observations.
+      What to build: Add one washer, dishwasher, electric dryer, and refrigerator flagship with a complete model code, official troubleshooting source, authorized or manufacturer part source, dated seller handoff, and conservative external observations.
       Acceptance: Every flagship ends at an exact part link after its documented observations; internal work remains technician-only and refrigerator guidance excludes refrigerant or sealed-system work.
       Verify: Source validation, exact-code matching, outbound-link, and no-guess tests pass for all four flagships.
 
@@ -171,3 +171,21 @@
       What to build: Refresh README and demo instructions, push verified commits under the participant's configured identity, publish through Lovable, and test the production URL in the in-app browser plus Chrome/WebMCP.
       Acceptance: The live URL needs no credentials; all four instant examples and real flows work; repo and site tell the same story.
       Verify: Full verify command, clean diff, production browser walkthroughs, tool inventory, and seller links are recorded.
+
+## Fresh-eyes WebMCP-native program
+
+- [x] **27. Make the physical-world baton pass visible**
+      What to build: Put the human observation boundary and the `record_observation` → `find_compatible_part` transition in the main workbench; distinguish Example, You, Agent, Inspector, and Clunk milestones.
+      Verify: UI and browser tests cover both sides of the tool swap and the terminal safety inventory.
+
+- [x] **28. Correct evidence and evaluation claims**
+      What to build: Audit all four flagships, withdraw unsupported exact-suffix claims, label deterministic fixtures accurately, and add a real-agent matrix/runbook.
+      Verify: Source ledger, fixtures, engine tests, and seller metadata agree; no real-agent case is marked passed without recorded evidence.
+
+- [x] **29. Tighten tool reliability and demo readiness**
+      What to build: Return compact current-task WebMCP output, preserve strict lifecycle/validation, preload flagship visuals, tighten mobile entry, and refresh the under-three-minute capture sequence.
+      Verify: Full local quality gate, desktop/mobile visual inspection, source diff review, and capture-ready documentation.
+
+- [ ] **30. Record and submit external proof**
+      What to build: Run the real-agent matrix in a supported prompt interface, capture the narrated public YouTube video with audio, complete participant-specific Devpost fields, publish the reviewed build, and submit.
+      Verify: Public URL matches the reviewed commit; evidence files and video URL are present; Devpost form is complete. These external actions require Mark’s approval and input.

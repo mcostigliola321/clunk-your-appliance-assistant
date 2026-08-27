@@ -4,7 +4,7 @@ import type {
   ToolExecutionResult,
   WebMcpStatus,
 } from "@/domain/types";
-import { getValidNextActions } from "@/domain/selectors";
+import { getValidNextActions, getWebMcpTaskSnapshot } from "@/domain/selectors";
 
 import { getRepairToolContract } from "./contracts";
 
@@ -21,7 +21,7 @@ function assertNotAborted(signal: AbortSignal): void {
 function asToolOutput(execution: ToolExecutionResult) {
   return {
     content: [{ type: "text" as const, text: execution.message }],
-    structuredContent: { ok: execution.ok, ...execution.snapshot },
+    structuredContent: { ok: execution.ok, ...getWebMcpTaskSnapshot(execution.state) },
     isError: !execution.ok,
   };
 }
@@ -86,7 +86,7 @@ export function registerClunkTools(
           title: getState.title,
           description: getState.purpose,
           inputSchema: getState.inputSchema,
-          annotations: { readOnlyHint: true },
+          annotations: { readOnlyHint: true, untrustedContentHint: false },
           execute: async (input, { signal }) => {
             assertNotAborted(signal);
             return asToolOutput(invokeTool("get_repair_state", input, "agent"));

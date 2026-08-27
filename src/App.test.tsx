@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it } from "vitest";
 
 import { App } from "./App";
+import { ActivityLog } from "./components/ActivityLog";
 import { RepairProvider } from "./state/RepairProvider";
 
 function renderClunk() {
@@ -14,11 +15,12 @@ function renderClunk() {
 }
 
 async function selectLg(user: ReturnType<typeof userEvent.setup>, query = "WM3400CW.ABWEVUS") {
+  await user.click(screen.getByRole("button", { name: /01 Washer/ }));
   const input = screen.getByRole("textbox", { name: "Washer model number" });
   await user.clear(input);
   await user.type(input, query);
   await user.click(screen.getByRole("button", { name: "Find model" }));
-  await user.click(screen.getByRole("button", { name: /LG WM3400CW Purchase-ready/ }));
+  await user.click(screen.getByRole("button", { name: /LG WM3400CW Guided checks only/ }));
 }
 
 describe("Clunk repair bench", () => {
@@ -40,17 +42,18 @@ describe("Clunk repair bench", () => {
     expect(screen.getByRole("button", { name: "See the full answer" })).toBeVisible();
   });
 
-  it("takes one click directly to an exact washer part and seller", async () => {
+  it("takes one click directly to the flagship dryer part and seller", async () => {
     const user = userEvent.setup();
     renderClunk();
     await user.click(screen.getByRole("button", { name: "See the full answer" }));
-    expect(screen.getByRole("heading", { name: "This is the part for your washer" })).toBeVisible();
-    expect(screen.getByText("Part #AHA75693425")).toBeVisible();
+    expect(screen.getByRole("heading", { name: "This is the part for your dryer" })).toBeVisible();
+    expect(screen.getByText("Part #WE01M10007")).toBeVisible();
     expect(screen.getByRole("link", { name: /Buy this part/ })).toHaveAttribute(
       "href",
-      "https://encompass.com/item/12525362/LG/AHA75693425/",
+      "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTD42EASJ2WW/2/0/0/0/FRONT_PANEL_%26_DOOR",
     );
     expect(screen.getByText("Example answer")).toBeVisible();
+    expect(screen.getByText(/This is not an agent run/)).toBeVisible();
   });
 
   it("switches to a dishwasher flagship and reaches its seller link", async () => {
@@ -81,9 +84,33 @@ describe("Clunk repair bench", () => {
     expect(screen.queryByRole("link", { name: /Buy this part/ })).not.toBeInTheDocument();
   });
 
+  it("makes the human observation and WebMCP tool swap visible", async () => {
+    const user = userEvent.setup();
+    renderClunk();
+    const input = screen.getByRole("textbox", { name: "Electric dryer model number" });
+    await user.type(input, "GTD42EASJ2WW");
+    await user.click(screen.getByRole("button", { name: "Find model" }));
+    await user.click(screen.getByRole("button", { name: /GE GTD42EASJ2WW Purchase-ready/ }));
+    expect(
+      screen.getByRole("heading", { name: "Your turn — Clunk cannot see this." }),
+    ).toBeVisible();
+    expect(screen.getByText("Waiting for your observation")).toBeVisible();
+    expect(screen.getByText("Locked until you answer")).toBeVisible();
+    await user.click(screen.getByRole("button", { name: "Safe to continue" }));
+    await user.click(
+      screen.getByRole("button", { name: "The strike is cracked, bent, or missing" }),
+    );
+    expect(
+      screen.getByRole("heading", { name: "Observation recorded — part lookup unlocked." }),
+    ).toBeVisible();
+    expect(screen.getByText("Part lookup available")).toBeVisible();
+    expect(screen.getByText("Part #WE01M10007")).toBeVisible();
+  });
+
   it("switches the visual to a top-load model", async () => {
     const user = userEvent.setup();
     renderClunk();
+    await user.click(screen.getByRole("button", { name: /01 Washer/ }));
     const input = screen.getByRole("textbox", { name: "Washer model number" });
     await user.type(input, "GTW585BSVWS");
     await user.click(screen.getByRole("button", { name: "Find model" }));
@@ -96,14 +123,34 @@ describe("Clunk repair bench", () => {
   it("runs an available manual WebMCP tool through shared activity", async () => {
     const user = userEvent.setup();
     renderClunk();
-    await user.click(screen.getByText("Agent activity"));
+    await user.click(screen.getByText("Human + agent activity"));
     await user.click(screen.getByText("Select an exact appliance model"));
     const inspector = screen.getByRole("region", { name: "WebMCP tools" });
     await user.click(
       within(inspector).getByRole("button", { name: "Run sample for select_appliance" }),
     );
-    const activity = screen.getByRole("region", { name: "What Clunk did" });
+    const activity = screen.getByRole("region", { name: "Collaboration timeline" });
     expect(within(activity).getByText("Inspector")).toBeVisible();
     expect(within(activity).getByText("select_appliance")).toBeVisible();
+  });
+
+  it("distinguishes every collaboration source without hiding technical actions", () => {
+    const sources = ["example", "human", "agent", "manual", "system"] as const;
+    render(
+      <ActivityLog
+        activity={sources.map((source, index) => ({
+          id: `source-${source}`,
+          sequence: index,
+          source,
+          action: index === 0 ? "catalog_ready" : "select_appliance",
+          arguments: {},
+          outcome: "accepted",
+          message: `${source} event`,
+        }))}
+      />,
+    );
+    for (const label of ["Example", "You", "Agent", "Inspector", "Clunk"])
+      expect(screen.getByText(label)).toBeVisible();
+    expect(screen.getAllByText("select_appliance")).toHaveLength(4);
   });
 });

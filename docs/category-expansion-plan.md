@@ -4,12 +4,12 @@ Clunk now ships the reusable multi-appliance foundation: 31 real model families 
 
 ## Submission slice
 
-| Category | Purchase-ready flagship | Supported outcome | Additional breadth |
-| --- | --- | --- | --- |
-| Washer | LG WM3400CW.ABWEVUS | Will not drain → AHA75693425 drain pump | 18 additional models; front- and top-load location guides |
-| Dishwasher | Whirlpool WDT750SAKZ1 | Will not drain → W11412291 drain pump | Bosch, GE, and KitchenAid guided checks |
-| Electric dryer | GE GTD42EASJ2WW | Door will not stay closed → WE01M10007 strike | Whirlpool, Maytag, and LG guided checks |
-| Refrigerator | GE GSS25GYPFS | Slow dispenser flow → XWFE filter | Whirlpool, Samsung, and LG guided checks |
+| Category       | Purchase-ready flagship | Supported outcome                             | Additional breadth                                        |
+| -------------- | ----------------------- | --------------------------------------------- | --------------------------------------------------------- |
+| Washer         | GE GFW550SSN0WW         | Will not drain → WH11X39237 pump/filter       | 18 additional models; front- and top-load location guides |
+| Dishwasher     | Whirlpool WDT750SAKZ1   | Will not drain → W11412291 drain pump         | Bosch, GE, and KitchenAid guided checks                   |
+| Electric dryer | GE GTD42EASJ2WW         | Door will not stay closed → WE01M10007 strike | Whirlpool, Maytag, and LG guided checks                   |
+| Refrigerator   | GE GSS25GYPFS           | Slow dispenser flow → XWFE filter             | Whirlpool, Samsung, and LG guided checks                  |
 
 “Purchase-ready” means that a complete product code maps to a manufacturer or authorized-parts source and a dated seller handoff. It does not mean Clunk confirms the diagnosis, guarantees stock, or completes payment. “Guided checks only” is visible before model selection and never silently borrows a flagship part.
 
@@ -29,7 +29,7 @@ All of these remain static data and deterministic state transitions.
 - Any user action beyond visible observation or a clearly documented consumer-maintenance boundary.
 - Any new seller, compatibility, price, or stock claim.
 
-Every such change needs primary-source evidence, a category safety review, original visual work, schema/runtime validation, unit coverage, WebMCP eval fixtures, and desktop/mobile browser tests.
+Every such change needs primary-source evidence, a category safety review, original visual work, schema/runtime validation, unit coverage, deterministic WebMCP scenario fixtures, real-agent runbook coverage, and desktop/mobile browser tests.
 
 ## Deliberately excluded
 

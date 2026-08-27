@@ -1144,6 +1144,116 @@ summary:focus-visible,
   min-width: 0;
 }
 
+.handoff-status {
+  padding: 18px 20px;
+  border: 1px solid color-mix(in oklch, var(--cobalt) 38%, var(--line));
+  border-radius: var(--radius);
+  background: var(--cobalt-pale);
+}
+
+.handoff-status--example {
+  border-color: color-mix(in oklch, var(--honey) 55%, var(--line));
+  background: var(--honey-pale);
+}
+
+.handoff-status--stop {
+  border-color: color-mix(in oklch, var(--stop) 45%, var(--line));
+  background: var(--stop-pale);
+}
+
+.handoff-status__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--cobalt);
+  font-size: 10px;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.handoff-status--example .handoff-status__eyebrow {
+  color: var(--honey-dark);
+}
+
+.handoff-status--stop .handoff-status__eyebrow {
+  color: var(--stop);
+}
+
+.handoff-status h2 {
+  margin-top: 8px;
+  font-size: clamp(20px, 1.8vw, 26px);
+  font-weight: 650;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.handoff-status > p {
+  margin-top: 9px;
+  color: var(--muted-ink);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.handoff-transition {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.handoff-transition > svg {
+  color: var(--faint-ink);
+}
+
+.handoff-tool {
+  min-width: 0;
+  min-height: 51px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 8px 10px;
+  background: var(--background);
+}
+
+.handoff-tool.is-active {
+  border-color: color-mix(in oklch, var(--success) 45%, var(--line));
+  color: var(--success);
+}
+
+.handoff-tool.is-locked {
+  color: var(--faint-ink);
+}
+
+.handoff-tool > span {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.handoff-tool strong {
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 10px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.handoff-tool code {
+  overflow: hidden;
+  font:
+    550 9px/1.2 ui-monospace,
+    SFMono-Regular,
+    Consolas,
+    monospace;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .next-check {
   padding: clamp(22px, 2.5vw, 32px);
   border: 1px solid var(--line);
@@ -1853,6 +1963,22 @@ summary:focus-visible,
   color: var(--honey-dark);
 }
 
+.activity-source--manual {
+  background: var(--surface-strong);
+  color: var(--ink);
+}
+
+.activity-source--example {
+  background: var(--honey-pale);
+  color: var(--honey-dark);
+}
+
+.activity-source--system {
+  border: 1px solid var(--line);
+  background: var(--background);
+  color: var(--muted-ink);
+}
+
 .activity-event {
   min-width: 0;
   display: grid;
@@ -1871,6 +1997,15 @@ summary:focus-visible,
   font-weight: 700;
 }
 
+.activity-milestone {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .activity-event code {
   overflow: hidden;
   color: var(--muted-ink);
@@ -1883,10 +2018,19 @@ summary:focus-visible,
   white-space: nowrap;
 }
 
-.activity-event > span:last-child {
+.activity-event > span:nth-child(2) {
   color: var(--muted-ink);
   font-size: 11px;
   line-height: 1.4;
+}
+
+.activity-event .activity-action {
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 2px;
+  padding: 3px 6px;
+  border-radius: 5px;
+  background: var(--surface);
 }
 
 .activity-outcome {
@@ -2459,19 +2603,26 @@ footer a {
   }
 
   .intro-band {
-    padding: 44px 0 38px;
+    gap: 20px;
+    padding: 28px 0 32px;
   }
 
   .intro-band h1 {
-    font-size: clamp(42px, 14vw, 62px);
+    margin-top: 12px;
+    font-size: clamp(40px, 12vw, 54px);
   }
 
   .intro-band > div:first-child > p {
-    font-size: 19px;
+    margin-top: 14px;
+    font-size: 16px;
   }
 
-  .hero-flow i {
+  .hero-flow {
     display: none;
+  }
+
+  .model-finder {
+    padding: 18px;
   }
 
   .flagship-answer {
@@ -2589,6 +2740,19 @@ footer a {
 
   .next-check {
     padding: 20px;
+  }
+
+  .handoff-status {
+    padding: 17px;
+  }
+
+  .handoff-transition {
+    grid-template-columns: 1fr;
+  }
+
+  .handoff-transition > svg {
+    transform: rotate(90deg);
+    justify-self: center;
   }
 
   .cause-list li {

@@ -15,7 +15,7 @@ The primary promise is concrete: **problem → physical location → exact part 
 ## Experience principles
 
 - Make the outcome understandable in five seconds.
-- Use everyday language; put protocol detail behind **Agent activity**.
+- Use everyday language; make the human/agent handoff visible and put deeper protocol detail behind **Human + agent activity**.
 - Show the physical location and the answer together.
 - Never present a general illustration as an exact service diagram.
 - Never call likelihood a confirmed diagnosis.
@@ -64,12 +64,12 @@ Acceptance:
 
 ## Category requirements
 
-| Category | Flagship symptom | Required visible checks | Exact outcome |
-| --- | --- | --- | --- |
-| Washer | Will not drain | Safe state, outside hose, documented lower filter | LG AHA75693425 pump; professional installation |
-| Dishwasher | Will not drain | Cool/off, under-sink drain, user filter/sump | Whirlpool W11412291 pump; professional installation |
-| Electric dryer | Door will not stay closed | Unplugged, visible door strike | GE WE01M10007 strike; user-replaceable boundary |
-| Refrigerator | Slow dispenser flow | No active leak, filter age/status | GE XWFE filter; user-replaceable boundary |
+| Category       | Flagship symptom          | Required visible checks                           | Exact outcome                                        |
+| -------------- | ------------------------- | ------------------------------------------------- | ---------------------------------------------------- |
+| Washer         | Will not drain            | Safe state, outside hose, documented lower filter | GE WH11X39237 pump/filter; professional installation |
+| Dishwasher     | Will not drain            | Cool/off, under-sink drain, user filter/sump      | Whirlpool W11412291 pump; professional installation  |
+| Electric dryer | Door will not stay closed | Unplugged, visible door strike                    | GE WE01M10007 strike; user-replaceable boundary      |
+| Refrigerator   | Slow dispenser flow       | No active leak, filter age/status                 | GE XWFE filter; user-replaceable boundary            |
 
 ## WebMCP requirements
 

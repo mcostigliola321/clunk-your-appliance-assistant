@@ -54,8 +54,10 @@ export function createInitialRepairState(webMcpStatus: WebMcpStatus = "detecting
     productCode: null,
     catalogQuery: "",
     catalogBrand: null,
-    catalogKind: null,
-    catalogResultIds: APPLIANCE_CATALOG.map((entry) => entry.id),
+    catalogKind: "dryer",
+    catalogResultIds: APPLIANCE_CATALOG.filter((entry) => entry.kind === "dryer").map(
+      (entry) => entry.id,
+    ),
     symptomId: null,
     phase: "catalog",
     currentStepId: null,
@@ -443,14 +445,12 @@ export function executeRepairTool(
     case "select_appliance":
       return selectAppliance(state, input, source);
     case "get_repair_state":
-      return response(
+      return {
+        ok: true,
         state,
-        source,
-        action,
-        input,
-        true,
-        "Returned the current shared repair state and permitted next tools.",
-      );
+        message: "Returned the current shared repair state and permitted next tools.",
+        snapshot: getRepairSnapshot(state),
+      };
     case "start_diagnosis":
       return startDiagnosis(state, input, source);
     case "show_component":

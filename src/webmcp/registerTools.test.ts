@@ -49,6 +49,14 @@ describe("state-dependent WebMCP registration", () => {
       "get_repair_state",
     ]);
     const executeSignal = new AbortController().signal;
+    const stateOutput = (await tools[2]?.execute({}, { signal: executeSignal })) as {
+      structuredContent: Record<string, unknown>;
+    };
+    const serialized = JSON.stringify(stateOutput.structuredContent);
+    expect(serialized.length).toBeLessThan(1500);
+    expect(serialized).not.toContain("likelyCauses");
+    expect(serialized).not.toContain("catalogResults");
+    expect(state.activity).toHaveLength(1);
     await tools[1]?.execute(
       { applianceId: "lg-wm3400cw", productCode: "WM3400CW.ABWEVUS" },
       { signal: executeSignal },
@@ -94,5 +102,54 @@ describe("state-dependent WebMCP registration", () => {
       "record_observation",
       "stop_and_escalate",
     ]);
+    state = executeRepairTool(state, "record_observation", {
+      checkId: "safety-check",
+      resultId: "safe-ready",
+    }).state;
+    state = executeRepairTool(state, "record_observation", {
+      checkId: "inspect-drain-hose",
+      resultId: "hose-clear",
+    }).state;
+    state = executeRepairTool(state, "record_observation", {
+      checkId: "inspect-filter",
+      resultId: "filter-clear",
+    }).state;
+    capture(state);
+    expect(inventories.at(-1)).toEqual([
+      "get_repair_state",
+      "show_component",
+      "find_compatible_part",
+      "stop_and_escalate",
+    ]);
+  });
+
+  it("removes observation and part tools after a reported hazard", () => {
+    const tools: string[] = [];
+    Object.defineProperty(document, "modelContext", {
+      configurable: true,
+      value: {
+        registerTool: vi.fn(async (tool: WebMcpTool) => {
+          tools.push(tool.name);
+        }),
+      },
+    });
+    let state = createInitialRepairState();
+    state = executeRepairTool(state, "select_appliance", {
+      applianceId: "ge-gtd42easj2ww",
+      productCode: "GTD42EASJ2WW",
+    }).state;
+    state = executeRepairTool(state, "start_diagnosis", {
+      symptomId: "door-will-not-close",
+    }).state;
+    state = executeRepairTool(state, "record_observation", {
+      checkId: "safety-check",
+      resultId: "hazard-burning",
+    }).state;
+    registerClunkTools(
+      (name, input, source) => executeRepairTool(state, name, input, source),
+      () => undefined,
+      state,
+    );
+    expect(tools).toEqual(["search_supported_appliances", "select_appliance", "get_repair_state"]);
   });
 });

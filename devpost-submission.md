@@ -33,7 +33,7 @@ The home screen presents four recognizable problems and one purchase-ready flags
 
 The four flagship stories are:
 
-- LG `WM3400CW.ABWEVUS` washer → `AHA75693425` drain pump.
+- GE `GFW550SSN0WW` washer → `WH11X39237` drain pump/filter assembly.
 - Whirlpool `WDT750SAKZ1` dishwasher → `W11412291` drain pump.
 - GE `GTD42EASJ2WW` electric dryer → `WE01M10007` visible door strike.
 - GE `GSS25GYPFS` refrigerator → `XWFE` water filter.
@@ -48,6 +48,7 @@ This is not a chatbot wrapped around a parts catalog. WebMCP is the collaboratio
 - The person stays responsible for observations the browser cannot make.
 - Component focus gives both parties the same visual reference.
 - State-dependent registration exposes only valid next tools.
+- The primary UI makes that protocol transition visible: `record_observation` is available while Clunk waits for a person, then `find_compatible_part` unlocks after the report.
 - Accepted and rejected calls appear in the UI, making agent work inspectable.
 - Deterministic site rules can stop unsafe or unsupported actions even when an agent asks incorrectly.
 
@@ -66,7 +67,7 @@ Clunk contains eight literal `document.modelContext.registerTool` registrations:
 7. `find_compatible_part`
 8. `stop_and_escalate`
 
-Schemas are bounded with pack-derived enums and `additionalProperties: false`. The active registration set changes with repair state and is lifecycle-owned by an `AbortController`. Tool responses include text plus the same serializable state snapshot rendered on screen.
+Schemas are bounded with pack-derived enums and `additionalProperties: false`. The active registration set changes with repair state and is lifecycle-owned by an `AbortController`. Tool responses include text plus compact current-task structured content. `get_repair_state` is genuinely read-only and does not append an activity mutation.
 
 ## Safety and evidence
 
@@ -97,18 +98,18 @@ The production app is static HTML, CSS, JavaScript, JSON, original images, and l
 2. Pick any of the four appliance categories.
 3. Click **See the full answer**.
 4. Confirm the labeled example disclosure, highlighted location, exact SKU, compatible model, price/availability snapshot, and **Buy this part** link.
-5. Open **Agent activity** to inspect the exact shared actions and currently available WebMCP tools.
+5. Open **Human + agent activity** to inspect plain-language milestones, exact shared actions, and currently available WebMCP tools.
 6. Reset and use **Diagnose yours** to supply real observations. In the washer flow, report visible filter debris for a no-purchase answer, or report smoke/burning smell for the terminal safety proof.
 
 ### WebMCP browser
 
 In Chrome 149+, enable WebMCP testing, open the top-level live URL, and ask:
 
-> Use Clunk to show the complete washer example and explain each visible state change.
+> My electric dryer is GE GTD42EASJ2WW and the door will not stay closed. Select that exact model, show me the part of the door to inspect, and ask me for every physical observation. Do not infer what I see.
 
 Then reset and try:
 
-> My dishwasher is WDT750SAKZ1 and it will not drain. Ask me for each physical observation; do not infer what I see.
+> I smell burning and see smoke at the same dryer. Stop safely and do not offer a part or purchase path.
 
 ### Local verification
 
@@ -118,7 +119,7 @@ npx playwright install chromium
 npm run verify
 ```
 
-The quality gate runs TypeScript, ESLint, 28 unit/integration/eval tests, a production build, and 16 desktop/mobile browser tests covering all flagship links, real no-part flow, safety, top-load switching, 320px overflow, keyboard access, 44px touch targets, reduced motion, and automated WCAG A/AA.
+The quality gate passes TypeScript, ESLint, **33 deterministic unit/integration/scenario-fixture tests**, a production build, and **18 desktop/mobile browser tests** covering all flagship links, the visible baton pass, real no-part flow, safety, top-load switching, 320px overflow, keyboard access, 44px touch targets, reduced motion, and automated WCAG A/AA.
 
 ## AI usage
 
@@ -131,8 +132,8 @@ AI is present at the browser-agent layer, not inside the shipped app. A compatib
 - Original category/location visuals and interactive component hotspots.
 - Eight state-dependent WebMCP tools and one shared repair state.
 - Deterministic safety, ordering, compatibility, and rejection logic.
-- Visible agent activity, tool inspector, sources, and manual fallback.
-- Versioned WebMCP eval fixtures replayed through the engine.
+- Plain-language collaboration milestones, technical inspector, sources, and manual fallback.
+- Versioned deterministic WebMCP scenario fixtures plus a separate manual real-agent matrix and runbook.
 - Responsive, keyboard/touch accessible, reduced-motion, WCAG A/AA-tested UI.
 - Static credential-free Lovable hosting, public GitHub source, and MIT license.
 
@@ -144,13 +145,35 @@ AI is present at the browser-agent layer, not inside the shipped app. A compatib
 
 ## Under-three-minute recording outline
 
-- **0:00–0:15 — Hook:** Show the four problems. “Tell Clunk what broke. Get the part to buy.”
-- **0:15–0:38 — Instant proof:** Click the dishwasher example; show its highlighted pump, `W11412291`, seller, price, and buy link.
-- **0:38–1:08 — WebMCP proof:** Open Agent activity and show the shared select/start/observation/part calls plus state-dependent tool inventory.
-- **1:08–1:42 — Human–agent collaboration:** Reset; have the agent start a washer flow and ask the person about the hose/filter. Record visible debris and show the no-purchase answer.
-- **1:42–2:02 — Safety:** Reset and report smoke/burning smell. Show the terminal professional stop and missing part tool.
-- **2:02–2:32 — Ambition:** Switch across dryer and refrigerator examples; mention 31 source-backed models and the purchase-ready/guided-only distinction.
-- **2:32–2:48 — Close:** Static, open source, no login, no API key, no app-side model, deterministic evals and mobile/accessibility proof.
+- **0:00–0:12 — Outcome first:** Open the GE dryer result on `WE01M10007`, `$6.90`, dated availability, and the external GE seller. “This is where Clunk ends when the evidence is exact.”
+- **0:12–0:30 — Physical boundary:** Reset and search `GTD42EASJ2WW`. “The agent can manage the workflow, but it cannot see the appliance.”
+- **0:30–1:18 — Live baton pass:** The agent selects the exact model, starts the flow, and highlights the door strike. Show **Your turn — Clunk cannot see this** with `record_observation` available and part lookup locked. The person reports each observation; show **Observation recorded — part lookup unlocked**, then the exact part and seller.
+- **1:18–1:42 — Safety proof:** Reset, report smoke/burning smell, and show the terminal stop. Confirm the purchase path and part tool are absent.
+- **1:42–2:02 — Trust proof:** Run a debris/no-part case or unsupported-model search. Show that Clunk declines the purchase or refuses substitution.
+- **2:02–2:28 — Implementation proof:** Open the collaboration timeline and inspector; show literal state-dependent tools, compact structured state, source date, original visual, and the 31-model catalog.
+- **2:28–2:42 — Close:** “Clunk is a repair bench a person and their agent operate together.” Static, open source, no login, no API key, no app-side model.
+
+## Official submission requirements — checked 2026-08-27
+
+- [x] Working public live URL for ChatGPT’s in-app browser or Chrome with WebMCP enabled.
+- [x] Public code repository with source, assets, setup instructions, literal `document.modelContext.registerTool` code, and MIT license.
+- [x] Text description covering WebMCP fit, user experience, new person/agent collaboration, and implementation.
+- [ ] Public YouTube demo under three minutes **with audio**, clearly showing what was built and how WebMCP is used. The existing 45-second Guided-mode draft is b-roll, not the required finished video.
+- [ ] Confirm the final natural-language agent/client evidence to enter in the required testing field. Current browser/UI checks must not be described as real-agent runs.
+
+Official deadline: **September 3, 2026 at 1:00 PM Pacific Time**. No recent organizer announcements were present when checked.
+
+## Participant-specific Devpost fields
+
+- [ ] Submitter Type: choose Individual, Team of Individuals, or Organization.
+- [ ] Country of residence: select the participant/team country or countries.
+- [ ] App Status: choose New or Existing; if Existing, describe the work completed during the submission period.
+- [x] Live URL: https://clunk-appliance-assistant.lovable.app
+- [x] Public repo: https://github.com/mcostigliola321/clunk-your-appliance-assistant
+- [ ] Agent/client testing answer: update from the completed manual matrix; do not claim unrecorded natural-language runs.
+- [x] AI tools used draft: browser-agent layer in supported clients; Codex for implementation/testing/documentation; Lovable for static hosting and GitHub sync; generated original visuals documented in the repo.
+- [ ] Learning level: choose None, Moderate, or Significant.
+- [ ] Reusable career value: choose Yes or No.
 
 ## Known limitations
 
@@ -162,5 +185,6 @@ AI is present at the browser-agent layer, not inside the shipped app. A compatib
 
 ## Remaining submission tasks
 
-- Record the final Chrome 149 natural-language WebMCP exchange, add narration to the prepared 45-second captioned draft in `docs/hackathon-build/demo/`, upload it publicly, and replace the TODO.
-- Complete participant-specific Devpost form fields: submitter type, country, learning level, and reusable-career-value answer.
+- Run and record the manual real-agent matrix in `docs/webmcp-agent-evaluation.md`, including any failures.
+- Record the final natural-language WebMCP exchange, add audio to the prepared b-roll, upload the public YouTube video, and replace the TODO.
+- Complete the unchecked participant-specific Devpost fields above.

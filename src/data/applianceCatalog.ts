@@ -1,6 +1,6 @@
 import type { ApplianceCatalogEntry, BrandName, SourceReference } from "@/domain/types";
 
-const VERIFIED_ON = "2026-08-26";
+const VERIFIED_ON = "2026-08-27";
 
 function source(
   id: string,
@@ -57,8 +57,8 @@ const help = {
   geSupport: source(
     "ge-guidance",
     "manufacturer-troubleshooting",
-    "GE front-load washer owner guidance",
-    "https://www.geappliances.com/ge/service-and-support/",
+    "GE washer will not drain guidance",
+    "https://products.geappliances.com/appliance/gea-support-search-content?contentId=23081",
     "GE Appliances",
     "GE front-load washers",
   ),
@@ -224,14 +224,6 @@ const help = {
   ),
 };
 
-const lgPumpSource = source(
-  "lg-aha75693425",
-  "authorized-parts",
-  "LG AHA75693425 compatible-model listing",
-  "https://encompass.com/item/12525362/LG/AHA75693425/",
-  "Encompass",
-  "LG WM3400CW and WM4000HWA model families",
-);
 const samsungPumpSource = source(
   "samsung-dc97-20621a",
   "authorized-parts",
@@ -240,14 +232,6 @@ const samsungPumpSource = source(
   "Encompass",
   "WF45T6000AW/A5 and WF45B6300AW/US",
 );
-
-const lgPumpPurchase = {
-  seller: "Encompass",
-  url: "https://encompass.com/item/12525362/LG/AHA75693425/",
-  priceAtVerification: "$123.95",
-  availabilityAtVerification: "In stock",
-  lastVerified: VERIFIED_ON,
-};
 
 const samsungPumpPurchase = {
   seller: "Samsung Parts",
@@ -266,6 +250,15 @@ const whirlpoolDishwasherPumpSource = source(
   "Whirlpool WDT750SAKZ1",
 );
 
+const geWasherPumpSource = source(
+  "ge-wh11x39237-gfw550ssn0ww",
+  "manufacturer-part",
+  "GE GFW550SSN0WW cabinet parts and drain-pump replacement",
+  "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GFW550SSN0WW/4/0/0/0/CABINET_%281%29",
+  "GE Appliances",
+  "GE GFW550SSN0WW",
+);
+
 const geDryerStrikeSource = source(
   "ge-we01m10007",
   "manufacturer-part",
@@ -278,8 +271,8 @@ const geDryerStrikeSource = source(
 const geFilterSource = source(
   "ge-xwfe",
   "manufacturer-part",
-  "GE XWFE refrigerator water filter",
-  "https://www.geapplianceparts.com/store/parts/spec/XWFE",
+  "GE GSS25GYPFS replacement-parts listing",
+  "https://products.geappliances.com/appliance/gea-specs/gss25gypfs/parts",
   "GE Appliances",
   "GE GSS25GYPFS",
 );
@@ -351,17 +344,6 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
     checkProfile: "filter-access",
     modelUrl: "https://www.lg.com/us/support/product/lg-WM3400CW.ABWEVUS",
     troubleshootingSources: [help.lgDrain, help.lgFilter],
-    exactPart: {
-      id: "lg-aha75693425",
-      componentId: "drain-pump",
-      name: "Drain-pump assembly",
-      sku: "AHA75693425",
-      compatibleProductCodes: ["WM3400CW.ABWEVUS"],
-      compatibleModel: "LG WM3400CW.ABWEVUS",
-      installBoundary: "professional-only",
-      source: lgPumpSource,
-      purchase: lgPumpPurchase,
-    },
   }),
   entry({
     id: "lg-wm4000hwa",
@@ -375,17 +357,6 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
     checkProfile: "filter-access",
     modelUrl: "https://www.lg.com/us/support/product/lg-WM4000HWA.ABWEUUS",
     troubleshootingSources: [help.lgDrain, help.lgFilter],
-    exactPart: {
-      id: "lg-aha75693425-wm4000",
-      componentId: "drain-pump",
-      name: "Drain-pump assembly",
-      sku: "AHA75693425",
-      compatibleProductCodes: ["WM4000HWA.ABWEUUS"],
-      compatibleModel: "LG WM4000HWA.ABWEUUS",
-      installBoundary: "professional-only",
-      source: lgPumpSource,
-      purchase: lgPumpPurchase,
-    },
   }),
   entry({
     id: "samsung-wf45t6000aw",
@@ -442,12 +413,32 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
     brand: "GE",
     model: "GFW550SSNWW",
     label: "4.8 cu. ft. smart front-load washer",
-    aliases: ["GFW550SSNWW"],
-    productCodePrompt: "Enter the full engineering revision from the rating label.",
+    aliases: ["GFW550SSNWW", "GFW550SSN0WW"],
+    verifiedProductCodes: ["GFW550SSN0WW"],
+    productCodePrompt:
+      "Enter the complete engineering model, including the digit before WW (example: GFW550SSN0WW).",
     topology: "front-filter",
     checkProfile: "filter-access",
-    modelUrl: "https://products.geappliances.com/appliance/gea-specs/GFW550SSNWW/support",
+    modelUrl: "https://www.geapplianceparts.com/store/parts/assembly/GFW550SSN0WW",
     troubleshootingSources: [help.geSupport],
+    exactPart: {
+      id: "ge-wh11x39237-gfw550",
+      componentId: "drain-pump",
+      name: "Drain pump and filter assembly",
+      sku: "WH11X39237",
+      compatibleProductCodes: ["GFW550SSN0WW"],
+      compatibleModel: "GE GFW550SSN0WW",
+      location: "Low front pump and filter area",
+      installBoundary: "professional-only",
+      source: geWasherPumpSource,
+      purchase: {
+        seller: "GE Appliances Parts",
+        url: "https://www.geapplianceparts.com/store/parts/spec/WH11X39237",
+        priceAtVerification: "$87.79",
+        availabilityAtVerification: "Available to add to cart",
+        lastVerified: VERIFIED_ON,
+      },
+    },
   }),
   entry({
     id: "ge-gfw650ssnww",
@@ -729,7 +720,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
         seller: "GE Appliances Parts",
         url: "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTD42EASJ2WW/2/0/0/0/FRONT_PANEL_%26_DOOR",
         priceAtVerification: "$6.90",
-        availabilityAtVerification: "In stock",
+        availabilityAtVerification: "Available to add to cart",
         lastVerified: VERIFIED_ON,
       },
     },
@@ -800,7 +791,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
         seller: "GE Appliances Parts",
         url: "https://www.geapplianceparts.com/store/parts/spec/XWFE",
         priceAtVerification: "$54.99",
-        availabilityAtVerification: "In stock",
+        availabilityAtVerification: "Available to add to cart",
         lastVerified: VERIFIED_ON,
       },
     },

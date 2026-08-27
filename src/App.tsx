@@ -3,12 +3,14 @@ import { ChevronDown, RotateCcw } from "lucide-react";
 import { ActivityLog } from "@/components/ActivityLog";
 import { ApplianceDiagram } from "@/components/ApplianceDiagram";
 import { CauseStack } from "@/components/CauseStack";
+import { HandoffStatus } from "@/components/HandoffStatus";
 import { ModelFinder } from "@/components/ModelFinder";
 import { NextCheckPanel } from "@/components/NextCheckPanel";
 import { PartResult } from "@/components/PartResult";
 import { SourcePanel } from "@/components/SourcePanel";
 import { StatusPill } from "@/components/StatusPill";
 import { ToolInspector } from "@/components/ToolInspector";
+import { getActivityMilestone } from "@/components/activityMilestones";
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
 import { getCatalogEntry, getRepairPack, normalizeModel } from "@/domain/repairPack";
 import type {
@@ -22,7 +24,7 @@ import { useRepair } from "@/state/RepairProvider";
 
 export function App() {
   const { state, snapshot, invokeTool, reset } = useRepair();
-  const latestMessage = state.activity.at(-1)?.message ?? "Repair catalog ready.";
+  const latestMessage = getActivityMilestone(state.activity.at(-1));
   const hasSession = Boolean(state.applianceId || state.activity.length > 1);
 
   const searchModels = (modelQuery: string, brand: BrandName | null, kind: ApplianceKind) => {
@@ -175,7 +177,7 @@ export function App() {
                 <strong>Example answer</strong>
                 <span>
                   {snapshot.exampleSummary}. These observations are prefilled so you can see the
-                  complete WebMCP outcome immediately.
+                  complete deterministic fixture immediately. This is not an agent run.
                 </span>
               </div>
             ) : null}
@@ -223,6 +225,7 @@ export function App() {
                 onHighlight={highlightComponent}
               />
               <aside className="decision-column" aria-label="Diagnosis actions and results">
+                <HandoffStatus snapshot={snapshot} />
                 <NextCheckPanel
                   snapshot={snapshot}
                   onStart={startDiagnosis}
@@ -256,14 +259,17 @@ export function App() {
         <details className="protocol-disclosure">
           <summary>
             <span>
-              <strong>Agent activity</strong>
+              <strong>Human + agent activity</strong>
               <small>{latestMessage}</small>
             </span>
             <span>
               View WebMCP calls <ChevronDown size={18} aria-hidden="true" />
             </span>
           </summary>
-          <section className="protocol-band" aria-label="Agent activity and tool inspector">
+          <section
+            className="protocol-band"
+            aria-label="Human and agent activity and tool inspector"
+          >
             <ActivityLog activity={state.activity} />
             <ToolInspector activeTools={snapshot.validNextActions} onRun={runManualTool} />
           </section>

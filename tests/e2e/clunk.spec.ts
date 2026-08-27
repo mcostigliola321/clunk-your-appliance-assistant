@@ -8,10 +8,11 @@ test.beforeEach(async ({ page }) => {
 });
 
 async function selectLg(page: Page, query = "WM3400CW.ABWEVUS") {
+  await page.getByRole("button", { name: /01 Washer/ }).click();
   const input = page.getByRole("textbox", { name: "Washer model number" });
   await input.fill(query);
   await page.getByRole("button", { name: "Find model" }).click();
-  await page.getByRole("button", { name: /LG WM3400CW Purchase-ready/ }).click();
+  await page.getByRole("button", { name: /LG WM3400CW Guided checks only/ }).click();
 }
 
 async function reachFilterOutcome(page: Page, resultName: string) {
@@ -39,21 +40,22 @@ test("makes the outcome and four categories immediately clear", async ({ page })
 test("one click reaches a visible exact part and seller link", async ({ page }) => {
   await page.getByRole("button", { name: "See the full answer" }).click();
   await expect(
-    page.getByRole("heading", { name: "This is the part for your washer" }),
+    page.getByRole("heading", { name: "This is the part for your dryer" }),
   ).toBeVisible();
-  await expect(page.locator(".part-sku")).toHaveText("Part #AHA75693425");
-  await expect(page.getByText("$123.95", { exact: true })).toBeVisible();
+  await expect(page.locator(".part-sku")).toHaveText("Part #WE01M10007");
+  await expect(page.getByText("$6.90", { exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: /Buy this part/ })).toHaveAttribute(
     "href",
-    "https://encompass.com/item/12525362/LG/AHA75693425/",
+    "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTD42EASJ2WW/2/0/0/0/FRONT_PANEL_%26_DOOR",
   );
   await expect(page.getByText("Example answer")).toBeVisible();
+  await expect(page.getByText(/This is not an agent run/)).toBeVisible();
 });
 
 test("every category flagship ends at its verified purchase handoff", async ({ page }) => {
   const cases = [
+    { category: /01 Washer/, noun: "washer", sku: "WH11X39237" },
     { category: /02 Dishwasher/, noun: "dishwasher", sku: "W11412291" },
-    { category: /03 Electric dryer/, noun: "dryer", sku: "WE01M10007" },
     { category: /04 Refrigerator/, noun: "refrigerator", sku: "XWFE" },
   ];
   for (const item of cases) {
@@ -81,6 +83,7 @@ test("real observations can reach a no-purchase answer", async ({ page }) => {
 });
 
 test("switches the location guide for a supported top-load model", async ({ page }) => {
+  await page.getByRole("button", { name: /01 Washer/ }).click();
   const input = page.getByRole("textbox", { name: "Washer model number" });
   await input.fill("GTW585BSVWS");
   await page.getByRole("button", { name: "Find model" }).click();
@@ -97,7 +100,7 @@ test("keeps the exact-part result inside a 320px viewport", async ({ page }) => 
   await page.setViewportSize({ width: 320, height: 800 });
   await page.getByRole("button", { name: "See the full answer" }).click();
   await expect(
-    page.getByRole("heading", { name: "This is the part for your washer" }),
+    page.getByRole("heading", { name: "This is the part for your dryer" }),
   ).toBeVisible();
   const overflow = await page.evaluate(
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -106,13 +109,47 @@ test("keeps the exact-part result inside a 320px viewport", async ({ page }) => 
 });
 
 test("stops instead of exposing more steps after a reported hazard", async ({ page }) => {
-  await selectLg(page);
+  const input = page.getByRole("textbox", { name: "Electric dryer model number" });
+  await input.fill("GTD42EASJ2WW");
+  await page.getByRole("button", { name: "Find model" }).click();
+  await page.getByRole("button", { name: /GE GTD42EASJ2WW Purchase-ready/ }).click();
   await page.getByRole("button", { name: "Smoke or burning smell" }).click();
   await expect(
     page.getByRole("heading", { name: "A professional should continue." }),
   ).toBeVisible();
   await expect(page.getByText("Do not move the appliance or remove another panel.")).toBeVisible();
+  await expect(
+    page.getByText("Safety stop recorded — part lookup stays unavailable."),
+  ).toBeVisible();
+  await expect(page.getByRole("link", { name: /Buy this part/ })).toHaveCount(0);
+  await expect(
+    page.locator(".tool-inspector").getByText("find_compatible_part", { exact: true }),
+  ).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Safe to continue" })).toHaveCount(0);
+});
+
+test("shows the human-agent baton pass and active-tool transition", async ({ page }) => {
+  const input = page.getByRole("textbox", { name: "Electric dryer model number" });
+  await input.fill("GTD42EASJ2WW");
+  await page.getByRole("button", { name: "Find model" }).click();
+  await page.getByRole("button", { name: /GE GTD42EASJ2WW Purchase-ready/ }).click();
+  await expect(
+    page.getByRole("heading", { name: "Your turn — Clunk cannot see this." }),
+  ).toBeVisible();
+  await expect(page.getByText("Waiting for your observation")).toBeVisible();
+  await expect(page.getByText("Locked until you answer")).toBeVisible();
+  await page.getByRole("button", { name: "Safe to continue" }).click();
+  await expect(
+    page.getByRole("heading", { name: "Your turn — Clunk cannot see this." }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "The strike is cracked, bent, or missing" }).click();
+  await expect(
+    page.getByRole("heading", { name: "Observation recorded — part lookup unlocked." }),
+  ).toBeVisible();
+  await expect(page.getByText("Part lookup available")).toBeVisible();
+  await expect(page.locator(".part-sku")).toHaveText("Part #WE01M10007");
+  await expect(page.getByText("Available to add to cart", { exact: true })).toBeVisible();
+  await expect(page.getByText(/Price and availability were checked 2026-08-27/)).toBeVisible();
 });
 
 test("is keyboard reachable, touch sized, reduced-motion safe, and WCAG A/AA clean", async ({
@@ -123,12 +160,12 @@ test("is keyboard reachable, touch sized, reduced-motion safe, and WCAG A/AA cle
   await expect(example).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(
-    page.getByRole("heading", { name: "This is the part for your washer" }),
+    page.getByRole("heading", { name: "This is the part for your dryer" }),
   ).toBeVisible();
-  const hoseComponent = page.getByRole("button", { name: "Show Drain hose" });
-  await hoseComponent.focus();
+  const latchComponent = page.getByRole("button", { name: "Show Door latch" });
+  await latchComponent.focus();
   await page.keyboard.press("Enter");
-  await expect(hoseComponent).toHaveAttribute("aria-pressed", "true");
+  await expect(latchComponent).toHaveAttribute("aria-pressed", "true");
 
   if (testInfo.project.name === "mobile-chromium") {
     const undersizedButtons = await page.locator("button:visible").evaluateAll((buttons) =>

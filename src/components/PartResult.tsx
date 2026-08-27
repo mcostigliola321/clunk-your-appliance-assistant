@@ -8,12 +8,13 @@ import {
 } from "lucide-react";
 
 import type { PartOutcome } from "@/domain/types";
+import { isPurchaseReadyAvailability } from "@/domain/purchase";
 
 export function PartResult({ outcome }: { outcome: PartOutcome | null }) {
   if (!outcome) return null;
   const exact = outcome.status === "exact" && outcome.part;
   const purchase = outcome.part?.purchase;
-  const available = purchase?.availabilityAtVerification === "In stock";
+  const available = isPurchaseReadyAvailability(purchase?.availabilityAtVerification);
   const Icon = exact ? Wrench : outcome.status === "no-part-needed" ? CircleCheck : ShieldAlert;
 
   return (
@@ -70,7 +71,7 @@ export function PartResult({ outcome }: { outcome: PartOutcome | null }) {
                 <ExternalLink size={14} aria-hidden="true" />
               </a>
               <small className="purchase-verified">
-                Opens {purchase?.seller} in a new tab. Price and stock were checked{" "}
+                Opens {purchase?.seller} in a new tab. Price and availability were checked{" "}
                 {purchase?.lastVerified}.
               </small>
             </div>

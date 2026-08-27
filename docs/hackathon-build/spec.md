@@ -84,15 +84,15 @@ Runtime invariants verify schema version, unique IDs, component/check/source/res
 
 Tool contracts live in `src/webmcp/contracts.ts`. Enums are derived from the catalog and validated repair packs.
 
-| Phase | Available actions |
-| --- | --- |
-| Catalog | read, search, select |
-| Selected | read, search, select, start |
+| Phase        | Available actions                              |
+| ------------ | ---------------------------------------------- |
+| Catalog      | read, search, select                           |
+| Selected     | read, search, select, start                    |
 | Active check | read, show component, record observation, stop |
-| Result | read, show component, find part, stop |
-| Escalated | read, search, select |
+| Result       | read, show component, find part, stop          |
+| Escalated    | read, search, select                           |
 
-`registerClunkTools` contains eight literal `document.modelContext.registerTool` calls. The provider aborts and replaces the active registration group when this inventory changes. `get_repair_state` is annotated read-only. All callbacks return text, structured snapshot content, and `isError` for rejected calls.
+`registerClunkTools` contains eight literal `document.modelContext.registerTool` calls. The provider aborts and replaces the active registration group when this inventory changes. `get_repair_state` is annotated read-only, does not append an activity mutation, and returns compact current-task structured content. All callbacks return text, bounded structured content, and `isError` for rejected calls.
 
 ## Example replay
 
@@ -121,7 +121,8 @@ Every call uses source `example`, reaches the same engine, and is logged. The UI
 - Exact example replay for all four flagships.
 - No-part, guided-only, complete-code, unsupported-model, invalid-order, and hazard tests.
 - Literal registration, dynamic inventory, and shared callback tests.
-- Versioned natural-language eval fixtures replayed through the engine with schema-enum validation.
+- Versioned deterministic scenario fixtures replayed through the engine with schema-enum validation.
+- A separate manual real-agent matrix records client, model, prompt, discovered tools, argument correctness, state transitions, and failures without treating fixture replay as agent evidence.
 - React integration tests for home clarity, one-click seller link, category switching, real observations, visuals, and manual inspector.
 - Playwright desktop + Pixel 7 tests for all category handoffs, 320px overflow, keyboard, 44px touch targets, reduced motion, and WCAG A/AA.
 

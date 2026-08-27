@@ -147,3 +147,13 @@
 - Captured and visually inspected the final production purchase/activity and hazard-stop frames alongside the existing desktop and mobile home frames. Each capture waits for the original appliance asset to decode before recording so the complete location guide is visible.
 - Produced and visually spot-checked a 45-second, 1440×900, captioned MP4 from the public build. It covers the promise, dishwasher part/seller answer, shared WebMCP activity, safety stop, and catalog close; the recording notes explicitly preserve the distinction between this credential-free Guided-mode b-roll and the final Chrome 149 natural-language agent capture.
 - The public repository, detected MIT license, live Lovable site, refreshed Devpost story, source ledger, desktop/mobile screenshots, and complete verification output now satisfy checklist item 26. The remaining competition-critical capture is checklist item 17: three recorded natural-language agent sessions, followed by the public under-three-minute demo video.
+
+## 2026-08-27 — Fresh-eyes WebMCP-native correction
+
+- Made the person/agent baton pass primary UI: Clunk now says when it cannot see a physical check, shows `record_observation` as available, and visibly unlocks `find_compatible_part` after the person reports an observation.
+- Reworked the activity surface into source-distinct collaboration milestones while preserving raw WebMCP action names. Example replays are explicitly labeled deterministic fixtures and never presented as agent runs.
+- Tightened the WebMCP boundary with compact current-task structured output, a genuinely read-only `get_repair_state`, positive task descriptions, bounded validation, and tested state-dependent lifecycle swaps.
+- Re-audited all four commercial flagships on 2026-08-27. Encompass’s live fit checker contradicted the prior LG `WM3400CW.ABWEVUS` exact-part claim, so the LG purchase path was withdrawn. GE `GFW550SSN0WW` with `WH11X39237` now provides the exact-code washer flagship.
+- Relabeled `evals/webmcp-evals.json` as deterministic scenario fixtures and added a separate real-agent matrix/runbook. No natural-language agent run was manufactured; the matrix remains Not run until a supported prompt interface is available and recorded.
+- Refreshed the Devpost story and demo shot list around the GE dryer handoff, terminal safety, no-part trust proof, and the closing line: “Clunk is a repair bench a person and their agent operate together.”
+- Final local verification passed typecheck, lint, 33 deterministic unit/integration/scenario-fixture tests, a production build, and 18 Playwright tests across desktop and mobile, including the tool swap, terminal tool absence, 320px overflow, touch sizing, reduced motion, and automated WCAG A/AA.

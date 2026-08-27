@@ -2,6 +2,7 @@ import { ArrowRight, BadgeCheck, Search, ShoppingBag } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
+import { isPurchaseReadyAvailability } from "@/domain/purchase";
 import type { ApplianceKind, BrandName, RepairSnapshot } from "@/domain/types";
 
 const KINDS: Array<{ id: ApplianceKind; label: string; problem: string; glyph: string }> = [
@@ -28,12 +29,12 @@ export function ModelFinder({
 }: ModelFinderProps) {
   const [query, setQuery] = useState(snapshot.catalogQuery);
   const [brand, setBrand] = useState<BrandName | null>(null);
-  const [kind, setKind] = useState<ApplianceKind>(snapshot.catalogKind ?? "washer");
+  const [kind, setKind] = useState<ApplianceKind>(snapshot.catalogKind ?? "dryer");
   const activeKind = KINDS.find((item) => item.id === kind)!;
   const categoryEntries = APPLIANCE_CATALOG.filter((entry) => entry.kind === kind);
   const brands = [...new Set(categoryEntries.map((entry) => entry.brand))];
-  const flagship = categoryEntries.find(
-    (entry) => entry.exactPart?.purchase.availabilityAtVerification === "In stock",
+  const flagship = categoryEntries.find((entry) =>
+    isPurchaseReadyAvailability(entry.exactPart?.purchase.availabilityAtVerification),
   );
   const results = useMemo(
     () => snapshot.catalogResults.filter((item) => item.kind === kind),
@@ -80,7 +81,8 @@ export function ModelFinder({
             </div>
             <h3>{activeKind.problem}</h3>
             <p>
-              {flagship.brand} {flagship.model} · exact model, part, price, and seller
+              {flagship.brand} {flagship.verifiedProductCodes[0] ?? flagship.model} · exact model,
+              part, price, and seller
             </p>
           </div>
           <button
@@ -147,7 +149,7 @@ export function ModelFinder({
             results.slice(0, 8).map((item) => {
               const entry = APPLIANCE_CATALOG.find((candidate) => candidate.id === item.id)!;
               const purchaseReady = Boolean(
-                entry.exactPart?.purchase.availabilityAtVerification === "In stock",
+                isPurchaseReadyAvailability(entry.exactPart?.purchase.availabilityAtVerification),
               );
               const evidenceLabel = purchaseReady
                 ? "Purchase-ready"

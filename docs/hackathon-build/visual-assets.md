@@ -138,3 +138,16 @@ The multi-appliance review also used the exact flagship parts pages as location 
 ## Retired assets
 
 `clunk-washer-cutaway-v2.png` and `clunk-washer-top-load-cutaway-v1.png` failed the mechanical-credibility review because they showed duplicated or display-like plumbing and implausible component placement. They were removed from the public asset bundle and remain recoverable from Git history only.
+
+## Fresh-eyes capture set
+
+Captured from the reviewed local build on 2026-08-27 after all appliance images had decoded:
+
+- `docs/hackathon-build/screenshots/fresh-eyes-home-desktop.png` — outcome-first desktop entry with the GE dryer selected.
+- `docs/hackathon-build/screenshots/fresh-eyes-home-mobile.png` — mobile entry with all four categories visible in the first viewport.
+- `docs/hackathon-build/screenshots/fresh-eyes-handoff-desktop.png` — highlighted door strike, explicit human turn, and locked part lookup.
+- `docs/hackathon-build/screenshots/fresh-eyes-result-desktop.png` — visible tool swap plus exact `WE01M10007` seller outcome.
+- `docs/hackathon-build/screenshots/fresh-eyes-result-mobile.png` — stacked mobile handoff and part result.
+- `docs/hackathon-build/screenshots/fresh-eyes-safety-desktop.png` — terminal burning-smell stop with part lookup unavailable.
+
+These are local capture assets, not evidence that the reviewed commit has been published or that a natural-language browser agent completed the flow.

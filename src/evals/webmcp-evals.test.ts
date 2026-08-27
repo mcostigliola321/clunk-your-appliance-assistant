@@ -17,10 +17,12 @@ function allCalls() {
   ]);
 }
 
-describe("WebMCP eval fixtures", () => {
+describe("deterministic WebMCP scenario fixtures", () => {
   it("uses unique, fully described cases", () => {
-    expect(evalFixture.schemaVersion).toBe(3);
+    expect(evalFixture.schemaVersion).toBe(4);
     expect(evalFixture.fictional).toBe(false);
+    expect(evalFixture.artifactType).toBe("deterministic-scenario-fixtures");
+    expect(evalFixture.evidenceStatus).toContain("not real-agent evaluation results");
     expect(new Set(evalFixture.cases.map((evalCase) => evalCase.id)).size).toBe(
       evalFixture.cases.length,
     );

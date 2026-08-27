@@ -29,28 +29,28 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
     name: "search_supported_appliances",
     title: "Search supported appliances",
     purpose:
-      "Search Clunk's visible source-backed catalog by appliance kind, brand, or model text. Use this before selecting a model; never substitute a similar model when no match is returned.",
+      "Search Clunk's visible source-backed catalog by appliance kind, brand, or model text. Use a returned applianceId for exact selection; an empty result means the model is unsupported.",
     inputSchema: {
       type: "object",
       properties: {
         modelQuery: {
           type: "string",
           maxLength: 64,
-          description: "Full or partial model text, such as WM3400CW or WF45T6000AW/A5.",
+          description: "Full or partial model text, such as GTD42EASJ2WW or GFW550SSN0WW.",
         },
         brand: { type: "string", enum: brands },
         kind: { type: "string", enum: kinds },
       },
       additionalProperties: false,
     },
-    sampleInput: { modelQuery: "WM3400CW.ABWEVUS" },
+    sampleInput: { modelQuery: "GTD42EASJ2WW", kind: "dryer" },
     mutatesDiagnosis: false,
   },
   {
     name: "select_appliance",
     title: "Select an exact appliance model",
     purpose:
-      "Select an applianceId returned by catalog search. Include the complete productCode exactly as reported by the human when available; never invent a suffix or revision.",
+      "Select an applianceId returned by catalog search. Include the complete productCode exactly as the human read it from the appliance label when available.",
     inputSchema: {
       type: "object",
       properties: {
@@ -64,14 +64,14 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
       required: ["applianceId"],
       additionalProperties: false,
     },
-    sampleInput: { applianceId: "lg-wm3400cw", productCode: "WM3400CW.ABWEVUS" },
+    sampleInput: { applianceId: "ge-gtd42easj2ww", productCode: "GTD42EASJ2WW" },
     mutatesDiagnosis: true,
   },
   {
     name: "get_repair_state",
     title: "Get repair state",
     purpose:
-      "Read the visible catalog or diagnosis state, bounded observations, sources, compatibility status, and valid next tools. Call this before choosing the next action.",
+      "Read only the current catalog task or diagnosis step, including bounded observation choices and the tools available next.",
     inputSchema: empty,
     sampleInput: {},
     mutatesDiagnosis: false,
@@ -94,7 +94,7 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
     name: "show_component",
     title: "Show a diagram component",
     purpose:
-      "Focus any labeled component in the original shared diagram for explanation. This never records an observation, unlocks a future step, or exposes an internal repair instruction.",
+      "Focus a labeled component in the shared diagram so the human can inspect the correct visible location.",
     inputSchema: {
       type: "object",
       properties: {
@@ -113,7 +113,7 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
     name: "record_observation",
     title: "Record a human observation",
     purpose:
-      "Record exactly one bounded physical observation reported by the human for the current check. Never infer or fabricate an observation; hazard results immediately stop the flow.",
+      "Record one bounded physical observation explicitly reported by the human for the current check. Hazard results stop the workflow immediately.",
     inputSchema: {
       type: "object",
       properties: {
@@ -136,7 +136,7 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
     name: "find_compatible_part",
     title: "Resolve the part outcome",
     purpose:
-      "After safe observations, reveal one of four evidence-bounded outcomes: no part needed, exact verified part, complete product code required, or professional diagnosis required.",
+      "Resolve the completed observations to one evidence-bounded outcome: no part needed, exact verified part, complete product code required, or professional diagnosis required.",
     inputSchema: empty,
     sampleInput: {},
     mutatesDiagnosis: true,

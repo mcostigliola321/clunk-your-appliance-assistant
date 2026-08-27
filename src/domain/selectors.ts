@@ -1,3 +1,5 @@
+import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
+
 import { deriveCauses } from "./diagnosis";
 import {
   getCatalogEntry,
@@ -195,5 +197,91 @@ export function getRepairSnapshot(state: RepairState): RepairSnapshot {
     webMcpStatus: state.webMcpStatus,
     validNextActions: getValidNextActions(state),
     disclaimer: REAL_DATA_DISCLAIMER,
+  };
+}
+
+export function getWebMcpTaskSnapshot(state: RepairState) {
+  const snapshot = getRepairSnapshot(state);
+  const catalogActive = Boolean(state.catalogQuery || state.catalogKind || state.catalogBrand);
+  const handoff = state.escalation
+    ? "safety-stop"
+    : state.currentStepId
+      ? "human-observation-required"
+      : state.phase === "result" && !state.partOutcomeRevealed
+        ? "part-lookup-available"
+        : state.partOutcomeRevealed
+          ? "outcome-complete"
+          : state.applianceId
+            ? "start-diagnosis"
+            : "select-model";
+
+  return {
+    phase: state.phase,
+    handoff,
+    catalog: {
+      supportedModelCount: APPLIANCE_CATALOG.length,
+      supportedKinds: ["washer", "dishwasher", "dryer", "refrigerator"],
+      query: state.catalogQuery,
+      kind: state.catalogKind,
+      resultCount: state.catalogResultIds.length,
+      results:
+        !state.applianceId && catalogActive
+          ? snapshot.catalogResults.slice(0, 10).map((item) => ({
+              applianceId: item.id,
+              brand: item.brand,
+              model: item.model,
+            }))
+          : [],
+    },
+    task: state.applianceId
+      ? {
+          applianceId: state.applianceId,
+          appliance: snapshot.appliance,
+          productCode: snapshot.productCode,
+          verification: snapshot.verificationLabel,
+          symptomId: state.symptomId,
+          symptom: snapshot.symptom,
+          highlightedComponent: {
+            id: snapshot.highlightedComponent.id,
+            label: snapshot.highlightedComponent.label,
+            access: snapshot.highlightedComponent.access,
+          },
+          currentCheck: snapshot.currentStep
+            ? {
+                checkId: snapshot.currentStep.id,
+                label: snapshot.currentStep.label,
+                instruction: snapshot.currentStep.instruction,
+                stop: snapshot.currentStep.stop,
+                observations: snapshot.currentStep.results.map((result) => ({
+                  resultId: result.id,
+                  label: result.label,
+                })),
+              }
+            : null,
+          completedObservations: snapshot.completedChecks,
+          outcome: snapshot.partOutcome
+            ? {
+                status: snapshot.partOutcome.status,
+                title: snapshot.partOutcome.title,
+                message: snapshot.partOutcome.message,
+                part: snapshot.partOutcome.part
+                  ? {
+                      sku: snapshot.partOutcome.part.sku,
+                      name: snapshot.partOutcome.part.name,
+                      compatibleModel: snapshot.partOutcome.part.compatibleModel,
+                      source: snapshot.partOutcome.part.source.url,
+                      seller: snapshot.partOutcome.part.purchase.seller,
+                      purchaseUrl: snapshot.partOutcome.part.purchase.url,
+                      price: snapshot.partOutcome.part.purchase.priceAtVerification,
+                      availability: snapshot.partOutcome.part.purchase.availabilityAtVerification,
+                      checkedOn: snapshot.partOutcome.part.purchase.lastVerified,
+                    }
+                  : null,
+              }
+            : null,
+          escalation: snapshot.escalation,
+        }
+      : null,
+    nextTools: snapshot.validNextActions,
   };
 }

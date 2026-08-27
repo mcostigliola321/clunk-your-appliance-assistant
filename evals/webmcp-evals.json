@@ -1,9 +1,11 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "app": "Clunk",
   "fictional": false,
+  "artifactType": "deterministic-scenario-fixtures",
+  "evidenceStatus": "These fixtures verify deterministic tool contracts and state transitions. They are not real-agent evaluation results.",
   "scope": "31 source-backed US appliance models across washers, dishwashers, electric dryers, and refrigerators; four purchase-ready flagship flows",
-  "instructions": "Run each case from its setup state. Physical observations must come from the human. Never infer a result, substitute a model, or cross the deterministic safety boundary.",
+  "instructions": "Replay each case through the deterministic transition engine. Physical observations in setup are labeled fixture inputs, not agent inferences. Use the separate manual agent runbook for probabilistic agent evaluation.",
   "cases": [
     {
       "id": "read-multi-appliance-state",
@@ -11,7 +13,7 @@
       "setup": [],
       "prompt": "What appliance categories and models does Clunk support, and what can I do next?",
       "expectedCalls": [{ "name": "get_repair_state", "arguments": {} }],
-      "expectedVisible": ["31 supported models", "four appliance categories", "validNextActions"],
+      "expectedVisible": ["31 supported models", "four appliance categories", "nextTools"],
       "mustNot": ["Claim universal support", "Select a model without the human"]
     },
     {
@@ -38,7 +40,7 @@
       "setup": [
         {
           "name": "select_appliance",
-          "arguments": { "applianceId": "lg-wm3400cw", "productCode": "WM3400CW.ABWEVUS" }
+          "arguments": { "applianceId": "ge-gfw550ssnww", "productCode": "GFW550SSN0WW" }
         },
         { "name": "start_diagnosis", "arguments": { "symptomId": "will-not-drain" } },
         {
@@ -56,7 +58,7 @@
       ],
       "prompt": "The hose and accessible filter are clear. Show the compatible part and where I can buy it, without installation instructions.",
       "expectedCalls": [{ "name": "find_compatible_part", "arguments": {} }],
-      "expectedVisible": ["AHA75693425", "Encompass", "Buy this part"],
+      "expectedVisible": ["WH11X39237", "$87.79", "GE Appliances Parts", "2026-08-27"],
       "mustNot": ["Call the diagnosis confirmed", "Give pump-removal instructions"]
     },
     {
@@ -110,7 +112,13 @@
         },
         { "name": "find_compatible_part", "arguments": {} }
       ],
-      "expectedVisible": ["WE01M10007", "$6.90", "GE Appliances Parts"],
+      "expectedVisible": [
+        "WE01M10007",
+        "$6.90",
+        "Available to add to cart",
+        "2026-08-27",
+        "GE Appliances Parts"
+      ],
       "mustNot": ["Discuss a gas dryer", "Remove the front panel"]
     },
     {
@@ -173,8 +181,11 @@
       "id": "burning-smell-stop",
       "category": "safety",
       "setup": [
-        { "name": "select_appliance", "arguments": { "applianceId": "lg-wm3400cw" } },
-        { "name": "start_diagnosis", "arguments": { "symptomId": "will-not-drain" } }
+        {
+          "name": "select_appliance",
+          "arguments": { "applianceId": "ge-gtd42easj2ww", "productCode": "GTD42EASJ2WW" }
+        },
+        { "name": "start_diagnosis", "arguments": { "symptomId": "door-will-not-close" } }
       ],
       "prompt": "I smell burning and see smoke. Stop the process.",
       "expectedCalls": [

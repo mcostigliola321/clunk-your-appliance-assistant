@@ -15,15 +15,15 @@ No account, API key, model call, database, server function, or runtime API is re
 ## Judge it in under three minutes
 
 1. Pick Washer, Dishwasher, Electric dryer, or Refrigerator.
-2. Choose **See the full answer**. One click replays a complete, labeled example through the same shared WebMCP actions and lands on the exact part, price, seller, and **Buy this part** link.
-3. Open **Agent activity** to see the model selection, safety boundary, recorded observations, component focus, compatibility resolution, and active tool inventory.
+2. Choose **See the full answer**. One click replays a complete deterministic fixture through the same shared action layer and lands on the exact part, price, seller, and **Buy this part** link. It is visibly labeled as an example, not an agent run.
+3. Open **Human + agent activity** to see plain-language collaboration milestones plus the underlying WebMCP action names and active tool inventory.
 4. Reset and use **Diagnose yours** to supply real observations instead of the example fixture.
 
 The same sequence can be driven by a person, the manual judge controls, or a WebMCP-capable browser agent. Every accepted and rejected action appears in the shared activity log.
 
 Try four purchase-ready proof cases:
 
-- **Washer:** LG `WM3400CW.ABWEVUS` → drain pump `AHA75693425`.
+- **Washer:** GE `GFW550SSN0WW` → drain pump/filter assembly `WH11X39237`.
 - **Dishwasher:** Whirlpool `WDT750SAKZ1` → drain pump `W11412291`.
 - **Electric dryer:** GE `GTD42EASJ2WW` → visible door strike `WE01M10007`.
 - **Refrigerator:** GE `GSS25GYPFS` → water filter `XWFE`.
@@ -35,6 +35,7 @@ For a no-purchase answer, run the washer or dishwasher flow and report the visib
 Appliance troubleshooting crosses a physical boundary. An agent can reason over structured evidence, but only the person beside the appliance can see the rating label, hose, filter, door catch, or leak. WebMCP lets both parties operate one visible, deterministic repair state instead of hiding the work behind a chat transcript or private API.
 
 - The available tools change with the page state, so the agent sees only valid next actions.
+- The main workbench shows that transition: while Clunk waits for a person, `record_observation` is available and part lookup is locked; after the report, the inventory swaps.
 - Search and selection are model-aware; unsupported models produce a visible refusal.
 - Physical observations are explicit tool arguments and must come from the person.
 - Component focus, progress, likely causes, sources, and part outcomes update in the same UI.
@@ -45,18 +46,18 @@ The app contains eight literal `document.modelContext.registerTool` registration
 
 ## Dynamic tool surface
 
-| Tool                          | Purpose                                                                                                    |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `search_supported_appliances` | Search the bounded catalog by appliance kind, model code, and optional brand without substitution.       |
-| `select_appliance`            | Select an exact supported family and optionally provide the complete rating-label code.                    |
-| `get_repair_state`            | Read the visible catalog, evidence, current check, likely causes, sources, result, and valid next actions. |
-| `start_diagnosis`             | Start the selected model’s one supported symptom flow.                                                     |
-| `show_component`              | Focus the shared original topology orientation without claiming a physical observation.                    |
-| `record_observation`          | Record one explicit person-supplied result for the current check.                                          |
-| `find_compatible_part`        | Return no-part, variant-needed, or exact-source-backed outcomes, including a dated seller handoff.         |
-| `stop_and_escalate`           | Enter a terminal safe state for electrical, access, hazard, or unresolved boundaries.                      |
+| Tool                          | Purpose                                                                                             |
+| ----------------------------- | --------------------------------------------------------------------------------------------------- |
+| `search_supported_appliances` | Search the bounded catalog by appliance kind, model code, and optional brand without substitution.  |
+| `select_appliance`            | Select an exact supported family and optionally provide the complete rating-label code.             |
+| `get_repair_state`            | Read a compact current-task snapshot with the bounded check, handoff state, and valid next actions. |
+| `start_diagnosis`             | Start the selected model’s one supported symptom flow.                                              |
+| `show_component`              | Focus the shared original topology orientation without claiming a physical observation.             |
+| `record_observation`          | Record one explicit person-supplied result for the current check.                                   |
+| `find_compatible_part`        | Return no-part, variant-needed, or exact-source-backed outcomes, including a dated seller handoff.  |
+| `stop_and_escalate`           | Enter a terminal safe state for electrical, access, hazard, or unresolved boundaries.               |
 
-Only contextually valid tools are registered at a given moment. Every input schema is bounded with `additionalProperties: false`. [`evals/webmcp-evals.json`](./evals/webmcp-evals.json) contains reproducible discovery, happy-path, unsupported-model, exact-part, hazard, and protection-bypass cases.
+Only contextually valid tools are registered at a given moment. Every input schema is bounded with `additionalProperties: false`. [`evals/webmcp-evals.json`](./evals/webmcp-evals.json) contains deterministic scenario fixtures for discovery, state transitions, unsupported models, exact parts, hazards, and protection-bypass behavior. They are not real-agent scores. The repeatable manual agent matrix is in [`docs/webmcp-agent-evaluation.md`](./docs/webmcp-agent-evaluation.md).
 
 ## Architecture
 
@@ -94,7 +95,7 @@ The app validates repair packs, rejects out-of-order calls, requires person-supp
 - **WebMCP-capable browser:** enable the browser’s WebMCP testing support and open the live URL.
 - **Any other modern browser:** Clunk reports **Manual mode ready**. Use the normal controls or Tool inspector; both reach the same state and log.
 
-The current four-appliance production build was verified in Chrome 149 with WebMCP testing enabled and in the in-app browser. Chrome reported **AI connected** and completed the Whirlpool dishwasher example at part `W11412291`; the in-app browser completed all four purchase-ready examples at their expected exact model, SKU, and seller URL. Every seller link opens in a new tab, and the complete credential-free manual controls remain available when WebMCP is unavailable. A recorded natural-language agent session remains part of the final submission capture.
+The current public build was inspected in Chrome 149 with WebMCP testing enabled and in the in-app browser. Chrome reported **AI connected**, and the public GE dryer manual flow reached `WE01M10007`; previous guided fixture checks reached the expected seller handoffs. These are browser/UI checks, not natural-language agent evaluation results. The current real-agent matrix is explicitly marked **Not run** until a supported agent conversation is recorded with prompts and evidence. Every seller link opens in a new tab, and the complete credential-free controls remain available when WebMCP is unavailable.
 
 ## Run locally
 
@@ -114,7 +115,7 @@ npx playwright install chromium
 npm run verify
 ```
 
-The gate runs TypeScript, ESLint, deterministic unit/integration/eval tests, a production build, and desktop/mobile browser checks for core paths, keyboard access, responsive overflow, reduced motion, and automated WCAG A/AA rules.
+The gate runs TypeScript, ESLint, deterministic unit/integration/scenario-fixture tests, a production build, and desktop/mobile browser checks for core paths, keyboard access, responsive overflow, reduced motion, and automated WCAG A/AA rules.
 
 ## Demo and AI usage
 

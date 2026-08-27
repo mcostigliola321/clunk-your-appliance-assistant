@@ -2,6 +2,8 @@ import { Bot, Check, CircleUserRound, Code2, X } from "lucide-react";
 
 import type { ActivityEvent } from "@/domain/types";
 
+import { getActivityMilestone } from "./activityMilestones";
+
 const SOURCE_LABELS: Record<ActivityEvent["source"], string> = {
   agent: "Agent",
   human: "You",
@@ -18,12 +20,12 @@ function SourceIcon({ source }: { source: ActivityEvent["source"] }) {
 }
 
 export function ActivityLog({ activity }: { activity: ActivityEvent[] }) {
-  const recent = activity.slice(-5).reverse();
+  const recent = activity.slice(-8);
 
   return (
     <section className="activity-log" aria-labelledby="activity-title" role="region">
       <div className="section-heading">
-        <h2 id="activity-title">What Clunk did</h2>
+        <h2 id="activity-title">Collaboration timeline</h2>
         <span className="activity-count">{activity.length} updates</span>
       </div>
       <ol className="activity-list">
@@ -35,9 +37,10 @@ export function ActivityLog({ activity }: { activity: ActivityEvent[] }) {
             <span className="activity-event">
               <span>
                 <strong>{SOURCE_LABELS[event.source]}</strong>
-                <code>{event.action}</code>
+                <span className="activity-milestone">{getActivityMilestone(event)}</span>
               </span>
               <span>{event.message}</span>
+              <code className="activity-action">{event.action}</code>
             </span>
             <span className={`activity-outcome activity-outcome--${event.outcome}`}>
               {event.outcome === "accepted" ? (
