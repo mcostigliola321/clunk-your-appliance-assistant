@@ -130,10 +130,10 @@ export function extractShopifyPartOffers(
 }
 
 export function getClunkUcpProfileUrl(): string {
-  if (typeof window === "undefined") return SHOPIFY_REFERENCE_PROFILE_URL;
-  if (["localhost", "127.0.0.1"].includes(window.location.hostname))
-    return SHOPIFY_REFERENCE_PROFILE_URL;
-  return `${window.location.origin}/ucp-agent-profile.json`;
+  // Shopify discovery requires cache headers that static Lovable assets cannot
+  // currently declare. The official capability-equivalent reference profile
+  // keeps the credential-free browser lookup portable across static hosts.
+  return SHOPIFY_REFERENCE_PROFILE_URL;
 }
 
 export async function searchShopifyPartOffers(
