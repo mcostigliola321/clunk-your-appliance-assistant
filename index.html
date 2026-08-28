@@ -3,29 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#f2f6f3" />
     <meta
       name="description"
-      content="Clunk is a source-backed WebMCP repair bench for washers, dishwashers, electric dryers, and refrigerators."
+      content="Clunk is a visual appliance field guide that shows homeowners where to look and names a part only when the exact model proves it fits."
     />
     <meta property="og:title" content="Clunk" />
     <meta
       property="og:description"
-      content="Tell it what's broken. Clunk shows you what to check and resolves the part only when the evidence is exact."
+      content="Choose the appliance and problem. Clunk shows one safe place to look at a time and keeps the exact part, seller, and safety boundary clear."
     />
     <meta property="og:type" content="website" />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/clunk-electric-dryer-topology-v2.png"
-      fetchpriority="high"
-    />
-    <link rel="preload" as="image" href="/assets/clunk-washer-front-load-topology-v3.png" />
-    <link rel="preload" as="image" href="/assets/clunk-dishwasher-topology-v1.png" />
-    <link rel="preload" as="image" href="/assets/clunk-refrigerator-topology-v1.png" />
-    <title>Clunk · Find the appliance part to buy</title>
+    <title>Clunk · A visual field guide for appliance problems</title>
   </head>
   <body>
+    <!--
+      THESIS: The appliance is the interface; Clunk refuses the search-first repair directory.
+      OWN-WORLD: Cool field-paper, graphite ink, tide green, and citron markers frame large cutaway plates with precise hairlines and direct controls.
+      STORY: Choose an appliance, pick its supported problem, identify the exact model, observe one highlighted location, then act on a clearly separated part, fix, or professional stop.
+      FIRST VIEWPORT: A plain-language question and four substantial cutaway actions fill the field; each has one primary consumer action and a quieter completed-example route.
+      FORM: User-pinned Approachable Precision visual field guide, code-led; seed 3ce3190a.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+    -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

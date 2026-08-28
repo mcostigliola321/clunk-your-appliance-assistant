@@ -14,17 +14,29 @@ function renderClunk() {
   );
 }
 
+async function reachModelSearch(
+  user: ReturnType<typeof userEvent.setup>,
+  appliance: RegExp,
+  problem: RegExp,
+) {
+  await user.click(screen.getByRole("button", { name: appliance }));
+  expect(screen.getByRole("heading", { name: "What is it doing?" })).toBeVisible();
+  expect(screen.queryByRole("combobox", { name: /model number/i })).not.toBeInTheDocument();
+  await user.click(screen.getByRole("button", { name: problem }));
+}
+
 async function selectLg(user: ReturnType<typeof userEvent.setup>, query = "WM3400CW.ABWEVUS") {
-  await user.click(screen.getByRole("button", { name: /01 Washer/ }));
-  const input = screen.getByRole("combobox", { name: "Washer model number" });
+  await reachModelSearch(user, /Choose Washer/, /Supported now Won't drain/);
+  const input = screen.getByRole("searchbox", { name: "Washer model number" });
   await user.clear(input);
   await user.type(input, query);
   await user.click(screen.getByRole("button", { name: "Find model" }));
   await user.click(screen.getByRole("button", { name: /LG WM3400CW Guided checks only/ }));
 }
 
-describe("Clunk repair bench", () => {
+describe("Clunk visual field guide", () => {
   beforeEach(() => {
+    window.localStorage.clear();
     vi.stubGlobal(
       "fetch",
       vi.fn(async (_url: string | URL | Request, init?: RequestInit) => {
@@ -65,47 +77,60 @@ describe("Clunk repair bench", () => {
 
   afterEach(() => {
     cleanup();
+    window.localStorage.clear();
     Reflect.deleteProperty(document, "modelContext");
     vi.unstubAllGlobals();
   });
 
-  it("makes the promise and four appliance categories immediately clear", () => {
+  it("leads with visual appliance actions and a secondary completed path", () => {
     renderClunk();
-    expect(
-      screen.getByRole("heading", { name: "Tell Clunk what broke. Get the part to buy." }),
-    ).toBeVisible();
+    expect(screen.getByRole("heading", { name: "What are you fixing?" })).toBeVisible();
     expect(screen.getByText("131 supported models")).toBeVisible();
-    expect(screen.getByRole("button", { name: /01 Washer/ })).toBeVisible();
-    expect(screen.getByRole("button", { name: /02 Dishwasher/ })).toBeVisible();
-    expect(screen.getByRole("button", { name: /03 Electric dryer/ })).toBeVisible();
-    expect(screen.getByRole("button", { name: /04 Refrigerator/ })).toBeVisible();
-    expect(screen.getByRole("button", { name: "See the full answer" })).toBeVisible();
-    expect(screen.getByRole("button", { name: /Find my model number/ })).toBeVisible();
-  });
-
-  it("filters the expanded catalog by honest evidence tier and brand", async () => {
-    const user = userEvent.setup();
-    renderClunk();
-    await user.click(
-      screen.getByText("Browse 25 supported electric dryer models", { exact: false }),
+    for (const label of [
+      /Choose Washer — Won't drain/,
+      /Choose Dishwasher — Won't drain/,
+      /Choose Electric dryer — Door won't close/,
+      /Choose Refrigerator — Water is slow/,
+    ])
+      expect(screen.getByRole("button", { name: label })).toBeVisible();
+    expect(screen.getByAltText("Cutaway view of an electric dryer")).toHaveAttribute(
+      "src",
+      "/assets/thumbs/clunk-dryer-240.png",
     );
-    await user.click(screen.getByRole("button", { name: "Checks only 18" }));
-    await user.click(screen.getByRole("button", { name: "Bosch" }));
-    expect(
-      screen.getByRole("button", { name: /Bosch WTG86403UC\/01 Guided checks only/ }),
-    ).toBeVisible();
-    expect(
-      screen.queryByRole("button", { name: /GE GTD42EASJ2WW Purchase-ready/ }),
-    ).not.toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: "Purchase-ready 7" }));
-    expect(screen.getByText("No purchase-ready models in this view.")).toBeVisible();
+    expect(screen.getByRole("button", { name: "See completed dryer example" })).toBeVisible();
+    expect(screen.getByText("All supported appliances")).toBeVisible();
   });
 
-  it("makes model-label discovery a complete manual path", async () => {
+  it("makes the supported problem an honest step before model lookup", async () => {
     const user = userEvent.setup();
     renderClunk();
-    await user.click(screen.getByRole("button", { name: /01 Washer/ }));
-    await user.click(screen.getByRole("button", { name: /Find my model number/ }));
+    await user.click(screen.getByRole("button", { name: /Choose Refrigerator/ }));
+    expect(screen.getByText(/Current coverage is deliberately narrow/)).toBeVisible();
+    expect(screen.getByText(/Other refrigerator problems are not supported yet/)).toBeVisible();
+    await user.click(screen.getByRole("button", { name: /Supported now Water is slow/ }));
+    expect(screen.getByRole("heading", { name: "Find the model label." })).toBeVisible();
+    expect(screen.getByRole("searchbox", { name: "Refrigerator model number" })).toBeVisible();
+  });
+
+  it("browses the expanded catalog hierarchically without blurring coverage tiers", async () => {
+    const user = userEvent.setup();
+    renderClunk();
+    await reachModelSearch(user, /Choose Electric dryer/, /Supported now Door won't close/);
+    await user.click(screen.getByText("Browse by brand"));
+    await user.click(screen.getByRole("button", { name: "Checks only 18" }));
+    await user.click(screen.getByText("Bosch"));
+    expect(screen.getByRole("button", { name: /WTG86403UC\/01 Guided checks only/ })).toBeVisible();
+    await user.click(screen.getByRole("button", { name: "Purchase-ready 7" }));
+    expect(
+      screen.queryByRole("button", { name: /WTG86403UC\/01 Guided checks only/ }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("makes model-label discovery a complete visual path", async () => {
+    const user = userEvent.setup();
+    renderClunk();
+    await reachModelSearch(user, /Choose Washer/, /Supported now Won't drain/);
+    await user.click(screen.getByRole("button", { name: /Show me where the label is/ }));
     expect(screen.getByRole("heading", { name: "Find the washer label" })).toBeVisible();
     expect(screen.getByText(/Open the door. Check the door rim/)).toBeVisible();
     expect(screen.getByText("Serial · S/N")).toBeVisible();
@@ -114,13 +139,14 @@ describe("Clunk repair bench", () => {
     await user.click(screen.getByRole("button", { name: "Lid on top" }));
     expect(screen.getByText(/Lift the lid. Check the tub rim/)).toBeVisible();
     await user.click(screen.getByRole("button", { name: /I found the model line/ }));
-    expect(screen.getByRole("combobox", { name: "Washer model number" })).toHaveFocus();
+    expect(screen.getByRole("searchbox", { name: "Washer model number" })).toHaveFocus();
   });
 
-  it("guides serial mistakes and partial model suggestions without claiming exactness", async () => {
+  it("guides serial mistakes and partial suggestions without claiming exactness", async () => {
     const user = userEvent.setup();
     renderClunk();
-    const input = screen.getByRole("combobox", { name: "Electric dryer model number" });
+    await reachModelSearch(user, /Choose Electric dryer/, /Supported now Door won't close/);
+    const input = screen.getByRole("searchbox", { name: "Electric dryer model number" });
     await user.type(input, "S/N: 123ABC");
     expect(screen.getByRole("alert")).toHaveTextContent("labeled as a serial number");
     await user.clear(input);
@@ -130,62 +156,51 @@ describe("Clunk repair bench", () => {
     expect(screen.getByRole("heading", { name: "GE GTD42EASJ2WW" })).toBeVisible();
     expect(screen.getByText(/Model family selected/)).toBeVisible();
     const fullModelInput = screen.getByRole("textbox", { name: "Full model number" });
-    expect(fullModelInput).toBeVisible();
-    expect(screen.getByRole("button", { name: "Start diagnosis" })).toBeVisible();
     await user.type(fullModelInput, "S/N: 123ABC456");
     await user.click(screen.getByRole("button", { name: "Start diagnosis" }));
     expect(screen.getByRole("alert")).toHaveTextContent("labeled as a serial number");
   });
 
-  it("takes one click directly to the flagship dryer part and seller", async () => {
+  it("takes the completed dryer example to its exact part and seller", async () => {
     const user = userEvent.setup();
     renderClunk();
-    await user.click(screen.getByRole("button", { name: "See the full answer" }));
+    await user.click(screen.getByRole("button", { name: "See completed dryer example" }));
     expect(screen.getByRole("heading", { name: "This is the part for your dryer" })).toBeVisible();
     expect(screen.getByText("Part #WE01M10007")).toBeVisible();
     expect(await screen.findByRole("heading", { name: "Live offers from Shopify" })).toBeVisible();
-    expect(screen.getByText(/exact part number WE01M10007 only/)).toBeVisible();
     expect(
       await screen.findByRole("link", {
         name: "Open Shopify test seller cart for part WE01M10007 in a new tab",
       }),
     ).toHaveAttribute("href", "https://shopify.example/cart/WE01M10007");
-    expect(screen.getByText("Example answer")).toBeVisible();
-    expect(screen.getByText(/This is not an agent run/)).toBeVisible();
+    expect(screen.getByText("Completed example")).toBeVisible();
+    expect(screen.getByText(/answers are prefilled/)).toBeVisible();
   });
 
-  it("switches to a dishwasher flagship and reaches its seller link", async () => {
+  it("switches directly to a dishwasher completed example", async () => {
     const user = userEvent.setup();
     renderClunk();
-    await user.click(screen.getByRole("button", { name: /02 Dishwasher/ }));
-    await user.click(screen.getByRole("button", { name: "See the full answer" }));
+    await user.click(screen.getByRole("button", { name: "See completed dishwasher example" }));
     expect(
       screen.getByRole("heading", { name: "This is the part for your dishwasher" }),
     ).toBeVisible();
     expect(screen.getByText("Part #W11412291")).toBeVisible();
-    expect(
-      await screen.findByRole("link", {
-        name: "Open Shopify test seller cart for part W11412291 in a new tab",
-      }),
-    ).toHaveAttribute("href", "https://shopify.example/cart/W11412291");
   });
 
-  it("keeps the verified part visible when Shopify needs a retry", async () => {
+  it("keeps the verified part visible when the live seller lookup needs a retry", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn(async () => Promise.reject(new Error("catalog unavailable"))),
     );
     const user = userEvent.setup();
     renderClunk();
-    await user.click(screen.getByRole("button", { name: "See the full answer" }));
-
+    await user.click(screen.getByRole("button", { name: "See completed dryer example" }));
     expect(screen.getByText("Part #WE01M10007")).toBeVisible();
     expect(screen.getByText(/Shopify’s live catalog is temporarily unavailable/)).toBeVisible();
     expect(screen.getByRole("button", { name: "Retry" })).toBeVisible();
-    expect(screen.getByText(/Clunk verified the model-to-part match/)).toBeVisible();
   });
 
-  it("completes a real no-part-needed blocked-filter path", async () => {
+  it("completes a real checks-only no-part-needed path", async () => {
     const user = userEvent.setup();
     renderClunk();
     await selectLg(user);
@@ -198,34 +213,30 @@ describe("Clunk repair bench", () => {
     expect(screen.queryByRole("link", { name: /Buy this part/ })).not.toBeInTheDocument();
   });
 
-  it("makes the human observation and WebMCP tool swap visible", async () => {
+  it("keeps WebMCP handoff evidence in the secondary technical disclosure", async () => {
     const user = userEvent.setup();
     renderClunk();
-    const input = screen.getByRole("combobox", { name: "Electric dryer model number" });
+    await reachModelSearch(user, /Choose Electric dryer/, /Supported now Door won't close/);
+    const input = screen.getByRole("searchbox", { name: "Electric dryer model number" });
     await user.type(input, "GTD42EASJ2WW");
     await user.click(screen.getByRole("button", { name: "Find model" }));
     await user.click(screen.getByRole("button", { name: /GE GTD42EASJ2WW Purchase-ready/ }));
-    expect(
-      screen.getByRole("heading", { name: "Your turn — Clunk cannot see this." }),
-    ).toBeVisible();
+    expect(screen.queryByText("Waiting for your observation")).not.toBeVisible();
+    await user.click(screen.getByText("For judges and developers"));
     expect(screen.getByText("Waiting for your observation")).toBeVisible();
-    expect(screen.getByText("Locked until you answer")).toBeVisible();
     await user.click(screen.getByRole("button", { name: "Safe to continue" }));
     await user.click(
       screen.getByRole("button", { name: "The strike is cracked, bent, or missing" }),
     );
-    expect(
-      screen.getByRole("heading", { name: "Observation recorded — part lookup unlocked." }),
-    ).toBeVisible();
     expect(screen.getByText("Part lookup available")).toBeVisible();
     expect(screen.getByText("Part #WE01M10007")).toBeVisible();
   });
 
-  it("switches the visual to a top-load model", async () => {
+  it("switches the persistent cutaway to a top-load model", async () => {
     const user = userEvent.setup();
     renderClunk();
-    await user.click(screen.getByRole("button", { name: /01 Washer/ }));
-    const input = screen.getByRole("combobox", { name: "Washer model number" });
+    await reachModelSearch(user, /Choose Washer/, /Supported now Won't drain/);
+    const input = screen.getByRole("searchbox", { name: "Washer model number" });
     await user.type(input, "GTW585BSVWS");
     await user.click(screen.getByRole("button", { name: "Find model" }));
     await user.click(screen.getByRole("button", { name: /GE GTW585BSVWS Guided checks only/ }));
@@ -234,10 +245,41 @@ describe("Clunk repair bench", () => {
     ).toHaveAttribute("src", "/assets/clunk-washer-top-load-topology-v2.png");
   });
 
-  it("runs an available manual WebMCP tool through shared activity", async () => {
+  it("can undo the last safe observation and answer again", async () => {
     const user = userEvent.setup();
     renderClunk();
-    await user.click(screen.getByText("Human + agent activity"));
+    await reachModelSearch(user, /Choose Electric dryer/, /Supported now Door won't close/);
+    const input = screen.getByRole("searchbox", { name: "Electric dryer model number" });
+    await user.type(input, "GTD42EASJ2WW");
+    await user.click(screen.getByRole("button", { name: "Find model" }));
+    await user.click(screen.getByRole("button", { name: /GE GTD42EASJ2WW Purchase-ready/ }));
+    await user.click(screen.getByRole("button", { name: "Safe to continue" }));
+    expect(screen.getByRole("button", { name: "Change the last answer" })).toBeVisible();
+    await user.click(screen.getByRole("button", { name: "Change the last answer" }));
+    expect(screen.getByRole("button", { name: "Safe to continue" })).toBeVisible();
+  });
+
+  it("restores diagnosis progress after an interruption", async () => {
+    const user = userEvent.setup();
+    const view = renderClunk();
+    await reachModelSearch(user, /Choose Electric dryer/, /Supported now Door won't close/);
+    const input = screen.getByRole("searchbox", { name: "Electric dryer model number" });
+    await user.type(input, "GTD42EASJ2WW");
+    await user.click(screen.getByRole("button", { name: "Find model" }));
+    await user.click(screen.getByRole("button", { name: /GE GTD42EASJ2WW Purchase-ready/ }));
+    await user.click(screen.getByRole("button", { name: "Safe to continue" }));
+    expect(screen.getByRole("button", { name: "The strike looks intact" })).toBeVisible();
+    view.unmount();
+
+    renderClunk();
+    expect(screen.getByRole("heading", { name: "Look at the door catch" })).toBeVisible();
+    expect(screen.getByRole("button", { name: "Change the last answer" })).toBeVisible();
+  });
+
+  it("runs an available WebMCP tool through the shared technical activity", async () => {
+    const user = userEvent.setup();
+    renderClunk();
+    await user.click(screen.getByText("For judges and developers"));
     await user.click(screen.getByText("Select an exact appliance model"));
     const inspector = screen.getByRole("region", { name: "WebMCP tools" });
     await user.click(

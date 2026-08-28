@@ -1,4 +1,4 @@
-import { ArrowRight, CircleCheck, OctagonAlert, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, CircleCheck, OctagonAlert, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 
 import type { RepairSnapshot, ResultId } from "@/domain/types";
@@ -9,8 +9,18 @@ interface NextCheckPanelProps {
   onResult: (resultId: ResultId) => void;
   onFindPart: () => void;
   onUseProductCode: (productCode: string) => { ok: boolean; message: string } | null;
+  onBack: () => void;
+  canUndo: boolean;
   exactPartAvailable: boolean;
   exampleProductCode: string | null;
+}
+
+function BackButton({ onBack }: { onBack: () => void }) {
+  return (
+    <button className="diagnosis-back" type="button" onClick={onBack}>
+      <ArrowLeft size={17} aria-hidden="true" /> Change the last answer
+    </button>
+  );
 }
 
 function ModelCodeStep({
@@ -28,7 +38,9 @@ function ModelCodeStep({
         <div className="next-check__status">
           <ShieldCheck size={17} aria-hidden="true" /> Guided checks
         </div>
-        <h2 id="next-check-title">We can show you what to check.</h2>
+        <h2 id="next-check-title" tabIndex={-1}>
+          We can show you what to check.
+        </h2>
         <p>
           This model does not have a verified part link yet. Clunk will still show safe locations
           and a clear stopping point.
@@ -44,7 +56,9 @@ function ModelCodeStep({
       <div className="next-check__status">
         <CircleCheck size={17} aria-hidden="true" /> Purchase-ready model
       </div>
-      <h2 id="next-check-title">Confirm the full model number.</h2>
+      <h2 id="next-check-title" tabIndex={-1}>
+        Confirm the full model number.
+      </h2>
       <p>
         Use the complete number on the appliance label. That is what makes the final part link
         specific.
@@ -96,7 +110,7 @@ function ModelCodeStep({
 }
 
 export function NextCheckPanel(props: NextCheckPanelProps) {
-  const { snapshot, onStart, onResult, onFindPart } = props;
+  const { snapshot, onStart, onResult, onFindPart, onBack, canUndo } = props;
   if (!snapshot.appliance) return null;
   if (!snapshot.symptom) return <ModelCodeStep {...props} />;
   if (snapshot.escalation) {
@@ -105,20 +119,34 @@ export function NextCheckPanel(props: NextCheckPanelProps) {
         <div className="next-check__status">
           <OctagonAlert size={17} aria-hidden="true" /> Stop here
         </div>
-        <h2 id="next-check-title">A professional should continue.</h2>
+        <h2 id="next-check-title" tabIndex={-1}>
+          A professional should continue.
+        </h2>
         <p>{snapshot.escalation.message}</p>
         <div className="safety-boundary">Do not move the appliance or remove another panel.</div>
+        <p className="service-next-step">
+          Contact an independent qualified appliance technician and share the complete model number
+          plus what you observed. Clunk does not assign or endorse a service company.
+        </p>
       </section>
     );
   }
-  if (snapshot.partOutcome) return null;
+  if (snapshot.partOutcome)
+    return canUndo ? (
+      <div className="result-back">
+        <BackButton onBack={onBack} />
+      </div>
+    ) : null;
   if (!snapshot.currentStep) {
     return (
       <section className="next-check next-check--result" aria-labelledby="next-check-title">
         <div className="next-check__status">
           <CircleCheck size={17} aria-hidden="true" /> Answer ready
         </div>
-        <h2 id="next-check-title">Here is the best next step.</h2>
+        {canUndo ? <BackButton onBack={onBack} /> : null}
+        <h2 id="next-check-title" tabIndex={-1}>
+          Here is the best next step.
+        </h2>
         <p>{snapshot.likelyCauses[0]?.explanation}</p>
         <button className="button button--primary button--wide" type="button" onClick={onFindPart}>
           Show the part or fix <ArrowRight size={18} aria-hidden="true" />
@@ -129,23 +157,26 @@ export function NextCheckPanel(props: NextCheckPanelProps) {
   const check = snapshot.currentStep;
   return (
     <section className="next-check" aria-labelledby="next-check-title">
+      {canUndo ? <BackButton onBack={onBack} /> : null}
       <div className="next-check__status">
         <ShieldCheck size={17} aria-hidden="true" />{" "}
         {check.id === "safety-check" ? "Make it safe" : "Look here"}
       </div>
       <div className="step-count">Step {Object.keys(snapshot.completedChecks).length + 1}</div>
-      <h2 id="next-check-title">{check.label}</h2>
+      <h2 id="next-check-title" tabIndex={-1}>
+        {check.label}
+      </h2>
       <p className="instruction">{check.instruction}</p>
       <p className="stop-copy">
         <strong>Stop if:</strong> {check.stop}
       </p>
       <fieldset className="observation-options">
         <legend>What do you see?</legend>
-        {check.results.map((item, index) => {
+        {check.results.slice(0, 4).map((item) => {
           const isHazard = item.effect === "hazard";
           return (
             <button
-              className={`observation-button ${index === 0 && !isHazard ? "observation-button--recommended" : ""}`}
+              className="observation-button"
               type="button"
               key={item.id}
               onClick={() => onResult(item.id)}

@@ -1,4 +1,5 @@
 import { ChevronDown, RotateCcw } from "lucide-react";
+import { useEffect } from "react";
 
 import { ActivityLog } from "@/components/ActivityLog";
 import { ApplianceDiagram } from "@/components/ApplianceDiagram";
@@ -23,9 +24,51 @@ import type {
 import { useRepair } from "@/state/RepairProvider";
 
 export function App() {
-  const { state, snapshot, invokeTool, reset } = useRepair();
+  const { state, snapshot, invokeTool, reset, undoLastObservation, canUndo } = useRepair();
   const latestMessage = getActivityMilestone(state.activity.at(-1));
   const hasSession = Boolean(state.applianceId || state.activity.length > 1);
+  const pack = state.applianceId ? getRepairPack(state.applianceId) : null;
+  const completedCount = Object.keys(snapshot.completedChecks).length;
+  const hasPartOutcome = Boolean(snapshot.partOutcome);
+  const decisionFocusKey =
+    state.applianceId && !hasPartOutcome
+      ? `${state.applianceId}:${snapshot.currentStep?.id ?? snapshot.escalation?.reason ?? snapshot.phase}`
+      : null;
+
+  useEffect(() => {
+    if (!hasPartOutcome) return;
+    const title = document.getElementById("part-title");
+    const result = title?.closest(".part-result");
+    if (!title) return;
+    title.focus({ preventScroll: true });
+
+    const alignResult = () => {
+      if (typeof title.scrollIntoView === "function")
+        title.scrollIntoView({ behavior: "auto", block: "start" });
+    };
+    alignResult();
+    const frame = requestAnimationFrame(alignResult);
+    const observer =
+      result && "ResizeObserver" in window
+        ? new ResizeObserver(() => requestAnimationFrame(alignResult))
+        : null;
+    if (result) observer?.observe(result);
+    const settle = window.setTimeout(() => observer?.disconnect(), 600);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(settle);
+      observer?.disconnect();
+    };
+  }, [hasPartOutcome]);
+
+  useEffect(() => {
+    if (!decisionFocusKey) return;
+    const frame = requestAnimationFrame(() =>
+      document.getElementById("next-check-title")?.focus({ preventScroll: false }),
+    );
+    return () => cancelAnimationFrame(frame);
+  }, [decisionFocusKey]);
 
   const searchModels = (modelQuery: string, brand: BrandName | null, kind: ApplianceKind) => {
     invokeTool(
@@ -52,24 +95,18 @@ export function App() {
   };
 
   const showExample = (applianceId: string) => {
-    const pack = getRepairPack(applianceId);
-    if (!pack.example) return;
+    const examplePack = getRepairPack(applianceId);
+    if (!examplePack.example) return;
     invokeTool(
       "select_appliance",
-      { applianceId, productCode: pack.example.productCode },
+      { applianceId, productCode: examplePack.example.productCode },
       "example",
     );
-    invokeTool("start_diagnosis", { symptomId: pack.symptom.id }, "example");
-    for (const observation of pack.example.observations) {
+    invokeTool("start_diagnosis", { symptomId: examplePack.symptom.id }, "example");
+    for (const observation of examplePack.example.observations) {
       invokeTool("record_observation", observation, "example");
     }
     invokeTool("find_compatible_part", {}, "example");
-    requestAnimationFrame(() => {
-      const bench = document.getElementById("repair-bench");
-      bench?.focus({ preventScroll: true });
-      if (typeof bench?.scrollIntoView === "function")
-        bench.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
   };
 
   const startDiagnosis = () => {
@@ -108,6 +145,11 @@ export function App() {
     return selection;
   };
 
+  const goBack = () => {
+    if (!undoLastObservation()) return;
+    requestAnimationFrame(() => document.getElementById("next-check-title")?.focus());
+  };
+
   const highlightComponent = (componentId: ComponentId) =>
     invokeTool("show_component", { componentId }, "human");
   const runManualTool = (name: RepairToolName, input: Record<string, unknown>) =>
@@ -122,14 +164,14 @@ export function App() {
         <a className="brand" href="#main-content" aria-label="Clunk home">
           Clunk<span aria-hidden="true">.</span>
         </a>
+        <p>Visual appliance guidance for ordinary homeowners</p>
         <div className="topbar__meta">
           <span className="model-badge">
             {snapshot.appliance ?? `${APPLIANCE_CATALOG.length} supported models`}
           </span>
-          <StatusPill status={state.webMcpStatus} />
           {hasSession ? (
             <button className="reset-button" type="button" onClick={reset}>
-              <RotateCcw size={16} aria-hidden="true" /> Reset
+              <RotateCcw size={16} aria-hidden="true" /> Start over
             </button>
           ) : null}
         </div>
@@ -137,104 +179,93 @@ export function App() {
 
       <main id="main-content">
         {!snapshot.appliance ? (
-          <section className="intro-band" aria-labelledby="intro-title">
-            <div className="intro-copy intro-copy--centered">
-              <span className="hero-kicker">A visual appliance diagnosis an AI can operate</span>
-              <h1 id="intro-title">
-                Tell Clunk what broke.
-                <br />
-                Get the part to buy.
-              </h1>
-              <p>
-                Clunk shows the exact place to look, records what you see, and ends with a verified
-                part link when the evidence supports one.
-              </p>
-              <div className="hero-flow" aria-label="How Clunk works">
-                <span>
-                  <b>1</b> Pick the problem
-                </span>
-                <i aria-hidden="true">→</i>
-                <span>
-                  <b>2</b> Look where shown
-                </span>
-                <i aria-hidden="true">→</i>
-                <span>
-                  <b>3</b> Open the part
-                </span>
-              </div>
-            </div>
-            <ModelFinder
-              snapshot={snapshot}
-              selectedId={state.applianceId}
-              onSearch={searchModels}
-              onSelect={selectModel}
-              onExample={showExample}
-            />
-          </section>
+          <ModelFinder
+            snapshot={snapshot}
+            selectedId={state.applianceId}
+            onSearch={searchModels}
+            onSelect={selectModel}
+            onExample={showExample}
+          />
         ) : (
           <>
             {snapshot.exampleMode ? (
               <div className="example-banner" role="status">
-                <strong>Example answer</strong>
+                <strong>Completed example</strong>
                 <span>
-                  {snapshot.exampleSummary}. These observations are prefilled so you can see the
-                  complete deterministic fixture immediately. This is not an agent run.
+                  {snapshot.exampleSummary}. The answers are prefilled to show the finished path;
+                  use Start over when you are ready to check your own appliance.
                 </span>
               </div>
             ) : null}
-            <section className="selected-appliance" aria-label="Selected appliance">
+
+            <section className="selected-appliance" aria-label="Selected appliance and problem">
               <div>
-                <span className="section-kicker">{snapshot.applianceKindLabel}</span>
+                <p>{snapshot.applianceKindLabel}</p>
                 <h1>{snapshot.appliance}</h1>
-                <p>
-                  {snapshot.verificationLabel === "Full model number confirmed"
-                    ? `Confirmed model code: ${snapshot.productCode}`
-                    : snapshot.productCode
-                      ? `Label text recorded: ${snapshot.productCode}. Exact compatibility is not confirmed.`
-                      : "Model family selected. Confirm the complete label code before ordering a part."}
-                </p>
-              </div>
-              <div className="selected-appliance__action">
-                <span>
-                  <small>Problem</small>
+                <span className="selected-appliance__details">
+                  <span>
+                    {snapshot.verificationLabel === "Full model number confirmed"
+                      ? `Exact model confirmed · ${snapshot.productCode}`
+                      : snapshot.productCode
+                        ? `Label recorded · ${snapshot.productCode} · exact fit not confirmed`
+                        : "Model family selected · full label still needed for an exact part"}
+                  </span>
                   <strong>
-                    {snapshot.symptomShortLabel ??
-                      getRepairPack(state.applianceId!).symptom.shortLabel}
+                    {pack?.appliance.capability === "purchase-ready"
+                      ? "Purchase-ready"
+                      : "Guided checks only"}
                   </strong>
                 </span>
               </div>
+              <div className="selected-appliance__problem">
+                <span>Problem</span>
+                <strong>{snapshot.symptomShortLabel ?? pack?.symptom.shortLabel}</strong>
+              </div>
             </section>
 
-            <div
-              className="progress-track"
-              role="progressbar"
-              aria-label="Diagnosis progress"
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-valuenow={snapshot.progress}
-            >
-              <span style={{ transform: `scaleX(${snapshot.progress / 100})` }} />
+            <div className="diagnosis-progress">
+              <div
+                className="progress-track"
+                role="progressbar"
+                aria-label="Diagnosis progress"
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuenow={snapshot.progress}
+              >
+                <span style={{ transform: `scaleX(${snapshot.progress / 100})` }} />
+              </div>
+              <p>
+                {snapshot.partOutcome
+                  ? "Answer ready"
+                  : snapshot.escalation
+                    ? "Stopped safely"
+                    : snapshot.currentStep
+                      ? `Check ${completedCount + 1} of ${pack?.checks.length ?? 1}`
+                      : "Ready to begin"}
+              </p>
             </div>
 
             <section
-              className="repair-bench"
+              className={`repair-bench${snapshot.partOutcome ? " has-result" : ""}`}
               id="repair-bench"
-              aria-label="Appliance location and answer"
+              aria-label="Appliance location and next step"
               tabIndex={-1}
             >
               <ApplianceDiagram
                 packId={state.packId}
                 highlightedComponentId={state.highlightedComponentId}
+                overviewMode={snapshot.currentStep?.id === "safety-check"}
                 onHighlight={highlightComponent}
               />
-              <aside className="decision-column" aria-label="Diagnosis actions and results">
-                <HandoffStatus snapshot={snapshot} />
+              <aside className="decision-column" aria-label="Question or result">
                 <NextCheckPanel
                   snapshot={snapshot}
                   onStart={startDiagnosis}
                   onResult={recordResult}
                   onFindPart={() => invokeTool("find_compatible_part", {}, "human")}
                   onUseProductCode={continueWithProductCode}
+                  onBack={goBack}
+                  canUndo={canUndo}
                   exactPartAvailable={Boolean(
                     state.applianceId && getCatalogEntry(state.applianceId).exactPart,
                   )}
@@ -248,7 +279,7 @@ export function App() {
                 {snapshot.partOutcome ? (
                   <details className="answer-details">
                     <summary>
-                      Why this answer <ChevronDown size={18} aria-hidden="true" />
+                      Evidence behind this answer <ChevronDown size={18} aria-hidden="true" />
                     </summary>
                     <CauseStack causes={snapshot.likelyCauses} visible />
                     <SourcePanel sources={snapshot.sources} />
@@ -262,17 +293,19 @@ export function App() {
         <details className="protocol-disclosure">
           <summary>
             <span>
-              <strong>Human + agent activity</strong>
-              <small>{latestMessage}</small>
+              <strong>For judges and developers</strong>
+              <small>Sources, WebMCP activity, and the current tool boundary</small>
             </span>
             <span>
-              View WebMCP calls <ChevronDown size={18} aria-hidden="true" />
+              Open technical view <ChevronDown size={18} aria-hidden="true" />
             </span>
           </summary>
-          <section
-            className="protocol-band"
-            aria-label="Human and agent activity and tool inspector"
-          >
+          <section className="protocol-band" aria-label="Technical evidence and WebMCP inspector">
+            <div className="protocol-status">
+              <StatusPill status={state.webMcpStatus} />
+              <span>{latestMessage}</span>
+            </div>
+            <HandoffStatus snapshot={snapshot} />
             <ActivityLog activity={state.activity} />
             <ToolInspector activeTools={snapshot.validNextActions} onRun={runManualTool} />
           </section>

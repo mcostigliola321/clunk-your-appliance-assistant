@@ -24,7 +24,9 @@ export function PartResult({ outcome }: { outcome: PartOutcome | null }) {
         <Icon size={20} />
       </div>
       <div className="part-result__body">
-        <h2 id="part-title">{outcome.title}</h2>
+        <h2 id="part-title" tabIndex={-1}>
+          {outcome.title}
+        </h2>
         {exact ? (
           <>
             <p className="part-fit-proof">
@@ -36,6 +38,25 @@ export function PartResult({ outcome }: { outcome: PartOutcome | null }) {
           </>
         ) : null}
         <p className="part-message">{outcome.message}</p>
+        {outcome.status === "professional-only" ? (
+          <div className="result-next-step">
+            <strong>What to do next</strong>
+            <p>
+              Stop the inspection and contact an independent qualified appliance technician. Share
+              the complete model number and the observations above; Clunk does not assign or endorse
+              a service company.
+            </p>
+          </div>
+        ) : null}
+        {outcome.status === "variant-needed" ? (
+          <div className="result-next-step">
+            <strong>No substitute will be shown</strong>
+            <p>
+              Return to the appliance label and copy the full code. If this model is checks-only,
+              use the manufacturer source below when speaking with a qualified technician.
+            </p>
+          </div>
+        ) : null}
         {exact ? (
           <>
             <dl className="part-details">

@@ -4,12 +4,14 @@ import type { ApplianceId, ComponentId } from "@/domain/types";
 interface ApplianceDiagramProps {
   packId: ApplianceId | null;
   highlightedComponentId: ComponentId;
+  overviewMode?: boolean;
   onHighlight: (componentId: ComponentId) => void;
 }
 
 export function ApplianceDiagram({
   packId,
   highlightedComponentId,
+  overviewMode = false,
   onHighlight,
 }: ApplianceDiagramProps) {
   const pack = packId ? getRepairPack(packId) : null;
@@ -21,13 +23,20 @@ export function ApplianceDiagram({
     <section className="workbench" aria-labelledby="workbench-title">
       <div className="workbench__header">
         <div>
-          <span className="workbench__eyebrow">Where to look</span>
-          <h2 id="workbench-title">{active.label}</h2>
-          <p>{active.description}</p>
+          <h2 id="workbench-title">
+            {overviewMode
+              ? `Look at the whole ${pack.appliance.noun}`
+              : `Look at the ${active.label.toLowerCase()}`}
+          </h2>
+          <p>
+            {overviewMode
+              ? "Use this complete view while you make the appliance safe. No inspection location is active yet."
+              : active.description}
+          </p>
         </div>
         <div className="diagram-legend">
           <span className="diagram-legend__swatch" aria-hidden="true" />
-          Current location
+          {overviewMode ? "Whole appliance" : "Current location"}
         </div>
       </div>
 
@@ -40,25 +49,27 @@ export function ApplianceDiagram({
             width={pack.appliance.illustration.width}
             height={pack.appliance.illustration.height}
           />
-          {pack.components.map((item) => {
-            const isActive = item.id === highlightedComponentId;
-            return (
-              <button
-                className={`appliance-component component-hotspot ${item.hotspot.x > 65 ? "is-right" : ""} ${isActive ? "is-active" : ""}`}
-                style={{ left: `${item.hotspot.x}%`, top: `${item.hotspot.y}%` }}
-                type="button"
-                key={item.id}
-                aria-label={`Show ${item.label}`}
-                aria-pressed={isActive}
-                onClick={() => onHighlight(item.id)}
-              >
-                <span className="component-hotspot__dot" aria-hidden="true" />
-                <span className="component-hotspot__label" aria-hidden="true">
-                  {item.label}
-                </span>
-              </button>
-            );
-          })}
+          {!overviewMode &&
+            pack.components.map((item) => {
+              const isActive = item.id === highlightedComponentId;
+              return (
+                <button
+                  className={`appliance-component component-hotspot ${item.hotspot.x > 65 ? "is-right" : ""} ${isActive ? "is-active" : ""}`}
+                  style={{ left: `${item.hotspot.x}%`, top: `${item.hotspot.y}%` }}
+                  type="button"
+                  key={item.id}
+                  aria-label={`Show ${item.label}`}
+                  aria-pressed={isActive}
+                  aria-current={isActive ? "location" : undefined}
+                  onClick={() => onHighlight(item.id)}
+                >
+                  <span className="component-hotspot__dot" aria-hidden="true" />
+                  <span className="component-hotspot__label" aria-hidden="true">
+                    {item.label}
+                  </span>
+                </button>
+              );
+            })}
         </div>
         <p className="diagram-note">{pack.appliance.diagramNote}</p>
       </div>

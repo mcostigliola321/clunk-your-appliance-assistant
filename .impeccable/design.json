@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-27T23:41:16Z",
+  "title": "Design System: Clunk",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cool Field Paper",
+        "canonical": "#f2f6f3",
+        "tonalRamp": [
+          "oklch(15% 0.0058 153.8)",
+          "oklch(27% 0.0058 153.8)",
+          "oklch(39% 0.0058 153.8)",
+          "oklch(51% 0.0058 153.8)",
+          "oklch(63% 0.0058 153.8)",
+          "oklch(75% 0.0058 153.8)",
+          "oklch(87% 0.0058 153.8)",
+          "oklch(95% 0.0058 153.8)"
+        ]
+      },
+      "paper-strong": {
+        "role": "neutral",
+        "displayName": "Strong Field Paper",
+        "canonical": "#e8efeb",
+        "tonalRamp": [
+          "oklch(15% 0.0091 161.3)",
+          "oklch(27% 0.0091 161.3)",
+          "oklch(39% 0.0091 161.3)",
+          "oklch(51% 0.0091 161.3)",
+          "oklch(63% 0.0091 161.3)",
+          "oklch(75% 0.0091 161.3)",
+          "oklch(87% 0.0091 161.3)",
+          "oklch(95% 0.0091 161.3)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Clean White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Graphite Ink",
+        "canonical": "#14231d",
+        "tonalRamp": [
+          "oklch(15% 0.0236 167.4)",
+          "oklch(27% 0.0236 167.4)",
+          "oklch(39% 0.0236 167.4)",
+          "oklch(51% 0.0236 167.4)",
+          "oklch(63% 0.0236 167.4)",
+          "oklch(75% 0.0236 167.4)",
+          "oklch(87% 0.0236 167.4)",
+          "oklch(95% 0.0236 167.4)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Graphite",
+        "canonical": "#4d6057",
+        "tonalRamp": [
+          "oklch(15% 0.0273 164.9)",
+          "oklch(27% 0.0273 164.9)",
+          "oklch(39% 0.0273 164.9)",
+          "oklch(51% 0.0273 164.9)",
+          "oklch(63% 0.0273 164.9)",
+          "oklch(75% 0.0273 164.9)",
+          "oklch(87% 0.0273 164.9)",
+          "oklch(95% 0.0273 164.9)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Reed Hairline",
+        "canonical": "#b9c9c1",
+        "tonalRamp": [
+          "oklch(15% 0.0206 164.5)",
+          "oklch(27% 0.0206 164.5)",
+          "oklch(39% 0.0206 164.5)",
+          "oklch(51% 0.0206 164.5)",
+          "oklch(63% 0.0206 164.5)",
+          "oklch(75% 0.0206 164.5)",
+          "oklch(87% 0.0206 164.5)",
+          "oklch(95% 0.0206 164.5)"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Structural Reed",
+        "canonical": "#7f958a",
+        "tonalRamp": [
+          "oklch(15% 0.0298 163.9)",
+          "oklch(27% 0.0298 163.9)",
+          "oklch(39% 0.0298 163.9)",
+          "oklch(51% 0.0298 163.9)",
+          "oklch(63% 0.0298 163.9)",
+          "oklch(75% 0.0298 163.9)",
+          "oklch(87% 0.0298 163.9)",
+          "oklch(95% 0.0298 163.9)"
+        ]
+      },
+      "tide": {
+        "role": "primary",
+        "displayName": "Tide Green",
+        "canonical": "#0b5d4c",
+        "tonalRamp": [
+          "oklch(15% 0.0779 173.9)",
+          "oklch(27% 0.0779 173.9)",
+          "oklch(39% 0.0779 173.9)",
+          "oklch(51% 0.0779 173.9)",
+          "oklch(63% 0.0779 173.9)",
+          "oklch(75% 0.0779 173.9)",
+          "oklch(87% 0.0779 173.9)",
+          "oklch(95% 0.0779 173.9)"
+        ]
+      },
+      "tide-dark": {
+        "role": "primary",
+        "displayName": "Deep Tide",
+        "canonical": "#073f35",
+        "tonalRamp": [
+          "oklch(15% 0.0575 177.1)",
+          "oklch(27% 0.0575 177.1)",
+          "oklch(39% 0.0575 177.1)",
+          "oklch(51% 0.0575 177.1)",
+          "oklch(63% 0.0575 177.1)",
+          "oklch(75% 0.0575 177.1)",
+          "oklch(87% 0.0575 177.1)",
+          "oklch(95% 0.0575 177.1)"
+        ]
+      },
+      "tide-pale": {
+        "role": "primary",
+        "displayName": "Pale Tide",
+        "canonical": "#d4eae2",
+        "tonalRamp": [
+          "oklch(15% 0.0256 171.9)",
+          "oklch(27% 0.0256 171.9)",
+          "oklch(39% 0.0256 171.9)",
+          "oklch(51% 0.0256 171.9)",
+          "oklch(63% 0.0256 171.9)",
+          "oklch(75% 0.0256 171.9)",
+          "oklch(87% 0.0256 171.9)",
+          "oklch(95% 0.0256 171.9)"
+        ]
+      },
+      "citron": {
+        "role": "secondary",
+        "displayName": "Citron Marker",
+        "canonical": "#dff46a",
+        "tonalRamp": [
+          "oklch(15% 0.1635 117)",
+          "oklch(27% 0.1635 117)",
+          "oklch(39% 0.1635 117)",
+          "oklch(51% 0.1635 117)",
+          "oklch(63% 0.1635 117)",
+          "oklch(75% 0.1635 117)",
+          "oklch(87% 0.1635 117)",
+          "oklch(95% 0.1635 117)"
+        ]
+      },
+      "citron-dark": {
+        "role": "secondary",
+        "displayName": "Deep Citron",
+        "canonical": "#64730c",
+        "tonalRamp": [
+          "oklch(15% 0.1186 118.5)",
+          "oklch(27% 0.1186 118.5)",
+          "oklch(39% 0.1186 118.5)",
+          "oklch(51% 0.1186 118.5)",
+          "oklch(63% 0.1186 118.5)",
+          "oklch(75% 0.1186 118.5)",
+          "oklch(87% 0.1186 118.5)",
+          "oklch(95% 0.1186 118.5)"
+        ]
+      },
+      "sky": {
+        "role": "tertiary",
+        "displayName": "Sky Plate",
+        "canonical": "#dcebf3",
+        "tonalRamp": [
+          "oklch(15% 0.0193 230.7)",
+          "oklch(27% 0.0193 230.7)",
+          "oklch(39% 0.0193 230.7)",
+          "oklch(51% 0.0193 230.7)",
+          "oklch(63% 0.0193 230.7)",
+          "oklch(75% 0.0193 230.7)",
+          "oklch(87% 0.0193 230.7)",
+          "oklch(95% 0.0193 230.7)"
+        ]
+      },
+      "amber": {
+        "role": "tertiary",
+        "displayName": "Amber Plate",
+        "canonical": "#f2e4bc",
+        "tonalRamp": [
+          "oklch(15% 0.0544 91)",
+          "oklch(27% 0.0544 91)",
+          "oklch(39% 0.0544 91)",
+          "oklch(51% 0.0544 91)",
+          "oklch(63% 0.0544 91)",
+          "oklch(75% 0.0544 91)",
+          "oklch(87% 0.0544 91)",
+          "oklch(95% 0.0544 91)"
+        ]
+      },
+      "peach": {
+        "role": "tertiary",
+        "displayName": "Peach Plate",
+        "canonical": "#eed9cd",
+        "tonalRamp": [
+          "oklch(15% 0.0285 51.8)",
+          "oklch(27% 0.0285 51.8)",
+          "oklch(39% 0.0285 51.8)",
+          "oklch(51% 0.0285 51.8)",
+          "oklch(63% 0.0285 51.8)",
+          "oklch(75% 0.0285 51.8)",
+          "oklch(87% 0.0285 51.8)",
+          "oklch(95% 0.0285 51.8)"
+        ]
+      },
+      "success": {
+        "role": "tertiary",
+        "displayName": "Success Green",
+        "canonical": "#136c49",
+        "tonalRamp": [
+          "oklch(15% 0.0983 161)",
+          "oklch(27% 0.0983 161)",
+          "oklch(39% 0.0983 161)",
+          "oklch(51% 0.0983 161)",
+          "oklch(63% 0.0983 161)",
+          "oklch(75% 0.0983 161)",
+          "oklch(87% 0.0983 161)",
+          "oklch(95% 0.0983 161)"
+        ]
+      },
+      "success-pale": {
+        "role": "tertiary",
+        "displayName": "Success Wash",
+        "canonical": "#dcefe5",
+        "tonalRamp": [
+          "oklch(15% 0.0241 163.1)",
+          "oklch(27% 0.0241 163.1)",
+          "oklch(39% 0.0241 163.1)",
+          "oklch(51% 0.0241 163.1)",
+          "oklch(63% 0.0241 163.1)",
+          "oklch(75% 0.0241 163.1)",
+          "oklch(87% 0.0241 163.1)",
+          "oklch(95% 0.0241 163.1)"
+        ]
+      },
+      "stop": {
+        "role": "tertiary",
+        "displayName": "Stop Red",
+        "canonical": "#a3302a",
+        "tonalRamp": [
+          "oklch(15% 0.152 27.4)",
+          "oklch(27% 0.152 27.4)",
+          "oklch(39% 0.152 27.4)",
+          "oklch(51% 0.152 27.4)",
+          "oklch(63% 0.152 27.4)",
+          "oklch(75% 0.152 27.4)",
+          "oklch(87% 0.152 27.4)",
+          "oklch(95% 0.152 27.4)"
+        ]
+      },
+      "stop-pale": {
+        "role": "tertiary",
+        "displayName": "Stop Wash",
+        "canonical": "#f8e4e1",
+        "tonalRamp": [
+          "oklch(15% 0.0224 27.8)",
+          "oklch(27% 0.0224 27.8)",
+          "oklch(39% 0.0224 27.8)",
+          "oklch(51% 0.0224 27.8)",
+          "oklch(63% 0.0224 27.8)",
+          "oklch(75% 0.0224 27.8)",
+          "oklch(87% 0.0224 27.8)",
+          "oklch(95% 0.0224 27.8)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display Question",
+        "purpose": "The first-viewport homeowner question only."
+      },
+      "headline": {
+        "displayName": "Journey Headline",
+        "purpose": "Problem and model-identification stage questions."
+      },
+      "title": {
+        "displayName": "Working Title",
+        "purpose": "Inspection questions, answer titles, and major working-surface headings."
+      },
+      "body": {
+        "displayName": "Plain-Language Body",
+        "purpose": "Instructions and explanations for the homeowner."
+      },
+      "label": {
+        "displayName": "Precision Label",
+        "purpose": "Status, progress, location, capability, and evidence labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "working-surface",
+        "value": "0 22px 50px rgba(20, 35, 29, 0.11)",
+        "purpose": "Ambient lift for the active appliance canvas, current check, label guide, and finished result."
+      },
+      {
+        "name": "decision-lift",
+        "value": "0 18px 36px rgba(20, 35, 29, 0.10)",
+        "purpose": "A smaller lift for the single supported-problem action."
+      },
+      {
+        "name": "appliance-object",
+        "value": "drop-shadow(0 24px 28px rgba(20, 35, 29, 0.14))",
+        "purpose": "Physical separation for cutaway appliance art inside a bounded plate."
+      },
+      {
+        "name": "active-location",
+        "value": "0 0 0 2px #073f35, 0 8px 18px rgba(20, 35, 29, 0.24)",
+        "purpose": "The selected physical hotspot only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "field-reveal",
+        "value": "460ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "A short clipped rise when a journey surface replaces the previous stage."
+      },
+      {
+        "name": "progress",
+        "value": "360ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Smooth progress-track updates without decorative flourish."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.00001s",
+        "purpose": "Effectively removes animation and transition duration when reduced motion is requested."
+      }
+    ],
+    "breakpoints": [
+      { "name": "field-two-up", "value": "1100px" },
+      { "name": "single-bench", "value": "820px" },
+      { "name": "compact-mobile", "value": "620px" },
+      { "name": "narrow-mobile", "value": "360px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Top Navigation",
+      "kind": "nav",
+      "description": "A quiet ruled brand bar with one descriptive line and compact session metadata.",
+      "html": "<nav class=\"ds-topbar\" aria-label=\"Clunk\"><a class=\"ds-brand\" href=\"#\">Clunk<span>.</span></a><p>Visual appliance guidance for ordinary homeowners</p><span class=\"ds-model-badge\">131 supported models</span></nav>",
+      "css": ".ds-topbar { min-height: 72px; display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: center; gap: 24px; border-bottom: 1px solid var(--line,#b9c9c1); color: var(--ink,#14231d); font-family: 'Albert Sans Variable','Albert Sans',sans-serif; } .ds-brand { display: inline-flex; align-items: baseline; color: inherit; font-size: 28px; font-weight: 780; letter-spacing: -0.03em; text-decoration: none; } .ds-brand span { color: var(--tide,#0b5d4c); } .ds-topbar p { margin: 0; color: var(--muted,#4d6057); font-size: 13px; line-height: 1.4; } .ds-model-badge { min-height: 36px; display: inline-flex; align-items: center; padding: 0 12px; border-radius: 999px; background: var(--paper-strong,#e8efeb); color: var(--muted,#4d6057); font-size: 12px; font-weight: 700; } .ds-brand:hover { text-decoration: underline; text-underline-offset: .2em; } .ds-brand:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--paper,#f2f6f3),0 0 0 5px var(--tide,#0b5d4c); } @media (max-width:620px) { .ds-topbar { min-height:64px; grid-template-columns:auto minmax(0,1fr); gap:12px; } .ds-topbar p,.ds-model-badge { display:none; } }"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The dark decisive action used to advance a homeowner journey.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Show the part or fix<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>",
+      "css": ".ds-btn-primary { min-height:48px; display:inline-flex; align-items:center; justify-content:center; gap:9px; border:1px solid transparent; border-radius:10px; padding:0 16px; background:var(--ink,#14231d); color:var(--white,#fff); font-family:'Albert Sans Variable','Albert Sans',sans-serif; font-size:14px; font-weight:740; cursor:pointer; transition:background 160ms ease,transform 160ms ease; } .ds-btn-primary:hover { background:var(--tide,#0b5d4c); } .ds-btn-primary:active { transform:translateY(1px); } .ds-btn-primary:focus-visible { outline:none; box-shadow:0 0 0 2px var(--paper,#f2f6f3),0 0 0 5px var(--tide,#0b5d4c); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A quieter bordered action for alternate paths and reversible choices.",
+      "html": "<button class=\"ds-btn-secondary\" type=\"button\"><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" aria-hidden=\"true\"><path d=\"M19 12H5m6 6-6-6 6-6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>Back to the problem</button>",
+      "css": ".ds-btn-secondary { min-height:48px; display:inline-flex; align-items:center; justify-content:center; gap:8px; border:1px solid var(--line-strong,#7f958a); border-radius:10px; padding:0 16px; background:var(--paper,#f2f6f3); color:var(--ink,#14231d); font-family:'Albert Sans Variable','Albert Sans',sans-serif; font-size:13px; font-weight:740; cursor:pointer; transition:background 160ms ease,border-color 160ms ease; } .ds-btn-secondary:hover { border-color:var(--tide,#0b5d4c); background:var(--tide-pale,#d4eae2); } .ds-btn-secondary:active { background:var(--paper-strong,#e8efeb); } .ds-btn-secondary:focus-visible { outline:none; box-shadow:0 0 0 2px var(--paper,#f2f6f3),0 0 0 5px var(--tide,#0b5d4c); }"
+    },
+    {
+      "name": "Purchase Button",
+      "kind": "button",
+      "refersTo": "button-purchase",
+      "description": "The citron commerce action used only after exact-fit proof is visible.",
+      "html": "<a class=\"ds-btn-purchase\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" aria-hidden=\"true\"><path d=\"M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L20 8H6M10 20h.01M17 20h.01\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>Buy this part<svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" aria-hidden=\"true\"><path d=\"M14 5h5v5M10 14 19 5M19 13v6H5V5h6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-btn-purchase { min-height:48px; display:inline-flex; align-items:center; justify-content:center; gap:9px; border:1px solid transparent; border-radius:10px; padding:0 16px; background:var(--citron,#dff46a); color:var(--ink,#14231d); font-family:'Albert Sans Variable','Albert Sans',sans-serif; font-size:14px; font-weight:740; text-decoration:none; cursor:pointer; transition:background 160ms ease,color 160ms ease,transform 160ms ease; } .ds-btn-purchase:hover { background:var(--ink,#14231d); color:var(--white,#fff); } .ds-btn-purchase:active { transform:translateY(1px); } .ds-btn-purchase:focus-visible { outline:none; box-shadow:0 0 0 2px var(--white,#fff),0 0 0 5px var(--tide,#0b5d4c); }"
+    },
+    {
+      "name": "Model Search Field",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "A large exact-code field with one dark inset action and group-level focus.",
+      "html": "<div class=\"ds-model-search\"><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"m20 20-4-4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg><input aria-label=\"Model number\" placeholder=\"Example: GTD42EASJ2WW\"/><button type=\"button\">Search</button></div>",
+      "css": ".ds-model-search { min-height:70px; display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:12px; border:1px solid var(--line-strong,#7f958a); border-radius:14px; padding-left:18px; background:var(--white,#fff); color:var(--muted,#4d6057); font-family:'Albert Sans Variable','Albert Sans',sans-serif; } .ds-model-search input { min-width:0; min-height:66px; border:0; outline:0; background:transparent; color:var(--ink,#14231d); caret-color:var(--tide,#0b5d4c); font:inherit; font-size:18px; } .ds-model-search input::placeholder { color:#667a70; opacity:1; } .ds-model-search button { align-self:stretch; min-width:132px; border:0; border-radius:12px; margin:4px; padding:0 20px; background:var(--ink,#14231d); color:var(--white,#fff); font:inherit; font-weight:760; cursor:pointer; } .ds-model-search:hover { border-color:var(--tide,#0b5d4c); } .ds-model-search:focus-within { box-shadow:0 0 0 2px var(--paper,#f2f6f3),0 0 0 5px var(--tide,#0b5d4c); } .ds-model-search button:hover { background:var(--tide,#0b5d4c); } .ds-model-search button:active { background:var(--tide-dark,#073f35); } .ds-model-search button:focus-visible { outline:none; box-shadow:inset 0 0 0 2px var(--citron,#dff46a); }"
+    },
+    {
+      "name": "Status Pill",
+      "kind": "chip",
+      "refersTo": "status-pill",
+      "description": "A compact icon-and-text state marker for readiness and capability.",
+      "html": "<span class=\"ds-status-pill\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"m8 12 2.5 2.5L16 9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>Purchase-ready</span>",
+      "css": ".ds-status-pill { min-height:36px; display:inline-flex; align-items:center; gap:7px; border-radius:999px; padding:0 12px; background:var(--success-pale,#dcefe5); color:var(--success,#136c49); font-family:'Albert Sans Variable','Albert Sans',sans-serif; font-size:12px; font-weight:700; }"
+    },
+    {
+      "name": "Appliance Choice Plate",
+      "kind": "custom",
+      "refersTo": "appliance-choice",
+      "description": "The signature cutaway action that makes the appliance—not search—the first interface.",
+      "html": "<article class=\"ds-appliance-choice\"><button class=\"ds-appliance-primary\" type=\"button\"><span class=\"ds-appliance-art\"><svg viewBox=\"0 0 220 190\" role=\"img\" aria-label=\"Electric dryer cutaway\"><rect x=\"45\" y=\"12\" width=\"130\" height=\"166\" rx=\"8\" fill=\"#fff\" stroke=\"#14231d\" stroke-width=\"3\"/><rect x=\"55\" y=\"23\" width=\"110\" height=\"22\" rx=\"3\" fill=\"#dff46a\"/><circle cx=\"110\" cy=\"105\" r=\"48\" fill=\"#e8efeb\" stroke=\"#0b5d4c\" stroke-width=\"4\"/><circle cx=\"110\" cy=\"105\" r=\"31\" fill=\"#fff\" stroke=\"#7f958a\" stroke-width=\"2\"/><path d=\"M61 51h98M72 163h76\" stroke=\"#b9c9c1\" stroke-width=\"2\"/></svg></span><span class=\"ds-appliance-name\"><strong>Electric dryer</strong><span>Door won’t close</span></span><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button><button class=\"ds-appliance-example\" type=\"button\">See completed dryer example</button></article>",
+      "css": ".ds-appliance-choice { width:min(100%,336px); display:grid; grid-template-rows:minmax(0,1fr) auto; border:1px solid var(--line-strong,#7f958a); color:var(--ink,#14231d); font-family:'Albert Sans Variable','Albert Sans',sans-serif; } .ds-appliance-primary { min-height:365px; display:grid; grid-template-columns:minmax(0,1fr) auto; grid-template-rows:minmax(0,1fr) auto; align-items:end; gap:16px; border:0; padding:0 18px 20px; background:var(--amber,#f2e4bc); color:inherit; text-align:left; cursor:pointer; } .ds-appliance-art { grid-column:1/-1; min-height:0; display:grid; place-items:center; align-self:stretch; } .ds-appliance-art svg { width:min(100%,240px); filter:drop-shadow(0 18px 22px rgba(20,35,29,.14)); } .ds-appliance-name { display:grid; gap:4px; } .ds-appliance-name strong { font-size:27px; font-weight:700; line-height:1.05; letter-spacing:-.025em; } .ds-appliance-name span { color:var(--muted,#4d6057); font-size:13px; font-weight:650; } .ds-appliance-example { min-height:50px; border:0; border-top:1px solid var(--line-strong,#7f958a); padding:8px 16px; background:var(--white,#fff); color:var(--muted,#4d6057); font:inherit; font-size:12px; font-weight:700; text-align:left; cursor:pointer; } .ds-appliance-primary:hover { background:var(--citron,#dff46a); } .ds-appliance-primary:active { background:var(--tide-pale,#d4eae2); } .ds-appliance-example:hover { background:var(--ink,#14231d); color:var(--white,#fff); } .ds-appliance-primary:focus-visible,.ds-appliance-example:focus-visible { position:relative; outline:none; box-shadow:inset 0 0 0 3px var(--tide,#0b5d4c); }"
+    },
+    {
+      "name": "Observation Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A full-width plain-language answer tied to the highlighted physical location.",
+      "html": "<button class=\"ds-observation\" type=\"button\"><span>The door strike is cracked or missing</span><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>",
+      "css": ".ds-observation { width:100%; min-height:58px; display:flex; align-items:center; justify-content:space-between; gap:16px; border:1px solid var(--line-strong,#7f958a); border-radius:10px; padding:10px 13px; background:var(--paper,#f2f6f3); color:var(--ink,#14231d); font-family:'Albert Sans Variable','Albert Sans',sans-serif; text-align:left; cursor:pointer; transition:background 160ms ease,border-color 160ms ease; } .ds-observation span { font-size:13px; font-weight:680; line-height:1.35; } .ds-observation:hover { border-color:var(--tide,#0b5d4c); background:var(--citron,#dff46a); } .ds-observation:active { background:var(--tide-pale,#d4eae2); } .ds-observation:focus-visible { outline:none; box-shadow:0 0 0 2px var(--paper,#f2f6f3),0 0 0 5px var(--tide,#0b5d4c); }"
+    },
+    {
+      "name": "Cutaway Location Hotspot",
+      "kind": "custom",
+      "description": "The 44px accessible control that turns a cutaway into an exact current-location guide.",
+      "html": "<div class=\"ds-hotspot-stage\"><button class=\"ds-hotspot\" type=\"button\" aria-pressed=\"true\" aria-label=\"Show door strike\"><span class=\"ds-hotspot-dot\" aria-hidden=\"true\"></span><span class=\"ds-hotspot-label\">Door strike</span></button></div>",
+      "css": ".ds-hotspot-stage { position:relative; width:300px; height:180px; border:1px solid var(--line-strong,#7f958a); border-radius:14px; background:var(--white,#fff); box-shadow:0 22px 50px rgba(20,35,29,.11); } .ds-hotspot { position:absolute; left:48%; top:44%; width:44px; height:44px; border:0; padding:0; background:transparent; color:var(--white,#fff); cursor:pointer; } .ds-hotspot-dot { position:absolute; left:50%; top:50%; width:19px; height:19px; border:5px solid var(--citron,#dff46a); border-radius:999px; background:var(--tide-dark,#073f35); box-shadow:0 0 0 2px var(--tide-dark,#073f35),0 8px 18px rgba(20,35,29,.24); transform:translate(-50%,-50%); } .ds-hotspot-label { position:absolute; left:32px; top:50%; width:max-content; border-radius:7px; padding:7px 9px; background:var(--ink,#14231d); color:var(--white,#fff); font-family:'Albert Sans Variable','Albert Sans',sans-serif; font-size:11px; font-weight:720; transform:translateY(-50%); } .ds-hotspot:hover .ds-hotspot-dot { background:var(--tide,#0b5d4c); } .ds-hotspot:active .ds-hotspot-dot { transform:translate(-50%,-50%) scale(.92); } .ds-hotspot:focus-visible { outline:none; box-shadow:0 0 0 2px var(--paper,#f2f6f3),0 0 0 5px var(--tide,#0b5d4c); border-radius:999px; }"
+    },
+    {
+      "name": "Exact Part Result",
+      "kind": "card",
+      "refersTo": "card-result",
+      "description": "The dark exact-fit answer with truthful fit proof and part facts, without simulated seller or availability data.",
+      "html": "<section class=\"ds-part-result\"><span class=\"ds-result-icon\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" aria-hidden=\"true\"><path d=\"m14.7 6.3 3-3a4 4 0 0 1-5.2 5.2l-6.8 6.8a2 2 0 1 0 2.8 2.8l6.8-6.8a4 4 0 0 1 5.2-5.2l-3 3-2.8-.8-.8-2.8Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><div class=\"ds-result-body\"><h2>This is the part for your dryer</h2><p class=\"ds-fit-proof\">Exact model fit confirmed</p><strong class=\"ds-part-name\">Dryer door strike</strong><span class=\"ds-part-sku\">Part #WE01M10007</span><dl class=\"ds-part-facts\"><div><dt>Fits</dt><dd>GTD42EASJ2WW</dd></div><div><dt>Where it is</dt><dd>On the dryer door edge</dd></div></dl></div></section>",
+      "css": ".ds-part-result { position:relative; overflow:hidden; width:min(100%,550px); border-radius:14px; background:var(--ink,#14231d); color:var(--white,#fff); box-shadow:0 22px 50px rgba(20,35,29,.11); font-family:'Albert Sans Variable','Albert Sans',sans-serif; } .ds-result-icon { position:absolute; top:22px; right:22px; width:42px; height:42px; display:grid; place-items:center; border-radius:999px; background:var(--citron,#dff46a); color:var(--ink,#14231d); } .ds-result-body { padding:24px; } .ds-result-body h2 { max-width:calc(100% - 54px); margin:0; font-size:clamp(30px,3.2vw,46px); font-weight:680; line-height:1; letter-spacing:-.025em; } .ds-fit-proof { margin:20px 0 0; color:var(--citron,#dff46a); font-size:12px; font-weight:740; } .ds-part-name { display:block; margin-top:18px; font-size:24px; line-height:1.15; } .ds-part-sku { display:block; margin-top:4px; color:var(--citron,#dff46a); font-size:15px; font-weight:760; } .ds-part-facts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); margin:20px 0 0; border-top:1px solid #4b5c54; border-bottom:1px solid #4b5c54; } .ds-part-facts div { padding:14px 12px 14px 0; } .ds-part-facts div+div { border-left:1px solid #4b5c54; padding-left:14px; } .ds-part-facts dt { color:#adc0b7; font-size:10px; font-weight:720; } .ds-part-facts dd { margin:5px 0 0; font-size:12px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Approachable Precision",
+    "overview": "Clunk is a premium visual field guide for ordinary homeowners: calm enough for a stressful repair moment, exact enough to earn trust, and direct enough to use without learning a repair vocabulary. The visual world combines cool field paper, graphite ink, precise ruled divisions, generous breathing room, and recognizable cutaway appliances. It feels edited and consumer-facing, never like a workshop prop or an enterprise control room.\n\nThe appliance is the interface. Each surface advances one visible journey—appliance → problem → model → location → observation → part, fix, or service—and the main decision always sits beside the relevant physical location. Citron marks the next meaningful action or active point; tide green carries trust, focus, and progression. Exact part and seller information moves into a deliberately dark result field with a clean commerce inset, separating an actionable answer from guidance and evidence.\n\nThis is the user-pinned, code-led Approachable Precision world established by seed `3ce3190a`. Protocol detail, source traces, and WebMCP activity remain available in secondary disclosures. They support the answer without becoming the customer experience.",
+    "keyCharacteristics": [
+      "Recognizable cutaway appliances lead the first viewport and every inspection step.",
+      "Cool paper fields and graphite hairlines create calm structure without decorative chrome.",
+      "Citron behaves as a scarce physical marker for active, selected, and purchase-ready moments.",
+      "Large, tightly set headings pair with plain-language copy and compact evidence labels.",
+      "Commerce and exact-fit proof share one high-contrast result field; proof-system detail stays secondary."
+    ],
+    "rules": [
+      {
+        "name": "The Citron Is a Marker Rule",
+        "body": "Citron identifies the next meaningful action, current physical point, or verified commerce action; it never becomes a decorative background wash across the whole interface.",
+        "section": "colors"
+      },
+      {
+        "name": "The Category Color Serves the Appliance Rule",
+        "body": "Category washes belong behind appliance cutaways and category-specific guidance, not on unrelated content containers.",
+        "section": "colors"
+      },
+      {
+        "name": "The Semantic Color Rule",
+        "body": "Success and stop colors must always travel with explicit text or iconography; no safety or availability meaning may rely on color alone.",
+        "section": "colors"
+      },
+      {
+        "name": "The Question Leads Rule",
+        "body": "Each journey stage opens with one large plain-language question; explanatory copy supports it instead of competing at the same scale.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence Case Rule",
+        "body": "Consumer-facing controls and labels stay in sentence case. Technical casing is reserved for model numbers, part numbers, and literal tool evidence.",
+        "section": "typography"
+      },
+      {
+        "name": "The Appliance-First Rule",
+        "body": "Every diagnostic decision must remain visually tied to a recognizable appliance or highlighted location; do not replace that relationship with a search directory, chat transcript, or data table.",
+        "section": "layout"
+      },
+      {
+        "name": "The One Decision Column Rule",
+        "body": "A stage may present one primary question, one answer set, and one quieter back or evidence route. Secondary proof belongs below or behind disclosure.",
+        "section": "layout"
+      },
+      {
+        "name": "The Field First, Lift Second Rule",
+        "body": "Start with rules, spacing, and tonal fields. Add elevation only to the active working object or final answer—never to every container.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Geometry Has a Job Rule",
+        "body": "Square cells describe the broad catalog field, rounded surfaces describe a focused task, and pills describe compact status or filtering. Do not apply pill shapes to ordinary actions or round every nested region.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do let a recognizable appliance or location carry the visual weight of every diagnostic stage.",
+      "Do preserve the appliance → problem → model → location → observation → part, fix, or service journey and reveal one decision at a time.",
+      "Do use ruled hairlines and generous space for most structure, reserving the Working Surface shadow for active inspection and result surfaces.",
+      "Do keep Citron Marker scarce and functional: current location, decisive selection, completed example, or verified purchase action.",
+      "Do separate exact-fit commerce inside the dark result field and keep evidence or developer detail secondary.",
+      "Do maintain 44px minimum touch targets, the shared visible focus ring, reduced-motion behavior, and text/icon support for semantic color."
+    ],
+    "donts": [
+      "Don't introduce workshop cosplay, grunge, faux tools, distressed materials, or blueprint clichés.",
+      "Don't turn the experience into a generic AI dashboard, chat-first interface, repair directory, or repetitive grid of interchangeable cards.",
+      "Don't add gradients, glass effects, neon agent styling, ambient glows, or decorative motion.",
+      "Don't expose protocol language, tool traces, or evidence mechanics as the primary homeowner experience.",
+      "Don't use Citron Marker as an all-over brand wash or semantic red/green without plain-language meaning.",
+      "Don't blur guidance, part proof, commerce, and professional-stop outcomes into the same visual treatment."
+    ]
+  }
+}

@@ -1,30 +1,27 @@
-import { ArrowRight, BadgeCheck, MapPin, Search, ShoppingBag } from "lucide-react";
-import { useMemo, useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, BadgeCheck, ChevronDown, MapPin, Search } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { ModelNumberGuide } from "@/components/ModelNumberGuide";
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
+import {
+  APPLIANCE_JOURNEYS,
+  getApplianceJourney,
+  getCatalogEntriesForSymptom,
+  getCategoryCount,
+  getSupportedSymptoms,
+  SYMPTOM_PRESENTATION,
+} from "@/data/journeyCatalog";
 import { analyzeModelQuery, capabilityLabel } from "@/domain/modelSearch";
 import type {
   ApplianceKind,
   BrandName,
   CapabilityTier,
   RepairSnapshot,
+  SupportedSymptomId,
   WasherLoadStyle,
 } from "@/domain/types";
 
-const KINDS: Array<{ id: ApplianceKind; label: string; problem: string; glyph: string }> = [
-  { id: "washer", label: "Washer", problem: "Won't drain", glyph: "01" },
-  { id: "dishwasher", label: "Dishwasher", problem: "Won't drain", glyph: "02" },
-  { id: "dryer", label: "Electric dryer", problem: "Door won't close", glyph: "03" },
-  { id: "refrigerator", label: "Refrigerator", problem: "Water is slow", glyph: "04" },
-];
-
-const FLAGSHIP_IDS: Record<ApplianceKind, string> = {
-  washer: "ge-gfw550ssnww",
-  dishwasher: "whirlpool-wdt750sakz1",
-  dryer: "ge-gtd42easj2ww",
-  refrigerator: "ge-gss25gypfs",
-};
+type JourneyStage = "appliance" | "symptom" | "model";
 
 interface ModelFinderProps {
   snapshot: RepairSnapshot;
@@ -41,21 +38,38 @@ export function ModelFinder({
   onSelect,
   onExample,
 }: ModelFinderProps) {
+  const [stage, setStage] = useState<JourneyStage>("appliance");
+  const [kind, setKind] = useState<ApplianceKind>(snapshot.catalogKind ?? "dryer");
+  const [selectedSymptomId, setSelectedSymptomId] = useState<SupportedSymptomId | null>(null);
   const [query, setQuery] = useState(snapshot.catalogQuery);
   const [brand, setBrand] = useState<BrandName | null>(null);
   const [capability, setCapability] = useState<CapabilityTier | null>(null);
-  const [kind, setKind] = useState<ApplianceKind>(snapshot.catalogKind ?? "dryer");
   const [showGuide, setShowGuide] = useState(false);
   const [washerStyle, setWasherStyle] = useState<WasherLoadStyle>("front-load");
   const inputRef = useRef<HTMLInputElement>(null);
-  const activeKind = KINDS.find((item) => item.id === kind)!;
-  const categoryEntries = APPLIANCE_CATALOG.filter((entry) => entry.kind === kind);
+  const stageTitleRef = useRef<HTMLHeadingElement>(null);
+  const focusAfterGuideRef = useRef(false);
+  const pendingStageFocusRef = useRef<"heading" | "input" | null>(null);
+
+  const journey = getApplianceJourney(kind);
+  const kindEntries = APPLIANCE_CATALOG.filter((entry) => entry.kind === kind);
+  const categoryEntries = selectedSymptomId
+    ? getCatalogEntriesForSymptom(kind, selectedSymptomId)
+    : kindEntries;
   const brands = [...new Set(categoryEntries.map((entry) => entry.brand))];
-  const flagship = categoryEntries.find((entry) => entry.id === FLAGSHIP_IDS[kind]);
+  const flagship =
+    categoryEntries.find((entry) => entry.id === journey.flagshipId) ??
+    categoryEntries.find((entry) => entry.capability === "purchase-ready") ??
+    categoryEntries[0];
+  const supportedSymptoms = getSupportedSymptoms(kind);
   const analysis = useMemo(() => analyzeModelQuery(query, brand, kind), [brand, kind, query]);
-  const results = capability
-    ? analysis.matches.filter((entry) => entry.capability === capability)
+  const symptomMatches = selectedSymptomId
+    ? analysis.matches.filter((entry) => entry.supportedSymptom === selectedSymptomId)
     : analysis.matches;
+  const results = capability
+    ? symptomMatches.filter((entry) => entry.capability === capability)
+    : symptomMatches;
+  const hasDifferentSymptomMatches = analysis.matches.length > 0 && symptomMatches.length === 0;
   const tierCounts = categoryEntries.reduce(
     (counts, entry) => ({ ...counts, [entry.capability]: counts[entry.capability] + 1 }),
     { "purchase-ready": 0, "guided-checks": 0, "verified-part-unavailable": 0 },
@@ -63,55 +77,220 @@ export function ModelFinder({
 
   const chooseKind = (next: ApplianceKind) => {
     setKind(next);
+    setSelectedSymptomId(null);
     setBrand(null);
     setCapability(null);
     setQuery("");
     setShowGuide(false);
     onSearch("", null, next);
+    pendingStageFocusRef.current = "heading";
+    setStage("symptom");
+  };
+
+  const chooseSymptom = (symptomId: SupportedSymptomId) => {
+    setSelectedSymptomId(symptomId);
+    pendingStageFocusRef.current = "input";
+    setStage("model");
+  };
+
+  const moveToStage = (next: JourneyStage, focus: "heading" | "input" = "heading") => {
+    pendingStageFocusRef.current = focus;
+    setStage(next);
   };
 
   const focusModelInput = () => {
-    inputRef.current?.focus();
+    focusAfterGuideRef.current = true;
     setShowGuide(false);
-    requestAnimationFrame(() => inputRef.current?.focus());
+    if (!showGuide) {
+      inputRef.current?.focus();
+      focusAfterGuideRef.current = false;
+    }
   };
+
+  useEffect(() => {
+    if (!showGuide && focusAfterGuideRef.current) {
+      inputRef.current?.focus();
+      focusAfterGuideRef.current = false;
+    }
+  }, [showGuide]);
+
+  useEffect(() => {
+    const pending = pendingStageFocusRef.current;
+    if (!pending) return;
+    const frame = requestAnimationFrame(() => {
+      if (pending === "input") inputRef.current?.focus();
+      else stageTitleRef.current?.focus();
+      pendingStageFocusRef.current = null;
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [stage]);
+
+  const selectEntry = (entryId: string) => {
+    onSelect(
+      entryId,
+      analysis.status === "exact-code" && analysis.exactEntryId === entryId ? query : undefined,
+    );
+  };
+
+  if (stage === "appliance") {
+    return (
+      <section className="journey-start" aria-labelledby="journey-title">
+        <div className="journey-start__intro">
+          <h1 id="journey-title" ref={stageTitleRef} tabIndex={-1}>
+            What are you fixing?
+          </h1>
+          <p>
+            Choose the appliance, then pick the problem. Clunk will show one safe place to look at a
+            time—and only name a part when the complete model number proves it fits.
+          </p>
+        </div>
+
+        <div className="appliance-field" aria-label="Choose an appliance">
+          {APPLIANCE_JOURNEYS.map((item, index) => {
+            const symptoms = getSupportedSymptoms(item.id);
+            const symptom = SYMPTOM_PRESENTATION[symptoms[0]!];
+            return (
+              <article className={`appliance-choice appliance-choice--${item.id}`} key={item.id}>
+                <button
+                  className="appliance-choice__primary"
+                  type="button"
+                  onClick={() => chooseKind(item.id)}
+                  aria-label={`Choose ${item.label} — ${symptom.title}`}
+                >
+                  <span className="appliance-choice__image">
+                    <img
+                      src={item.image.src}
+                      srcSet={item.image.srcSet}
+                      sizes="(max-width: 620px) 46vw, (min-width: 1100px) 22vw, (min-width: 720px) 46vw, 82vw"
+                      alt={item.image.alt}
+                      width="480"
+                      height="480"
+                      loading={index === 0 ? "eager" : "lazy"}
+                      fetchPriority={index === 0 ? "high" : "auto"}
+                    />
+                  </span>
+                  <span className="appliance-choice__name">
+                    <strong>{item.label}</strong>
+                    <span>{symptom.title}</span>
+                  </span>
+                  <ArrowRight size={22} aria-hidden="true" />
+                </button>
+                <button
+                  className="appliance-choice__example"
+                  type="button"
+                  onClick={() => onExample(item.flagshipId)}
+                >
+                  See completed {item.noun} example
+                </button>
+              </article>
+            );
+          })}
+        </div>
+
+        <details className="all-appliances">
+          <summary>
+            <span>All supported appliances</span>
+            <span>{APPLIANCE_CATALOG.length} models across 4 types</span>
+            <ChevronDown size={18} aria-hidden="true" />
+          </summary>
+          <div className="all-appliances__list">
+            {APPLIANCE_JOURNEYS.map((item) => (
+              <button type="button" key={item.id} onClick={() => chooseKind(item.id)}>
+                <span>{item.label}</span>
+                <span>{getCategoryCount(item.id)} models</span>
+                <ArrowRight size={16} aria-hidden="true" />
+              </button>
+            ))}
+          </div>
+        </details>
+      </section>
+    );
+  }
+
+  if (stage === "symptom") {
+    return (
+      <section className="symptom-select" aria-labelledby="symptom-title">
+        <button className="journey-back" type="button" onClick={() => moveToStage("appliance")}>
+          <ArrowLeft size={17} aria-hidden="true" /> Change appliance
+        </button>
+        <div className="symptom-select__layout">
+          <figure className="symptom-machine">
+            <img
+              src={journey.image.src}
+              srcSet={journey.image.srcSet}
+              sizes="(min-width: 900px) 48vw, 92vw"
+              alt={journey.image.alt}
+              width="480"
+              height="480"
+            />
+            <figcaption>
+              Recognizable cutaway · the exact location comes after model selection
+            </figcaption>
+          </figure>
+          <div className="symptom-select__content">
+            <p className="journey-step">{journey.label} selected</p>
+            <h1 id="symptom-title" ref={stageTitleRef} tabIndex={-1}>
+              What is it doing?
+            </h1>
+            <p className="symptom-select__lead">
+              Current coverage is deliberately narrow. These are the problems Clunk can guide safely
+              today.
+            </p>
+            <div className="symptom-options" aria-label={`Supported ${journey.noun} problems`}>
+              {supportedSymptoms.map((symptomId) => {
+                const symptom = SYMPTOM_PRESENTATION[symptomId];
+                return (
+                  <button type="button" key={symptomId} onClick={() => chooseSymptom(symptomId)}>
+                    <span>
+                      <BadgeCheck size={18} aria-hidden="true" /> Supported now
+                    </span>
+                    <strong>{symptom.title}</strong>
+                    <small>{symptom.description}</small>
+                    <ArrowRight size={20} aria-hidden="true" />
+                  </button>
+                );
+              })}
+            </div>
+            <p className="coverage-note">
+              Other {journey.noun} problems are not supported yet. Clunk will not improvise a path
+              without checked guidance.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="model-finder" aria-labelledby="model-finder-title">
+      <button className="journey-back" type="button" onClick={() => moveToStage("symptom")}>
+        <ArrowLeft size={17} aria-hidden="true" /> Back to the problem
+      </button>
+
       <div className="model-finder__heading">
-        <span className="section-kicker">Start with what is broken</span>
-        <h2 id="model-finder-title">Choose an appliance</h2>
+        <p className="journey-step">
+          {journey.label} · {SYMPTOM_PRESENTATION[selectedSymptomId ?? supportedSymptoms[0]!].title}
+        </p>
+        <h1 id="model-finder-title" ref={stageTitleRef} tabIndex={-1}>
+          Find the model label.
+        </h1>
+        <p>
+          Search is the fastest path. Copy the complete model line—including every letter, slash,
+          and suffix—so Clunk can keep an exact part separate from a family-level suggestion.
+        </p>
       </div>
 
-      <div className="category-grid" aria-label="Appliance category">
-        {KINDS.map((item) => (
-          <button
-            className={`category-card ${kind === item.id ? "is-active" : ""}`}
-            type="button"
-            aria-pressed={kind === item.id}
-            key={item.id}
-            onClick={() => chooseKind(item.id)}
-          >
-            <span className="category-card__number">{item.glyph}</span>
-            <span>
-              <strong>{item.label}</strong>
-              <small>{item.problem}</small>
-            </span>
-          </button>
-        ))}
-      </div>
-
-      <div className="model-entry-paths" aria-label="How do you want to identify the model?">
+      <div className="model-entry-paths" aria-label="Find or enter a model number">
         <button
           className={!showGuide ? "is-active" : ""}
           type="button"
           aria-pressed={!showGuide}
           onClick={focusModelInput}
         >
-          <Search size={18} aria-hidden="true" />
+          <Search size={19} aria-hidden="true" />
           <span>
-            <strong>I have the number</strong>
-            <small>Type all or part of it</small>
+            <strong>Search a model number</strong>
+            <small>Enter the label exactly as printed</small>
           </span>
         </button>
         <button
@@ -122,10 +301,10 @@ export function ModelFinder({
           aria-controls="model-number-guide"
           onClick={() => setShowGuide(true)}
         >
-          <MapPin size={18} aria-hidden="true" />
+          <MapPin size={19} aria-hidden="true" />
           <span>
-            <strong>Find my model number</strong>
-            <small>Show me where the label is</small>
+            <strong>Show me where the label is</strong>
+            <small>Visual guidance for common locations</small>
           </span>
         </button>
       </div>
@@ -142,35 +321,6 @@ export function ModelFinder({
         />
       ) : null}
 
-      {flagship ? (
-        <article className="flagship-answer">
-          <div className="flagship-answer__copy">
-            <div className="flagship-answer__eyebrow">
-              <BadgeCheck size={16} aria-hidden="true" /> Purchase-ready example
-            </div>
-            <h3>{activeKind.problem}</h3>
-            <p>
-              {flagship.brand} {flagship.verifiedProductCodes[0] ?? flagship.model} · exact model,
-              part, and live Shopify offers
-            </p>
-          </div>
-          <button
-            className="button button--example"
-            type="button"
-            onClick={() => onExample(flagship.id)}
-          >
-            See the full answer <ArrowRight size={18} aria-hidden="true" />
-          </button>
-          <small className="flagship-answer__promise">
-            <ShoppingBag size={14} aria-hidden="true" /> One click ends at the part link
-          </small>
-        </article>
-      ) : null}
-
-      <div className="diagnose-divider">
-        <span>or diagnose yours</span>
-      </div>
-
       <form
         className="model-search"
         onSubmit={(event) => {
@@ -178,17 +328,14 @@ export function ModelFinder({
           onSearch(query, brand, kind);
         }}
       >
-        <label htmlFor="model-query">{activeKind.label} model number</label>
+        <label htmlFor="model-query">{journey.label} model number</label>
         <div className="model-search__row">
-          <Search size={18} aria-hidden="true" />
+          <Search size={20} aria-hidden="true" />
           <input
             ref={inputRef}
             id="model-query"
+            type="search"
             value={query}
-            role="combobox"
-            aria-autocomplete="list"
-            aria-controls="model-suggestions"
-            aria-expanded={Boolean(query && results.length)}
             aria-describedby="model-search-guidance"
             autoComplete="off"
             onChange={(event) => setQuery(event.target.value)}
@@ -210,20 +357,39 @@ export function ModelFinder({
         ) : null}
       </form>
 
-      <details className="model-browser" open={Boolean(query || brand)}>
+      {flagship ? (
+        <aside className="completed-example" aria-label="Completed example">
+          <span>
+            <BadgeCheck size={17} aria-hidden="true" /> Completed example
+          </span>
+          <div>
+            <strong>
+              {flagship.brand} {flagship.verifiedProductCodes[0] ?? flagship.model}
+            </strong>
+            <small>Prefilled observations lead to its verified part and seller handoff.</small>
+          </div>
+          <button type="button" onClick={() => onExample(flagship.id)}>
+            View the completed answer <ArrowRight size={17} aria-hidden="true" />
+          </button>
+        </aside>
+      ) : null}
+
+      <details className="model-browser" open={Boolean(query || brand || capability)}>
         <summary>
-          Browse {categoryEntries.length} supported {activeKind.label.toLowerCase()} models{" "}
-          <ArrowRight size={17} aria-hidden="true" />
+          <span>
+            Browse by brand <small>{categoryEntries.length} supported models</small>
+          </span>
+          <ChevronDown size={18} aria-hidden="true" />
         </summary>
         <p className="model-browser__tiers">
-          {tierCounts["purchase-ready"]} purchase-ready · {tierCounts["guided-checks"]} guided
+          {tierCounts["purchase-ready"]} purchase-ready · {tierCounts["guided-checks"]} checks only
           {tierCounts["verified-part-unavailable"] > 0
-            ? ` · ${tierCounts["verified-part-unavailable"]} checked unavailable`
+            ? ` · ${tierCounts["verified-part-unavailable"]} verified part unavailable`
             : ""}
         </p>
         <div className="model-filter-group">
-          <span>Evidence level</span>
-          <div className="capability-filters" aria-label="Filter by evidence level">
+          <span>Outcome available today</span>
+          <div className="capability-filters" aria-label="Filter by coverage">
             <button
               className={capability === null ? "is-active" : ""}
               type="button"
@@ -250,64 +416,81 @@ export function ModelFinder({
             </button>
           </div>
         </div>
-        <div className="model-filter-group">
-          <span>Brand</span>
-          <div className="brand-filters" aria-label="Filter by brand">
-            {brands.map((name) => (
-              <button
-                className={brand === name ? "is-active" : ""}
-                type="button"
-                aria-pressed={brand === name}
-                key={name}
-                onClick={() => setBrand(brand === name ? null : name)}
-              >
-                {name}
-              </button>
-            ))}
-          </div>
-        </div>
-        <div className="model-results" id="model-suggestions" aria-live="polite">
-          {results.length ? (
-            results.slice(0, 10).map((entry) => (
-              <button
-                className={selectedId === entry.id ? "model-result is-selected" : "model-result"}
-                type="button"
-                key={entry.id}
-                onClick={() =>
-                  onSelect(
-                    entry.id,
-                    analysis.status === "exact-code" && analysis.exactEntryId === entry.id
-                      ? query
-                      : undefined,
-                  )
-                }
-              >
+
+        {query ? (
+          <div className="model-results" id="model-suggestions" aria-live="polite">
+            {results.length ? (
+              results.slice(0, 12).map((entry) => (
+                <button
+                  className={selectedId === entry.id ? "model-result is-selected" : "model-result"}
+                  type="button"
+                  key={entry.id}
+                  onClick={() => selectEntry(entry.id)}
+                >
+                  <span>
+                    <strong>
+                      {entry.brand} {entry.model}
+                    </strong>
+                    <small>{capabilityLabel(entry.capability)}</small>
+                  </span>
+                  <ArrowRight size={17} aria-hidden="true" />
+                </button>
+              ))
+            ) : (
+              <div className="model-empty">
+                <strong>
+                  {symptomMatches.length > 0 && capability
+                    ? `No ${capabilityLabel(capability).toLowerCase()} models in this view.`
+                    : hasDifferentSymptomMatches
+                      ? "That model is supported for a different problem."
+                      : analysis.status === "serial-number"
+                        ? "That looks like the serial line."
+                        : "That model is not in Clunk yet."}
+                </strong>
                 <span>
-                  <strong>
-                    {entry.brand} {entry.model}
-                  </strong>
-                  <small>{capabilityLabel(entry.capability)}</small>
+                  {symptomMatches.length > 0 && capability
+                    ? "Choose another coverage level."
+                    : hasDifferentSymptomMatches
+                      ? "Go back and choose the problem that matches what the appliance is doing."
+                      : analysis.guidance}
                 </span>
-                <ArrowRight size={17} aria-hidden="true" />
-              </button>
-            ))
-          ) : (
-            <div className="model-empty">
-              <strong>
-                {analysis.matches.length > 0 && capability
-                  ? `No ${capabilityLabel(capability).toLowerCase()} models in this view.`
-                  : analysis.status === "serial-number"
-                    ? "That looks like the serial line."
-                    : "That model is not in Clunk yet."}
-              </strong>
-              <span>
-                {analysis.matches.length > 0 && capability
-                  ? "Choose another evidence level or clear a brand filter."
-                  : analysis.guidance}
-              </span>
-            </div>
-          )}
-        </div>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="brand-directory" id="model-suggestions">
+            {brands.map((name) => {
+              const brandEntries = results.filter((entry) => entry.brand === name);
+              if (!brandEntries.length) return null;
+              return (
+                <details className="model-brand-group" key={name} open={brand === name}>
+                  <summary>
+                    <span>{name}</span>
+                    <span>{brandEntries.length} models</span>
+                    <ChevronDown size={16} aria-hidden="true" />
+                  </summary>
+                  <div>
+                    {brandEntries.map((entry) => (
+                      <button type="button" key={entry.id} onClick={() => selectEntry(entry.id)}>
+                        <span>
+                          <strong>{entry.model}</strong>
+                          <small>{capabilityLabel(entry.capability)}</small>
+                        </span>
+                        <ArrowRight size={16} aria-hidden="true" />
+                      </button>
+                    ))}
+                  </div>
+                </details>
+              );
+            })}
+            {!results.length ? (
+              <div className="model-empty">
+                <strong>No models at this coverage level.</strong>
+                <span>Choose another coverage filter to see supported models.</span>
+              </div>
+            ) : null}
+          </div>
+        )}
       </details>
     </section>
   );
