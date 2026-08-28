@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-08-28** on `codex/integrated-clunk-release`, based on current default-branch commit `a5d7624`.
+Last reconciled: **2026-08-28** after the integrated release was fast-forward merged into local `main` from base commit `a5d7624`.
 
 This is the concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
@@ -10,9 +10,9 @@ Clunk is a consumer-first visual appliance diagnostic guide and WebMCP demo. A h
 
 The design direction is **Approachable Precision**: calm, appliance-led, highly legible, and free of generic AI styling or dashboard density. Real diagnosis is primary. Completed fixtures sit behind one secondary **See how Clunk works** entry. The homepage shows four working appliance choices, then no more than four observable problem choices per category. A quiet text-only note says vacuums and robot vacuums are next to evaluate; it is not a control or shipping promise.
 
-## Integrated release state
+## Current main state
 
-- The branch contains 163 source-backed U.S. model families: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands.
+- Local `main` contains 163 source-backed U.S. model families: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands.
 - Model identity and symptom coverage are many-to-many. The catalog resolves to 175 model × symptom packs: 25 purchase-ready and 150 guided-check combinations.
 - Every model keeps its established category symptom. Twelve additional guided paths are separately evidenced only on GE `GFW550SSNWW`, Whirlpool `WDT750SAKZ1`, GE `GTD42EASJ2WW`, and GE `GSS25GYPFS`. The 16 visible symptom families are four per category. Unsupported model × symptom pairs stop visibly and never borrow another tree.
 - Search filters by the selected symptom. Versioned persistence migrates the earlier single-symptom state, malformed or oversized local state is discarded, and undo history is bounded.
@@ -20,7 +20,7 @@ The design direction is **Approachable Precision**: calm, appliance-led, highly 
 - Shopify organic Global Catalog search remains credential-free. An optional validated public saved-catalog identifier can request Shopify's `affiliate` placement. Promoted offers are labeled, disclose possible commission near the action, and preserve Shopify's attributed variant URL exactly. Enrollment, saved-catalog approval, and payout setup remain manual external dependencies.
 - Repository hardening includes corrected security claims, a private-vulnerability-reporting path through GitHub, stronger secret ignores and a public-only example configuration, bounded public-HTTPS URL validation, hardened local-state parsing, full-SHA Actions pins, and static-host security-header declarations. External GitHub and host settings remain in `docs/release-security-checklist.md`.
 
-The integrated branch is **not pushed, merged, published to Lovable, or deployed**. No GitHub settings, repository visibility, external account, program enrollment, or published history were changed.
+Commits `3b886c2` and `1eeb104` were fast-forward merged into local `main` on 2026-08-28. Local `main` is still **unpushed, unpublished to Lovable, and undeployed**; `origin/main` remains at `a5d7624`. No GitHub settings, repository visibility, external account, program enrollment, or published history were changed.
 
 ## Verification
 
