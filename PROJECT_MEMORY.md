@@ -20,7 +20,7 @@ The design direction is **Approachable Precision**: calm, appliance-led, highly 
 - Shopify organic Global Catalog search remains credential-free. An optional validated public saved-catalog identifier can request Shopify's `affiliate` placement. Promoted offers are labeled, disclose possible commission near the action, and preserve Shopify's attributed variant URL exactly. Enrollment, saved-catalog approval, and payout setup remain manual external dependencies.
 - Repository hardening includes corrected security claims, a private-vulnerability-reporting path through GitHub, stronger secret ignores and a public-only example configuration, bounded public-HTTPS URL validation, hardened local-state parsing, full-SHA Actions pins, and static-host security-header declarations. External GitHub and host settings remain in `docs/release-security-checklist.md`.
 
-Commits `3b886c2` and `1eeb104` were fast-forward merged into local `main` on 2026-08-28. Local `main` is still **unpushed, unpublished to Lovable, and undeployed**; `origin/main` remains at `a5d7624`. No GitHub settings, repository visibility, external account, program enrollment, or published history were changed.
+Commits `3b886c2` and `1eeb104` were fast-forward merged into `main` and included in the 2026-08-28 push to `origin/main`, together with the merge-state handoff update. The connected-branch push should sync into the Lovable editor, but production deployment and the live URL have not yet been verified. No GitHub settings, repository visibility, external account, or program enrollment was changed.
 
 ## Verification
 
