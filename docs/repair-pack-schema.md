@@ -1,6 +1,8 @@
 # Repair pack extension schema
 
-Clunk keeps model identity, symptom coverage, repair-pack identity, capability tier, and exact-part evidence separate from the WebMCP registration and UI. The 50 published-milestone entries and 113 expansion entries are composed into one 163-model catalog by [`src/data/applianceCatalog.ts`](../src/data/applianceCatalog.ts). The legacy expansion file remains a compact single-symptom import source, validated by [`catalog-expansion.schema.json`](./catalog-expansion.schema.json), then normalized into the same many-to-many coverage structure in [`src/data/catalogExpansion.ts`](../src/data/catalogExpansion.ts). The catalog currently resolves to 175 schema-v6 model × symptom repair packs, all checked by the catalog and pack invariants in [`src/domain/repairPack.ts`](../src/domain/repairPack.ts).
+Clunk keeps model identity, symptom coverage, repair-pack identity, capability tier, and exact-part evidence separate from the WebMCP registration and UI. The 50 published-milestone entries and 113 expansion entries are composed into one 163-model catalog by [`src/data/applianceCatalog.ts`](../src/data/applianceCatalog.ts). The legacy expansion file remains a compact single-symptom import source, validated by [`catalog-expansion.schema.json`](./catalog-expansion.schema.json), then normalized into the same many-to-many coverage structure in [`src/data/catalogExpansion.ts`](../src/data/catalogExpansion.ts). The catalog currently resolves to 266 schema-v6 model × symptom repair packs—25 purchase-ready and 241 guided—checked by the catalog and pack invariants in [`src/domain/repairPack.ts`](../src/domain/repairPack.ts).
+
+The 91-row door-closure addition uses a second narrow evidence shape: [`symptom-coverage-expansion.schema.json`](./symptom-coverage-expansion.schema.json) validates [`src/data/symptomCoverageExpansion.json`](../src/data/symptomCoverageExpansion.json). Every row binds one production `modelId` to one category, brand, family alias, topology/load style, primary troubleshooting source ID, explicit applicability, safe observable checks, professional and stop boundaries, feature exception, guided-only tier, unresolved exact-part gaps, and verification date. Runtime validation fixes the allowed counts at 36 washer, 20 dishwasher, and 35 refrigerator rows and rejects duplicates, unknown sources, tier inflation, or non-HTTPS evidence.
 
 The documented [`repair-pack.schema.json`](./repair-pack.schema.json) describes the serialized extension shape:
 
@@ -34,6 +36,8 @@ A contributor must not disguise a forbidden capability under a new tag.
 7. Validate the JSON shape and runtime invariants. A reusable family profile may deduplicate a proven safe baseline, but every model × symptom pair still requires its own pack identity, applicability, troubleshooting source, capability tier, and ledger record.
 8. Add search, selection, happy-path, mismatch, invalid-order, hazard, part-boundary, and WebMCP eval coverage.
 9. Update [`docs/model-source-ledger.md`](./model-source-ledger.md).
+
+For a cohort expansion, add a separate evidence row for every model × symptom combination. A cohort profile may share only the checks that remain true for every listed row; topology-specific names and feature exceptions stay explicit. A research candidate is not production coverage until its production model ID is reconciled and the record passes schema, runtime, catalog, pack, and unsupported-neighbor tests.
 
 ## Adding an appliance category or symptom
 

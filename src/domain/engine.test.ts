@@ -78,7 +78,7 @@ describe("source-backed multi-appliance repair engine", () => {
   it("validates 163 models and their many-to-many repair packs", () => {
     expect(assertCatalog(APPLIANCE_CATALOG)).toBe(APPLIANCE_CATALOG);
     expect(APPLIANCE_CATALOG).toHaveLength(163);
-    expect(REPAIR_PACKS.size).toBe(175);
+    expect(REPAIR_PACKS.size).toBe(266);
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.kind))).toEqual(
       new Set(["washer", "dishwasher", "dryer", "refrigerator"]),
     );
@@ -247,7 +247,7 @@ describe("source-backed multi-appliance repair engine", () => {
       byKind: { washer: 56, dishwasher: 33, dryer: 33, refrigerator: 41 },
       byCapability: {
         "purchase-ready": 25,
-        "guided-checks": 150,
+        "guided-checks": 241,
         "verified-part-unavailable": 0,
       },
     });

@@ -71,4 +71,25 @@ describe("stored repair session migration", () => {
     });
     expect(migrated?.undoStack).toHaveLength(12);
   });
+
+  it("preserves a current expanded model × symptom pack and its undo state", () => {
+    let state = createInitialRepairState("ready");
+    state = executeRepairTool(state, "select_appliance", {
+      applianceId: "lg-wt7400cw",
+      symptomId: "door-will-not-close",
+    }).state;
+    state = executeRepairTool(state, "start_diagnosis", {
+      symptomId: "door-will-not-close",
+    }).state;
+    const previous = state;
+    state = executeRepairTool(state, "record_observation", {
+      checkId: "safety-check",
+      resultId: "safe-ready",
+    }).state;
+
+    const migrated = migrateStoredSession({ version: 2, state, undoStack: [previous] });
+    expect(migrated?.state.packId).toBe("lg-wt7400cw::door-will-not-close");
+    expect(migrated?.state.currentStepId).toBe("check-washer-closure-edge");
+    expect(migrated?.undoStack[0]?.currentStepId).toBe("safety-check");
+  });
 });

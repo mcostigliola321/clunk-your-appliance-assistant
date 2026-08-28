@@ -1,0 +1,3966 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-08-28",
+  "symptomId": "door-will-not-close",
+  "evidenceRules": [
+    "Model identity never implies symptom coverage.",
+    "No evidence transfer across brands or incompatible topologies.",
+    "Generic category guidance without brand/category applicability cannot create a candidate.",
+    "Purchase-ready requires exact complete-code-to-part compatibility plus separately verified commerce evidence."
+  ],
+  "profiles": [
+    {
+      "id": "washer-door-closure-observation",
+      "scope": "Brand-specific front-load or top-load washer cohorts only",
+      "checks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "exclusions": [
+        "No brand transfer",
+        "Front-load gasket steps do not apply to top-load lids",
+        "Do not bypass, force, or replace a lock"
+      ],
+      "exceptionRule": "Exact manual wins; absent a brand/topology source, remain unsupported."
+    },
+    {
+      "id": "dishwasher-door-closure-observation",
+      "scope": "Brand-specific built-in dishwasher cohorts only",
+      "checks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "exclusions": [
+        "No cross-brand latch assumptions",
+        "AutoRelease/open-dry branches only on equipped models",
+        "No hinge/spring/alignment repair"
+      ],
+      "exceptionRule": "Use model-prefix and feature gates stated by the manufacturer."
+    },
+    {
+      "id": "refrigerator-door-closure-observation",
+      "scope": "Brand-specific full-size refrigerator cohorts, split by side-by-side and French-door topology",
+      "checks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "exclusions": [
+        "No sealed-system or hinge repair",
+        "No heavy-unit movement",
+        "French-door mullion step not used on side-by-side models"
+      ],
+      "exceptionRule": "Model manual confirms flap/mullion, drawer, showcase-door, and leveling branches."
+    }
+  ],
+  "sources": {
+    "lg-front-washer-door": {
+      "id": "lg-front-washer-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "LG front-load washer dE/dE1/dE2 door errors",
+      "url": "https://www.lg.com/us/support/help-library/front-load-washer-what-are-de-de1-and-de2-error-codes--1400508168566",
+      "publisher": "LG",
+      "appliesTo": "LG front-load washers; all-model article with model-dependent visuals",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "lg-top-washer-lid": {
+      "id": "lg-top-washer-lid",
+      "kind": "manufacturer-troubleshooting",
+      "title": "LG top-load washer door will not close",
+      "url": "https://www.lg.com/us/support/help-library/troubleshooting-an-lg-top-load-washer-door-that-will-not-close-properly-CT10000010-20152830489687",
+      "publisher": "LG",
+      "appliesTo": "LG top-load washers; all-model article with model-dependent visuals",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "samsung-washer-door": {
+      "id": "samsung-washer-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Samsung washer door error guidance",
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10000997/",
+      "publisher": "Samsung",
+      "appliesTo": "Samsung washers; exact error meaning varies by model and manual",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "whirlpool-front-washer-door": {
+      "id": "whirlpool-front-washer-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Whirlpool front-load washer door latching",
+      "url": "https://producthelp.whirlpool.com/Laundry/Washers/Product_Info/Washer_Product_Assistance/Latching_a_Front_Load_Washer_Door",
+      "publisher": "Whirlpool",
+      "appliesTo": "Whirlpool front-load washers",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "whirlpool-top-washer-lid": {
+      "id": "whirlpool-top-washer-lid",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Whirlpool top-load washer lid not latching",
+      "url": "https://producthelp.whirlpool.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "publisher": "Whirlpool",
+      "appliesTo": "Whirlpool top-load washers",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "maytag-front-washer-door": {
+      "id": "maytag-front-washer-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag front-load washer door will not lock",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Door_Issues/Door_Will_Not_Lock_or_Unlock_-_Front_Load_Washer",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag front-load washers",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "maytag-top-washer-lid": {
+      "id": "maytag-top-washer-lid",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag top-load washer LdL lid-lock error",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Error_Codes_or_Flashing_Lights/Other_Error_Codes/LdL_-_Error_Code",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag top-load washers that display LdL; models without that code need manual confirmation",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "amana-front-washer-door": {
+      "id": "amana-front-washer-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana front-load washer door will not lock",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Door_Issues/Door_Will_Not_Lock_-_Front_Load_Washer",
+      "publisher": "Amana",
+      "appliesTo": "Amana front-load washers",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "amana-top-washer-lid": {
+      "id": "amana-top-washer-lid",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana top-load washer lid not latching",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "publisher": "Amana",
+      "appliesTo": "Amana top-load washers",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "electrolux-front-washer-door": {
+      "id": "electrolux-front-washer-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Electrolux E41 washer door-open guidance",
+      "url": "https://owner.electrolux.com/support-articles/article/1820509-laundry-front-loading-washer-displaying-error-code-e41-door-is-open-",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux front-load washers",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "whirlpool-dishwasher-door": {
+      "id": "whirlpool-dishwasher-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Whirlpool dishwasher door will not close",
+      "url": "https://producthelp.whirlpool.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "publisher": "Whirlpool",
+      "appliesTo": "Whirlpool built-in dishwashers; Open Door Dry step only on equipped models",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "kitchenaid-dishwasher-door": {
+      "id": "kitchenaid-dishwasher-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "KitchenAid dishwasher door will not close",
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "publisher": "KitchenAid",
+      "appliesTo": "KitchenAid built-in dishwashers; Open Door Dry step only on equipped models",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "samsung-dishwasher-door": {
+      "id": "samsung-dishwasher-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Samsung dishwasher door does not close",
+      "url": "https://www.samsung.com/us/support/troubleshooting/TSG01001919/",
+      "publisher": "Samsung",
+      "appliesTo": "Samsung dishwashers; AutoRelease step only on equipped models",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "ge-dishwasher-door": {
+      "id": "ge-dishwasher-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "GE dishwasher door will not latch",
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17527",
+      "publisher": "GE Appliances",
+      "appliesTo": "GE dishwashers; adjustable-rack note only for listed model prefixes",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "bosch-dishwasher-door": {
+      "id": "bosch-dishwasher-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Bosch dishwasher troubleshooting",
+      "url": "https://www.bosch-home.com/us/owner-support/dishwashers/troubleshooting",
+      "publisher": "Bosch",
+      "appliesTo": "Bosch dishwashers; AutoAir and error-code branches are model-specific",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "frigidaire-dishwasher-door": {
+      "id": "frigidaire-dishwasher-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Frigidaire dishwasher CL/Cd door-open code",
+      "url": "https://owner.frigidaire.com/support-articles/article/1830354-dishwasher-error-code-cl-or-cd-door-is-open",
+      "publisher": "Frigidaire",
+      "appliesTo": "Frigidaire dishwashers that display CL or Cd; supports closure/latch confirmation only",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "lg-refrigerator-door": {
+      "id": "lg-refrigerator-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "LG refrigerator door not closing properly",
+      "url": "https://www.lg.com/us/support/help-library/lg-refrigerator-how-to-troubleshoot-a-refrigerator-door-not-closing-properly-CT10000021-20153109606488",
+      "publisher": "LG",
+      "appliesTo": "LG refrigerators; all-model article with model-dependent visuals",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "samsung-refrigerator-door": {
+      "id": "samsung-refrigerator-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Samsung refrigerator or freezer doors will not close",
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10007112/",
+      "publisher": "Samsung",
+      "appliesTo": "Samsung refrigerators; drawer, showcase, flap, and alignment branches are topology-specific",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "ge-refrigerator-door": {
+      "id": "ge-refrigerator-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "GE refrigerator door will not close",
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=18947",
+      "publisher": "GE Appliances",
+      "appliesTo": "GE refrigerators and freezers; built-in leveling exclusions apply",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "whirlpool-refrigerator-door": {
+      "id": "whirlpool-refrigerator-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Whirlpool refrigerator doors not closing properly",
+      "url": "https://producthelp.whirlpool.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Installation_Support/Doors_Not_Closing_Properly",
+      "publisher": "Whirlpool",
+      "appliesTo": "Whirlpool full-size refrigerators; French-door mullion guidance only on French-door models",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "maytag-refrigerator-door": {
+      "id": "maytag-refrigerator-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag refrigerator doors not closing properly",
+      "url": "https://producthelp.maytag.com/Refrigeration/Full-size_Refrigerators/Product_Info/Installation_Support/Doors_Not_Closing_Properly",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag full-size refrigerators; French-door mullion guidance only on French-door models",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "amana-refrigerator-door": {
+      "id": "amana-refrigerator-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana refrigerator door not closing",
+      "url": "https://producthelp.amana.com/Refrigeration/Full-Size_Refrigerators/French_Door_Bottom_Freezer_Refrigerator/Door_Concerns/Not_Closing/Door_Not_Closing_-_Refrigerator",
+      "publisher": "Amana",
+      "appliesTo": "Amana French-door refrigerators; side-by-side models may use only obstruction/bin/level checks pending manual confirmation",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "kitchenaid-refrigerator-door": {
+      "id": "kitchenaid-refrigerator-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "KitchenAid refrigerator doors not closing properly",
+      "url": "https://producthelp.kitchenaid.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Installation_Support/Doors_Not_Closing_Properly",
+      "publisher": "KitchenAid",
+      "appliesTo": "KitchenAid full-size refrigerators; French-door mullion guidance only on French-door models",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "electrolux-refrigerator-door": {
+      "id": "electrolux-refrigerator-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Electrolux refrigerator door issues",
+      "url": "https://owner.electrolux.com/support-articles/article/refrigerators-door-issues",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux refrigerators",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "frigidaire-refrigerator-door": {
+      "id": "frigidaire-refrigerator-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Frigidaire refrigerator door issues",
+      "url": "https://owner.frigidaire.com/support-articles/article/refrigerators-door-issues",
+      "publisher": "Frigidaire",
+      "appliesTo": "Frigidaire refrigerators",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    },
+    "bosch-refrigerator-door": {
+      "id": "bosch-refrigerator-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Bosch refrigerator door does not shut",
+      "url": "https://www.bosch-home.com/us/owner-support/get-support/self-help-fridge-does-not-shut",
+      "publisher": "Bosch",
+      "appliesTo": "Bosch refrigerators; supports door-seal inspection/cleaning and service escalation",
+      "verifiedOn": "2026-08-28",
+      "quality": "primary"
+    }
+  },
+  "records": [
+    {
+      "rowId": "lg-wm3400cw__door-will-not-close",
+      "modelId": "lg-wm3400cw",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WM3400CW",
+      "topology": "front-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "lg-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-wm4000hwa__door-will-not-close",
+      "modelId": "lg-wm4000hwa",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WM4000HWA",
+      "topology": "front-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "lg-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-wf45t6000aw__door-will-not-close",
+      "modelId": "samsung-wf45t6000aw",
+      "category": "washer",
+      "brand": "Samsung",
+      "modelFamily": "WF45T6000AW",
+      "topology": "front-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "samsung-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-wf45b6300aw__door-will-not-close",
+      "modelId": "samsung-wf45b6300aw",
+      "category": "washer",
+      "brand": "Samsung",
+      "modelFamily": "WF45B6300AW",
+      "topology": "front-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "samsung-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wfw5605mw__door-will-not-close",
+      "modelId": "whirlpool-wfw5605mw",
+      "category": "washer",
+      "brand": "Whirlpool",
+      "modelFamily": "WFW5605MW",
+      "topology": "drawer-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "whirlpool-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; drawer-filter; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wfw6620hw__door-will-not-close",
+      "modelId": "whirlpool-wfw6620hw",
+      "category": "washer",
+      "brand": "Whirlpool",
+      "modelFamily": "WFW6620HW",
+      "topology": "drawer-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "whirlpool-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; drawer-filter; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "maytag-mhw5630hw__door-will-not-close",
+      "modelId": "maytag-mhw5630hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW5630HW",
+      "topology": "drawer-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "maytag-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; drawer-filter; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "maytag-mhw6630hw__door-will-not-close",
+      "modelId": "maytag-mhw6630hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW6630HW",
+      "topology": "drawer-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "maytag-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; drawer-filter; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "electrolux-elfw7537at__door-will-not-close",
+      "modelId": "electrolux-elfw7537at",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7537AT",
+      "topology": "hose-only",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "electrolux-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "electrolux-elfw7637at__door-will-not-close",
+      "modelId": "electrolux-elfw7637at",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7637AT",
+      "topology": "hose-only",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "electrolux-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-wt7400cw__door-will-not-close",
+      "modelId": "lg-wt7400cw",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WT7400CW",
+      "topology": "hose-only",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "lg-top-washer-lid"
+      ],
+      "applicability": "Brand-specific washer cohort only; hose-only; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-wt7405cw__door-will-not-close",
+      "modelId": "lg-wt7405cw",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WT7405CW",
+      "topology": "hose-only",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "lg-top-washer-lid"
+      ],
+      "applicability": "Brand-specific washer cohort only; hose-only; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-wa45t3200aw__door-will-not-close",
+      "modelId": "samsung-wa45t3200aw",
+      "category": "washer",
+      "brand": "Samsung",
+      "modelFamily": "WA45T3200AW",
+      "topology": "hose-only",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "samsung-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; hose-only; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wtw5057lw__door-will-not-close",
+      "modelId": "whirlpool-wtw5057lw",
+      "category": "washer",
+      "brand": "Whirlpool",
+      "modelFamily": "WTW5057LW",
+      "topology": "hose-only",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "whirlpool-top-washer-lid"
+      ],
+      "applicability": "Brand-specific washer cohort only; hose-only; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "maytag-mvw5430mw__door-will-not-close",
+      "modelId": "maytag-mvw5430mw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW5430MW",
+      "topology": "hose-only",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "maytag-top-washer-lid"
+      ],
+      "applicability": "Brand-specific washer cohort only; hose-only; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wdt750sakz1__door-will-not-close",
+      "modelId": "whirlpool-wdt750sakz1",
+      "category": "dishwasher",
+      "brand": "Whirlpool",
+      "modelFamily": "WDT750SAKZ1",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "whirlpool-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "bosch-shpm65z55n20__door-will-not-close",
+      "modelId": "bosch-shpm65z55n20",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "modelFamily": "SHPM65Z55N/20",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "bosch-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "ge-gdf670syvfs__door-will-not-close",
+      "modelId": "ge-gdf670syvfs",
+      "category": "dishwasher",
+      "brand": "GE",
+      "modelFamily": "GDF670SYVFS",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "ge-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "kitchenaid-kdtm404kps__door-will-not-close",
+      "modelId": "kitchenaid-kdtm404kps",
+      "category": "dishwasher",
+      "brand": "KitchenAid",
+      "modelFamily": "KDTM404KPS",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "kitchenaid-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "ge-gss25gypfs__door-will-not-close",
+      "modelId": "ge-gss25gypfs",
+      "category": "refrigerator",
+      "brand": "GE",
+      "modelFamily": "GSS25GYPFS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "ge-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wrs315sdhz__door-will-not-close",
+      "modelId": "whirlpool-wrs315sdhz",
+      "category": "refrigerator",
+      "brand": "Whirlpool",
+      "modelFamily": "WRS315SDHZ",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "whirlpool-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-rf28t5001sr__door-will-not-close",
+      "modelId": "samsung-rf28t5001sr",
+      "category": "refrigerator",
+      "brand": "Samsung",
+      "modelFamily": "RF28T5001SR",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "samsung-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-lrflc2706s__door-will-not-close",
+      "modelId": "lg-lrflc2706s",
+      "category": "refrigerator",
+      "brand": "LG",
+      "modelFamily": "LRFLC2706S",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "lg-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "amana-ntw4519jw__door-will-not-close",
+      "modelId": "amana-ntw4519jw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NTW4519JW",
+      "topology": "hose-only",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "amana-top-washer-lid"
+      ],
+      "applicability": "Brand-specific washer cohort only; hose-only; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-dw80cg4021sr__door-will-not-close",
+      "modelId": "samsung-dw80cg4021sr",
+      "category": "dishwasher",
+      "brand": "Samsung",
+      "modelFamily": "DW80CG4021SR",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "samsung-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "frigidaire-fdph4316as__door-will-not-close",
+      "modelId": "frigidaire-fdph4316as",
+      "category": "dishwasher",
+      "brand": "Frigidaire",
+      "modelFamily": "FDPH4316AS",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "frigidaire-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "bosch-shem63w55n01__door-will-not-close",
+      "modelId": "bosch-shem63w55n01",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "modelFamily": "SHEM63W55N/01",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "bosch-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "frigidaire-frss2623as__door-will-not-close",
+      "modelId": "frigidaire-frss2623as",
+      "category": "refrigerator",
+      "brand": "Frigidaire",
+      "modelFamily": "FRSS2623AS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "frigidaire-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "amana-asi2175grs__door-will-not-close",
+      "modelId": "amana-asi2175grs",
+      "category": "refrigerator",
+      "brand": "Amana",
+      "modelFamily": "ASI2175GRS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "amana-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "maytag-mfi2570fez__door-will-not-close",
+      "modelId": "maytag-mfi2570fez",
+      "category": "refrigerator",
+      "brand": "Maytag",
+      "modelFamily": "MFI2570FEZ",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "maytag-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "kitchenaid-krff577kps__door-will-not-close",
+      "modelId": "kitchenaid-krff577kps",
+      "category": "refrigerator",
+      "brand": "KitchenAid",
+      "modelFamily": "KRFF577KPS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "kitchenaid-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "bosch-b36cl80ens01__door-will-not-close",
+      "modelId": "bosch-b36cl80ens01",
+      "category": "refrigerator",
+      "brand": "Bosch",
+      "modelFamily": "B36CL80ENS/01",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "bosch-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wtw5010lw__door-will-not-close",
+      "modelId": "whirlpool-wtw5010lw",
+      "category": "washer",
+      "brand": "Whirlpool",
+      "modelFamily": "WTW5010LW",
+      "topology": "washer-top-load",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "whirlpool-top-washer-lid"
+      ],
+      "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wtw5105lw__door-will-not-close",
+      "modelId": "whirlpool-wtw5105lw",
+      "category": "washer",
+      "brand": "Whirlpool",
+      "modelFamily": "WTW5105LW",
+      "topology": "washer-top-load",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "whirlpool-top-washer-lid"
+      ],
+      "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wfw4720rw__door-will-not-close",
+      "modelId": "whirlpool-wfw4720rw",
+      "category": "washer",
+      "brand": "Whirlpool",
+      "modelFamily": "WFW4720RW",
+      "topology": "hose-only",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "whirlpool-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "maytag-mvw4505mw__door-will-not-close",
+      "modelId": "maytag-mvw4505mw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW4505MW",
+      "topology": "washer-top-load",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "maytag-top-washer-lid"
+      ],
+      "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "maytag-mhw5500fw__door-will-not-close",
+      "modelId": "maytag-mhw5500fw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW5500FW",
+      "topology": "hose-only",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "maytag-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "amana-nfw5800hw__door-will-not-close",
+      "modelId": "amana-nfw5800hw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NFW5800HW",
+      "topology": "hose-only",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "amana-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-wf46bg6500av__door-will-not-close",
+      "modelId": "samsung-wf46bg6500av",
+      "category": "washer",
+      "brand": "Samsung",
+      "modelFamily": "WF46BG6500AV",
+      "topology": "front-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "samsung-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-wf53bb8700at__door-will-not-close",
+      "modelId": "samsung-wf53bb8700at",
+      "category": "washer",
+      "brand": "Samsung",
+      "modelFamily": "WF53BB8700AT",
+      "topology": "front-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "samsung-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-wa50r5200aw__door-will-not-close",
+      "modelId": "samsung-wa50r5200aw",
+      "category": "washer",
+      "brand": "Samsung",
+      "modelFamily": "WA50R5200AW",
+      "topology": "washer-top-load",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "samsung-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-wa54cg7105aw__door-will-not-close",
+      "modelId": "samsung-wa54cg7105aw",
+      "category": "washer",
+      "brand": "Samsung",
+      "modelFamily": "WA54CG7105AW",
+      "topology": "washer-top-load",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "samsung-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-wa55cg7100aw__door-will-not-close",
+      "modelId": "samsung-wa55cg7100aw",
+      "category": "washer",
+      "brand": "Samsung",
+      "modelFamily": "WA55CG7100AW",
+      "topology": "washer-top-load",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "samsung-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-wm3600hwa__door-will-not-close",
+      "modelId": "lg-wm3600hwa",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WM3600HWA",
+      "topology": "front-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "lg-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-wm5500hwa__door-will-not-close",
+      "modelId": "lg-wm5500hwa",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WM5500HWA",
+      "topology": "front-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "lg-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-wm6700hba__door-will-not-close",
+      "modelId": "lg-wm6700hba",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WM6700HBA",
+      "topology": "front-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "lg-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-wt6105cw__door-will-not-close",
+      "modelId": "lg-wt6105cw",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WT6105CW",
+      "topology": "washer-top-load",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "lg-top-washer-lid"
+      ],
+      "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-wt7150cw__door-will-not-close",
+      "modelId": "lg-wt7150cw",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WT7150CW",
+      "topology": "washer-top-load",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "lg-top-washer-lid"
+      ],
+      "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-wt7300cw__door-will-not-close",
+      "modelId": "lg-wt7300cw",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WT7300CW",
+      "topology": "washer-top-load",
+      "loadStyle": "top-load",
+      "sourceIds": [
+        "lg-top-washer-lid"
+      ],
+      "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": "Consumer label must say ‘door or lid’; never imply a front-door gasket.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "electrolux-elfw7337aw__door-will-not-close",
+      "modelId": "electrolux-elfw7337aw",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7337AW",
+      "topology": "hose-only",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "electrolux-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "electrolux-elfw7738aa__door-will-not-close",
+      "modelId": "electrolux-elfw7738aa",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7738AA",
+      "topology": "hose-only",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "electrolux-front-washer-door"
+      ],
+      "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "ge-gfe28gynfs__door-will-not-close",
+      "modelId": "ge-gfe28gynfs",
+      "category": "refrigerator",
+      "brand": "GE",
+      "modelFamily": "GFE28GYNFS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "ge-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "ge-gne27jymfs__door-will-not-close",
+      "modelId": "ge-gne27jymfs",
+      "category": "refrigerator",
+      "brand": "GE",
+      "modelFamily": "GNE27JYMFS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "ge-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "ge-pvd28bynfs__door-will-not-close",
+      "modelId": "ge-pvd28bynfs",
+      "category": "refrigerator",
+      "brand": "GE",
+      "modelFamily": "PVD28BYNFS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "ge-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "ge-gss23gypfs__door-will-not-close",
+      "modelId": "ge-gss23gypfs",
+      "category": "refrigerator",
+      "brand": "GE",
+      "modelFamily": "GSS23GYPFS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "ge-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wrs588fihz__door-will-not-close",
+      "modelId": "whirlpool-wrs588fihz",
+      "category": "refrigerator",
+      "brand": "Whirlpool",
+      "modelFamily": "WRS588FIHZ",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "whirlpool-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wrx735sdhz__door-will-not-close",
+      "modelId": "whirlpool-wrx735sdhz",
+      "category": "refrigerator",
+      "brand": "Whirlpool",
+      "modelFamily": "WRX735SDHZ",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "whirlpool-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "maytag-mss25c4mgz__door-will-not-close",
+      "modelId": "maytag-mss25c4mgz",
+      "category": "refrigerator",
+      "brand": "Maytag",
+      "modelFamily": "MSS25C4MGZ",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "maytag-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "maytag-mft2772hez__door-will-not-close",
+      "modelId": "maytag-mft2772hez",
+      "category": "refrigerator",
+      "brand": "Maytag",
+      "modelFamily": "MFT2772HEZ",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "maytag-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "kitchenaid-krfc300ess__door-will-not-close",
+      "modelId": "kitchenaid-krfc300ess",
+      "category": "refrigerator",
+      "brand": "KitchenAid",
+      "modelFamily": "KRFC300ESS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "kitchenaid-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "amana-asi2575grs__door-will-not-close",
+      "modelId": "amana-asi2575grs",
+      "category": "refrigerator",
+      "brand": "Amana",
+      "modelFamily": "ASI2575GRS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "amana-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-rs27t5200sr__door-will-not-close",
+      "modelId": "samsung-rs27t5200sr",
+      "category": "refrigerator",
+      "brand": "Samsung",
+      "modelFamily": "RS27T5200SR",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "samsung-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-rf23r6201sr__door-will-not-close",
+      "modelId": "samsung-rf23r6201sr",
+      "category": "refrigerator",
+      "brand": "Samsung",
+      "modelFamily": "RF23R6201SR",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "samsung-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-rf28r7201sr__door-will-not-close",
+      "modelId": "samsung-rf28r7201sr",
+      "category": "refrigerator",
+      "brand": "Samsung",
+      "modelFamily": "RF28R7201SR",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "samsung-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-lfxs26973s__door-will-not-close",
+      "modelId": "lg-lfxs26973s",
+      "category": "refrigerator",
+      "brand": "LG",
+      "modelFamily": "LFXS26973S",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "lg-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-lmxs28626s__door-will-not-close",
+      "modelId": "lg-lmxs28626s",
+      "category": "refrigerator",
+      "brand": "LG",
+      "modelFamily": "LMXS28626S",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "lg-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-lrfws2906s__door-will-not-close",
+      "modelId": "lg-lrfws2906s",
+      "category": "refrigerator",
+      "brand": "LG",
+      "modelFamily": "LRFWS2906S",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "lg-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-lrsxs2706s__door-will-not-close",
+      "modelId": "lg-lrsxs2706s",
+      "category": "refrigerator",
+      "brand": "LG",
+      "modelFamily": "LRSXS2706S",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "lg-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "frigidaire-grfs2853af__door-will-not-close",
+      "modelId": "frigidaire-grfs2853af",
+      "category": "refrigerator",
+      "brand": "Frigidaire",
+      "modelFamily": "GRFS2853AF",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "frigidaire-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "frigidaire-frfs2823as__door-will-not-close",
+      "modelId": "frigidaire-frfs2823as",
+      "category": "refrigerator",
+      "brand": "Frigidaire",
+      "modelFamily": "FRFS2823AS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "frigidaire-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "frigidaire-grss2652af__door-will-not-close",
+      "modelId": "frigidaire-grss2652af",
+      "category": "refrigerator",
+      "brand": "Frigidaire",
+      "modelFamily": "GRSS2652AF",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "frigidaire-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "electrolux-ermc2295as__door-will-not-close",
+      "modelId": "electrolux-ermc2295as",
+      "category": "refrigerator",
+      "brand": "Electrolux",
+      "modelFamily": "ERMC2295AS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "electrolux-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "bosch-b36ct80sns01__door-will-not-close",
+      "modelId": "bosch-b36ct80sns01",
+      "category": "refrigerator",
+      "brand": "Bosch",
+      "modelFamily": "B36CT80SNS/01",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "bosch-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "bosch-b36cd50sns01__door-will-not-close",
+      "modelId": "bosch-b36cd50sns01",
+      "category": "refrigerator",
+      "brand": "Bosch",
+      "modelFamily": "B36CD50SNS/01",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "bosch-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "bosch-b36fd50sns01__door-will-not-close",
+      "modelId": "bosch-b36fd50sns01",
+      "category": "refrigerator",
+      "brand": "Bosch",
+      "modelFamily": "B36FD50SNS/01",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "bosch-refrigerator-door"
+      ],
+      "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Mullion/flap check only when the exact model manual confirms the feature.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "ge-gdt550pyrfs__door-will-not-close",
+      "modelId": "ge-gdt550pyrfs",
+      "category": "dishwasher",
+      "brand": "GE",
+      "modelFamily": "GDT550PYRFS",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "ge-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "ge-gdt225sslss__door-will-not-close",
+      "modelId": "ge-gdt225sslss",
+      "category": "dishwasher",
+      "brand": "GE",
+      "modelFamily": "GDT225SSLSS",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "ge-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wdt730hamz__door-will-not-close",
+      "modelId": "whirlpool-wdt730hamz",
+      "category": "dishwasher",
+      "brand": "Whirlpool",
+      "modelFamily": "WDT730HAMZ",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "whirlpool-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wdf331pams__door-will-not-close",
+      "modelId": "whirlpool-wdf331pams",
+      "category": "dishwasher",
+      "brand": "Whirlpool",
+      "modelFamily": "WDF331PAMS",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "whirlpool-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "kitchenaid-kdfe204kps__door-will-not-close",
+      "modelId": "kitchenaid-kdfe204kps",
+      "category": "dishwasher",
+      "brand": "KitchenAid",
+      "modelFamily": "KDFE204KPS",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "kitchenaid-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-dw80r2031usaa__door-will-not-close",
+      "modelId": "samsung-dw80r2031usaa",
+      "category": "dishwasher",
+      "brand": "Samsung",
+      "modelFamily": "DW80R2031US/AA",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "samsung-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-dw80b6060usaa__door-will-not-close",
+      "modelId": "samsung-dw80b6060usaa",
+      "category": "dishwasher",
+      "brand": "Samsung",
+      "modelFamily": "DW80B6060US/AA",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "samsung-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "frigidaire-fdpc4314as__door-will-not-close",
+      "modelId": "frigidaire-fdpc4314as",
+      "category": "dishwasher",
+      "brand": "Frigidaire",
+      "modelFamily": "FDPC4314AS",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "frigidaire-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "bosch-shx78cm5n01__door-will-not-close",
+      "modelId": "bosch-shx78cm5n01",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "modelFamily": "SHX78CM5N/01",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "bosch-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "bosch-shp65cm5n24__door-will-not-close",
+      "modelId": "bosch-shp65cm5n24",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "modelFamily": "SHP65CM5N/24",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "bosch-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "bosch-she53b75uc75__door-will-not-close",
+      "modelId": "bosch-she53b75uc75",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "modelFamily": "SHE53B75UC/75",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "bosch-dishwasher-door"
+      ],
+      "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Auto-open/AutoRelease behavior only when the exact model supports it.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence was collected for this added symptom.",
+        "Exact model manual must confirm any feature-specific branch before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-wm4000hba__door-will-not-close",
+      "modelId": "lg-wm4000hba",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WM4000HBA",
+      "topology": "front-filter",
+      "loadStyle": "front-load",
+      "sourceIds": [
+        "lg-front-washer-door"
+      ],
+      "applicability": "Official LG model identity plus brand/category cohort troubleshooting; front-filter. Complete-code/manual gates remain.",
+      "homeownerObservableChecks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "External visual inspection and gentle cleaning only",
+          "Power-off reset only where the official source instructs it"
+        ],
+        "professional": [
+          "Latch/lock/strike replacement",
+          "Door alignment, hinge, wiring, sensor, or internal access"
+        ],
+        "stop": [
+          "Standing water behind a locked front-load door",
+          "Active leak, burning smell, damaged glass, or a forced/bypassed lock"
+        ]
+      },
+      "profile": "washer-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence; do not make purchase-ready.",
+        "Manual-level feature confirmation is still required before implementation."
+      ]
+    },
+    {
+      "rowId": "bosch-shp78cm5n34__door-will-not-close",
+      "modelId": "bosch-shp78cm5n34",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "modelFamily": "SHP78CM5N/34",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "bosch-dishwasher-door"
+      ],
+      "applicability": "Official Bosch model identity plus brand/category cohort troubleshooting; dishwasher. Complete-code/manual gates remain.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Complete E-Nr slash suffix required; do not merge revisions.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence; do not make purchase-ready.",
+        "Manual-level feature confirmation is still required before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-dw80cg5450sraa__door-will-not-close",
+      "modelId": "samsung-dw80cg5450sraa",
+      "category": "dishwasher",
+      "brand": "Samsung",
+      "modelFamily": "DW80CG5450SR/AA",
+      "topology": "dishwasher",
+      "loadStyle": null,
+      "sourceIds": [
+        "samsung-dishwasher-door"
+      ],
+      "applicability": "Official Samsung model identity plus brand/category cohort troubleshooting; dishwasher. Complete-code/manual gates remain.",
+      "homeownerObservableChecks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Rack/loading/visible-seal checks only",
+          "Observe cabinet interference without loosening hardware"
+        ],
+        "professional": [
+          "Latch, hinge, spring, alignment, or installation correction",
+          "Any panel removal or electrical diagnosis"
+        ],
+        "stop": [
+          "Active leak, hot water, burning smell, exposed wiring, or a door that cannot safely support itself"
+        ]
+      },
+      "profile": "dishwasher-door-closure-observation",
+      "modelSpecificException": "Preserve /AA code and feature-year constraints.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence; do not make purchase-ready.",
+        "Manual-level feature confirmation is still required before implementation."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wrs321sdhz08__door-will-not-close",
+      "modelId": "whirlpool-wrs321sdhz08",
+      "category": "refrigerator",
+      "brand": "Whirlpool",
+      "modelFamily": "WRS321SDHZ",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "whirlpool-refrigerator-door"
+      ],
+      "applicability": "Official Whirlpool model identity plus brand/category cohort troubleshooting; side-by-side-refrigerator. Complete-code/manual gates remain.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": null,
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence; do not make purchase-ready.",
+        "Manual-level feature confirmation is still required before implementation."
+      ]
+    },
+    {
+      "rowId": "samsung-rf27cg5100sraa__door-will-not-close",
+      "modelId": "samsung-rf27cg5100sraa",
+      "category": "refrigerator",
+      "brand": "Samsung",
+      "modelFamily": "RF27CG5100SR/AA",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": [
+        "samsung-refrigerator-door"
+      ],
+      "applicability": "Official Samsung model identity plus brand/category cohort troubleshooting; french-door-refrigerator. Complete-code/manual gates remain.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": [
+          "Food/bin/shelf obstruction and visible gasket cleaning only",
+          "Model-documented visible mullion/flap check"
+        ],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Preserve /AA code and feature-year constraints.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence; do not make purchase-ready.",
+        "Manual-level feature confirmation is still required before implementation."
+      ]
+    }
+  ]
+}

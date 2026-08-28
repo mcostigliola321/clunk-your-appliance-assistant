@@ -8,6 +8,8 @@ import {
   getApplianceJourney,
   getCatalogEntriesForSymptom,
   getCategoryCount,
+  getLimitedSymptoms,
+  getPrimarySymptoms,
   getSymptomCoverage,
   getSupportedSymptoms,
   SYMPTOM_PRESENTATION,
@@ -27,6 +29,7 @@ type JourneyStage = "appliance" | "symptom" | "model";
 interface ModelFinderProps {
   snapshot: RepairSnapshot;
   selectedId: string | null;
+  isFreshSession: boolean;
   onSearch: (
     query: string,
     brand: BrandName | null,
@@ -40,6 +43,7 @@ interface ModelFinderProps {
 export function ModelFinder({
   snapshot,
   selectedId,
+  isFreshSession,
   onSearch,
   onSelect,
   onExample,
@@ -76,6 +80,8 @@ export function ModelFinder({
     ) ??
     categoryEntries[0];
   const supportedSymptoms = getSupportedSymptoms(kind);
+  const primarySymptoms = getPrimarySymptoms(kind);
+  const limitedSymptoms = getLimitedSymptoms(kind);
   const analysis = useMemo(() => analyzeModelQuery(query, brand, kind), [brand, kind, query]);
   const symptomMatches = selectedSymptomId
     ? analysis.matches.filter((entry) => getSymptomCoverage(entry, selectedSymptomId))
@@ -142,6 +148,16 @@ export function ModelFinder({
   }, [showGuide]);
 
   useEffect(() => {
+    if (!isFreshSession) return;
+    setStage("appliance");
+    setSelectedSymptomId(null);
+    setBrand(null);
+    setCapability(null);
+    setQuery("");
+    setShowGuide(false);
+  }, [isFreshSession]);
+
+  useEffect(() => {
     const pending = pendingStageFocusRef.current;
     if (!pending) return;
     const frame = requestAnimationFrame(() => {
@@ -176,14 +192,17 @@ export function ModelFinder({
 
         <div className="appliance-field" aria-label="Choose an appliance">
           {APPLIANCE_JOURNEYS.map((item, index) => {
-            const symptoms = getSupportedSymptoms(item.id);
+            const symptoms = getPrimarySymptoms(item.id);
+            const guideLabel = `${symptoms.length} broad problem ${
+              symptoms.length === 1 ? "guide" : "guides"
+            }`;
             return (
               <article className={`appliance-choice appliance-choice--${item.id}`} key={item.id}>
                 <button
                   className="appliance-choice__primary"
                   type="button"
                   onClick={() => chooseKind(item.id)}
-                  aria-label={`Choose ${item.label} — ${symptoms.length} supported problems`}
+                  aria-label={`Choose ${item.label} — ${guideLabel}`}
                 >
                   <span className="appliance-choice__image">
                     <img
@@ -199,7 +218,7 @@ export function ModelFinder({
                   </span>
                   <span className="appliance-choice__name">
                     <strong>{item.label}</strong>
-                    <span>{symptoms.length} supported problems</span>
+                    <span>{guideLabel}</span>
                   </span>
                   <ArrowRight size={22} aria-hidden="true" />
                 </button>
@@ -288,8 +307,11 @@ export function ModelFinder({
               Choose the behavior you can observe. Coverage is checked separately for every model
               and problem.
             </p>
-            <div className="symptom-options" aria-label={`Supported ${journey.noun} problems`}>
-              {supportedSymptoms.map((symptomId) => {
+            <div
+              className="symptom-options"
+              aria-label={`Broadly supported ${journey.noun} problems`}
+            >
+              {primarySymptoms.map((symptomId) => {
                 const symptom = SYMPTOM_PRESENTATION[symptomId];
                 const coveredEntries = getCatalogEntriesForSymptom(kind, symptomId);
                 const purchaseReadyCount = coveredEntries.filter(
@@ -313,6 +335,35 @@ export function ModelFinder({
                 );
               })}
             </div>
+            {limitedSymptoms.length > 0 ? (
+              <details className="limited-problems">
+                <summary>
+                  <span>
+                    Limited pilots <small>Checked on one model each</small>
+                  </span>
+                  <ChevronDown size={18} aria-hidden="true" />
+                </summary>
+                <div aria-label={`Limited ${journey.noun} problem pilots`}>
+                  {limitedSymptoms.map((symptomId) => {
+                    const symptom = SYMPTOM_PRESENTATION[symptomId];
+                    const coveredEntries = getCatalogEntriesForSymptom(kind, symptomId);
+                    return (
+                      <button
+                        type="button"
+                        key={symptomId}
+                        onClick={() => chooseSymptom(symptomId)}
+                      >
+                        <span>
+                          <small>Limited pilot · {coveredEntries.length} checked model</small>
+                          <strong>{symptom.title}</strong>
+                        </span>
+                        <ArrowRight size={18} aria-hidden="true" />
+                      </button>
+                    );
+                  })}
+                </div>
+              </details>
+            ) : null}
             <p className="coverage-note">
               Search results show only models checked for this problem. Clunk will not borrow
               coverage from another symptom or model.

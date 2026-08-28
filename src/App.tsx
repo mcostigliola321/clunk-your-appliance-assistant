@@ -188,6 +188,7 @@ export function App() {
           <ModelFinder
             snapshot={snapshot}
             selectedId={state.applianceId}
+            isFreshSession={state.sequence === 0 && state.activity.length === 1}
             onSearch={searchModels}
             onSelect={selectModel}
             onExample={showExample}

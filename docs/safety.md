@@ -43,9 +43,15 @@ The original diagram may identify an internal component to explain why service i
 | Dryer’s visible door strike is cracked or missing     | Show an exact strike only after the complete model match; no front-panel removal               |
 | Refrigerator filter is old or shows Replace           | Show an exact user-replaceable filter after the complete model match                           |
 | Refrigerator filter is recent or its housing leaks    | Stop at service; no valve, refrigerant, compressor, or sealed-system instructions              |
+| Washer door/lid is visibly obstructed                 | Remove only loose clothing/debris, wipe the visible contact, close once without force           |
+| Washer door/lid is locked, damaged, or still will not close | Stop; no lock bypass, hinge/strike adjustment, wiring, or internal access                  |
+| Dishwasher rack/loading blocks the door               | Correct only visible loading and rack position, then close once without force                    |
+| Dishwasher door contacts cabinetry or still will not close | Stop; no leveling, mounting-hardware, hinge, spring, latch, or open-dry adjustment          |
+| Refrigerator food/bin/shelf blocks closure or gasket is visibly dirty | Clear the path or use mild soapy water on the visible gasket; monitor food safety       |
+| Refrigerator door, gasket, hinge, flap, or alignment is damaged | Stop; do not move or level the refrigerator or infer a replacement part                 |
 
 ## Customer-facing language
 
 Clunk uses plain language and never says that a component is definitively faulty. It may provide a dated authorized-seller link, price, and stock snapshot only after an exact product-code match. It does not provide installation instructions, a repair-success estimate, or any claim of universal model coverage.
 
-Safety tests live beside the engine, in the integration suite, in browser coverage, and in `evals/webmcp-evals.json`. Any new model or symptom must add its own happy-path, invalid-order, mismatch, hazard, and professional-boundary coverage.
+Safety tests live beside the engine, in the integration suite, in browser coverage, and in `evals/webmcp-evals.json`. The door-closure profiles deliberately omit brand- or feature-specific actions that are not common to every activated cohort: no lock bypass, alignment, leveling, hinge work, dishwasher AutoRelease/open-dry manipulation, or French-door mullion instruction. Any new model or symptom must add its own happy-path, invalid-order, mismatch, hazard, and professional-boundary coverage.

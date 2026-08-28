@@ -87,10 +87,10 @@ describe("Clunk visual field guide", () => {
     expect(screen.getByRole("heading", { name: "What are you fixing?" })).toBeVisible();
     expect(screen.getByText("163 supported models")).toBeVisible();
     for (const label of [
-      /Choose Washer — 4 supported problems/,
-      /Choose Dishwasher — 4 supported problems/,
-      /Choose Electric dryer — 4 supported problems/,
-      /Choose Refrigerator — 4 supported problems/,
+      /Choose Washer — 2 broad problem guides/,
+      /Choose Dishwasher — 2 broad problem guides/,
+      /Choose Electric dryer — 1 broad problem guide/,
+      /Choose Refrigerator — 2 broad problem guides/,
     ])
       expect(screen.getByRole("button", { name: label })).toBeVisible();
     expect(screen.getByAltText("Cutaway view of an electric dryer")).toHaveAttribute(
@@ -110,9 +110,28 @@ describe("Clunk visual field guide", () => {
       screen.getByText(/Coverage is checked separately for every model and problem/),
     ).toBeVisible();
     expect(screen.getByText(/41 checked models · 6 purchase-ready/)).toBeVisible();
+    expect(
+      screen.getByRole("button", { name: /Supported now Door won't close/ }),
+    ).toHaveTextContent("35 checked models · checks only");
+    expect(screen.getByText("Limited pilots")).toBeVisible();
+    expect(
+      screen.queryByRole("button", { name: /Limited pilot.*Not cold enough/ }),
+    ).not.toBeVisible();
+    await user.click(screen.getByText("Limited pilots"));
+    expect(screen.getByRole("button", { name: /Limited pilot.*Not cold enough/ })).toBeVisible();
     await user.click(screen.getByRole("button", { name: /Supported now Water is slow/ }));
     expect(screen.getByRole("heading", { name: "Find the model label." })).toBeVisible();
     expect(screen.getByRole("searchbox", { name: "Refrigerator model number" })).toBeVisible();
+  });
+
+  it("returns the local journey to appliance choice when Start over clears shared state", async () => {
+    const user = userEvent.setup();
+    renderClunk();
+    await user.click(screen.getByRole("button", { name: /Choose Refrigerator/ }));
+    expect(screen.getByRole("heading", { name: "What is it doing?" })).toBeVisible();
+    await user.click(screen.getByRole("button", { name: "Start over" }));
+    expect(screen.getByRole("heading", { name: "What are you fixing?" })).toBeVisible();
+    expect(screen.queryByRole("button", { name: "Start over" })).not.toBeInTheDocument();
   });
 
   it("browses the expanded catalog hierarchically without blurring coverage tiers", async () => {

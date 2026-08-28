@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clunk.local/schemas/symptom-coverage-expansion.schema.json",
+  "title": "Clunk evidence-backed symptom coverage expansion",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "verifiedOn",
+    "symptomId",
+    "evidenceRules",
+    "profiles",
+    "sources",
+    "records"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "verifiedOn": { "type": "string", "format": "date" },
+    "symptomId": { "const": "door-will-not-close" },
+    "evidenceRules": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "profiles": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "scope", "checks", "exclusions", "exceptionRule"],
+        "properties": {
+          "id": {
+            "enum": [
+              "washer-door-closure-observation",
+              "dishwasher-door-closure-observation",
+              "refrigerator-door-closure-observation"
+            ]
+          },
+          "scope": { "type": "string", "minLength": 1 },
+          "checks": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "exclusions": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "exceptionRule": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "title",
+          "url",
+          "publisher",
+          "appliesTo",
+          "verifiedOn",
+          "quality"
+        ],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "kind": { "const": "manufacturer-troubleshooting" },
+          "title": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+          "publisher": { "type": "string", "minLength": 1 },
+          "appliesTo": { "type": "string", "minLength": 1 },
+          "verifiedOn": { "type": "string", "format": "date" },
+          "quality": { "const": "primary" }
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 91,
+      "maxItems": 91,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "rowId",
+          "modelId",
+          "category",
+          "brand",
+          "modelFamily",
+          "topology",
+          "sourceIds",
+          "applicability",
+          "homeownerObservableChecks",
+          "safetyBoundaries",
+          "profile",
+          "modelSpecificException",
+          "capabilityTier",
+          "verifiedOn",
+          "unresolvedGaps"
+        ],
+        "properties": {
+          "rowId": { "type": "string", "pattern": "__door-will-not-close$" },
+          "modelId": { "type": "string", "minLength": 1 },
+          "category": { "enum": ["washer", "dishwasher", "refrigerator"] },
+          "brand": { "type": "string", "minLength": 1 },
+          "modelFamily": { "type": "string", "minLength": 1 },
+          "topology": { "type": "string", "minLength": 1 },
+          "loadStyle": { "type": ["string", "null"], "enum": ["front-load", "top-load", null] },
+          "sourceIds": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "applicability": { "type": "string", "minLength": 1 },
+          "homeownerObservableChecks": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "safetyBoundaries": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["homeowner", "professional", "stop"],
+            "properties": {
+              "homeowner": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+              "professional": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+              "stop": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+            }
+          },
+          "profile": {
+            "enum": [
+              "washer-door-closure-observation",
+              "dishwasher-door-closure-observation",
+              "refrigerator-door-closure-observation"
+            ]
+          },
+          "modelSpecificException": { "type": ["string", "null"] },
+          "capabilityTier": { "const": "guided-checks" },
+          "verifiedOn": { "type": "string", "format": "date" },
+          "unresolvedGaps": { "type": "array", "minItems": 2, "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

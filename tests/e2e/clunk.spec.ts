@@ -84,7 +84,9 @@ async function reachModelSearch(page: Page, appliance: RegExp, problem: RegExp) 
   await page.getByRole("button", { name: appliance }).click();
   await expect(page.getByRole("heading", { name: "What is it doing?" })).toBeFocused();
   await expect(page.getByRole("searchbox", { name: /model number/i })).toHaveCount(0);
-  await page.getByRole("button", { name: problem }).click();
+  const problemButton = page.getByRole("button", { name: problem });
+  if (!(await problemButton.isVisible())) await page.getByText("Limited pilots").click();
+  await problemButton.click();
   await expect(page.getByRole("heading", { name: "Find the model label." })).toBeVisible();
   await expect(page.getByRole("searchbox", { name: /model number/i })).toBeFocused();
 }
@@ -123,10 +125,10 @@ test("puts substantial cutaway actions in the first journey and avoids full-reso
 }) => {
   await expect(page.getByRole("heading", { name: "What are you fixing?" })).toBeVisible();
   for (const label of [
-    /Choose Washer — 4 supported problems/,
-    /Choose Dishwasher — 4 supported problems/,
-    /Choose Electric dryer — 4 supported problems/,
-    /Choose Refrigerator — 4 supported problems/,
+    /Choose Washer — 2 broad problem guides/,
+    /Choose Dishwasher — 2 broad problem guides/,
+    /Choose Electric dryer — 1 broad problem guide/,
+    /Choose Refrigerator — 2 broad problem guides/,
   ])
     await expect(page.getByRole("button", { name: label })).toBeVisible();
   await expect(page.getByText("See how Clunk works")).toBeVisible();
@@ -150,10 +152,10 @@ test("keeps all four appliance actions identifiable in the 390px first viewport"
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   for (const label of [
-    /Choose Washer — 4 supported problems/,
-    /Choose Dishwasher — 4 supported problems/,
-    /Choose Electric dryer — 4 supported problems/,
-    /Choose Refrigerator — 4 supported problems/,
+    /Choose Washer — 2 broad problem guides/,
+    /Choose Dishwasher — 2 broad problem guides/,
+    /Choose Electric dryer — 1 broad problem guide/,
+    /Choose Refrigerator — 2 broad problem guides/,
   ]) {
     const action = page.getByRole("button", { name: label });
     const box = await action.boundingBox();
@@ -175,6 +177,41 @@ test("moves from visual appliance to supported problem before model identificati
   await expect(page.getByRole("searchbox", { name: "Refrigerator model number" })).toBeFocused();
   await page.getByRole("button", { name: /Back to the problem/ }).click();
   await expect(page.getByRole("heading", { name: "What is it doing?" })).toBeVisible();
+});
+
+test("shows broad door-closure cohorts as primary and keeps one-model routes in limited pilots", async ({
+  page,
+}) => {
+  await page.getByRole("button", { name: /Choose Refrigerator/ }).click();
+  await expect(page.getByRole("button", { name: /Supported now Water is slow/ })).toContainText(
+    "41 checked models",
+  );
+  await expect(page.getByRole("button", { name: /Supported now Door won't close/ })).toContainText(
+    "35 checked models · checks only",
+  );
+  await expect(page.getByRole("button", { name: /Limited pilot.*Not cold enough/ })).toBeHidden();
+  await page.getByText("Limited pilots").click();
+  await expect(page.getByRole("button", { name: /Limited pilot.*Not cold enough/ })).toContainText(
+    "1 checked model",
+  );
+});
+
+test("runs a topology-aware washer lid closure guide and stops before internal repair", async ({
+  page,
+}) => {
+  await reachModelSearch(page, /Choose Washer/, /Supported now Door won't close/);
+  const input = page.getByRole("searchbox", { name: "Washer model number" });
+  await input.fill("WT7400CW");
+  await page.getByRole("button", { name: "Find model" }).click();
+  await page.getByRole("button", { name: /LG WT7400CW Guided checks only/ }).click();
+  await page.getByRole("button", { name: "Start the checks" }).click();
+  await expect(page.getByRole("heading", { name: "Wait for the lid lock" })).toBeFocused();
+  await page.getByRole("button", { name: "Safe to continue" }).click();
+  await expect(page.getByRole("heading", { name: "Inspect the visible lid edge" })).toBeVisible();
+  await page.getByRole("button", { name: "The visible edge is clear and undamaged" }).click();
+  await page.getByRole("button", { name: "The lid still will not close normally" }).click();
+  await expect(page.getByRole("heading", { name: "The lid system needs service" })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Buy this part/ })).toHaveCount(0);
 });
 
 test("browses the 163-model catalog by brand and honest coverage tier", async ({ page }) => {
@@ -227,7 +264,7 @@ test("gives an honest unsupported-model state and rejects serial-number text", a
 });
 
 test("refuses a known model when the selected problem is not covered", async ({ page }) => {
-  await reachModelSearch(page, /Choose Washer/, /Supported now Water is leaking/);
+  await reachModelSearch(page, /Choose Washer/, /Limited pilot.*Water is leaking/);
   const input = page.getByRole("searchbox", { name: "Washer model number" });
   await input.fill("WM3400CW.ABWEVUS");
   await expect(page.getByText("That model is supported for a different problem.")).toBeVisible();

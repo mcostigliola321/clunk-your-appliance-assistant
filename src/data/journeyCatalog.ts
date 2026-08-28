@@ -1,6 +1,6 @@
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
 import type { ApplianceKind, SupportedSymptomId } from "@/domain/types";
-import { SYMPTOM_PRESENTATION } from "./symptomCatalog";
+import { PRIMARY_SYMPTOMS_BY_KIND, SYMPTOM_PRESENTATION } from "./symptomCatalog";
 
 export { SYMPTOM_PRESENTATION } from "./symptomCatalog";
 
@@ -77,6 +77,16 @@ export function getSupportedSymptoms(kind: ApplianceKind) {
       ),
     ),
   ];
+}
+
+export function getPrimarySymptoms(kind: ApplianceKind) {
+  const supported = new Set(getSupportedSymptoms(kind));
+  return PRIMARY_SYMPTOMS_BY_KIND[kind].filter((symptomId) => supported.has(symptomId));
+}
+
+export function getLimitedSymptoms(kind: ApplianceKind) {
+  const primary = new Set(getPrimarySymptoms(kind));
+  return getSupportedSymptoms(kind).filter((symptomId) => !primary.has(symptomId));
 }
 
 export function getCatalogEntriesForSymptom(kind: ApplianceKind, symptomId: SupportedSymptomId) {

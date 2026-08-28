@@ -291,7 +291,10 @@ export function getWebMcpTaskSnapshot(state: RepairState) {
                 topology: item.topology,
                 supportedSymptom: selectedCoverage?.symptomId,
                 capability: selectedCoverage?.capability,
-                symptomCoverage: item.symptomCoverage,
+                symptomCoverage: item.symptomCoverage.map(({ symptomId, capability }) => ({
+                  symptomId,
+                  capability,
+                })),
                 fullCodeRule: item.productCodePrompt,
                 source: {
                   url: item.modelSource.url,

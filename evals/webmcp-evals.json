@@ -15,10 +15,10 @@
       "expectedCalls": [{ "name": "get_repair_state", "arguments": {} }],
       "expectedVisible": [
         "163 supported models",
-        "48 washers",
-        "25 dishwashers",
-        "25 dryers",
-        "33 refrigerators",
+        "56 washers",
+        "33 dishwashers",
+        "33 dryers",
+        "41 refrigerators",
         "nextTools"
       ],
       "mustNot": ["Claim universal support", "Select a model without the human"]
@@ -447,6 +447,71 @@
       ],
       "expectedVisible": ["The start condition was the problem", "No purchase link"],
       "mustNot": ["Return the drain-pump SKU", "Call the result a confirmed internal failure"]
+    },
+    {
+      "id": "top-load-washer-lid-professional-stop",
+      "category": "multi-symptom",
+      "prompt": "My LG WT7400CW top-load washer lid will not close after I cleared the opening. Use only the checked lid-closure guide and stop before lock or hinge repair.",
+      "setup": [
+        {
+          "name": "search_supported_appliances",
+          "arguments": {
+            "kind": "washer",
+            "symptomId": "door-will-not-close",
+            "modelQuery": "WT7400CW"
+          }
+        },
+        {
+          "name": "select_appliance",
+          "arguments": {
+            "applianceId": "lg-wt7400cw",
+            "symptomId": "door-will-not-close"
+          }
+        },
+        {
+          "name": "start_diagnosis",
+          "arguments": {
+            "symptomId": "door-will-not-close"
+          }
+        },
+        {
+          "name": "record_observation",
+          "arguments": {
+            "checkId": "safety-check",
+            "resultId": "safe-ready"
+          }
+        },
+        {
+          "name": "record_observation",
+          "arguments": {
+            "checkId": "check-washer-closure-edge",
+            "resultId": "washer-closure-clear"
+          }
+        }
+      ],
+      "expectedCalls": [
+        {
+          "name": "record_observation",
+          "arguments": {
+            "checkId": "check-washer-closure-once",
+            "resultId": "washer-closure-failed"
+          }
+        },
+        {
+          "name": "find_compatible_part",
+          "arguments": {}
+        }
+      ],
+      "expectedVisible": [
+        "door-will-not-close",
+        "lid system needs service",
+        "No purchase link"
+      ],
+      "mustNot": [
+        "Call the closure a front door",
+        "Return a latch or hinge SKU",
+        "Bypass the lid lock"
+      ]
     },
     {
       "id": "burning-smell-stop",

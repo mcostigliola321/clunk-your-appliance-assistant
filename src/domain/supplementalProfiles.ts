@@ -149,6 +149,412 @@ function finish(entry: ApplianceCatalogEntry, sourceIds: string[], spec: Profile
   } satisfies RepairPackProfile;
 }
 
+function washerDoorClosure(entry: ApplianceCatalogEntry): ProfileSpec {
+  const isTopLoad = entry.loadStyle === "top-load";
+  const closure = isTopLoad ? "lid" : "door";
+  const Closure = isTopLoad ? "Lid" : "Door";
+  return {
+    symptom: {
+      id: "door-will-not-close",
+      label: `Washer ${closure} will not close`,
+      shortLabel: `${Closure} will not close`,
+    },
+    components: [
+      component(
+        "machine",
+        isTopLoad ? "Top-load washer" : "Front-load washer",
+        "The selected washer and visible exterior.",
+        "visible",
+        50,
+        50,
+      ),
+      component(
+        "closure",
+        `${Closure} edge and opening`,
+        `The visible ${closure}, opening, and contact area.`,
+        "user-accessible",
+        49,
+        isTopLoad ? 30 : 45,
+      ),
+      component(
+        "closure-lock",
+        `${Closure} lock system`,
+        `The internal ${closure} lock, strike, hinge, wiring, and sensor.`,
+        "professional-only",
+        58,
+        38,
+      ),
+    ],
+    safety: {
+      label: `Wait for the ${closure} lock`,
+      instruction: `Cancel the cycle and wait for the ${closure}-lock indicator to clear. Keep hands dry, and do not force or bypass the ${closure} lock.`,
+      stop: `standing water is behind a locked door, the ${closure} or glass is damaged, water is near power, or there is smoke or a burning smell.`,
+      firstCheckId: "check-washer-closure-edge",
+    },
+    checks: [
+      check(
+        "check-washer-closure-edge",
+        `Inspect the visible ${closure} edge`,
+        "closure",
+        `Remove clothing or loose debris caught at the visible ${closure} edge. Wipe only the visible contact area with a soft damp cloth. Do not use a tool or move the hinge or strike.`,
+        `A trapped item or soil at the visible contact can keep the ${closure} from reaching its normal closed position.`,
+        `the ${closure}, glass, hinge, strike, or lock looks bent, cracked, loose, or scorched.`,
+        [
+          outcome(
+            "washer-closure-obstruction",
+            "I removed an obstruction or visible soil",
+            "continue",
+            {
+              nextCheckId: "check-washer-closure-once",
+              focusComponentId: "closure",
+            },
+          ),
+          outcome(
+            "washer-closure-damaged",
+            `The ${closure} or lock area looks damaged`,
+            "professional-only",
+            {
+              focusComponentId: "closure-lock",
+              outcomeTitle: `Do not force the ${closure}`,
+              outcomeMessage: `The ${closure}, hinge, lock, and alignment require model-specific service.`,
+            },
+          ),
+          outcome("washer-closure-clear", "The visible edge is clear and undamaged", "continue", {
+            nextCheckId: "check-washer-closure-once",
+            focusComponentId: "closure",
+          }),
+        ],
+      ),
+      check(
+        "check-washer-closure-once",
+        `Close the ${closure} once`,
+        "closure",
+        `Close the ${closure} firmly one time using its normal handle or edge. Stop if it needs force; do not hold, slam, or bypass it.`,
+        `A normal closure after clearing the edge confirms an owner-correctable obstruction without naming a part.`,
+        `the ${closure} springs back, needs force, stays locked, or shows an unfamiliar error.`,
+        [
+          outcome("washer-closure-fixed", `The ${closure} now closes normally`, "no-part-needed", {
+            focusComponentId: "closure",
+            outcomeTitle: `The visible ${closure} obstruction was the problem`,
+            outcomeMessage:
+              "Run one cycle while staying nearby. Stop if the closure problem or any leak returns.",
+          }),
+          outcome(
+            "washer-closure-failed",
+            `The ${closure} still will not close normally`,
+            "professional-only",
+            {
+              focusComponentId: "closure-lock",
+              outcomeTitle: `The ${closure} system needs service`,
+              outcomeMessage:
+                "Do not force or bypass it. Lock, strike, hinge, wiring, and alignment checks require model-specific service.",
+            },
+          ),
+        ],
+      ),
+    ],
+    causes: [
+      {
+        id: "washer-closure-obstruction-cause",
+        label: `Visible ${closure} obstruction`,
+        componentId: "closure",
+        baseRank: 45,
+        defaultExplanation: `Clothing, debris, or soil can block the visible ${closure} contact.`,
+        resultScores: { "washer-closure-obstruction": 80, "washer-closure-fixed": 90 },
+      },
+      {
+        id: "washer-closure-service-cause",
+        label: `${Closure} lock, hinge, or alignment issue`,
+        componentId: "closure-lock",
+        baseRank: 25,
+        defaultExplanation: "Internal closure parts and alignment require model-specific service.",
+        resultScores: { "washer-closure-damaged": 90, "washer-closure-failed": 80 },
+      },
+    ],
+  };
+}
+
+const dishwasherDoorClosure: ProfileSpec = {
+  symptom: {
+    id: "door-will-not-close",
+    label: "Dishwasher door will not close",
+    shortLabel: "Door will not close",
+  },
+  components: [
+    component(
+      "machine",
+      "Built-in dishwasher",
+      "The selected dishwasher and visible exterior.",
+      "visible",
+      50,
+      50,
+    ),
+    component(
+      "racks",
+      "Racks and loading envelope",
+      "Dishes, handles, utensils, and racks visible from the open door.",
+      "user-accessible",
+      49,
+      37,
+    ),
+    component(
+      "door-edge",
+      "Door edge and seal",
+      "The visible door edge, gasket, and cabinet clearance.",
+      "user-accessible",
+      49,
+      66,
+    ),
+    component(
+      "door-system",
+      "Door latch and alignment system",
+      "Latch, hinges, springs, alignment, wiring, and feature-specific open-dry hardware.",
+      "professional-only",
+      58,
+      58,
+    ),
+  ],
+  safety: {
+    label: "Stop the cycle before checking",
+    instruction:
+      "Cancel the cycle, keep hands dry, and wait for spray and steam to stop. Do not force the door or loosen installation hardware.",
+    stop: "hot water or steam is escaping, water is near power, the door is damaged, or an open-dry arm is extended.",
+    firstCheckId: "check-dishwasher-loading",
+  },
+  checks: [
+    check(
+      "check-dishwasher-loading",
+      "Check loading and rack position",
+      "racks",
+      "Keep dishes, handles, and utensils inside the rack envelope, then push both racks fully home. Remove only loose debris at the visible seal.",
+      "Items outside the rack envelope or a rack left forward can block normal door travel.",
+      "a rack, wheel, rail, or open-dry arm is damaged or will not move normally.",
+      [
+        outcome("dishwasher-door-loading", "An item or rack blocked the door", "continue", {
+          nextCheckId: "check-dishwasher-door-once",
+          focusComponentId: "door-edge",
+        }),
+        outcome(
+          "dishwasher-door-rack-damaged",
+          "A rack or visible mechanism is damaged",
+          "professional-only",
+          {
+            focusComponentId: "door-system",
+            outcomeTitle: "The dishwasher needs model-specific service",
+            outcomeMessage:
+              "Do not force the rack or door, and do not adjust feature-specific hardware without the exact manual.",
+          },
+        ),
+        outcome("dishwasher-door-loading-clear", "Loading and racks are clear", "continue", {
+          nextCheckId: "check-dishwasher-door-once",
+          focusComponentId: "door-edge",
+        }),
+      ],
+    ),
+    check(
+      "check-dishwasher-door-once",
+      "Check visible clearance and close once",
+      "door-edge",
+      "Without moving the dishwasher or loosening screws, look for visible cabinet or countertop contact. If clear, close the door once without force.",
+      "Visible loading or cabinet interference can prevent closure; latch, hinge, and alignment repair are service work.",
+      "the door rubs the cabinet, needs force, will not stay shut, or the latch looks damaged.",
+      [
+        outcome("dishwasher-door-fixed", "The door now closes normally", "no-part-needed", {
+          focusComponentId: "door-edge",
+          outcomeTitle: "The visible obstruction was the problem",
+          outcomeMessage:
+            "Run one cycle while staying nearby. Stop if the door opens or water leaks.",
+        }),
+        outcome(
+          "dishwasher-door-cabinet",
+          "The door contacts the cabinet or countertop",
+          "professional-only",
+          {
+            focusComponentId: "door-system",
+            outcomeTitle: "Installation clearance needs correction",
+            outcomeMessage:
+              "Do not loosen mounting or leveling hardware. Arrange installer or appliance service.",
+          },
+        ),
+        outcome(
+          "dishwasher-door-failed",
+          "The clear door still will not close",
+          "professional-only",
+          {
+            focusComponentId: "door-system",
+            outcomeTitle: "The door system needs service",
+            outcomeMessage:
+              "Latch, hinge, spring, alignment, and feature-specific mechanisms require model-specific service.",
+          },
+        ),
+      ],
+    ),
+  ],
+  causes: [
+    {
+      id: "dishwasher-door-obstruction-cause",
+      label: "Loading or rack obstruction",
+      componentId: "racks",
+      baseRank: 45,
+      defaultExplanation: "Loading outside the rack envelope can block the door.",
+      resultScores: { "dishwasher-door-loading": 80, "dishwasher-door-fixed": 90 },
+    },
+    {
+      id: "dishwasher-door-service-cause",
+      label: "Installation, latch, hinge, or feature issue",
+      componentId: "door-system",
+      baseRank: 25,
+      defaultExplanation: "Alignment and door mechanisms require model-specific service.",
+      resultScores: {
+        "dishwasher-door-rack-damaged": 80,
+        "dishwasher-door-cabinet": 90,
+        "dishwasher-door-failed": 80,
+      },
+    },
+  ],
+};
+
+const refrigeratorDoorClosure: ProfileSpec = {
+  symptom: {
+    id: "door-will-not-close",
+    label: "Refrigerator door will not close",
+    shortLabel: "Door will not close",
+  },
+  components: [
+    component(
+      "machine",
+      "Full-size refrigerator",
+      "The selected refrigerator and visible exterior.",
+      "visible",
+      50,
+      50,
+    ),
+    component(
+      "interior",
+      "Shelves, bins, and food",
+      "Loose items and owner-removable bins visible at the opening.",
+      "user-accessible",
+      48,
+      42,
+    ),
+    component(
+      "gasket",
+      "Visible door gasket",
+      "The flexible seal surface around the door.",
+      "user-accessible",
+      51,
+      48,
+    ),
+    component(
+      "door-system",
+      "Door, hinge, and alignment system",
+      "Hinges, alignment, internal closure parts, and topology-specific flaps.",
+      "professional-only",
+      64,
+      40,
+    ),
+  ],
+  safety: {
+    label: "Protect food and avoid moving the refrigerator",
+    instruction:
+      "Keep the refrigerator stable and do not tilt, level, or pull it forward. Move perishable food to safe cold storage if the door has been open long enough to raise temperatures.",
+    stop: "water is near power, the door or glass is damaged, the refrigerator is unstable, or food safety is uncertain.",
+    firstCheckId: "check-refrigerator-obstruction",
+  },
+  checks: [
+    check(
+      "check-refrigerator-obstruction",
+      "Clear the visible door path",
+      "interior",
+      "Move food packages, bins, drawers, or shelves that visibly extend into the door path. Do not force a drawer, adjust a hinge, or use a French-door flap check unless the exact manual confirms it.",
+      "An item outside its normal position can keep a full-size refrigerator door from reaching the gasket.",
+      "a bin, drawer, shelf, hinge, or topology-specific flap is damaged or will not seat normally.",
+      [
+        outcome("refrigerator-door-obstruction", "An item blocked the door path", "continue", {
+          nextCheckId: "check-refrigerator-gasket",
+          focusComponentId: "gasket",
+        }),
+        outcome(
+          "refrigerator-door-component-damaged",
+          "A visible door component is damaged",
+          "professional-only",
+          {
+            focusComponentId: "door-system",
+            outcomeTitle: "The refrigerator door needs service",
+            outcomeMessage:
+              "Do not force or realign it. Use model-specific service for hinges, flaps, drawers, and alignment.",
+          },
+        ),
+        outcome("refrigerator-door-path-clear", "The visible door path is clear", "continue", {
+          nextCheckId: "check-refrigerator-gasket",
+          focusComponentId: "gasket",
+        }),
+      ],
+    ),
+    check(
+      "check-refrigerator-gasket",
+      "Clean the visible gasket and close gently",
+      "gasket",
+      "Wipe visible gasket soil with a soft cloth and mild soapy water, then dry it. Close the door gently once and observe whether it stays shut.",
+      "Visible soil can keep the gasket from contacting evenly; a torn gasket or misaligned door requires service.",
+      "the gasket is torn, the door drops or rubs, closure needs force, or the refrigerator moves.",
+      [
+        outcome("refrigerator-door-fixed", "The door now closes and stays shut", "no-part-needed", {
+          focusComponentId: "gasket",
+          outcomeTitle: "A visible obstruction or dirty gasket was the problem",
+          outcomeMessage:
+            "Monitor temperature and food safety. Arrange service if the door opens again.",
+        }),
+        outcome(
+          "refrigerator-door-gasket-damaged",
+          "The gasket is torn or will not contact",
+          "professional-only",
+          {
+            focusComponentId: "door-system",
+            outcomeTitle: "The closure needs model-specific service",
+            outcomeMessage:
+              "This guide does not infer a replacement part from model identity. Arrange service for the exact revision.",
+          },
+        ),
+        outcome(
+          "refrigerator-door-failed",
+          "The clean, clear door still will not stay shut",
+          "professional-only",
+          {
+            focusComponentId: "door-system",
+            outcomeTitle: "The door system needs service",
+            outcomeMessage:
+              "Hinge, alignment, cam, and topology-specific closure checks require model-specific service.",
+          },
+        ),
+      ],
+    ),
+  ],
+  causes: [
+    {
+      id: "refrigerator-door-obstruction-cause",
+      label: "Interior obstruction or gasket soil",
+      componentId: "interior",
+      baseRank: 45,
+      defaultExplanation: "Food, bins, shelves, or visible soil can block closure.",
+      resultScores: { "refrigerator-door-obstruction": 80, "refrigerator-door-fixed": 90 },
+    },
+    {
+      id: "refrigerator-door-service-cause",
+      label: "Gasket, hinge, or alignment issue",
+      componentId: "door-system",
+      baseRank: 25,
+      defaultExplanation:
+        "Door hardware and topology-specific closure parts require exact-model service.",
+      resultScores: {
+        "refrigerator-door-component-damaged": 85,
+        "refrigerator-door-gasket-damaged": 90,
+        "refrigerator-door-failed": 80,
+      },
+    },
+  ],
+};
+
 const washerStart: ProfileSpec = {
   symptom: {
     id: "will-not-start",
@@ -1923,6 +2329,11 @@ export function buildSupplementalProfile(
   symptomId: SupportedSymptomId,
   sourceIds: string[],
 ): RepairPackProfile {
+  if (symptomId === "door-will-not-close") {
+    if (entry.kind === "washer") return finish(entry, sourceIds, washerDoorClosure(entry));
+    if (entry.kind === "dishwasher") return finish(entry, sourceIds, dishwasherDoorClosure);
+    if (entry.kind === "refrigerator") return finish(entry, sourceIds, refrigeratorDoorClosure);
+  }
   const spec =
     entry.kind === "washer"
       ? symptomId === "will-not-start"
