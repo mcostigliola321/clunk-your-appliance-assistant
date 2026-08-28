@@ -1,6 +1,10 @@
 # Clunk model source ledger
 
-This ledger defines the 139-model real-appliance catalog: 50 washers, 27 dishwashers, 27 electric dryers, and 35 refrigerators across 11 brands. It is deliberately conservative: 25 exact-code revisions are **Purchase-ready**, 114 families are **Guided checks only**, and none currently sit in **Verified part unavailable**. A supported model never inherits a neighboring model's part.
+This ledger defines the 163-model real-appliance catalog: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. It is deliberately conservative: 25 exact-code revisions are **Purchase-ready**, 138 model identities are **Guided checks only**, and none currently sit in **Verified part unavailable**. Those identities resolve to 175 model × symptom packs—25 purchase-ready and 150 guided. A supported model never inherits a neighboring model's part or symptom coverage.
+
+## 2026-08-28 symptom-coverage integration
+
+All 163 models retain their previously evidenced category symptom. Twelve additional guided-check combinations are activated only on GE `GFW550SSNWW`, Whirlpool `WDT750SAKZ1`, GE `GTD42EASJ2WW`, and GE `GSS25GYPFS`, using the symptom-specific source and applicability records in `src/data/symptomCatalog.ts`. The other visible problem choices are discovery filters, not universal promises: unsupported model × symptom pairs stop before diagnosis. The reconnaissance files under `docs/research/clunk-evidence-recon-2026-08-28/` document broader candidates and gaps but do not activate production coverage.
 
 ## Verification vocabulary
 
@@ -170,7 +174,7 @@ All 81 additions were retrieved 2026-08-27. The final audit returned HTTP 2xx fo
 
 ## 2026-08-27 coverage expansion (19 models)
 
-Every addition below has an official model/support page, an explicit category and topology, and one supported symptom. Eighteen remain `guided-checks`; Amana `NED4655EW1` is purchase-ready after an authorized exact-model evidence pass. The topology names the conservative repair-pack orientation; it does not claim pixel-level model fidelity. A full engineering/product suffix may still be required even when the family appears in search.
+Every addition below has an official model/support page, an explicit category and topology, and one established supported symptom. Eighteen remain `guided-checks`; Amana `NED4655EW1` is purchase-ready after an authorized exact-model evidence pass. The topology names the conservative repair-pack orientation; it does not claim pixel-level model fidelity. A full engineering/product suffix may still be required even when the family appears in search.
 
 | Category       | Brand      | Model / exact support code | Topology / access boundary                                                   | Supported symptom         | Capability                  | Authoritative model/support URL                                                                                                                                      | Retrieved  |
 | -------------- | ---------- | -------------------------- | ---------------------------------------------------------------------------- | ------------------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
@@ -240,32 +244,32 @@ All eight are **Guided checks only**. The four exact public product codes above 
 
 This batch adds six models in every supported category. Each row combines an official manufacturer identity page with the already-reviewed troubleshooting profile for the same brand, category, and topology. Identity never supplies symptom coverage: the profile's manufacturer troubleshooting source supplies the checks. None of these rows contains a part number, retailer claim, or Shopify query.
 
-| Category | Brand | Model / evidenced code | Diagnostic profile | Official model-identity source |
-| --- | --- | --- | --- | --- |
-| Washer | LG | `WM6500HBA` / `WM6500HBA.ABLEVUS` | `lg-front-washer` | https://www.lg.com/us/support/product/lg-WM6500HBA.ABLEVUS?tab=1 |
-| Washer | GE | `GTW385ASWWS` (family; engineering code still required for parts) | `ge-top-washer` | https://products.geappliances.com/appliance/gea-specs/GTW385ASWWS/support |
-| Washer | Whirlpool | `WTW6157PW` (family only) | `whirlpool-top-washer` | https://www.whirlpool.com/owners-center-pdp.WTW6157PW.html |
-| Washer | Maytag | `MVW7232HW` (family only) | `maytag-top-washer` | https://www.maytag.com/owners-center-pdp.MVW7232HW.html |
-| Washer | Amana | `NTW4516FW` (family only) | `amana-top-washer` | https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html |
-| Washer | Electrolux | `ELFW7437AW` (family only) | `electrolux-front-washer` | https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW |
-| Dishwasher | GE | `GDP670SGVWW` (family; engineering code still required for parts) | `ge-dishwasher` | https://products.geappliances.com/appliance/gea-specs/GDP670SGVWW/support |
-| Dishwasher | Whirlpool | `WDT540HAMZ` (family only) | `whirlpool-dishwasher` | https://www.whirlpool.com/owners-center-pdp.WDT540HAMZ.html |
-| Dishwasher | Maytag | `MDB8959SKZ` (family only) | `maytag-dishwasher` | https://www.maytag.com/owners-center-pdp.MDB8959SKZ.html |
-| Dishwasher | KitchenAid | `KDTE204KPS` / `KDTE204KPS2` | `kitchenaid-dishwasher` | https://www.kitchenaid.com/owners-center-pdp.KDTE204KPS2.html |
-| Dishwasher | LG | `LDPS6762S` / `LDPS6762S.ASSESNA` | `lg-dishwasher` | https://www.lg.com/us/support/product/lg-LDPS6762S.ASSESNA |
-| Dishwasher | Bosch | `SHX5AEM5N/01` / `SHX5AEM5N` | `bosch-dishwasher` | https://www.bosch-home.com/us/en/productservice/SHX5AEM5N-01 |
-| Electric dryer | LG | `DLEX6500B` / `DLEX6500B.ABLEECI` | `lg-electric-dryer` | https://www.lg.com/us/support/product/lg-DLEX6500B.ABLEECI |
-| Electric dryer | GE | `GTD58EBSVWS` (family; engineering code still required for parts) | `ge-electric-dryer` | https://products.geappliances.com/appliance/gea-specs/GTD58EBSVWS/support |
-| Electric dryer | Whirlpool | `WED6150PB` (family only) | `whirlpool-electric-dryer` | https://www.whirlpool.com/laundry/dryers/electric/p.WED6150PB.html |
-| Electric dryer | Maytag | `MED6500MBK` (family only) | `maytag-electric-dryer` | https://www.maytag.com/owners-center-pdp.MED6500MBK.html |
-| Electric dryer | Electrolux | `ELFE7437AW` (family only) | `electrolux-electric-dryer` | https://www.electrolux.com/en/p/Laundry-Care/Dryers/ELFE7437AW |
-| Electric dryer | Samsung | `DVE54CG7150D/A3` / punctuation-free alias | `samsung-electric-dryer` | https://www.samsung.com/us/home-appliances/dryers/electric/7-4-cu-ft-smart-electric-dryer-with-pet-care-dry-and-steam-sanitize-in-brushed-navy-dve54cg7150da3/ |
-| Refrigerator | LG | `LRMVC2306S` / `LRMVC2306S.ASTCNA0` | `lg-french-refrigerator` | https://www.lg.com/us/support/product/lg-LRMVC2306S.ASTCNA0 |
-| Refrigerator | GE | `GNE29GYNFS` (family; engineering code still required for parts) | `ge-french-refrigerator` | https://products.geappliances.com/appliance/gea-specs/GNE29GYNFS/support |
-| Refrigerator | Whirlpool | `WRF555SDFZ08` / `WRF555SDFZ` | `whirlpool-french-refrigerator` | https://www.whirlpool.com/owners-center-pdp.WRF555SDFZ08.html |
-| Refrigerator | KitchenAid | `KRFF305ESS00` / `KRFF305ESS` | `kitchenaid-french-refrigerator` | https://www.kitchenaid.com/owners-center-pdp.KRFF305ESS00.html |
-| Refrigerator | Bosch | `B36CT81ENS/07` / `B36CT81ENS` | `bosch-french-refrigerator` | https://www.bosch-home.com/us/en/productservice/B36CT81ENS-07 |
-| Refrigerator | Maytag | `MRFF5033PZ` (family only) | `maytag-french-refrigerator` | https://www.maytag.com/owners-center-pdp.MRFF5033PZ.html |
+| Category       | Brand      | Model / evidenced code                                            | Diagnostic profile               | Official model-identity source                                                                                                                                 |
+| -------------- | ---------- | ----------------------------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Washer         | LG         | `WM6500HBA` / `WM6500HBA.ABLEVUS`                                 | `lg-front-washer`                | https://www.lg.com/us/support/product/lg-WM6500HBA.ABLEVUS?tab=1                                                                                               |
+| Washer         | GE         | `GTW385ASWWS` (family; engineering code still required for parts) | `ge-top-washer`                  | https://products.geappliances.com/appliance/gea-specs/GTW385ASWWS/support                                                                                      |
+| Washer         | Whirlpool  | `WTW6157PW` (family only)                                         | `whirlpool-top-washer`           | https://www.whirlpool.com/owners-center-pdp.WTW6157PW.html                                                                                                     |
+| Washer         | Maytag     | `MVW7232HW` (family only)                                         | `maytag-top-washer`              | https://www.maytag.com/owners-center-pdp.MVW7232HW.html                                                                                                        |
+| Washer         | Amana      | `NTW4516FW` (family only)                                         | `amana-top-washer`               | https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html                                                      |
+| Washer         | Electrolux | `ELFW7437AW` (family only)                                        | `electrolux-front-washer`        | https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW                                                                             |
+| Dishwasher     | GE         | `GDP670SGVWW` (family; engineering code still required for parts) | `ge-dishwasher`                  | https://products.geappliances.com/appliance/gea-specs/GDP670SGVWW/support                                                                                      |
+| Dishwasher     | Whirlpool  | `WDT540HAMZ` (family only)                                        | `whirlpool-dishwasher`           | https://www.whirlpool.com/owners-center-pdp.WDT540HAMZ.html                                                                                                    |
+| Dishwasher     | Maytag     | `MDB8959SKZ` (family only)                                        | `maytag-dishwasher`              | https://www.maytag.com/owners-center-pdp.MDB8959SKZ.html                                                                                                       |
+| Dishwasher     | KitchenAid | `KDTE204KPS` / `KDTE204KPS2`                                      | `kitchenaid-dishwasher`          | https://www.kitchenaid.com/owners-center-pdp.KDTE204KPS2.html                                                                                                  |
+| Dishwasher     | LG         | `LDPS6762S` / `LDPS6762S.ASSESNA`                                 | `lg-dishwasher`                  | https://www.lg.com/us/support/product/lg-LDPS6762S.ASSESNA                                                                                                     |
+| Dishwasher     | Bosch      | `SHX5AEM5N/01` / `SHX5AEM5N`                                      | `bosch-dishwasher`               | https://www.bosch-home.com/us/en/productservice/SHX5AEM5N-01                                                                                                   |
+| Electric dryer | LG         | `DLEX6500B` / `DLEX6500B.ABLEECI`                                 | `lg-electric-dryer`              | https://www.lg.com/us/support/product/lg-DLEX6500B.ABLEECI                                                                                                     |
+| Electric dryer | GE         | `GTD58EBSVWS` (family; engineering code still required for parts) | `ge-electric-dryer`              | https://products.geappliances.com/appliance/gea-specs/GTD58EBSVWS/support                                                                                      |
+| Electric dryer | Whirlpool  | `WED6150PB` (family only)                                         | `whirlpool-electric-dryer`       | https://www.whirlpool.com/laundry/dryers/electric/p.WED6150PB.html                                                                                             |
+| Electric dryer | Maytag     | `MED6500MBK` (family only)                                        | `maytag-electric-dryer`          | https://www.maytag.com/owners-center-pdp.MED6500MBK.html                                                                                                       |
+| Electric dryer | Electrolux | `ELFE7437AW` (family only)                                        | `electrolux-electric-dryer`      | https://www.electrolux.com/en/p/Laundry-Care/Dryers/ELFE7437AW                                                                                                 |
+| Electric dryer | Samsung    | `DVE54CG7150D/A3` / punctuation-free alias                        | `samsung-electric-dryer`         | https://www.samsung.com/us/home-appliances/dryers/electric/7-4-cu-ft-smart-electric-dryer-with-pet-care-dry-and-steam-sanitize-in-brushed-navy-dve54cg7150da3/ |
+| Refrigerator   | LG         | `LRMVC2306S` / `LRMVC2306S.ASTCNA0`                               | `lg-french-refrigerator`         | https://www.lg.com/us/support/product/lg-LRMVC2306S.ASTCNA0                                                                                                    |
+| Refrigerator   | GE         | `GNE29GYNFS` (family; engineering code still required for parts)  | `ge-french-refrigerator`         | https://products.geappliances.com/appliance/gea-specs/GNE29GYNFS/support                                                                                       |
+| Refrigerator   | Whirlpool  | `WRF555SDFZ08` / `WRF555SDFZ`                                     | `whirlpool-french-refrigerator`  | https://www.whirlpool.com/owners-center-pdp.WRF555SDFZ08.html                                                                                                  |
+| Refrigerator   | KitchenAid | `KRFF305ESS00` / `KRFF305ESS`                                     | `kitchenaid-french-refrigerator` | https://www.kitchenaid.com/owners-center-pdp.KRFF305ESS00.html                                                                                                 |
+| Refrigerator   | Bosch      | `B36CT81ENS/07` / `B36CT81ENS`                                    | `bosch-french-refrigerator`      | https://www.bosch-home.com/us/en/productservice/B36CT81ENS-07                                                                                                  |
+| Refrigerator   | Maytag     | `MRFF5033PZ` (family only)                                        | `maytag-french-refrigerator`     | https://www.maytag.com/owners-center-pdp.MRFF5033PZ.html                                                                                                       |
 
 ### Cohort boundaries and exceptions
 

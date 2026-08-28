@@ -6,7 +6,7 @@ product
 
 ## Users
 
-People facing a broken washer, dishwasher, electric dryer, or refrigerator who need a calm, understandable way to make safe physical observations while a browser agent reasons over model-specific evidence. The bounded catalog covers 163 source-backed U.S. model families: 25 complete model revisions are purchase-ready and 138 are guided-checks-only. Judges must be able to understand the outcome and reach an available exact-SKU seller link immediately without credentials.
+People facing a broken washer, dishwasher, electric dryer, or refrigerator who need a calm, understandable way to make safe physical observations while a browser agent reasons over model- and symptom-specific evidence. The bounded catalog covers 163 source-backed U.S. model families and 175 model × symptom combinations: 25 are purchase-ready and 150 are guided-checks-only. Judges must be able to understand the outcome and reach an available exact-SKU seller link immediately without credentials.
 
 ## Product Purpose
 
@@ -34,6 +34,9 @@ Simple, instantly understandable, clean. The interface should feel calm and exac
 5. Keep WebMCP activity, sources, and detailed reasoning available behind a secondary disclosure for judges and interested users.
 6. Say “checks only” before a user starts any model path that cannot currently end in a verified part link.
 7. Let every category prove the final outcome in one click, with the prefilled observations visibly labeled as an example.
+8. After appliance choice, show no more than four plain-language problem choices with exact coverage context; never imply that model identity grants symptom coverage.
+9. Keep completed examples behind one secondary **See how Clunk works** entry, and keep the non-interactive appliance roadmap quieter than working choices.
+10. Label paid Shopify placements at the offer and disclose a possible Clunk commission near the action; preserve organic checkout when no approved placement exists.
 
 ## Accessibility & Inclusion
 

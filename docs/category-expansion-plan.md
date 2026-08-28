@@ -2,7 +2,11 @@
 
 Clunk now ships a reusable multi-appliance foundation: 163 source-backed U.S. model families across washers, dishwashers, electric dryers, and refrigerators; 11 brands; explicit capability tiers; pack-derived tool enums; per-pack component hotspots, result effects, ranking rules, safety boundaries, sources, and optional static/live commerce handoffs. The eight public WebMCP tools did not change as categories, model discovery, evidence filters, and Shopify UCP offer discovery expanded. This is useful breadth, not exhaustive or universal compatibility.
 
-Final tier totals are 25 **Purchase-ready**, 138 **Guided checks**, and zero **Verified part unavailable**. The current worktree adds 113 entries through 50 validated family profiles, with 13 of those entries upgraded only at a separately evidenced complete engineering revision. Exact-part data lives on the model row—not the shared profile—so no neighboring revision inherits a part or Shopify query.
+At the model level, tier totals are 25 **Purchase-ready**, 138 **Guided checks**, and zero **Verified part unavailable**. At the model × symptom level, the 163 identities resolve to 175 packs: the same 25 purchase-ready combinations plus 150 guided combinations. The catalog expansion adds 113 entries through 50 validated family profiles, with 13 of those entries upgraded only at a separately evidenced complete engineering revision. Exact-part data lives on the model row—not the shared profile—so no neighboring revision or symptom inherits a part or Shopify query.
+
+## Many-to-many release slice
+
+Each category exposes four observable problem families, but search results are filtered by actual coverage for the chosen problem. Every catalog model retains its established category path. Twelve additional guided paths are activated only on four separately evidenced flagships: GE `GFW550SSNWW`, Whirlpool `WDT750SAKZ1`, GE `GTD42EASJ2WW`, and GE `GSS25GYPFS`. An unsupported model × symptom pair produces a visible refusal and cannot enter a borrowed tree. The broader reconnaissance under `docs/research/clunk-evidence-recon-2026-08-28/` remains research input, not production coverage.
 
 ## Submission slice
 
@@ -32,7 +36,7 @@ All of these remain static data and deterministic state transitions.
 - Thirteen additions became purchase-ready only after an exact complete-code-to-SKU mapping was found on a manufacturer or authorized-parts page. The other 100 additions remain guided-only; ambiguous Samsung/LG pump pages, refrigerator filter pages with multiple candidates, and Bosch revision conflicts were not promoted.
 - Ten no-store Shopify queries for the upgrade SKUs returned 10–20 available exact-number offers during the 2026-08-27 pass. Clunk rejected 24 available neighboring listings before recording those counts.
 
-The JSON expansion file, documented JSON Schema, runtime validator, explicit capability field, schema-v5 pack generator, catalog validator, and reusable UCP descriptor make the next catalog batch primarily data work after evidence review. Public counts are derived in the app and covered by tests; prose counts still require an intentional review so documentation cannot drift silently.
+The JSON expansion file, documented JSON Schema, runtime validator, explicit per-symptom capability field, schema-v6 pack generator, catalog validator, and reusable UCP descriptor make the next catalog batch primarily data work after evidence review. Public counts are derived in the app and covered by tests; prose counts still require an intentional review so documentation cannot drift silently.
 
 ## What requires explicit product and safety review
 
@@ -51,5 +55,5 @@ Clunk will not add gas work, live electrical tests, refrigerant or sealed-compre
 
 1. Continue one complete engineering revision at a time, prioritizing the remaining Samsung/LG washer, Maytag/Amana refrigerator, and Bosch filter gaps only when one authoritative page resolves one exact SKU.
 2. Add model-specific visual manifests only where the general category location guide is materially misleading.
-3. Add one additional safe symptom per category after source and safety review—for example, a washer door-strike or dishwasher rack-wheel problem rather than energized/internal diagnosis.
+3. Extend the 12 supplemental flagship paths only to explicitly compatible cohorts after source applicability, topology exceptions, and safety boundaries are documented. Model identity alone is never sufficient.
 4. Automate source-link and exact-SKU offer re-verification without caching Shopify results or changing the static judge experience.

@@ -1,6 +1,6 @@
 # Deterministic safety model
 
-Clunk is a bounded troubleshooting aid for the listed washer, dishwasher, electric-dryer, and refrigerator model families and each model’s one supported symptom. It does not confirm a diagnosis, replace the manufacturer manual, or certify that a repair is safe for a particular home or person.
+Clunk is a bounded troubleshooting aid for explicitly listed washer, dishwasher, electric-dryer, and refrigerator model × symptom combinations. A supported model does not imply support for every problem. Clunk does not confirm a diagnosis, replace the manufacturer manual, or certify that a repair is safe for a particular home or person.
 
 Safety is enforced before presentation:
 

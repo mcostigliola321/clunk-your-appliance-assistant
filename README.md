@@ -6,20 +6,20 @@
 
 Clunk is a lightweight, open-source WebMCP app where a person and a browser agent investigate a broken household appliance together. The person supplies physical observations. The agent searches Clunk’s supported catalog, reads the shared repair state, focuses the relevant location, and records only what the person reports.
 
-The catalog covers 163 source-backed U.S. model families: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. Twenty-five complete model revisions have purchase-ready paths backed by manufacturer or authorized-parts compatibility evidence; 138 entries are plainly labeled **Guided checks only**. By category, that is 8 purchase-ready washers, 4 dishwashers, 7 electric dryers, and 6 refrigerators. This is broad, bounded coverage—not a claim of exhaustive or universal compatibility. The illustrations are original location guides—not model-specific service diagrams.
+The catalog covers 163 source-backed U.S. model families: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. Those identities resolve to 175 explicitly supported model × symptom combinations: 25 purchase-ready paths backed by manufacturer or authorized-parts compatibility evidence and 150 **Guided checks only** paths. Every model retains its established category symptom; 12 additional guided combinations are separately evidenced on one flagship per category. This is broad, bounded coverage—not a claim of exhaustive or universal compatibility. The illustrations are original location guides—not model-specific service diagrams.
 
-For those 25 exact revisions, Clunk passes the verified SKU to [Shopify Global Catalog](https://shopify.dev/docs/agents/catalog) over UCP and shows current cross-merchant offers. Shopify discovers sellers; it does not decide what fits. Clunk rejects unavailable results and any nearby SKU, labels merchant “OEM” or “compatible” language as a seller claim, never caches results, and leaves checkout on the merchant site.
+For those 25 exact revisions, Clunk passes the verified SKU to [Shopify Global Catalog](https://shopify.dev/docs/agents/catalog) over UCP and shows current cross-merchant offers. Shopify discovers sellers; it does not decide what fits. The credential-free organic catalog remains the default. An optional public saved-catalog identifier can request Shopify's `affiliate` placement; returned promoted offers are visibly labeled and use Shopify's attributed variant URL exactly, with a nearby commission disclosure. Clunk rejects unavailable results and any nearby SKU, labels merchant “OEM” or “compatible” language as a seller claim, never caches results, and leaves checkout on the merchant site.
 
 If the model number is hard to find, **Find my model number** turns that physical-world gap into a visible person/agent handoff: choose the category and washer form factor, inspect manufacturer-backed common label locations, distinguish Model/E-Nr from Serial/S/N, then type any part of the code. Search ignores case and punctuation, surfaces ambiguous variants, and never upgrades a partial family code into an exact compatibility claim.
 
-No account, API key, model call, database, server function, or secret is required. Shopify's keyless live offer request is optional: if it fails, the deterministic diagnosis, exact compatibility evidence, sources, and manual flow remain available.
+No account, API key, model call, database, server function, or secret is required for diagnosis or organic offers. Shopify's keyless live offer request is optional: if it fails, the deterministic diagnosis, exact compatibility evidence, sources, and manual flow remain available. Promoted placements require separate Shopify approval and a public catalog identifier; no private Shopify credential belongs in this browser build.
 
-> **Important:** Clunk is a bounded troubleshooting aid, not a diagnostic authority. It supports only the listed symptom for each listed model. Always follow the manufacturer’s manual. Stop for heat, smoke, a burning smell, an active leak near power, unsafe access, or any step that does not match the appliance.
+> **Important:** Clunk is a bounded troubleshooting aid, not a diagnostic authority. It supports only the listed model × symptom combinations; recognizing a model never implies support for every problem. Always follow the manufacturer’s manual. Stop for heat, smoke, a burning smell, an active leak near power, unsafe access, or any step that does not match the appliance.
 
 ## Judge it in under three minutes
 
 1. Pick Washer, Dishwasher, Electric dryer, or Refrigerator.
-2. Choose **See the full answer**. One click replays a complete deterministic fixture through the same shared action layer and lands on the exact part, then loads current exact-SKU Shopify offers. It is visibly labeled as an example, not an agent run.
+2. Open the secondary **See how Clunk works** entry and choose one labeled completed example. One click replays a deterministic fixture through the same shared action layer and lands on the exact part, then loads current exact-SKU Shopify offers.
 3. Open **Human + agent activity** to see plain-language collaboration milestones plus the underlying WebMCP action names and active tool inventory.
 4. Reset and use **Diagnose yours** to supply real observations instead of the example fixture.
 
@@ -55,7 +55,7 @@ The app contains eight literal `document.modelContext.registerTool` registration
 | `search_supported_appliances` | Search full/partial model text, report variant ambiguity/capability, and return the label-location handoff without substitution. |
 | `select_appliance`            | Select an exact supported family and optionally provide the complete rating-label code.                                          |
 | `get_repair_state`            | Read a compact current-task snapshot with the bounded check, handoff state, and valid next actions.                              |
-| `start_diagnosis`             | Start the selected model’s one supported symptom flow.                                                                           |
+| `start_diagnosis`             | Start the selected model × symptom flow after coverage is verified.                                                              |
 | `show_component`              | Focus the shared original topology orientation without claiming a physical observation.                                          |
 | `record_observation`          | Record one explicit person-supplied result for the current check.                                                                |
 | `find_compatible_part`        | Return no-part, variant-needed, or exact-source-backed outcomes, including a narrow Shopify UCP handoff for live offers.         |
@@ -113,7 +113,7 @@ npm ci
 npm run dev
 ```
 
-Open `http://localhost:5173`. No environment file, API key, or local service is needed. Purchase-ready outcomes call Shopify Global Catalog directly from the browser.
+Open `http://localhost:5173`. No environment file, API key, or local service is needed. Purchase-ready outcomes call Shopify Global Catalog directly from the browser. To test an approved saved catalog, copy `.env.example` to `.env.local` and set only the public `VITE_SHOPIFY_CATALOG_ID`; every `VITE_` value is shipped to the browser, so never put a secret or private token there.
 
 To run the complete quality gate:
 

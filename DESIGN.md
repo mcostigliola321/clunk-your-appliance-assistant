@@ -215,7 +215,7 @@ The palette is a cool field-paper base with graphite structure, tide-green trust
 
 The application sits in a centered fluid shell capped at 1680px with responsive inline padding (`clamp(16px, 3vw, 48px)`). Desktop composition uses a 12-column field. The opening four appliance actions each span three columns, creating one continuous ruled plate rather than four floating cards. At 1100px they become a two-by-two field; at 620px they remain a compact two-column choice grid so the appliance world still fills the first mobile viewport.
 
-Journey stages reveal progressively rather than accumulating dashboard panels. Problem selection uses a cutaway plate beside one decision column. The diagnostic bench uses an approximately 1.15/0.85 split between the sticky appliance canvas and the current question or result, with a 28–64px responsive gap. At 820px the split becomes one column, the appliance is no longer sticky, and a completed result moves ahead of the illustration so the answer is immediate.
+Journey stages reveal progressively rather than accumulating dashboard panels. Problem selection uses a cutaway plate beside one decision column with no more than four peer choices: a compact two-by-two field on wide screens and one column on small screens. The diagnostic bench uses an approximately 1.15/0.85 split between the sticky appliance canvas and the current question or result, with a 28–64px responsive gap. At 820px the split becomes one column, the appliance is no longer sticky, and a completed result moves ahead of the illustration so the answer is immediate.
 
 Spacing follows an 8px-centered rhythm with 12px, 16px, 20px, 24px, 28px, and 36px supporting steps. Major surfaces breathe; compact evidence rows use hairlines and smaller gaps instead of nested containers.
 
@@ -283,7 +283,19 @@ The opening appliance field is intentionally square and ruled edge-to-edge. This
 
 ### Appliance Choice Field
 
-Each appliance is a substantial cutaway action inside a shared ruled field. The image occupies most of the action, followed by the appliance name, supported problem, and directional arrow. A separate white 50px row carries the completed-example route so demonstration never competes with the primary consumer action.
+Each appliance is a substantial cutaway action inside a shared ruled field. The image occupies most of the action, followed by the appliance name, the count of supported problem families, and a directional arrow. The appliance action always opens problem selection; no repeated example action shares equal prominence with it.
+
+### Symptom Choice Field
+
+The symptom stage presents four plain-language observations beside the category cutaway. Every choice includes a short behavior description, stays keyboard and screen-reader operable, and filters the next model view by actual model × symptom coverage. The UI must never present a category or model count as proof that a particular problem is covered.
+
+### Completed Example Hub
+
+One clearly secondary disclosure on the appliance landing stage opens a compact four-category chooser. Example mode is always labeled, uses prefilled observations, and remains visually subordinate to real diagnosis; each flagship exact result is still reachable in two actions.
+
+### Quiet Roadmap Signal
+
+A short text-only note may sit beneath the working appliance field to say which categories are next to evaluate. It must have no button treatment, hover state, arrow, category image, or availability language. It is a research-direction signal, not a shipping promise or a fifth appliance choice.
 
 ### Cutaway Location Hotspot
 
@@ -302,6 +314,7 @@ The finished answer is a Graphite Ink surface with Clean White type, a Citron Ma
 - **Do** use ruled hairlines and generous space for most structure, reserving the Working Surface shadow for active inspection and result surfaces.
 - **Do** keep Citron Marker scarce and functional: current location, decisive selection, completed example, or verified purchase action.
 - **Do** separate exact-fit commerce inside the dark result field and keep evidence or developer detail secondary.
+- **Do** label coverage and capability for the selected model × symptom pair, not for the model in general.
 - **Do** maintain 44px minimum touch targets, the shared visible focus ring, reduced-motion behavior, and text/icon support for semantic color.
 
 ### Don't:
@@ -312,3 +325,4 @@ The finished answer is a Graphite Ink surface with Clean White type, a Citron Ma
 - **Don't** expose protocol language, tool traces, or evidence mechanics as the primary homeowner experience.
 - **Don't** use Citron Marker as an all-over brand wash or semantic red/green without plain-language meaning.
 - **Don't** blur guidance, part proof, commerce, and professional-stop outcomes into the same visual treatment.
+- **Don't** imply that a supported model covers every visible problem or reuse one check tree under different symptom labels.

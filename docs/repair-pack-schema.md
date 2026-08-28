@@ -1,12 +1,13 @@
 # Repair pack extension schema
 
-Clunk keeps model evidence separate from the WebMCP registration and UI. The 50 published-milestone entries and 81 expansion entries are composed into one 131-entry catalog by [`src/data/applianceCatalog.ts`](../src/data/applianceCatalog.ts). Thirteen expansion rows contain a separately evidenced one-revision exact-part record; the other 68 are guided-only. The added families live as compact data in [`src/data/catalogExpansion.json`](../src/data/catalogExpansion.json), are documented by [`catalog-expansion.schema.json`](./catalog-expansion.schema.json), and pass runtime source, identity, topology, symptom, alias, full-code, exact-revision, and capability validation in [`src/data/catalogExpansion.ts`](../src/data/catalogExpansion.ts). Every catalog entry is then converted into a schema-v5 repair pack and checked by the catalog and pack invariants in [`src/domain/repairPack.ts`](../src/domain/repairPack.ts).
+Clunk keeps model identity, symptom coverage, repair-pack identity, capability tier, and exact-part evidence separate from the WebMCP registration and UI. The 50 published-milestone entries and 113 expansion entries are composed into one 163-model catalog by [`src/data/applianceCatalog.ts`](../src/data/applianceCatalog.ts). The legacy expansion file remains a compact single-symptom import source, validated by [`catalog-expansion.schema.json`](./catalog-expansion.schema.json), then normalized into the same many-to-many coverage structure in [`src/data/catalogExpansion.ts`](../src/data/catalogExpansion.ts). The catalog currently resolves to 175 schema-v6 model × symptom repair packs, all checked by the catalog and pack invariants in [`src/domain/repairPack.ts`](../src/domain/repairPack.ts).
 
 The documented [`repair-pack.schema.json`](./repair-pack.schema.json) describes the serialized extension shape:
 
-- `appliance` identifies the category, real brand/model family, plain-language noun, explicit capability tier, diagram topology, original illustration, and accuracy note.
+- `id` is the immutable `model-id::symptom-id` repair-pack identity; `modelId` independently identifies the appliance model.
+- `appliance` identifies the category, real brand/model family, plain-language noun, symptom-specific capability tier, diagram topology, original illustration, and accuracy note.
 - `verifiedProductCodes` lists complete rating-label codes that Clunk may compare exactly.
-- `symptom` names one bounded diagnostic entry point.
+- `symptom` names this pack's bounded observable-behavior entry point. A model can own multiple packs.
 - `components` map plain-language labels to hotspot coordinates on the original location guide and an access boundary.
 - `checks` contain a visible instruction, why it matters, stop conditions, safety tags, source IDs, and bounded person-supplied observations. Each result declares a deterministic effect, optional next check, focus location, stop reason, and customer-facing outcome copy.
 - `causes` contain per-result score and explanation rules; observed evidence changes the visible ordering without an app-side model call.
@@ -27,17 +28,17 @@ A contributor must not disguise a forbidden capability under a new tag.
 1. Add the exact real brand/model family and aliases. Never use fuzzy substitution to select a repair pack.
 2. Add an official manufacturer product/support source with its applicability and retrieval date. Merchant pages are never model-identity evidence.
 3. Choose the conservative load style, topology, and check profile supported by that model’s public guidance.
-4. Declare exactly one capability tier: `purchase-ready`, `guided-checks`, or `verified-part-unavailable`. Runtime validation requires its part evidence and seller state to agree.
+4. Add one coverage record per evidenced symptom and declare its capability tier: `purchase-ready`, `guided-checks`, or `verified-part-unavailable`. Runtime validation requires the selected model × symptom record, exact-part evidence, and seller state to agree.
 5. Attach source IDs to every safe check. If access differs by engineering revision, stop and request the complete code instead of guessing.
 6. Add a part only when a manufacturer or authorized-parts source maps the complete code to the exact SKU. Expansion exact parts must bind to one verified code, and that same code must appear in the evidence applicability and compatible-model label; a sibling revision requires its own evidence row. A fixed seller handoff records its destination and dated price/availability snapshot. A Shopify handoff records provider, protocol, exact-SKU query, positive observed exact-offer count, and verification date. Neither handoff may create the compatibility claim; otherwise leave `parts` empty.
-7. Validate the JSON shape and runtime invariants. A reusable family profile may deduplicate safe behavior, but every model still requires its own identity, aliases/full-code rule, official URL, category/topology, symptom, and ledger record.
+7. Validate the JSON shape and runtime invariants. A reusable family profile may deduplicate a proven safe baseline, but every model × symptom pair still requires its own pack identity, applicability, troubleshooting source, capability tier, and ledger record.
 8. Add search, selection, happy-path, mismatch, invalid-order, hazard, part-boundary, and WebMCP eval coverage.
 9. Update [`docs/model-source-ledger.md`](./model-source-ledger.md).
 
 ## Adding an appliance category or symptom
 
-Schema v5 uses pack-derived string IDs, an explicit capability tier, deterministic rules, and an optional live-commerce descriptor across washers, dishwashers, electric dryers, and refrigerators. A new category or symptom still requires an explicit reviewed code change, a new original location guide, category-specific safety boundaries, primary-source evidence, and dedicated tests. Dropping in unreviewed data never enables a public flow.
+Schema v6 uses explicit model × symptom pack IDs, an independent model ID, a symptom-specific capability tier, deterministic rules, and an optional live-commerce descriptor across washers, dishwashers, electric dryers, and refrigerators. A new category or symptom requires a reviewed code change, category-specific observable checks and stopping points, primary-source applicability evidence, and dedicated tests. Existing location art may be reused only as a labeled orientation guide where its component positions remain accurate; unreviewed data never enables a public flow.
 
 ## Compatibility boundary
 
-A supported family is not automatically an exact part match. The app distinguishes family verification, complete-code verification, no-part-needed, exact match, variant-needed, and professional-only outcomes. Shopify results are live seller listings, not compatibility evidence; Clunk rejects listings that do not contain the exact part number. No extension may claim a confirmed diagnosis, guaranteed price or availability, repair success, seller authenticity, or professional certification.
+A supported family is not automatically covered for the selected symptom, and symptom coverage is not automatically an exact part match. The app distinguishes unsupported-for-this-problem, guided checks, verified-part-unavailable, family verification, complete-code verification, no-part-needed, exact match, variant-needed, and professional-only outcomes. Shopify results are live seller listings, not compatibility evidence; Clunk rejects listings that do not contain the exact part number. No extension may claim a confirmed diagnosis, guaranteed price or availability, repair success, seller authenticity, or professional certification.

@@ -8,7 +8,7 @@ complete appliance code
   → exact part SKU
   → Shopify Global Catalog search_catalog over UCP
   → exact-SKU filter in Clunk
-  → person reviews seller and opens the returned checkout_url
+  → person reviews seller and opens the returned merchant destination
 ```
 
 This boundary matters because a catalog search can return relevant-looking neighboring SKUs. Clunk rejects every result unless the available listing contains the exact normalized part number from the repair pack. Case and punctuation may vary; the alphanumeric identity may not. Merchant terms such as “OEM,” “genuine,” or “compatible” remain visibly labeled as seller claims.
@@ -19,8 +19,9 @@ This boundary matters because a catalog search can return relevant-looking neigh
 - Tool: `search_catalog`
 - Protocol: JSON-RPC 2.0 with a UCP agent profile
 - Filters: available offers that ship to the United States
-- Browser request: credential-free, `cache: no-store`
-- Result: up to five exact-SKU seller rows with current price and a merchant `checkout_url`
+- Browser request: credential-free, `cache: no-store`; an optional public saved-catalog identifier requests `placements: ["affiliate"]`
+- Organic result: up to five exact-SKU seller rows with current price and the merchant `checkout_url` or `url`
+- Promoted result: placement metadata plus Shopify's attributed variant `url`, preserved exactly as the action destination
 - Failure behavior: an inline retry or an honest no-live-offer message; the static compatibility result remains intact
 
 Clunk hosts [`public/ucp-agent-profile.json`](../public/ucp-agent-profile.json) as an inspectable declaration of its shopping capabilities. Catalog requests use Shopify's capability-equivalent reference profile because UCP discovery requires explicit cache headers that the current static Lovable host cannot set for individual assets. The JSON-RPC body is sent with Shopify's accepted `text/plain` content type so a static browser client does not trigger the catalog endpoint's unsupported CORS preflight. The repair pack records the query, exact SKU, retrieval date, and number of exact available offers observed during evidence review. Live results themselves are not persisted.
@@ -31,9 +32,20 @@ Shopify documents Global Catalog as a cross-merchant UCP catalog that requires a
 - [Shopify: Global Catalog MCP](https://shopify.dev/docs/agents/catalog/global-catalog)
 - [Shopify: Define an agent profile](https://shopify.dev/docs/agents/get-started/profile)
 
+## Saved catalogs and promoted placements
+
+The organic path remains fully functional with no environment configuration. If Shopify has approved a saved catalog for promoted placements, a build may set the catalog's public identifier in `VITE_SHOPIFY_CATALOG_ID`. Clunk validates that identifier, sends it as `catalog.catalog_id`, and requests the `affiliate` placement. `VITE_` values are public browser configuration, never secret storage.
+
+When Shopify marks a variant with placement metadata, Clunk labels it **Promoted · paid placement**, discloses beside the action that Clunk may earn a commission, and uses the returned attributed variant `url` without wrapping, rewriting, masking, or redirecting it. Organic offers remain clearly labeled as not paid placements. If the identifier is absent, invalid, unapproved, or returns no promoted offer, Clunk retains normal organic checkout behavior.
+
+Shopify's promoted-placements program was an invite-led developer preview when rechecked on 2026-08-28. Code cannot perform enrollment or payout setup. The repository owner must join the waitlist, accept the Dev Dashboard agreement after approval, create or enable a saved catalog with **Earn commission**, and configure Partner/Hyperwallet payout details. These external steps are also recorded in [`release-security-checklist.md`](./release-security-checklist.md).
+
+- [Shopify: Promoted placements](https://shopify.dev/docs/agents/catalog/promoted-placement)
+- [Shopify: Global Catalog](https://shopify.dev/docs/agents/catalog/global-catalog)
+
 ## Checkout boundary
 
-Clunk does not collect payment, create an authenticated checkout session, or call Checkout MCP. It opens the seller-provided cart or checkout URL in a new tab so the person can review and continue on the merchant site. Shopify's Cart MCP supports unauthenticated cart iteration, while Checkout MCP requires authentication or a signed request; those are deliberately outside this static, credential-free submission.
+Clunk does not collect payment, create an authenticated checkout session, or call Checkout MCP. It opens the seller-provided destination in a new tab so the person can review and continue on the merchant site. For a promoted result, that destination is specifically the attributed variant URL. Shopify's Cart MCP supports unauthenticated cart iteration, while Checkout MCP requires authentication or a signed request; those are deliberately outside this static, credential-free submission.
 
 - [Shopify: Cart MCP](https://shopify.dev/docs/agents/carts-and-checkout/cart-mcp)
 - [Shopify: Checkout MCP](https://shopify.dev/docs/agents/carts-and-checkout/checkout-mcp)

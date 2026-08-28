@@ -1,6 +1,6 @@
 # Architecture
 
-Clunk is a static React application with no backend and no app-side model call. A compatible browser agent discovers tools registered by the page and invokes them locally against the same state as the visible controls. Purchase-ready outcomes can make one optional credential-free browser request to Shopify Global Catalog for current exact-SKU offers; diagnosis and compatibility remain deterministic if that request fails.
+Clunk is a static React application with no backend and no app-side model call. A compatible browser agent discovers tools registered by the page and invokes them locally against the same state as the visible controls. Purchase-ready outcomes can make one optional browser request to Shopify Global Catalog for current exact-SKU offers; diagnosis and compatibility remain deterministic if that request fails. Organic search is credential-free. An approved public saved-catalog identifier may additionally request Shopify's affiliate placement, but no private credential is stored or sent.
 
 ```text
 Human control ─┐
@@ -15,14 +15,15 @@ catalog entry ─> validated repair pack ─> checks, causes, sources, component
 
 ## Layers
 
-- `src/data/applianceCatalog.ts` composes the bounded 131-model catalog, explicit capability tiers, official source references, category/profile metadata, exact part mappings, and dated Shopify UCP query descriptors. `src/data/catalogExpansion.json` adds 81 models through 49 reusable profiles, including 13 exact-code part records stored on individual model rows; `src/data/catalogExpansion.ts` validates revision isolation and materializes that data before repair-pack generation.
+- `src/data/applianceCatalog.ts` composes the bounded 163-model catalog: 50 milestone entries plus 113 schema-validated expansion entries. It keeps explicit capability tiers, official source references, category/profile metadata, exact part mappings, and dated Shopify UCP query descriptors. `src/data/catalogExpansion.ts` validates revision isolation and materializes the compact expansion data before repair-pack generation.
+- `src/data/symptomCatalog.ts` defines the 16 visible problem families, their category scope, and the separately evidenced supplemental flagship coverage. Model identity and symptom coverage remain separate claims.
 - `src/data/modelNumberGuides.ts` contains manufacturer-backed common rating-label locations, identifier examples, and retrieval dates. The UI renders these as original Clunk diagrams rather than copied manufacturer artwork.
 - `src/domain/modelSearch.ts` normalizes case and punctuation, ranks partial suggestions, exposes family/revision ambiguity, and rejects text explicitly labeled as a serial number. It never uses reverse containment to turn extra unsupported text into a match.
-- `src/domain/repairPack.ts` converts catalog entries into schema-v5 repair packs and validates catalog identities, explicit capability tiers, source links, result transitions, part evidence, static/live commerce handoffs, component/cause references, and forbidden safety tags.
-- `src/domain/shopifyCatalog.ts` calls Shopify Global Catalog's `search_catalog` tool over UCP and admits only available offers whose listing contains the exact normalized SKU. It never selects the SKU or changes the repair outcome.
+- `src/domain/repairPack.ts` resolves model × symptom coverage into schema-v6 repair packs and validates separate model/pack identities, symptom-specific capability tiers, source links, result transitions, part evidence, static/live commerce handoffs, component/cause references, and forbidden safety tags.
+- `src/domain/shopifyCatalog.ts` calls Shopify Global Catalog's `search_catalog` tool over UCP and admits only available offers whose listing contains the exact normalized SKU. Without configuration it uses organic results. With a validated public saved-catalog identifier it requests the `affiliate` placement, parses placement metadata, and preserves a promoted variant's attributed `url` exactly. It never selects the SKU or changes the repair outcome.
 - `src/domain/engine.ts` is the only transition engine. It handles catalog search, exact selection, checks, observations, part outcomes, refusals, and escalation.
 - `src/domain/selectors.ts` derives the full visible snapshot, a compact current-task WebMCP output, and the tools that are valid for the current state.
-- `src/state/RepairProvider.tsx` owns current state and exposes one synchronous action layer to both UI controls and WebMCP callbacks.
+- `src/state/RepairProvider.tsx` owns current state and exposes one synchronous action layer to both UI controls and WebMCP callbacks. Versioned persistence migrates the prior single-symptom shape, rejects malformed or oversized local state, validates phases, and bounds undo history.
 - `src/webmcp/contracts.ts` is the bounded public tool catalog used by registration, tests, eval fixtures, and the visible inspector.
 - `src/webmcp/registerTools.ts` contains eight literal imperative registrations, state-dependent registration, structured results, feature detection, and `AbortController` lifecycle cleanup.
 - `src/components` renders category/model discovery, original appliance location guides, next checks, evidence, source links, activity, compatibility outcomes, and accessible live-offer states. Components do not contain diagnosis or fit rules.
