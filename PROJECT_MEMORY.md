@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-08-28** on local branch `codex/expand-model-symptom-coverage`, based exactly on `origin/main` commit `63b3db6`. The verified implementation commit is `0b536fc`; it has not been pushed, merged, published, or synced to Lovable.
+Last reconciled: **2026-08-28** after `codex/expand-model-symptom-coverage` was pushed and fast-forward merged into local and remote `main`. The verified implementation commit is `0b536fc`; merge-state documentation continues through `f30f438` and this handoff-only commit. The push should sync the connected branch to Lovable, but production publication has not been verified.
 
 This is the concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
@@ -10,10 +10,10 @@ Clunk is a consumer-first visual appliance diagnostic guide and WebMCP demo. A h
 
 The design direction is **Approachable Precision**: calm, appliance-led, highly legible, and free of generic AI styling or dashboard density. Real diagnosis is primary. Completed fixtures sit behind one secondary **See how Clunk works** entry. The homepage shows four working appliance choices, then only evidence-backed broad problem peers. One-model experiments remain available in a clearly secondary **Limited pilots** disclosure and must not look equivalent to mature coverage. A quiet text-only note says vacuums and robot vacuums are next to evaluate; it is not a control or shipping promise.
 
-## Current branch state
+## Current main state
 
-- The branch preserves all 163 source-backed U.S. model families: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. Local and remote `main` remain at `63b3db6`.
-- Model identity and symptom coverage remain many-to-many. The branch resolves to 266 model × symptom packs: 25 purchase-ready and 241 guided-check combinations.
+- `main` preserves all 163 source-backed U.S. model families: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands.
+- Model identity and symptom coverage remain many-to-many. The release resolves to 266 model × symptom packs: 25 purchase-ready and 241 guided-check combinations.
 - The 91 newly activated guided combinations cover door/lid closure for exactly 36 washers, door closure for exactly 20 dishwashers, and door closure for exactly 35 refrigerators. Their checked source records live in `src/data/symptomCoverageExpansion.json` under `docs/symptom-coverage-expansion.schema.json`.
 - Mature visible routes are washer drain 56 and closure 36; dishwasher drain 33 and closure 20; dryer closure 33; refrigerator slow water 41 and closure 35. Each of the remaining 12 symptom routes still covers exactly one checked flagship model and now appears only under **Limited pilots**. Unsupported model × symptom pairs stop visibly and never borrow another tree.
 - New closure packs are conservative, external, no-disassembly guided checks. Washer language is topology-aware for doors versus lids. Feature-specific AutoRelease/open-dry, adjustable-rack, mullion/flap, and leveling/alignment branches are excluded unless an exact model manual proves them. None of the new packs claims a part or purchase-ready outcome.
@@ -23,7 +23,7 @@ The design direction is **Approachable Precision**: calm, appliance-led, highly 
 - Shopify organic Global Catalog search remains credential-free. An optional validated public saved-catalog identifier can request Shopify's `affiliate` placement. Promoted offers are labeled, disclose possible commission near the action, and preserve Shopify's attributed variant URL exactly. Enrollment, saved-catalog approval, and payout setup remain manual external dependencies.
 - Repository hardening includes corrected security claims, a private-vulnerability-reporting path through GitHub, stronger secret ignores and a public-only example configuration, bounded public-HTTPS URL validation, hardened local-state parsing, full-SHA Actions pins, and static-host security-header declarations. External GitHub and host settings remain in `docs/release-security-checklist.md`.
 
-Earlier commits `3b886c2` and `1eeb104` remain on `main` and `origin/main`. The coverage work is local-only in `0b536fc`. Production deployment and the live URL have not been verified. No GitHub settings, repository visibility, external account, program enrollment, or Lovable state was changed.
+The coverage implementation (`0b536fc`) and initial verification handoff (`f30f438`) were pushed on `codex/expand-model-symptom-coverage`, then fast-forward merged and pushed to `main` on 2026-08-28. The connected-branch push should sync into the Lovable editor, but production deployment and the live URL have not been verified. No GitHub settings, repository visibility, external account, program enrollment, or production publication was changed.
 
 ## Verification
 
