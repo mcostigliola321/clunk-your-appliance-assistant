@@ -41,6 +41,20 @@ async function mockShopify(page) {
                   },
                 ],
               },
+              {
+                id: `exact-secondary-${sku}`,
+                title: `Exact replacement appliance part ${sku}`,
+                variants: [
+                  {
+                    id: `exact-secondary-variant-${sku}`,
+                    sku,
+                    price: { amount: 995, currency: "USD" },
+                    checkout_url: `https://second-merchant.example/cart/${sku}`,
+                    availability: { available: true },
+                    seller: { name: "Genuine Replacement Parts" },
+                  },
+                ],
+              },
             ],
           },
         },
@@ -117,6 +131,21 @@ try {
     await page.getByRole("link", { name: /Open UCP Parts cart for part WE01M10007/ }).waitFor();
     await page.waitForTimeout(700);
     await page.screenshot({ path: `${output}/exact-result-mobile.png` });
+    await page
+      .locator(".part-result")
+      .screenshot({ path: `${output}/exact-result-mobile-card.png` });
+    await context.close();
+  }
+
+  {
+    const { context, page } = await openPage(browser, { width: 1063, height: 800 });
+    await page.getByRole("button", { name: "See completed dryer example" }).click();
+    await page.getByText("Genuine Replacement Parts").waitFor();
+    await settleImages(page);
+    await page.screenshot({ path: `${output}/exact-result-intermediate-desktop.png` });
+    await page
+      .locator(".part-result")
+      .screenshot({ path: `${output}/exact-result-intermediate-card.png` });
     await context.close();
   }
 

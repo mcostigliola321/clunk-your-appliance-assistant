@@ -57,6 +57,20 @@ test.beforeEach(async ({ page }) => {
                   },
                 ],
               },
+              {
+                id: `exact-secondary-${sku}`,
+                title: `Exact replacement appliance part ${sku}`,
+                variants: [
+                  {
+                    id: `exact-secondary-variant-${sku}`,
+                    sku,
+                    price: { amount: 995, currency: "USD" },
+                    checkout_url: `https://second-merchant.example/cart/${sku}`,
+                    availability: { available: true },
+                    seller: { name: "Genuine Replacement Parts" },
+                  },
+                ],
+              },
             ],
           },
         },
@@ -218,6 +232,32 @@ test("one secondary action reaches an exact part and exact-SKU seller handoff", 
   ).toHaveAttribute("href", "https://merchant.example/cart/WE01M10007");
   await expect(page.getByText("Wrong Seller")).toHaveCount(0);
   await expect(page.getByText("Completed example")).toBeVisible();
+});
+
+test("keeps stacked seller offers clear of source and safety guidance", async ({ page }) => {
+  await page.setViewportSize({ width: 1063, height: 800 });
+  await page.getByRole("button", { name: "See completed dryer example" }).click();
+
+  const offers = page.getByRole("region", { name: "Live offers from Shopify" });
+  const source = page.getByRole("link", { name: /Read the GE Appliances instructions/ });
+  const disclaimer = page.getByText(/Confirm the full model number again on the seller page/);
+  await expect(page.getByText("Genuine Replacement Parts")).toBeVisible();
+
+  const [offersBox, sourceBox, disclaimerBox] = await Promise.all([
+    offers.boundingBox(),
+    source.boundingBox(),
+    disclaimer.boundingBox(),
+  ]);
+  expect(offersBox).not.toBeNull();
+  expect(sourceBox).not.toBeNull();
+  expect(disclaimerBox).not.toBeNull();
+  expect(sourceBox!.y).toBeGreaterThanOrEqual(offersBox!.y + offersBox!.height + 16);
+  expect(disclaimerBox!.y).toBeGreaterThanOrEqual(sourceBox!.y + sourceBox!.height + 16);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    ),
+  ).toBeLessThanOrEqual(1);
 });
 
 test("every category completed example ends at its verified purchase handoff", async ({ page }) => {
