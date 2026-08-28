@@ -63,6 +63,39 @@ async function mockShopify(page) {
   });
 }
 
+async function mockPromotedShopify(page) {
+  await page.unroute("https://catalog.shopify.com/**");
+  await page.route("https://catalog.shopify.com/**", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        result: {
+          structuredContent: {
+            products: [
+              {
+                id: "promoted-WE01M10007",
+                title: "Exact promoted dryer strike WE01M10007",
+                variants: [
+                  {
+                    id: "promoted-variant-WE01M10007",
+                    sku: "WE01M10007",
+                    price: { amount: 1899, currency: "USD" },
+                    url: "https://merchant.example/products/strike?variant=42&utm_source=shopify&utm_medium=catalog&shclid=review_1&shdid=developer_9",
+                    placement: { type: "affiliate" },
+                    availability: { available: true },
+                    seller: { name: "Promoted Parts" },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      }),
+    });
+  });
+}
+
 async function openPage(browser, viewport) {
   const context = await browser.newContext({ viewport, reducedMotion: "reduce" });
   const page = await context.newPage();
@@ -97,6 +130,10 @@ async function selectExactDryer(page) {
   await page.getByRole("button", { name: /GE GTD42EASJ2WW Purchase-ready/ }).click();
 }
 
+async function openCompletedExamples(page) {
+  await page.getByText("See how Clunk works", { exact: true }).click();
+}
+
 const browser = await chromium.launch();
 
 try {
@@ -109,10 +146,26 @@ try {
   }
 
   {
+    const { context, page } = await openPage(browser, { width: 1440, height: 1000 });
+    await page.getByRole("button", { name: /Choose Washer/ }).click();
+    await settleImages(page);
+    await page.screenshot({ path: `${output}/symptom-selection-desktop.png` });
+    await context.close();
+  }
+
+  {
     const { context, page } = await openPage(browser, { width: 390, height: 844 });
     await settleImages(page);
     await page.screenshot({ path: `${output}/first-viewport-mobile.png` });
     await page.screenshot({ path: `${output}/mobile.png`, fullPage: true });
+    await context.close();
+  }
+
+  {
+    const { context, page } = await openPage(browser, { width: 390, height: 844 });
+    await page.getByRole("button", { name: /Choose Electric dryer/ }).click();
+    await settleImages(page);
+    await page.screenshot({ path: `${output}/symptom-selection-mobile.png`, fullPage: true });
     await context.close();
   }
 
@@ -127,6 +180,7 @@ try {
 
   {
     const { context, page } = await openPage(browser, { width: 320, height: 800 });
+    await openCompletedExamples(page);
     await page.getByRole("button", { name: "See completed dryer example" }).click();
     await page.getByRole("link", { name: /Open UCP Parts cart for part WE01M10007/ }).waitFor();
     await page.waitForTimeout(700);
@@ -139,6 +193,7 @@ try {
 
   {
     const { context, page } = await openPage(browser, { width: 1063, height: 800 });
+    await openCompletedExamples(page);
     await page.getByRole("button", { name: "See completed dryer example" }).click();
     await page.getByText("Genuine Replacement Parts").waitFor();
     await settleImages(page);
@@ -146,6 +201,16 @@ try {
     await page
       .locator(".part-result")
       .screenshot({ path: `${output}/exact-result-intermediate-card.png` });
+    await context.close();
+  }
+
+  {
+    const { context, page } = await openPage(browser, { width: 1440, height: 1000 });
+    await mockPromotedShopify(page);
+    await openCompletedExamples(page);
+    await page.getByRole("button", { name: "See completed dryer example" }).click();
+    await page.getByText("Promoted · paid placement").waitFor();
+    await page.locator(".part-result").screenshot({ path: `${output}/promoted-result-card.png` });
     await context.close();
   }
 
@@ -164,12 +229,10 @@ try {
 
   {
     const { context, page } = await openPage(browser, { width: 1440, height: 1000 });
-    await reachModelSearch(page, /Choose Electric dryer/, /Supported now Door won't close/);
-    await page
-      .getByRole("searchbox", { name: "Electric dryer model number" })
-      .fill("NOT-A-SUPPORTED-MODEL-999");
-    await page.getByText("That model is not in Clunk yet.").waitFor();
-    await page.screenshot({ path: `${output}/unsupported-search-desktop.png` });
+    await reachModelSearch(page, /Choose Washer/, /Supported now Water is leaking/);
+    await page.getByRole("searchbox", { name: "Washer model number" }).fill("WM3400CW.ABWEVUS");
+    await page.getByText("That model is supported for a different problem.").waitFor();
+    await page.screenshot({ path: `${output}/unsupported-model-symptom-desktop.png` });
     await context.close();
   }
 

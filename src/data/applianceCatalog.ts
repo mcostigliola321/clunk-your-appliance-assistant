@@ -1,7 +1,14 @@
-import type { ApplianceCatalogEntry, BrandName, SourceReference } from "@/domain/types";
+import type {
+  ApplianceCatalogEntry,
+  BrandName,
+  CapabilityTier,
+  RepairPackPart,
+  SourceReference,
+} from "@/domain/types";
 import { isPurchaseReadyPart } from "@/domain/purchase";
 
 import { CATALOG_EXPANSION } from "./catalogExpansion";
+import { buildSymptomCoverage } from "./symptomCatalog";
 
 const VERIFIED_ON = "2026-08-27";
 
@@ -472,8 +479,8 @@ interface EntryInput {
   profile?: ApplianceCatalogEntry["profile"];
   modelUrl: string;
   troubleshootingSources: SourceReference[];
-  exactPart?: ApplianceCatalogEntry["exactPart"];
-  capability?: ApplianceCatalogEntry["capability"];
+  exactPart?: RepairPackPart;
+  capability?: CapabilityTier;
 }
 
 function entry(input: EntryInput): ApplianceCatalogEntry {
@@ -493,28 +500,30 @@ function entry(input: EntryInput): ApplianceCatalogEntry {
   const profile =
     input.profile ??
     (input.checkProfile === "filter-access" ? "washer-front-drain" : "washer-hose-only");
-  const supportedSymptom =
-    kind === "dryer"
-      ? "door-will-not-close"
-      : kind === "refrigerator"
-        ? "slow-water-flow"
-        : "will-not-drain";
+  const resolvedCapability =
+    capability ??
+    (exactPart
+      ? isPurchaseReadyPart(exactPart)
+        ? "purchase-ready"
+        : "verified-part-unavailable"
+      : "guided-checks");
+  const resolvedProductCodes = verifiedProductCodes ?? [];
   return {
     ...rest,
     kind,
     profile,
-    supportedSymptom,
-    capability:
-      capability ??
-      (exactPart
-        ? isPurchaseReadyPart(exactPart)
-          ? "purchase-ready"
-          : "verified-part-unavailable"
-        : "guided-checks"),
+    symptomCoverage: buildSymptomCoverage({
+      modelId: input.id,
+      kind,
+      capability: resolvedCapability,
+      troubleshootingSources: input.troubleshootingSources,
+      ...(exactPart ? { exactPart } : {}),
+      verifiedProductCodes: resolvedProductCodes,
+    }),
     ...(kind === "washer" ? { loadStyle: loadStyle ?? "front-load" } : {}),
     ...(topology ? { topology } : {}),
     ...(checkProfile ? { checkProfile } : {}),
-    verifiedProductCodes: verifiedProductCodes ?? [],
+    verifiedProductCodes: resolvedProductCodes,
     modelSource: source(
       `${input.id}-model`,
       "manufacturer-model",
@@ -523,7 +532,6 @@ function entry(input: EntryInput): ApplianceCatalogEntry {
       input.brand,
       input.model,
     ),
-    ...(exactPart ? { exactPart } : {}),
   };
 }
 

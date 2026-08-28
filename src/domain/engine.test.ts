@@ -6,6 +6,12 @@ import { createInitialRepairState, executeRepairTool } from "./engine";
 import { assertCatalog, getRepairPack, REPAIR_PACKS } from "./repairPack";
 import { getWebMcpTaskSnapshot } from "./selectors";
 
+function modelCapability(entry: (typeof APPLIANCE_CATALOG)[number]) {
+  return entry.symptomCoverage.some((coverage) => coverage.capability === "purchase-ready")
+    ? "purchase-ready"
+    : entry.symptomCoverage[0]!.capability;
+}
+
 function selectAndStart(applianceId: string, productCode?: string) {
   let state = createInitialRepairState("unavailable");
   state = executeRepairTool(
@@ -69,10 +75,10 @@ function runExample(applianceId: string) {
 }
 
 describe("source-backed multi-appliance repair engine", () => {
-  it("validates 163 repair packs, explicit tiers, and four categories", () => {
+  it("validates 163 models and their many-to-many repair packs", () => {
     expect(assertCatalog(APPLIANCE_CATALOG)).toBe(APPLIANCE_CATALOG);
     expect(APPLIANCE_CATALOG).toHaveLength(163);
-    expect(REPAIR_PACKS.size).toBe(163);
+    expect(REPAIR_PACKS.size).toBe(175);
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.kind))).toEqual(
       new Set(["washer", "dishwasher", "dryer", "refrigerator"]),
     );
@@ -80,14 +86,14 @@ describe("source-backed multi-appliance repair engine", () => {
     expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dishwasher")).toHaveLength(33);
     expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dryer")).toHaveLength(33);
     expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "refrigerator")).toHaveLength(41);
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.capability === "purchase-ready")).toHaveLength(
-      25,
-    );
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.capability === "guided-checks")).toHaveLength(
-      138,
-    );
     expect(
-      APPLIANCE_CATALOG.filter((entry) => entry.capability === "verified-part-unavailable"),
+      APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "purchase-ready"),
+    ).toHaveLength(25);
+    expect(
+      APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "guided-checks"),
+    ).toHaveLength(138);
+    expect(
+      APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "verified-part-unavailable"),
     ).toHaveLength(0);
     expect(
       Object.fromEntries(
@@ -95,10 +101,10 @@ describe("source-backed multi-appliance repair engine", () => {
           kind,
           {
             purchaseReady: APPLIANCE_CATALOG.filter(
-              (entry) => entry.kind === kind && entry.capability === "purchase-ready",
+              (entry) => entry.kind === kind && modelCapability(entry) === "purchase-ready",
             ).length,
             guided: APPLIANCE_CATALOG.filter(
-              (entry) => entry.kind === kind && entry.capability === "guided-checks",
+              (entry) => entry.kind === kind && modelCapability(entry) === "guided-checks",
             ).length,
           },
         ]),
@@ -110,7 +116,7 @@ describe("source-backed multi-appliance repair engine", () => {
       refrigerator: { purchaseReady: 6, guided: 35 },
     });
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.brand)).size).toBe(11);
-    expect([...REPAIR_PACKS.values()].every((pack) => pack.schemaVersion === 5)).toBe(true);
+    expect([...REPAIR_PACKS.values()].every((pack) => pack.schemaVersion === 6)).toBe(true);
   });
 
   it("reaches an exact seller link in every flagship example", () => {
@@ -131,8 +137,10 @@ describe("source-backed multi-appliance repair engine", () => {
       expect(result.snapshot.exampleMode).toBe(true);
     }
     expect(
-      APPLIANCE_CATALOG.find((entry) => entry.id === "lg-wm3400cw")?.exactPart,
-    ).toBeUndefined();
+      APPLIANCE_CATALOG.find((entry) => entry.id === "lg-wm3400cw")?.symptomCoverage.some(
+        (coverage) => coverage.exactPartEvidence,
+      ),
+    ).toBe(false);
   });
 
   it("keeps every newly purchase-ready model on its separately evidenced exact code", () => {
@@ -203,7 +211,7 @@ describe("source-backed multi-appliance repair engine", () => {
     expect(webMcpSnapshot.task?.outcome?.part?.commerceHandoff?.rule).toContain(
       "Never substitute a nearby SKU",
     );
-    expect(JSON.stringify(webMcpSnapshot).length).toBeLessThan(2200);
+    expect(JSON.stringify(webMcpSnapshot).length).toBeLessThan(3000);
     const incomplete = executeRepairTool(
       runWasherPath(undefined, "filter-clear"),
       "find_compatible_part",
@@ -216,7 +224,7 @@ describe("source-backed multi-appliance repair engine", () => {
   it("keeps an active human-observation task compact for WebMCP", () => {
     const state = selectAndStart("ge-gtd42easj2ww", "GTD42EASJ2WW");
     const output = getWebMcpTaskSnapshot(state);
-    expect(JSON.stringify(output).length).toBeLessThan(1600);
+    expect(JSON.stringify(output).length).toBeLessThan(2300);
     expect(output.handoff).toBe("human-observation-required");
     expect(output.catalog.results).toEqual([]);
     expect(output.task?.currentCheck?.observations).toEqual(
@@ -234,12 +242,12 @@ describe("source-backed multi-appliance repair engine", () => {
     const output = getWebMcpTaskSnapshot(state);
     expect(output.catalog.resultCount).toBe(56);
     expect(output.catalog.results).toHaveLength(4);
-    expect(JSON.stringify(output).length).toBeLessThan(3000);
+    expect(JSON.stringify(output).length).toBeLessThan(4000);
     expect(output.catalog.counts).toEqual({
       byKind: { washer: 56, dishwasher: 33, dryer: 33, refrigerator: 41 },
       byCapability: {
         "purchase-ready": 25,
-        "guided-checks": 138,
+        "guided-checks": 150,
         "verified-part-unavailable": 0,
       },
     });

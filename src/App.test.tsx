@@ -87,17 +87,18 @@ describe("Clunk visual field guide", () => {
     expect(screen.getByRole("heading", { name: "What are you fixing?" })).toBeVisible();
     expect(screen.getByText("163 supported models")).toBeVisible();
     for (const label of [
-      /Choose Washer — Won't drain/,
-      /Choose Dishwasher — Won't drain/,
-      /Choose Electric dryer — Door won't close/,
-      /Choose Refrigerator — Water is slow/,
+      /Choose Washer — 4 supported problems/,
+      /Choose Dishwasher — 4 supported problems/,
+      /Choose Electric dryer — 4 supported problems/,
+      /Choose Refrigerator — 4 supported problems/,
     ])
       expect(screen.getByRole("button", { name: label })).toBeVisible();
     expect(screen.getByAltText("Cutaway view of an electric dryer")).toHaveAttribute(
       "src",
       "/assets/thumbs/clunk-dryer-240.png",
     );
-    expect(screen.getByRole("button", { name: "See completed dryer example" })).toBeVisible();
+    expect(screen.getByText("See how Clunk works")).toBeVisible();
+    expect(screen.getByText(/Vacuums and robot vacuums are next to evaluate/)).toBeVisible();
     expect(screen.getByText("All supported appliances")).toBeVisible();
   });
 
@@ -105,8 +106,10 @@ describe("Clunk visual field guide", () => {
     const user = userEvent.setup();
     renderClunk();
     await user.click(screen.getByRole("button", { name: /Choose Refrigerator/ }));
-    expect(screen.getByText(/Current coverage is deliberately narrow/)).toBeVisible();
-    expect(screen.getByText(/Other refrigerator problems are not supported yet/)).toBeVisible();
+    expect(
+      screen.getByText(/Coverage is checked separately for every model and problem/),
+    ).toBeVisible();
+    expect(screen.getByText(/41 checked models · 6 purchase-ready/)).toBeVisible();
     await user.click(screen.getByRole("button", { name: /Supported now Water is slow/ }));
     expect(screen.getByRole("heading", { name: "Find the model label." })).toBeVisible();
     expect(screen.getByRole("searchbox", { name: "Refrigerator model number" })).toBeVisible();
@@ -175,6 +178,56 @@ describe("Clunk visual field guide", () => {
     ).toHaveAttribute("href", "https://shopify.example/cart/WE01M10007");
     expect(screen.getByText("Completed example")).toBeVisible();
     expect(screen.getByText(/answers are prefilled/)).toBeVisible();
+    expect(screen.getByText(/organic offers are not paid placements/i)).toBeVisible();
+    expect(screen.queryByText(/Clunk may earn a commission/)).not.toBeInTheDocument();
+  });
+
+  it("labels a promoted offer, discloses commission, and preserves attribution", async () => {
+    const attributedUrl =
+      "https://shopify.example/products/exact?variant=42&utm_source=shopify&utm_medium=catalog&shclid=click_1&shdid=developer_9";
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(
+        async () =>
+          new Response(
+            JSON.stringify({
+              result: {
+                structuredContent: {
+                  products: [
+                    {
+                      id: "promoted-part",
+                      title: "Exact WE01M10007 dryer strike",
+                      variants: [
+                        {
+                          id: "promoted-variant",
+                          sku: "WE01M10007",
+                          price: { amount: 1899, currency: "USD" },
+                          url: attributedUrl,
+                          placement: { type: "affiliate" },
+                          availability: { available: true },
+                          seller: { name: "Promoted test seller" },
+                        },
+                      ],
+                    },
+                  ],
+                },
+              },
+            }),
+            { status: 200 },
+          ),
+      ),
+    );
+    const user = userEvent.setup();
+    renderClunk();
+    await user.click(screen.getByRole("button", { name: "See completed dryer example" }));
+
+    expect(await screen.findByText("Promoted · paid placement")).toBeVisible();
+    expect(screen.getByText(/Clunk may earn a commission/)).toBeVisible();
+    expect(
+      screen.getByRole("link", {
+        name: "Open Promoted test seller promoted listing for part WE01M10007 in a new tab",
+      }),
+    ).toHaveAttribute("href", attributedUrl);
   });
 
   it("switches directly to a dishwasher completed example", async () => {

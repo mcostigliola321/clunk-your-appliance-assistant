@@ -13,6 +13,7 @@ import { StatusPill } from "@/components/StatusPill";
 import { ToolInspector } from "@/components/ToolInspector";
 import { getActivityMilestone } from "@/components/activityMilestones";
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
+import { capabilityLabel } from "@/domain/modelSearch";
 import { getCatalogEntry, getRepairPack, normalizeModel } from "@/domain/repairPack";
 import type {
   ApplianceKind,
@@ -20,6 +21,7 @@ import type {
   ComponentId,
   RepairToolName,
   ResultId,
+  SupportedSymptomId,
 } from "@/domain/types";
 import { useRepair } from "@/state/RepairProvider";
 
@@ -27,7 +29,7 @@ export function App() {
   const { state, snapshot, invokeTool, reset, undoLastObservation, canUndo } = useRepair();
   const latestMessage = getActivityMilestone(state.activity.at(-1));
   const hasSession = Boolean(state.applianceId || state.activity.length > 1);
-  const pack = state.applianceId ? getRepairPack(state.applianceId) : null;
+  const pack = state.packId ? getRepairPack(state.packId) : null;
   const completedCount = Object.keys(snapshot.completedChecks).length;
   const hasPartOutcome = Boolean(snapshot.partOutcome);
   const decisionFocusKey =
@@ -70,15 +72,24 @@ export function App() {
     return () => cancelAnimationFrame(frame);
   }, [decisionFocusKey]);
 
-  const searchModels = (modelQuery: string, brand: BrandName | null, kind: ApplianceKind) => {
+  const searchModels = (
+    modelQuery: string,
+    brand: BrandName | null,
+    kind: ApplianceKind,
+    symptomId: SupportedSymptomId | null,
+  ) => {
     invokeTool(
       "search_supported_appliances",
-      { modelQuery, kind, ...(brand ? { brand } : {}) },
+      { modelQuery, kind, ...(brand ? { brand } : {}), ...(symptomId ? { symptomId } : {}) },
       "human",
     );
   };
 
-  const selectModel = (applianceId: string, suppliedProductCode?: string) => {
+  const selectModel = (
+    applianceId: string,
+    symptomId: SupportedSymptomId,
+    suppliedProductCode?: string,
+  ) => {
     const entry = getCatalogEntry(applianceId);
     const exactCode =
       suppliedProductCode ??
@@ -87,11 +98,10 @@ export function App() {
       );
     const selection = invokeTool(
       "select_appliance",
-      { applianceId, ...(exactCode ? { productCode: exactCode } : {}) },
+      { applianceId, symptomId, ...(exactCode ? { productCode: exactCode } : {}) },
       "human",
     );
-    if (selection.ok && exactCode)
-      invokeTool("start_diagnosis", { symptomId: getRepairPack(applianceId).symptom.id }, "human");
+    if (selection.ok && exactCode) invokeTool("start_diagnosis", { symptomId }, "human");
   };
 
   const showExample = (applianceId: string) => {
@@ -99,7 +109,11 @@ export function App() {
     if (!examplePack.example) return;
     invokeTool(
       "select_appliance",
-      { applianceId, productCode: examplePack.example.productCode },
+      {
+        applianceId,
+        symptomId: examplePack.symptom.id,
+        productCode: examplePack.example.productCode,
+      },
       "example",
     );
     invokeTool("start_diagnosis", { symptomId: examplePack.symptom.id }, "example");
@@ -111,11 +125,7 @@ export function App() {
 
   const startDiagnosis = () => {
     if (!state.applianceId) return;
-    invokeTool(
-      "start_diagnosis",
-      { symptomId: getRepairPack(state.applianceId).symptom.id },
-      "human",
-    );
+    invokeTool("start_diagnosis", { symptomId: state.symptomId ?? pack?.symptom.id }, "human");
   };
 
   const recordResult = (resultId: ResultId) => {
@@ -133,15 +143,11 @@ export function App() {
     if (!state.applianceId) return null;
     const selection = invokeTool(
       "select_appliance",
-      { applianceId: state.applianceId, productCode },
+      { applianceId: state.applianceId, symptomId: state.symptomId, productCode },
       "human",
     );
     if (selection.ok)
-      invokeTool(
-        "start_diagnosis",
-        { symptomId: getRepairPack(state.applianceId).symptom.id },
-        "human",
-      );
+      invokeTool("start_diagnosis", { symptomId: state.symptomId ?? pack?.symptom.id }, "human");
     return selection;
   };
 
@@ -210,11 +216,7 @@ export function App() {
                         ? `Label recorded · ${snapshot.productCode} · exact fit not confirmed`
                         : "Model family selected · full label still needed for an exact part"}
                   </span>
-                  <strong>
-                    {pack?.appliance.capability === "purchase-ready"
-                      ? "Purchase-ready"
-                      : "Guided checks only"}
-                  </strong>
+                  <strong>{pack ? capabilityLabel(pack.appliance.capability) : null}</strong>
                 </span>
               </div>
               <div className="selected-appliance__problem">
@@ -266,9 +268,7 @@ export function App() {
                   onUseProductCode={continueWithProductCode}
                   onBack={goBack}
                   canUndo={canUndo}
-                  exactPartAvailable={Boolean(
-                    state.applianceId && getCatalogEntry(state.applianceId).exactPart,
-                  )}
+                  capability={pack?.appliance.capability ?? "guided-checks"}
                   exampleProductCode={
                     state.applianceId
                       ? (getCatalogEntry(state.applianceId).verifiedProductCodes[0] ?? null)

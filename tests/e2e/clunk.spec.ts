@@ -112,18 +112,25 @@ async function reachFilterOutcome(page: Page, resultName: string) {
   await page.getByRole("button", { name: resultName }).click();
 }
 
+async function openCompletedExample(page: Page, name: string) {
+  const example = page.getByRole("button", { name });
+  if (!(await example.isVisible())) await page.getByText("See how Clunk works").click();
+  await example.click();
+}
+
 test("puts substantial cutaway actions in the first journey and avoids full-resolution eager loads", async ({
   page,
 }) => {
   await expect(page.getByRole("heading", { name: "What are you fixing?" })).toBeVisible();
   for (const label of [
-    /Choose Washer — Won't drain/,
-    /Choose Dishwasher — Won't drain/,
-    /Choose Electric dryer — Door won't close/,
-    /Choose Refrigerator — Water is slow/,
+    /Choose Washer — 4 supported problems/,
+    /Choose Dishwasher — 4 supported problems/,
+    /Choose Electric dryer — 4 supported problems/,
+    /Choose Refrigerator — 4 supported problems/,
   ])
     await expect(page.getByRole("button", { name: label })).toBeVisible();
-  await expect(page.getByRole("button", { name: "See completed dryer example" })).toBeVisible();
+  await expect(page.getByText("See how Clunk works")).toBeVisible();
+  await expect(page.getByText(/Vacuums and robot vacuums are next to evaluate/)).toBeVisible();
   await expect(page.getByText("All supported appliances")).toBeVisible();
 
   const loadedFullCutaways = await page.evaluate(() =>
@@ -143,10 +150,10 @@ test("keeps all four appliance actions identifiable in the 390px first viewport"
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   for (const label of [
-    /Choose Washer — Won't drain/,
-    /Choose Dishwasher — Won't drain/,
-    /Choose Electric dryer — Door won't close/,
-    /Choose Refrigerator — Water is slow/,
+    /Choose Washer — 4 supported problems/,
+    /Choose Dishwasher — 4 supported problems/,
+    /Choose Electric dryer — 4 supported problems/,
+    /Choose Refrigerator — 4 supported problems/,
   ]) {
     const action = page.getByRole("button", { name: label });
     const box = await action.boundingBox();
@@ -160,7 +167,9 @@ test("moves from visual appliance to supported problem before model identificati
   page,
 }) => {
   await page.getByRole("button", { name: /Choose Refrigerator/ }).click();
-  await expect(page.getByText(/Other refrigerator problems are not supported yet/)).toBeVisible();
+  await expect(
+    page.getByText(/Coverage is checked separately for every model and problem/),
+  ).toBeVisible();
   await expect(page.getByRole("searchbox", { name: /model number/i })).toHaveCount(0);
   await page.getByRole("button", { name: /Supported now Water is slow/ }).click();
   await expect(page.getByRole("searchbox", { name: "Refrigerator model number" })).toBeFocused();
@@ -217,10 +226,19 @@ test("gives an honest unsupported-model state and rejects serial-number text", a
   ).toBeVisible();
 });
 
+test("refuses a known model when the selected problem is not covered", async ({ page }) => {
+  await reachModelSearch(page, /Choose Washer/, /Supported now Water is leaking/);
+  const input = page.getByRole("searchbox", { name: "Washer model number" });
+  await input.fill("WM3400CW.ABWEVUS");
+  await expect(page.getByText("That model is supported for a different problem.")).toBeVisible();
+  await expect(page.getByText(/Go back and choose the problem/)).toBeVisible();
+  await expect(page.locator(".model-result")).toHaveCount(0);
+});
+
 test("one secondary action reaches an exact part and exact-SKU seller handoff", async ({
   page,
 }) => {
-  await page.getByRole("button", { name: "See completed dryer example" }).click();
+  await openCompletedExample(page, "See completed dryer example");
   await expect(
     page.getByRole("heading", { name: "This is the part for your dryer" }),
   ).toBeFocused();
@@ -234,9 +252,50 @@ test("one secondary action reaches an exact part and exact-SKU seller handoff", 
   await expect(page.getByText("Completed example")).toBeVisible();
 });
 
+test("distinguishes a promoted offer and preserves Shopify attribution", async ({ page }) => {
+  const attributedUrl =
+    "https://merchant.example/products/strike?variant=42&utm_source=shopify&utm_medium=catalog&shclid=click_1&shdid=developer_9";
+  await page.unroute("https://catalog.shopify.com/**");
+  await page.route("https://catalog.shopify.com/**", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        result: {
+          structuredContent: {
+            products: [
+              {
+                id: "promoted-strike",
+                title: "Exact WE01M10007 dryer strike",
+                variants: [
+                  {
+                    id: "promoted-variant",
+                    sku: "WE01M10007",
+                    price: { amount: 1899, currency: "USD" },
+                    url: attributedUrl,
+                    placement: { type: "affiliate" },
+                    availability: { available: true },
+                    seller: { name: "Promoted Parts" },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      }),
+    });
+  });
+  await openCompletedExample(page, "See completed dryer example");
+  await expect(page.getByText("Promoted · paid placement")).toBeVisible();
+  await expect(page.getByText(/Clunk may earn a commission/)).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Open Promoted Parts promoted listing/ }),
+  ).toHaveAttribute("href", attributedUrl);
+});
+
 test("keeps stacked seller offers clear of source and safety guidance", async ({ page }) => {
   await page.setViewportSize({ width: 1063, height: 800 });
-  await page.getByRole("button", { name: "See completed dryer example" }).click();
+  await openCompletedExample(page, "See completed dryer example");
 
   const offers = page.getByRole("region", { name: "Live offers from Shopify" });
   const source = page.getByRole("link", { name: /Read the GE Appliances instructions/ });
@@ -267,7 +326,7 @@ test("every category completed example ends at its verified purchase handoff", a
     { example: "See completed refrigerator example", noun: "refrigerator", sku: "XWFE" },
   ];
   for (const item of cases) {
-    await page.getByRole("button", { name: item.example }).click();
+    await openCompletedExample(page, item.example);
     await expect(
       page.getByRole("heading", { name: `This is the part for your ${item.noun}` }),
     ).toBeVisible();
@@ -306,7 +365,7 @@ test("keeps the essential result and next purchase step in the mobile result vie
   page,
 }) => {
   await page.setViewportSize({ width: 320, height: 800 });
-  await page.getByRole("button", { name: "See completed dryer example" }).click();
+  await openCompletedExample(page, "See completed dryer example");
   const result = page.getByRole("heading", { name: "This is the part for your dryer" });
   const cart = page.getByRole("link", { name: /Open UCP Parts cart for part WE01M10007/ });
   await expect(result).toBeVisible();
@@ -380,7 +439,7 @@ test("is keyboard reachable, touch sized, reduced-motion safe, and WCAG A/AA cle
 
   await page.getByRole("button", { name: /Back to the problem/ }).click();
   await page.getByRole("button", { name: /Change appliance/ }).click();
-  await page.getByRole("button", { name: "See completed dryer example" }).click();
+  await openCompletedExample(page, "See completed dryer example");
   const latchComponent = page.getByRole("button", { name: "Show Door latch" });
   await latchComponent.focus();
   await page.keyboard.press("Enter");

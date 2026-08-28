@@ -1,5 +1,8 @@
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
 import type { ApplianceKind, SupportedSymptomId } from "@/domain/types";
+import { SYMPTOM_PRESENTATION } from "./symptomCatalog";
+
+export { SYMPTOM_PRESENTATION } from "./symptomCatalog";
 
 export interface ApplianceJourney {
   id: ApplianceKind;
@@ -62,24 +65,6 @@ export const APPLIANCE_JOURNEYS: ApplianceJourney[] = [
   },
 ];
 
-export const SYMPTOM_PRESENTATION: Record<
-  SupportedSymptomId,
-  { title: string; description: string }
-> = {
-  "will-not-drain": {
-    title: "Won't drain",
-    description: "Water is left behind after the cycle.",
-  },
-  "door-will-not-close": {
-    title: "Door won't close",
-    description: "The door will not latch or stay shut.",
-  },
-  "slow-water-flow": {
-    title: "Water is slow",
-    description: "The dispenser flow is weaker than usual.",
-  },
-};
-
 export function getApplianceJourney(kind: ApplianceKind) {
   return APPLIANCE_JOURNEYS.find((journey) => journey.id === kind)!;
 }
@@ -87,8 +72,8 @@ export function getApplianceJourney(kind: ApplianceKind) {
 export function getSupportedSymptoms(kind: ApplianceKind) {
   return [
     ...new Set(
-      APPLIANCE_CATALOG.filter((entry) => entry.kind === kind).map(
-        (entry) => entry.supportedSymptom,
+      APPLIANCE_CATALOG.filter((entry) => entry.kind === kind).flatMap((entry) =>
+        entry.symptomCoverage.map((coverage) => coverage.symptomId),
       ),
     ),
   ];
@@ -96,8 +81,17 @@ export function getSupportedSymptoms(kind: ApplianceKind) {
 
 export function getCatalogEntriesForSymptom(kind: ApplianceKind, symptomId: SupportedSymptomId) {
   return APPLIANCE_CATALOG.filter(
-    (entry) => entry.kind === kind && entry.supportedSymptom === symptomId,
+    (entry) =>
+      entry.kind === kind &&
+      entry.symptomCoverage.some((coverage) => coverage.symptomId === symptomId),
   );
+}
+
+export function getSymptomCoverage(
+  entry: (typeof APPLIANCE_CATALOG)[number],
+  symptomId: SupportedSymptomId,
+) {
+  return entry.symptomCoverage.find((coverage) => coverage.symptomId === symptomId) ?? null;
 }
 
 export function getCategoryCount(kind: ApplianceKind) {

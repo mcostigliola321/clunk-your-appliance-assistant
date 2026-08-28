@@ -1,10 +1,10 @@
 {
-  "schemaVersion": 5,
+  "schemaVersion": 6,
   "app": "Clunk",
   "fictional": false,
   "artifactType": "deterministic-scenario-fixtures",
   "evidenceStatus": "These fixtures verify deterministic tool contracts and state transitions. They are not real-agent evaluation results.",
-  "scope": "131 source-backed US appliance models across washers, dishwashers, electric dryers, and refrigerators; 25 purchase-ready exact-model flows with Shopify UCP live-offer handoffs and 106 guided-only families",
+  "scope": "163 source-backed US appliance models with 175 model × symptom repair packs across washers, dishwashers, electric dryers, and refrigerators; 25 purchase-ready exact-part combinations and 150 guided-check combinations",
   "instructions": "Replay each case through the deterministic transition engine. Physical observations in setup are labeled fixture inputs, not agent inferences. Use the separate manual agent runbook for probabilistic agent evaluation.",
   "cases": [
     {
@@ -14,7 +14,7 @@
       "prompt": "What appliance categories and models does Clunk support, and what can I do next?",
       "expectedCalls": [{ "name": "get_repair_state", "arguments": {} }],
       "expectedVisible": [
-        "131 supported models",
+        "163 supported models",
         "48 washers",
         "25 dishwashers",
         "25 dryers",
@@ -357,6 +357,96 @@
       ],
       "expectedVisible": ["No supported model matches"],
       "mustNot": ["Call select_appliance", "Borrow another model's repair pack"]
+    },
+    {
+      "id": "discover-and-start-dryer-no-heat",
+      "category": "multi-symptom",
+      "setup": [],
+      "prompt": "My GE GTD42EASJ2WW dryer tumbles but stays cool. Verify support for that observable problem and start its specific checks.",
+      "expectedCalls": [
+        {
+          "name": "search_supported_appliances",
+          "arguments": {
+            "kind": "dryer",
+            "symptomId": "not-heating",
+            "modelQuery": "GTD42EASJ2WW"
+          }
+        },
+        {
+          "name": "select_appliance",
+          "arguments": {
+            "applianceId": "ge-gtd42easj2ww",
+            "productCode": "GTD42EASJ2WW",
+            "symptomId": "not-heating"
+          }
+        },
+        { "name": "start_diagnosis", "arguments": { "symptomId": "not-heating" } }
+      ],
+      "expectedVisible": [
+        "not-heating",
+        "guided-checks",
+        "Check the selected heat and lint screen"
+      ],
+      "mustNot": ["Start the door-latch tree", "Claim an exact heating part"]
+    },
+    {
+      "id": "reject-model-without-problem-coverage",
+      "category": "unsupported-coverage",
+      "setup": [
+        {
+          "name": "search_supported_appliances",
+          "arguments": {
+            "kind": "dryer",
+            "symptomId": "not-heating",
+            "modelQuery": "WED4950HW"
+          }
+        }
+      ],
+      "prompt": "This Whirlpool dryer appears elsewhere in the catalog. Do not use it for no-heat checks unless that exact model-problem pair is covered.",
+      "expectedCalls": [
+        {
+          "name": "select_appliance",
+          "arguments": {
+            "applianceId": "whirlpool-wed4950hw",
+            "symptomId": "not-heating"
+          },
+          "expectedOk": false
+        }
+      ],
+      "expectedVisible": ["not supported for that problem", "door-will-not-close"],
+      "mustNot": ["Borrow the GE no-heat pack", "Claim model support implies symptom support"]
+    },
+    {
+      "id": "washer-start-visible-fix",
+      "category": "multi-symptom-no-part",
+      "setup": [
+        {
+          "name": "select_appliance",
+          "arguments": {
+            "applianceId": "ge-gfw550ssnww",
+            "productCode": "GFW550SSN0WW",
+            "symptomId": "will-not-start"
+          }
+        },
+        { "name": "start_diagnosis", "arguments": { "symptomId": "will-not-start" } },
+        {
+          "name": "record_observation",
+          "arguments": { "checkId": "safety-check", "resultId": "safe-ready" }
+        }
+      ],
+      "prompt": "The washer had Pause showing and now the door, drawer, and controls are ready. Record that visible fix and tell me whether to buy anything.",
+      "expectedCalls": [
+        {
+          "name": "record_observation",
+          "arguments": {
+            "checkId": "check-start-controls",
+            "resultId": "start-control-corrected"
+          }
+        },
+        { "name": "find_compatible_part", "arguments": {} }
+      ],
+      "expectedVisible": ["The start condition was the problem", "No purchase link"],
+      "mustNot": ["Return the drain-pump SKU", "Call the result a confirmed internal failure"]
     },
     {
       "id": "burning-smell-stop",

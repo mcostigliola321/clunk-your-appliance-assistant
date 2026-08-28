@@ -11,6 +11,8 @@ import type {
   SupportedSymptomId,
   WasherLoadStyle,
 } from "@/domain/types";
+import { buildSymptomCoverage, DEFAULT_SYMPTOM_BY_KIND } from "@/data/symptomCatalog";
+import { isSafePublicHttpsUrl } from "@/domain/urlSafety";
 
 interface ExpansionTroubleshootingSource {
   id: string;
@@ -112,17 +114,12 @@ export function assertCatalogExpansionData(value: CatalogExpansionData): Catalog
       throw new Error(`Expansion profile ${profileId} is incomplete.`);
     if (profile.kind === "washer" && !profile.loadStyle)
       throw new Error(`Washer expansion profile ${profileId} requires a load style.`);
-    const expectedSymptom =
-      profile.kind === "dryer"
-        ? "door-will-not-close"
-        : profile.kind === "refrigerator"
-          ? "slow-water-flow"
-          : "will-not-drain";
+    const expectedSymptom = DEFAULT_SYMPTOM_BY_KIND[profile.kind];
     if (profile.supportedSymptom !== expectedSymptom)
       throw new Error(`Expansion profile ${profileId} has a category/symptom mismatch.`);
     if (
       profile.troubleshootingSources.some(
-        (source) => !source.id || !source.url.startsWith("https://"),
+        (source) => !source.id || !isSafePublicHttpsUrl(source.url),
       )
     )
       throw new Error(`Expansion profile ${profileId} has an invalid symptom source.`);
@@ -141,7 +138,7 @@ export function assertCatalogExpansionData(value: CatalogExpansionData): Catalog
     if (model.verifiedProductCodes.some((code) => !aliases.has(code.toUpperCase())))
       throw new Error(`Expansion model ${model.id} has a verified code outside its aliases.`);
     if (
-      !model.officialUrl.startsWith("https://") ||
+      !isSafePublicHttpsUrl(model.officialUrl) ||
       !isOfficialModelUrl(profile.brand, model.officialUrl)
     )
       throw new Error(`Expansion model ${model.id} requires an official manufacturer URL.`);
@@ -160,7 +157,7 @@ export function assertCatalogExpansionData(value: CatalogExpansionData): Catalog
           `Expansion model ${model.id} must bind its exact part to one separately evidenced revision.`,
         );
       if (
-        !part.source.url.startsWith("https://") ||
+        !isSafePublicHttpsUrl(part.source.url) ||
         !isAuthorizedPartUrl(profile.brand, part.source.url) ||
         !hasExactCode(part.source.appliesTo, exactCode) ||
         !hasExactCode(part.compatibleModel, exactCode)
@@ -199,6 +196,7 @@ export const CATALOG_EXPANSION: ApplianceCatalogEntry[] = data.models.map((model
         },
       }
     : undefined;
+  const capability = exactPart ? "purchase-ready" : "guided-checks";
   return {
     id: model.id,
     kind: profile.kind,
@@ -208,8 +206,14 @@ export const CATALOG_EXPANSION: ApplianceCatalogEntry[] = data.models.map((model
     aliases: model.aliases,
     verifiedProductCodes: model.verifiedProductCodes,
     productCodePrompt: profile.productCodePrompt,
-    supportedSymptom: profile.supportedSymptom,
-    capability: exactPart ? "purchase-ready" : "guided-checks",
+    symptomCoverage: buildSymptomCoverage({
+      modelId: model.id,
+      kind: profile.kind,
+      capability,
+      troubleshootingSources,
+      ...(exactPart ? { exactPart } : {}),
+      verifiedProductCodes: model.verifiedProductCodes,
+    }),
     profile: profile.profile,
     ...(profile.loadStyle ? { loadStyle: profile.loadStyle } : {}),
     topology: profile.topology,
@@ -229,8 +233,6 @@ export const CATALOG_EXPANSION: ApplianceCatalogEntry[] = data.models.map((model
         : `${model.model} family; rating-label revision still required`,
       lastVerified: model.retrievedOn ?? data.retrievedOn,
     },
-    troubleshootingSources,
-    ...(exactPart ? { exactPart } : {}),
   };
 });
 

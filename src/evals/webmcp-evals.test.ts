@@ -20,7 +20,7 @@ function allCalls() {
 
 describe("deterministic WebMCP scenario fixtures", () => {
   it("uses unique, fully described cases", () => {
-    expect(evalFixture.schemaVersion).toBe(5);
+    expect(evalFixture.schemaVersion).toBe(6);
     expect(evalFixture.fictional).toBe(false);
     expect(evalFixture.artifactType).toBe("deterministic-scenario-fixtures");
     expect(evalFixture.evidenceStatus).toContain("not real-agent evaluation results");
@@ -68,6 +68,10 @@ describe("deterministic WebMCP scenario fixtures", () => {
 
     expect(evalFixture.cases.some((evalCase) => evalCase.category === "safety")).toBe(true);
     expect(evalFixture.cases.some((evalCase) => evalCase.category === "invalid-call")).toBe(true);
+    expect(evalFixture.cases.some((evalCase) => evalCase.category === "multi-symptom")).toBe(true);
+    expect(evalFixture.cases.some((evalCase) => evalCase.category === "unsupported-coverage")).toBe(
+      true,
+    );
   });
 
   it("replays every fixture call through the deterministic engine", () => {

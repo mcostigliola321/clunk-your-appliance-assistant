@@ -11,6 +11,16 @@ import {
   CATALOG_EXPANSION_RETRIEVED_ON,
 } from "./catalogExpansion";
 
+function modelCapability(entry: (typeof APPLIANCE_CATALOG)[number]) {
+  return entry.symptomCoverage.some((coverage) => coverage.capability === "purchase-ready")
+    ? "purchase-ready"
+    : "guided-checks";
+}
+
+function defaultCoverage(entry: (typeof APPLIANCE_CATALOG)[number]) {
+  return entry.symptomCoverage[0]!;
+}
+
 describe("source-backed catalog expansion", () => {
   it("adds 113 source-backed families with 13 exact-revision purchase paths", () => {
     expect(CATALOG_EXPANSION_MODEL_COUNT).toBe(113);
@@ -24,12 +34,12 @@ describe("source-backed catalog expansion", () => {
       ),
     ).toEqual({ washer: 33, dishwasher: 24, dryer: 24, refrigerator: 32 });
 
-    expect(CATALOG_EXPANSION.filter((entry) => entry.capability === "purchase-ready")).toHaveLength(
-      13,
-    );
-    expect(CATALOG_EXPANSION.filter((entry) => entry.capability === "guided-checks")).toHaveLength(
-      100,
-    );
+    expect(
+      CATALOG_EXPANSION.filter((entry) => modelCapability(entry) === "purchase-ready"),
+    ).toHaveLength(13);
+    expect(
+      CATALOG_EXPANSION.filter((entry) => modelCapability(entry) === "guided-checks"),
+    ).toHaveLength(100);
 
     const activatedIds = new Set(
       expansionData.models
@@ -38,6 +48,8 @@ describe("source-backed catalog expansion", () => {
     );
 
     for (const entry of CATALOG_EXPANSION) {
+      const coverage = defaultCoverage(entry);
+      const exactPart = coverage.exactPartEvidence?.part;
       expect(entry.aliases).toContain(entry.model);
       expect(entry.topology).toBeTruthy();
       expect(entry.productCodePrompt.length).toBeGreaterThan(20);
@@ -46,24 +58,24 @@ describe("source-backed catalog expansion", () => {
       expect(entry.modelSource.lastVerified).toBe(
         activatedIds.has(entry.id) ? "2026-08-28" : "2026-08-27",
       );
-      expect(entry.troubleshootingSources.length).toBeGreaterThan(0);
+      expect(coverage.troubleshootingSources.length).toBeGreaterThan(0);
       expect(
-        entry.troubleshootingSources.every((source) => source.lastVerified === "2026-08-27"),
+        coverage.troubleshootingSources.every((source) => source.lastVerified === "2026-08-27"),
       ).toBe(true);
-      if (entry.exactPart) {
-        expect(entry.capability).toBe("purchase-ready");
-        expect(entry.exactPart.compatibleProductCodes).toEqual(entry.verifiedProductCodes);
-        expect(entry.exactPart.compatibleProductCodes).toHaveLength(1);
-        expect(entry.exactPart.source.lastVerified).toBe("2026-08-27");
-        expect(entry.exactPart.commerce).toMatchObject({
+      if (exactPart) {
+        expect(coverage.capability).toBe("purchase-ready");
+        expect(exactPart.compatibleProductCodes).toEqual(entry.verifiedProductCodes);
+        expect(exactPart.compatibleProductCodes).toHaveLength(1);
+        expect(exactPart.source.lastVerified).toBe("2026-08-27");
+        expect(exactPart.commerce).toMatchObject({
           provider: "shopify-global-catalog",
           protocol: "UCP",
-          exactSku: entry.exactPart.sku,
+          exactSku: exactPart.sku,
           lastVerified: "2026-08-27",
         });
-        expect(entry.exactPart.commerce?.offerCountAtVerification).toBeGreaterThan(0);
+        expect(exactPart.commerce?.offerCountAtVerification).toBeGreaterThan(0);
       } else {
-        expect(entry.capability).toBe("guided-checks");
+        expect(coverage.capability).toBe("guided-checks");
       }
     }
 
@@ -94,15 +106,12 @@ describe("source-backed catalog expansion", () => {
   });
 
   it("preserves all 25 separately evidenced purchase-ready revisions", () => {
-    const exactRevisions = APPLIANCE_CATALOG.filter(
-      (entry) => entry.capability === "purchase-ready",
-    )
-      .map((entry) => ({
-        id: entry.id,
-        codes: entry.exactPart?.compatibleProductCodes,
-        sku: entry.exactPart?.sku,
-      }))
-      .sort((left, right) => left.id.localeCompare(right.id));
+    const exactRevisions = APPLIANCE_CATALOG.flatMap((entry) =>
+      entry.symptomCoverage.flatMap((coverage) => {
+        const part = coverage.exactPartEvidence?.part;
+        return part ? [{ id: entry.id, codes: part.compatibleProductCodes, sku: part.sku }] : [];
+      }),
+    ).sort((left, right) => left.id.localeCompare(right.id));
 
     expect(exactRevisions).toEqual(
       [
@@ -136,10 +145,17 @@ describe("source-backed catalog expansion", () => {
   });
 
   it("rejects tier inflation, revision carryover, and non-manufacturer model sources", () => {
-    const guidedEntry = CATALOG_EXPANSION.find((entry) => !entry.exactPart)!;
-    expect(() => assertCatalog([{ ...guidedEntry, capability: "purchase-ready" }])).toThrow(
-      "inconsistent capability tier",
-    );
+    const guidedEntry = CATALOG_EXPANSION.find(
+      (entry) => modelCapability(entry) === "guided-checks",
+    )!;
+    expect(() =>
+      assertCatalog([
+        {
+          ...guidedEntry,
+          symptomCoverage: [{ ...defaultCoverage(guidedEntry), capability: "purchase-ready" }],
+        },
+      ]),
+    ).toThrow("inconsistent capability tier");
     expect(() =>
       assertCatalog([
         {
@@ -150,17 +166,27 @@ describe("source-backed catalog expansion", () => {
     ).toThrow("non-manufacturer model source");
 
     const exactEntry = CATALOG_EXPANSION.find((entry) => entry.id === "kitchenaid-kdfe204kps")!;
+    const exactCoverage = defaultCoverage(exactEntry);
+    const exactPart = exactCoverage.exactPartEvidence!.part;
     expect(() =>
       assertCatalog([
         {
           ...exactEntry,
           aliases: [...exactEntry.aliases, "KDFE204KPS1"],
           verifiedProductCodes: ["KDFE204KPS1"],
-          exactPart: {
-            ...exactEntry.exactPart!,
-            compatibleProductCodes: ["KDFE204KPS1"],
-            compatibleModel: "KitchenAid KDFE204KPS1",
-          },
+          symptomCoverage: [
+            {
+              ...exactCoverage,
+              exactPartEvidence: {
+                verifiedProductCodes: ["KDFE204KPS1"],
+                part: {
+                  ...exactPart,
+                  compatibleProductCodes: ["KDFE204KPS1"],
+                  compatibleModel: "KitchenAid KDFE204KPS1",
+                },
+              },
+            },
+          ],
         },
       ]),
     ).toThrow("inexact revision evidence");
@@ -177,8 +203,11 @@ describe("source-backed catalog expansion", () => {
     for (const id of guidedOnly) {
       const entry = CATALOG_EXPANSION.find((candidate) => candidate.id === id);
       expect(entry, id).toBeDefined();
-      expect(entry?.capability, id).toBe("guided-checks");
-      expect(entry?.exactPart, id).toBeUndefined();
+      expect(modelCapability(entry!), id).toBe("guided-checks");
+      expect(
+        entry?.symptomCoverage.some((coverage) => coverage.exactPartEvidence),
+        id,
+      ).toBe(false);
     }
   });
 

@@ -11,12 +11,14 @@ import {
 } from "react";
 
 import { createInitialRepairState, executeRepairTool, withWebMcpStatus } from "@/domain/engine";
+import { getCatalogEntry, REPAIR_PACKS, resolveRepairPack } from "@/domain/repairPack";
 import { getRepairSnapshot, getToolAvailabilityKey } from "@/domain/selectors";
 import type {
   ActivitySource,
   RepairSnapshot,
   RepairState,
   RepairToolName,
+  SupportedSymptomId,
   ToolExecutionResult,
   WebMcpStatus,
 } from "@/domain/types";
@@ -45,16 +47,83 @@ function repairReducer(_state: RepairState, action: StateAction): RepairState {
 const RepairContext = createContext<RepairContextValue | null>(null);
 
 const SESSION_STORAGE_KEY = "clunk-repair-session-v1";
+const MAX_STORED_SESSION_BYTES = 100_000;
 
-interface StoredSession {
-  version: 1;
+export interface StoredSession {
+  version: 2;
   state: RepairState;
   undoStack: RepairState[];
 }
 
+function migrateRepairState(value: Partial<RepairState>): RepairState {
+  const fallback = createInitialRepairState(value.webMcpStatus ?? "detecting");
+  const applianceId =
+    typeof value.applianceId === "string"
+      ? (() => {
+          try {
+            return getCatalogEntry(value.applianceId).id;
+          } catch {
+            return null;
+          }
+        })()
+      : null;
+  const entry = applianceId ? getCatalogEntry(applianceId) : null;
+  const requestedSymptom =
+    value.symptomId ?? value.catalogSymptomId ?? entry?.symptomCoverage[0]?.symptomId ?? null;
+  const resolvedPack =
+    entry && requestedSymptom
+      ? resolveRepairPack(entry.id, requestedSymptom as SupportedSymptomId)
+      : value.packId && REPAIR_PACKS.has(value.packId)
+        ? REPAIR_PACKS.get(value.packId)!
+        : null;
+  return {
+    ...fallback,
+    ...value,
+    applianceId,
+    packId: resolvedPack?.id ?? null,
+    catalogSymptomId: (resolvedPack?.symptom.id as SupportedSymptomId | undefined) ?? null,
+    symptomId: resolvedPack?.symptom.id ?? null,
+    activity: Array.isArray(value.activity) ? value.activity : fallback.activity,
+    catalogResultIds: Array.isArray(value.catalogResultIds)
+      ? value.catalogResultIds
+      : fallback.catalogResultIds,
+    completedChecks: value.completedChecks ?? {},
+  };
+}
+
+// This pure export is shared with migration tests; it does not hold component state.
+// eslint-disable-next-line react-refresh/only-export-components
+export function migrateStoredSession(value: unknown): StoredSession | null {
+  try {
+    if (!value || typeof value !== "object") return null;
+    const parsed = value as {
+      version?: number;
+      state?: Partial<RepairState>;
+      undoStack?: Array<Partial<RepairState>>;
+    };
+    if (![1, 2].includes(parsed.version ?? 0) || !parsed.state || !Array.isArray(parsed.undoStack))
+      return null;
+    const migrated = {
+      version: 2,
+      state: migrateRepairState(parsed.state),
+      undoStack: parsed.undoStack.slice(-12).map(migrateRepairState),
+    } satisfies StoredSession;
+    if (
+      !new Set(["catalog", "idle", "preparing", "checking", "result", "escalated"]).has(
+        migrated.state.phase,
+      )
+    )
+      return null;
+    getRepairSnapshot(migrated.state);
+    return migrated;
+  } catch {
+    return null;
+  }
+}
+
 function loadStoredSession(): StoredSession {
   const fallback: StoredSession = {
-    version: 1,
+    version: 2,
     state: createInitialRepairState(),
     undoStack: [],
   };
@@ -62,18 +131,11 @@ function loadStoredSession(): StoredSession {
     if (typeof window === "undefined") return fallback;
     const stored = window.localStorage.getItem(SESSION_STORAGE_KEY);
     if (!stored) return fallback;
-    const parsed = JSON.parse(stored) as Partial<StoredSession>;
-    if (
-      parsed.version !== 1 ||
-      !parsed.state ||
-      !Array.isArray(parsed.state.activity) ||
-      !Array.isArray(parsed.state.catalogResultIds) ||
-      !parsed.state.completedChecks ||
-      !Array.isArray(parsed.undoStack)
-    )
+    if (stored.length > MAX_STORED_SESSION_BYTES) {
+      window.localStorage.removeItem(SESSION_STORAGE_KEY);
       return fallback;
-    getRepairSnapshot(parsed.state);
-    return parsed as StoredSession;
+    }
+    return migrateStoredSession(JSON.parse(stored)) ?? fallback;
   } catch {
     return fallback;
   }
@@ -84,7 +146,7 @@ function saveStoredSession(state: RepairState, undoStack: RepairState[]) {
     if (typeof window === "undefined") return;
     window.localStorage.setItem(
       SESSION_STORAGE_KEY,
-      JSON.stringify({ version: 1, state, undoStack } satisfies StoredSession),
+      JSON.stringify({ version: 2, state, undoStack } satisfies StoredSession),
     );
   } catch {
     // Repair guidance still works when storage is blocked or full.

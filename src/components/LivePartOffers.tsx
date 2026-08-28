@@ -43,6 +43,8 @@ export function LivePartOffers({ part }: { part: RepairPackPart }) {
 
   if (!part.commerce) return null;
 
+  const hasPromotedOffer = state.offers.some((offer) => offer.promoted);
+
   return (
     <section className="live-offers" aria-labelledby="live-offers-title">
       <div className="live-offers__heading">
@@ -78,7 +80,9 @@ export function LivePartOffers({ part }: { part: RepairPackPart }) {
               <li key={`${offer.productId}-${offer.variantId}`}>
                 <div className="live-offers__seller">
                   <strong>{offer.seller}</strong>
-                  <span>{OFFER_LABELS[offer.kind]}</span>
+                  <span>
+                    {offer.promoted ? "Promoted · paid placement" : OFFER_LABELS[offer.kind]}
+                  </span>
                 </div>
                 <strong className="live-offers__price">{formatShopifyPrice(offer)}</strong>
                 <a
@@ -86,10 +90,10 @@ export function LivePartOffers({ part }: { part: RepairPackPart }) {
                   href={offer.checkoutUrl}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={`Open ${offer.seller} cart for part ${part.sku} in a new tab`}
+                  aria-label={`Open ${offer.seller} ${offer.promoted ? "promoted listing" : "cart"} for part ${part.sku} in a new tab`}
                 >
                   <ShoppingCart size={16} aria-hidden="true" />
-                  Open cart
+                  {offer.promoted ? "View promoted offer" : "Open cart"}
                   <ExternalLink size={13} aria-hidden="true" />
                 </a>
               </li>
@@ -99,9 +103,12 @@ export function LivePartOffers({ part }: { part: RepairPackPart }) {
       </div>
 
       <p className="live-offers__disclosure">
-        Clunk verified the model-to-part match. Shopify supplies live seller listings and checkout
-        links. “OEM” and “compatible” are merchant claims; confirm the seller and exact part number
-        before paying.
+        {hasPromotedOffer
+          ? "Promoted offers are paid placements. Clunk may earn a commission when you purchase through one. "
+          : "These organic offers are not paid placements, and Clunk does not earn a commission from them. "}
+        Clunk verified the model-to-part match. Shopify supplies live seller listings and merchant
+        destinations. “OEM” and “compatible” are merchant claims; confirm the seller and exact part
+        number before paying.
       </p>
     </section>
   );

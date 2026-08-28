@@ -1,7 +1,7 @@
 import { ArrowLeft, ArrowRight, CircleCheck, OctagonAlert, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 
-import type { RepairSnapshot, ResultId } from "@/domain/types";
+import type { CapabilityTier, RepairSnapshot, ResultId } from "@/domain/types";
 
 interface NextCheckPanelProps {
   snapshot: RepairSnapshot;
@@ -11,7 +11,7 @@ interface NextCheckPanelProps {
   onUseProductCode: (productCode: string) => { ok: boolean; message: string } | null;
   onBack: () => void;
   canUndo: boolean;
-  exactPartAvailable: boolean;
+  capability: CapabilityTier;
   exampleProductCode: string | null;
 }
 
@@ -27,12 +27,12 @@ function ModelCodeStep({
   snapshot,
   onStart,
   onUseProductCode,
-  exactPartAvailable,
+  capability,
   exampleProductCode,
 }: NextCheckPanelProps) {
   const [productCode, setProductCode] = useState("");
   const [modelError, setModelError] = useState<string | null>(null);
-  if (!exactPartAvailable) {
+  if (capability === "guided-checks") {
     return (
       <section className="next-check" aria-labelledby="next-check-title">
         <div className="next-check__status">
@@ -51,17 +51,20 @@ function ModelCodeStep({
       </section>
     );
   }
+  const unavailable = capability === "verified-part-unavailable";
   return (
     <section className="next-check" aria-labelledby="next-check-title">
       <div className="next-check__status">
-        <CircleCheck size={17} aria-hidden="true" /> Purchase-ready model
+        <CircleCheck size={17} aria-hidden="true" />
+        {unavailable ? "Verified part unavailable" : "Purchase-ready model"}
       </div>
       <h2 id="next-check-title" tabIndex={-1}>
         Confirm the full model number.
       </h2>
       <p>
-        Use the complete number on the appliance label. That is what makes the final part link
-        specific.
+        {unavailable
+          ? "Clunk has exact compatibility evidence, but no verified available seller offer. The complete model number keeps that unavailable result specific."
+          : "Use the complete number on the appliance label. That is what makes the final part link specific."}
       </p>
       <form
         className="product-code-form"
@@ -82,7 +85,8 @@ function ModelCodeStep({
           required
         />
         <button className="button button--primary button--wide" type="submit">
-          Start diagnosis <ArrowRight size={18} aria-hidden="true" />
+          {unavailable ? "Start the checks" : "Start diagnosis"}{" "}
+          <ArrowRight size={18} aria-hidden="true" />
         </button>
         {modelError ? (
           <p className="product-code-error" role="alert">
@@ -112,7 +116,7 @@ function ModelCodeStep({
 export function NextCheckPanel(props: NextCheckPanelProps) {
   const { snapshot, onStart, onResult, onFindPart, onBack, canUndo } = props;
   if (!snapshot.appliance) return null;
-  if (!snapshot.symptom) return <ModelCodeStep {...props} />;
+  if (snapshot.phase === "idle") return <ModelCodeStep {...props} />;
   if (snapshot.escalation) {
     return (
       <section className="next-check next-check--stop" aria-labelledby="next-check-title">

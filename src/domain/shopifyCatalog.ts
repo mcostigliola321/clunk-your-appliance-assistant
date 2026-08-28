@@ -1,4 +1,5 @@
 import type { RepairPackPart } from "./types";
+import { isSafePublicHttpsUrl, normalizePublicCatalogId } from "./urlSafety";
 
 export const SHOPIFY_GLOBAL_CATALOG_ENDPOINT = "https://catalog.shopify.com/api/ucp/mcp";
 export const SHOPIFY_REFERENCE_PROFILE_URL =
@@ -19,6 +20,9 @@ export interface ShopifyPartOffer {
   };
   checkoutUrl: string;
   kind: ShopifyOfferKind;
+  promoted: boolean;
+  placementType?: string;
+  additionalCommissionPercentage?: number;
 }
 
 interface ShopifyCatalogVariant {
@@ -28,6 +32,11 @@ interface ShopifyCatalogVariant {
   description?: { plain?: string };
   price?: { amount?: number; currency?: string };
   checkout_url?: string;
+  url?: string;
+  placement?: {
+    type?: string;
+    commission?: { percentage?: { value?: number } };
+  };
   availability?: { available?: boolean };
   seller?: { name?: string; domain?: string };
 }
@@ -93,30 +102,39 @@ export function extractShopifyPartOffers(
         .filter(Boolean)
         .join(" ");
       const checkoutUrl = variant.checkout_url;
+      const promoted = Boolean(variant.placement);
+      const destinationUrl = promoted ? variant.url : (checkoutUrl ?? variant.url);
       const amount = variant.price?.amount;
       const currency = variant.price?.currency;
       const seller = variant.seller?.name;
       if (
         !hasExactPartNumber(searchable, exactSku) ||
         variant.availability?.available !== true ||
-        !checkoutUrl?.startsWith("https://") ||
+        !isSafePublicHttpsUrl(destinationUrl) ||
         typeof amount !== "number" ||
         !currency ||
         !seller ||
-        checkoutUrls.has(checkoutUrl)
+        checkoutUrls.has(destinationUrl)
       )
         continue;
-      checkoutUrls.add(checkoutUrl);
+      checkoutUrls.add(destinationUrl);
       const title = product.title ?? `Part ${exactSku}`;
       offers.push({
-        productId: product.id ?? checkoutUrl,
-        variantId: variant.id ?? checkoutUrl,
+        productId: product.id ?? destinationUrl,
+        variantId: variant.id ?? destinationUrl,
         title,
         seller,
         ...(variant.seller?.domain ? { sellerDomain: variant.seller.domain } : {}),
         price: { amount, currency },
-        checkoutUrl,
+        checkoutUrl: destinationUrl,
         kind: classifyOffer(title),
+        promoted,
+        ...(variant.placement?.type ? { placementType: variant.placement.type } : {}),
+        ...(typeof variant.placement?.commission?.percentage?.value === "number"
+          ? {
+              additionalCommissionPercentage: variant.placement.commission.percentage.value,
+            }
+          : {}),
       });
     }
   }
@@ -138,10 +156,15 @@ export function getClunkUcpProfileUrl(): string {
 
 export async function searchShopifyPartOffers(
   part: RepairPackPart,
-  options: { signal?: AbortSignal; fetchImpl?: typeof fetch } = {},
+  options: { signal?: AbortSignal; fetchImpl?: typeof fetch; catalogId?: string | null } = {},
 ): Promise<ShopifyPartOffer[]> {
   if (!part.commerce) return [];
   const fetchImpl = options.fetchImpl ?? fetch;
+  const configuredCatalogId = normalizePublicCatalogId(
+    options.catalogId === undefined
+      ? import.meta.env["VITE_SHOPIFY_CATALOG_ID"]
+      : options.catalogId,
+  );
   const response = await fetchImpl(SHOPIFY_GLOBAL_CATALOG_ENDPOINT, {
     method: "POST",
     // Shopify accepts the JSON-RPC body as text/plain. Keeping this request
@@ -161,6 +184,9 @@ export async function searchShopifyPartOffers(
           meta: { "ucp-agent": { profile: getClunkUcpProfileUrl() } },
           catalog: {
             query: part.commerce.query,
+            ...(configuredCatalogId
+              ? { catalog_id: configuredCatalogId, placements: ["affiliate"] }
+              : {}),
             filters: { available: true, ships_to: { country: "US" } },
             context: {
               address_country: "US",

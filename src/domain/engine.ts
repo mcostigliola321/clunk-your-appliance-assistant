@@ -4,11 +4,13 @@ import {
   getCatalogEntry,
   getCheck,
   getRepairPack,
+  getSymptomCoverage,
   isApplianceKind,
   isBrandName,
   isCheckId,
   isComponentId,
   isResultForCheck,
+  resolveRepairPack,
 } from "./repairPack";
 import { analyzeModelQuery, isExplicitSerialNumber } from "./modelSearch";
 import { escalationForReason } from "./safety";
@@ -25,6 +27,7 @@ import type {
   RepairToolName,
   ResultId,
   SymptomId,
+  SupportedSymptomId,
   ToolExecutionResult,
   WebMcpStatus,
 } from "./types";
@@ -55,6 +58,7 @@ export function createInitialRepairState(webMcpStatus: WebMcpStatus = "detecting
     catalogQuery: "",
     catalogBrand: null,
     catalogKind: "dryer",
+    catalogSymptomId: null,
     catalogResultIds: APPLIANCE_CATALOG.filter((entry) => entry.kind === "dryer").map(
       (entry) => entry.id,
     ),
@@ -156,25 +160,46 @@ function searchSupportedAppliances(
       input,
       "Choose washer, dishwasher, dryer, or refrigerator.",
     );
+  if (
+    input["symptomId"] !== undefined &&
+    (typeof input["symptomId"] !== "string" ||
+      !APPLIANCE_CATALOG.some((entry) =>
+        entry.symptomCoverage.some((coverage) => coverage.symptomId === input["symptomId"]),
+      ))
+  )
+    return reject(
+      state,
+      source,
+      "search_supported_appliances",
+      input,
+      "Choose a supported observable problem.",
+    );
   const query =
     typeof input["modelQuery"] === "string" ? input["modelQuery"].trim().slice(0, 64) : "";
   const brand = (input["brand"] as BrandName | undefined) ?? null;
   const kind = (input["kind"] as ApplianceKind | undefined) ?? null;
+  const symptomId = (input["symptomId"] as SupportedSymptomId | undefined) ?? null;
   const analysis = analyzeModelQuery(query, brand, kind);
   if (analysis.status === "serial-number")
     return reject(state, source, "search_supported_appliances", input, analysis.guidance);
-  const matches = analysis.matches;
+  const matches = symptomId
+    ? analysis.matches.filter((entry) => getSymptomCoverage(entry.id, symptomId))
+    : analysis.matches;
   const nextState = {
     ...state,
     catalogQuery: query,
     catalogBrand: brand,
     catalogKind: kind,
+    catalogSymptomId: symptomId,
     catalogResultIds: matches.map((entry) => entry.id),
   };
   const noun = kind ?? "appliance";
+  const differentProblem = symptomId && analysis.matches.length > 0 && matches.length === 0;
   const message = matches.length
     ? `Found ${matches.length} matching ${noun}${matches.length === 1 ? "" : "s"}. ${analysis.guidance}`
-    : analysis.guidance;
+    : differentProblem
+      ? `The matching ${noun} is in Clunk, but not for this problem. Choose another model or ask for its supported symptoms.`
+      : analysis.guidance;
   return response(nextState, source, "search_supported_appliances", input, true, message);
 }
 
@@ -208,6 +233,21 @@ function selectAppliance(
       "productCode must be a complete label value under 65 characters.",
     );
   const entry = getCatalogEntry(input["applianceId"]);
+  const requestedSymptom =
+    typeof input["symptomId"] === "string"
+      ? (input["symptomId"] as SupportedSymptomId)
+      : (state.catalogSymptomId ?? entry.symptomCoverage[0]?.symptomId);
+  const coverage = requestedSymptom ? getSymptomCoverage(entry.id, requestedSymptom) : null;
+  if (!coverage)
+    return reject(
+      state,
+      source,
+      "select_appliance",
+      input,
+      `This model is not supported for that problem. Supported problems: ${entry.symptomCoverage
+        .map((item) => item.symptomId)
+        .join(", ")}.`,
+    );
   const productCode =
     typeof input["productCode"] === "string" ? input["productCode"].trim().toUpperCase() : null;
   if (productCode && isExplicitSerialNumber(productCode))
@@ -247,11 +287,12 @@ function selectAppliance(
     codeAnalysis?.status === "exact-code" && codeAnalysis.exactEntryId === entry.id;
   const nextState: RepairState = {
     ...state,
-    packId: entry.id,
+    packId: coverage.repairPackId,
     applianceId: entry.id,
     productCode,
     catalogKind: entry.kind,
-    symptomId: null,
+    catalogSymptomId: coverage.symptomId,
+    symptomId: coverage.symptomId,
     phase: "idle",
     currentStepId: null,
     highlightedComponentId: "machine",
@@ -280,7 +321,7 @@ function startDiagnosis(
   input: Record<string, unknown>,
   source: ActivitySource,
 ) {
-  if (!state.applianceId || !state.packId)
+  if (!state.applianceId)
     return reject(
       state,
       source,
@@ -288,19 +329,34 @@ function startDiagnosis(
       input,
       "Select a supported appliance before starting.",
     );
-  const pack = getRepairPack(state.packId);
-  if (input["symptomId"] !== pack.symptom.id)
+  if (typeof input["symptomId"] !== "string")
     return reject(
       state,
       source,
       "start_diagnosis",
       input,
-      `This repair pack supports: ${pack.symptom.label}.`,
+      "Provide one symptomId returned for the selected model.",
+    );
+  const symptomId = input["symptomId"] as SupportedSymptomId;
+  const pack = resolveRepairPack(state.applianceId, symptomId);
+  if (!pack)
+    return reject(
+      state,
+      source,
+      "start_diagnosis",
+      input,
+      `This model is not supported for that problem. Supported problems: ${getCatalogEntry(
+        state.applianceId,
+      )
+        .symptomCoverage.map((coverage) => coverage.symptomId)
+        .join(", ")}.`,
     );
   const firstCheck = pack.checks[0]!;
   const nextState: RepairState = {
     ...state,
-    symptomId: input["symptomId"] as SymptomId,
+    packId: pack.id,
+    catalogSymptomId: symptomId,
+    symptomId: symptomId as SymptomId,
     phase: "preparing",
     currentStepId: firstCheck.id,
     highlightedComponentId: firstCheck.componentId,

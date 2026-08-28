@@ -52,7 +52,7 @@ describe("state-dependent WebMCP registration", () => {
       structuredContent: Record<string, unknown>;
     };
     const serialized = JSON.stringify(stateOutput.structuredContent);
-    expect(serialized.length).toBeLessThan(2800);
+    expect(serialized.length).toBeLessThan(3800);
     expect(serialized).not.toContain("likelyCauses");
     expect(serialized).not.toContain("catalogResults");
     expect(stateOutput.structuredContent).toMatchObject({
@@ -120,6 +120,74 @@ describe("state-dependent WebMCP registration", () => {
       action: "search_supported_appliances",
       source: "agent",
     });
+  });
+
+  it("discovers and selects the exact model × symptom coverage through WebMCP", async () => {
+    const tools: WebMcpTool[] = [];
+    Object.defineProperty(document, "modelContext", {
+      configurable: true,
+      value: {
+        registerTool: vi.fn(async (tool: WebMcpTool) => tools.push(tool)),
+      },
+    });
+    let state = createInitialRepairState();
+    registerClunkTools(
+      (name, input, source) => {
+        const execution = executeRepairTool(state, name, input, source);
+        state = execution.state;
+        return execution;
+      },
+      () => undefined,
+      state,
+    );
+
+    const search = tools.find((tool) => tool.name === "search_supported_appliances")!;
+    const searchOutput = (await search.execute({
+      kind: "dryer",
+      symptomId: "not-heating",
+      modelQuery: "GTD42EASJ2WW",
+    })) as { structuredContent: Record<string, unknown> };
+    expect(searchOutput.structuredContent).toMatchObject({
+      ok: true,
+      catalog: {
+        resultCount: 1,
+        results: [
+          {
+            applianceId: "ge-gtd42easj2ww",
+            supportedSymptom: "not-heating",
+            capability: "guided-checks",
+            symptomCoverage: expect.arrayContaining([
+              expect.objectContaining({
+                symptomId: "not-heating",
+                capability: "guided-checks",
+              }),
+            ]),
+          },
+        ],
+      },
+    });
+
+    const select = tools.find((tool) => tool.name === "select_appliance")!;
+    const selected = (await select.execute({
+      applianceId: "ge-gtd42easj2ww",
+      productCode: "GTD42EASJ2WW",
+      symptomId: "not-heating",
+    })) as { structuredContent: Record<string, unknown> };
+    expect(selected.structuredContent).toMatchObject({
+      ok: true,
+      phase: "idle",
+      task: {
+        symptom: "Electric dryer runs without heat",
+        capability: "guided-checks",
+      },
+    });
+    expect(state.packId).toBe("ge-gtd42easj2ww::not-heating");
+
+    const unsupported = (await select.execute({
+      applianceId: "whirlpool-wed4950hw",
+      symptomId: "not-heating",
+    })) as { structuredContent: Record<string, unknown> };
+    expect(unsupported.structuredContent).toMatchObject({ ok: false });
   });
 
   it("changes inventory between selected, active, and result states", () => {

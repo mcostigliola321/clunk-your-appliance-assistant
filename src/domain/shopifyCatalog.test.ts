@@ -90,10 +90,62 @@ describe("Shopify Global Catalog handoff", () => {
       "compatible-replacement",
     ]);
     expect(offers.some((offer) => offer.checkoutUrl.includes("wrong-neighbor"))).toBe(false);
+    expect(offers.every((offer) => offer.promoted === false)).toBe(true);
+  });
+
+  it("preserves an attributed promoted URL exactly and rejects unsafe destinations", () => {
+    const attributedUrl =
+      "https://seller.example/products/pump?variant=42&utm_source=shopify&utm_medium=catalog&shclid=click_1&shdid=developer_9";
+    const payload = catalogPayload();
+    payload.result.structuredContent.products.push({
+      id: "promoted-exact",
+      title: "Exact WH11X39237 drain pump",
+      variants: [
+        {
+          id: "promoted-variant",
+          sku: "WH11X39237",
+          price: { amount: 7499, currency: "USD" },
+          checkout_url: "https://seller.example/cart/should-not-be-used",
+          url: attributedUrl,
+          placement: {
+            type: "affiliate",
+            commission: { percentage: { value: 1.5 } },
+          },
+          availability: { available: true },
+          seller: { name: "Promoted Seller" },
+        },
+      ],
+    } as never);
+    payload.result.structuredContent.products.push({
+      id: "unsafe-exact",
+      title: "Exact WH11X39237 drain pump",
+      variants: [
+        {
+          id: "unsafe-variant",
+          sku: "WH11X39237",
+          price: { amount: 1, currency: "USD" },
+          checkout_url: "https://127.0.0.1/private",
+          availability: { available: true },
+          seller: { name: "Unsafe Seller" },
+        },
+      ],
+    });
+
+    const offers = extractShopifyPartOffers(payload, "WH11X39237");
+    const promoted = offers.find((offer) => offer.promoted);
+    expect(promoted).toMatchObject({
+      checkoutUrl: attributedUrl,
+      placementType: "affiliate",
+      additionalCommissionPercentage: 1.5,
+    });
+    expect(offers.some((offer) => offer.seller === "Unsafe Seller")).toBe(false);
   });
 
   it("sends the exact catalog query through UCP without credentials or caching", async () => {
-    const part = APPLIANCE_CATALOG.find((entry) => entry.id === "ge-gfw550ssnww")?.exactPart;
+    const part = APPLIANCE_CATALOG.find(
+      (entry) => entry.id === "ge-gfw550ssnww",
+    )?.symptomCoverage.find((coverage) => coverage.symptomId === "will-not-drain")
+      ?.exactPartEvidence?.part;
     expect(part).toBeDefined();
     const fetchImpl = vi.fn(
       async (_input: string | URL | Request, _init?: RequestInit) =>
@@ -132,5 +184,25 @@ describe("Shopify Global Catalog handoff", () => {
       ships_to: { country: "US" },
     });
     expect(offers).toHaveLength(2);
+  });
+
+  it("adds a validated public saved catalog and placement request without credentials", async () => {
+    const part = APPLIANCE_CATALOG.find((entry) => entry.id === "ge-gfw550ssnww")
+      ?.symptomCoverage[0]?.exactPartEvidence?.part;
+    const fetchImpl = vi.fn(async (_input: string | URL | Request, init?: RequestInit) => {
+      const body = JSON.parse(String(init?.body));
+      expect(body.params.arguments.catalog).toMatchObject({
+        catalog_id: "gid://shopify/Catalog/clunk-public",
+        placements: ["affiliate"],
+      });
+      expect(init?.headers).not.toHaveProperty("authorization");
+      return new Response(JSON.stringify(catalogPayload()), { status: 200 });
+    });
+
+    await searchShopifyPartOffers(part!, {
+      fetchImpl,
+      catalogId: "gid://shopify/Catalog/clunk-public",
+    });
+    expect(fetchImpl).toHaveBeenCalledOnce();
   });
 });

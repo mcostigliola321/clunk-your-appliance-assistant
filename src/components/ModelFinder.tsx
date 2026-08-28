@@ -8,6 +8,7 @@ import {
   getApplianceJourney,
   getCatalogEntriesForSymptom,
   getCategoryCount,
+  getSymptomCoverage,
   getSupportedSymptoms,
   SYMPTOM_PRESENTATION,
 } from "@/data/journeyCatalog";
@@ -26,8 +27,13 @@ type JourneyStage = "appliance" | "symptom" | "model";
 interface ModelFinderProps {
   snapshot: RepairSnapshot;
   selectedId: string | null;
-  onSearch: (query: string, brand: BrandName | null, kind: ApplianceKind) => void;
-  onSelect: (applianceId: string, productCode?: string) => void;
+  onSearch: (
+    query: string,
+    brand: BrandName | null,
+    kind: ApplianceKind,
+    symptomId: SupportedSymptomId | null,
+  ) => void;
+  onSelect: (applianceId: string, symptomId: SupportedSymptomId, productCode?: string) => void;
   onExample: (applianceId: string) => void;
 }
 
@@ -38,9 +44,13 @@ export function ModelFinder({
   onSelect,
   onExample,
 }: ModelFinderProps) {
-  const [stage, setStage] = useState<JourneyStage>("appliance");
+  const [stage, setStage] = useState<JourneyStage>(
+    snapshot.catalogSymptomId ? "model" : "appliance",
+  );
   const [kind, setKind] = useState<ApplianceKind>(snapshot.catalogKind ?? "dryer");
-  const [selectedSymptomId, setSelectedSymptomId] = useState<SupportedSymptomId | null>(null);
+  const [selectedSymptomId, setSelectedSymptomId] = useState<SupportedSymptomId | null>(
+    snapshot.catalogSymptomId,
+  );
   const [query, setQuery] = useState(snapshot.catalogQuery);
   const [brand, setBrand] = useState<BrandName | null>(null);
   const [capability, setCapability] = useState<CapabilityTier | null>(null);
@@ -59,19 +69,32 @@ export function ModelFinder({
   const brands = [...new Set(categoryEntries.map((entry) => entry.brand))];
   const flagship =
     categoryEntries.find((entry) => entry.id === journey.flagshipId) ??
-    categoryEntries.find((entry) => entry.capability === "purchase-ready") ??
+    categoryEntries.find(
+      (entry) =>
+        selectedSymptomId &&
+        getSymptomCoverage(entry, selectedSymptomId)?.capability === "purchase-ready",
+    ) ??
     categoryEntries[0];
   const supportedSymptoms = getSupportedSymptoms(kind);
   const analysis = useMemo(() => analyzeModelQuery(query, brand, kind), [brand, kind, query]);
   const symptomMatches = selectedSymptomId
-    ? analysis.matches.filter((entry) => entry.supportedSymptom === selectedSymptomId)
+    ? analysis.matches.filter((entry) => getSymptomCoverage(entry, selectedSymptomId))
     : analysis.matches;
   const results = capability
-    ? symptomMatches.filter((entry) => entry.capability === capability)
+    ? symptomMatches.filter(
+        (entry) =>
+          selectedSymptomId &&
+          getSymptomCoverage(entry, selectedSymptomId)?.capability === capability,
+      )
     : symptomMatches;
   const hasDifferentSymptomMatches = analysis.matches.length > 0 && symptomMatches.length === 0;
   const tierCounts = categoryEntries.reduce(
-    (counts, entry) => ({ ...counts, [entry.capability]: counts[entry.capability] + 1 }),
+    (counts, entry) => {
+      const tier = selectedSymptomId
+        ? getSymptomCoverage(entry, selectedSymptomId)?.capability
+        : null;
+      return tier ? { ...counts, [tier]: counts[tier] + 1 } : counts;
+    },
     { "purchase-ready": 0, "guided-checks": 0, "verified-part-unavailable": 0 },
   );
 
@@ -82,13 +105,17 @@ export function ModelFinder({
     setCapability(null);
     setQuery("");
     setShowGuide(false);
-    onSearch("", null, next);
+    onSearch("", null, next, null);
     pendingStageFocusRef.current = "heading";
     setStage("symptom");
   };
 
   const chooseSymptom = (symptomId: SupportedSymptomId) => {
     setSelectedSymptomId(symptomId);
+    setBrand(null);
+    setCapability(null);
+    setQuery("");
+    onSearch("", null, kind, symptomId);
     pendingStageFocusRef.current = "input";
     setStage("model");
   };
@@ -126,8 +153,10 @@ export function ModelFinder({
   }, [stage]);
 
   const selectEntry = (entryId: string) => {
+    if (!selectedSymptomId) return;
     onSelect(
       entryId,
+      selectedSymptomId,
       analysis.status === "exact-code" && analysis.exactEntryId === entryId ? query : undefined,
     );
   };
@@ -148,14 +177,13 @@ export function ModelFinder({
         <div className="appliance-field" aria-label="Choose an appliance">
           {APPLIANCE_JOURNEYS.map((item, index) => {
             const symptoms = getSupportedSymptoms(item.id);
-            const symptom = SYMPTOM_PRESENTATION[symptoms[0]!];
             return (
               <article className={`appliance-choice appliance-choice--${item.id}`} key={item.id}>
                 <button
                   className="appliance-choice__primary"
                   type="button"
                   onClick={() => chooseKind(item.id)}
-                  aria-label={`Choose ${item.label} — ${symptom.title}`}
+                  aria-label={`Choose ${item.label} — ${symptoms.length} supported problems`}
                 >
                   <span className="appliance-choice__image">
                     <img
@@ -171,21 +199,45 @@ export function ModelFinder({
                   </span>
                   <span className="appliance-choice__name">
                     <strong>{item.label}</strong>
-                    <span>{symptom.title}</span>
+                    <span>{symptoms.length} supported problems</span>
                   </span>
                   <ArrowRight size={22} aria-hidden="true" />
-                </button>
-                <button
-                  className="appliance-choice__example"
-                  type="button"
-                  onClick={() => onExample(item.flagshipId)}
-                >
-                  See completed {item.noun} example
                 </button>
               </article>
             );
           })}
         </div>
+
+        <p className="appliance-roadmap" aria-label="Appliance research roadmap">
+          <strong>More appliances are in the research queue.</strong> Vacuums and robot vacuums are
+          next to evaluate.
+        </p>
+
+        <details className="completed-example-hub">
+          <summary>
+            <span>
+              <BadgeCheck size={18} aria-hidden="true" /> See how Clunk works
+            </span>
+            <small>Four clearly labeled completed examples</small>
+            <ChevronDown size={18} aria-hidden="true" />
+          </summary>
+          <div>
+            {APPLIANCE_JOURNEYS.map((item) => (
+              <button
+                type="button"
+                key={item.id}
+                aria-label={`See completed ${item.noun} example`}
+                onClick={() => onExample(item.flagshipId)}
+              >
+                <span>
+                  <strong>{item.label}</strong>
+                  <small>Completed example · prefilled observations</small>
+                </span>
+                <ArrowRight size={17} aria-hidden="true" />
+              </button>
+            ))}
+          </div>
+        </details>
 
         <details className="all-appliances">
           <summary>
@@ -233,12 +285,16 @@ export function ModelFinder({
               What is it doing?
             </h1>
             <p className="symptom-select__lead">
-              Current coverage is deliberately narrow. These are the problems Clunk can guide safely
-              today.
+              Choose the behavior you can observe. Coverage is checked separately for every model
+              and problem.
             </p>
             <div className="symptom-options" aria-label={`Supported ${journey.noun} problems`}>
               {supportedSymptoms.map((symptomId) => {
                 const symptom = SYMPTOM_PRESENTATION[symptomId];
+                const coveredEntries = getCatalogEntriesForSymptom(kind, symptomId);
+                const purchaseReadyCount = coveredEntries.filter(
+                  (entry) => getSymptomCoverage(entry, symptomId)?.capability === "purchase-ready",
+                ).length;
                 return (
                   <button type="button" key={symptomId} onClick={() => chooseSymptom(symptomId)}>
                     <span>
@@ -246,14 +302,20 @@ export function ModelFinder({
                     </span>
                     <strong>{symptom.title}</strong>
                     <small>{symptom.description}</small>
+                    <small className="symptom-options__coverage">
+                      {coveredEntries.length} checked models
+                      {purchaseReadyCount > 0
+                        ? ` · ${purchaseReadyCount} purchase-ready`
+                        : " · checks only"}
+                    </small>
                     <ArrowRight size={20} aria-hidden="true" />
                   </button>
                 );
               })}
             </div>
             <p className="coverage-note">
-              Other {journey.noun} problems are not supported yet. Clunk will not improvise a path
-              without checked guidance.
+              Search results show only models checked for this problem. Clunk will not borrow
+              coverage from another symptom or model.
             </p>
           </div>
         </div>
@@ -325,7 +387,7 @@ export function ModelFinder({
         className="model-search"
         onSubmit={(event) => {
           event.preventDefault();
-          onSearch(query, brand, kind);
+          onSearch(query, brand, kind, selectedSymptomId);
         }}
       >
         <label htmlFor="model-query">{journey.label} model number</label>
@@ -356,23 +418,6 @@ export function ModelFinder({
           </p>
         ) : null}
       </form>
-
-      {flagship ? (
-        <aside className="completed-example" aria-label="Completed example">
-          <span>
-            <BadgeCheck size={17} aria-hidden="true" /> Completed example
-          </span>
-          <div>
-            <strong>
-              {flagship.brand} {flagship.verifiedProductCodes[0] ?? flagship.model}
-            </strong>
-            <small>Prefilled observations lead to its verified part and seller handoff.</small>
-          </div>
-          <button type="button" onClick={() => onExample(flagship.id)}>
-            View the completed answer <ArrowRight size={17} aria-hidden="true" />
-          </button>
-        </aside>
-      ) : null}
 
       <details className="model-browser" open={Boolean(query || brand || capability)}>
         <summary>
@@ -414,6 +459,16 @@ export function ModelFinder({
             >
               Checks only {tierCounts["guided-checks"]}
             </button>
+            {tierCounts["verified-part-unavailable"] > 0 ? (
+              <button
+                className={capability === "verified-part-unavailable" ? "is-active" : ""}
+                type="button"
+                aria-pressed={capability === "verified-part-unavailable"}
+                onClick={() => setCapability("verified-part-unavailable")}
+              >
+                Verified part unavailable {tierCounts["verified-part-unavailable"]}
+              </button>
+            ) : null}
           </div>
         </div>
 
@@ -431,7 +486,9 @@ export function ModelFinder({
                     <strong>
                       {entry.brand} {entry.model}
                     </strong>
-                    <small>{capabilityLabel(entry.capability)}</small>
+                    <small>
+                      {capabilityLabel(getSymptomCoverage(entry, selectedSymptomId!)!.capability)}
+                    </small>
                   </span>
                   <ArrowRight size={17} aria-hidden="true" />
                 </button>
@@ -474,7 +531,11 @@ export function ModelFinder({
                       <button type="button" key={entry.id} onClick={() => selectEntry(entry.id)}>
                         <span>
                           <strong>{entry.model}</strong>
-                          <small>{capabilityLabel(entry.capability)}</small>
+                          <small>
+                            {capabilityLabel(
+                              getSymptomCoverage(entry, selectedSymptomId!)!.capability,
+                            )}
+                          </small>
                         </span>
                         <ArrowRight size={16} aria-hidden="true" />
                       </button>

@@ -19,6 +19,23 @@ test-results
 .nitro
 *.local
 
+# Local configuration and credentials. Only the documented public example is tracked.
+.env
+.env.*
+!.env.example
+.npmrc
+.yarnrc
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.secret
+credentials*.json
+service-account*.json
+secrets/
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars

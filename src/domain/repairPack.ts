@@ -1,6 +1,8 @@
 import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
+import { DEFAULT_SYMPTOM_BY_KIND, SYMPTOMS_BY_KIND } from "@/data/symptomCatalog";
 import { isPurchaseReadyPart } from "@/domain/purchase";
 import { hasExactPartNumber } from "@/domain/shopifyCatalog";
+import { isSafePublicHttpsUrl } from "@/domain/urlSafety";
 
 import type {
   ApplianceCatalogEntry,
@@ -15,8 +17,17 @@ import type {
   RepairPackCheck,
   RepairPackComponent,
   RepairPackPart,
+  RepairPackId,
   ResultId,
+  SupportedSymptomId,
+  SymptomCoverage,
 } from "./types";
+import { buildSupplementalProfile } from "./supplementalProfiles";
+
+type FlagshipProfileEntry = ApplianceCatalogEntry & {
+  capability: SymptomCoverage["capability"];
+  exactPart?: RepairPackPart;
+};
 
 const FORBIDDEN_STEP_TAGS = new Set([
   "gas",
@@ -125,7 +136,7 @@ function prepareCheck(entry: ApplianceCatalogEntry, sourceIds: string[], nextChe
   } satisfies RepairPackCheck;
 }
 
-function washerProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
+function washerProfile(entry: FlagshipProfileEntry, sourceIds: string[]) {
   const components = [
     component(
       "machine",
@@ -354,7 +365,7 @@ function washerProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
   };
 }
 
-function dishwasherProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
+function dishwasherProfile(entry: FlagshipProfileEntry, sourceIds: string[]) {
   if (entry.checkProfile === "sink-then-service") {
     return {
       components: [
@@ -638,7 +649,7 @@ function dishwasherProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
   };
 }
 
-function dryerProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
+function dryerProfile(entry: FlagshipProfileEntry, sourceIds: string[]) {
   return {
     components: [
       component(
@@ -757,7 +768,7 @@ function dryerProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
   };
 }
 
-function refrigeratorProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) {
+function refrigeratorProfile(entry: FlagshipProfileEntry, sourceIds: string[]) {
   return {
     components: [
       component(
@@ -897,21 +908,30 @@ function refrigeratorProfile(entry: ApplianceCatalogEntry, sourceIds: string[]) 
   };
 }
 
-function buildPack(entry: ApplianceCatalogEntry): RepairPack {
-  const sources = [entry.modelSource, ...entry.troubleshootingSources];
-  if (entry.exactPart) sources.push(entry.exactPart.source);
+function buildPack(entry: ApplianceCatalogEntry, coverage: SymptomCoverage): RepairPack {
+  const exactPart = coverage.exactPartEvidence?.part;
+  const sources = [entry.modelSource, ...coverage.troubleshootingSources];
+  if (exactPart) sources.push(exactPart.source);
   const sourceIds = sources.map((item) => item.id);
-  const profile =
-    entry.kind === "washer"
-      ? washerProfile(entry, sourceIds)
+  const isFlagshipSymptom = coverage.symptomId === DEFAULT_SYMPTOM_BY_KIND[entry.kind];
+  const profileEntry: FlagshipProfileEntry = {
+    ...entry,
+    capability: coverage.capability,
+    ...(exactPart ? { exactPart } : {}),
+  };
+  const profile = isFlagshipSymptom
+    ? entry.kind === "washer"
+      ? washerProfile(profileEntry, sourceIds)
       : entry.kind === "dishwasher"
-        ? dishwasherProfile(entry, sourceIds)
+        ? dishwasherProfile(profileEntry, sourceIds)
         : entry.kind === "dryer"
-          ? dryerProfile(entry, sourceIds)
-          : refrigeratorProfile(entry, sourceIds);
+          ? dryerProfile(profileEntry, sourceIds)
+          : refrigeratorProfile(profileEntry, sourceIds)
+    : buildSupplementalProfile(entry, coverage.symptomId, sourceIds);
   return {
-    id: entry.id,
-    schemaVersion: 5,
+    id: coverage.repairPackId,
+    modelId: entry.id,
+    schemaVersion: 6,
     appliance: {
       kind: entry.kind,
       kindLabel: KIND_LABELS[entry.kind],
@@ -919,7 +939,7 @@ function buildPack(entry: ApplianceCatalogEntry): RepairPack {
       brand: entry.brand,
       model: entry.model,
       type: entry.label,
-      capability: entry.capability,
+      capability: coverage.capability,
       ...(entry.loadStyle ? { loadStyle: entry.loadStyle } : {}),
       topology: entry.topology ?? "washer-front-filter",
       illustration: profile.illustration,
@@ -931,15 +951,23 @@ function buildPack(entry: ApplianceCatalogEntry): RepairPack {
     components: profile.components,
     checks: profile.checks,
     causes: profile.causes,
-    parts: entry.exactPart ? [entry.exactPart] : [],
+    parts: exactPart ? [exactPart] : [],
     sources,
     example: profile.example,
   };
 }
 
 export function assertRepairPack(pack: RepairPack): RepairPack {
-  if (pack.schemaVersion !== 5 || !pack.appliance.brand || !pack.appliance.model)
-    throw new Error("Repair packs require schema version 5 and a real model identity.");
+  if (
+    pack.schemaVersion !== 6 ||
+    !pack.modelId ||
+    pack.id === pack.modelId ||
+    !pack.appliance.brand ||
+    !pack.appliance.model
+  )
+    throw new Error(
+      "Repair packs require schema version 6, a pack identity, and a model identity.",
+    );
   const componentIds = new Set(pack.components.map((item) => item.id));
   const checkIds = new Set(pack.checks.map((item) => item.id));
   const sourceIds = new Set(pack.sources.map((item) => item.id));
@@ -975,7 +1003,13 @@ export function assertRepairPack(pack: RepairPack): RepairPack {
       throw new Error(`Cause ${cause.id} references an unknown component.`);
   }
   for (const source of pack.sources) {
-    if (!source.url.startsWith("https://") || !/^\d{4}-\d{2}-\d{2}$/.test(source.lastVerified))
+    if (
+      !source.title.trim() ||
+      !source.publisher.trim() ||
+      !source.appliesTo.trim() ||
+      !isSafePublicHttpsUrl(source.url) ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(source.lastVerified)
+    )
       throw new Error(`Source ${source.id} is missing a secure URL or verification date.`);
   }
   for (const part of pack.parts) {
@@ -987,7 +1021,7 @@ export function assertRepairPack(pack: RepairPack): RepairPack {
       throw new Error(`Part ${part.id} requires a seller or live-commerce handoff.`);
     if (
       part.purchase &&
-      (!part.purchase.url.startsWith("https://") ||
+      (!isSafePublicHttpsUrl(part.purchase.url) ||
         !/^\d{4}-\d{2}-\d{2}$/.test(part.purchase.lastVerified))
     )
       throw new Error(`Part ${part.id} has an invalid seller handoff.`);
@@ -1031,6 +1065,7 @@ export function assertCatalog(entries: ApplianceCatalogEntry[]): ApplianceCatalo
   };
   const ids = new Set<string>();
   const identities = new Set<string>();
+  const repairPackIds = new Set<string>();
   for (const entry of entries) {
     const identity = `${entry.brand}:${entry.kind}:${entry.model}`.toUpperCase();
     if (ids.has(entry.id) || identities.has(identity))
@@ -1046,7 +1081,7 @@ export function assertCatalog(entries: ApplianceCatalogEntry[]): ApplianceCatalo
       )
     )
       throw new Error(`Catalog entry ${entry.id} uses a non-manufacturer model source.`);
-    if (!entry.topology || !entry.profile || entry.troubleshootingSources.length === 0)
+    if (!entry.topology || !entry.profile || entry.symptomCoverage.length === 0)
       throw new Error(
         `Catalog entry ${entry.id} is missing topology, profile, or symptom evidence.`,
       );
@@ -1057,60 +1092,70 @@ export function assertCatalog(entries: ApplianceCatalogEntry[]): ApplianceCatalo
       throw new Error(`Catalog entry ${entry.id} must include its model in aliases.`);
     if (entry.verifiedProductCodes.some((code) => !normalizedAliases.has(code.toUpperCase())))
       throw new Error(`Catalog entry ${entry.id} has a verified code missing from aliases.`);
-    const expectedSymptom =
-      entry.kind === "dryer"
-        ? "door-will-not-close"
-        : entry.kind === "refrigerator"
-          ? "slow-water-flow"
-          : "will-not-drain";
-    if (entry.supportedSymptom !== expectedSymptom)
-      throw new Error(`Catalog entry ${entry.id} has a category/symptom mismatch.`);
-    const sources = [entry.modelSource, ...entry.troubleshootingSources];
-    if (
-      sources.some(
-        (source) =>
-          !source.url.startsWith("https://") || !/^\d{4}-\d{2}-\d{2}$/.test(source.lastVerified),
+    const symptomIds = new Set<string>();
+    for (const coverage of entry.symptomCoverage) {
+      if (
+        symptomIds.has(coverage.symptomId) ||
+        repairPackIds.has(coverage.repairPackId) ||
+        !SYMPTOMS_BY_KIND[entry.kind].includes(coverage.symptomId) ||
+        coverage.troubleshootingSources.length === 0
       )
-    )
-      throw new Error(`Catalog entry ${entry.id} has an undated or insecure source.`);
-    const expectedCapability = entry.exactPart
-      ? isPurchaseReadyPart(entry.exactPart)
-        ? "purchase-ready"
-        : "verified-part-unavailable"
-      : "guided-checks";
-    if (entry.capability !== expectedCapability)
-      throw new Error(`Catalog entry ${entry.id} has an inconsistent capability tier.`);
-    if (entry.exactPart) {
+        throw new Error(`Catalog entry ${entry.id} has invalid or duplicate symptom coverage.`);
+      symptomIds.add(coverage.symptomId);
+      repairPackIds.add(coverage.repairPackId);
+      const sources = [entry.modelSource, ...coverage.troubleshootingSources];
+      if (
+        sources.some(
+          (source) =>
+            !source.title.trim() ||
+            !source.publisher.trim() ||
+            !source.appliesTo.trim() ||
+            !isSafePublicHttpsUrl(source.url) ||
+            !/^\d{4}-\d{2}-\d{2}$/.test(source.lastVerified),
+        )
+      )
+        throw new Error(`Catalog entry ${entry.id} has an undated or insecure source.`);
+      const exactPart = coverage.exactPartEvidence?.part;
+      const expectedCapability = exactPart
+        ? isPurchaseReadyPart(exactPart)
+          ? "purchase-ready"
+          : "verified-part-unavailable"
+        : "guided-checks";
+      if (coverage.capability !== expectedCapability)
+        throw new Error(`Catalog entry ${entry.id} has an inconsistent capability tier.`);
+      if (!exactPart) continue;
       const normalizedCodes = new Set(entry.verifiedProductCodes.map((code) => code.toUpperCase()));
       if (
         entry.verifiedProductCodes.length === 0 ||
-        entry.exactPart.compatibleProductCodes.length === 0 ||
-        !["manufacturer-part", "authorized-parts"].includes(entry.exactPart.source.kind)
+        exactPart.compatibleProductCodes.length === 0 ||
+        coverage.exactPartEvidence?.verifiedProductCodes.length === 0 ||
+        !["manufacturer-part", "authorized-parts"].includes(exactPart.source.kind)
       )
         throw new Error(`Catalog entry ${entry.id} lacks complete-code exact-part evidence.`);
       if (
-        entry.exactPart.compatibleProductCodes.some(
+        exactPart.compatibleProductCodes.some((code) => !normalizedCodes.has(code.toUpperCase())) ||
+        coverage.exactPartEvidence!.verifiedProductCodes.some(
           (code) => !normalizedCodes.has(code.toUpperCase()),
         )
       )
         throw new Error(`Catalog entry ${entry.id} has part codes outside its verified codes.`);
       if (
-        !entry.exactPart.source.url.startsWith("https://") ||
-        !/^\d{4}-\d{2}-\d{2}$/.test(entry.exactPart.source.lastVerified) ||
-        entry.exactPart.compatibleProductCodes.some(
+        !isSafePublicHttpsUrl(exactPart.source.url) ||
+        !/^\d{4}-\d{2}-\d{2}$/.test(exactPart.source.lastVerified) ||
+        exactPart.compatibleProductCodes.some(
           (code) =>
-            !hasExactPartNumber(entry.exactPart!.source.appliesTo, code) ||
-            !hasExactPartNumber(entry.exactPart!.compatibleModel, code),
+            !hasExactPartNumber(exactPart.source.appliesTo, code) ||
+            !hasExactPartNumber(exactPart.compatibleModel, code),
         )
       )
         throw new Error(`Catalog entry ${entry.id} has inexact revision evidence.`);
       if (
-        entry.exactPart.commerce &&
-        (entry.exactPart.commerce.exactSku.toUpperCase() !== entry.exactPart.sku.toUpperCase() ||
-          !hasExactPartNumber(entry.exactPart.commerce.query, entry.exactPart.sku) ||
-          !Number.isInteger(entry.exactPart.commerce.offerCountAtVerification) ||
-          entry.exactPart.commerce.offerCountAtVerification <= 0 ||
-          !/^\d{4}-\d{2}-\d{2}$/.test(entry.exactPart.commerce.lastVerified))
+        exactPart.commerce &&
+        (exactPart.commerce.exactSku.toUpperCase() !== exactPart.sku.toUpperCase() ||
+          !hasExactPartNumber(exactPart.commerce.query, exactPart.sku) ||
+          !Number.isInteger(exactPart.commerce.offerCountAtVerification) ||
+          exactPart.commerce.offerCountAtVerification <= 0 ||
+          !/^\d{4}-\d{2}-\d{2}$/.test(exactPart.commerce.lastVerified))
       )
         throw new Error(`Catalog entry ${entry.id} has an inexact Shopify SKU query.`);
     }
@@ -1121,7 +1166,11 @@ export function assertCatalog(entries: ApplianceCatalogEntry[]): ApplianceCatalo
 assertCatalog(APPLIANCE_CATALOG);
 
 export const REPAIR_PACKS = new Map(
-  APPLIANCE_CATALOG.map((entry) => [entry.id, assertRepairPack(buildPack(entry))]),
+  APPLIANCE_CATALOG.flatMap((entry) =>
+    entry.symptomCoverage.map(
+      (coverage) => [coverage.repairPackId, assertRepairPack(buildPack(entry, coverage))] as const,
+    ),
+  ),
 );
 
 export { normalizeModel, searchCatalog } from "./modelSearch";
@@ -1132,14 +1181,44 @@ export function getCatalogEntry(applianceId: ApplianceId): ApplianceCatalogEntry
   return entry;
 }
 
-export function getRepairPack(applianceId: ApplianceId): RepairPack {
-  const pack = REPAIR_PACKS.get(applianceId);
-  if (!pack) throw new Error(`Unknown repair pack ${applianceId}.`);
+export function getSymptomCoverage(
+  applianceId: ApplianceId,
+  symptomId: SupportedSymptomId,
+): SymptomCoverage | null {
+  return (
+    getCatalogEntry(applianceId).symptomCoverage.find(
+      (coverage) => coverage.symptomId === symptomId,
+    ) ?? null
+  );
+}
+
+export function resolveRepairPack(
+  applianceId: ApplianceId,
+  symptomId: SupportedSymptomId,
+): RepairPack | null {
+  const coverage = getSymptomCoverage(applianceId, symptomId);
+  return coverage ? (REPAIR_PACKS.get(coverage.repairPackId) ?? null) : null;
+}
+
+export function getRepairPack(
+  packOrApplianceId: RepairPackId,
+  symptomId?: SupportedSymptomId,
+): RepairPack {
+  const direct = symptomId
+    ? resolveRepairPack(packOrApplianceId, symptomId)
+    : REPAIR_PACKS.get(packOrApplianceId);
+  if (direct) return direct;
+  const entry = APPLIANCE_CATALOG.find((item) => item.id === packOrApplianceId);
+  const fallbackCoverage = entry?.symptomCoverage.find(
+    (coverage) => coverage.symptomId === DEFAULT_SYMPTOM_BY_KIND[entry.kind],
+  );
+  const pack = fallbackCoverage ? REPAIR_PACKS.get(fallbackCoverage.repairPackId) : null;
+  if (!pack) throw new Error(`Unknown repair pack ${packOrApplianceId}.`);
   return pack;
 }
 
 export function getComponent(
-  packId: ApplianceId | null,
+  packId: RepairPackId | null,
   componentId: ComponentId,
 ): RepairPackComponent {
   if (!packId) return FALLBACK_COMPONENT;
@@ -1148,34 +1227,34 @@ export function getComponent(
   return component;
 }
 
-export function getCheck(packId: ApplianceId, checkId: CheckId): RepairPackCheck {
+export function getCheck(packId: RepairPackId, checkId: CheckId): RepairPackCheck {
   const check = getRepairPack(packId).checks.find((item) => item.id === checkId);
   if (!check) throw new Error(`Unknown check ${checkId}.`);
   return check;
 }
 
-export function getPart(packId: ApplianceId, partId: PartId): RepairPackPart {
+export function getPart(packId: RepairPackId, partId: PartId): RepairPackPart {
   const part = getRepairPack(packId).parts.find((item) => item.id === partId);
   if (!part) throw new Error(`Unknown part ${partId}.`);
   return part;
 }
 
 export function isResultForCheck(
-  packId: ApplianceId,
+  packId: RepairPackId,
   checkId: CheckId,
   resultId: ResultId,
 ): boolean {
   return getCheck(packId, checkId).results.some((item) => item.id === resultId);
 }
 
-export function isComponentId(packId: ApplianceId | null, value: unknown): value is ComponentId {
+export function isComponentId(packId: RepairPackId | null, value: unknown): value is ComponentId {
   return (
     typeof value === "string" &&
     Boolean(packId && getRepairPack(packId).components.some((item) => item.id === value))
   );
 }
 
-export function isCheckId(packId: ApplianceId | null, value: unknown): value is CheckId {
+export function isCheckId(packId: RepairPackId | null, value: unknown): value is CheckId {
   return Boolean(
     packId &&
     typeof value === "string" &&

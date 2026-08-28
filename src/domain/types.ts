@@ -1,7 +1,20 @@
 export type ApplianceId = string;
+export type RepairPackId = string;
 export type ApplianceKind = "washer" | "dishwasher" | "dryer" | "refrigerator";
 export type SymptomId = string;
-export type SupportedSymptomId = "will-not-drain" | "door-will-not-close" | "slow-water-flow";
+export type SupportedSymptomId =
+  | "will-not-drain"
+  | "will-not-start"
+  | "will-not-spin"
+  | "is-leaking"
+  | "not-cleaning"
+  | "will-not-fill"
+  | "door-will-not-close"
+  | "not-heating"
+  | "drum-will-not-turn"
+  | "slow-water-flow"
+  | "not-cooling"
+  | "ice-maker-not-making-ice";
 export type ComponentId = string;
 export type CheckId = string;
 export type ResultId = string;
@@ -78,6 +91,19 @@ export interface RepairPackPart {
   };
 }
 
+export interface ExactPartEvidence {
+  part: RepairPackPart;
+  verifiedProductCodes: string[];
+}
+
+export interface SymptomCoverage {
+  symptomId: SupportedSymptomId;
+  repairPackId: RepairPackId;
+  capability: CapabilityTier;
+  troubleshootingSources: SourceReference[];
+  exactPartEvidence?: ExactPartEvidence;
+}
+
 export type RepairProfile =
   | "washer-front-drain"
   | "washer-hose-only"
@@ -94,15 +120,12 @@ export interface ApplianceCatalogEntry {
   aliases: string[];
   verifiedProductCodes: string[];
   productCodePrompt: string;
-  supportedSymptom: SupportedSymptomId;
-  capability: CapabilityTier;
+  symptomCoverage: SymptomCoverage[];
   profile: RepairProfile;
   loadStyle?: WasherLoadStyle;
   topology?: DiagramTopology;
   checkProfile?: "filter-access" | "hose-then-service" | "sink-then-service";
   modelSource: SourceReference;
-  troubleshootingSources: SourceReference[];
-  exactPart?: RepairPackPart;
 }
 
 export type EscalationReason =
@@ -157,7 +180,8 @@ export interface RepairPackCause {
 }
 
 export interface RepairPack {
-  id: ApplianceId;
+  id: RepairPackId;
+  modelId: ApplianceId;
   schemaVersion: number;
   appliance: {
     kind: ApplianceKind;
@@ -204,12 +228,13 @@ export interface Escalation {
 }
 
 export interface RepairState {
-  packId: ApplianceId | null;
+  packId: RepairPackId | null;
   applianceId: ApplianceId | null;
   productCode: string | null;
   catalogQuery: string;
   catalogBrand: BrandName | null;
   catalogKind: ApplianceKind | null;
+  catalogSymptomId: SupportedSymptomId | null;
   catalogResultIds: ApplianceId[];
   symptomId: SymptomId | null;
   phase: RepairPhase;
@@ -250,21 +275,22 @@ export interface PartOutcome {
 export interface RepairSnapshot {
   catalogQuery: string;
   catalogKind: ApplianceKind | null;
-  catalogResults: Array<
-    Pick<
-      ApplianceCatalogEntry,
-      | "id"
-      | "kind"
-      | "brand"
-      | "model"
-      | "label"
-      | "productCodePrompt"
-      | "supportedSymptom"
-      | "topology"
-      | "modelSource"
-      | "capability"
-    >
-  >;
+  catalogSymptomId: SupportedSymptomId | null;
+  catalogResults: Array<{
+    id: ApplianceId;
+    kind: ApplianceKind;
+    brand: BrandName;
+    model: string;
+    label: string;
+    productCodePrompt: string;
+    topology?: DiagramTopology;
+    modelSource: SourceReference;
+    symptomCoverage: Array<{
+      symptomId: SupportedSymptomId;
+      repairPackId: RepairPackId;
+      capability: CapabilityTier;
+    }>;
+  }>;
   appliance: string | null;
   applianceKind: ApplianceKind | null;
   applianceKindLabel: string | null;

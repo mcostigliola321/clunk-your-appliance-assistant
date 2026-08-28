@@ -298,7 +298,7 @@ summary:focus-visible,
   grid-column: span 3;
   min-width: 0;
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr);
   border-right: 1px solid var(--line-strong);
 }
 
@@ -373,22 +373,107 @@ summary:focus-visible,
   font-weight: 650;
 }
 
-.appliance-choice__example {
-  min-height: 50px;
-  border: 0;
-  border-top: 1px solid var(--line-strong);
-  padding: 8px 16px;
-  background: var(--white);
+.appliance-roadmap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  border-bottom: 1px solid var(--line);
+  padding: 15px 16px;
   color: var(--muted);
   font-size: 12px;
-  font-weight: 700;
+  line-height: 1.5;
+}
+
+.appliance-roadmap strong {
+  color: var(--ink);
+}
+
+.completed-example-hub {
+  border-bottom: 1px solid var(--line-strong);
+  background: var(--white);
+}
+
+.completed-example-hub > summary {
+  min-height: 58px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 14px;
+  padding-inline: 16px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.completed-example-hub > summary::-webkit-details-marker {
+  display: none;
+}
+
+.completed-example-hub > summary > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 760;
+}
+
+.completed-example-hub > summary > span svg {
+  color: var(--tide);
+}
+
+.completed-example-hub > summary small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.completed-example-hub[open] > summary > svg {
+  transform: rotate(180deg);
+}
+
+.completed-example-hub > div {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+}
+
+.completed-example-hub > div > button {
+  min-width: 0;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 0;
+  border-right: 1px solid var(--line);
+  padding: 12px 16px;
+  background: transparent;
+  color: var(--ink);
   text-align: left;
   cursor: pointer;
 }
 
-.appliance-choice__example:hover {
-  background: var(--ink);
-  color: var(--white);
+.completed-example-hub > div > button:last-child {
+  border-right: 0;
+}
+
+.completed-example-hub > div > button:hover {
+  background: var(--citron);
+}
+
+.completed-example-hub > div > button span {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.completed-example-hub > div > button strong,
+.completed-example-hub > div > button small {
+  overflow-wrap: anywhere;
+}
+
+.completed-example-hub > div > button small {
+  color: var(--muted);
+  font-size: 11px;
 }
 
 .all-appliances {
@@ -542,12 +627,16 @@ summary:focus-visible,
 }
 
 .symptom-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
   margin-top: 34px;
 }
 
 .symptom-options > button {
   width: 100%;
-  min-height: 178px;
+  min-width: 0;
+  min-height: 132px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
@@ -555,10 +644,9 @@ summary:focus-visible,
   border: 1px solid var(--ink);
   border-radius: var(--radius);
   padding: 22px;
-  background: var(--citron);
+  background: var(--white);
   text-align: left;
   cursor: pointer;
-  box-shadow: 0 18px 36px rgba(20, 35, 29, 0.1);
 }
 
 .symptom-options > button > span {
@@ -574,7 +662,8 @@ summary:focus-visible,
 
 .symptom-options strong {
   display: block;
-  font-size: clamp(28px, 3vw, 42px);
+  overflow-wrap: anywhere;
+  font-size: clamp(21px, 2.2vw, 30px);
   line-height: 1;
   letter-spacing: -0.03em;
 }
@@ -585,6 +674,12 @@ summary:focus-visible,
   font-size: 14px;
 }
 
+.symptom-options .symptom-options__coverage {
+  color: var(--tide-dark);
+  font-size: 12px;
+  font-weight: 720;
+}
+
 .symptom-options > button > svg {
   grid-column: 2;
   grid-row: 2 / span 2;
@@ -592,7 +687,7 @@ summary:focus-visible,
 }
 
 .symptom-options > button:hover {
-  background: var(--white);
+  background: var(--citron);
 }
 
 .coverage-note {
@@ -1995,6 +2090,10 @@ summary:focus-visible,
   font-size: 11px;
 }
 
+.live-offers__seller span:first-letter {
+  text-transform: uppercase;
+}
+
 .live-offers__price {
   font-size: 16px;
   font-variant-numeric: tabular-nums;
@@ -2595,11 +2694,31 @@ footer a {
     font-size: 11px;
   }
 
-  .appliance-choice__example {
-    min-height: 44px;
-    padding: 5px 10px;
-    font-size: 11px;
-    line-height: 1.2;
+  .completed-example-hub > summary {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding-inline: 12px;
+  }
+
+  .completed-example-hub > summary small {
+    display: none;
+  }
+
+  .completed-example-hub > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .completed-example-hub > div > button {
+    min-height: 78px;
+    border-bottom: 1px solid var(--line);
+    padding: 10px 12px;
+  }
+
+  .completed-example-hub > div > button:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .completed-example-hub > div > button:nth-last-child(-n + 2) {
+    border-bottom: 0;
   }
 
   .all-appliances > summary {
@@ -2648,7 +2767,12 @@ footer a {
   }
 
   .symptom-options > button {
-    min-height: 160px;
+    min-height: 112px;
+    padding: 16px;
+  }
+
+  .symptom-options {
+    grid-template-columns: 1fr;
   }
 
   .model-finder__heading {

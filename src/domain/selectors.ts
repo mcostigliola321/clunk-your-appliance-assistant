@@ -135,7 +135,7 @@ export function getValidNextActions(state: RepairState): RepairToolName[] {
     return ["get_repair_state", "search_supported_appliances", "select_appliance"];
   if (state.escalation)
     return ["get_repair_state", "search_supported_appliances", "select_appliance"];
-  if (!state.symptomId)
+  if (state.phase === "idle")
     return [
       "get_repair_state",
       "search_supported_appliances",
@@ -159,6 +159,7 @@ export function getRepairSnapshot(state: RepairState): RepairSnapshot {
   return {
     catalogQuery: state.catalogQuery,
     catalogKind: state.catalogKind,
+    catalogSymptomId: state.catalogSymptomId,
     catalogResults: state.catalogResultIds.map((id) => {
       const entry = getCatalogEntry(id);
       return {
@@ -168,10 +169,13 @@ export function getRepairSnapshot(state: RepairState): RepairSnapshot {
         model: entry.model,
         label: entry.label,
         productCodePrompt: entry.productCodePrompt,
-        supportedSymptom: entry.supportedSymptom,
         ...(entry.topology ? { topology: entry.topology } : {}),
         modelSource: entry.modelSource,
-        capability: entry.capability,
+        symptomCoverage: entry.symptomCoverage.map((coverage) => ({
+          symptomId: coverage.symptomId,
+          repairPackId: coverage.repairPackId,
+          capability: coverage.capability,
+        })),
       };
     }),
     appliance: pack ? `${pack.appliance.brand} ${pack.appliance.model}` : null,
@@ -225,7 +229,9 @@ export function getWebMcpTaskSnapshot(state: RepairState) {
     (["purchase-ready", "guided-checks", "verified-part-unavailable"] as const).map(
       (capability) => [
         capability,
-        APPLIANCE_CATALOG.filter((entry) => entry.capability === capability).length,
+        APPLIANCE_CATALOG.flatMap((entry) => entry.symptomCoverage).filter(
+          (coverage) => coverage.capability === capability,
+        ).length,
       ],
     ),
   );
@@ -252,6 +258,19 @@ export function getWebMcpTaskSnapshot(state: RepairState) {
         : undefined,
       query: state.catalogQuery,
       kind: state.catalogKind,
+      symptomId: state.catalogSymptomId,
+      supportedSymptoms: Object.fromEntries(
+        (["washer", "dishwasher", "dryer", "refrigerator"] as const).map((kind) => [
+          kind,
+          [
+            ...new Set(
+              APPLIANCE_CATALOG.filter((entry) => entry.kind === kind).flatMap((entry) =>
+                entry.symptomCoverage.map((coverage) => coverage.symptomId),
+              ),
+            ),
+          ],
+        ]),
+      ),
       resultCount: state.catalogResultIds.length,
       queryStatus: !state.applianceId ? catalogAnalysis.status : undefined,
       guidance: !state.applianceId ? catalogAnalysis.guidance : undefined,
@@ -260,19 +279,26 @@ export function getWebMcpTaskSnapshot(state: RepairState) {
       candidateProductCodes: !state.applianceId ? catalogAnalysis.candidateProductCodes : undefined,
       results:
         !state.applianceId && catalogActive
-          ? snapshot.catalogResults.slice(0, 4).map((item) => ({
-              applianceId: item.id,
-              brand: item.brand,
-              model: item.model,
-              topology: item.topology,
-              supportedSymptom: item.supportedSymptom,
-              capability: item.capability,
-              fullCodeRule: item.productCodePrompt,
-              source: {
-                url: item.modelSource.url,
-                checkedOn: item.modelSource.lastVerified,
-              },
-            }))
+          ? snapshot.catalogResults.slice(0, 4).map((item) => {
+              const selectedCoverage =
+                item.symptomCoverage.find(
+                  (coverage) => coverage.symptomId === state.catalogSymptomId,
+                ) ?? item.symptomCoverage[0];
+              return {
+                applianceId: item.id,
+                brand: item.brand,
+                model: item.model,
+                topology: item.topology,
+                supportedSymptom: selectedCoverage?.symptomId,
+                capability: selectedCoverage?.capability,
+                symptomCoverage: item.symptomCoverage,
+                fullCodeRule: item.productCodePrompt,
+                source: {
+                  url: item.modelSource.url,
+                  checkedOn: item.modelSource.lastVerified,
+                },
+              };
+            })
           : [],
       modelNumberHandoff:
         !state.applianceId && modelGuide
@@ -290,7 +316,12 @@ export function getWebMcpTaskSnapshot(state: RepairState) {
       ? {
           applianceId: state.applianceId,
           appliance: snapshot.appliance,
-          capability: state.applianceId ? getCatalogEntry(state.applianceId).capability : null,
+          capability: state.packId ? getRepairPack(state.packId).appliance.capability : null,
+          supportedSymptoms: getCatalogEntry(state.applianceId).symptomCoverage.map((coverage) => ({
+            symptomId: coverage.symptomId,
+            capability: coverage.capability,
+            repairPackId: coverage.repairPackId,
+          })),
           productCode: snapshot.productCode,
           verification: snapshot.verificationLabel,
           symptomId: state.symptomId,

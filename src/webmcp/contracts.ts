@@ -41,17 +41,27 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
         },
         brand: { type: "string", enum: brands },
         kind: { type: "string", enum: kinds },
+        symptomId: {
+          type: "string",
+          enum: symptomIds,
+          description:
+            "Optional observable problem. When present, return only models with explicit coverage for this problem.",
+        },
       },
       additionalProperties: false,
     },
-    sampleInput: { modelQuery: "GTD42EASJ2WW", kind: "dryer" },
+    sampleInput: {
+      modelQuery: "GTD42EASJ2WW",
+      kind: "dryer",
+      symptomId: "not-heating",
+    },
     mutatesDiagnosis: false,
   },
   {
     name: "select_appliance",
     title: "Select an exact appliance model",
     purpose:
-      "Select an applianceId returned by catalog search. Include productCode only when the human read the complete model value from the label. A partial family can start guided checks but cannot support an exact compatibility claim.",
+      "Select an applianceId returned by catalog search for a supported symptom. Include productCode only when the human read the complete model value from the label. symptomId is optional for older callers and otherwise resolves to the catalog-selected or legacy flagship problem.",
     inputSchema: {
       type: "object",
       properties: {
@@ -61,11 +71,16 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
           maxLength: 64,
           description: "Optional complete product code read by the human from the rating label.",
         },
+        symptomId: { type: "string", enum: symptomIds },
       },
       required: ["applianceId"],
       additionalProperties: false,
     },
-    sampleInput: { applianceId: "ge-gtd42easj2ww", productCode: "GTD42EASJ2WW" },
+    sampleInput: {
+      applianceId: "ge-gtd42easj2ww",
+      symptomId: "not-heating",
+      productCode: "GTD42EASJ2WW",
+    },
     mutatesDiagnosis: true,
   },
   {
@@ -81,7 +96,7 @@ export const REPAIR_TOOL_CONTRACTS: RepairToolContract[] = [
     name: "start_diagnosis",
     title: "Start the selected diagnosis",
     purpose:
-      "Begin the selected model's supported symptom path. This always starts with a deterministic safety boundary.",
+      "Resolve the selected model and observable problem to its exact repair pack, then begin at that pack's safety boundary. Unsupported model/problem combinations are rejected explicitly.",
     inputSchema: {
       type: "object",
       properties: { symptomId: { type: "string", enum: symptomIds } },
