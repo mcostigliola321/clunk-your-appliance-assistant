@@ -1,6 +1,6 @@
 # Clunk model source ledger
 
-This ledger defines the 131-model real-appliance catalog: 48 washers, 25 dishwashers, 25 electric dryers, and 33 refrigerators across 11 brands. It is deliberately conservative: 25 exact-code revisions are **Purchase-ready**, 106 families are **Guided checks only**, and none currently sit in **Verified part unavailable**. A supported model never inherits a neighboring model's part.
+This ledger defines the 139-model real-appliance catalog: 50 washers, 27 dishwashers, 27 electric dryers, and 35 refrigerators across 11 brands. It is deliberately conservative: 25 exact-code revisions are **Purchase-ready**, 114 families are **Guided checks only**, and none currently sit in **Verified part unavailable**. A supported model never inherits a neighboring model's part.
 
 ## Verification vocabulary
 
@@ -218,6 +218,63 @@ The earlier milestone excluded Maytag `MDB4949SKZ` because a removable-filter in
 | Maytag `MFI2570FEZ`                   | https://www.maytag.com/owners-center-pdp.MFI2570FEZ.html                                                | 2026-08-27 |
 | KitchenAid `KRFF577KPS`               | https://www.kitchenaid.com/owners-center-pdp.KRFF577KPS.html                                            | 2026-08-27 |
 | Bosch `B36CL80ENS/01`                 | https://www.bosch-home.com/us/en/productservice/B36CL80ENS-01                                           | 2026-08-27 |
+
+## 2026-08-28 activation batch (8 guided models)
+
+These eight models were promoted from the reconnaissance roster into the active catalog using existing brand/category/topology profiles. Model identity was verified separately from symptom guidance; no row gained an exact-part claim. Seven official model URLs returned HTTP 200 in the activation sweep. Whirlpool's official owner-center URL returned storefront protection (HTTP 403) to the command-line client and remains recorded as protected, not as reachability or compatibility proof.
+
+| Category       | Brand     | Model / evidenced aliases           | Profile                       | Official model/support URL                                                                                                                                                                                            | Retrieved  |
+| -------------- | --------- | ----------------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| Washer         | LG        | `WM4000HBA`<br>`WM4000HBA.ABLEVUS`  | `lg-front-washer`             | https://www.lg.com/us/support/product/lg-WM4000HBA.ABLEVUS?tab=1                                                                                                                                                      | 2026-08-28 |
+| Washer         | GE        | `GTW325ASWWW`<br>family only        | `ge-top-washer`               | https://products.geappliances.com/appliance/gea-specs/GTW325ASWWW/support                                                                                                                                             | 2026-08-28 |
+| Dishwasher     | Bosch     | `SHP78CM5N/34`<br>`SHP78CM5N`       | `bosch-dishwasher`            | https://www.bosch-home.com/us/en/productservice/SHP78CM5N-34                                                                                                                                                          | 2026-08-28 |
+| Dishwasher     | Samsung   | `DW80CG5450SR/AA`<br>`DW80CG5450SR` | `samsung-dishwasher`          | https://www.samsung.com/us/home-appliances/dishwashers/rotary/smart-46-dba-dishwasher-with-stormwash-in-stainless-steel-dw80cg5450sraa/                                                                               | 2026-08-28 |
+| Electric dryer | LG        | `DLE7000W`<br>`DLE7000W.ABWETUS`    | `lg-electric-dryer`           | https://www.lg.com/us/support/product/lg-DLE7000W                                                                                                                                                                     | 2026-08-28 |
+| Electric dryer | GE        | `GTD38EASWWS`<br>family only        | `ge-electric-dryer`           | https://products.geappliances.com/appliance/gea-specs/GTD38EASWWS/support                                                                                                                                             | 2026-08-28 |
+| Refrigerator   | Whirlpool | `WRS321SDHZ08`<br>`WRS321SDHZ`      | `whirlpool-side-refrigerator` | https://www.whirlpool.com/owners-center-pdp.WRS321SDHZ08.html                                                                                                                                                         | 2026-08-28 |
+| Refrigerator   | Samsung   | `RF27CG5100SR/AA`<br>`RF27CG5100SR` | `samsung-french-refrigerator` | https://www.samsung.com/us/business/home-appliances/refrigerators/3-door-french-door/27-cu-ft-mega-capacity-counter-depth-3-door-french-door-refrigerator-with-dual-auto-ice-maker-in-stainless-steel-rf27cg5100sraa/ | 2026-08-28 |
+
+All eight are **Guided checks only**. The four exact public product codes above establish identity and selection, not part compatibility. The two GE family rows still require the rating-label engineering model before any future exact-part claim.
+
+## 2026-08-28 broad activation batch (24 guided models)
+
+This batch adds six models in every supported category. Each row combines an official manufacturer identity page with the already-reviewed troubleshooting profile for the same brand, category, and topology. Identity never supplies symptom coverage: the profile's manufacturer troubleshooting source supplies the checks. None of these rows contains a part number, retailer claim, or Shopify query.
+
+| Category | Brand | Model / evidenced code | Diagnostic profile | Official model-identity source |
+| --- | --- | --- | --- | --- |
+| Washer | LG | `WM6500HBA` / `WM6500HBA.ABLEVUS` | `lg-front-washer` | https://www.lg.com/us/support/product/lg-WM6500HBA.ABLEVUS?tab=1 |
+| Washer | GE | `GTW385ASWWS` (family; engineering code still required for parts) | `ge-top-washer` | https://products.geappliances.com/appliance/gea-specs/GTW385ASWWS/support |
+| Washer | Whirlpool | `WTW6157PW` (family only) | `whirlpool-top-washer` | https://www.whirlpool.com/owners-center-pdp.WTW6157PW.html |
+| Washer | Maytag | `MVW7232HW` (family only) | `maytag-top-washer` | https://www.maytag.com/owners-center-pdp.MVW7232HW.html |
+| Washer | Amana | `NTW4516FW` (family only) | `amana-top-washer` | https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html |
+| Washer | Electrolux | `ELFW7437AW` (family only) | `electrolux-front-washer` | https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW |
+| Dishwasher | GE | `GDP670SGVWW` (family; engineering code still required for parts) | `ge-dishwasher` | https://products.geappliances.com/appliance/gea-specs/GDP670SGVWW/support |
+| Dishwasher | Whirlpool | `WDT540HAMZ` (family only) | `whirlpool-dishwasher` | https://www.whirlpool.com/owners-center-pdp.WDT540HAMZ.html |
+| Dishwasher | Maytag | `MDB8959SKZ` (family only) | `maytag-dishwasher` | https://www.maytag.com/owners-center-pdp.MDB8959SKZ.html |
+| Dishwasher | KitchenAid | `KDTE204KPS` / `KDTE204KPS2` | `kitchenaid-dishwasher` | https://www.kitchenaid.com/owners-center-pdp.KDTE204KPS2.html |
+| Dishwasher | LG | `LDPS6762S` / `LDPS6762S.ASSESNA` | `lg-dishwasher` | https://www.lg.com/us/support/product/lg-LDPS6762S.ASSESNA |
+| Dishwasher | Bosch | `SHX5AEM5N/01` / `SHX5AEM5N` | `bosch-dishwasher` | https://www.bosch-home.com/us/en/productservice/SHX5AEM5N-01 |
+| Electric dryer | LG | `DLEX6500B` / `DLEX6500B.ABLEECI` | `lg-electric-dryer` | https://www.lg.com/us/support/product/lg-DLEX6500B.ABLEECI |
+| Electric dryer | GE | `GTD58EBSVWS` (family; engineering code still required for parts) | `ge-electric-dryer` | https://products.geappliances.com/appliance/gea-specs/GTD58EBSVWS/support |
+| Electric dryer | Whirlpool | `WED6150PB` (family only) | `whirlpool-electric-dryer` | https://www.whirlpool.com/laundry/dryers/electric/p.WED6150PB.html |
+| Electric dryer | Maytag | `MED6500MBK` (family only) | `maytag-electric-dryer` | https://www.maytag.com/owners-center-pdp.MED6500MBK.html |
+| Electric dryer | Electrolux | `ELFE7437AW` (family only) | `electrolux-electric-dryer` | https://www.electrolux.com/en/p/Laundry-Care/Dryers/ELFE7437AW |
+| Electric dryer | Samsung | `DVE54CG7150D/A3` / punctuation-free alias | `samsung-electric-dryer` | https://www.samsung.com/us/home-appliances/dryers/electric/7-4-cu-ft-smart-electric-dryer-with-pet-care-dry-and-steam-sanitize-in-brushed-navy-dve54cg7150da3/ |
+| Refrigerator | LG | `LRMVC2306S` / `LRMVC2306S.ASTCNA0` | `lg-french-refrigerator` | https://www.lg.com/us/support/product/lg-LRMVC2306S.ASTCNA0 |
+| Refrigerator | GE | `GNE29GYNFS` (family; engineering code still required for parts) | `ge-french-refrigerator` | https://products.geappliances.com/appliance/gea-specs/GNE29GYNFS/support |
+| Refrigerator | Whirlpool | `WRF555SDFZ08` / `WRF555SDFZ` | `whirlpool-french-refrigerator` | https://www.whirlpool.com/owners-center-pdp.WRF555SDFZ08.html |
+| Refrigerator | KitchenAid | `KRFF305ESS00` / `KRFF305ESS` | `kitchenaid-french-refrigerator` | https://www.kitchenaid.com/owners-center-pdp.KRFF305ESS00.html |
+| Refrigerator | Bosch | `B36CT81ENS/07` / `B36CT81ENS` | `bosch-french-refrigerator` | https://www.bosch-home.com/us/en/productservice/B36CT81ENS-07 |
+| Refrigerator | Maytag | `MRFF5033PZ` (family only) | `maytag-french-refrigerator` | https://www.maytag.com/owners-center-pdp.MRFF5033PZ.html |
+
+### Cohort boundaries and exceptions
+
+- Front-load washer rows may expose only the external drain-hose check plus a manufacturer-documented, user-accessible pump-filter check when that profile explicitly includes it. Top-load rows use the hose/standpipe path and stop before cabinet access. The new Amana top-load profile is supported by https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Draining_-_Washer and is not borrowed from Whirlpool or Maytag.
+- All six dishwasher rows use the conservative visible under-sink hose, air-gap, and disposer-connection path, then service. Their shared repair behavior does not imply a removable-filter design or pump access.
+- All six electric dryers permit only inspection for trapped fabric, visible strike/latch alignment, and visible damage. They stop before panel removal, energized testing, or latch replacement. Samsung's slash code and LG's dotted suffix remain distinct exact identities.
+- All six refrigerators use their own brand's water-flow/filter guidance. French-door placement and filter mechanism are model-guided; Bosch E-Nr `/07`, Whirlpool revision `08`, KitchenAid revision `00`, and the LG dotted suffix must not be carried to siblings.
+- Family-only rows remain useful for guided checks but are ineligible for an exact part. The complete rating-label code is still required before any later compatibility claim. Exact identity codes in this table also remain guided-only because no complete-code-to-part source was added.
+- Every row is **Guided checks only**. A future purchase-ready promotion requires a separately reviewed complete-code-to-part source and exact SKU presence in Shopify Global Catalog; storefront WebMCP availability does not establish fit.
 
 ## Model-label location evidence
 

@@ -1,17 +1,17 @@
 # Category expansion plan
 
-Clunk now ships a reusable multi-appliance foundation: 131 source-backed U.S. model families across washers, dishwashers, electric dryers, and refrigerators; 11 brands; explicit capability tiers; pack-derived tool enums; per-pack component hotspots, result effects, ranking rules, safety boundaries, sources, and optional static/live commerce handoffs. The eight public WebMCP tools did not change as categories, model discovery, evidence filters, and Shopify UCP offer discovery expanded. This is useful breadth, not exhaustive or universal compatibility.
+Clunk now ships a reusable multi-appliance foundation: 163 source-backed U.S. model families across washers, dishwashers, electric dryers, and refrigerators; 11 brands; explicit capability tiers; pack-derived tool enums; per-pack component hotspots, result effects, ranking rules, safety boundaries, sources, and optional static/live commerce handoffs. The eight public WebMCP tools did not change as categories, model discovery, evidence filters, and Shopify UCP offer discovery expanded. This is useful breadth, not exhaustive or universal compatibility.
 
-Final tier totals are 25 **Purchase-ready**, 106 **Guided checks**, and zero **Verified part unavailable**. The current worktree adds 81 entries through 49 validated family profiles, then upgrades 13 of those entries only at a separately evidenced complete engineering revision. Exact-part data lives on the model row—not the shared profile—so no neighboring revision inherits a part or Shopify query.
+Final tier totals are 25 **Purchase-ready**, 138 **Guided checks**, and zero **Verified part unavailable**. The current worktree adds 113 entries through 50 validated family profiles, with 13 of those entries upgraded only at a separately evidenced complete engineering revision. Exact-part data lives on the model row—not the shared profile—so no neighboring revision inherits a part or Shopify query.
 
 ## Submission slice
 
 | Category       | Purchase-ready exact models | Exact outcomes                                           | Additional breadth                                                            |
 | -------------- | --------------------------: | -------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| Washer         |                           8 | `WH11X39237`, `WH23X28418`, `W11399437`, `DC97-20621A`   | 48 total; nine brands; front- and top-load external paths                     |
-| Dishwasher     |                           4 | `W11412291`, `W10876537`, `W11497943`, `W11462456`       | 25 total; new exact pumps retain the conservative sink-then-service boundary  |
-| Electric dryer |                           7 | `WE01M10007`, `WE01X34600`, `279570`, `W11429587`        | 25 total; visible door-hardware inspection only; Bosch ventless kept distinct |
-| Refrigerator   |                           6 | `XWFE`, `EDR1RXD1`, `EDR4RXD1`, `DA97-17376B`, `LT1000P` | 33 total; model guidance controls location/mechanism assumptions              |
+| Washer         |                           8 | `WH11X39237`, `WH23X28418`, `W11399437`, `DC97-20621A`   | 56 total; nine brands; front- and top-load external paths                     |
+| Dishwasher     |                           4 | `W11412291`, `W10876537`, `W11497943`, `W11462456`       | 33 total; exact pumps retain the conservative sink-then-service boundary      |
+| Electric dryer |                           7 | `WE01M10007`, `WE01X34600`, `279570`, `W11429587`        | 33 total; visible door-hardware inspection only; Bosch ventless kept distinct |
+| Refrigerator   |                           6 | `XWFE`, `EDR1RXD1`, `EDR4RXD1`, `DA97-17376B`, `LT1000P` | 41 total; model guidance controls location/mechanism assumptions              |
 
 “Purchase-ready” means that a complete product code maps to a manufacturer or authorized-parts source and a dated seller or Shopify UCP handoff. It does not mean Clunk confirms the diagnosis, guarantees stock, certifies a merchant claim, or completes payment. “Guided checks only” is visible before model selection and never silently borrows another model's part.
 
@@ -26,10 +26,10 @@ All of these remain static data and deterministic state transitions.
 
 ## Expansion effort observed
 
-- The 81 additions share 49 source-backed profiles. Each model still owns its official URL, aliases, complete-code rule, category, topology, symptom, and retrieval record; the profile only deduplicates conservative repair behavior and source metadata.
+- The 113 additions share 50 source-backed profiles. Each model still owns its official URL, aliases, complete-code rule, category, topology, symptom, and retrieval record; the profile only deduplicates conservative repair behavior and source metadata.
 - All new dishwashers use the sink/air-gap/drain-connection check. The three exact-code upgrades can reveal their verified professional-install pump after that external path is clear; guided entries still stop at service. No removable-filter instruction was generalized across families.
 - Bosch `WTG86403UC/01` retains a distinct compact ventless topology even though its only supported action is the same visible door-hardware check used by vented electric dryers.
-- Thirteen additions became purchase-ready only after an exact complete-code-to-SKU mapping was found on a manufacturer or authorized-parts page. The other 68 additions remain guided-only; ambiguous Samsung/LG pump pages, refrigerator filter pages with multiple candidates, and Bosch revision conflicts were not promoted.
+- Thirteen additions became purchase-ready only after an exact complete-code-to-SKU mapping was found on a manufacturer or authorized-parts page. The other 100 additions remain guided-only; ambiguous Samsung/LG pump pages, refrigerator filter pages with multiple candidates, and Bosch revision conflicts were not promoted.
 - Ten no-store Shopify queries for the upgrade SKUs returned 10–20 available exact-number offers during the 2026-08-27 pass. Clunk rejected 24 available neighboring listings before recording those counts.
 
 The JSON expansion file, documented JSON Schema, runtime validator, explicit capability field, schema-v5 pack generator, catalog validator, and reusable UCP descriptor make the next catalog batch primarily data work after evidence review. Public counts are derived in the app and covered by tests; prose counts still require an intentional review so documentation cannot drift silently.

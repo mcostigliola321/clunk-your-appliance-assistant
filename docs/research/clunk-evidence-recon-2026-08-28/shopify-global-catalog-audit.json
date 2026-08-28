@@ -1,0 +1,533 @@
+{
+  "auditedOn": "2026-08-28",
+  "endpoint": "https://catalog.shopify.com/api/ucp/mcp",
+  "method": "Shopify Global Catalog UCP search_catalog, no-store, US, available=true",
+  "criterion": "Present means at least one returned variant contains the exact normalized SKU. Shopify catalog existence is commerce evidence only and does not establish appliance compatibility.",
+  "persistenceBoundary": "Only aggregate counts and identifiers are retained. Product, seller, price, and checkout response details are not cached.",
+  "platformBoundary": {
+    "webMcp": "Shopify documents WebMCP tools on every Liquid storefront and Hydrogen developer-preview storefront, with current agent support limited to Chromium-based browsers.",
+    "implication": "A catalog-present part can enter the Shopify storefront agentic cart/checkout path; this audit does not require a separate checkout transaction test per SKU.",
+    "sources": [
+      "https://shopify.dev/docs/api/web-mcp",
+      "https://shopify.dev/docs/agents/catalog",
+      "https://shopify.dev/docs/agents"
+    ]
+  },
+  "summary": {
+    "purchaseReadyModelRows": 25,
+    "uniqueExactSkus": 17,
+    "present": 17,
+    "exactAvailable": 17,
+    "notObserved": 0,
+    "requestErrors": 0
+  },
+  "results": [
+    {
+      "sku": "279570",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "Whirlpool 279570 dryer door catch exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 20,
+      "exactAvailableVariantCount": 20,
+      "exactCheckoutUrlCount": 20,
+      "rejectedNeighborVariantCount": 0,
+      "completeCodes": [
+        "WED4950HW0"
+      ],
+      "compatibleModels": [
+        "Whirlpool WED4950HW0"
+      ],
+      "compatibilitySourceIds": [
+        "whirlpool-279570-wed4950hw0"
+      ],
+      "rowIds": [
+        "whirlpool-wed4950hw__door-will-not-close"
+      ],
+      "requestedAt": "2026-08-28T15:38:05.317Z"
+    },
+    {
+      "sku": "DA97-17376B",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "Samsung HAF-QIN DA97-17376B refrigerator water filter exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 19,
+      "exactAvailableVariantCount": 19,
+      "exactCheckoutUrlCount": 19,
+      "rejectedNeighborVariantCount": 1,
+      "completeCodes": [
+        "RF28T5001SR/AA"
+      ],
+      "compatibleModels": [
+        "Samsung RF28T5001SR/AA"
+      ],
+      "compatibilitySourceIds": [
+        "samsung-da97-17376b-rf28t5001sr-aa"
+      ],
+      "rowIds": [
+        "samsung-rf28t5001sr__slow-water-flow"
+      ],
+      "requestedAt": "2026-08-28T15:38:06.220Z"
+    },
+    {
+      "sku": "DC97-20621A",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "Samsung DC97-20621A washer drain pump exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 19,
+      "exactAvailableVariantCount": 18,
+      "exactCheckoutUrlCount": 19,
+      "rejectedNeighborVariantCount": 1,
+      "completeCodes": [
+        "WF45B6300AW/US",
+        "WF45T6000AW/A5"
+      ],
+      "compatibleModels": [
+        "Samsung WF45B6300AW/US",
+        "Samsung WF45T6000AW/A5"
+      ],
+      "compatibilitySourceIds": [
+        "samsung-dc97-20621a"
+      ],
+      "rowIds": [
+        "samsung-wf45b6300aw__will-not-drain",
+        "samsung-wf45t6000aw__will-not-drain"
+      ],
+      "requestedAt": "2026-08-28T15:38:07.194Z"
+    },
+    {
+      "sku": "EDR1RXD1",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "Whirlpool EveryDrop EDR1RXD1 refrigerator water filter exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 10,
+      "exactAvailableVariantCount": 10,
+      "exactCheckoutUrlCount": 10,
+      "rejectedNeighborVariantCount": 10,
+      "completeCodes": [
+        "WRS315SDHZ08",
+        "WRS588FIHZ00"
+      ],
+      "compatibleModels": [
+        "Whirlpool WRS315SDHZ08",
+        "Whirlpool WRS588FIHZ00"
+      ],
+      "compatibilitySourceIds": [
+        "whirlpool-edr1rxd1-wrs315sdhz08",
+        "whirlpoolparts-wrs588fihz00-edr1rxd1"
+      ],
+      "rowIds": [
+        "whirlpool-wrs315sdhz__slow-water-flow",
+        "whirlpool-wrs588fihz__slow-water-flow"
+      ],
+      "requestedAt": "2026-08-28T15:38:08.006Z"
+    },
+    {
+      "sku": "EDR4RXD1",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "EveryDrop EDR4RXD1 refrigerator water filter exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 20,
+      "exactAvailableVariantCount": 20,
+      "exactCheckoutUrlCount": 20,
+      "rejectedNeighborVariantCount": 0,
+      "completeCodes": [
+        "KRFC300ESS08"
+      ],
+      "compatibleModels": [
+        "KitchenAid KRFC300ESS08"
+      ],
+      "compatibilitySourceIds": [
+        "whirlpoolparts-krfc300ess08-edr4rxd1"
+      ],
+      "rowIds": [
+        "kitchenaid-krfc300ess__slow-water-flow"
+      ],
+      "requestedAt": "2026-08-28T15:38:08.821Z"
+    },
+    {
+      "sku": "LT1000P",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "LG LT1000P refrigerator water filter exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 20,
+      "exactAvailableVariantCount": 20,
+      "exactCheckoutUrlCount": 20,
+      "rejectedNeighborVariantCount": 0,
+      "completeCodes": [
+        "LRFLC2706S.ASTCNA0"
+      ],
+      "compatibleModels": [
+        "LG LRFLC2706S.ASTCNA0"
+      ],
+      "compatibilitySourceIds": [
+        "lg-lt1000p-lrflc2706s-astcna0"
+      ],
+      "rowIds": [
+        "lg-lrflc2706s__slow-water-flow"
+      ],
+      "requestedAt": "2026-08-28T15:38:09.646Z"
+    },
+    {
+      "sku": "W10876537",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "Whirlpool W10876537 dishwasher drain pump exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 18,
+      "exactAvailableVariantCount": 18,
+      "exactCheckoutUrlCount": 18,
+      "rejectedNeighborVariantCount": 2,
+      "completeCodes": [
+        "WDT730HAMZ0"
+      ],
+      "compatibleModels": [
+        "Whirlpool WDT730HAMZ0"
+      ],
+      "compatibilitySourceIds": [
+        "whirlpoolparts-wdt730hamz0-w10876537"
+      ],
+      "rowIds": [
+        "whirlpool-wdt730hamz__will-not-drain"
+      ],
+      "requestedAt": "2026-08-28T15:38:10.502Z"
+    },
+    {
+      "sku": "W11399437",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "Whirlpool W11399437 washer drain pump exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 13,
+      "exactAvailableVariantCount": 13,
+      "exactCheckoutUrlCount": 13,
+      "rejectedNeighborVariantCount": 7,
+      "completeCodes": [
+        "WTW5010LW0"
+      ],
+      "compatibleModels": [
+        "Whirlpool WTW5010LW0"
+      ],
+      "compatibilitySourceIds": [
+        "whirlpoolparts-wtw5010lw0-w11399437"
+      ],
+      "rowIds": [
+        "whirlpool-wtw5010lw__will-not-drain"
+      ],
+      "requestedAt": "2026-08-28T15:38:11.390Z"
+    },
+    {
+      "sku": "W11412291",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "Whirlpool W11412291 dishwasher drain pump exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 8,
+      "exactAvailableVariantCount": 8,
+      "exactCheckoutUrlCount": 8,
+      "rejectedNeighborVariantCount": 12,
+      "completeCodes": [
+        "WDT750SAKZ1"
+      ],
+      "compatibleModels": [
+        "Whirlpool WDT750SAKZ1"
+      ],
+      "compatibilitySourceIds": [
+        "whirlpool-w11412291"
+      ],
+      "rowIds": [
+        "whirlpool-wdt750sakz1__will-not-drain"
+      ],
+      "requestedAt": "2026-08-28T15:38:12.205Z"
+    },
+    {
+      "sku": "W11429587",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "Maytag W11429587 dryer door catch exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 7,
+      "exactAvailableVariantCount": 7,
+      "exactCheckoutUrlCount": 7,
+      "rejectedNeighborVariantCount": 13,
+      "completeCodes": [
+        "MED4500MW0",
+        "NED4655EW1",
+        "WED4815EW1",
+        "WED5050LW0"
+      ],
+      "compatibleModels": [
+        "Amana NED4655EW1",
+        "Maytag MED4500MW0",
+        "Whirlpool WED4815EW1",
+        "Whirlpool WED5050LW0"
+      ],
+      "compatibilitySourceIds": [
+        "amana-w11429587-ned4655ew1",
+        "maytag-w11429587-med4500mw0",
+        "whirlpoolparts-wed4815ew1-w11429587",
+        "whirlpoolparts-wed5050lw0-w11429587"
+      ],
+      "rowIds": [
+        "amana-ned4655ew__door-will-not-close",
+        "maytag-med4500mw__door-will-not-close",
+        "whirlpool-wed4815ew__door-will-not-close",
+        "whirlpool-wed5050lw__door-will-not-close"
+      ],
+      "requestedAt": "2026-08-28T15:38:13.066Z"
+    },
+    {
+      "sku": "W11462456",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "KitchenAid W11462456 dishwasher drain pump exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 7,
+      "exactAvailableVariantCount": 7,
+      "exactCheckoutUrlCount": 7,
+      "rejectedNeighborVariantCount": 13,
+      "completeCodes": [
+        "KDFE204KPS0"
+      ],
+      "compatibleModels": [
+        "KitchenAid KDFE204KPS0"
+      ],
+      "compatibilitySourceIds": [
+        "whirlpoolparts-kdfe204kps0-w11462456"
+      ],
+      "rowIds": [
+        "kitchenaid-kdfe204kps__will-not-drain"
+      ],
+      "requestedAt": "2026-08-28T15:38:13.935Z"
+    },
+    {
+      "sku": "W11497943",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "Maytag W11497943 dishwasher drain pump exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 3,
+      "exactAvailableVariantCount": 3,
+      "exactCheckoutUrlCount": 3,
+      "rejectedNeighborVariantCount": 17,
+      "completeCodes": [
+        "MDB4949SKZ1"
+      ],
+      "compatibleModels": [
+        "Maytag MDB4949SKZ1"
+      ],
+      "compatibilitySourceIds": [
+        "whirlpoolparts-mdb4949skz1-w11497943"
+      ],
+      "rowIds": [
+        "maytag-mdb4949skz__will-not-drain"
+      ],
+      "requestedAt": "2026-08-28T15:38:14.775Z"
+    },
+    {
+      "sku": "WE01M10007",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "GE WE01M10007 dryer door strike exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 19,
+      "exactAvailableVariantCount": 18,
+      "exactCheckoutUrlCount": 19,
+      "rejectedNeighborVariantCount": 1,
+      "completeCodes": [
+        "GTD42EASJ2WW"
+      ],
+      "compatibleModels": [
+        "GE GTD42EASJ2WW"
+      ],
+      "compatibilitySourceIds": [
+        "ge-we01m10007"
+      ],
+      "rowIds": [
+        "ge-gtd42easj2ww__door-will-not-close"
+      ],
+      "requestedAt": "2026-08-28T15:38:15.584Z"
+    },
+    {
+      "sku": "WE01X34600",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "GE WE01X34600 dryer door strike exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 9,
+      "exactAvailableVariantCount": 8,
+      "exactCheckoutUrlCount": 9,
+      "rejectedNeighborVariantCount": 11,
+      "completeCodes": [
+        "GFD55ESSN0WW"
+      ],
+      "compatibleModels": [
+        "GE GFD55ESSN0WW"
+      ],
+      "compatibilitySourceIds": [
+        "ge-gfd55essn0ww-we01x34600"
+      ],
+      "rowIds": [
+        "ge-gfd55essnww__door-will-not-close"
+      ],
+      "requestedAt": "2026-08-28T15:38:16.348Z"
+    },
+    {
+      "sku": "WH11X39237",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "GE WH11X39237 washer drain pump exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 16,
+      "exactAvailableVariantCount": 15,
+      "exactCheckoutUrlCount": 16,
+      "rejectedNeighborVariantCount": 4,
+      "completeCodes": [
+        "GFW550SSN0WW",
+        "GFW655SSV0WW",
+        "GFW850SPN0RS"
+      ],
+      "compatibleModels": [
+        "GE GFW550SSN0WW",
+        "GE GFW655SSV0WW",
+        "GE GFW850SPN0RS"
+      ],
+      "compatibilitySourceIds": [
+        "encompass-gfw655ssv0ww-wh11x39237",
+        "ge-gfw850spn0rs-wh11x39237",
+        "ge-wh11x39237-gfw550ssn0ww"
+      ],
+      "rowIds": [
+        "ge-gfw550ssnww__will-not-drain",
+        "ge-gfw655ssvww__will-not-drain",
+        "ge-gfw850spnrs__will-not-drain"
+      ],
+      "requestedAt": "2026-08-28T15:38:17.152Z"
+    },
+    {
+      "sku": "WH23X28418",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "GE WH23X28418 washer drain pump exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 18,
+      "exactAvailableVariantCount": 18,
+      "exactCheckoutUrlCount": 18,
+      "rejectedNeighborVariantCount": 2,
+      "completeCodes": [
+        "GTW335ASN1WW",
+        "HTW265ASW0WW"
+      ],
+      "compatibleModels": [
+        "GE GTW335ASN1WW",
+        "Hotpoint HTW265ASW0WW"
+      ],
+      "compatibilitySourceIds": [
+        "encompass-htw265asw0ww-wh23x28418",
+        "ge-gtw335asn1ww-wh23x28418"
+      ],
+      "rowIds": [
+        "ge-gtw335asnww__will-not-drain",
+        "hotpoint-htw265aswww__will-not-drain"
+      ],
+      "requestedAt": "2026-08-28T15:38:17.948Z"
+    },
+    {
+      "sku": "XWFE",
+      "status": "present",
+      "exactCatalogListingExists": true,
+      "exactAvailableListingExists": true,
+      "exactCheckoutUrlObserved": true,
+      "query": "GE XWFE refrigerator water filter exact part",
+      "httpStatus": 200,
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 18,
+      "exactAvailableVariantCount": 18,
+      "exactCheckoutUrlCount": 18,
+      "rejectedNeighborVariantCount": 2,
+      "completeCodes": [
+        "GSS25GYPFS"
+      ],
+      "compatibleModels": [
+        "GE GSS25GYPFS"
+      ],
+      "compatibilitySourceIds": [
+        "ge-xwfe"
+      ],
+      "rowIds": [
+        "ge-gss25gypfs__slow-water-flow"
+      ],
+      "requestedAt": "2026-08-28T15:38:18.787Z"
+    }
+  ]
+}

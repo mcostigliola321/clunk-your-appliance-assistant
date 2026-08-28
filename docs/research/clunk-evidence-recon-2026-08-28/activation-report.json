@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-08-28",
+  "activation": {
+    "priorCatalogModels": 139,
+    "activatedGuidedModels": 24,
+    "currentCatalogModels": 163,
+    "batchIdsByCategory": {
+      "washer": [
+        "lg-wm6500hba",
+        "ge-gtw385aswws",
+        "whirlpool-wtw6157pw",
+        "maytag-mvw7232hw",
+        "amana-ntw4516fw",
+        "electrolux-elfw7437aw"
+      ],
+      "dishwasher": [
+        "ge-gdp670sgvww",
+        "whirlpool-wdt540hamz",
+        "maytag-mdb8959skz",
+        "kitchenaid-kdte204kps",
+        "lg-ldps6762s",
+        "bosch-shx5aem5n01"
+      ],
+      "dryer": [
+        "lg-dlex6500b",
+        "ge-gtd58ebsvws",
+        "whirlpool-wed6150pb",
+        "maytag-med6500mbk",
+        "electrolux-elfe7437aw",
+        "samsung-dve54cg7150da3"
+      ],
+      "refrigerator": [
+        "lg-lrmvc2306s",
+        "ge-gne29gynfs",
+        "whirlpool-wrf555sdfz08",
+        "kitchenaid-krff305ess00",
+        "bosch-b36ct81ens07",
+        "maytag-mrff5033pz"
+      ]
+    }
+  },
+  "currentCounts": {
+    "byCategory": {
+      "washer": 56,
+      "dishwasher": 33,
+      "dryer": 33,
+      "refrigerator": 41
+    },
+    "byCapabilityTier": {
+      "purchase-ready": 25,
+      "guided-checks": 138,
+      "verified-part-unavailable": 0
+    },
+    "byManufacturer": {
+      "Amana": 8,
+      "Bosch": 13,
+      "Electrolux": 10,
+      "Frigidaire": 10,
+      "GE": 26,
+      "Hotpoint": 6,
+      "KitchenAid": 6,
+      "LG": 27,
+      "Maytag": 16,
+      "Samsung": 21,
+      "Whirlpool": 20
+    }
+  },
+  "evidencePolicy": {
+    "modelIdentityDoesNotImplySymptomCoverage": true,
+    "crossBrandProfileTransferAllowed": false,
+    "newModelsCapability": "guided-checks",
+    "purchaseReadyGate": "A complete appliance code must map to one exact part through manufacturer or authorized-parts evidence, and the exact SKU must separately exist in Shopify Global Catalog.",
+    "shopifyStorefrontWebMcpEstablishesFit": false
+  },
+  "urlReachability": {
+    "http200": 11,
+    "protectedHttp403": 11,
+    "javascriptEndpointTimeout": 2,
+    "reachabilityUsedAsEvidence": false
+  },
+  "unresolvedGaps": [
+    "No second-batch model has complete-code-to-part evidence, so none is purchase-ready.",
+    "Family-only Whirlpool, Maytag, Amana, Electrolux, and GE identities still require a complete rating-label code before any part claim.",
+    "Two Electrolux model pages require JavaScript and timed out in the command-line reachability sweep.",
+    "Eleven Whirlpool Corporation storefront pages block command-line clients with HTTP 403.",
+    "No new Shopify Global Catalog query is warranted until an exact compatible SKU is proven."
+  ],
+  "sourcesOfTruth": {
+    "machineReadableCatalog": "src/data/catalogExpansion.json",
+    "humanReadableEvidenceLedger": "docs/model-source-ledger.md",
+    "urlAudit": "docs/source-url-audit.md",
+    "frozenOriginalReconnaissance": "docs/research/clunk-evidence-recon-2026-08-28/candidate-coverage.json"
+  }
+}

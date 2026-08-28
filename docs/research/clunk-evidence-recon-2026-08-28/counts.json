@@ -1,0 +1,43 @@
+{
+  "rows": 417,
+  "uniqueExistingModels": 131,
+  "recommendedAdditions": 8,
+  "byCategory": {
+    "dishwasher": 81,
+    "dryer": 81,
+    "refrigerator": 105,
+    "washer": 150
+  },
+  "bySymptom": {
+    "door-will-not-close": 139,
+    "slow-water-flow": 139,
+    "will-not-drain": 139
+  },
+  "byManufacturer": {
+    "Amana": 21,
+    "Bosch": 33,
+    "Electrolux": 24,
+    "Frigidaire": 30,
+    "GE": 66,
+    "Hotpoint": 18,
+    "KitchenAid": 12,
+    "LG": 69,
+    "Maytag": 36,
+    "Samsung": 60,
+    "Whirlpool": 48
+  },
+  "byCapabilityTier": {
+    "guided-checks": 205,
+    "purchase-ready": 25,
+    "unsupported": 187
+  },
+  "byCoverageStatus": {
+    "candidate": 99,
+    "implemented": 131,
+    "unsupported": 187
+  },
+  "existingRosterMissingOnly": {
+    "guided-checks": 86,
+    "unsupported": 176
+  }
+}

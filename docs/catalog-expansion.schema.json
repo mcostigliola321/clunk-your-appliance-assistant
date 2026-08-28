@@ -152,6 +152,7 @@
           "type": "array",
           "items": { "type": "string", "minLength": 2 }
         },
+        "retrievedOn": { "type": "string", "format": "date" },
         "officialUrl": { "type": "string", "format": "uri", "pattern": "^https://" },
         "exactPart": { "$ref": "#/$defs/exactPart" }
       }

@@ -162,6 +162,26 @@
         }
       ]
     },
+    "amana-top-washer": {
+      "brand": "Amana",
+      "kind": "washer",
+      "label": "top-load washer",
+      "productCodePrompt": "Enter the complete model and final engineering suffix or digit from the rating label.",
+      "topology": "washer-top-load",
+      "profile": "washer-hose-only",
+      "supportedSymptom": "will-not-drain",
+      "loadStyle": "top-load",
+      "checkProfile": "hose-then-service",
+      "troubleshootingSources": [
+        {
+          "id": "exp-amana-top-washer-drain",
+          "title": "Amana top-load washer not-draining guidance",
+          "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Draining_-_Washer",
+          "publisher": "Amana",
+          "appliesTo": "Amana top-load washers"
+        }
+      ]
+    },
     "samsung-front-washer": {
       "brand": "Samsung",
       "kind": "washer",
@@ -1872,6 +1892,294 @@
       "aliases": ["WTG86403UC", "WTG86403UC/01"],
       "verifiedProductCodes": ["WTG86403UC/01"],
       "officialUrl": "https://www.bosch-home.com/us/en/productservice/WTG86403UC-01"
+    },
+    {
+      "id": "lg-wm4000hba",
+      "profile": "lg-front-washer",
+      "model": "WM4000HBA",
+      "aliases": ["WM4000HBA", "WM4000HBA.ABLEVUS"],
+      "verifiedProductCodes": ["WM4000HBA.ABLEVUS"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.lg.com/us/support/product/lg-WM4000HBA.ABLEVUS?tab=1"
+    },
+    {
+      "id": "ge-gtw325aswww",
+      "profile": "ge-top-washer",
+      "model": "GTW325ASWWW",
+      "aliases": ["GTW325ASWWW"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GTW325ASWWW/support"
+    },
+    {
+      "id": "bosch-shp78cm5n34",
+      "profile": "bosch-dishwasher",
+      "model": "SHP78CM5N/34",
+      "aliases": ["SHP78CM5N", "SHP78CM5N/34"],
+      "verifiedProductCodes": ["SHP78CM5N/34"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.bosch-home.com/us/en/productservice/SHP78CM5N-34"
+    },
+    {
+      "id": "samsung-dw80cg5450sraa",
+      "profile": "samsung-dishwasher",
+      "model": "DW80CG5450SR/AA",
+      "aliases": ["DW80CG5450SR", "DW80CG5450SR/AA"],
+      "verifiedProductCodes": ["DW80CG5450SR/AA"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.samsung.com/us/home-appliances/dishwashers/rotary/smart-46-dba-dishwasher-with-stormwash-in-stainless-steel-dw80cg5450sraa/"
+    },
+    {
+      "id": "lg-dle7000w",
+      "profile": "lg-electric-dryer",
+      "model": "DLE7000W",
+      "aliases": ["DLE7000W", "DLE7000W.ABWETUS"],
+      "verifiedProductCodes": ["DLE7000W.ABWETUS"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.lg.com/us/support/product/lg-DLE7000W"
+    },
+    {
+      "id": "ge-gtd38easwws",
+      "profile": "ge-electric-dryer",
+      "model": "GTD38EASWWS",
+      "aliases": ["GTD38EASWWS"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GTD38EASWWS/support"
+    },
+    {
+      "id": "whirlpool-wrs321sdhz08",
+      "profile": "whirlpool-side-refrigerator",
+      "model": "WRS321SDHZ08",
+      "aliases": ["WRS321SDHZ", "WRS321SDHZ08"],
+      "verifiedProductCodes": ["WRS321SDHZ08"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.whirlpool.com/owners-center-pdp.WRS321SDHZ08.html"
+    },
+    {
+      "id": "samsung-rf27cg5100sraa",
+      "profile": "samsung-french-refrigerator",
+      "model": "RF27CG5100SR/AA",
+      "aliases": ["RF27CG5100SR", "RF27CG5100SR/AA"],
+      "verifiedProductCodes": ["RF27CG5100SR/AA"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.samsung.com/us/business/home-appliances/refrigerators/3-door-french-door/27-cu-ft-mega-capacity-counter-depth-3-door-french-door-refrigerator-with-dual-auto-ice-maker-in-stainless-steel-rf27cg5100sraa/"
+    },
+    {
+      "id": "lg-wm6500hba",
+      "profile": "lg-front-washer",
+      "model": "WM6500HBA",
+      "aliases": ["WM6500HBA", "WM6500HBA.ABLEVUS"],
+      "verifiedProductCodes": ["WM6500HBA.ABLEVUS"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.lg.com/us/support/product/lg-WM6500HBA.ABLEVUS?tab=1"
+    },
+    {
+      "id": "ge-gtw385aswws",
+      "profile": "ge-top-washer",
+      "model": "GTW385ASWWS",
+      "aliases": ["GTW385ASWWS"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GTW385ASWWS/support"
+    },
+    {
+      "id": "whirlpool-wtw6157pw",
+      "profile": "whirlpool-top-washer",
+      "model": "WTW6157PW",
+      "aliases": ["WTW6157PW"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.whirlpool.com/owners-center-pdp.WTW6157PW.html"
+    },
+    {
+      "id": "maytag-mvw7232hw",
+      "profile": "maytag-top-washer",
+      "model": "MVW7232HW",
+      "aliases": ["MVW7232HW"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.maytag.com/owners-center-pdp.MVW7232HW.html"
+    },
+    {
+      "id": "amana-ntw4516fw",
+      "profile": "amana-top-washer",
+      "model": "NTW4516FW",
+      "aliases": ["NTW4516FW"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html"
+    },
+    {
+      "id": "electrolux-elfw7437aw",
+      "profile": "electrolux-front-washer",
+      "model": "ELFW7437AW",
+      "aliases": ["ELFW7437AW"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW"
+    },
+    {
+      "id": "ge-gdp670sgvww",
+      "profile": "ge-dishwasher",
+      "model": "GDP670SGVWW",
+      "aliases": ["GDP670SGVWW"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GDP670SGVWW/support"
+    },
+    {
+      "id": "whirlpool-wdt540hamz",
+      "profile": "whirlpool-dishwasher",
+      "model": "WDT540HAMZ",
+      "aliases": ["WDT540HAMZ"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.whirlpool.com/owners-center-pdp.WDT540HAMZ.html"
+    },
+    {
+      "id": "maytag-mdb8959skz",
+      "profile": "maytag-dishwasher",
+      "model": "MDB8959SKZ",
+      "aliases": ["MDB8959SKZ"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.maytag.com/owners-center-pdp.MDB8959SKZ.html"
+    },
+    {
+      "id": "kitchenaid-kdte204kps",
+      "profile": "kitchenaid-dishwasher",
+      "model": "KDTE204KPS",
+      "aliases": ["KDTE204KPS", "KDTE204KPS2"],
+      "verifiedProductCodes": ["KDTE204KPS2"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.kitchenaid.com/owners-center-pdp.KDTE204KPS2.html"
+    },
+    {
+      "id": "lg-ldps6762s",
+      "profile": "lg-dishwasher",
+      "model": "LDPS6762S",
+      "aliases": ["LDPS6762S", "LDPS6762S.ASSESNA"],
+      "verifiedProductCodes": ["LDPS6762S.ASSESNA"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.lg.com/us/support/product/lg-LDPS6762S.ASSESNA"
+    },
+    {
+      "id": "bosch-shx5aem5n01",
+      "profile": "bosch-dishwasher",
+      "model": "SHX5AEM5N/01",
+      "aliases": ["SHX5AEM5N", "SHX5AEM5N/01"],
+      "verifiedProductCodes": ["SHX5AEM5N/01"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.bosch-home.com/us/en/productservice/SHX5AEM5N-01"
+    },
+    {
+      "id": "lg-dlex6500b",
+      "profile": "lg-electric-dryer",
+      "model": "DLEX6500B",
+      "aliases": ["DLEX6500B", "DLEX6500B.ABLEECI"],
+      "verifiedProductCodes": ["DLEX6500B.ABLEECI"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.lg.com/us/support/product/lg-DLEX6500B.ABLEECI"
+    },
+    {
+      "id": "ge-gtd58ebsvws",
+      "profile": "ge-electric-dryer",
+      "model": "GTD58EBSVWS",
+      "aliases": ["GTD58EBSVWS"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GTD58EBSVWS/support"
+    },
+    {
+      "id": "whirlpool-wed6150pb",
+      "profile": "whirlpool-electric-dryer",
+      "model": "WED6150PB",
+      "aliases": ["WED6150PB"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.whirlpool.com/laundry/dryers/electric/p.WED6150PB.html"
+    },
+    {
+      "id": "maytag-med6500mbk",
+      "profile": "maytag-electric-dryer",
+      "model": "MED6500MBK",
+      "aliases": ["MED6500MBK"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.maytag.com/owners-center-pdp.MED6500MBK.html"
+    },
+    {
+      "id": "electrolux-elfe7437aw",
+      "profile": "electrolux-electric-dryer",
+      "model": "ELFE7437AW",
+      "aliases": ["ELFE7437AW"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.electrolux.com/en/p/Laundry-Care/Dryers/ELFE7437AW"
+    },
+    {
+      "id": "samsung-dve54cg7150da3",
+      "profile": "samsung-electric-dryer",
+      "model": "DVE54CG7150D/A3",
+      "aliases": ["DVE54CG7150D", "DVE54CG7150D/A3", "DVE54CG7150DA3"],
+      "verifiedProductCodes": ["DVE54CG7150D/A3"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.samsung.com/us/home-appliances/dryers/electric/7-4-cu-ft-smart-electric-dryer-with-pet-care-dry-and-steam-sanitize-in-brushed-navy-dve54cg7150da3/"
+    },
+    {
+      "id": "lg-lrmvc2306s",
+      "profile": "lg-french-refrigerator",
+      "model": "LRMVC2306S",
+      "aliases": ["LRMVC2306S", "LRMVC2306S.ASTCNA0"],
+      "verifiedProductCodes": ["LRMVC2306S.ASTCNA0"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.lg.com/us/support/product/lg-LRMVC2306S.ASTCNA0"
+    },
+    {
+      "id": "ge-gne29gynfs",
+      "profile": "ge-french-refrigerator",
+      "model": "GNE29GYNFS",
+      "aliases": ["GNE29GYNFS"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://products.geappliances.com/appliance/gea-specs/GNE29GYNFS/support"
+    },
+    {
+      "id": "whirlpool-wrf555sdfz08",
+      "profile": "whirlpool-french-refrigerator",
+      "model": "WRF555SDFZ08",
+      "aliases": ["WRF555SDFZ", "WRF555SDFZ08"],
+      "verifiedProductCodes": ["WRF555SDFZ08"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.whirlpool.com/owners-center-pdp.WRF555SDFZ08.html"
+    },
+    {
+      "id": "kitchenaid-krff305ess00",
+      "profile": "kitchenaid-french-refrigerator",
+      "model": "KRFF305ESS00",
+      "aliases": ["KRFF305ESS", "KRFF305ESS00"],
+      "verifiedProductCodes": ["KRFF305ESS00"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.kitchenaid.com/owners-center-pdp.KRFF305ESS00.html"
+    },
+    {
+      "id": "bosch-b36ct81ens07",
+      "profile": "bosch-french-refrigerator",
+      "model": "B36CT81ENS/07",
+      "aliases": ["B36CT81ENS", "B36CT81ENS/07"],
+      "verifiedProductCodes": ["B36CT81ENS/07"],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.bosch-home.com/us/en/productservice/B36CT81ENS-07"
+    },
+    {
+      "id": "maytag-mrff5033pz",
+      "profile": "maytag-french-refrigerator",
+      "model": "MRFF5033PZ",
+      "aliases": ["MRFF5033PZ"],
+      "verifiedProductCodes": [],
+      "retrievedOn": "2026-08-28",
+      "officialUrl": "https://www.maytag.com/owners-center-pdp.MRFF5033PZ.html"
     }
   ]
 }

@@ -12,8 +12,8 @@ import {
 } from "./catalogExpansion";
 
 describe("source-backed catalog expansion", () => {
-  it("adds 81 source-backed families with 13 exact-revision purchase paths", () => {
-    expect(CATALOG_EXPANSION_MODEL_COUNT).toBe(81);
+  it("adds 113 source-backed families with 13 exact-revision purchase paths", () => {
+    expect(CATALOG_EXPANSION_MODEL_COUNT).toBe(113);
     expect(CATALOG_EXPANSION_RETRIEVED_ON).toBe("2026-08-27");
     expect(
       Object.fromEntries(
@@ -22,13 +22,19 @@ describe("source-backed catalog expansion", () => {
           CATALOG_EXPANSION.filter((entry) => entry.kind === kind).length,
         ]),
       ),
-    ).toEqual({ washer: 25, dishwasher: 16, dryer: 16, refrigerator: 24 });
+    ).toEqual({ washer: 33, dishwasher: 24, dryer: 24, refrigerator: 32 });
 
     expect(CATALOG_EXPANSION.filter((entry) => entry.capability === "purchase-ready")).toHaveLength(
       13,
     );
     expect(CATALOG_EXPANSION.filter((entry) => entry.capability === "guided-checks")).toHaveLength(
-      68,
+      100,
+    );
+
+    const activatedIds = new Set(
+      expansionData.models
+        .filter((model) => model.retrievedOn === "2026-08-28")
+        .map((model) => model.id),
     );
 
     for (const entry of CATALOG_EXPANSION) {
@@ -37,7 +43,9 @@ describe("source-backed catalog expansion", () => {
       expect(entry.productCodePrompt.length).toBeGreaterThan(20);
       expect(entry.modelSource.kind).toBe("manufacturer-model");
       expect(entry.modelSource.url).toMatch(/^https:\/\//);
-      expect(entry.modelSource.lastVerified).toBe("2026-08-27");
+      expect(entry.modelSource.lastVerified).toBe(
+        activatedIds.has(entry.id) ? "2026-08-28" : "2026-08-27",
+      );
       expect(entry.troubleshootingSources.length).toBeGreaterThan(0);
       expect(
         entry.troubleshootingSources.every((source) => source.lastVerified === "2026-08-27"),
@@ -58,6 +66,16 @@ describe("source-backed catalog expansion", () => {
         expect(entry.capability).toBe("guided-checks");
       }
     }
+
+    expect(
+      Object.fromEntries(
+        (["washer", "dishwasher", "dryer", "refrigerator"] as const).map((kind) => [
+          kind,
+          CATALOG_EXPANSION.filter((entry) => activatedIds.has(entry.id) && entry.kind === kind)
+            .length,
+        ]),
+      ),
+    ).toEqual({ washer: 8, dishwasher: 8, dryer: 8, refrigerator: 8 });
   });
 
   it("keeps complete revision codes isolated and all new dishwashers on the conservative path", () => {

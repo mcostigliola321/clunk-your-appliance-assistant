@@ -197,3 +197,22 @@
 - Added schema/runtime failures for multi-revision expansion parts, source/code mismatch, zero-offer tier inflation, and inexact Shopify queries. Added exact upgrade fixtures plus a `KDFE204KPS1` negative case proving `KDFE204KPS0` evidence does not carry over.
 - Re-audited the 13 compatibility URLs. The reviewed browser pages remained available, while command-line GETs returned storefront protection (HTTP 403); no protected status was treated as compatibility evidence.
 - This remains an unpublished, reviewable worktree. No deploy, push, rebase, amend, squash, force-push, or universal-compatibility claim was made.
+
+## 2026-08-28 — Evidence-recon activation batch
+
+- Activated eight guided-only models from the evidence reconnaissance: LG `WM4000HBA.ABLEVUS`, GE `GTW325ASWWW`, Bosch `SHP78CM5N/34`, Samsung `DW80CG5450SR/AA`, LG `DLE7000W.ABWETUS`, GE `GTD38EASWWS`, Whirlpool `WRS321SDHZ08`, and Samsung `RF27CG5100SR/AA`.
+- Raised the active catalog to 139 models: 50 washers, 27 dishwashers, 27 electric dryers, and 35 refrigerators. Capability totals are 25 purchase-ready and 114 guided-only.
+- Reused only the matching brand/category/topology troubleshooting profile. Each model retains its own official identity URL, aliases, complete-code rule, and model-level retrieval date.
+- Added optional per-model retrieval dates so the new August 28 identity checks do not falsely re-date the August 27 shared troubleshooting and exact-part evidence.
+- Seven activation URLs returned HTTP 200; Whirlpool's protected owner-center page returned HTTP 403 to the command-line client and remains documented as an access limitation.
+- No new exact part or purchase-ready claim was introduced. The 17 existing exact SKUs were separately rechecked against Shopify Global Catalog and all 17 remained present with available exact-SKU listings.
+
+## 2026-08-28 — Broad 24-model activation batch
+
+- Activated another 24 guided-only U.S. models, six per category, across LG, GE, Whirlpool, Maytag, Amana, Electrolux, KitchenAid, Bosch, and Samsung.
+- Raised the active catalog to 163 models: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators. Capability totals remain 25 purchase-ready and now 138 guided-only.
+- Added one missing Amana top-load washer profile using Amana's own top-load not-draining guidance. No troubleshooting evidence was transferred between corporate sibling brands.
+- Preserved model-family and revision constraints: LG dotted suffixes, Samsung slash codes, Bosch E-Nr revisions, Whirlpool/KitchenAid engineering digits, and family-only identities remain distinct.
+- The reachability sweep returned 11 HTTP 200 responses, 11 protected HTTP 403 responses, and two Electrolux JavaScript timeouts. Browser/search review established identity; reachability status alone was never accepted as evidence.
+- Added no part or Shopify query. Shopify Global Catalog remains relevant only after the diagnosis reaches a separately proven exact SKU; storefront WebMCP availability does not establish appliance-part fit.
+- Updated catalog invariants, WebMCP counts, UI count fixtures, the source ledger, URL audit, expansion plan, and the frozen 131-model reconnaissance generator. The worktree remains unpushed.

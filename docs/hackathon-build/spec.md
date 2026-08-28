@@ -119,7 +119,7 @@ Every call uses source `example`, reaches the same engine, and is logged. The UI
 
 ## Test strategy
 
-- Catalog/repair-pack invariant tests across all 131 entries and three capability labels, plus expansion-schema, official-host, alias/full-code, category/symptom, tier-inflation, exact-source/code, and sibling-revision carryover checks.
+- Catalog/repair-pack invariant tests across all 163 entries and three capability labels, plus expansion-schema, official-host, alias/full-code, category/symptom, tier-inflation, exact-source/code, and sibling-revision carryover checks.
 - Shopify UCP extraction tests for punctuation-insensitive exact SKU, nearby-SKU rejection, availability, request shape, and WebMCP handoff equivalence.
 - Exact example replay for all four flagships.
 - No-part, guided-only, complete-code, unsupported-model, invalid-order, and hazard tests.

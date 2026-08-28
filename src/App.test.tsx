@@ -85,7 +85,7 @@ describe("Clunk visual field guide", () => {
   it("leads with visual appliance actions and a secondary completed path", () => {
     renderClunk();
     expect(screen.getByRole("heading", { name: "What are you fixing?" })).toBeVisible();
-    expect(screen.getByText("131 supported models")).toBeVisible();
+    expect(screen.getByText("163 supported models")).toBeVisible();
     for (const label of [
       /Choose Washer — Won't drain/,
       /Choose Dishwasher — Won't drain/,
@@ -117,7 +117,7 @@ describe("Clunk visual field guide", () => {
     renderClunk();
     await reachModelSearch(user, /Choose Electric dryer/, /Supported now Door won't close/);
     await user.click(screen.getByText("Browse by brand"));
-    await user.click(screen.getByRole("button", { name: "Checks only 18" }));
+    await user.click(screen.getByRole("button", { name: "Checks only 26" }));
     await user.click(screen.getByText("Bosch"));
     expect(screen.getByRole("button", { name: /WTG86403UC\/01 Guided checks only/ })).toBeVisible();
     await user.click(screen.getByRole("button", { name: "Purchase-ready 7" }));

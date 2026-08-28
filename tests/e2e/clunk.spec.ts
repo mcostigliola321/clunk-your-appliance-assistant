@@ -154,10 +154,10 @@ test("moves from visual appliance to supported problem before model identificati
   await expect(page.getByRole("heading", { name: "What is it doing?" })).toBeVisible();
 });
 
-test("browses the 131-model catalog by brand and honest coverage tier", async ({ page }) => {
+test("browses the 163-model catalog by brand and honest coverage tier", async ({ page }) => {
   await reachModelSearch(page, /Choose Electric dryer/, /Supported now Door won't close/);
   await page.getByText("Browse by brand").click();
-  await page.getByRole("button", { name: "Checks only 18" }).click();
+  await page.getByRole("button", { name: "Checks only 26" }).click();
   await page.getByText("Bosch").click();
   await expect(
     page.getByRole("button", { name: /WTG86403UC\/01 Guided checks only/ }),

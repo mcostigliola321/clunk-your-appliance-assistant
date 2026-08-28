@@ -69,22 +69,22 @@ function runExample(applianceId: string) {
 }
 
 describe("source-backed multi-appliance repair engine", () => {
-  it("validates 131 repair packs, explicit tiers, and four categories", () => {
+  it("validates 163 repair packs, explicit tiers, and four categories", () => {
     expect(assertCatalog(APPLIANCE_CATALOG)).toBe(APPLIANCE_CATALOG);
-    expect(APPLIANCE_CATALOG).toHaveLength(131);
-    expect(REPAIR_PACKS.size).toBe(131);
+    expect(APPLIANCE_CATALOG).toHaveLength(163);
+    expect(REPAIR_PACKS.size).toBe(163);
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.kind))).toEqual(
       new Set(["washer", "dishwasher", "dryer", "refrigerator"]),
     );
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "washer")).toHaveLength(48);
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dishwasher")).toHaveLength(25);
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dryer")).toHaveLength(25);
-    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "refrigerator")).toHaveLength(33);
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "washer")).toHaveLength(56);
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dishwasher")).toHaveLength(33);
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "dryer")).toHaveLength(33);
+    expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "refrigerator")).toHaveLength(41);
     expect(APPLIANCE_CATALOG.filter((entry) => entry.capability === "purchase-ready")).toHaveLength(
       25,
     );
     expect(APPLIANCE_CATALOG.filter((entry) => entry.capability === "guided-checks")).toHaveLength(
-      106,
+      138,
     );
     expect(
       APPLIANCE_CATALOG.filter((entry) => entry.capability === "verified-part-unavailable"),
@@ -104,10 +104,10 @@ describe("source-backed multi-appliance repair engine", () => {
         ]),
       ),
     ).toEqual({
-      washer: { purchaseReady: 8, guided: 40 },
-      dishwasher: { purchaseReady: 4, guided: 21 },
-      dryer: { purchaseReady: 7, guided: 18 },
-      refrigerator: { purchaseReady: 6, guided: 27 },
+      washer: { purchaseReady: 8, guided: 48 },
+      dishwasher: { purchaseReady: 4, guided: 29 },
+      dryer: { purchaseReady: 7, guided: 26 },
+      refrigerator: { purchaseReady: 6, guided: 35 },
     });
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.brand)).size).toBe(11);
     expect([...REPAIR_PACKS.values()].every((pack) => pack.schemaVersion === 5)).toBe(true);
@@ -232,14 +232,14 @@ describe("source-backed multi-appliance repair engine", () => {
       kind: "washer",
     }).state;
     const output = getWebMcpTaskSnapshot(state);
-    expect(output.catalog.resultCount).toBe(48);
+    expect(output.catalog.resultCount).toBe(56);
     expect(output.catalog.results).toHaveLength(4);
     expect(JSON.stringify(output).length).toBeLessThan(3000);
     expect(output.catalog.counts).toEqual({
-      byKind: { washer: 48, dishwasher: 25, dryer: 25, refrigerator: 33 },
+      byKind: { washer: 56, dishwasher: 33, dryer: 33, refrigerator: 41 },
       byCapability: {
         "purchase-ready": 25,
-        "guided-checks": 106,
+        "guided-checks": 138,
         "verified-part-unavailable": 0,
       },
     });

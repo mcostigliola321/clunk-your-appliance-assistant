@@ -1,0 +1,2998 @@
+{
+  "auditedOn": "2026-08-28",
+  "invariantErrors": [],
+  "sourceCounts": {
+    "registryEntries": 289,
+    "uniqueUrls": 251,
+    "duplicateUrlGroups": 29
+  },
+  "reachability": {
+    "reachable2xx": 178,
+    "non2xx": 55,
+    "networkOrTimeout": 18
+  },
+  "caveat": "HTTP reachability is not evidence of claim applicability. Applicability is separately encoded in each source and row.",
+  "duplicateApplicabilityAudit": [
+    {
+      "url": "https://www.bosch-home.com/us/owner-support/dishwashers/troubleshooting",
+      "sourceIds": [
+        "bosch-dishwasher-door",
+        "bosch-shp78cm5n34-current-1",
+        "exp-bosch-dishwasher-drain"
+      ],
+      "publishers": [
+        "Bosch"
+      ],
+      "applicabilityStatements": [
+        "Bosch dishwashers; AutoAir and error-code branches are model-specific",
+        "Bosch dishwasher cohort; model/revision limits in source",
+        "Bosch built-in dishwashers"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/lg-washing-machine-water-not-draining--20154726902590",
+      "sourceIds": [
+        "lg-wm4000hba-current-1",
+        "lg-no-drain",
+        "exp-lg-front-washer-drain"
+      ],
+      "publishers": [
+        "LG"
+      ],
+      "applicabilityStatements": [
+        "LG washer cohort; model/revision limits in source",
+        "LG front-load washers"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=23080",
+      "sourceIds": [
+        "ge-gtw325aswww-current-1",
+        "exp-ge-top-washer-drain",
+        "exp-hotpoint-top-washer-drain"
+      ],
+      "publishers": [
+        "GE",
+        "GE Appliances"
+      ],
+      "applicabilityStatements": [
+        "GE washer cohort; model/revision limits in source",
+        "GE top-load washers",
+        "Hotpoint top-load washers"
+      ],
+      "audit": "manual review required: URL is assigned to multiple publishers"
+    },
+    {
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10004498/",
+      "sourceIds": [
+        "samsung-dw80cg5450sr-aa-current-1",
+        "samsung-dishwasher-support",
+        "exp-samsung-dishwasher-drain"
+      ],
+      "publishers": [
+        "Samsung"
+      ],
+      "applicabilityStatements": [
+        "Samsung dishwasher cohort; model/revision limits in source",
+        "Samsung dishwashers",
+        "Samsung built-in dishwashers"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17381",
+      "sourceIds": [
+        "ge-gtd38easwws-current-1",
+        "exp-ge-dryer-start",
+        "exp-hotpoint-dryer-start"
+      ],
+      "publishers": [
+        "GE",
+        "GE Appliances"
+      ],
+      "applicabilityStatements": [
+        "GE dryer cohort; model/revision limits in source",
+        "GE electric dryers",
+        "Hotpoint electric dryers"
+      ],
+      "audit": "manual review required: URL is assigned to multiple publishers"
+    },
+    {
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10003791/",
+      "sourceIds": [
+        "samsung-rf27cg5100sr-aa-current-1",
+        "samsung-refrigerator-support",
+        "exp-samsung-refrigerator-water",
+        "exp-samsung-french-refrigerator-water"
+      ],
+      "publishers": [
+        "Samsung"
+      ],
+      "applicabilityStatements": [
+        "Samsung refrigerator cohort; model/revision limits in source",
+        "Samsung refrigerators",
+        "Samsung refrigerators with a water dispenser",
+        "Samsung French-door refrigerators with a water dispenser"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/lg-washer-how-to-clean-the-drain-pump-filter--20150206838321",
+      "sourceIds": [
+        "lg-filter",
+        "exp-lg-front-washer-filter"
+      ],
+      "publishers": [
+        "LG"
+      ],
+      "applicabilityStatements": [
+        "LG front-load washers with user-accessible filters",
+        "LG front-load washers with the documented filter door"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10007110/",
+      "sourceIds": [
+        "samsung-no-drain",
+        "exp-samsung-washer-drain",
+        "exp-samsung-top-washer-drain"
+      ],
+      "publishers": [
+        "Samsung"
+      ],
+      "applicabilityStatements": [
+        "Samsung front- and top-load washers",
+        "Samsung washers",
+        "Samsung top-load washers"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://www.samsung.com/us/support/answer/ANS10003197/",
+      "sourceIds": [
+        "samsung-filter",
+        "exp-samsung-washer-filter"
+      ],
+      "publishers": [
+        "Samsung"
+      ],
+      "applicabilityStatements": [
+        "Samsung front-load washers with user-accessible filters",
+        "Samsung front-load washers with the documented access door"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=23081",
+      "sourceIds": [
+        "ge-guidance",
+        "exp-ge-front-washer-drain"
+      ],
+      "publishers": [
+        "GE Appliances"
+      ],
+      "applicabilityStatements": [
+        "GE front-load washers"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Laundry/Washers/Front_Load_Washers/Cycle_Concerns/Not_Draining/Not_Draining_-_Front_Load_Washer",
+      "sourceIds": [
+        "whirlpool-no-drain",
+        "exp-whirlpool-front-washer-drain"
+      ],
+      "publishers": [
+        "Whirlpool"
+      ],
+      "applicabilityStatements": [
+        "Whirlpool front-load washers"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Cycle_Concerns/Not_Draining/Not_Draining_-_Front_Load_Washer",
+      "sourceIds": [
+        "maytag-no-drain",
+        "exp-maytag-front-washer-drain"
+      ],
+      "publishers": [
+        "Maytag"
+      ],
+      "applicabilityStatements": [
+        "Maytag front-load washers"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://owner.electrolux.com/support-articles/article/1820072-laundry-front-loading-washer-displaying-error-code-e21-long-pump-out-time-",
+      "sourceIds": [
+        "electrolux-e21",
+        "exp-electrolux-front-washer-drain"
+      ],
+      "publishers": [
+        "Electrolux"
+      ],
+      "applicabilityStatements": [
+        "Electrolux front-load washers"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/lg-top-load-washer-troubleshooting-an-oe-error-code-CT00000305-1425330996723",
+      "sourceIds": [
+        "lg-top-load-no-drain",
+        "exp-lg-top-washer-drain"
+      ],
+      "publishers": [
+        "LG"
+      ],
+      "applicabilityStatements": [
+        "LG top-load washers"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Product_Info/Washer_Product_Assistance/Washer_Not_Draining_or_Spinning%3F_Troubleshooting_Guide",
+      "sourceIds": [
+        "maytag-top-load-no-drain",
+        "exp-maytag-top-washer-drain"
+      ],
+      "publishers": [
+        "Maytag"
+      ],
+      "applicabilityStatements": [
+        "Maytag top-load washers"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Operation/Not_Draining%2F%2FWater_Remains",
+      "sourceIds": [
+        "kitchenaid-dishwasher-support",
+        "exp-kitchenaid-dishwasher-drain"
+      ],
+      "publishers": [
+        "KitchenAid"
+      ],
+      "applicabilityStatements": [
+        "KitchenAid dishwashers",
+        "KitchenAid built-in dishwashers"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-DLE3400W.ABWETUS",
+      "sourceIds": [
+        "lg-dle3400w-model",
+        "lg-dryer-support"
+      ],
+      "publishers": [
+        "LG"
+      ],
+      "applicabilityStatements": [
+        "DLE3400W",
+        "LG DLE3400W"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/gss25gypfs/parts",
+      "sourceIds": [
+        "ge-gss25gypfs-model",
+        "ge-xwfe"
+      ],
+      "publishers": [
+        "GE",
+        "GE Appliances"
+      ],
+      "applicabilityStatements": [
+        "GSS25GYPFS",
+        "GE GSS25GYPFS"
+      ],
+      "audit": "manual review required: URL is assigned to multiple publishers"
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17409",
+      "sourceIds": [
+        "ge-refrigerator-water",
+        "exp-ge-refrigerator-water",
+        "exp-ge-side-refrigerator-water"
+      ],
+      "publishers": [
+        "GE Appliances"
+      ],
+      "applicabilityStatements": [
+        "GE refrigerators with XWFE filters",
+        "GE refrigerators with a water dispenser",
+        "GE side-by-side refrigerators with a water dispenser"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-LDFN4542S.ASSESNA",
+      "sourceIds": [
+        "lg-ldfn4542s-model",
+        "lg-dishwasher-support"
+      ],
+      "publishers": [
+        "LG"
+      ],
+      "applicabilityStatements": [
+        "LDFN4542S",
+        "LG LDFN4542S"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FFRE4120SW",
+      "sourceIds": [
+        "frigidaire-ffre4120sw-model",
+        "frigidaire-dryer-support"
+      ],
+      "publishers": [
+        "Frigidaire"
+      ],
+      "applicabilityStatements": [
+        "FFRE4120SW",
+        "Frigidaire electric dryers"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://www.kitchenaid.com/owners-center-pdp.KRFF577KPS.html",
+      "sourceIds": [
+        "kitchenaid-krff577kps-model",
+        "kitchenaid-refrigerator-support"
+      ],
+      "publishers": [
+        "KitchenAid"
+      ],
+      "applicabilityStatements": [
+        "KRFF577KPS",
+        "KitchenAid refrigerators"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://www.bosch-home.com/us/en/productservice/B36CL80ENS-01",
+      "sourceIds": [
+        "bosch-b36cl80ens01-model",
+        "bosch-refrigerator-support"
+      ],
+      "publishers": [
+        "Bosch"
+      ],
+      "applicabilityStatements": [
+        "B36CL80ENS/01",
+        "Bosch refrigerators"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Refrigeration/Water_Filter_Information/Product_Assistance/Does_the_Water_Filter_Need_to_be_Replaced%253F",
+      "sourceIds": [
+        "exp-whirlpool-refrigerator-water",
+        "exp-whirlpool-french-refrigerator-water"
+      ],
+      "publishers": [
+        "Whirlpool"
+      ],
+      "applicabilityStatements": [
+        "Whirlpool refrigerators with a water filter",
+        "Whirlpool French-door refrigerators with a water filter"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://producthelp.maytag.com/Refrigeration/Water_Filter_Information/Product_Assistance/Does_the_Water_Filter_Need_to_be_Replaced%3F",
+      "sourceIds": [
+        "exp-maytag-refrigerator-water",
+        "exp-maytag-french-refrigerator-water"
+      ],
+      "publishers": [
+        "Maytag"
+      ],
+      "applicabilityStatements": [
+        "Maytag refrigerators with a water filter",
+        "Maytag French-door refrigerators with a water filter"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/lg-refrigerator-water-dispensing-slowly-CT10000021-1337887886789",
+      "sourceIds": [
+        "exp-lg-refrigerator-water",
+        "exp-lg-side-refrigerator-water"
+      ],
+      "publishers": [
+        "LG"
+      ],
+      "applicabilityStatements": [
+        "LG refrigerators with a water dispenser",
+        "LG side-by-side refrigerators with a water dispenser"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://owner.frigidaire.com/support-articles/article/1853039-what-should-i-do-if-the-dispenser-on-my-refrigerator-is-not-dispensing-water-",
+      "sourceIds": [
+        "exp-frigidaire-refrigerator-water",
+        "exp-frigidaire-side-refrigerator-water"
+      ],
+      "publishers": [
+        "Frigidaire"
+      ],
+      "applicabilityStatements": [
+        "Frigidaire refrigerators with a water dispenser",
+        "Frigidaire side-by-side refrigerators with a water dispenser"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=16240",
+      "sourceIds": [
+        "exp-ge-dishwasher-drain",
+        "exp-hotpoint-dishwasher-drain"
+      ],
+      "publishers": [
+        "GE Appliances"
+      ],
+      "applicabilityStatements": [
+        "GE built-in dishwashers",
+        "Hotpoint built-in dishwashers"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    },
+    {
+      "url": "https://www.bosch-home.com/us/en/productservice/WTG86403UC-01",
+      "sourceIds": [
+        "bosch-wtg86403uc01-model",
+        "exp-bosch-compact-dryer-support"
+      ],
+      "publishers": [
+        "Bosch"
+      ],
+      "applicabilityStatements": [
+        "WTG86403UC/01",
+        "Bosch WTG86403UC/01 visible door checks"
+      ],
+      "audit": "same-publisher reuse; row-level brand/category/topology constraints still apply"
+    }
+  ],
+  "urlResults": [
+    {
+      "url": "https://encompass.com/item/11667691/Samsung/DC97-20621A/",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://encompass.com/item/11667691/Samsung/DC97-20621A/",
+      "contentType": "text/html; charset=UTF-8",
+      "sourceIds": [
+        "samsung-dc97-20621a"
+      ]
+    },
+    {
+      "url": "https://image-us.samsung.com/SamsungUS/home/home-appliances/refrigerators/3-door-french-door/pdp/rf28t5001/RF28T5001SR.pdf",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://image-us.samsung.com/SamsungUS/home/home-appliances/refrigerators/3-door-french-door/pdp/rf28t5001/RF28T5001SR.pdf",
+      "contentType": "application/pdf",
+      "sourceIds": [
+        "samsung-da97-17376b-rf28t5001sr-aa"
+      ]
+    },
+    {
+      "url": "https://owner.electrolux.com/support-articles/article/1820071-laundry-dryer-error-code-guide",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/1820071-laundry-dryer-error-code-guide",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "electrolux-dryer-support"
+      ]
+    },
+    {
+      "url": "https://owner.electrolux.com/support-articles/article/1820072-laundry-front-loading-washer-displaying-error-code-e21-long-pump-out-time-",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/1820072-laundry-front-loading-washer-displaying-error-code-e21-long-pump-out-time-",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "electrolux-e21",
+        "exp-electrolux-front-washer-drain"
+      ]
+    },
+    {
+      "url": "https://owner.electrolux.com/support-articles/article/1820509-laundry-front-loading-washer-displaying-error-code-e41-door-is-open-",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/1820509-laundry-front-loading-washer-displaying-error-code-e41-door-is-open-",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "electrolux-front-washer-door"
+      ]
+    },
+    {
+      "url": "https://owner.electrolux.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-electrolux-dryer-start"
+      ]
+    },
+    {
+      "url": "https://owner.electrolux.com/support-articles/article/1853039-what-should-i-do-if-the-dispenser-on-my-refrigerator-is-not-dispensing-water-",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/1853039-what-should-i-do-if-the-dispenser-on-my-refrigerator-is-not-dispensing-water-",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-electrolux-refrigerator-water"
+      ]
+    },
+    {
+      "url": "https://owner.electrolux.com/support-articles/article/1853203-what-to-do-if-your-electrolux-dishwasher-is-not-draining",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/1853203-what-to-do-if-your-electrolux-dishwasher-is-not-draining",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-electrolux-dishwasher-drain"
+      ]
+    },
+    {
+      "url": "https://owner.electrolux.com/support-articles/article/refrigerators-door-issues",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/refrigerators-door-issues",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "electrolux-refrigerator-door"
+      ]
+    },
+    {
+      "url": "https://owner.frigidaire.com/support-articles/article/1829617-dishwasher-glass-trap-and-filter-guide",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.frigidaire.com/support-articles/article/1829617-dishwasher-glass-trap-and-filter-guide",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "frigidaire-dishwasher-support"
+      ]
+    },
+    {
+      "url": "https://owner.frigidaire.com/support-articles/article/1830354-dishwasher-error-code-cl-or-cd-door-is-open",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.frigidaire.com/support-articles/article/1830354-dishwasher-error-code-cl-or-cd-door-is-open",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "frigidaire-dishwasher-door"
+      ]
+    },
+    {
+      "url": "https://owner.frigidaire.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.frigidaire.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-frigidaire-dryer-start"
+      ]
+    },
+    {
+      "url": "https://owner.frigidaire.com/support-articles/article/1853039-what-should-i-do-if-the-dispenser-on-my-refrigerator-is-not-dispensing-water-",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.frigidaire.com/support-articles/article/1853039-what-should-i-do-if-the-dispenser-on-my-refrigerator-is-not-dispensing-water-",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-frigidaire-refrigerator-water",
+        "exp-frigidaire-side-refrigerator-water"
+      ]
+    },
+    {
+      "url": "https://owner.frigidaire.com/support-articles/article/1853127-what-to-do-if-your-washer-is-not-draining",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.frigidaire.com/support-articles/article/1853127-what-to-do-if-your-washer-is-not-draining",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "frigidaire-washer-support"
+      ]
+    },
+    {
+      "url": "https://owner.frigidaire.com/support-articles/article/dishwashers-not-draining",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.frigidaire.com/support-articles/article/dishwashers-not-draining",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-frigidaire-dishwasher-drain"
+      ]
+    },
+    {
+      "url": "https://owner.frigidaire.com/support-articles/article/refrigerators-door-issues",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.frigidaire.com/support-articles/article/refrigerators-door-issues",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "frigidaire-refrigerator-door"
+      ]
+    },
+    {
+      "url": "https://owner.frigidaire.com/support-articles/kitchen/refrigerators",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://owner.frigidaire.com/support-articles/kitchen/refrigerators",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "frigidaire-refrigerator-support"
+      ]
+    },
+    {
+      "url": "https://partstore.encompass.com/model/HOTGFW655SSV0WW",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://partstore.encompass.com/model/HOTGFW655SSV0WW",
+      "contentType": "text/html; charset=UTF-8",
+      "sourceIds": [
+        "encompass-gfw655ssv0ww-wh11x39237"
+      ]
+    },
+    {
+      "url": "https://partstore.encompass.com/model/HOTHTW265ASW0WW",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://partstore.encompass.com/model/HOTHTW265ASW0WW",
+      "contentType": "text/html; charset=UTF-8",
+      "sourceIds": [
+        "encompass-htw265asw0ww-wh23x28418"
+      ]
+    },
+    {
+      "url": "https://producthelp.amana.com/Laundry/Dryers",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.amana.com/Laundry/Dryers",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "amana-dryer-support"
+      ]
+    },
+    {
+      "url": "https://producthelp.amana.com/Laundry/Dryers/Product_Info/Dryer_Product_Assistance/Dryer_Not_Starting_or_No_Operation",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.amana.com/Laundry/Dryers/Product_Info/Dryer_Product_Assistance/Dryer_Not_Starting_or_No_Operation",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-amana-dryer-start"
+      ]
+    },
+    {
+      "url": "https://producthelp.amana.com/Laundry/Washers",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.amana.com/Laundry/Washers",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "amana-washer-support"
+      ]
+    },
+    {
+      "url": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Cycle_Concerns/Not_Draining/Not_Draining_-_Front_Load_Washer",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Cycle_Concerns/Not_Draining/Not_Draining_-_Front_Load_Washer",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-amana-front-washer-drain"
+      ]
+    },
+    {
+      "url": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Door_Issues/Door_Will_Not_Lock_-_Front_Load_Washer",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Door_Issues/Door_Will_Not_Lock_-_Front_Load_Washer",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "amana-front-washer-door"
+      ]
+    },
+    {
+      "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "amana-top-washer-lid"
+      ]
+    },
+    {
+      "url": "https://producthelp.amana.com/Refrigeration",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.amana.com/Refrigeration",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "amana-refrigerator-support"
+      ]
+    },
+    {
+      "url": "https://producthelp.amana.com/Refrigeration/Full-Size_Refrigerators/French_Door_Bottom_Freezer_Refrigerator/Door_Concerns/Not_Closing/Door_Not_Closing_-_Refrigerator",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.amana.com/Refrigeration/Full-Size_Refrigerators/French_Door_Bottom_Freezer_Refrigerator/Door_Concerns/Not_Closing/Door_Not_Closing_-_Refrigerator",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "amana-refrigerator-door"
+      ]
+    },
+    {
+      "url": "https://producthelp.amana.com/Refrigeration/Water_Filter/Installation_Support/When_to_Change_the_Water_Filter",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.amana.com/Refrigeration/Water_Filter/Installation_Support/When_to_Change_the_Water_Filter",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-amana-refrigerator-water"
+      ]
+    },
+    {
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "kitchenaid-dishwasher-door"
+      ]
+    },
+    {
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Operation/Not_Draining%2F%2FWater_Remains",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Operation/Not_Draining%2F%2FWater_Remains",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "kitchenaid-dishwasher-support",
+        "exp-kitchenaid-dishwasher-drain"
+      ]
+    },
+    {
+      "url": "https://producthelp.kitchenaid.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Installation_Support/Doors_Not_Closing_Properly",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.kitchenaid.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Installation_Support/Doors_Not_Closing_Properly",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "kitchenaid-refrigerator-door"
+      ]
+    },
+    {
+      "url": "https://producthelp.kitchenaid.com/Refrigeration/Water_Filter_Information/Product_Assistance/Does_the_Water_Filter_Need_to_be_Replaced%253F",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.kitchenaid.com/Refrigeration/Water_Filter_Information/Product_Assistance/Does_the_Water_Filter_Need_to_be_Replaced%253F",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-kitchenaid-refrigerator-water"
+      ]
+    },
+    {
+      "url": "https://producthelp.maytag.com/Dishwashers/Product_Info/Dishwasher_Product_Assistance/Dishwasher_Not_Draining",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.maytag.com/Dishwashers/Product_Info/Dishwasher_Product_Assistance/Dishwasher_Not_Draining",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-maytag-dishwasher-drain"
+      ]
+    },
+    {
+      "url": "https://producthelp.maytag.com/Laundry/Dryers/Electric_Dryers",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://producthelp.maytag.com/Laundry/Dryers/Electric_Dryers",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "maytag-dryer-support"
+      ]
+    },
+    {
+      "url": "https://producthelp.maytag.com/Laundry/Dryers/Product_Info/Dryer_Product_Assistance/Dryer_Not_Starting_or_No_Operation",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.maytag.com/Laundry/Dryers/Product_Info/Dryer_Product_Assistance/Dryer_Not_Starting_or_No_Operation",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-maytag-dryer-start"
+      ]
+    },
+    {
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Cycle_Concerns/Not_Draining/Not_Draining_-_Front_Load_Washer",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Cycle_Concerns/Not_Draining/Not_Draining_-_Front_Load_Washer",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "maytag-no-drain",
+        "exp-maytag-front-washer-drain"
+      ]
+    },
+    {
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Door_Issues/Door_Will_Not_Lock_or_Unlock_-_Front_Load_Washer",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Door_Issues/Door_Will_Not_Lock_or_Unlock_-_Front_Load_Washer",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "maytag-front-washer-door"
+      ]
+    },
+    {
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Product_Info/Washer_Cleaning_and_Care/Cleaning_the_Pump_Filter_-_Front_Load_Washer",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.maytag.com/Laundry/Washers/Product_Info/Washer_Cleaning_and_Care/Cleaning_the_Pump_Filter_-_Front_Load_Washer",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "maytag-filter"
+      ]
+    },
+    {
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Product_Info/Washer_Product_Assistance/Washer_Not_Draining_or_Spinning%3F_Troubleshooting_Guide",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.maytag.com/Laundry/Washers/Product_Info/Washer_Product_Assistance/Washer_Not_Draining_or_Spinning%3F_Troubleshooting_Guide",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "maytag-top-load-no-drain",
+        "exp-maytag-top-washer-drain"
+      ]
+    },
+    {
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Error_Codes_or_Flashing_Lights/Other_Error_Codes/LdL_-_Error_Code",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Error_Codes_or_Flashing_Lights/Other_Error_Codes/LdL_-_Error_Code",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "maytag-top-washer-lid"
+      ]
+    },
+    {
+      "url": "https://producthelp.maytag.com/Refrigeration/Full-size_Refrigerators/Product_Info/Installation_Support/Doors_Not_Closing_Properly",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.maytag.com/Refrigeration/Full-size_Refrigerators/Product_Info/Installation_Support/Doors_Not_Closing_Properly",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "maytag-refrigerator-door"
+      ]
+    },
+    {
+      "url": "https://producthelp.maytag.com/Refrigeration/Water_Filter_Information/Product_Assistance/Does_the_Water_Filter_Need_to_be_Replaced%3F",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.maytag.com/Refrigeration/Water_Filter_Information/Product_Assistance/Does_the_Water_Filter_Need_to_be_Replaced%3F",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-maytag-refrigerator-water",
+        "exp-maytag-french-refrigerator-water"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/%40api/deki/pages/11745/pdf/Not%2BDispensing%2BIce%2Bor%2BWater%2B-%2BRefrigerator.pdf",
+      "ok": false,
+      "status": 502,
+      "finalUrl": "https://producthelp.whirlpool.com/%40api/deki/pages/11745/pdf/Not%2BDispensing%2BIce%2Bor%2BWater%2B-%2BRefrigerator.pdf",
+      "contentType": "text/html; charset=iso-8859-1",
+      "sourceIds": [
+        "whirlpool-wrs321sdhz08-current-1"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.whirlpool.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpool-dishwasher-door"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Dishwashers/Dishwasher/Operation/Not_Draining%2F%2FWater_Remains",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.whirlpool.com/Dishwashers/Dishwasher/Operation/Not_Draining%2F%2FWater_Remains",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-whirlpool-dishwasher-drain"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Dishwashers/Dishwasher/Operation/Not_Draining%2F%2FWater_Remains/Water_Remains_at_End_of_Cycle_-_Dishwasher",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://producthelp.whirlpool.com/Dishwashers/Dishwasher/Operation/Not_Draining%2F%2FWater_Remains/Water_Remains_at_End_of_Cycle_-_Dishwasher",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpool-dishwasher-drain"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Laundry/Dryers/Electric_Dryer",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://producthelp.whirlpool.com/Laundry/Dryers/Electric_Dryer",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpool-dryer-support"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Laundry/Dryers/Product_Info/Dryer_Product_Assistance/Dryer_Not_Starting_or_No_Operation",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.whirlpool.com/Laundry/Dryers/Product_Info/Dryer_Product_Assistance/Dryer_Not_Starting_or_No_Operation",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-whirlpool-dryer-start"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Laundry/Washers/Front_Load_Washers/Cycle_Concerns/Not_Draining/Not_Draining_-_Front_Load_Washer",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.whirlpool.com/Laundry/Washers/Front_Load_Washers/Cycle_Concerns/Not_Draining/Not_Draining_-_Front_Load_Washer",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpool-no-drain",
+        "exp-whirlpool-front-washer-drain"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Laundry/Washers/Product_Info/Washer_Cleaning_and_Care/Cleaning_the_Pump_Filter_-_Front_Load_Washer",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.whirlpool.com/Laundry/Washers/Product_Info/Washer_Cleaning_and_Care/Cleaning_the_Pump_Filter_-_Front_Load_Washer",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpool-filter"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Laundry/Washers/Product_Info/Washer_Product_Assistance/Latching_a_Front_Load_Washer_Door",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.whirlpool.com/Laundry/Washers/Product_Info/Washer_Product_Assistance/Latching_a_Front_Load_Washer_Door",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpool-front-washer-door"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Draining_-_Washer",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.whirlpool.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Draining_-_Washer",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-whirlpool-top-washer-drain"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.whirlpool.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpool-top-washer-lid"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Installation_Support/Doors_Not_Closing_Properly",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.whirlpool.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Installation_Support/Doors_Not_Closing_Properly",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpool-refrigerator-door"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Water_Filter_Information",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://producthelp.whirlpool.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Water_Filter_Information",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpool-refrigerator-support"
+      ]
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Refrigeration/Water_Filter_Information/Product_Assistance/Does_the_Water_Filter_Need_to_be_Replaced%253F",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://producthelp.whirlpool.com/Refrigeration/Water_Filter_Information/Product_Assistance/Does_the_Water_Filter_Need_to_be_Replaced%253F",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "exp-whirlpool-refrigerator-water",
+        "exp-whirlpool-french-refrigerator-water"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GDF670SYVFS/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GDF670SYVFS/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gdf670syvfs-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GDT225SSLSS/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GDT225SSLSS/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gdt225sslss-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GDT550PYRFS/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GDT550PYRFS/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gdt550pyrfs-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GFD55ESSNWW/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GFD55ESSNWW/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gfd55essnww-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GFE28GYNFS/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GFE28GYNFS/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gfe28gynfs-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GFW650SSNWW/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GFW650SSNWW/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gfw650ssnww-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GFW655SSVWW/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GFW655SSVWW/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gfw655ssvww-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GFW850SPNRS/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GFW850SPNRS/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gfw850spnrs-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GNE27JYMFS/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GNE27JYMFS/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gne27jymfs-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GSS23GYPFS/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GSS23GYPFS/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gss23gypfs-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/gss25gypfs/parts",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/gss25gypfs/parts",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gss25gypfs-model",
+        "ge-xwfe"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GTD38EASWWS/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GTD38EASWWS/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gtd38easwws-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GTD42EASJWW/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GTD42EASJWW/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gtd42easj2ww-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GTW325ASWWW/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GTW325ASWWW/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gtw325aswww-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GTW335ASNWW/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GTW335ASNWW/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gtw335asnww-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GTW465ASNWW/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GTW465ASNWW/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gtw465asnww-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GTW485ASWWB/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GTW485ASWWB/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gtw485aswwb-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GTW585BSVWS/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GTW585BSVWS/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gtw585bsvws-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/GTX33EASKWW/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/GTX33EASKWW/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gtx33easkww-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/HDF310PGRWW/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/HDF310PGRWW/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "hotpoint-hdf310pgrww-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/HTW2065SBWW/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/HTW2065SBWW/support",
+      "contentType": "text/html;charset=ISO-8859-1",
+      "sourceIds": [
+        "hotpoint-htw2065sbww-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/HTW240ASKWS/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/HTW240ASKWS/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "hotpoint-htw240askws-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/HTW265ASWWW/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/HTW265ASWWW/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "hotpoint-htw265aswww-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/HTX24EASKWS/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/HTX24EASKWS/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "hotpoint-htx24easkws-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/PTD70EBSTWS/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/PTD70EBSTWS/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-ptd70ebstws-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/PVD28BYNFS/support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/PVD28BYNFS/support",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-pvd28bynfs-model"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=16240",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=16240",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "exp-ge-dishwasher-drain",
+        "exp-hotpoint-dishwasher-drain"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=16635",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.geappliances.com/ge/service-and-support/support-content.htm",
+      "contentType": "text/html; charset=UTF-8",
+      "sourceIds": [
+        "ge-dryer-door"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17381",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17381",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gtd38easwws-current-1",
+        "exp-ge-dryer-start",
+        "exp-hotpoint-dryer-start"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17409",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17409",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-refrigerator-water",
+        "exp-ge-refrigerator-water",
+        "exp-ge-side-refrigerator-water"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17527",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17527",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-dishwasher-door"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=18947",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=18947",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-refrigerator-door"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=23080",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=23080",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gtw325aswww-current-1",
+        "exp-ge-top-washer-drain",
+        "exp-hotpoint-top-washer-drain"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=23081",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=23081",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-guidance",
+        "exp-ge-front-washer-drain"
+      ]
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/hotpoint-specs/HTX26EASWWW",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://products.geappliances.com/appliance/hotpoint-specs/HTX26EASWWW",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "hotpoint-htx26easwww-model"
+      ]
+    },
+    {
+      "url": "https://www.amana.com/content/dam/global/documents/201305/owners-manual-W10596250-RevA.pdf",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.amana.com/content/dam/global/documents/201305/owners-manual-W10596250-RevA.pdf",
+      "contentType": "application/pdf",
+      "sourceIds": [
+        "amana-dishwasher-filter"
+      ]
+    },
+    {
+      "url": "https://www.amana.com/kitchen/dishwashers/p.dishwasher-with-triple-filter-wash-system.ADB1400AGW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.amana.com/kitchen/dishwashers/p.dishwasher-with-triple-filter-wash-system.ADB1400AGW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "amana-adb1400agw-model"
+      ]
+    },
+    {
+      "url": "https://www.amana.com/laundry/dryers/dryer-comparison-chart.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.amana.com/laundry/dryers/dryer-comparison-chart.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "amana-ned5800hw-model"
+      ]
+    },
+    {
+      "url": "https://www.amana.com/laundry/dryers/top-load/p.6.5-cu.-ft.-electric-dryer-with-wrinkle-prevent-option.ned4655ew.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.amana.com/laundry/dryers/top-load/p.6.5-cu.-ft.-electric-dryer-with-wrinkle-prevent-option.ned4655ew.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "amana-ned4655ew-model"
+      ]
+    },
+    {
+      "url": "https://www.amana.com/laundry/washers/top-load/p.4.3-cu.-ft.-front-load-washer-with-large-capacity.nfw5800hw.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.amana.com/laundry/washers/top-load/p.4.3-cu.-ft.-front-load-washer-with-large-capacity.nfw5800hw.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "amana-nfw5800hw-model"
+      ]
+    },
+    {
+      "url": "https://www.amana.com/laundry/washers/top-load/p.large-capacity-top-load-washer-with-high-efficiency-agitator.ntw4519jw.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.amana.com/laundry/washers/top-load/p.large-capacity-top-load-washer-with-high-efficiency-agitator.ntw4519jw.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "amana-ntw4519jw-model"
+      ]
+    },
+    {
+      "url": "https://www.amana.com/refrigerators/side-by-side/p.33-inch-side-by-side-refrigerator-with-dual-pad-external-ice-and-water-dispenser.asi2175grs.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.amana.com/refrigerators/side-by-side/p.33-inch-side-by-side-refrigerator-with-dual-pad-external-ice-and-water-dispenser.asi2175grs.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "amana-asi2175grs-model"
+      ]
+    },
+    {
+      "url": "https://www.amana.com/refrigerators/side-by-side/p.36-inch-side-by-side-refrigerator-with-dual-pad-external-ice-and-water-dispenser.asi2575grs.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.amana.com/refrigerators/side-by-side/p.36-inch-side-by-side-refrigerator-with-dual-pad-external-ice-and-water-dispenser.asi2575grs.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "amana-asi2575grs-model"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/en/productservice/B36CD50SNS-01",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/en/productservice/B36CD50SNS-01",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "bosch-b36cd50sns01-model"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/en/productservice/B36CL80ENS-01",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/en/productservice/B36CL80ENS-01",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "bosch-b36cl80ens01-model",
+        "bosch-refrigerator-support"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/en/productservice/B36CT80SNS-01",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/en/productservice/B36CT80SNS-01",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "bosch-b36ct80sns01-model"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/en/productservice/B36FD50SNS-01",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/en/productservice/B36FD50SNS-01",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "bosch-b36fd50sns01-model"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/en/productservice/SHE53B75UC-75",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/en/productservice/SHE53B75UC-75",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "bosch-she53b75uc75-model"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/en/productservice/SHEM63W55N-01",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/en/productservice/SHEM63W55N-01",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "bosch-shem63w55n01-model"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/en/productservice/SHP65CM5N-24",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/en/productservice/SHP65CM5N-24",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "bosch-shp65cm5n24-model"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/en/productservice/SHP78CM5N-34",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/en/productservice/SHP78CM5N-34",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "bosch-shp78cm5n34-model"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/en/productservice/SHPM65Z55N-20",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/en/productservice/SHPM65Z55N-20",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "bosch-shpm65z55n20-model"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/en/productservice/SHX78CM5N-01",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/en/productservice/SHX78CM5N-01",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "bosch-shx78cm5n01-model"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/en/productservice/WTG86403UC-01",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/en/productservice/WTG86403UC-01",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "bosch-wtg86403uc01-model",
+        "exp-bosch-compact-dryer-support"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/experience-bosch/heart-of-the-home/tips-and-tricks/refrigeration-tips/replace-water-filter",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/experience-bosch/heart-of-the-home/tips-and-tricks/refrigeration-tips/replace-water-filter",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "exp-bosch-refrigerator-water"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/owner-support/dishwashers/troubleshooting",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/owner-support/dishwashers/troubleshooting",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "bosch-dishwasher-door",
+        "bosch-shp78cm5n34-current-1",
+        "exp-bosch-dishwasher-drain"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/owner-support/get-support/self-help-fridge-does-not-shut",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bosch-home.com/us/owner-support/get-support/self-help-fridge-does-not-shut",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "bosch-refrigerator-door"
+      ]
+    },
+    {
+      "url": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dishwasher-not-draining",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dishwasher-not-draining",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "bosch-dishwasher-drain"
+      ]
+    },
+    {
+      "url": "https://www.electrolux.com/en/p/dishwasher/EDSH4944AS",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "electrolux-edsh4944as-model"
+      ]
+    },
+    {
+      "url": "https://www.electrolux.com/en/p/kitchen/refrigerators/french-door-refrigerators/ERMC2295AS",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "electrolux-ermc2295as-model"
+      ]
+    },
+    {
+      "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7337AW",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "electrolux-elfw7337aw-model"
+      ]
+    },
+    {
+      "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7537AT",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "electrolux-elfw7537at-model"
+      ]
+    },
+    {
+      "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7637AT",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "electrolux-elfw7637at-model"
+      ]
+    },
+    {
+      "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7738AA",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "electrolux-elfw7738aa-model"
+      ]
+    },
+    {
+      "url": "https://www.electrolux.com/en/p/washers-dryers/dryer/ELFE7337AW",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "electrolux-elfe7337aw-model"
+      ]
+    },
+    {
+      "url": "https://www.electrolux.com/en/p/washers-dryers/dryer/ELFE7637AT",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "electrolux-elfe7637at-model"
+      ]
+    },
+    {
+      "url": "https://www.frigidaire.com/en/p/Laundry-Care/Dryers/FLVE7000AW",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "frigidaire-flve7000aw-model"
+      ]
+    },
+    {
+      "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FDPC4314AS",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "frigidaire-fdpc4314as-model"
+      ]
+    },
+    {
+      "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FDPH4316AS",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "frigidaire-fdph4316as-model"
+      ]
+    },
+    {
+      "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FFFW5000QW",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "frigidaire-fffw5000qw-model"
+      ]
+    },
+    {
+      "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FFRE4120SW",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "frigidaire-ffre4120sw-model",
+        "frigidaire-dryer-support"
+      ]
+    },
+    {
+      "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FFTW4120SW",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "frigidaire-fftw4120sw-model"
+      ]
+    },
+    {
+      "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FRFS2823AS",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "frigidaire-frfs2823as-model"
+      ]
+    },
+    {
+      "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FRSS2623AS",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "frigidaire-frss2623as-model"
+      ]
+    },
+    {
+      "url": "https://www.frigidaire.com/en/p/owner-center/product-support/GRFS2853AF",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "frigidaire-grfs2853af-model"
+      ]
+    },
+    {
+      "url": "https://www.frigidaire.com/en/p/owner-center/product-support/GRSS2652AF",
+      "ok": false,
+      "status": null,
+      "error": "The operation was aborted.",
+      "sourceIds": [
+        "frigidaire-grss2652af-model"
+      ]
+    },
+    {
+      "url": "https://www.geapplianceparts.com/store/parts/assembly/GFW550SSN0WW",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.geapplianceparts.com/store/parts/assembly/GFW550SSN0WW",
+      "contentType": "text/html; charset=UTF-8",
+      "sourceIds": [
+        "ge-gfw550ssnww-model"
+      ]
+    },
+    {
+      "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GFD55ESSN0WW/2/0/0/0/FRONT_PANEL",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GFD55ESSN0WW/2/0/0/0/FRONT_PANEL",
+      "contentType": "text/html; charset=UTF-8",
+      "sourceIds": [
+        "ge-gfd55essn0ww-we01x34600"
+      ]
+    },
+    {
+      "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GFW550SSN0WW/4/0/0/0/CABINET_%281%29",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GFW550SSN0WW/4/0/0/0/CABINET_%281%29",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-wh11x39237-gfw550ssn0ww"
+      ]
+    },
+    {
+      "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GFW850SPN0RS/4/0/0/0/CABINET_%281%29",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GFW850SPN0RS/4/0/0/0/CABINET_%281%29",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gfw850spn0rs-wh11x39237"
+      ]
+    },
+    {
+      "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTD42EASJ2WW/2/0/0/0/FRONT_PANEL_%26_DOOR",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTD42EASJ2WW/2/0/0/0/FRONT_PANEL_%26_DOOR",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-we01m10007"
+      ]
+    },
+    {
+      "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTW335ASN1WW/3/0/0/0/TUB_%26_MOTOR",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTW335ASN1WW/3/0/0/0/TUB_%26_MOTOR",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "ge-gtw335asn1ww-wh23x28418"
+      ]
+    },
+    {
+      "url": "https://www.geappliances.com/ge/service-and-support/dishwashers.htm",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.geappliances.com/ge/service-and-support/dishwashers.htm",
+      "contentType": "text/html; charset=UTF-8",
+      "sourceIds": [
+        "ge-dishwasher-support"
+      ]
+    },
+    {
+      "url": "https://www.geappliances.com/ge/service-and-support/faq-washer.htm",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.geappliances.com/ge/service-and-support/faq-washer.htm",
+      "contentType": "text/html; charset=UTF-8",
+      "sourceIds": [
+        "ge-top-load-no-drain"
+      ]
+    },
+    {
+      "url": "https://www.kitchenaid.com/major-appliances/dishwashers/front-controls/p.third-level-utensil-rack-dishwasher-with-30%2B-total-wash-jets%2C-39-dba-.kdfe204kps.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.kitchenaid.com/major-appliances/dishwashers/front-controls/p.third-level-utensil-rack-dishwasher-with-30%2B-total-wash-jets%2C-39-dba-.kdfe204kps.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "kitchenaid-kdfe204kps-model"
+      ]
+    },
+    {
+      "url": "https://www.kitchenaid.com/major-appliances/dishwashers/integrated-control/p.44-dba-dishwasher-in-printshield-finish-with-freeflex-third-rack.kdtm404kps.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.kitchenaid.com/major-appliances/dishwashers/integrated-control/p.44-dba-dishwasher-in-printshield-finish-with-freeflex-third-rack.kdtm404kps.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "kitchenaid-kdtm404kps-model"
+      ]
+    },
+    {
+      "url": "https://www.kitchenaid.com/owners-center-pdp.KRFC300ESS08.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.kitchenaid.com/owners-center-pdp.KRFC300ESS08.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "kitchenaid-krfc300ess-model"
+      ]
+    },
+    {
+      "url": "https://www.kitchenaid.com/owners-center-pdp.KRFF577KPS.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.kitchenaid.com/owners-center-pdp.KRFF577KPS.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "kitchenaid-krff577kps-model",
+        "kitchenaid-refrigerator-support"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/business/download/resources/CT00021979/LRFLC2706S_LG_Pro_Builder_Spec_Sheet%5B20240531_231311%5D.pdf",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/business/download/resources/CT00021979/LRFLC2706S_LG_Pro_Builder_Spec_Sheet%5B20240531_231311%5D.pdf",
+      "contentType": "application/pdf",
+      "sourceIds": [
+        "lg-lt1000p-lrflc2706s-astcna0"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/refrigerators/lg-lrflc2706s-french-3-door-refrigerator",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/refrigerators/lg-lrflc2706s-french-3-door-refrigerator",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-lrflc2706s-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/front-load-washer-what-are-de-de1-and-de2-error-codes--1400508168566",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/help-library/front-load-washer-what-are-de-de1-and-de2-error-codes--1400508168566",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "lg-front-washer-door"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/how-to-fix-an-lg-dishwasher-that-is-not-draining--20155352254013",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/help-library/how-to-fix-an-lg-dishwasher-that-is-not-draining--20155352254013",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "exp-lg-dishwasher-drain"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/lg-dryer-error-code-list--20152310891742",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/help-library/lg-dryer-error-code-list--20152310891742",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "exp-lg-dryer-door"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/lg-dryer-error-code-list--20154710772482",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/help-library/lg-dryer-error-code-list--20154710772482",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "lg-dle7000w-current-1"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/lg-refrigerator-how-to-replace-the-water-filter--20153120724998",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/help-library",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-refrigerator-support"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/lg-refrigerator-how-to-troubleshoot-a-refrigerator-door-not-closing-properly-CT10000021-20153109606488",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/help-library/lg-refrigerator-how-to-troubleshoot-a-refrigerator-door-not-closing-properly-CT10000021-20153109606488",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "lg-refrigerator-door"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/lg-refrigerator-water-dispensing-slowly-CT10000021-1337887886789",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/help-library/lg-refrigerator-water-dispensing-slowly-CT10000021-1337887886789",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "exp-lg-refrigerator-water",
+        "exp-lg-side-refrigerator-water"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/lg-top-load-washer-troubleshooting-an-oe-error-code-CT00000305-1425330996723",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/help-library/lg-top-load-washer-troubleshooting-an-oe-error-code-CT00000305-1425330996723",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "lg-top-load-no-drain",
+        "exp-lg-top-washer-drain"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/lg-washer-how-to-clean-the-drain-pump-filter--20150206838321",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/help-library/lg-washer-how-to-clean-the-drain-pump-filter--20150206838321",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "lg-filter",
+        "exp-lg-front-washer-filter"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/lg-washing-machine-water-not-draining--20154726902590",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/help-library/lg-washing-machine-water-not-draining--20154726902590",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "lg-wm4000hba-current-1",
+        "lg-no-drain",
+        "exp-lg-front-washer-drain"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/help-library/troubleshooting-an-lg-top-load-washer-door-that-will-not-close-properly-CT10000010-20152830489687",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/help-library/troubleshooting-an-lg-top-load-washer-door-that-will-not-close-properly-CT10000010-20152830489687",
+      "contentType": "text/html;charset=UTF-8",
+      "sourceIds": [
+        "lg-top-washer-lid"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-DLE3400W.ABWETUS",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-DLE3400W.ABWETUS",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-dle3400w-model",
+        "lg-dryer-support"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-DLE6100W.ABWETUS",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-DLE6100W.ABWETUS",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-dle6100w-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-DLE7000W",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-DLE7000W",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-dle7000w-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-DLEX4000W.ABWEUUS",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-DLEX4000W.ABWEUUS",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-dlex4000w-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-LDFN3432T",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-LDFN3432T",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-ldfn3432t-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-LDFN4542S.ASSESNA",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-LDFN4542S.ASSESNA",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-ldfn4542s-model",
+        "lg-dishwasher-support"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-LDTH7972S.ASSESNA?tab=1",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-LDTH7972S.ASSESNA?tab=1",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-ldth7972s-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-LFXS26973S.ASTCNA2",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-LFXS26973S.ASTCNA2",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-lfxs26973s-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-LMXS28626S.ASTCNA1",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-LMXS28626S.ASTCNA1",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-lmxs28626s-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-LRFWS2906S.ASTCNA1",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-LRFWS2906S.ASTCNA1",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-lrfws2906s-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-LRSXS2706S.ASTCNA0",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-LRSXS2706S.ASTCNA0",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-lrsxs2706s-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-WM3400CW.ABWEVUS",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-WM3400CW.ABWEVUS",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-wm3400cw-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-WM3600HWA.ABWEUUS",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-WM3600HWA.ABWEUUS",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-wm3600hwa-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-WM4000HBA.ABLEVUS?tab=1",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-WM4000HBA.ABLEVUS?tab=1",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-wm4000hba-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-WM4000HWA.ABWEUUS",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-WM4000HWA.ABWEUUS",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-wm4000hwa-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-WM5500HWA.ABWEUUS",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-WM5500HWA.ABWEUUS",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-wm5500hwa-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-WM6700HBA.ABLEVUS",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-WM6700HBA.ABLEVUS",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-wm6700hba-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-WT6105CW",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-WT6105CW",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-wt6105cw-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-WT7150CW.ABWETUS",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-WT7150CW.ABWETUS",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-wt7150cw-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-WT7300CW.ABWEUCI",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-WT7300CW.ABWEUCI",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-wt7300cw-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-WT7400CW.ABWEUUS",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-WT7400CW.ABWEUUS",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-wt7400cw-model"
+      ]
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-WT7405CW",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-WT7405CW",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "lg-wt7405cw-model"
+      ]
+    },
+    {
+      "url": "https://www.maytag.com/kitchen/refrigerators/french-door/p.36-inch-wide-french-door-refrigerator-with-powercold-feature-25-cu.-ft%20.mfi2570fez.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.maytag.com/kitchen/refrigerators/french-door/p.36-inch-wide-french-door-refrigerator-with-powercold-feature-25-cu.-ft%20.mfi2570fez.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "maytag-mfi2570fez-model"
+      ]
+    },
+    {
+      "url": "https://www.maytag.com/owners-center-pdp.MDB4949SKZ.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.maytag.com/owners-center-pdp.MDB4949SKZ.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "maytag-mdb4949skz-model"
+      ]
+    },
+    {
+      "url": "https://www.maytag.com/owners-center-pdp.MED4500MW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.maytag.com/owners-center-pdp.MED4500MW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "maytag-med4500mw-model"
+      ]
+    },
+    {
+      "url": "https://www.maytag.com/owners-center-pdp.MED6230HW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.maytag.com/owners-center-pdp.MED6230HW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "maytag-med6230hw-model"
+      ]
+    },
+    {
+      "url": "https://www.maytag.com/owners-center-pdp.MED7230HW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.maytag.com/owners-center-pdp.MED7230HW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "maytag-med7230hw-model"
+      ]
+    },
+    {
+      "url": "https://www.maytag.com/owners-center-pdp.MFI2570FEZ.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.maytag.com/owners-center-pdp.MFI2570FEZ.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "maytag-refrigerator-support"
+      ]
+    },
+    {
+      "url": "https://www.maytag.com/owners-center-pdp.MFT2772HEZ.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.maytag.com/owners-center-pdp.MFT2772HEZ.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "maytag-mft2772hez-model"
+      ]
+    },
+    {
+      "url": "https://www.maytag.com/owners-center-pdp.MHW5500FW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.maytag.com/owners-center-pdp.MHW5500FW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "maytag-mhw5500fw-model"
+      ]
+    },
+    {
+      "url": "https://www.maytag.com/owners-center-pdp.MHW5630HW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.maytag.com/owners-center-pdp.MHW5630HW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "maytag-mhw5630hw-model"
+      ]
+    },
+    {
+      "url": "https://www.maytag.com/owners-center-pdp.MHW6630HW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.maytag.com/owners-center-pdp.MHW6630HW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "maytag-mhw6630hw-model"
+      ]
+    },
+    {
+      "url": "https://www.maytag.com/owners-center-pdp.MSS25C4MGZ.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.maytag.com/owners-center-pdp.MSS25C4MGZ.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "maytag-mss25c4mgz-model"
+      ]
+    },
+    {
+      "url": "https://www.maytag.com/owners-center-pdp.MVW4505MW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.maytag.com/owners-center-pdp.MVW4505MW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "maytag-mvw4505mw-model"
+      ]
+    },
+    {
+      "url": "https://www.maytag.com/owners-center-pdp.MVW5430MW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.maytag.com/owners-center-pdp.MVW5430MW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "maytag-mvw5430mw-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/business/home-appliances/refrigerators/3-door-french-door/27-cu-ft-mega-capacity-counter-depth-3-door-french-door-refrigerator-with-dual-auto-ice-maker-in-stainless-steel-rf27cg5100sraa/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/business/refrigerators/french-door/27-cu-ft-mega-capacity-counter-depth-3-door-french-door-refrigerator-with-dual-auto-ice-maker-in-stainless-steel-sku-rf27cg5100sraa/",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "samsung-rf27cg5100sr-aa-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/home-appliances/dishwashers/rotary/fingerprint-resistant-53-dba-dishwasher-with-height-adjustable-rack-in-stainless-steel-dw80cg4021sraa/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/dishwashers/freestanding/fingerprint-resistant-53-dba-dishwasher-with-height-adjustable-rack-in-stainless-steel-sku-dw80cg4021sraa/",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "samsung-dw80cg4021sr-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/home-appliances/dishwashers/rotary/smart-46-dba-dishwasher-with-stormwash-in-stainless-steel-dw80cg5450sraa/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/dishwashers/freestanding/smart-46-dba-dishwasher-with-stormwash-in-stainless-steel-sku-dw80cg5450sraa/",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "samsung-dw80cg5450sr-aa-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/home-appliances/dryers/electric/7-5-cu--ft--electric-dryer-with-sensor-dry-in-white-dve45t6000w-a3/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/laundry/dryers/electric-7-5-cu-ft-dryer-with-sensor-dry-in-white-sku-dve45t6000w-a3/",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "samsung-dve45t6000w-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/home-appliances/refrigerators/3-door-french-door/28-cu-ft-large-capacity-3-door-french-door-refrigerator-in-stainless-steel-rf28t5001sr-aa/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/refrigerators/all-refrigerators/",
+      "contentType": "text/html; charset=UTF-8",
+      "sourceIds": [
+        "samsung-rf28t5001sr-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/home-appliances/washers/front-load/4-5-cu--ft--large-capacity-smart-front-load-washer-with-super-speed-wash-in-white-wf45b6300aw-us/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/laundry/washers/front-load-wf6300b-front-loading-washer-superspeed-large-capacity-4-5-cu-ft-flexible-installation-4-5-cu-ft-white-sku-wf45b6300aw-us/",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "samsung-wf45b6300aw-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/home-appliances/washers/front-load/4-5-cu-ft-front-load-washer-with-vibration-reduction-technology-plus-in-white-wf45t6000aw-a5/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/laundry/washers/front-load-wf6000r-front-loading-super-speed-4-5-cu-ft-white-sku-wf45t6000aw-a5/",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "samsung-wf45t6000aw-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/home-appliances/washers/top-load/4-5-cu--ft--capacity-top-load-washer-with-vibration-reduction-technology--in-white-wa45t3200aw-a4/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/laundry/washers/top-load-wa3000j-top-loading-smart-care-self-clean-soft-close-lid-4-5-cu-ft-white-sku-wa45t3200aw-a4/",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "samsung-wa45t3200aw-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/home-appliances/washers/top-load/5-4-cu-ft-extra-large-capacity-smart-top-load-washer-with-activewave-agitator-and-super-speed-wash-in-white-wa54cg7105awus/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/laundry/washers/top-load-wa7105c-top-load-large-capacity-activewave-agitator-5-4-cu-ft-white-sku-wa54cg7105awus/",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "samsung-wa54cg7105aw-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/home-appliances/washers/top-load/5-5-cu-ft-extra-large-capacity-smart-top-load-washer-with-super-speed-wash-in-white-wa55cg7100awus/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/laundry/washers/top-load-wa7100c-top-load-large-capacity-smartthings-5-5-cu-ft-white-sku-wa55cg7100awus/",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "samsung-wa55cg7100aw-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/laundry/dryers/electric-dv6300b-front-load-smart-electric-dryer-with-steam-sanitize-7-5-cu-ft-platinum-sku-dve45b6300p-a3/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/laundry/dryers/electric-dv6300b-front-load-smart-electric-dryer-with-steam-sanitize-7-5-cu-ft-platinum-sku-dve45b6300p-a3/",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "samsung-dve45b6300pa3-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/answer/ANS10003197/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/answer/ANS10003197/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-filter",
+        "exp-samsung-washer-filter"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/home-appliances/dishwashers/?modelCode=DW80B6060US%2FAA",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/home-appliances/dishwashers/?modelCode=DW80B6060US%2FAA",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-dw80b6060usaa-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/home-appliances/dryers/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/home-appliances/dryers/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-dryer-support"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/service/warranty/DVE50T5300C/A3/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/service/warranty/DVE50T5300C/A3/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-dve50t5300ca3-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/service/warranty/DW80R2031US/AA/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/service/warranty/DW80R2031US/AA/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-dw80r2031usaa-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/service/warranty/RF23R6201SR/AA/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/service/warranty/RF23R6201SR/AA/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-rf23r6201sr-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/service/warranty/RF28R7201SR/AA/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/service/warranty/RF28R7201SR/AA/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-rf28r7201sr-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/service/warranty/RS27T5200SR/AA/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/service/warranty/RS27T5200SR/AA/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-rs27t5200sr-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/service/warranty/WA50R5200AW/US/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/service/warranty/WA50R5200AW/US/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-wa50r5200aw-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/service/warranty/WF46BG6500AVUS/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/service/warranty/WF46BG6500AVUS/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-wf46bg6500av-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/service/warranty/WF53BB8700ATUS/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/service/warranty/WF53BB8700ATUS/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-wf53bb8700at-model"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10000997/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/troubleshoot/TSG10000997/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-washer-door"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10001006/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/troubleshoot/TSG10001006/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "exp-samsung-dryer-door"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10003791/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/troubleshoot/TSG10003791/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-rf27cg5100sr-aa-current-1",
+        "samsung-refrigerator-support",
+        "exp-samsung-refrigerator-water",
+        "exp-samsung-french-refrigerator-water"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10004498/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/troubleshoot/TSG10004498/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-dw80cg5450sr-aa-current-1",
+        "samsung-dishwasher-support",
+        "exp-samsung-dishwasher-drain"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10007110/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/troubleshoot/TSG10007110/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-no-drain",
+        "exp-samsung-washer-drain",
+        "exp-samsung-top-washer-drain"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10007112/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/troubleshoot/TSG10007112/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-refrigerator-door"
+      ]
+    },
+    {
+      "url": "https://www.samsung.com/us/support/troubleshooting/TSG01001919/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.samsung.com/us/support/",
+      "contentType": "text/html;charset=utf-8",
+      "sourceIds": [
+        "samsung-dishwasher-door"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/blog/washers-and-dryers/why-is-my-washing-machine-not-draining.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/blog/washers-and-dryers/why-is-my-washing-machine-not-draining.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-top-load-no-drain"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/kitchen/dishwasher-and-cleaning/dishwashers/built-in-hidden-control-console/p.24%E2%80%9D-stainless-steel-dishwasher-with-ai-intelligent-wash-47-dba.wdt750sakz.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/kitchen/dishwasher-and-cleaning/dishwashers/built-in-hidden-control-console/p.24%E2%80%9D-stainless-steel-dishwasher-with-ai-intelligent-wash-47-dba.wdt750sakz.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wdt750sakz1-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/kitchen/dishwasher-and-cleaning/dishwashers/built-in-hidden-control-console/p.quiet-dishwasher-with-3rd-rack.wdt730hamz.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/kitchen/dishwasher-and-cleaning/dishwashers/built-in-hidden-control-console/p.quiet-dishwasher-with-3rd-rack.wdt730hamz.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wdt730hamz-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/laundry/dryers/electric/p.7.0-cu.-ft.-top-load-electric-moisture-sensing-dryer-with-steam.wed5050lw.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/laundry/dryers/electric/p.7.0-cu.-ft.-top-load-electric-moisture-sensing-dryer-with-steam.wed5050lw.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wed5050lw-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/laundry/washers/front-load/p.WFW4720RW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/laundry/washers/front-load/p.WFW4720RW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wfw4720rw-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/owners-center-pdp.WDF331PAMS.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/owners-center-pdp.WDF331PAMS.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wdf331pams-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/owners-center-pdp.WED4815EW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/owners-center-pdp.WED4815EW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wed4815ew-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/owners-center-pdp.WED4950HW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/owners-center-pdp.WED4950HW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wed4950hw-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/owners-center-pdp.WFW5605MW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/owners-center-pdp.WFW5605MW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wfw5605mw-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/owners-center-pdp.WFW6620HW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/owners-center-pdp.WFW6620HW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wfw6620hw-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/owners-center-pdp.WRS315SDHZ.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/owners-center-pdp.WRS315SDHZ.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wrs315sdhz-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/owners-center-pdp.WRS321SDHZ08.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/owners-center-pdp.WRS321SDHZ08.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wrs321sdhz08-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/owners-center-pdp.WRS588FIHZ.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/owners-center-pdp.WRS588FIHZ.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wrs588fihz-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/owners-center-pdp.WRX735SDHZ.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/owners-center-pdp.WRX735SDHZ.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wrx735sdhz-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/owners-center-pdp.WTW5010LW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/owners-center-pdp.WTW5010LW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wtw5010lw-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/owners-center-pdp.WTW5057LW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/owners-center-pdp.WTW5057LW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wtw5057lw-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpool.com/owners-center-pdp.WTW5105LW.html",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpool.com/owners-center-pdp.WTW5105LW.html",
+      "contentType": "text/html",
+      "sourceIds": [
+        "whirlpool-wtw5105lw-model"
+      ]
+    },
+    {
+      "url": "https://www.whirlpoolparts.com/PartDetail/Drain-Pump/W11412291/4960707",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.whirlpoolparts.com/PartDetail/Drain-Pump/W11412291/4960707",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpool-w11412291"
+      ]
+    },
+    {
+      "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a11b5i168d2461121/Model-WTW5010LW0-Whirlpool-Washing-Machine-Drain-Pump-Parts",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.whirlpoolparts.com/Shop-For-Parts/a11b5i168d2461121/Model-WTW5010LW0-Whirlpool-Washing-Machine-Drain-Pump-Parts",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpoolparts-wtw5010lw0-w11399437"
+      ]
+    },
+    {
+      "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a4b121d2463919/Model-KRFC300ESS08-Kitchenaid-Refrigerator-Parts",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.whirlpoolparts.com/Shop-For-Parts/a4b121d2463919/Model-KRFC300ESS08-Kitchenaid-Refrigerator-Parts",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpoolparts-krfc300ess08-edr4rxd1"
+      ]
+    },
+    {
+      "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a4b5c43d2269249/Model-WRS588FIHZ00-Whirlpool-Refrigerator-Filter-Parts",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.whirlpoolparts.com/Shop-For-Parts/a4b5c43d2269249/Model-WRS588FIHZ00-Whirlpool-Refrigerator-Filter-Parts",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpoolparts-wrs588fihz00-edr1rxd1"
+      ]
+    },
+    {
+      "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a8b1d2169040/Model-NED4655EW1-Amana-Dryer-Parts",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.whirlpoolparts.com/Shop-For-Parts/a8b1d2169040/Model-NED4655EW1-Amana-Dryer-Parts",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "amana-w11429587-ned4655ew1"
+      ]
+    },
+    {
+      "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a8b4c72d2454088/Model-MED4500MW0-Maytag-Dryer-Latch-Parts",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.whirlpoolparts.com/Shop-For-Parts/a8b4c72d2454088/Model-MED4500MW0-Maytag-Dryer-Latch-Parts",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "maytag-w11429587-med4500mw0"
+      ]
+    },
+    {
+      "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a8b5c72d2170809/Model-WED4950HW0-Whirlpool-Dryer-Latch-Parts",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.whirlpoolparts.com/Shop-For-Parts/a8b5c72d2170809/Model-WED4950HW0-Whirlpool-Dryer-Latch-Parts",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpool-279570-wed4950hw0"
+      ]
+    },
+    {
+      "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a8b5c72d2454284/Model-WED5050LW0-Whirlpool-Dryer-Latch-Parts",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.whirlpoolparts.com/Shop-For-Parts/a8b5c72d2454284/Model-WED5050LW0-Whirlpool-Dryer-Latch-Parts",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpoolparts-wed5050lw0-w11429587"
+      ]
+    },
+    {
+      "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a8i2691d2145566/Model-WED4815EW1-Dryer-Catch-Parts",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpoolparts.com/Shop-For-Parts/a8i2691d2145566/Model-WED4815EW1-Dryer-Catch-Parts",
+      "contentType": "text/html; charset=UTF-8",
+      "sourceIds": [
+        "whirlpoolparts-wed4815ew1-w11429587"
+      ]
+    },
+    {
+      "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b121d2248070/Model-KDFE204KPS0-Kitchenaid-Dishwasher-Parts?n=3",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b121d2248070/Model-KDFE204KPS0-Kitchenaid-Dishwasher-Parts?n=3",
+      "contentType": "text/html; charset=UTF-8",
+      "sourceIds": [
+        "whirlpoolparts-kdfe204kps0-w11462456"
+      ]
+    },
+    {
+      "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b4c36d2463970/Model-MDB4949SKZ1-Maytag-Dishwasher-Pump-Parts",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b4c36d2463970/Model-MDB4949SKZ1-Maytag-Dishwasher-Pump-Parts",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpoolparts-mdb4949skz1-w11497943"
+      ]
+    },
+    {
+      "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b5i168d2454271/Model-WDT730HAMZ0-Whirlpool-Dishwasher-Drain-Pump-Parts",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b5i168d2454271/Model-WDT730HAMZ0-Whirlpool-Dishwasher-Drain-Pump-Parts",
+      "contentType": "text/html; charset=utf-8",
+      "sourceIds": [
+        "whirlpoolparts-wdt730hamz0-w10876537"
+      ]
+    },
+    {
+      "url": "https://www.whirlpoolparts.com/Shop-For-Parts/i183d2454535/Model-WRS315SDHZ08-Water-Filter-Parts",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.whirlpoolparts.com/Shop-For-Parts/i183d2454535/Model-WRS315SDHZ08-Water-Filter-Parts",
+      "contentType": "text/html; charset=UTF-8",
+      "sourceIds": [
+        "whirlpool-edr1rxd1-wrs315sdhz08"
+      ]
+    }
+  ]
+}

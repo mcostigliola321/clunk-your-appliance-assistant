@@ -57,7 +57,7 @@ describe("state-dependent WebMCP registration", () => {
     expect(serialized).not.toContain("catalogResults");
     expect(stateOutput.structuredContent).toMatchObject({
       catalog: {
-        supportedModelCount: 131,
+        supportedModelCount: 163,
         modelNumberHandoff: {
           humanAction: expect.stringContaining("Model"),
           rejectLabels: ["Serial", "S/N"],

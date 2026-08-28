@@ -1,0 +1,244 @@
+{
+  "generatedOn": "2026-08-28",
+  "cohortDefinitions": [
+    {
+      "id": "washer-door-closure-observation",
+      "scope": "Brand-specific front-load or top-load washer cohorts only",
+      "checks": [
+        "Stop the cycle and wait for the door/lid lock indicator to clear.",
+        "Remove clothing or debris caught at the visible door/lid edge.",
+        "Wipe only the visible latch/strike contact area with a soft damp cloth.",
+        "Close the door/lid firmly once; do not force it or bypass the lock."
+      ],
+      "exclusions": [
+        "No brand transfer",
+        "Front-load gasket steps do not apply to top-load lids",
+        "Do not bypass, force, or replace a lock"
+      ],
+      "exceptionRule": "Exact manual wins; absent a brand/topology source, remain unsupported."
+    },
+    {
+      "id": "dishwasher-door-closure-observation",
+      "scope": "Brand-specific built-in dishwasher cohorts only",
+      "checks": [
+        "Confirm dishes, handles, and utensils stay inside the rack envelope.",
+        "Push both racks fully home and remove visible debris at the door seal.",
+        "Check for visible cabinet or countertop interference without loosening hardware.",
+        "Close the door once; do not force the latch."
+      ],
+      "exclusions": [
+        "No cross-brand latch assumptions",
+        "AutoRelease/open-dry branches only on equipped models",
+        "No hinge/spring/alignment repair"
+      ],
+      "exceptionRule": "Use model-prefix and feature gates stated by the manufacturer."
+    },
+    {
+      "id": "refrigerator-door-closure-observation",
+      "scope": "Brand-specific full-size refrigerator cohorts, split by side-by-side and French-door topology",
+      "checks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the topology-specific mullion/flap position when the source and model support it.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "exclusions": [
+        "No sealed-system or hinge repair",
+        "No heavy-unit movement",
+        "French-door mullion step not used on side-by-side models"
+      ],
+      "exceptionRule": "Model manual confirms flap/mullion, drawer, showcase-door, and leveling branches."
+    }
+  ],
+  "evidenceGapRows": [
+    {
+      "rowId": "ge-gfw550ssnww__door-will-not-close",
+      "model": "GFW550SSNWW",
+      "brand": "GE",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "ge-gfw650ssnww__door-will-not-close",
+      "model": "GFW650SSNWW",
+      "brand": "GE",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "ge-gtw465asnww__door-will-not-close",
+      "model": "GTW465ASNWW",
+      "brand": "GE",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "ge-gtw585bsvws__door-will-not-close",
+      "model": "GTW585BSVWS",
+      "brand": "GE",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "frigidaire-fftw4120sw__door-will-not-close",
+      "model": "FFTW4120SW",
+      "brand": "Frigidaire",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "frigidaire-fffw5000qw__door-will-not-close",
+      "model": "FFFW5000QW",
+      "brand": "Frigidaire",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "hotpoint-htw240askws__door-will-not-close",
+      "model": "HTW240ASKWS",
+      "brand": "Hotpoint",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "lg-ldfn4542s__door-will-not-close",
+      "model": "LDFN4542S",
+      "brand": "LG",
+      "category": "dishwasher",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "amana-adb1400agw__door-will-not-close",
+      "model": "ADB1400AGW",
+      "brand": "Amana",
+      "category": "dishwasher",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "ge-gfw655ssvww__door-will-not-close",
+      "model": "GFW655SSVWW",
+      "brand": "GE",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "ge-gfw850spnrs__door-will-not-close",
+      "model": "GFW850SPNRS",
+      "brand": "GE",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "ge-gtw335asnww__door-will-not-close",
+      "model": "GTW335ASNWW",
+      "brand": "GE",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "ge-gtw485aswwb__door-will-not-close",
+      "model": "GTW485ASWWB",
+      "brand": "GE",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "hotpoint-htw265aswww__door-will-not-close",
+      "model": "HTW265ASWWW",
+      "brand": "Hotpoint",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "hotpoint-htw2065sbww__door-will-not-close",
+      "model": "HTW2065SBWW",
+      "brand": "Hotpoint",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "hotpoint-hdf310pgrww__door-will-not-close",
+      "model": "HDF310PGRWW",
+      "brand": "Hotpoint",
+      "category": "dishwasher",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "maytag-mdb4949skz__door-will-not-close",
+      "model": "MDB4949SKZ",
+      "brand": "Maytag",
+      "category": "dishwasher",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "lg-ldfn3432t__door-will-not-close",
+      "model": "LDFN3432T",
+      "brand": "LG",
+      "category": "dishwasher",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "lg-ldth7972s__door-will-not-close",
+      "model": "LDTH7972S",
+      "brand": "LG",
+      "category": "dishwasher",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "electrolux-edsh4944as__door-will-not-close",
+      "model": "EDSH4944AS",
+      "brand": "Electrolux",
+      "category": "dishwasher",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    },
+    {
+      "rowId": "ge-gtw325aswww__door-will-not-close",
+      "model": "GTW325ASWWW",
+      "brand": "GE",
+      "category": "washer",
+      "gaps": [
+        "No official brand/category/topology troubleshooting source was found that safely supports model-cohort reuse; model manual review remains required."
+      ]
+    }
+  ]
+}

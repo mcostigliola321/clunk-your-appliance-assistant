@@ -1,12 +1,28 @@
 # Source URL and live-catalog audit
 
-Audit date: **2026-08-27**. Current catalog: **131 models**—48 washers, 25 dishwashers, 25 electric dryers, and 33 refrigerators—with 25 purchase-ready exact revisions and 106 guided-only entries. This audit covers the 81-model expansion, the 13-revision exact-part upgrade, the existing model-number and exact-part evidence, and the live Shopify UCP boundary. Clunk makes a user-triggered live Shopify catalog request only for purchase-ready results; it does not scrape source pages at runtime.
+Audit dates: **2026-08-27 through 2026-08-28**. Current catalog: **163 models**—56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators—with 25 purchase-ready exact revisions and 138 guided-only entries. This audit covers the original expansion, two activation batches totaling 32 guided models, the 13-revision exact-part upgrade, existing model-number and exact-part evidence, and the live Shopify UCP boundary. Clunk makes a user-triggered live Shopify catalog request only for purchase-ready results; it does not scrape source pages at runtime.
 
 ## 81-model expansion sweep
 
 The expansion contains 81 distinct official manufacturer model/support URLs and 41 unique official troubleshooting URLs. One Bosch product-support URL serves both roles, producing **121 unique endpoints**. A bounded automated GET used a browser user agent, followed redirects, and enforced a 30-second per-request timeout. Result: **121/121 endpoints returned HTTP 2xx**; all **81/81 model URLs** were reachable. Three initially drafted symptom URLs were corrected to live official pages during the pass: Amana water-filter timing, Whirlpool dishwasher not-draining, and Bosch dishwasher troubleshooting.
 
 The complete per-model source, profile, aliases/full-code rule, topology, symptom, capability, and retrieval record is in [`model-source-ledger.md`](./model-source-ledger.md). The normalized expansion data and its validation contract are in [`src/data/catalogExpansion.json`](../src/data/catalogExpansion.json) and [`catalog-expansion.schema.json`](./catalog-expansion.schema.json). No current expansion-source gap remains; storefront/CDN behavior can still change and should be re-audited before publication.
+
+## 2026-08-28 eight-model activation sweep
+
+The eight activated model identities were checked separately from the shared troubleshooting profiles. LG `WM4000HBA.ABLEVUS`, GE `GTW325ASWWW`, Bosch `SHP78CM5N/34`, Samsung `DW80CG5450SR/AA`, LG `DLE7000W`, GE `GTD38EASWWS`, and Samsung `RF27CG5100SR/AA` returned HTTP 200. Whirlpool `WRS321SDHZ08` returned HTTP 403 to the command-line client because its official owner-center storefront is protected; that status was recorded as an access limitation rather than evidence. All eight remain guided-only.
+
+## 2026-08-28 twenty-four-model activation sweep
+
+The second batch adds six guided models per category. A browser/search review established the model identities; a separate command-line sweep then recorded reachability without treating it as content evidence. Eleven model URLs returned HTTP 200, eleven Whirlpool Corporation storefront URLs returned HTTP 403, and the two Electrolux JavaScript application URLs timed out (`000`). Protected or timed-out status is an access limitation, not a model or compatibility claim.
+
+| Result | Official model URLs |
+| --- | --- |
+| HTTP 200 | https://www.lg.com/us/support/product/lg-WM6500HBA.ABLEVUS?tab=1 · https://products.geappliances.com/appliance/gea-specs/GTW385ASWWS/support · https://products.geappliances.com/appliance/gea-specs/GDP670SGVWW/support · https://www.lg.com/us/support/product/lg-LDPS6762S.ASSESNA · https://www.bosch-home.com/us/en/productservice/SHX5AEM5N-01 · https://www.lg.com/us/support/product/lg-DLEX6500B.ABLEECI · https://products.geappliances.com/appliance/gea-specs/GTD58EBSVWS/support · https://www.samsung.com/us/home-appliances/dryers/electric/7-4-cu-ft-smart-electric-dryer-with-pet-care-dry-and-steam-sanitize-in-brushed-navy-dve54cg7150da3/ · https://www.lg.com/us/support/product/lg-LRMVC2306S.ASTCNA0 · https://products.geappliances.com/appliance/gea-specs/GNE29GYNFS/support · https://www.bosch-home.com/us/en/productservice/B36CT81ENS-07 |
+| Protected, HTTP 403 | https://www.whirlpool.com/owners-center-pdp.WTW6157PW.html · https://www.maytag.com/owners-center-pdp.MVW7232HW.html · https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html · https://www.whirlpool.com/owners-center-pdp.WDT540HAMZ.html · https://www.maytag.com/owners-center-pdp.MDB8959SKZ.html · https://www.kitchenaid.com/owners-center-pdp.KDTE204KPS2.html · https://www.whirlpool.com/laundry/dryers/electric/p.WED6150PB.html · https://www.maytag.com/owners-center-pdp.MED6500MBK.html · https://www.whirlpool.com/owners-center-pdp.WRF555SDFZ08.html · https://www.kitchenaid.com/owners-center-pdp.KRFF305ESS00.html · https://www.maytag.com/owners-center-pdp.MRFF5033PZ.html |
+| JavaScript endpoint timed out | https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW · https://www.electrolux.com/en/p/Laundry-Care/Dryers/ELFE7437AW |
+
+No second-batch model carries an exact part. Consequently, no new Shopify query or purchase-ready claim was created for these rows.
 
 ## Exact-part upgrade URL pass
 

@@ -39,6 +39,7 @@ interface ExpansionModel {
   model: string;
   aliases: string[];
   verifiedProductCodes: string[];
+  retrievedOn?: string;
   officialUrl: string;
   exactPart?: ExpansionExactPart;
 }
@@ -144,6 +145,8 @@ export function assertCatalogExpansionData(value: CatalogExpansionData): Catalog
       !isOfficialModelUrl(profile.brand, model.officialUrl)
     )
       throw new Error(`Expansion model ${model.id} requires an official manufacturer URL.`);
+    if (model.retrievedOn && !/^\d{4}-\d{2}-\d{2}$/.test(model.retrievedOn))
+      throw new Error(`Expansion model ${model.id} has an invalid retrieval date.`);
     if (model.exactPart) {
       const part = model.exactPart;
       const exactCode = model.verifiedProductCodes[0];
@@ -224,7 +227,7 @@ export const CATALOG_EXPANSION: ApplianceCatalogEntry[] = data.models.map((model
       appliesTo: model.verifiedProductCodes.length
         ? model.verifiedProductCodes.join(", ")
         : `${model.model} family; rating-label revision still required`,
-      lastVerified: data.retrievedOn,
+      lastVerified: model.retrievedOn ?? data.retrievedOn,
     },
     troubleshootingSources,
     ...(exactPart ? { exactPart } : {}),
