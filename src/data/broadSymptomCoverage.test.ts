@@ -43,7 +43,9 @@ describe("broad evidence-backed model × symptom coverage", () => {
       expect(entry?.loadStyle ?? null).toBe(record.loadStyle);
       expect(entry?.modelSource.id).toBe(record.modelEvidence.sourceId);
       expect(entry?.modelSource.url).toBe(record.modelEvidence.url);
-      expect(entry?.verifiedProductCodes).toEqual(record.modelEvidence.verifiedProductCodes);
+      expect(entry?.verifiedProductCodes).toEqual(
+        expect.arrayContaining(record.modelEvidence.verifiedProductCodes),
+      );
 
       const coverage = getSymptomCoverage(entry!, record.symptomId);
       expect(coverage).toMatchObject({
@@ -120,12 +122,12 @@ describe("broad evidence-backed model × symptom coverage", () => {
       APPLIANCE_CATALOG.filter((entry) =>
         entry.symptomCoverage.some((coverage) => coverage.exactPartEvidence),
       ),
-    ).toHaveLength(25);
+    ).toHaveLength(55);
     expect(
       APPLIANCE_CATALOG.flatMap((entry) => entry.symptomCoverage).filter(
         (coverage) => coverage.capability === "purchase-ready",
       ),
-    ).toHaveLength(25);
+    ).toHaveLength(55);
   });
 
   it("rejects missing sources, tier inflation, malformed identity, and removed safety gates", () => {

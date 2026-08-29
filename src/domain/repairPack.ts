@@ -911,7 +911,7 @@ function refrigeratorProfile(entry: FlagshipProfileEntry, sourceIds: string[]) {
 function buildPack(entry: ApplianceCatalogEntry, coverage: SymptomCoverage): RepairPack {
   const exactPart = coverage.exactPartEvidence?.part;
   const sources = [entry.modelSource, ...coverage.troubleshootingSources];
-  if (exactPart) sources.push(exactPart.source);
+  if (exactPart) sources.push(exactPart.source, ...(exactPart.corroboratingSources ?? []));
   const sourceIds = sources.map((item) => item.id);
   const isFlagshipSymptom = coverage.symptomId === DEFAULT_SYMPTOM_BY_KIND[entry.kind];
   const profileEntry: FlagshipProfileEntry = {
@@ -1019,6 +1019,18 @@ export function assertRepairPack(pack: RepairPack): RepairPack {
       throw new Error(`Part ${part.id} requires manufacturer or authorized-parts evidence.`);
     if (!part.purchase && !part.commerce)
       throw new Error(`Part ${part.id} requires a seller or live-commerce handoff.`);
+    if (
+      part.corroboratingSources?.some(
+        (source) =>
+          !["manufacturer-part", "authorized-parts"].includes(source.kind) ||
+          !source.title.trim() ||
+          !source.publisher.trim() ||
+          !source.appliesTo.trim() ||
+          !isSafePublicHttpsUrl(source.url) ||
+          !/^\d{4}-\d{2}-\d{2}$/.test(source.lastVerified),
+      )
+    )
+      throw new Error(`Part ${part.id} has invalid corroborating evidence.`);
     if (
       part.purchase &&
       (!isSafePublicHttpsUrl(part.purchase.url) ||
@@ -1149,6 +1161,18 @@ export function assertCatalog(entries: ApplianceCatalogEntry[]): ApplianceCatalo
         )
       )
         throw new Error(`Catalog entry ${entry.id} has inexact revision evidence.`);
+      if (
+        exactPart.corroboratingSources?.some(
+          (source) =>
+            !["manufacturer-part", "authorized-parts"].includes(source.kind) ||
+            !source.title.trim() ||
+            !source.publisher.trim() ||
+            !source.appliesTo.trim() ||
+            !isSafePublicHttpsUrl(source.url) ||
+            !/^\d{4}-\d{2}-\d{2}$/.test(source.lastVerified),
+        )
+      )
+        throw new Error(`Catalog entry ${entry.id} has invalid corroborating evidence.`);
       if (
         exactPart.commerce &&
         (exactPart.commerce.exactSku.toUpperCase() !== exactPart.sku.toUpperCase() ||

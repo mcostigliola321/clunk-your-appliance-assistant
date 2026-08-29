@@ -8,6 +8,7 @@ import type {
 import { isPurchaseReadyPart } from "@/domain/purchase";
 
 import { CATALOG_EXPANSION } from "./catalogExpansion";
+import { applyPurchaseCoverageExpansion } from "./purchaseCoverageExpansion";
 import { buildSymptomCoverage } from "./symptomCatalog";
 
 const VERIFIED_ON = "2026-08-27";
@@ -535,7 +536,7 @@ function entry(input: EntryInput): ApplianceCatalogEntry {
   };
 }
 
-export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
+export const PURCHASE_COVERAGE_BASE_CATALOG: ApplianceCatalogEntry[] = [
   entry({
     id: "lg-wm3400cw",
     brand: "LG",
@@ -1426,3 +1427,7 @@ export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = [
   }),
   ...CATALOG_EXPANSION,
 ];
+
+export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = applyPurchaseCoverageExpansion(
+  PURCHASE_COVERAGE_BASE_CATALOG,
+);

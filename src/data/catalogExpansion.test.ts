@@ -105,7 +105,7 @@ describe("source-backed catalog expansion", () => {
     );
   });
 
-  it("preserves all 25 separately evidenced purchase-ready revisions", () => {
+  it("preserves the original 25 exact revisions alongside the reviewed purchase expansion", () => {
     const exactRevisions = APPLIANCE_CATALOG.flatMap((entry) =>
       entry.symptomCoverage.flatMap((coverage) => {
         const part = coverage.exactPartEvidence?.part;
@@ -113,8 +113,9 @@ describe("source-backed catalog expansion", () => {
       }),
     ).sort((left, right) => left.id.localeCompare(right.id));
 
+    expect(exactRevisions).toHaveLength(55);
     expect(exactRevisions).toEqual(
-      [
+      expect.arrayContaining([
         { id: "amana-ned4655ew", codes: ["NED4655EW1"], sku: "W11429587" },
         { id: "ge-gfd55essnww", codes: ["GFD55ESSN0WW"], sku: "WE01X34600" },
         { id: "ge-gfw550ssnww", codes: ["GFW550SSN0WW"], sku: "WH11X39237" },
@@ -140,7 +141,7 @@ describe("source-backed catalog expansion", () => {
         { id: "whirlpool-wrs315sdhz", codes: ["WRS315SDHZ08"], sku: "EDR1RXD1" },
         { id: "whirlpool-wrs588fihz", codes: ["WRS588FIHZ00"], sku: "EDR1RXD1" },
         { id: "whirlpool-wtw5010lw", codes: ["WTW5010LW0"], sku: "W11399437" },
-      ].sort((left, right) => left.id.localeCompare(right.id)),
+      ]),
     );
   });
 
@@ -196,9 +197,9 @@ describe("source-backed catalog expansion", () => {
     const guidedOnly = [
       "samsung-wf46bg6500av",
       "lg-wm3600hwa",
-      "maytag-mss25c4mgz",
-      "amana-asi2575grs",
-      "bosch-b36ct80sns01",
+      "kitchenaid-krff305ess00",
+      "ge-gfe28gynfs",
+      "ge-gne29gynfs",
     ];
     for (const id of guidedOnly) {
       const entry = CATALOG_EXPANSION.find((candidate) => candidate.id === id);

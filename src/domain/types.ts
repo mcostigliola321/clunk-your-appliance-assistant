@@ -74,6 +74,12 @@ export interface RepairPackPart {
   location?: string;
   installBoundary: "user-replaceable" | "professional-only";
   source: SourceReference;
+  /**
+   * Additional primary or authorized references that complete an exact-fit
+   * evidence chain. The main source still carries the model/revision binding;
+   * these references may separately identify the manufacturer's exact SKU.
+   */
+  corroboratingSources?: SourceReference[];
   commerce?: {
     provider: "shopify-global-catalog";
     protocol: "UCP";

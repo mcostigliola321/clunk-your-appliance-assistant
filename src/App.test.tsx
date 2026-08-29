@@ -109,7 +109,7 @@ describe("Clunk visual field guide", () => {
     expect(
       screen.getByText(/Coverage is checked separately for every model and problem/),
     ).toBeVisible();
-    expect(screen.getByText(/41 checked models · 6 purchase-ready/)).toBeVisible();
+    expect(screen.getByText(/41 checked models · 27 purchase-ready/)).toBeVisible();
     expect(screen.getByRole("button", { name: /Supported now Not cold enough/ })).toHaveTextContent(
       "22 checked models · checks only",
     );
@@ -124,6 +124,14 @@ describe("Clunk visual field guide", () => {
     await user.click(screen.getByRole("button", { name: /Supported now Water is slow/ }));
     expect(screen.getByRole("heading", { name: "Find the model label." })).toBeVisible();
     expect(screen.getByRole("searchbox", { name: "Refrigerator model number" })).toBeVisible();
+  });
+
+  it("shows the expanded exact-pump count without changing dishwasher route breadth", async () => {
+    const user = userEvent.setup();
+    renderClunk();
+    await user.click(screen.getByRole("button", { name: /Choose Dishwasher/ }));
+    expect(screen.getByText(/33 checked models · 13 purchase-ready/)).toBeVisible();
+    expect(screen.getByRole("button", { name: /Supported now Won't drain/ })).toBeVisible();
   });
 
   it("returns the local journey to appliance choice when Start over clears shared state", async () => {
