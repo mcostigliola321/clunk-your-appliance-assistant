@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clunk.local/schemas/purchase-coverage-expansion.schema.json",
+  "title": "Clunk exact purchase coverage evidence ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "verifiedOn", "partProfiles", "records", "limitations"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "verifiedOn": { "type": "string", "format": "date" },
+    "partProfiles": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "#/$defs/partProfile" }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/record" }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "title", "url", "publisher", "appliesTo"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["manufacturer-part", "authorized-parts"] },
+        "title": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "publisher": { "type": "string", "minLength": 1 },
+        "appliesTo": { "type": "string", "minLength": 1 }
+      }
+    },
+    "partProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "componentId",
+        "name",
+        "sku",
+        "location",
+        "installBoundary",
+        "commerceQuery",
+        "offerCountAtVerification",
+        "identitySource"
+      ],
+      "properties": {
+        "componentId": { "enum": ["water-filter", "drain-pump", "door-strike"] },
+        "name": { "type": "string", "minLength": 1 },
+        "sku": { "type": "string", "minLength": 1 },
+        "location": { "type": "string", "minLength": 1 },
+        "installBoundary": { "enum": ["user-replaceable", "professional-only"] },
+        "commerceQuery": { "type": "string", "minLength": 1 },
+        "offerCountAtVerification": { "type": "integer", "minimum": 1 },
+        "identitySource": { "$ref": "#/$defs/source" }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["modelId", "exactCode", "partProfile", "compatibilitySources"],
+      "properties": {
+        "modelId": { "type": "string", "minLength": 1 },
+        "exactCode": { "type": "string", "minLength": 1 },
+        "partProfile": { "type": "string", "minLength": 1 },
+        "compatibilitySources": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/source" }
+        }
+      }
+    }
+  }
+}

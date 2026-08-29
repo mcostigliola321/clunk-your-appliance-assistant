@@ -32,6 +32,15 @@ Shopify documents Global Catalog as a cross-merchant UCP catalog that requires a
 - [Shopify: Global Catalog MCP](https://shopify.dev/docs/agents/catalog/global-catalog)
 - [Shopify: Define an agent profile](https://shopify.dev/docs/agents/get-started/profile)
 
+## Public storefront product feeds
+
+Some Shopify storefronts expose a root `/products.json` response. A bounded review confirmed that this can be useful for discovering candidate SKUs and merchant offers, but Shopify does not document that root route as a universal cross-store catalog or compatibility API. Storefronts may restrict access, change themes, omit SKUs, return merchant-written fit claims, or rate-limit automated clients. The authenticated REST Admin products endpoint is a different interface and is not available for arbitrary stores.
+
+Clunk therefore does not crawl, mirror, or persist third-party Shopify storefront catalogs. A public product feed may inform a research queue or current offer candidate only when the store permits access. It can never promote a model, select a neighboring SKU, prove model-to-part compatibility, or replace exact manufacturer/authorized evidence. Runtime cross-merchant discovery stays on Global Catalog; Storefront API use, if added later, must follow Shopify's bot and rate-limit guidance.
+
+- [Shopify: Storefront API](https://shopify.dev/docs/api/storefront/latest)
+- [Shopify: API limits and Web Bot Auth](https://shopify.dev/docs/api/usage/limits)
+
 ## Saved catalogs and promoted placements
 
 The organic path remains fully functional with no environment configuration. If Shopify has approved a saved catalog for promoted placements, a build may set the catalog's public identifier in `VITE_SHOPIFY_CATALOG_ID`. Clunk validates that identifier, sends it as `catalog.catalog_id`, and requests the `affiliate` placement. `VITE_` values are public browser configuration, never secret storage.
@@ -77,3 +86,23 @@ Anonymous Global Catalog searches returned the following counts of available lis
 The dedicated upgrade batch issued 10 fresh no-store exact-SKU queries. All returned HTTP 200 and 10–20 qualifying offers. Clunk rejected 24 available neighboring listings: seven for `W11462456`, seven for `W11429587`, ten for `WE01X34600`, and none for the other seven upgrade SKUs. The table retains the earlier same-day counts for unchanged SKUs and uses the later observation for the three shared SKUs (`WH11X39237`, `W11429587`, and `EDR1RXD1`). No catalog response was cached or persisted.
 
 The catalog client, exact-SKU filter, schema validation, WebMCP handoff, retry state, and nearby-SKU rejection are covered by automated tests. Browser tests intercept the external request with an exact result plus a cheaper wrong SKU and verify that only the exact result reaches the screen.
+
+### Purchase-overlay offer recheck — 2026-08-29
+
+The 33-revision purchase overlay uses 11 exact SKUs across refrigerator filters, dishwasher drain pumps, one LG washer drain pump, and one LG dryer door hook. Fresh no-store Global Catalog requests returned at least five qualifying available offers for each SKU after exact-number filtering. The evidence row records the bounded observed count; the runtime still renders at most five offers, and neither number is a stock guarantee.
+
+| Exact SKU     | Exact available offers retained |
+| ------------- | ------------------------------: |
+| `LT1000P`     |                               5 |
+| `DA97-17376B` |                               5 |
+| `11032531`    |                               5 |
+| `EDR1RXD1`    |                               5 |
+| `EDR4RXD1`    |                               5 |
+| `XWFE`        |                               5 |
+| `00631200`    |                               5 |
+| `DD81-02635A` |                               5 |
+| `DD31-00016A` |                               5 |
+| `AHA75673404` |                               8 |
+| `4026EL3007C` |                              10 |
+
+Global Catalog often omitted a structured variant SKU while still placing the exact part number in the product or variant text. The audit and runtime use the same punctuation-insensitive exact-token rule across the full listing text; an empty SKU field neither admits a nearby part nor discards an otherwise exact listing.

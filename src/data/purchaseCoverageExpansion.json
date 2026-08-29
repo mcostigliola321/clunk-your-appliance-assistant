@@ -1,0 +1,1081 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-08-29",
+  "partProfiles": {
+    "lg-lt1000p": {
+      "componentId": "water-filter",
+      "name": "LT1000P refrigerator water filter",
+      "sku": "LT1000P",
+      "location": "Inside the fresh-food compartment; follow the exact model instructions",
+      "installBoundary": "user-replaceable",
+      "commerceQuery": "LG LT1000P refrigerator water filter exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "lg-lt1000p-identity-2026-08-29",
+        "kind": "manufacturer-part",
+        "title": "LG LT1000P genuine replacement water-filter page",
+        "url": "https://www.lg.com/us/appliances-accessories/lg-lt1000p-refrigerator-water-filter",
+        "publisher": "LG",
+        "appliesTo": "LG LT1000P genuine replacement filter; model fit is established separately"
+      }
+    },
+    "samsung-da97-17376b": {
+      "componentId": "water-filter",
+      "name": "HAF-QIN refrigerator water filter",
+      "sku": "DA97-17376B",
+      "location": "Inside the refrigerator; follow the exact model instructions",
+      "installBoundary": "user-replaceable",
+      "commerceQuery": "Samsung HAF-QIN DA97-17376B refrigerator water filter exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "samsung-da97-17376b-identity-2026-08-29",
+        "kind": "manufacturer-part",
+        "title": "Samsung HAF-QIN genuine refrigerator water filter",
+        "url": "https://www.samsung.com/us/home-appliance-accessories/haf-qin-refrigerator-water-filter-sku-haf-qin-exp/",
+        "publisher": "Samsung",
+        "appliesTo": "Samsung HAF-QIN/EXP manufacturer part DA97-17376B; exact refrigerator fit is established separately"
+      }
+    },
+    "bosch-11032531": {
+      "componentId": "water-filter",
+      "name": "UltraClarity Pro refrigerator water filter",
+      "sku": "11032531",
+      "location": "Inside the fresh-food compartment; follow the exact E-Nr instructions",
+      "installBoundary": "user-replaceable",
+      "commerceQuery": "Bosch 11032531 UltraClarity Pro water filter exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "bosch-11032531-identity-2026-08-29",
+        "kind": "manufacturer-part",
+        "title": "Bosch 11032531 UltraClarity Pro water filter",
+        "url": "https://www.bosch-home.com/us/en/product/11032531",
+        "publisher": "Bosch",
+        "appliesTo": "Bosch part 11032531 / BORPLFTR55; exact E-Nr fit is established separately"
+      }
+    },
+    "bosch-00631200": {
+      "componentId": "drain-pump",
+      "name": "Bosch dishwasher drain pump",
+      "sku": "00631200",
+      "location": "Internal drain pump below the tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "Bosch 00631200 dishwasher drain pump exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "bosch-00631200-identity-2026-08-29",
+        "kind": "manufacturer-part",
+        "title": "Bosch 00631200 Pump-drain product page",
+        "url": "https://www.bosch-home.com/us/en/product/00631200",
+        "publisher": "Bosch",
+        "appliesTo": "Bosch manufacturer drain pump 00631200; exact E-Nr fit is established separately"
+      }
+    },
+    "samsung-dd81-02635a": {
+      "componentId": "drain-pump",
+      "name": "Samsung dishwasher drain pump",
+      "sku": "DD81-02635A",
+      "location": "Internal drain pump below the tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "Samsung DD81-02635A dishwasher drain pump exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "samsung-dd81-02635a-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "Samsung-authorized Encompass DD81-02635A drain-pump page",
+        "url": "https://encompass.com/item/12313027/Samsung/DD81-02635A/",
+        "publisher": "Encompass",
+        "appliesTo": "Samsung drain pump DD81-02635A; exact appliance fit is established on authorized model pages"
+      }
+    },
+    "samsung-dd31-00016a": {
+      "componentId": "drain-pump",
+      "name": "Samsung dishwasher drain pump motor",
+      "sku": "DD31-00016A",
+      "location": "Internal drain pump below the tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "Samsung DD31-00016A dishwasher drain pump exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "samsung-dd31-00016a-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "Samsung-authorized Encompass DD31-00016A drain-pump page",
+        "url": "https://encompass.com/item/10161536/Samsung/DD31-00016A/",
+        "publisher": "Encompass",
+        "appliesTo": "Samsung dishwasher drain pump DD31-00016A; exact appliance fit is established separately"
+      }
+    },
+    "everydrop-edr1rxd1": {
+      "componentId": "water-filter",
+      "name": "EveryDrop Filter 1 refrigerator water filter",
+      "sku": "EDR1RXD1",
+      "location": "Inside the refrigerator; follow the exact model instructions",
+      "installBoundary": "user-replaceable",
+      "commerceQuery": "Whirlpool EveryDrop EDR1RXD1 refrigerator water filter exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "everydrop-edr1rxd1-identity-2026-08-29",
+        "kind": "manufacturer-part",
+        "title": "Whirlpool-family owner documentation naming EDR1RXD1",
+        "url": "https://www.amana.com/content/dam/global/documents/202406/owners-manual-w11484052-revE.pdf",
+        "publisher": "Whirlpool Corporation",
+        "appliesTo": "EveryDrop Filter 1 manufacturer part EDR1RXD1; exact appliance fit is established separately"
+      }
+    },
+    "everydrop-edr4rxd1": {
+      "componentId": "water-filter",
+      "name": "EveryDrop Filter 4 refrigerator water filter",
+      "sku": "EDR4RXD1",
+      "location": "Inside the fresh-food compartment; follow the exact model instructions",
+      "installBoundary": "user-replaceable",
+      "commerceQuery": "Whirlpool EveryDrop EDR4RXD1 refrigerator water filter exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "everydrop-edr4rxd1-identity-2026-08-29",
+        "kind": "manufacturer-part",
+        "title": "Whirlpool EveryDrop Filter 4 EDR4RXD1 product page",
+        "url": "https://www.whirlpool.com/accessories/kitchen-accessories/refrigerator/p.everydrop-refrigerator-water-filter-4-edr4rxd1.html",
+        "publisher": "Whirlpool",
+        "appliesTo": "EveryDrop Filter 4 manufacturer part EDR4RXD1; exact appliance fit is established separately"
+      }
+    },
+    "ge-xwfe": {
+      "componentId": "water-filter",
+      "name": "XWFE refrigerator water filter",
+      "sku": "XWFE",
+      "location": "Inside the fresh-food compartment; follow the exact model instructions",
+      "installBoundary": "user-replaceable",
+      "commerceQuery": "GE XWFE refrigerator water filter exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "ge-xwfe-identity-2026-08-29",
+        "kind": "manufacturer-part",
+        "title": "GE XWFE refrigerator water filter",
+        "url": "https://www.geapplianceparts.com/store/parts/spec/XWFE",
+        "publisher": "GE Appliances",
+        "appliesTo": "GE manufacturer part XWFE; exact appliance fit is established separately"
+      }
+    },
+    "lg-aha75673404": {
+      "componentId": "drain-pump",
+      "name": "LG washer drain pump assembly",
+      "sku": "AHA75673404",
+      "location": "Internal drain pump below the wash basket; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "LG AHA75673404 washer drain pump exact part",
+      "offerCountAtVerification": 8,
+      "identitySource": {
+        "id": "lg-aha75673404-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "LG-authorized Encompass AHA75673404 drain-pump page",
+        "url": "https://partstore.encompass.com/item/12525404/LG/AHA75673404/",
+        "publisher": "Encompass",
+        "appliesTo": "LG drain pump assembly AHA75673404; exact washer fit is established on the authorized model page"
+      }
+    },
+    "lg-4026el3007c": {
+      "componentId": "door-strike",
+      "name": "LG dryer door hook",
+      "sku": "4026EL3007C",
+      "location": "On the visible edge of the dryer door",
+      "installBoundary": "user-replaceable",
+      "commerceQuery": "LG 4026EL3007C dryer door hook exact part",
+      "offerCountAtVerification": 10,
+      "identitySource": {
+        "id": "lg-4026el3007c-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "LG-authorized Encompass 4026EL3007C Hook Locker page",
+        "url": "https://partstore.encompass.com/item/9772625/LG/4026EL3007C/",
+        "publisher": "Encompass",
+        "appliesTo": "LG hook locker 4026EL3007C; exact dryer fit is established on authorized model diagrams"
+      }
+    },
+    "whirlpool-w11462456": {
+      "componentId": "drain-pump",
+      "name": "KitchenAid dishwasher drain pump",
+      "sku": "W11462456",
+      "location": "Internal drain pump below the tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "KitchenAid W11462456 dishwasher drain pump exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "whirlpool-w11462456-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "Whirlpool factory-certified W11462456 drain-pump page",
+        "url": "https://www.whirlpoolparts.com/PartDetail/Drain-Pump/W11462456/4975481",
+        "publisher": "Whirlpool Parts",
+        "appliesTo": "Whirlpool OEM dishwasher drain pump W11462456; exact appliance fit is established on the exact-model listing"
+      }
+    },
+    "samsung-dc97-19289f": {
+      "componentId": "drain-pump",
+      "name": "Samsung washer drain pump assembly",
+      "sku": "DC97-19289F",
+      "location": "Internal drain pump below the wash basket; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "Samsung DC97-19289F washer drain pump exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "samsung-dc97-19289f-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "Samsung-authorized DC97-19289F drain-pump assembly page",
+        "url": "https://encompass.com/item/11667692/Samsung/DC97-19289F/",
+        "publisher": "Encompass",
+        "appliesTo": "Samsung washer drain-pump assembly DC97-19289F; exact appliance fit is listed on the same authorized record"
+      }
+    },
+    "samsung-dc97-22840a": {
+      "componentId": "drain-pump",
+      "name": "Samsung washer drain pump assembly",
+      "sku": "DC97-22840A",
+      "location": "Internal drain pump below the wash basket; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "Samsung DC97-22840A washer drain pump exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "samsung-dc97-22840a-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "Samsung-authorized DC97-22840A drain-pump assembly page",
+        "url": "https://encompass.com/item/12751076/Samsung/DC97-22840A/",
+        "publisher": "Encompass",
+        "appliesTo": "Samsung washer drain-pump assembly DC97-22840A; exact appliance fits are listed on the same authorized record"
+      }
+    },
+    "samsung-dc97-20621c": {
+      "componentId": "drain-pump",
+      "name": "Samsung washer drain pump assembly",
+      "sku": "DC97-20621C",
+      "location": "Internal drain pump below the wash tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "Samsung DC97-20621C washer drain pump exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "samsung-dc97-20621c-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "Samsung-authorized DC97-20621C drain-pump assembly page",
+        "url": "https://encompass.com/item/15091002/Samsung/DC97-20621C/",
+        "publisher": "Encompass",
+        "appliesTo": "Samsung front-load washer drain-pump assembly DC97-20621C; exact appliance fits are listed on the same authorized record"
+      }
+    },
+    "samsung-dc66-00814a": {
+      "componentId": "door-strike",
+      "name": "Samsung dryer door lever",
+      "sku": "DC66-00814A",
+      "location": "On the visible edge of the dryer door",
+      "installBoundary": "professional-only",
+      "commerceQuery": "Samsung DC66-00814A dryer door lever exact part",
+      "offerCountAtVerification": 6,
+      "identitySource": {
+        "id": "samsung-dc66-00814a-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "Samsung service BOM identifying DC66-00814A as the door lever",
+        "url": "https://research.encompass.com/SMG/sb/ExplodedView_DVE45T6000W_A3_0000.pdf",
+        "publisher": "Encompass",
+        "appliesTo": "Samsung service part DC66-00814A is the door-side lever; exact dryer fit is established separately for each complete model code"
+      }
+    },
+    "lg-aha75853813": {
+      "componentId": "drain-pump",
+      "name": "LG washer drain pump assembly",
+      "sku": "AHA75853813",
+      "location": "Internal drain pump below the wash tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "LG AHA75853813 washer drain pump exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "lg-aha75853813-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "LG-authorized AHA75853813 drain-pump assembly page",
+        "url": "https://partstore.encompass.com/item/13054755/LG/AHA75853813/",
+        "publisher": "Encompass",
+        "appliesTo": "LG drain-pump assembly AHA75853813; exact washer fit is established on each authorized exact-revision parts page"
+      }
+    }
+  },
+  "records": [
+    {
+      "modelId": "lg-lfxs26973s",
+      "exactCode": "LFXS26973S.ASTCNA2",
+      "partProfile": "lg-lt1000p",
+      "compatibilitySources": [
+        {
+          "id": "lg-lfxs26973s-lt1000p",
+          "kind": "manufacturer-part",
+          "title": "LG LFXS26973S specifications naming the LT1000P filter",
+          "url": "https://www.lg.com/us/business/refrigerators/lg-lfxs26973s",
+          "publisher": "LG",
+          "appliesTo": "LG LFXS26973S.ASTCNA2"
+        },
+        {
+          "id": "lg-lfxs26973s-astcna2-support",
+          "kind": "manufacturer-part",
+          "title": "LG exact-revision support page",
+          "url": "https://www.lg.com/us/support/product/lg-LFXS26973S.ASTCNA2",
+          "publisher": "LG",
+          "appliesTo": "LG LFXS26973S.ASTCNA2"
+        }
+      ]
+    },
+    {
+      "modelId": "lg-lmxs28626s",
+      "exactCode": "LMXS28626S.ASTCNA1",
+      "partProfile": "lg-lt1000p",
+      "compatibilitySources": [
+        {
+          "id": "lg-lmxs28626s-lt1000p",
+          "kind": "manufacturer-part",
+          "title": "LG LMXS28626S specifications naming the LT1000P filter",
+          "url": "https://www.lg.com/us/refrigerators/lg-lmxs28626s-french-4-door-refrigerator",
+          "publisher": "LG",
+          "appliesTo": "LG LMXS28626S.ASTCNA1"
+        },
+        {
+          "id": "lg-lmxs28626s-astcna1-support",
+          "kind": "manufacturer-part",
+          "title": "LG exact-revision support page",
+          "url": "https://www.lg.com/us/support/product/lg-LMXS28626S.ASTCNA1",
+          "publisher": "LG",
+          "appliesTo": "LG LMXS28626S.ASTCNA1"
+        }
+      ]
+    },
+    {
+      "modelId": "lg-lrfws2906s",
+      "exactCode": "LRFWS2906S.ASTCNA1",
+      "partProfile": "lg-lt1000p",
+      "compatibilitySources": [
+        {
+          "id": "lg-lrfws2906s-lt1000p",
+          "kind": "manufacturer-part",
+          "title": "LG LRFWS2906S specifications naming the LT1000P filter",
+          "url": "https://www.lg.com/us/business/refrigerators/lg-lrfws2906s",
+          "publisher": "LG",
+          "appliesTo": "LG LRFWS2906S.ASTCNA1"
+        },
+        {
+          "id": "lg-lrfws2906s-astcna1-support",
+          "kind": "manufacturer-part",
+          "title": "LG exact-revision support page",
+          "url": "https://www.lg.com/us/support/product/lg-LRFWS2906S.ASTCNA1",
+          "publisher": "LG",
+          "appliesTo": "LG LRFWS2906S.ASTCNA1"
+        }
+      ]
+    },
+    {
+      "modelId": "lg-lrsxs2706s",
+      "exactCode": "LRSXS2706S.ASTCNA0",
+      "partProfile": "lg-lt1000p",
+      "compatibilitySources": [
+        {
+          "id": "lg-lrsxs2706s-lt1000p",
+          "kind": "manufacturer-part",
+          "title": "LG LRSXS2706S specifications naming the LT1000P filter",
+          "url": "https://www.lg.com/us/business/refrigerators/lg-lrsxs2706s",
+          "publisher": "LG",
+          "appliesTo": "LG LRSXS2706S.ASTCNA0"
+        },
+        {
+          "id": "lg-lrsxs2706s-astcna0-support",
+          "kind": "manufacturer-part",
+          "title": "LG exact-revision support page",
+          "url": "https://www.lg.com/us/support/product/lg-LRSXS2706S.ASTCNA0",
+          "publisher": "LG",
+          "appliesTo": "LG LRSXS2706S.ASTCNA0"
+        }
+      ]
+    },
+    {
+      "modelId": "lg-lrmvc2306s",
+      "exactCode": "LRMVC2306S.ASTCNA0",
+      "partProfile": "lg-lt1000p",
+      "compatibilitySources": [
+        {
+          "id": "lg-lrmvc2306s-lt1000p",
+          "kind": "manufacturer-part",
+          "title": "LG LRMVC2306S specifications naming the LT1000P filter",
+          "url": "https://www.lg.com/us/business/refrigerators/lg-lrmvc2306s",
+          "publisher": "LG",
+          "appliesTo": "LG LRMVC2306S.ASTCNA0"
+        },
+        {
+          "id": "lg-lrmvc2306s-astcna0-support",
+          "kind": "manufacturer-part",
+          "title": "LG exact-revision support page",
+          "url": "https://www.lg.com/us/support/product/lg-LRMVC2306S.ASTCNA0",
+          "publisher": "LG",
+          "appliesTo": "LG LRMVC2306S.ASTCNA0"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-rs27t5200sr",
+      "exactCode": "RS27T5200SR/AA",
+      "partProfile": "samsung-da97-17376b",
+      "compatibilitySources": [
+        {
+          "id": "samsung-rs27t5200sr-da97-17376b",
+          "kind": "manufacturer-part",
+          "title": "Samsung home-appliance catalog mapping RS27T5200 to HAF-QIN / DA97-17376B",
+          "url": "https://image-us.samsung.com/SamsungUS/samsungbusiness/builder/product-catalog/catalog.pdf",
+          "publisher": "Samsung",
+          "appliesTo": "Samsung RS27T5200SR/AA"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-rf23r6201sr",
+      "exactCode": "RF23R6201SR/AA",
+      "partProfile": "samsung-da97-17376b",
+      "compatibilitySources": [
+        {
+          "id": "samsung-rf23r6201sr-haf-qin",
+          "kind": "manufacturer-part",
+          "title": "Samsung RF23R6201SR specifications naming HAF-QIN",
+          "url": "https://image-us.samsung.com/SamsungUS/home/home-appliances/refrigerators/3-door-french-door/pdp/rf23r6201dt-aa/RF23R6201SR_V4.pdf",
+          "publisher": "Samsung",
+          "appliesTo": "Samsung RF23R6201SR/AA"
+        },
+        {
+          "id": "samsung-rf23r6201sr-da97-17376b-catalog",
+          "kind": "manufacturer-part",
+          "title": "Samsung catalog mapping HAF-QIN to DA97-17376B",
+          "url": "https://image-us.samsung.com/SamsungUS/samsungbusiness/builder/product-catalog/catalog.pdf",
+          "publisher": "Samsung",
+          "appliesTo": "Samsung RF23R6201SR/AA"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-rf28r7201sr",
+      "exactCode": "RF28R7201SR/AA",
+      "partProfile": "samsung-da97-17376b",
+      "compatibilitySources": [
+        {
+          "id": "samsung-rf28r7201sr-da97-17376b",
+          "kind": "manufacturer-part",
+          "title": "Samsung home-appliance catalog mapping RF28R7201 to HAF-QIN / DA97-17376B",
+          "url": "https://image-us.samsung.com/SamsungUS/samsungbusiness/builder/product-catalog/catalog.pdf",
+          "publisher": "Samsung",
+          "appliesTo": "Samsung RF28R7201SR/AA"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-rf27cg5100sraa",
+      "exactCode": "RF27CG5100SR/AA",
+      "partProfile": "samsung-da97-17376b",
+      "compatibilitySources": [
+        {
+          "id": "samsung-rf27cg5100sr-haf-qin",
+          "kind": "manufacturer-part",
+          "title": "Samsung RF27CG5100SR specifications naming HAF-QIN",
+          "url": "https://image-us.samsung.com/SamsungUS/home/pdf/08062024/2023_RF27CG5100_CD_V6.pdf",
+          "publisher": "Samsung",
+          "appliesTo": "Samsung RF27CG5100SR/AA"
+        }
+      ]
+    },
+    {
+      "modelId": "bosch-b36cl80ens01",
+      "exactCode": "B36CL80ENS/01",
+      "partProfile": "bosch-11032531",
+      "compatibilitySources": [
+        {
+          "id": "bosch-b36cl80ens01-parts",
+          "kind": "manufacturer-part",
+          "title": "Bosch exact E-Nr replacement-parts catalog",
+          "url": "https://www.bosch-home.com/us/en/spare-parts-list/B36CL80ENS-01",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch B36CL80ENS/01 with UltraClarity Pro filter"
+        },
+        {
+          "id": "bosch-b36cl80ens-ultraclaritypro-spec",
+          "kind": "manufacturer-part",
+          "title": "Bosch B36CL80ENS specification naming BORPLFTR55 UltraClarityPro",
+          "url": "https://media3.bosch-home.com/Documents/MCDOC03224081_B36CL80ENS.pdf",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch B36CL80ENS/01 with BORPLFTR55 UltraClarityPro filter"
+        }
+      ]
+    },
+    {
+      "modelId": "bosch-b36ct80sns01",
+      "exactCode": "B36CT80SNS/01",
+      "partProfile": "bosch-11032531",
+      "compatibilitySources": [
+        {
+          "id": "bosch-b36ct80sns01-parts",
+          "kind": "manufacturer-part",
+          "title": "Bosch exact E-Nr replacement-parts catalog",
+          "url": "https://www.bosch-home.com/us/en/spare-parts-list/B36CT80SNS-01",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch B36CT80SNS/01 with UltraClarity Pro filter"
+        },
+        {
+          "id": "bosch-b36ct80sns-ultraclaritypro-spec",
+          "kind": "manufacturer-part",
+          "title": "Bosch B36CT80SNS specification naming BORPLFTR55 UltraClarityPro",
+          "url": "https://media3.bosch-home.com/Documents/MCDOC03224079_B36CT80SNS.pdf",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch B36CT80SNS/01 with BORPLFTR55 UltraClarityPro filter"
+        }
+      ]
+    },
+    {
+      "modelId": "bosch-b36cd50sns01",
+      "exactCode": "B36CD50SNS/01",
+      "partProfile": "bosch-11032531",
+      "compatibilitySources": [
+        {
+          "id": "bosch-b36cd50sns01-parts",
+          "kind": "manufacturer-part",
+          "title": "Bosch exact E-Nr replacement-parts catalog",
+          "url": "https://www.bosch-home.com/us/en/spare-parts-list/B36CD50SNS-01",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch B36CD50SNS/01 with UltraClarity Pro filter"
+        },
+        {
+          "id": "bosch-b36cd50sns-ultraclaritypro-spec",
+          "kind": "manufacturer-part",
+          "title": "Bosch B36CD50SNS specification naming BORPLFTR55 UltraClarityPro",
+          "url": "https://media3.bosch-home.com/Documents/14052521_B36CD50SNS_Spec_Sheet.pdf",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch B36CD50SNS/01 with BORPLFTR55 UltraClarityPro filter"
+        }
+      ]
+    },
+    {
+      "modelId": "bosch-b36fd50sns01",
+      "exactCode": "B36FD50SNS/01",
+      "partProfile": "bosch-11032531",
+      "compatibilitySources": [
+        {
+          "id": "bosch-b36fd50sns01-parts",
+          "kind": "manufacturer-part",
+          "title": "Bosch exact E-Nr replacement-parts catalog",
+          "url": "https://www.bosch-home.com/us/en/spare-parts-list/B36FD50SNS-01",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch B36FD50SNS/01 with UltraClarity Pro filter"
+        },
+        {
+          "id": "bosch-b36fd50sns-ultraclaritypro-spec",
+          "kind": "manufacturer-part",
+          "title": "Bosch B36FD50SNS specification naming BORPLFTR55 UltraClarityPro",
+          "url": "https://media3.bosch-home.com/Documents/17197307_B36FD50SNS_Spec_Sheet.pdf",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch B36FD50SNS/01 with BORPLFTR55 UltraClarityPro filter"
+        }
+      ]
+    },
+    {
+      "modelId": "bosch-b36ct81ens07",
+      "exactCode": "B36CT81ENS/07",
+      "partProfile": "bosch-11032531",
+      "compatibilitySources": [
+        {
+          "id": "bosch-b36ct81ens07-parts",
+          "kind": "manufacturer-part",
+          "title": "Bosch exact E-Nr replacement-parts catalog",
+          "url": "https://www.bosch-home.com/us/en/spare-parts-list/B36CT81ENS-07",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch B36CT81ENS/07 with UltraClarity Pro filter"
+        },
+        {
+          "id": "bosch-b36ct81ens-ultraclaritypro-spec",
+          "kind": "manufacturer-part",
+          "title": "Bosch B36CT81ENS specification naming BORPLFTR55 UltraClarityPro",
+          "url": "https://media3.bosch-home.com/Documents/19681511_B36CT81ENS%20Spec%20Sheet.pdf",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch B36CT81ENS/07 with BORPLFTR55 UltraClarityPro filter"
+        }
+      ]
+    },
+    {
+      "modelId": "whirlpool-wrs321sdhz08",
+      "exactCode": "WRS321SDHZ08",
+      "partProfile": "everydrop-edr1rxd1",
+      "compatibilitySources": [
+        {
+          "id": "whirlpool-wrs321sdhz08-edr1rxd1",
+          "kind": "authorized-parts",
+          "title": "Whirlpool WRS321SDHZ08 exact water-filter listing",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a4b5i183d2454542/Model-WRS321SDHZ08-Whirlpool-Refrigerator-Water-Filter-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "Whirlpool WRS321SDHZ08 uses EDR1RXD1"
+        }
+      ]
+    },
+    {
+      "modelId": "whirlpool-wrf555sdfz08",
+      "exactCode": "WRF555SDFZ08",
+      "partProfile": "everydrop-edr4rxd1",
+      "compatibilitySources": [
+        {
+          "id": "whirlpool-wrf555sdfz08-edr4rxd1",
+          "kind": "authorized-parts",
+          "title": "Whirlpool WRF555SDFZ08 exact water-filter listing",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/i183d2171004/Model-WRF555SDFZ08-Water-Filter-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "Whirlpool WRF555SDFZ08 uses EDR4RXD1"
+        }
+      ]
+    },
+    {
+      "modelId": "maytag-mss25c4mgz",
+      "exactCode": "MSS25C4MGZ03",
+      "partProfile": "everydrop-edr1rxd1",
+      "compatibilitySources": [
+        {
+          "id": "maytag-mss25c4mgz-edr1rxd1",
+          "kind": "manufacturer-part",
+          "title": "Maytag MSS25C4MGZ owner center naming EDR1RXD1",
+          "url": "https://www.maytag.com/owners-center-pdp.MSS25C4MGZ.html",
+          "publisher": "Maytag",
+          "appliesTo": "Maytag MSS25C4MGZ03 uses EDR1RXD1"
+        },
+        {
+          "id": "maytag-mss25c4mgz03-revision",
+          "kind": "manufacturer-part",
+          "title": "Maytag exact-revision repair-parts list",
+          "url": "https://www.maytag.com/content/dam/global/documents/202107/repair-parts-list-w11454938-revb.pdf",
+          "publisher": "Maytag",
+          "appliesTo": "Maytag MSS25C4MGZ03"
+        }
+      ]
+    },
+    {
+      "modelId": "amana-asi2575grs",
+      "exactCode": "ASI2575GRS05",
+      "partProfile": "everydrop-edr1rxd1",
+      "compatibilitySources": [
+        {
+          "id": "amana-asi2575grs-edr1rxd1",
+          "kind": "manufacturer-part",
+          "title": "Amana ASI2575GRS refrigerator with EveryDrop water filtration",
+          "url": "https://www.amana.com/refrigerators/side-by-side/p.36-inch-side-by-side-refrigerator-with-dual-pad-external-ice-and-water-dispenser.asi2575grs.html",
+          "publisher": "Amana",
+          "appliesTo": "Amana ASI2575GRS05 uses EDR1RXD1"
+        },
+        {
+          "id": "amana-asi2575grs05-revision",
+          "kind": "manufacturer-part",
+          "title": "Amana exact-revision repair-parts list",
+          "url": "https://www.amana.com/content/dam/global/documents/202005/repair-parts-list-w11457444-reva.pdf",
+          "publisher": "Amana",
+          "appliesTo": "Amana ASI2575GRS05"
+        },
+        {
+          "id": "amana-asi2575grs-edr1rxd1-manual",
+          "kind": "manufacturer-part",
+          "title": "Amana owner manual naming replacement filter EDR1RXD1",
+          "url": "https://www.amana.com/content/dam/global/documents/202406/owners-manual-w11484052-revE.pdf",
+          "publisher": "Amana",
+          "appliesTo": "Amana ASI2575GRS05 uses replacement filter EDR1RXD1"
+        }
+      ]
+    },
+    {
+      "modelId": "ge-gne27jymfs",
+      "exactCode": "GNE27JYMFS",
+      "partProfile": "ge-xwfe",
+      "compatibilitySources": [
+        {
+          "id": "ge-gne27jymfs-xwfe",
+          "kind": "manufacturer-part",
+          "title": "GE GNE27JYMFS parts and accessories naming XWFE",
+          "url": "https://products.geappliances.com/appliance/gea-specs/GNE27JYMFS/parts",
+          "publisher": "GE Appliances",
+          "appliesTo": "GE GNE27JYMFS uses XWFE"
+        }
+      ]
+    },
+    {
+      "modelId": "ge-pvd28bynfs",
+      "exactCode": "PVD28BYNFS",
+      "partProfile": "ge-xwfe",
+      "compatibilitySources": [
+        {
+          "id": "ge-pvd28bynfs-xwfe",
+          "kind": "manufacturer-part",
+          "title": "GE PVD28BYNFS parts and accessories naming XWFE",
+          "url": "https://products.geappliances.com/appliance/gea-specs/PVD28BYNFS/parts",
+          "publisher": "GE Appliances",
+          "appliesTo": "GE PVD28BYNFS uses XWFE"
+        }
+      ]
+    },
+    {
+      "modelId": "ge-gss23gypfs",
+      "exactCode": "GSS23GYPFS",
+      "partProfile": "ge-xwfe",
+      "compatibilitySources": [
+        {
+          "id": "ge-gss23gypfs-xwfe",
+          "kind": "manufacturer-part",
+          "title": "GE GSS23GYPFS parts and accessories naming XWFE",
+          "url": "https://products.geappliances.com/appliance/gea-specs/GSS23GYPFS/parts",
+          "publisher": "GE Appliances",
+          "appliesTo": "GE GSS23GYPFS uses XWFE"
+        }
+      ]
+    },
+    {
+      "modelId": "bosch-shem63w55n01",
+      "exactCode": "SHEM63W55N/01",
+      "partProfile": "bosch-00631200",
+      "compatibilitySources": [
+        {
+          "id": "bosch-shem63w55n01-00631200",
+          "kind": "manufacturer-part",
+          "title": "Bosch exact E-Nr spare-parts list containing drain pump 00631200",
+          "url": "https://www.bosch-home.com/us/en/spare-parts-list/SHEM63W55N-01",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch SHEM63W55N/01 includes drain pump 00631200"
+        }
+      ]
+    },
+    {
+      "modelId": "bosch-shx78cm5n01",
+      "exactCode": "SHX78CM5N/01",
+      "partProfile": "bosch-00631200",
+      "compatibilitySources": [
+        {
+          "id": "bosch-shx78cm5n01-00631200",
+          "kind": "manufacturer-part",
+          "title": "Bosch exact E-Nr spare-parts list containing drain pump 00631200",
+          "url": "https://www.bosch-home.com/us/en/spare-parts-list/SHX78CM5N-01",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch SHX78CM5N/01 includes drain pump 00631200"
+        }
+      ]
+    },
+    {
+      "modelId": "bosch-shp65cm5n24",
+      "exactCode": "SHP65CM5N/24",
+      "partProfile": "bosch-00631200",
+      "compatibilitySources": [
+        {
+          "id": "bosch-shp65cm5n24-00631200",
+          "kind": "manufacturer-part",
+          "title": "Bosch exact E-Nr spare-parts list containing drain pump 00631200",
+          "url": "https://www.bosch-home.com/us/en/spare-parts-list/SHP65CM5N-24",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch SHP65CM5N/24 includes drain pump 00631200"
+        }
+      ]
+    },
+    {
+      "modelId": "bosch-she53b75uc75",
+      "exactCode": "SHE53B75UC/75",
+      "partProfile": "bosch-00631200",
+      "compatibilitySources": [
+        {
+          "id": "bosch-she53b75uc75-00631200",
+          "kind": "manufacturer-part",
+          "title": "Bosch exact E-Nr spare-parts list containing drain pump 00631200",
+          "url": "https://www.bosch-home.com/us/en/spare-parts-list/SHE53B75UC-75",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch SHE53B75UC/75 includes drain pump 00631200"
+        }
+      ]
+    },
+    {
+      "modelId": "bosch-shp78cm5n34",
+      "exactCode": "SHP78CM5N/34",
+      "partProfile": "bosch-00631200",
+      "compatibilitySources": [
+        {
+          "id": "bosch-shp78cm5n34-00631200",
+          "kind": "manufacturer-part",
+          "title": "Bosch exact E-Nr spare-parts list containing drain pump 00631200",
+          "url": "https://www.bosch-home.com/us/en/spare-parts-list/SHP78CM5N-34",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch SHP78CM5N/34 includes drain pump 00631200"
+        }
+      ]
+    },
+    {
+      "modelId": "bosch-shx5aem5n01",
+      "exactCode": "SHX5AEM5N/01",
+      "partProfile": "bosch-00631200",
+      "compatibilitySources": [
+        {
+          "id": "bosch-shx5aem5n01-00631200",
+          "kind": "manufacturer-part",
+          "title": "Bosch exact E-Nr spare-parts list containing drain pump 00631200",
+          "url": "https://www.bosch-home.com/us/en/spare-parts-list/SHX5AEM5N-01",
+          "publisher": "Bosch",
+          "appliesTo": "Bosch SHX5AEM5N/01 includes drain pump 00631200"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-dw80cg4021sr",
+      "exactCode": "DW80CG4021SR/AA",
+      "partProfile": "samsung-dd81-02635a",
+      "compatibilitySources": [
+        {
+          "id": "samsung-dw80cg4021sr-dd81-02635a",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized exact-model parts list naming pump-drain DD81-02635A",
+          "url": "https://partstore.encompass.com/model/SMGDW80CG4021SRAA",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung DW80CG4021SR/AA uses drain pump DD81-02635A"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-dw80r2031usaa",
+      "exactCode": "DW80R2031US/AA",
+      "partProfile": "samsung-dd81-02635a",
+      "compatibilitySources": [
+        {
+          "id": "samsung-dw80r2031usaa-dd81-02635a",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized exact-model parts list naming pump-drain DD81-02635A",
+          "url": "https://partstore.encompass.com/model/SMGDW80R2031US%7CAA",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung DW80R2031US/AA uses drain pump DD81-02635A"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-dw80b6060usaa",
+      "exactCode": "DW80B6060US/AA",
+      "partProfile": "samsung-dd31-00016a",
+      "compatibilitySources": [
+        {
+          "id": "samsung-dw80b6060usaa-dd31-00016a",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized exact-model parts list naming motor BLDC pump DD31-00016A",
+          "url": "https://partstore.encompass.com/model/SMGDW80B6060US%7CAA/0001/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung DW80B6060US/AA uses drain pump DD31-00016A"
+        }
+      ]
+    },
+    {
+      "modelId": "kitchenaid-kdte204kps",
+      "exactCode": "KDTE204KPS2",
+      "partProfile": "whirlpool-w11462456",
+      "compatibilitySources": [
+        {
+          "id": "kitchenaid-kdte204kps2-w11462456",
+          "kind": "authorized-parts",
+          "title": "Factory-certified exact-model listing with one drain-pump result W11462456",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b121i168d2466555/Model-KDTE204KPS2-Kitchenaid-Dishwasher-Drain-Pump-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "KitchenAid KDTE204KPS2 has one drain-pump result, Whirlpool OEM W11462456"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-wa45t3200aw",
+      "exactCode": "WA45T3200AW/A4",
+      "partProfile": "samsung-dc97-19289f",
+      "compatibilitySources": [
+        {
+          "id": "samsung-wa45t3200awa4-dc97-19289f-fit",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized drain-pump record listing WA45T3200AW/A4 as compatible",
+          "url": "https://encompass.com/item/11667692/Samsung/DC97-19289F/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WA45T3200AW/A4 uses drain-pump assembly DC97-19289F"
+        },
+        {
+          "id": "samsung-wa45t3200awa4-exact-model-dc97-19289f",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized exact-model diagram naming assembly pump drain DC97-19289F",
+          "url": "https://partstore.encompass.com/model/SMGWA45T3200AW%7CA4/0002/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WA45T3200AW/A4 exact-model diagram includes drain-pump assembly DC97-19289F"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-wf53bb8700at",
+      "exactCode": "WF53BB8700ATUS",
+      "partProfile": "samsung-dc97-20621c",
+      "compatibilitySources": [
+        {
+          "id": "samsung-wf53bb8700atus-dc97-20621c-fit",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized drain-pump record listing WF53BB8700ATUS as compatible",
+          "url": "https://encompass.com/item/15091002/Samsung/DC97-20621C/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WF53BB8700ATUS uses drain-pump assembly DC97-20621C"
+        },
+        {
+          "id": "samsung-wf53bb8700atus-exact-model-dc97-20621c",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized exact-model diagram naming assembly pump drain DC97-20621C",
+          "url": "https://partstore.encompass.com/model/SMGWF53BB8700ATUS/0000/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WF53BB8700ATUS exact-model diagram includes drain-pump assembly DC97-20621C"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-wa54cg7105aw",
+      "exactCode": "WA54CG7105AWUS",
+      "partProfile": "samsung-dc97-22840a",
+      "compatibilitySources": [
+        {
+          "id": "samsung-wa54cg7105awus-dc97-22840a-fit",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized drain-pump record listing WA54CG7105AWUS as compatible",
+          "url": "https://encompass.com/item/12751076/Samsung/DC97-22840A/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WA54CG7105AWUS uses drain-pump assembly DC97-22840A"
+        },
+        {
+          "id": "samsung-wa54cg7105awus-exact-model-dc97-22840a",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized exact-model diagram naming assembly pump drain DC97-22840A",
+          "url": "https://encompass.com/model/SMGWA54CG7105AWUS/0052/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WA54CG7105AWUS exact-model diagram includes drain-pump assembly DC97-22840A"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-wa55cg7100aw",
+      "exactCode": "WA55CG7100AWUS",
+      "partProfile": "samsung-dc97-22840a",
+      "compatibilitySources": [
+        {
+          "id": "samsung-wa55cg7100awus-dc97-22840a-fit",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized drain-pump record listing WA55CG7100AWUS as compatible",
+          "url": "https://encompass.com/item/12751076/Samsung/DC97-22840A/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WA55CG7100AWUS uses drain-pump assembly DC97-22840A"
+        },
+        {
+          "id": "samsung-wa55cg7100awus-exact-model-dc97-22840a",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized exact-model diagram naming assembly pump drain DC97-22840A",
+          "url": "https://partstore.encompass.com/model/SMGWA55CG7100AWUS/0000/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WA55CG7100AWUS exact-model diagram includes drain-pump assembly DC97-22840A"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-dve45t6000w",
+      "exactCode": "DVE45T6000W/A3",
+      "partProfile": "samsung-dc66-00814a",
+      "compatibilitySources": [
+        {
+          "id": "samsung-dve45t6000wa3-dc66-00814a-bom",
+          "kind": "authorized-parts",
+          "title": "Exact Samsung service BOM placing DC66-00814A inside the door assembly",
+          "url": "https://research.encompass.com/SMG/sb/ExplodedView_DVE45T6000W_A3_0000.pdf",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung DVE45T6000W/A3 uses door-side lever DC66-00814A; the BOM separately identifies the cabinet holder and door switch"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-dve45b6300pa3",
+      "exactCode": "DVE45B6300P/A3",
+      "partProfile": "samsung-dc66-00814a",
+      "compatibilitySources": [
+        {
+          "id": "samsung-dve45b6300pa3-dc66-00814a-bom",
+          "kind": "authorized-parts",
+          "title": "Exact Samsung service BOM placing DC66-00814A inside the door module",
+          "url": "https://research.encompass.com/SMG/sb/ExplodedView_DVE45B6300P_A3_0000.pdf",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung DVE45B6300P/A3 uses door-side lever DC66-00814A; the BOM separately identifies the cabinet holder and door switch"
+        }
+      ]
+    },
+    {
+      "modelId": "lg-wm6700hba",
+      "exactCode": "WM6700HBA.ABLEVUS",
+      "partProfile": "lg-aha75853813",
+      "compatibilitySources": [
+        {
+          "id": "lg-wm6700hba-ablevus-aha75853813",
+          "kind": "authorized-parts",
+          "title": "LG-authorized exact-revision parts page with one drain-pump assembly row",
+          "url": "https://partstore.encompass.com/model/ZENWM6700HBA/ABLEVUS/",
+          "publisher": "Encompass",
+          "appliesTo": "LG WM6700HBA.ABLEVUS uses drain-pump assembly AHA75853813 at schematic location F102"
+        }
+      ]
+    },
+    {
+      "modelId": "lg-wm6500hba",
+      "exactCode": "WM6500HBA.ABLEVUS",
+      "partProfile": "lg-aha75853813",
+      "compatibilitySources": [
+        {
+          "id": "lg-wm6500hba-ablevus-aha75853813",
+          "kind": "authorized-parts",
+          "title": "LG-authorized exact-revision parts page with one drain-pump assembly row",
+          "url": "https://partstore.encompass.com/model/ZENWM6500HBA/ABLEVUS/",
+          "publisher": "Encompass",
+          "appliesTo": "LG WM6500HBA.ABLEVUS uses drain-pump assembly AHA75853813 at schematic location F102"
+        }
+      ]
+    },
+    {
+      "modelId": "lg-wt7400cw",
+      "exactCode": "WT7400CW.ABWEUUS",
+      "partProfile": "lg-aha75673404",
+      "compatibilitySources": [
+        {
+          "id": "lg-wt7400cw-abweuus-aha75673404",
+          "kind": "authorized-parts",
+          "title": "LG-authorized exact-revision diagram naming drain pump AHA75673404",
+          "url": "https://partstore.encompass.com/model/ZENWT7400CW/ABWEUUS/",
+          "publisher": "Encompass",
+          "appliesTo": "LG WT7400CW.ABWEUUS uses drain pump AHA75673404 at schematic location F080"
+        }
+      ]
+    },
+    {
+      "modelId": "lg-dle6100w",
+      "exactCode": "DLE6100W.ABWETUS",
+      "partProfile": "lg-4026el3007c",
+      "compatibilitySources": [
+        {
+          "id": "lg-dle6100w-abwetus-4026el3007c",
+          "kind": "authorized-parts",
+          "title": "LG-authorized exact-revision diagram naming door-side hook 4026EL3007C",
+          "url": "https://partstore.encompass.com/model/ZENDLE6100W/ABWETUS/",
+          "publisher": "Encompass",
+          "appliesTo": "LG DLE6100W.ABWETUS uses door-side hook 4026EL3007C at schematic location A410"
+        }
+      ]
+    },
+    {
+      "modelId": "lg-dle7000w",
+      "exactCode": "DLE7000W.ABWETUS",
+      "partProfile": "lg-4026el3007c",
+      "compatibilitySources": [
+        {
+          "id": "lg-dle7000w-abwetus-4026el3007c",
+          "kind": "authorized-parts",
+          "title": "LG-authorized exact-revision diagram naming door-side hook 4026EL3007C",
+          "url": "https://partstore.encompass.com/model/ZENDLE7000W/ABWETUS/",
+          "publisher": "Encompass",
+          "appliesTo": "LG DLE7000W.ABWETUS uses door-side hook 4026EL3007C at schematic location A410"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Shopify Global Catalog and storefront data verify only a current exact-part-number offer, never appliance compatibility.",
+    "GFE28GYNFS and GNE29GYNFS remain checks-only because their manufacturer pages list both RPWFE and XWFE without a serial-level cutoff.",
+    "KRFF305ESS00 remains checks-only because the authorized catalog presents both EDR4RXD1 and EDR2RXD1 for the same exact revision.",
+    "DLEX4000W.ABWEUUS and DLEX6500B.ABLEECI remain checks-only because their exact diagrams prove the cabinet catch, not the door-side strike inspected by Clunk.",
+    "DVE50T5300C/A3 remains checks-only because its exact service BOM exposes the cabinet holder and complete door assembly but not a separately serviceable door-side lever; DVE54CG7150D/A3 remains checks-only pending an equally exact service BOM.",
+    "LG washer revisions with multiple drain-pump rows remain checks-only; WT7400CW.ABWEUUS is promoted because its exact diagram contains one drain-pump row.",
+    "WM5500HWA remains checks-only because the stored ABWEUUS revision and the current LG support revision do not align cleanly; no suffix is normalized across that conflict.",
+    "Family-only identities remain checks-only until a complete engineering revision is separately proven."
+  ]
+}

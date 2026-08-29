@@ -109,7 +109,7 @@ describe("Clunk visual field guide", () => {
     expect(
       screen.getByText(/Coverage is checked separately for every model and problem/),
     ).toBeVisible();
-    expect(screen.getByText(/41 checked models · 6 purchase-ready/)).toBeVisible();
+    expect(screen.getByText(/41 checked models · 27 purchase-ready/)).toBeVisible();
     expect(screen.getByRole("button", { name: /Supported now Not cold enough/ })).toHaveTextContent(
       "22 checked models · checks only",
     );
@@ -124,6 +124,14 @@ describe("Clunk visual field guide", () => {
     await user.click(screen.getByRole("button", { name: /Supported now Water is slow/ }));
     expect(screen.getByRole("heading", { name: "Find the model label." })).toBeVisible();
     expect(screen.getByRole("searchbox", { name: "Refrigerator model number" })).toBeVisible();
+  });
+
+  it("shows the expanded exact-pump count without changing dishwasher route breadth", async () => {
+    const user = userEvent.setup();
+    renderClunk();
+    await user.click(screen.getByRole("button", { name: /Choose Dishwasher/ }));
+    expect(screen.getByText(/33 checked models · 14 purchase-ready/)).toBeVisible();
+    expect(screen.getByRole("button", { name: /Supported now Won't drain/ })).toBeVisible();
   });
 
   it("returns the local journey to appliance choice when Start over clears shared state", async () => {
@@ -141,10 +149,10 @@ describe("Clunk visual field guide", () => {
     renderClunk();
     await reachModelSearch(user, /Choose Electric dryer/, /Supported now Door won't close/);
     await user.click(screen.getByText("Browse by brand"));
-    await user.click(screen.getByRole("button", { name: "Checks only 26" }));
+    await user.click(screen.getByRole("button", { name: "Checks only 22" }));
     await user.click(screen.getByText("Bosch"));
     expect(screen.getByRole("button", { name: /WTG86403UC\/01 Guided checks only/ })).toBeVisible();
-    await user.click(screen.getByRole("button", { name: "Purchase-ready 7" }));
+    await user.click(screen.getByRole("button", { name: "Purchase-ready 11" }));
     expect(
       screen.queryByRole("button", { name: /WTG86403UC\/01 Guided checks only/ }),
     ).not.toBeInTheDocument();

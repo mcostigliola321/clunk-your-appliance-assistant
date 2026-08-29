@@ -88,10 +88,10 @@ describe("source-backed multi-appliance repair engine", () => {
     expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "refrigerator")).toHaveLength(41);
     expect(
       APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "purchase-ready"),
-    ).toHaveLength(25);
+    ).toHaveLength(67);
     expect(
       APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "guided-checks"),
-    ).toHaveLength(138);
+    ).toHaveLength(96);
     expect(
       APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "verified-part-unavailable"),
     ).toHaveLength(0);
@@ -110,10 +110,10 @@ describe("source-backed multi-appliance repair engine", () => {
         ]),
       ),
     ).toEqual({
-      washer: { purchaseReady: 8, guided: 48 },
-      dishwasher: { purchaseReady: 4, guided: 29 },
-      dryer: { purchaseReady: 7, guided: 26 },
-      refrigerator: { purchaseReady: 6, guided: 35 },
+      washer: { purchaseReady: 15, guided: 41 },
+      dishwasher: { purchaseReady: 14, guided: 19 },
+      dryer: { purchaseReady: 11, guided: 22 },
+      refrigerator: { purchaseReady: 27, guided: 14 },
     });
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.brand)).size).toBe(11);
     expect([...REPAIR_PACKS.values()].every((pack) => pack.schemaVersion === 6)).toBe(true);
@@ -158,6 +158,25 @@ describe("source-backed multi-appliance repair engine", () => {
       ["whirlpool-wed5050lw", "W11429587"],
       ["whirlpool-wrs588fihz", "EDR1RXD1"],
       ["kitchenaid-krfc300ess", "EDR4RXD1"],
+      ["lg-lfxs26973s", "LT1000P"],
+      ["samsung-rf23r6201sr", "DA97-17376B"],
+      ["bosch-b36cl80ens01", "11032531"],
+      ["whirlpool-wrs321sdhz08", "EDR1RXD1"],
+      ["maytag-mss25c4mgz", "EDR1RXD1"],
+      ["amana-asi2575grs", "EDR1RXD1"],
+      ["ge-gne27jymfs", "XWFE"],
+      ["lg-wt7400cw", "AHA75673404"],
+      ["lg-dle6100w", "4026EL3007C"],
+      ["lg-dle7000w", "4026EL3007C"],
+      ["kitchenaid-kdte204kps", "W11462456"],
+      ["samsung-wa45t3200aw", "DC97-19289F"],
+      ["samsung-wf53bb8700at", "DC97-20621C"],
+      ["samsung-wa54cg7105aw", "DC97-22840A"],
+      ["samsung-wa55cg7100aw", "DC97-22840A"],
+      ["samsung-dve45t6000w", "DC66-00814A"],
+      ["samsung-dve45b6300pa3", "DC66-00814A"],
+      ["lg-wm6700hba", "AHA75853813"],
+      ["lg-wm6500hba", "AHA75853813"],
     ] as const;
 
     for (const [applianceId, sku] of upgraded) {
@@ -221,6 +240,40 @@ describe("source-backed multi-appliance repair engine", () => {
     expect(incomplete.snapshot.partOutcome?.status).toBe("variant-needed");
   });
 
+  it("requires the complete refrigerator revision before exposing a newly proven filter", () => {
+    let state = selectAndStart("lg-lfxs26973s");
+    state = executeRepairTool(state, "record_observation", {
+      checkId: "safety-check",
+      resultId: "safe-ready",
+    }).state;
+    state = executeRepairTool(state, "record_observation", {
+      checkId: "inspect-water-filter",
+      resultId: "filter-overdue",
+    }).state;
+    const incomplete = executeRepairTool(state, "find_compatible_part", {}, "agent");
+    expect(incomplete.snapshot.partOutcome?.status).toBe("variant-needed");
+    expect(incomplete.snapshot.selectedPart).toBeNull();
+
+    const exact = runExample("lg-lfxs26973s");
+    expect(exact.snapshot.partOutcome?.status).toBe("exact");
+    expect(exact.snapshot.selectedPart?.sku).toBe("LT1000P");
+  });
+
+  it("does not carry the WT7400CW pump into its neighboring ABWETUS revision", () => {
+    let state = selectAndStart("lg-wt7400cw", "WT7400CW.ABWETUS");
+    state = executeRepairTool(state, "record_observation", {
+      checkId: "safety-check",
+      resultId: "safe-ready",
+    }).state;
+    state = executeRepairTool(state, "record_observation", {
+      checkId: "inspect-drain-hose",
+      resultId: "hose-clear",
+    }).state;
+    const result = executeRepairTool(state, "find_compatible_part", {}, "agent");
+    expect(result.snapshot.partOutcome?.status).toBe("variant-needed");
+    expect(result.snapshot.selectedPart).toBeNull();
+  });
+
   it("keeps an active human-observation task compact for WebMCP", () => {
     const state = selectAndStart("ge-gtd42easj2ww", "GTD42EASJ2WW");
     const output = getWebMcpTaskSnapshot(state);
@@ -246,8 +299,8 @@ describe("source-backed multi-appliance repair engine", () => {
     expect(output.catalog.counts).toEqual({
       byKind: { washer: 56, dishwasher: 33, dryer: 33, refrigerator: 41 },
       byCapability: {
-        "purchase-ready": 25,
-        "guided-checks": 532,
+        "purchase-ready": 67,
+        "guided-checks": 490,
         "verified-part-unavailable": 0,
       },
     });
