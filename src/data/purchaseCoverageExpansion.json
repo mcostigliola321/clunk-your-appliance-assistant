@@ -188,6 +188,108 @@
         "publisher": "Encompass",
         "appliesTo": "LG hook locker 4026EL3007C; exact dryer fit is established on authorized model diagrams"
       }
+    },
+    "whirlpool-w11462456": {
+      "componentId": "drain-pump",
+      "name": "KitchenAid dishwasher drain pump",
+      "sku": "W11462456",
+      "location": "Internal drain pump below the tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "KitchenAid W11462456 dishwasher drain pump exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "whirlpool-w11462456-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "Whirlpool factory-certified W11462456 drain-pump page",
+        "url": "https://www.whirlpoolparts.com/PartDetail/Drain-Pump/W11462456/4975481",
+        "publisher": "Whirlpool Parts",
+        "appliesTo": "Whirlpool OEM dishwasher drain pump W11462456; exact appliance fit is established on the exact-model listing"
+      }
+    },
+    "samsung-dc97-19289f": {
+      "componentId": "drain-pump",
+      "name": "Samsung washer drain pump assembly",
+      "sku": "DC97-19289F",
+      "location": "Internal drain pump below the wash basket; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "Samsung DC97-19289F washer drain pump exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "samsung-dc97-19289f-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "Samsung-authorized DC97-19289F drain-pump assembly page",
+        "url": "https://encompass.com/item/11667692/Samsung/DC97-19289F/",
+        "publisher": "Encompass",
+        "appliesTo": "Samsung washer drain-pump assembly DC97-19289F; exact appliance fit is listed on the same authorized record"
+      }
+    },
+    "samsung-dc97-22840a": {
+      "componentId": "drain-pump",
+      "name": "Samsung washer drain pump assembly",
+      "sku": "DC97-22840A",
+      "location": "Internal drain pump below the wash basket; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "Samsung DC97-22840A washer drain pump exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "samsung-dc97-22840a-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "Samsung-authorized DC97-22840A drain-pump assembly page",
+        "url": "https://encompass.com/item/12751076/Samsung/DC97-22840A/",
+        "publisher": "Encompass",
+        "appliesTo": "Samsung washer drain-pump assembly DC97-22840A; exact appliance fits are listed on the same authorized record"
+      }
+    },
+    "samsung-dc97-20621c": {
+      "componentId": "drain-pump",
+      "name": "Samsung washer drain pump assembly",
+      "sku": "DC97-20621C",
+      "location": "Internal drain pump below the wash tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "Samsung DC97-20621C washer drain pump exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "samsung-dc97-20621c-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "Samsung-authorized DC97-20621C drain-pump assembly page",
+        "url": "https://encompass.com/item/15091002/Samsung/DC97-20621C/",
+        "publisher": "Encompass",
+        "appliesTo": "Samsung front-load washer drain-pump assembly DC97-20621C; exact appliance fits are listed on the same authorized record"
+      }
+    },
+    "samsung-dc66-00814a": {
+      "componentId": "door-strike",
+      "name": "Samsung dryer door lever",
+      "sku": "DC66-00814A",
+      "location": "On the visible edge of the dryer door",
+      "installBoundary": "professional-only",
+      "commerceQuery": "Samsung DC66-00814A dryer door lever exact part",
+      "offerCountAtVerification": 6,
+      "identitySource": {
+        "id": "samsung-dc66-00814a-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "Samsung service BOM identifying DC66-00814A as the door lever",
+        "url": "https://research.encompass.com/SMG/sb/ExplodedView_DVE45T6000W_A3_0000.pdf",
+        "publisher": "Encompass",
+        "appliesTo": "Samsung service part DC66-00814A is the door-side lever; exact dryer fit is established separately for each complete model code"
+      }
+    },
+    "lg-aha75853813": {
+      "componentId": "drain-pump",
+      "name": "LG washer drain pump assembly",
+      "sku": "AHA75853813",
+      "location": "Internal drain pump below the wash tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "LG AHA75853813 washer drain pump exact part",
+      "offerCountAtVerification": 5,
+      "identitySource": {
+        "id": "lg-aha75853813-identity-2026-08-29",
+        "kind": "authorized-parts",
+        "title": "LG-authorized AHA75853813 drain-pump assembly page",
+        "url": "https://partstore.encompass.com/item/13054755/LG/AHA75853813/",
+        "publisher": "Encompass",
+        "appliesTo": "LG drain-pump assembly AHA75853813; exact washer fit is established on each authorized exact-revision parts page"
+      }
     }
   },
   "records": [
@@ -754,6 +856,173 @@
       ]
     },
     {
+      "modelId": "kitchenaid-kdte204kps",
+      "exactCode": "KDTE204KPS2",
+      "partProfile": "whirlpool-w11462456",
+      "compatibilitySources": [
+        {
+          "id": "kitchenaid-kdte204kps2-w11462456",
+          "kind": "authorized-parts",
+          "title": "Factory-certified exact-model listing with one drain-pump result W11462456",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b121i168d2466555/Model-KDTE204KPS2-Kitchenaid-Dishwasher-Drain-Pump-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "KitchenAid KDTE204KPS2 has one drain-pump result, Whirlpool OEM W11462456"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-wa45t3200aw",
+      "exactCode": "WA45T3200AW/A4",
+      "partProfile": "samsung-dc97-19289f",
+      "compatibilitySources": [
+        {
+          "id": "samsung-wa45t3200awa4-dc97-19289f-fit",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized drain-pump record listing WA45T3200AW/A4 as compatible",
+          "url": "https://encompass.com/item/11667692/Samsung/DC97-19289F/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WA45T3200AW/A4 uses drain-pump assembly DC97-19289F"
+        },
+        {
+          "id": "samsung-wa45t3200awa4-exact-model-dc97-19289f",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized exact-model diagram naming assembly pump drain DC97-19289F",
+          "url": "https://partstore.encompass.com/model/SMGWA45T3200AW%7CA4/0002/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WA45T3200AW/A4 exact-model diagram includes drain-pump assembly DC97-19289F"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-wf53bb8700at",
+      "exactCode": "WF53BB8700ATUS",
+      "partProfile": "samsung-dc97-20621c",
+      "compatibilitySources": [
+        {
+          "id": "samsung-wf53bb8700atus-dc97-20621c-fit",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized drain-pump record listing WF53BB8700ATUS as compatible",
+          "url": "https://encompass.com/item/15091002/Samsung/DC97-20621C/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WF53BB8700ATUS uses drain-pump assembly DC97-20621C"
+        },
+        {
+          "id": "samsung-wf53bb8700atus-exact-model-dc97-20621c",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized exact-model diagram naming assembly pump drain DC97-20621C",
+          "url": "https://partstore.encompass.com/model/SMGWF53BB8700ATUS/0000/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WF53BB8700ATUS exact-model diagram includes drain-pump assembly DC97-20621C"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-wa54cg7105aw",
+      "exactCode": "WA54CG7105AWUS",
+      "partProfile": "samsung-dc97-22840a",
+      "compatibilitySources": [
+        {
+          "id": "samsung-wa54cg7105awus-dc97-22840a-fit",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized drain-pump record listing WA54CG7105AWUS as compatible",
+          "url": "https://encompass.com/item/12751076/Samsung/DC97-22840A/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WA54CG7105AWUS uses drain-pump assembly DC97-22840A"
+        },
+        {
+          "id": "samsung-wa54cg7105awus-exact-model-dc97-22840a",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized exact-model diagram naming assembly pump drain DC97-22840A",
+          "url": "https://encompass.com/model/SMGWA54CG7105AWUS/0052/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WA54CG7105AWUS exact-model diagram includes drain-pump assembly DC97-22840A"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-wa55cg7100aw",
+      "exactCode": "WA55CG7100AWUS",
+      "partProfile": "samsung-dc97-22840a",
+      "compatibilitySources": [
+        {
+          "id": "samsung-wa55cg7100awus-dc97-22840a-fit",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized drain-pump record listing WA55CG7100AWUS as compatible",
+          "url": "https://encompass.com/item/12751076/Samsung/DC97-22840A/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WA55CG7100AWUS uses drain-pump assembly DC97-22840A"
+        },
+        {
+          "id": "samsung-wa55cg7100awus-exact-model-dc97-22840a",
+          "kind": "authorized-parts",
+          "title": "Samsung-authorized exact-model diagram naming assembly pump drain DC97-22840A",
+          "url": "https://partstore.encompass.com/model/SMGWA55CG7100AWUS/0000/",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung WA55CG7100AWUS exact-model diagram includes drain-pump assembly DC97-22840A"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-dve45t6000w",
+      "exactCode": "DVE45T6000W/A3",
+      "partProfile": "samsung-dc66-00814a",
+      "compatibilitySources": [
+        {
+          "id": "samsung-dve45t6000wa3-dc66-00814a-bom",
+          "kind": "authorized-parts",
+          "title": "Exact Samsung service BOM placing DC66-00814A inside the door assembly",
+          "url": "https://research.encompass.com/SMG/sb/ExplodedView_DVE45T6000W_A3_0000.pdf",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung DVE45T6000W/A3 uses door-side lever DC66-00814A; the BOM separately identifies the cabinet holder and door switch"
+        }
+      ]
+    },
+    {
+      "modelId": "samsung-dve45b6300pa3",
+      "exactCode": "DVE45B6300P/A3",
+      "partProfile": "samsung-dc66-00814a",
+      "compatibilitySources": [
+        {
+          "id": "samsung-dve45b6300pa3-dc66-00814a-bom",
+          "kind": "authorized-parts",
+          "title": "Exact Samsung service BOM placing DC66-00814A inside the door module",
+          "url": "https://research.encompass.com/SMG/sb/ExplodedView_DVE45B6300P_A3_0000.pdf",
+          "publisher": "Encompass",
+          "appliesTo": "Samsung DVE45B6300P/A3 uses door-side lever DC66-00814A; the BOM separately identifies the cabinet holder and door switch"
+        }
+      ]
+    },
+    {
+      "modelId": "lg-wm6700hba",
+      "exactCode": "WM6700HBA.ABLEVUS",
+      "partProfile": "lg-aha75853813",
+      "compatibilitySources": [
+        {
+          "id": "lg-wm6700hba-ablevus-aha75853813",
+          "kind": "authorized-parts",
+          "title": "LG-authorized exact-revision parts page with one drain-pump assembly row",
+          "url": "https://partstore.encompass.com/model/ZENWM6700HBA/ABLEVUS/",
+          "publisher": "Encompass",
+          "appliesTo": "LG WM6700HBA.ABLEVUS uses drain-pump assembly AHA75853813 at schematic location F102"
+        }
+      ]
+    },
+    {
+      "modelId": "lg-wm6500hba",
+      "exactCode": "WM6500HBA.ABLEVUS",
+      "partProfile": "lg-aha75853813",
+      "compatibilitySources": [
+        {
+          "id": "lg-wm6500hba-ablevus-aha75853813",
+          "kind": "authorized-parts",
+          "title": "LG-authorized exact-revision parts page with one drain-pump assembly row",
+          "url": "https://partstore.encompass.com/model/ZENWM6500HBA/ABLEVUS/",
+          "publisher": "Encompass",
+          "appliesTo": "LG WM6500HBA.ABLEVUS uses drain-pump assembly AHA75853813 at schematic location F102"
+        }
+      ]
+    },
+    {
       "modelId": "lg-wt7400cw",
       "exactCode": "WT7400CW.ABWEUUS",
       "partProfile": "lg-aha75673404",
@@ -804,7 +1073,9 @@
     "GFE28GYNFS and GNE29GYNFS remain checks-only because their manufacturer pages list both RPWFE and XWFE without a serial-level cutoff.",
     "KRFF305ESS00 remains checks-only because the authorized catalog presents both EDR4RXD1 and EDR2RXD1 for the same exact revision.",
     "DLEX4000W.ABWEUUS and DLEX6500B.ABLEECI remain checks-only because their exact diagrams prove the cabinet catch, not the door-side strike inspected by Clunk.",
+    "DVE50T5300C/A3 remains checks-only because its exact service BOM exposes the cabinet holder and complete door assembly but not a separately serviceable door-side lever; DVE54CG7150D/A3 remains checks-only pending an equally exact service BOM.",
     "LG washer revisions with multiple drain-pump rows remain checks-only; WT7400CW.ABWEUUS is promoted because its exact diagram contains one drain-pump row.",
+    "WM5500HWA remains checks-only because the stored ABWEUUS revision and the current LG support revision do not align cleanly; no suffix is normalized across that conflict.",
     "Family-only identities remain checks-only until a complete engineering revision is separately proven."
   ]
 }

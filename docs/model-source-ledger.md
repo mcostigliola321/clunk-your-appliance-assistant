@@ -1,6 +1,6 @@
 # Clunk model source ledger
 
-This ledger defines the 163-model real-appliance catalog: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. It is deliberately conservative: 58 exact-code revisions are **Purchase-ready**, 105 model identities are **Guided checks only**, and none currently sit in **Verified part unavailable**. Those identities resolve to 557 model × symptom packs—58 purchase-ready and 499 guided. A supported model never inherits a neighboring model's part or symptom coverage.
+This ledger defines the 163-model real-appliance catalog: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. It is deliberately conservative: 67 exact-code revisions are **Purchase-ready**, 96 model identities are **Guided checks only**, and none currently sit in **Verified part unavailable**. Those identities resolve to 557 model × symptom packs—67 purchase-ready and 490 guided. A supported model never inherits a neighboring model's part or symptom coverage.
 
 ## 2026-08-29 broad symptom integration
 
@@ -403,6 +403,14 @@ Six exact Bosch E-Nr spare-parts lists independently contain manufacturer drain 
 ### 2026-08-29 Samsung dishwasher drain-pump overlay
 
 Samsung's support site identifies Samsung Parts/Encompass as an authorized parts distributor and repair-parts partner. The authorized exact-model ledgers map `DW80CG4021SR/AA` and `DW80R2031US/AA` to drain pump `DD81-02635A`, and `DW80B6060US/AA` to drain pump motor `DD31-00016A`; the corresponding authorized part pages identify the exact SKUs and compatible models. Global Catalog retained five exact-number offers for each SKU. `DW80CG5450SR/AA` remains guided because no equally exact authorized pump row was found. All three new outcomes remain professional-install only after the existing external drain checks.
+
+The factory-certified exact-model listing for KitchenAid `KDTE204KPS2` narrows the **Drain Pump** title to one result, Whirlpool OEM `W11462456`; the separate part page identifies that exact SKU as a dishwasher drain pump. A fresh no-store Global Catalog request retained five exact-number offers after Clunk filtering. Only revision 2 is promoted, and the internal pump remains professional-install only after the sink connection and user-accessible filter area both look clear.
+
+Samsung-authorized exact-model records bind four complete washer codes to one explicitly named drain-pump assembly each: `WA45T3200AW/A4` → `DC97-19289F`, `WF53BB8700ATUS` → `DC97-20621C`, and `WA54CG7105AWUS` plus `WA55CG7100AWUS` → `DC97-22840A`. The same authorized part records list the exact models as compatible; each live exact-SKU query retained five offers. Internal pump work remains professional-only.
+
+LG-authorized exact-revision parts pages for `WM6700HBA.ABLEVUS` and `WM6500HBA.ABLEVUS` each contain one drain-pump assembly row at schematic location F102: `AHA75853813`. The authorized part page identifies the SKU and lists both model families; five live exact-number offers were retained. `WM5500HWA` remains checks-only because its stored revision and the current manufacturer support revision do not align cleanly.
+
+Samsung service BOMs for `DVE45T6000W/A3` and `DVE45B6300P/A3` place `DC66-00814A` inside the door assembly or module and separately identify the cabinet-side holder and door switch. Six live exact-SKU offers were retained. The visible door-side result can reveal the SKU, but replacement remains professional-only because the primary evidence does not establish a consumer-safe installation procedure. `DVE50T5300C/A3` and `DVE54CG7150D/A3` remain guided pending an equally specific door-side mapping.
 
 ### Corrected LG evidence claim
 

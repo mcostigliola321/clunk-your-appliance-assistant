@@ -113,7 +113,7 @@ describe("source-backed catalog expansion", () => {
       }),
     ).sort((left, right) => left.id.localeCompare(right.id));
 
-    expect(exactRevisions).toHaveLength(58);
+    expect(exactRevisions).toHaveLength(67);
     expect(exactRevisions).toEqual(
       expect.arrayContaining([
         { id: "amana-ned4655ew", codes: ["NED4655EW1"], sku: "W11429587" },
@@ -126,13 +126,22 @@ describe("source-backed catalog expansion", () => {
         { id: "ge-gtw335asnww", codes: ["GTW335ASN1WW"], sku: "WH23X28418" },
         { id: "hotpoint-htw265aswww", codes: ["HTW265ASW0WW"], sku: "WH23X28418" },
         { id: "kitchenaid-kdfe204kps", codes: ["KDFE204KPS0"], sku: "W11462456" },
+        { id: "kitchenaid-kdte204kps", codes: ["KDTE204KPS2"], sku: "W11462456" },
         { id: "kitchenaid-krfc300ess", codes: ["KRFC300ESS08"], sku: "EDR4RXD1" },
         { id: "lg-lrflc2706s", codes: ["LRFLC2706S.ASTCNA0"], sku: "LT1000P" },
+        { id: "lg-wm6500hba", codes: ["WM6500HBA.ABLEVUS"], sku: "AHA75853813" },
+        { id: "lg-wm6700hba", codes: ["WM6700HBA.ABLEVUS"], sku: "AHA75853813" },
         { id: "maytag-mdb4949skz", codes: ["MDB4949SKZ1"], sku: "W11497943" },
         { id: "maytag-med4500mw", codes: ["MED4500MW0"], sku: "W11429587" },
         { id: "samsung-rf28t5001sr", codes: ["RF28T5001SR/AA"], sku: "DA97-17376B" },
+        { id: "samsung-dve45b6300pa3", codes: ["DVE45B6300P/A3"], sku: "DC66-00814A" },
+        { id: "samsung-dve45t6000w", codes: ["DVE45T6000W/A3"], sku: "DC66-00814A" },
+        { id: "samsung-wa45t3200aw", codes: ["WA45T3200AW/A4"], sku: "DC97-19289F" },
+        { id: "samsung-wa54cg7105aw", codes: ["WA54CG7105AWUS"], sku: "DC97-22840A" },
+        { id: "samsung-wa55cg7100aw", codes: ["WA55CG7100AWUS"], sku: "DC97-22840A" },
         { id: "samsung-wf45b6300aw", codes: ["WF45B6300AW/US"], sku: "DC97-20621A" },
         { id: "samsung-wf45t6000aw", codes: ["WF45T6000AW/A5"], sku: "DC97-20621A" },
+        { id: "samsung-wf53bb8700at", codes: ["WF53BB8700ATUS"], sku: "DC97-20621C" },
         { id: "whirlpool-wdt730hamz", codes: ["WDT730HAMZ0"], sku: "W10876537" },
         { id: "whirlpool-wdt750sakz1", codes: ["WDT750SAKZ1"], sku: "W11412291" },
         { id: "whirlpool-wed4815ew", codes: ["WED4815EW1"], sku: "W11429587" },

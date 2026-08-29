@@ -1,6 +1,6 @@
 # Source URL and live-catalog audit
 
-Audit dates: **2026-08-27 through 2026-08-29**. Current catalog: **163 models**—56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators—resolving to 557 model × symptom packs with 58 purchase-ready and 499 guided combinations. This audit covers the original expansion, two activation batches totaling 32 guided models, the 13-revision exact-part upgrade, the 21-revision refrigerator filter, nine-revision dishwasher, one-revision LG washer, and two-revision LG dryer upgrades, supplemental symptom evidence, the 91-row door-closure activation, the 303-row broad symptom activation, existing model-number and exact-part evidence, and the live Shopify UCP boundary. Clunk makes a user-triggered live Shopify catalog request only for purchase-ready results; it does not scrape source pages at runtime. Runtime source and merchant destinations are independently restricted to public HTTPS URLs.
+Audit dates: **2026-08-27 through 2026-08-29**. Current catalog: **163 models**—56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators—resolving to 557 model × symptom packs with 67 purchase-ready and 490 guided combinations. This audit covers the original expansion, two activation batches totaling 32 guided models, the 13-revision exact-part upgrade, the 21-revision refrigerator filter, ten-revision dishwasher, seven-revision washer, and four-revision dryer upgrades, supplemental symptom evidence, the 91-row door-closure activation, the 303-row broad symptom activation, existing model-number and exact-part evidence, and the live Shopify UCP boundary. Clunk makes a user-triggered live Shopify catalog request only for purchase-ready results; it does not scrape source pages at runtime. Runtime source and merchant destinations are independently restricted to public HTTPS URLs.
 
 ## 2026-08-29 broad symptom source review
 
@@ -33,6 +33,18 @@ The exact spare-parts lists for Bosch `SHEM63W55N/01`, `SHX78CM5N/01`, `SHP65CM5
 ## 2026-08-29 Samsung dishwasher exact-pump review
 
 Samsung's official support surface identifies Samsung Parts as an authorized distributor and Encompass as its repair-parts partner. Encompass exact-model pages map `DW80CG4021SR/AA` and `DW80R2031US/AA` to `DD81-02635A`, explicitly described as pump-drain, and map `DW80B6060US/AA` to `DD31-00016A`; its exact part page describes that part as a dishwasher drain BLDC pump and includes the model in the compatible list. Fresh no-store Global Catalog requests retained five exact-number offers for each SKU. `DW80CG5450SR/AA` remains guided because the review did not find an equally exact authorized mapping.
+
+## 2026-08-29 KitchenAid dishwasher exact-pump review
+
+The factory-certified [KitchenAid KDTE204KPS2 drain-pump listing](https://www.whirlpoolparts.com/Shop-For-Parts/a9b121i168d2466555/Model-KDTE204KPS2-Kitchenaid-Dishwasher-Drain-Pump-Parts) returns one result, OEM `W11462456`, and the [separate exact-part page](https://www.whirlpoolparts.com/PartDetail/Drain-Pump/W11462456/4975481) identifies it as a dishwasher drain pump. A fresh no-store Global Catalog request retained five available exact-number offers. Only `KDTE204KPS2` was promoted; no neighboring revision inherited the mapping, and the internal pump remains professional-only.
+
+## 2026-08-29 Samsung washer and dryer exact-part review
+
+Samsung-authorized Encompass records explicitly identify `DC97-19289F`, `DC97-20621C`, and `DC97-22840A` as washer drain-pump assemblies and list the four promoted complete washer codes as compatible. Their exact-model diagrams independently place the same SKUs on those exact revisions. Fresh no-store Global Catalog searches retained five exact-number offers for each SKU. The remaining Samsung washer codes were not promoted where the compatible list omitted the revision or the exact diagram exposed a different or multiple pump configuration.
+
+LG-authorized exact-revision parts pages for `WM6700HBA.ABLEVUS` and `WM6500HBA.ABLEVUS` each expose one drain-pump assembly row, `AHA75853813`, at schematic location F102. The separate authorized part record identifies the exact SKU and lists both model families. A fresh Global Catalog request retained five exact-number offers. Similar LG families were kept guided where suffixes did not align or the exact page exposed multiple pump rows.
+
+Samsung service BOMs at `research.encompass.com` separately identify the door module, cabinet-side holder, door switch, and door-side lever. Only `DVE45T6000W/A3` and `DVE45B6300P/A3` explicitly list door lever `DC66-00814A`; a fresh Global Catalog request retained six exact-number offers. `DVE50T5300C/A3` exposes a complete door assembly and cabinet holder without a separately serviceable door-side lever, while `DVE54CG7150D/A3` lacks an equally exact reviewed BOM, so both remain guided-only.
 
 ## 2026-08-28 door-closure source recheck
 

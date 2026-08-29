@@ -88,10 +88,10 @@ describe("source-backed multi-appliance repair engine", () => {
     expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "refrigerator")).toHaveLength(41);
     expect(
       APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "purchase-ready"),
-    ).toHaveLength(58);
+    ).toHaveLength(67);
     expect(
       APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "guided-checks"),
-    ).toHaveLength(105);
+    ).toHaveLength(96);
     expect(
       APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "verified-part-unavailable"),
     ).toHaveLength(0);
@@ -110,9 +110,9 @@ describe("source-backed multi-appliance repair engine", () => {
         ]),
       ),
     ).toEqual({
-      washer: { purchaseReady: 9, guided: 47 },
-      dishwasher: { purchaseReady: 13, guided: 20 },
-      dryer: { purchaseReady: 9, guided: 24 },
+      washer: { purchaseReady: 15, guided: 41 },
+      dishwasher: { purchaseReady: 14, guided: 19 },
+      dryer: { purchaseReady: 11, guided: 22 },
       refrigerator: { purchaseReady: 27, guided: 14 },
     });
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.brand)).size).toBe(11);
@@ -168,6 +168,15 @@ describe("source-backed multi-appliance repair engine", () => {
       ["lg-wt7400cw", "AHA75673404"],
       ["lg-dle6100w", "4026EL3007C"],
       ["lg-dle7000w", "4026EL3007C"],
+      ["kitchenaid-kdte204kps", "W11462456"],
+      ["samsung-wa45t3200aw", "DC97-19289F"],
+      ["samsung-wf53bb8700at", "DC97-20621C"],
+      ["samsung-wa54cg7105aw", "DC97-22840A"],
+      ["samsung-wa55cg7100aw", "DC97-22840A"],
+      ["samsung-dve45t6000w", "DC66-00814A"],
+      ["samsung-dve45b6300pa3", "DC66-00814A"],
+      ["lg-wm6700hba", "AHA75853813"],
+      ["lg-wm6500hba", "AHA75853813"],
     ] as const;
 
     for (const [applianceId, sku] of upgraded) {
@@ -290,8 +299,8 @@ describe("source-backed multi-appliance repair engine", () => {
     expect(output.catalog.counts).toEqual({
       byKind: { washer: 56, dishwasher: 33, dryer: 33, refrigerator: 41 },
       byCapability: {
-        "purchase-ready": 58,
-        "guided-checks": 499,
+        "purchase-ready": 67,
+        "guided-checks": 490,
         "verified-part-unavailable": 0,
       },
     });

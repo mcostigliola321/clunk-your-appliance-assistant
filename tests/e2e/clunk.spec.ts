@@ -22,6 +22,12 @@ test.beforeEach(async ({ page }) => {
       "LT1000P",
       "AHA75673404",
       "4026EL3007C",
+      "W11462456",
+      "DC97-19289F",
+      "DC97-20621C",
+      "DC97-22840A",
+      "DC66-00814A",
+      "AHA75853813",
     ];
     const sku = knownSkus.find((candidate) => query.includes(candidate)) ?? "WE01M10007";
     await route.fulfill({
@@ -306,12 +312,12 @@ test("runs a topology-aware washer lid closure guide and stops before internal r
 test("browses the 163-model catalog by brand and honest coverage tier", async ({ page }) => {
   await reachModelSearch(page, /Choose Electric dryer/, /Supported now Door won't close/);
   await page.getByText("Browse by brand").click();
-  await page.getByRole("button", { name: "Checks only 24" }).click();
+  await page.getByRole("button", { name: "Checks only 22" }).click();
   await page.getByText("Bosch").click();
   await expect(
     page.getByRole("button", { name: /WTG86403UC\/01 Guided checks only/ }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Purchase-ready 9" }).click();
+  await page.getByRole("button", { name: "Purchase-ready 11" }).click();
   await expect(page.getByRole("button", { name: /WTG86403UC\/01 Guided checks only/ })).toHaveCount(
     0,
   );
@@ -404,6 +410,60 @@ test("the new LG washer and dryer revisions reach only their proven exact-SKU ha
   await expect(page.locator(".part-sku")).toHaveText("Part #4026EL3007C");
   await expect(
     page.getByRole("link", { name: /Open UCP Parts cart for part 4026EL3007C/ }),
+  ).toBeVisible();
+});
+
+test("the exact KitchenAid dishwasher revision reaches its proven professional drain-pump handoff", async ({
+  page,
+}) => {
+  await reachModelSearch(page, /Choose Dishwasher/, /Supported now Won't drain/);
+  const input = page.getByRole("searchbox", { name: "Dishwasher model number" });
+  await input.fill("KDTE204KPS2");
+  await page.getByRole("button", { name: "Find model" }).click();
+  await page.getByRole("button", { name: /KitchenAid KDTE204KPS Purchase-ready/ }).click();
+  await page.getByRole("button", { name: "Safe to continue" }).click();
+  await page.getByRole("button", { name: "The sink and visible hose look clear" }).click();
+  await expect(page.locator(".part-sku")).toHaveText("Part #W11462456");
+  await expect(
+    page.getByText("This is an internal repair for a qualified appliance technician."),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Open UCP Parts cart for part W11462456/ }),
+  ).toBeVisible();
+});
+
+test("exact Samsung washer and dryer revisions reach only their proven professional handoffs", async ({
+  page,
+}) => {
+  await reachModelSearch(page, /Choose Washer/, /Supported now Won't drain/);
+  let input = page.getByRole("searchbox", { name: "Washer model number" });
+  await input.fill("WA54CG7105AWUS");
+  await page.getByRole("button", { name: "Find model" }).click();
+  await page.getByRole("button", { name: /Samsung WA54CG7105AW Purchase-ready/ }).click();
+  await page.getByRole("button", { name: "Safe to continue" }).click();
+  await page.getByRole("button", { name: "The hose looks clear" }).click();
+  await expect(page.locator(".part-sku")).toHaveText("Part #DC97-22840A");
+  await expect(
+    page.getByText("This is an internal repair for a qualified appliance technician."),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Open UCP Parts cart for part DC97-22840A/ }),
+  ).toBeVisible();
+
+  await page.getByRole("button", { name: "Start over" }).click();
+  await reachModelSearch(page, /Choose Electric dryer/, /Supported now Door won't close/);
+  input = page.getByRole("searchbox", { name: "Electric dryer model number" });
+  await input.fill("DVE45T6000W/A3");
+  await page.getByRole("button", { name: "Find model" }).click();
+  await page.getByRole("button", { name: /Samsung DVE45T6000W Purchase-ready/ }).click();
+  await page.getByRole("button", { name: "Safe to continue" }).click();
+  await page.getByRole("button", { name: "The strike is cracked, bent, or missing" }).click();
+  await expect(page.locator(".part-sku")).toHaveText("Part #DC66-00814A");
+  await expect(
+    page.getByText("This is an internal repair for a qualified appliance technician."),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Open UCP Parts cart for part DC66-00814A/ }),
   ).toBeVisible();
 });
 

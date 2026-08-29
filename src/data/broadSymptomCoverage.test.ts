@@ -122,12 +122,12 @@ describe("broad evidence-backed model × symptom coverage", () => {
       APPLIANCE_CATALOG.filter((entry) =>
         entry.symptomCoverage.some((coverage) => coverage.exactPartEvidence),
       ),
-    ).toHaveLength(58);
+    ).toHaveLength(67);
     expect(
       APPLIANCE_CATALOG.flatMap((entry) => entry.symptomCoverage).filter(
         (coverage) => coverage.capability === "purchase-ready",
       ),
-    ).toHaveLength(58);
+    ).toHaveLength(67);
   });
 
   it("rejects missing sources, tier inflation, malformed identity, and removed safety gates", () => {

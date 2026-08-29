@@ -12,8 +12,8 @@ import {
 } from "./purchaseCoverageExpansion";
 
 describe("purchase coverage expansion", () => {
-  it("promotes only the 33 separately reviewed exact default-route revisions", () => {
-    expect(PURCHASE_COVERAGE_EXPANSION_COUNT).toBe(33);
+  it("promotes only the 42 separately reviewed exact default-route revisions", () => {
+    expect(PURCHASE_COVERAGE_EXPANSION_COUNT).toBe(42);
     expect(PURCHASE_COVERAGE_EXPANSION_VERIFIED_ON).toBe("2026-08-29");
     expect(PURCHASE_COVERAGE_EXPANSION.limitations.length).toBeGreaterThanOrEqual(4);
     expect(assertCatalog(APPLIANCE_CATALOG)).toBe(APPLIANCE_CATALOG);
@@ -23,7 +23,7 @@ describe("purchase coverage expansion", () => {
       APPLIANCE_CATALOG.filter((entry) =>
         entry.symptomCoverage.some((coverage) => coverage.capability === "purchase-ready"),
       ),
-    ).toHaveLength(58);
+    ).toHaveLength(67);
 
     for (const record of PURCHASE_COVERAGE_EXPANSION.records) {
       const entry = APPLIANCE_CATALOG.find((candidate) => candidate.id === record.modelId);
@@ -94,6 +94,64 @@ describe("purchase coverage expansion", () => {
     }
   });
 
+  it("binds KDTE204KPS2 to its one exact authorized drain-pump result", () => {
+    const entry = APPLIANCE_CATALOG.find((candidate) => candidate.id === "kitchenaid-kdte204kps");
+    const coverage = entry?.symptomCoverage.find(
+      (candidate) => candidate.symptomId === "will-not-drain",
+    );
+    expect(coverage?.capability).toBe("purchase-ready");
+    expect(coverage?.exactPartEvidence?.verifiedProductCodes).toEqual(["KDTE204KPS2"]);
+    expect(coverage?.exactPartEvidence?.part).toMatchObject({
+      sku: "W11462456",
+      compatibleProductCodes: ["KDTE204KPS2"],
+      installBoundary: "professional-only",
+      commerce: { exactSku: "W11462456", offerCountAtVerification: 5 },
+    });
+  });
+
+  it("binds four Samsung washer revisions to their exact authorized drain pumps", () => {
+    const exact = [
+      ["samsung-wa45t3200aw", "WA45T3200AW/A4", "DC97-19289F"],
+      ["samsung-wf53bb8700at", "WF53BB8700ATUS", "DC97-20621C"],
+      ["samsung-wa54cg7105aw", "WA54CG7105AWUS", "DC97-22840A"],
+      ["samsung-wa55cg7100aw", "WA55CG7100AWUS", "DC97-22840A"],
+    ] as const;
+    for (const [id, code, sku] of exact) {
+      const part = getRepairPack(id).parts[0];
+      expect(part?.sku, id).toBe(sku);
+      expect(part?.compatibleProductCodes, id).toEqual([code]);
+      expect(part?.installBoundary, id).toBe("professional-only");
+      expect(part?.commerce?.offerCountAtVerification, id).toBe(5);
+    }
+  });
+
+  it("keeps Samsung dryer door-side levers distinct from cabinet holders", () => {
+    for (const [id, code] of [
+      ["samsung-dve45t6000w", "DVE45T6000W/A3"],
+      ["samsung-dve45b6300pa3", "DVE45B6300P/A3"],
+    ] as const) {
+      const part = getRepairPack(id).parts[0];
+      expect(part?.sku, id).toBe("DC66-00814A");
+      expect(part?.compatibleProductCodes, id).toEqual([code]);
+      expect(part?.location, id).toContain("dryer door");
+      expect(part?.installBoundary, id).toBe("professional-only");
+      expect(part?.commerce?.offerCountAtVerification, id).toBe(6);
+    }
+  });
+
+  it("binds two exact LG front-load revisions to their single authorized drain-pump row", () => {
+    for (const [id, code] of [
+      ["lg-wm6700hba", "WM6700HBA.ABLEVUS"],
+      ["lg-wm6500hba", "WM6500HBA.ABLEVUS"],
+    ] as const) {
+      const part = getRepairPack(id).parts[0];
+      expect(part?.sku, id).toBe("AHA75853813");
+      expect(part?.compatibleProductCodes, id).toEqual([code]);
+      expect(part?.installBoundary, id).toBe("professional-only");
+      expect(part?.commerce?.offerCountAtVerification, id).toBe(5);
+    }
+  });
+
   it("keeps exact revisions checks-only when the authorized diagram is ambiguous or mismatches the observed branch", () => {
     const guidedOnly = [
       ["lg-dlex4000w", "door-will-not-close"],
@@ -102,6 +160,9 @@ describe("purchase coverage expansion", () => {
       ["lg-wm3600hwa", "will-not-drain"],
       ["lg-wt6105cw", "will-not-drain"],
       ["lg-wt7150cw", "will-not-drain"],
+      ["lg-wm5500hwa", "will-not-drain"],
+      ["samsung-dve50t5300ca3", "door-will-not-close"],
+      ["samsung-dve54cg7150da3", "door-will-not-close"],
     ] as const;
     for (const [id, symptomId] of guidedOnly) {
       const entry = APPLIANCE_CATALOG.find((candidate) => candidate.id === id);
