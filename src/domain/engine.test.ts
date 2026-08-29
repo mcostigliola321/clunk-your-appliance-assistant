@@ -88,10 +88,10 @@ describe("source-backed multi-appliance repair engine", () => {
     expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "refrigerator")).toHaveLength(41);
     expect(
       APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "purchase-ready"),
-    ).toHaveLength(55);
+    ).toHaveLength(58);
     expect(
       APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "guided-checks"),
-    ).toHaveLength(108);
+    ).toHaveLength(105);
     expect(
       APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "verified-part-unavailable"),
     ).toHaveLength(0);
@@ -110,9 +110,9 @@ describe("source-backed multi-appliance repair engine", () => {
         ]),
       ),
     ).toEqual({
-      washer: { purchaseReady: 8, guided: 48 },
+      washer: { purchaseReady: 9, guided: 47 },
       dishwasher: { purchaseReady: 13, guided: 20 },
-      dryer: { purchaseReady: 7, guided: 26 },
+      dryer: { purchaseReady: 9, guided: 24 },
       refrigerator: { purchaseReady: 27, guided: 14 },
     });
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.brand)).size).toBe(11);
@@ -165,6 +165,9 @@ describe("source-backed multi-appliance repair engine", () => {
       ["maytag-mss25c4mgz", "EDR1RXD1"],
       ["amana-asi2575grs", "EDR1RXD1"],
       ["ge-gne27jymfs", "XWFE"],
+      ["lg-wt7400cw", "AHA75673404"],
+      ["lg-dle6100w", "4026EL3007C"],
+      ["lg-dle7000w", "4026EL3007C"],
     ] as const;
 
     for (const [applianceId, sku] of upgraded) {
@@ -247,6 +250,21 @@ describe("source-backed multi-appliance repair engine", () => {
     expect(exact.snapshot.selectedPart?.sku).toBe("LT1000P");
   });
 
+  it("does not carry the WT7400CW pump into its neighboring ABWETUS revision", () => {
+    let state = selectAndStart("lg-wt7400cw", "WT7400CW.ABWETUS");
+    state = executeRepairTool(state, "record_observation", {
+      checkId: "safety-check",
+      resultId: "safe-ready",
+    }).state;
+    state = executeRepairTool(state, "record_observation", {
+      checkId: "inspect-drain-hose",
+      resultId: "hose-clear",
+    }).state;
+    const result = executeRepairTool(state, "find_compatible_part", {}, "agent");
+    expect(result.snapshot.partOutcome?.status).toBe("variant-needed");
+    expect(result.snapshot.selectedPart).toBeNull();
+  });
+
   it("keeps an active human-observation task compact for WebMCP", () => {
     const state = selectAndStart("ge-gtd42easj2ww", "GTD42EASJ2WW");
     const output = getWebMcpTaskSnapshot(state);
@@ -272,8 +290,8 @@ describe("source-backed multi-appliance repair engine", () => {
     expect(output.catalog.counts).toEqual({
       byKind: { washer: 56, dishwasher: 33, dryer: 33, refrigerator: 41 },
       byCapability: {
-        "purchase-ready": 55,
-        "guided-checks": 502,
+        "purchase-ready": 58,
+        "guided-checks": 499,
         "verified-part-unavailable": 0,
       },
     });

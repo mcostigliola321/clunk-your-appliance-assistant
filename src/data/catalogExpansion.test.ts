@@ -113,7 +113,7 @@ describe("source-backed catalog expansion", () => {
       }),
     ).sort((left, right) => left.id.localeCompare(right.id));
 
-    expect(exactRevisions).toHaveLength(55);
+    expect(exactRevisions).toHaveLength(58);
     expect(exactRevisions).toEqual(
       expect.arrayContaining([
         { id: "amana-ned4655ew", codes: ["NED4655EW1"], sku: "W11429587" },

@@ -12,8 +12,8 @@ import {
 } from "./purchaseCoverageExpansion";
 
 describe("purchase coverage expansion", () => {
-  it("promotes only the 30 separately reviewed exact default-route revisions", () => {
-    expect(PURCHASE_COVERAGE_EXPANSION_COUNT).toBe(30);
+  it("promotes only the 33 separately reviewed exact default-route revisions", () => {
+    expect(PURCHASE_COVERAGE_EXPANSION_COUNT).toBe(33);
     expect(PURCHASE_COVERAGE_EXPANSION_VERIFIED_ON).toBe("2026-08-29");
     expect(PURCHASE_COVERAGE_EXPANSION.limitations.length).toBeGreaterThanOrEqual(4);
     expect(assertCatalog(APPLIANCE_CATALOG)).toBe(APPLIANCE_CATALOG);
@@ -23,12 +23,14 @@ describe("purchase coverage expansion", () => {
       APPLIANCE_CATALOG.filter((entry) =>
         entry.symptomCoverage.some((coverage) => coverage.capability === "purchase-ready"),
       ),
-    ).toHaveLength(55);
+    ).toHaveLength(58);
 
     for (const record of PURCHASE_COVERAGE_EXPANSION.records) {
       const entry = APPLIANCE_CATALOG.find((candidate) => candidate.id === record.modelId);
       expect(entry, record.modelId).toBeDefined();
-      expect(["dishwasher", "refrigerator"], record.modelId).toContain(entry?.kind);
+      expect(["washer", "dishwasher", "dryer", "refrigerator"], record.modelId).toContain(
+        entry?.kind,
+      );
       expect(entry?.aliases, record.modelId).toContain(record.exactCode);
       expect(entry?.verifiedProductCodes, record.modelId).toContain(record.exactCode);
       const coverage = entry?.symptomCoverage.find(
@@ -50,7 +52,7 @@ describe("purchase coverage expansion", () => {
         provider: "shopify-global-catalog",
         protocol: "UCP",
         exactSku: profile.sku,
-        offerCountAtVerification: 5,
+        offerCountAtVerification: profile.offerCountAtVerification,
         lastVerified: "2026-08-29",
       });
 
@@ -92,6 +94,26 @@ describe("purchase coverage expansion", () => {
     }
   });
 
+  it("keeps exact revisions checks-only when the authorized diagram is ambiguous or mismatches the observed branch", () => {
+    const guidedOnly = [
+      ["lg-dlex4000w", "door-will-not-close"],
+      ["lg-dlex6500b", "door-will-not-close"],
+      ["lg-wm4000hwa", "will-not-drain"],
+      ["lg-wm3600hwa", "will-not-drain"],
+      ["lg-wt6105cw", "will-not-drain"],
+      ["lg-wt7150cw", "will-not-drain"],
+    ] as const;
+    for (const [id, symptomId] of guidedOnly) {
+      const entry = APPLIANCE_CATALOG.find((candidate) => candidate.id === id);
+      const coverage = entry?.symptomCoverage.find(
+        (candidate) => candidate.symptomId === symptomId,
+      );
+      expect(coverage?.capability, id).toBe("guided-checks");
+      expect(coverage?.exactPartEvidence, id).toBeUndefined();
+      expect(getRepairPack(id).parts, id).toEqual([]);
+    }
+  });
+
   it("rejects revision carryover, retailer compatibility evidence, and zero-offer inflation", () => {
     const sibling = structuredClone(PURCHASE_COVERAGE_EXPANSION);
     sibling.records[0]!.exactCode = "LFXS26973S.ASTCNA1";
@@ -122,7 +144,7 @@ describe("purchase coverage expansion", () => {
     };
     expect(() =>
       assertPurchaseCoverageExpansion(wrongCategory, PURCHASE_COVERAGE_BASE_CATALOG),
-    ).toThrow("outside the reviewed cohort");
+    ).toThrow("wrong-category part");
 
     const unknownPart = structuredClone(PURCHASE_COVERAGE_EXPANSION);
     unknownPart.records[0]!.partProfile = "neighboring-filter";

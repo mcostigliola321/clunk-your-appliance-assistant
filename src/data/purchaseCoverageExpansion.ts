@@ -48,7 +48,9 @@ const EVIDENCE_HOSTS = [
 ];
 
 const REVIEWED_COMPONENT_BY_KIND = {
+  washer: "drain-pump",
   dishwasher: "drain-pump",
+  dryer: "door-strike",
   refrigerator: "water-filter",
 } as const;
 

@@ -1,6 +1,6 @@
 # Clunk model source ledger
 
-This ledger defines the 163-model real-appliance catalog: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. It is deliberately conservative: 55 exact-code revisions are **Purchase-ready**, 108 model identities are **Guided checks only**, and none currently sit in **Verified part unavailable**. Those identities resolve to 557 model × symptom packs—55 purchase-ready and 502 guided. A supported model never inherits a neighboring model's part or symptom coverage.
+This ledger defines the 163-model real-appliance catalog: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. It is deliberately conservative: 58 exact-code revisions are **Purchase-ready**, 105 model identities are **Guided checks only**, and none currently sit in **Verified part unavailable**. Those identities resolve to 557 model × symptom packs—58 purchase-ready and 499 guided. A supported model never inherits a neighboring model's part or symptom coverage.
 
 ## 2026-08-29 broad symptom integration
 
@@ -25,6 +25,18 @@ The unchanged coverage counts are washer drain 56 and closure 36; dishwasher dra
 - **Exact-part verified:** a manufacturer or authorized parts source maps a specific part number to the complete model/product code.
 - **Live offer verified:** Shopify Global Catalog returned one or more available listings containing that exact part number on the retrieval date. This proves an offer pathway, not compatibility, merchant authenticity, or future stock.
 - **Variant needed:** Clunk can guide external observations but will not name a part until the complete suffix or engineering revision is known.
+
+## 2026-08-29 LG exact washer and dryer cohort
+
+LG's current Parts & Accessories page directs appliance customers to Encompass as an authorized parts distributor. The overlay therefore uses Encompass only where an exact factory suffix page identifies the component that matches Clunk's already-bounded observation branch; Shopify is consulted afterward for offers only.
+
+| Exact revision     | Observed branch                     | Authorized exact mapping                                                                                       |         Offer check |
+| ------------------ | ----------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------: |
+| `WT7400CW.ABWEUUS` | Clear external hose → internal pump | [Exact diagram](https://partstore.encompass.com/model/ZENWT7400CW/ABWEUUS/) → `AHA75673404` drain pump at F080 |  8 exact-SKU offers |
+| `DLE6100W.ABWETUS` | Broken visible door-side strike     | [Exact diagram](https://partstore.encompass.com/model/ZENDLE6100W/ABWETUS/) → `4026EL3007C` hook at A410       | 10 exact-SKU offers |
+| `DLE7000W.ABWETUS` | Broken visible door-side strike     | [Exact diagram](https://partstore.encompass.com/model/ZENDLE7000W/ABWETUS/) → `4026EL3007C` hook at A410       | 10 exact-SKU offers |
+
+The washer pump remains professional-only. The dryer hook is the visible door-side part and may be presented as user-replaceable after the complete code matches. `WT7400CW.ABWETUS` is not inherited: that neighboring suffix lists multiple pump candidates. `DLEX4000W.ABWEUUS` and `DLEX6500B.ABLEECI` remain guided because their exact diagrams prove the cabinet catch rather than the door-side strike inspected by Clunk. Other LG washer revisions with multiple drain-pump rows remain guided. Canonical part-identity, compatibility, applicability, and verification records live in `src/data/purchaseCoverageExpansion.json`.
 
 ## 2026-08-27 high-impact expansion (81 models; 13 exact-code upgrades)
 

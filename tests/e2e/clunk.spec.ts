@@ -20,6 +20,8 @@ test.beforeEach(async ({ page }) => {
       "EDR1RXD1",
       "DA97-17376B",
       "LT1000P",
+      "AHA75673404",
+      "4026EL3007C",
     ];
     const sku = knownSkus.find((candidate) => query.includes(candidate)) ?? "WE01M10007";
     await route.fulfill({
@@ -304,12 +306,12 @@ test("runs a topology-aware washer lid closure guide and stops before internal r
 test("browses the 163-model catalog by brand and honest coverage tier", async ({ page }) => {
   await reachModelSearch(page, /Choose Electric dryer/, /Supported now Door won't close/);
   await page.getByText("Browse by brand").click();
-  await page.getByRole("button", { name: "Checks only 26" }).click();
+  await page.getByRole("button", { name: "Checks only 24" }).click();
   await page.getByText("Bosch").click();
   await expect(
     page.getByRole("button", { name: /WTG86403UC\/01 Guided checks only/ }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Purchase-ready 7" }).click();
+  await page.getByRole("button", { name: "Purchase-ready 9" }).click();
   await expect(page.getByRole("button", { name: /WTG86403UC\/01 Guided checks only/ })).toHaveCount(
     0,
   );
@@ -374,6 +376,35 @@ test("one secondary action reaches an exact part and exact-SKU seller handoff", 
   ).toHaveAttribute("href", "https://merchant.example/cart/WE01M10007");
   await expect(page.getByText("Wrong Seller")).toHaveCount(0);
   await expect(page.getByText("Completed example")).toBeVisible();
+});
+
+test("the new LG washer and dryer revisions reach only their proven exact-SKU handoffs", async ({
+  page,
+}) => {
+  await reachModelSearch(page, /Choose Washer/, /Supported now Won't drain/);
+  let input = page.getByRole("searchbox", { name: "Washer model number" });
+  await input.fill("WT7400CW.ABWEUUS");
+  await page.getByRole("button", { name: "Find model" }).click();
+  await page.getByRole("button", { name: /LG WT7400CW Purchase-ready/ }).click();
+  await page.getByRole("button", { name: "Safe to continue" }).click();
+  await page.getByRole("button", { name: "The hose looks clear" }).click();
+  await expect(page.locator(".part-sku")).toHaveText("Part #AHA75673404");
+  await expect(
+    page.getByRole("link", { name: /Open UCP Parts cart for part AHA75673404/ }),
+  ).toBeVisible();
+
+  await page.getByRole("button", { name: "Start over" }).click();
+  await reachModelSearch(page, /Choose Electric dryer/, /Supported now Door won't close/);
+  input = page.getByRole("searchbox", { name: "Electric dryer model number" });
+  await input.fill("DLE6100W.ABWETUS");
+  await page.getByRole("button", { name: "Find model" }).click();
+  await page.getByRole("button", { name: /LG DLE6100W Purchase-ready/ }).click();
+  await page.getByRole("button", { name: "Safe to continue" }).click();
+  await page.getByRole("button", { name: "The strike is cracked, bent, or missing" }).click();
+  await expect(page.locator(".part-sku")).toHaveText("Part #4026EL3007C");
+  await expect(
+    page.getByRole("link", { name: /Open UCP Parts cart for part 4026EL3007C/ }),
+  ).toBeVisible();
 });
 
 test("distinguishes a promoted offer and preserves Shopify attribution", async ({ page }) => {

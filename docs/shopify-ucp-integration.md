@@ -89,7 +89,7 @@ The catalog client, exact-SKU filter, schema validation, WebMCP handoff, retry s
 
 ### Purchase-overlay offer recheck — 2026-08-29
 
-The 30-revision purchase overlay uses nine exact SKUs across refrigerator filters plus Bosch and Samsung dishwasher drain pumps. Fresh no-store Global Catalog requests returned at least five qualifying available offers for each SKU after exact-number filtering; the persisted count is capped at the five offers Clunk can render and is not a stock guarantee.
+The 33-revision purchase overlay uses 11 exact SKUs across refrigerator filters, dishwasher drain pumps, one LG washer drain pump, and one LG dryer door hook. Fresh no-store Global Catalog requests returned at least five qualifying available offers for each SKU after exact-number filtering. The evidence row records the bounded observed count; the runtime still renders at most five offers, and neither number is a stock guarantee.
 
 | Exact SKU     | Exact available offers retained |
 | ------------- | ------------------------------: |
@@ -102,5 +102,7 @@ The 30-revision purchase overlay uses nine exact SKUs across refrigerator filter
 | `00631200`    |                               5 |
 | `DD81-02635A` |                               5 |
 | `DD31-00016A` |                               5 |
+| `AHA75673404` |                               8 |
+| `4026EL3007C` |                              10 |
 
 Global Catalog often omitted a structured variant SKU while still placing the exact part number in the product or variant text. The audit and runtime use the same punctuation-insensitive exact-token rule across the full listing text; an empty SKU field neither admits a nearby part nor discards an otherwise exact listing.

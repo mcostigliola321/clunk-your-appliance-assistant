@@ -1,6 +1,6 @@
 # Source URL and live-catalog audit
 
-Audit dates: **2026-08-27 through 2026-08-29**. Current catalog: **163 models**—56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators—resolving to 557 model × symptom packs with 55 purchase-ready and 502 guided combinations. This audit covers the original expansion, two activation batches totaling 32 guided models, the 13-revision exact-part upgrade, the 21-revision refrigerator filter, six-revision Bosch dishwasher, and three-revision Samsung dishwasher upgrades, supplemental symptom evidence, the 91-row door-closure activation, the 303-row broad symptom activation, existing model-number and exact-part evidence, and the live Shopify UCP boundary. Clunk makes a user-triggered live Shopify catalog request only for purchase-ready results; it does not scrape source pages at runtime. Runtime source and merchant destinations are independently restricted to public HTTPS URLs.
+Audit dates: **2026-08-27 through 2026-08-29**. Current catalog: **163 models**—56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators—resolving to 557 model × symptom packs with 58 purchase-ready and 499 guided combinations. This audit covers the original expansion, two activation batches totaling 32 guided models, the 13-revision exact-part upgrade, the 21-revision refrigerator filter, nine-revision dishwasher, one-revision LG washer, and two-revision LG dryer upgrades, supplemental symptom evidence, the 91-row door-closure activation, the 303-row broad symptom activation, existing model-number and exact-part evidence, and the live Shopify UCP boundary. Clunk makes a user-triggered live Shopify catalog request only for purchase-ready results; it does not scrape source pages at runtime. Runtime source and merchant destinations are independently restricted to public HTTPS URLs.
 
 ## 2026-08-29 broad symptom source review
 
@@ -18,7 +18,13 @@ Fresh Shopify Global Catalog searches for `LT1000P`, `DA97-17376B`, `11032531`, 
 
 A bounded request also confirmed that one known Shopify parts storefront currently exposes a root `/products.json` response. That endpoint was not treated as a supported cross-store API, crawled beyond the sample, persisted, or used for fit. Shopify's official Storefront API, rate-limit guidance, and Global Catalog documentation were reviewed instead. Storefront content remains research/offer discovery only, and access controls or rate limits must be respected.
 
-Three ambiguity exclusions were preserved: GE `GFE28GYNFS` and `GNE29GYNFS` list both RPWFE and XWFE on official parts pages, while KitchenAid `KRFF305ESS00` lists both EDR4RXD1 and EDR2RXD1 on its authorized page. All three remain checks-only. Washer and dryer candidate searches also exposed suffix mismatches or multiple plausible pumps/catches; none was promoted.
+Three refrigerator ambiguity exclusions were preserved: GE `GFE28GYNFS` and `GNE29GYNFS` list both RPWFE and XWFE on official parts pages, while KitchenAid `KRFF305ESS00` lists both EDR4RXD1 and EDR2RXD1 on its authorized page. All three remain checks-only.
+
+## 2026-08-29 LG exact washer and dryer review
+
+[LG's manufacturer support page](https://www.lg.com/us/support/lg-direct-service/parts-and-accessories) identifies Encompass Parts Distribution as an authorized appliance-parts distributor. The exact Encompass diagram for `WT7400CW.ABWEUUS` has one drain-pump row, `AHA75673404` at F080; the authorized part page identifies that SKU as a drain pump assembly. Exact diagrams for `DLE6100W.ABWETUS` and `DLE7000W.ABWETUS` each list the door-side hook `4026EL3007C` at A410, separate from the cabinet locker assembly. The authorized part page identifies `4026EL3007C` as the hook/locker part.
+
+Fresh no-store Shopify Global Catalog requests retained 8 available exact-number offers for `AHA75673404` and 10 for `4026EL3007C` in the first result window. These are offer observations only. `WT7400CW.ABWETUS` was excluded because its neighboring suffix page lists multiple pump candidates. `WM4000HWA.ABWEUUS`, `WM3600HWA.ABWEUUS`, `WT6105CW.BBWETUS`, and `WT7150CW.ABWETUS` likewise remain guided after multiple drain-pump rows. `DLEX4000W.ABWEUUS` and `DLEX6500B.ABLEECI` remain guided because their exact pages prove a cabinet catch, while Clunk's part outcome follows a visibly broken door-side strike. No catch, pump, or suffix was generalized.
 
 ## 2026-08-29 Bosch dishwasher exact-pump review
 
