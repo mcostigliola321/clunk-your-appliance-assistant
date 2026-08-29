@@ -1,6 +1,6 @@
 # Source URL and live-catalog audit
 
-Audit dates: **2026-08-27 through 2026-08-29**. Current catalog: **163 models**—56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators—resolving to 557 model × symptom packs with 25 purchase-ready and 532 guided combinations. This audit covers the original expansion, two activation batches totaling 32 guided models, the 13-revision exact-part upgrade, supplemental symptom evidence, the 91-row door-closure activation, the 303-row broad symptom activation, existing model-number and exact-part evidence, and the live Shopify UCP boundary. Clunk makes a user-triggered live Shopify catalog request only for purchase-ready results; it does not scrape source pages at runtime. Runtime source and merchant destinations are independently restricted to public HTTPS URLs.
+Audit dates: **2026-08-27 through 2026-08-29**. Current catalog: **163 models**—56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators—resolving to 557 model × symptom packs with 55 purchase-ready and 502 guided combinations. This audit covers the original expansion, two activation batches totaling 32 guided models, the 13-revision exact-part upgrade, the 21-revision refrigerator filter, six-revision Bosch dishwasher, and three-revision Samsung dishwasher upgrades, supplemental symptom evidence, the 91-row door-closure activation, the 303-row broad symptom activation, existing model-number and exact-part evidence, and the live Shopify UCP boundary. Clunk makes a user-triggered live Shopify catalog request only for purchase-ready results; it does not scrape source pages at runtime. Runtime source and merchant destinations are independently restricted to public HTTPS URLs.
 
 ## 2026-08-29 broad symptom source review
 
@@ -9,6 +9,24 @@ The broad production ledger uses 59 distinct current primary manufacturer troubl
 A bounded command-line reachability recheck on 2026-08-29 returned HTTP 2xx for 56/59 source URLs. Bosch's three current dishwasher self-help/error-code routes returned HTTP 400 to the command-line client; those official pages were reviewed through Bosch's support surface, and the retrieval behavior is recorded as an access limitation rather than as evidence of applicability.
 
 The review kept important limitations intact. A model page corroborates exact identity, topology, and factory water/ice features only; it never supplies troubleshooting coverage. Shared profiles exclude manufacturer steps that are not common to every listed row, including filter/pump removal, leveling, terminal blocks, panels, generic diagnostic/reset sequences, internal drives, refrigerant systems, and inferred parts. Compact ventless dryers and brands without sufficiently explicit current guidance remain outside these 12 cohorts. Source reachability or common corporate ownership does not activate a row, and none of these sources creates exact-part or Shopify evidence.
+
+## 2026-08-29 refrigerator purchase-coverage review
+
+The purchase overlay reviewed 21 complete refrigerator codes across LG (5), Samsung (4), Bosch (5), Whirlpool (2), Maytag (1), Amana (1), and GE (3). Each production row has a manufacturer or authorized compatibility chain, a separate manufacturer part-identity page, one exact code, an explicit water-filter applicability boundary, and a 2026-08-29 verification date. Bosch rows pair an exact E-Nr spare-parts page with a model specification naming BORPLFTR55; LG rows pair a model specification naming LT1000P with the exact support suffix; Maytag and Amana pair family filter documentation with an exact-revision parts list. Canonical URLs and source IDs are in `src/data/purchaseCoverageExpansion.json` and summarized in `model-source-ledger.md`.
+
+Fresh Shopify Global Catalog searches for `LT1000P`, `DA97-17376B`, `11032531`, `EDR1RXD1`, `EDR4RXD1`, and `XWFE` each returned at least five available exact-number listings after Clunk filtering. The runtime retains no more than five. Those searches prove a current offer pathway only; they do not strengthen compatibility evidence.
+
+A bounded request also confirmed that one known Shopify parts storefront currently exposes a root `/products.json` response. That endpoint was not treated as a supported cross-store API, crawled beyond the sample, persisted, or used for fit. Shopify's official Storefront API, rate-limit guidance, and Global Catalog documentation were reviewed instead. Storefront content remains research/offer discovery only, and access controls or rate limits must be respected.
+
+Three ambiguity exclusions were preserved: GE `GFE28GYNFS` and `GNE29GYNFS` list both RPWFE and XWFE on official parts pages, while KitchenAid `KRFF305ESS00` lists both EDR4RXD1 and EDR2RXD1 on its authorized page. All three remain checks-only. Washer and dryer candidate searches also exposed suffix mismatches or multiple plausible pumps/catches; none was promoted.
+
+## 2026-08-29 Bosch dishwasher exact-pump review
+
+The exact spare-parts lists for Bosch `SHEM63W55N/01`, `SHX78CM5N/01`, `SHP65CM5N/24`, `SHE53B75UC/75`, `SHP78CM5N/34`, and `SHX5AEM5N/01` each exposed product ID `00631200` at the same diagram position. Bosch's manufacturer part page identifies `00631200` as **Pump-drain**. A fresh no-store Global Catalog request retained five exact-number offers. These six rows keep the drain pump professional-only and do not change the existing external drain-check tree.
+
+## 2026-08-29 Samsung dishwasher exact-pump review
+
+Samsung's official support surface identifies Samsung Parts as an authorized distributor and Encompass as its repair-parts partner. Encompass exact-model pages map `DW80CG4021SR/AA` and `DW80R2031US/AA` to `DD81-02635A`, explicitly described as pump-drain, and map `DW80B6060US/AA` to `DD31-00016A`; its exact part page describes that part as a dishwasher drain BLDC pump and includes the model in the compatible list. Fresh no-store Global Catalog requests retained five exact-number offers for each SKU. `DW80CG5450SR/AA` remains guided because the review did not find an equally exact authorized mapping.
 
 ## 2026-08-28 door-closure source recheck
 

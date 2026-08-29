@@ -10,7 +10,7 @@ Safety is enforced before presentation:
 4. A person must explicitly supply every physical observation; the agent must not infer one from prior likelihoods.
 5. Smoke, a burning smell, hot water, a leak near power, damaged access, mismatched access, or unsafe reach immediately enters a terminal professional state.
 6. A suggested part is not a confirmed diagnosis. Exact matches require a complete verified product code and manufacturer or authorized-parts evidence.
-7. Internal parts always retain a professional-only installation boundary. Only explicitly visible consumer parts, such as the dryer door strike and refrigerator water filter, may be labeled user-replaceable.
+7. Internal parts always retain a professional-only installation boundary. Only explicitly visible consumer parts, such as the dryer door strike and refrigerator water filter, may be labeled user-replaceable. A shared filter identity still requires an exact revision-specific manufacturer or authorized evidence row before a purchase action appears.
 8. Invalid and out-of-order calls are visibly logged as rejected without advancing the diagnosis.
 
 ## Never in scope

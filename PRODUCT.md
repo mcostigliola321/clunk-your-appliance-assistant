@@ -6,7 +6,7 @@ product
 
 ## Users
 
-People facing a broken washer, dishwasher, electric dryer, or refrigerator who need a calm, understandable way to make safe physical observations while a browser agent reasons over model- and symptom-specific evidence. The bounded catalog covers 163 source-backed U.S. model families and 557 model × symptom combinations: 25 are purchase-ready and 532 are guided-checks-only. Judges must be able to understand the outcome and reach an available exact-SKU seller link immediately without credentials.
+People facing a broken washer, dishwasher, electric dryer, or refrigerator who need a calm, understandable way to make safe physical observations while a browser agent reasons over model- and symptom-specific evidence. The bounded catalog covers 163 source-backed U.S. model families and 557 model × symptom combinations: 55 are purchase-ready and 502 are guided-checks-only. Judges must be able to understand the outcome and reach an available exact-SKU seller link immediately without credentials.
 
 ## Product Purpose
 
