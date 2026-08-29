@@ -78,7 +78,7 @@ describe("source-backed multi-appliance repair engine", () => {
   it("validates 163 models and their many-to-many repair packs", () => {
     expect(assertCatalog(APPLIANCE_CATALOG)).toBe(APPLIANCE_CATALOG);
     expect(APPLIANCE_CATALOG).toHaveLength(163);
-    expect(REPAIR_PACKS.size).toBe(557);
+    expect(REPAIR_PACKS.size).toBe(766);
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.kind))).toEqual(
       new Set(["washer", "dishwasher", "dryer", "refrigerator"]),
     );
@@ -88,10 +88,10 @@ describe("source-backed multi-appliance repair engine", () => {
     expect(APPLIANCE_CATALOG.filter((entry) => entry.kind === "refrigerator")).toHaveLength(41);
     expect(
       APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "purchase-ready"),
-    ).toHaveLength(67);
+    ).toHaveLength(84);
     expect(
       APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "guided-checks"),
-    ).toHaveLength(96);
+    ).toHaveLength(79);
     expect(
       APPLIANCE_CATALOG.filter((entry) => modelCapability(entry) === "verified-part-unavailable"),
     ).toHaveLength(0);
@@ -111,9 +111,9 @@ describe("source-backed multi-appliance repair engine", () => {
       ),
     ).toEqual({
       washer: { purchaseReady: 15, guided: 41 },
-      dishwasher: { purchaseReady: 14, guided: 19 },
-      dryer: { purchaseReady: 11, guided: 22 },
-      refrigerator: { purchaseReady: 27, guided: 14 },
+      dishwasher: { purchaseReady: 23, guided: 10 },
+      dryer: { purchaseReady: 18, guided: 15 },
+      refrigerator: { purchaseReady: 28, guided: 13 },
     });
     expect(new Set(APPLIANCE_CATALOG.map((entry) => entry.brand)).size).toBe(11);
     expect([...REPAIR_PACKS.values()].every((pack) => pack.schemaVersion === 6)).toBe(true);
@@ -299,8 +299,8 @@ describe("source-backed multi-appliance repair engine", () => {
     expect(output.catalog.counts).toEqual({
       byKind: { washer: 56, dishwasher: 33, dryer: 33, refrigerator: 41 },
       byCapability: {
-        "purchase-ready": 67,
-        "guided-checks": 490,
+        "purchase-ready": 84,
+        "guided-checks": 682,
         "verified-part-unavailable": 0,
       },
     });

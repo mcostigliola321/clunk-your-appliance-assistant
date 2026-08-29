@@ -1,0 +1,167 @@
+{
+  "verifiedOn": "2026-08-29",
+  "results": [
+    {
+      "url": "https://owner.electrolux.com/support-articles/article/1830354-dishwasher-error-code-cl-or-cd-door-is-open",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/1830354-dishwasher-error-code-cl-or-cd-door-is-open"
+    },
+    {
+      "url": "https://owner.electrolux.com/support-articles/article/1831286-dishwasher-not-cleaning",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/1831286-dishwasher-not-cleaning"
+    },
+    {
+      "url": "https://owner.electrolux.com/support-articles/article/1835628-dishwasher-not-filling",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/1835628-dishwasher-not-filling"
+    },
+    {
+      "url": "https://owner.electrolux.com/support-articles/article/1838717-dishwasher-water-leaking",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/1838717-dishwasher-water-leaking"
+    },
+    {
+      "url": "https://producthelp.amana.com/Dishwashers/Dishwasher/Cycle_Concerns/Not_Filling%2F%2FNo_Water/Not_Filling_With_Water_-_Dishwasher",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.amana.com/Dishwashers/Dishwasher/Cycle_Concerns/Not_Filling%2F%2FNo_Water/Not_Filling_With_Water_-_Dishwasher"
+    },
+    {
+      "url": "https://producthelp.amana.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.amana.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher"
+    },
+    {
+      "url": "https://producthelp.amana.com/Dishwashers/Dishwasher/Leaking/Underneath_or_Behind/Leaking_-_Underneath_-_Dishwasher",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.amana.com/Dishwashers/Dishwasher/Leaking/Underneath_or_Behind/Leaking_-_Underneath_-_Dishwasher"
+    },
+    {
+      "url": "https://producthelp.amana.com/Dishwashers/Dishwasher/Wash_Performance/None_of_the_Dishes_are_Clean/Dishes_are_not_Clean",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.amana.com/Dishwashers/Dishwasher/Wash_Performance/None_of_the_Dishes_are_Clean/Dishes_are_not_Clean"
+    },
+    {
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Cycle_Concerns/Not_Filling%2F%2FNo_Water/Not_Filling_With_Water_-_Dishwasher",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Cycle_Concerns/Not_Filling%2F%2FNo_Water/Not_Filling_With_Water_-_Dishwasher"
+    },
+    {
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher"
+    },
+    {
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Leaking/Front%2F%2FDoor/Leaking_from_Door",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Leaking/Front%2F%2FDoor/Leaking_from_Door"
+    },
+    {
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Wash_Performance/None_of_the_Dishes_are_Clean/Dishes_are_not_Clean",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Wash_Performance/None_of_the_Dishes_are_Clean/Dishes_are_not_Clean"
+    },
+    {
+      "url": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Cycle_Concerns/Not_Filling%2F%2FNo_Water/Not_Filling_With_Water_-_Dishwasher",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Cycle_Concerns/Not_Filling%2F%2FNo_Water/Not_Filling_With_Water_-_Dishwasher"
+    },
+    {
+      "url": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher"
+    },
+    {
+      "url": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Leaking/Front%2F%2FDoor/Leaking_from_Door",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Leaking/Front%2F%2FDoor/Leaking_from_Door"
+    },
+    {
+      "url": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Wash_Performance/None_of_the_Dishes_are_Clean/Dishes_are_not_Clean",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Wash_Performance/None_of_the_Dishes_are_Clean/Dishes_are_not_Clean"
+    },
+    {
+      "url": "https://producthelp.whirlpool.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.whirlpool.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher"
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-specs/HDF310PGRWW/support",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-specs/HDF310PGRWW/support"
+    },
+    {
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17529",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17529"
+    },
+    {
+      "url": "https://www.bosch-home.com/us/owner-support/dishwashers/troubleshooting",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.bosch-home.com/us/owner-support/dishwashers/troubleshooting"
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-LDFN3432T",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-LDFN3432T"
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-LDFN4542S.ASSESNA",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-LDFN4542S.ASSESNA"
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-LDPS6762S.ASSESNA",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-LDPS6762S.ASSESNA"
+    },
+    {
+      "url": "https://www.lg.com/us/support/product/lg-LDTH7972S.ASSESNA?tab=1",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.lg.com/us/support/product/lg-LDTH7972S.ASSESNA?tab=1"
+    },
+    {
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10000118/",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.samsung.com/us/support/troubleshoot/TSG10000118/"
+    },
+    {
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10004499/",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.samsung.com/us/support/troubleshoot/TSG10004499/"
+    },
+    {
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10010593/",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.samsung.com/us/support/troubleshoot/TSG10010593/"
+    }
+  ]
+}

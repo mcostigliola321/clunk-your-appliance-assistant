@@ -58,7 +58,7 @@ interface SymptomCoverageExpansionData {
   records: SymptomCoverageEvidenceRecord[];
 }
 
-const EXPECTED_COUNTS = { washer: 36, dishwasher: 20, refrigerator: 35 } as const;
+const EXPECTED_COUNTS = { washer: 36, dishwasher: 20, refrigerator: 41 } as const;
 
 export function assertSymptomCoverageExpansionData(
   value: SymptomCoverageExpansionData,

@@ -43,7 +43,7 @@ describe("visual journey catalog", () => {
     expect(getSupportedSymptoms("dishwasher")).toHaveLength(5);
     expect(getSupportedSymptoms("dryer")).toHaveLength(4);
     expect(getSupportedSymptoms("refrigerator")).toHaveLength(5);
-    expect(getCatalogEntriesForSymptom("dryer", "not-heating")).toHaveLength(19);
+    expect(getCatalogEntriesForSymptom("dryer", "not-heating")).toHaveLength(33);
     expect(getCatalogEntriesForSymptom("dryer", "door-will-not-close").length).toBeGreaterThan(1);
   });
 
@@ -59,24 +59,24 @@ describe("visual journey catalog", () => {
       ),
     ).toEqual({
       "washer:will-not-drain": 56,
-      "washer:door-will-not-close": 36,
-      "washer:will-not-start": 39,
-      "washer:will-not-spin": 39,
-      "washer:is-leaking": 39,
+      "washer:door-will-not-close": 53,
+      "washer:will-not-start": 55,
+      "washer:will-not-spin": 55,
+      "washer:is-leaking": 55,
       "dishwasher:will-not-drain": 33,
-      "dishwasher:door-will-not-close": 20,
-      "dishwasher:not-cleaning": 21,
-      "dishwasher:will-not-fill": 21,
-      "dishwasher:is-leaking": 21,
+      "dishwasher:door-will-not-close": 33,
+      "dishwasher:not-cleaning": 33,
+      "dishwasher:will-not-fill": 33,
+      "dishwasher:is-leaking": 33,
       "dryer:door-will-not-close": 33,
-      "dryer:will-not-start": 19,
-      "dryer:not-heating": 19,
-      "dryer:drum-will-not-turn": 19,
+      "dryer:will-not-start": 33,
+      "dryer:not-heating": 33,
+      "dryer:drum-will-not-turn": 33,
       "refrigerator:slow-water-flow": 41,
-      "refrigerator:door-will-not-close": 35,
-      "refrigerator:not-cooling": 22,
-      "refrigerator:is-leaking": 22,
-      "refrigerator:ice-maker-not-making-ice": 22,
+      "refrigerator:door-will-not-close": 41,
+      "refrigerator:not-cooling": 41,
+      "refrigerator:is-leaking": 36,
+      "refrigerator:ice-maker-not-making-ice": 36,
     });
   });
 });

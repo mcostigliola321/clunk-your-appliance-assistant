@@ -23,7 +23,7 @@ describe("purchase coverage expansion", () => {
       APPLIANCE_CATALOG.filter((entry) =>
         entry.symptomCoverage.some((coverage) => coverage.capability === "purchase-ready"),
       ),
-    ).toHaveLength(67);
+    ).toHaveLength(84);
 
     for (const record of PURCHASE_COVERAGE_EXPANSION.records) {
       const entry = APPLIANCE_CATALOG.find((candidate) => candidate.id === record.modelId);

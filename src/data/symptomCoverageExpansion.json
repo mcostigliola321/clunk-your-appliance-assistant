@@ -329,9 +329,7 @@
       "modelFamily": "WM3400CW",
       "topology": "front-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "lg-front-washer-door"
-      ],
+      "sourceIds": ["lg-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -370,9 +368,7 @@
       "modelFamily": "WM4000HWA",
       "topology": "front-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "lg-front-washer-door"
-      ],
+      "sourceIds": ["lg-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -411,9 +407,7 @@
       "modelFamily": "WF45T6000AW",
       "topology": "front-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "samsung-washer-door"
-      ],
+      "sourceIds": ["samsung-washer-door"],
       "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -452,9 +446,7 @@
       "modelFamily": "WF45B6300AW",
       "topology": "front-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "samsung-washer-door"
-      ],
+      "sourceIds": ["samsung-washer-door"],
       "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -493,9 +485,7 @@
       "modelFamily": "WFW5605MW",
       "topology": "drawer-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "whirlpool-front-washer-door"
-      ],
+      "sourceIds": ["whirlpool-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; drawer-filter; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -534,9 +524,7 @@
       "modelFamily": "WFW6620HW",
       "topology": "drawer-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "whirlpool-front-washer-door"
-      ],
+      "sourceIds": ["whirlpool-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; drawer-filter; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -575,9 +563,7 @@
       "modelFamily": "MHW5630HW",
       "topology": "drawer-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "maytag-front-washer-door"
-      ],
+      "sourceIds": ["maytag-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; drawer-filter; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -616,9 +602,7 @@
       "modelFamily": "MHW6630HW",
       "topology": "drawer-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "maytag-front-washer-door"
-      ],
+      "sourceIds": ["maytag-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; drawer-filter; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -657,9 +641,7 @@
       "modelFamily": "ELFW7537AT",
       "topology": "hose-only",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "electrolux-front-washer-door"
-      ],
+      "sourceIds": ["electrolux-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -698,9 +680,7 @@
       "modelFamily": "ELFW7637AT",
       "topology": "hose-only",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "electrolux-front-washer-door"
-      ],
+      "sourceIds": ["electrolux-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -739,9 +719,7 @@
       "modelFamily": "WT7400CW",
       "topology": "hose-only",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "lg-top-washer-lid"
-      ],
+      "sourceIds": ["lg-top-washer-lid"],
       "applicability": "Brand-specific washer cohort only; hose-only; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -780,9 +758,7 @@
       "modelFamily": "WT7405CW",
       "topology": "hose-only",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "lg-top-washer-lid"
-      ],
+      "sourceIds": ["lg-top-washer-lid"],
       "applicability": "Brand-specific washer cohort only; hose-only; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -821,9 +797,7 @@
       "modelFamily": "WA45T3200AW",
       "topology": "hose-only",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "samsung-washer-door"
-      ],
+      "sourceIds": ["samsung-washer-door"],
       "applicability": "Brand-specific washer cohort only; hose-only; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -862,9 +836,7 @@
       "modelFamily": "WTW5057LW",
       "topology": "hose-only",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "whirlpool-top-washer-lid"
-      ],
+      "sourceIds": ["whirlpool-top-washer-lid"],
       "applicability": "Brand-specific washer cohort only; hose-only; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -903,9 +875,7 @@
       "modelFamily": "MVW5430MW",
       "topology": "hose-only",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "maytag-top-washer-lid"
-      ],
+      "sourceIds": ["maytag-top-washer-lid"],
       "applicability": "Brand-specific washer cohort only; hose-only; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -944,9 +914,7 @@
       "modelFamily": "WDT750SAKZ1",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "whirlpool-dishwasher-door"
-      ],
+      "sourceIds": ["whirlpool-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -984,9 +952,7 @@
       "modelFamily": "SHPM65Z55N/20",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "bosch-dishwasher-door"
-      ],
+      "sourceIds": ["bosch-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -1024,9 +990,7 @@
       "modelFamily": "GDF670SYVFS",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "ge-dishwasher-door"
-      ],
+      "sourceIds": ["ge-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -1064,9 +1028,7 @@
       "modelFamily": "KDTM404KPS",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "kitchenaid-dishwasher-door"
-      ],
+      "sourceIds": ["kitchenaid-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -1104,9 +1066,7 @@
       "modelFamily": "GSS25GYPFS",
       "topology": "side-by-side-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "ge-refrigerator-door"
-      ],
+      "sourceIds": ["ge-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -1143,9 +1103,7 @@
       "modelFamily": "WRS315SDHZ",
       "topology": "side-by-side-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "whirlpool-refrigerator-door"
-      ],
+      "sourceIds": ["whirlpool-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -1182,9 +1140,7 @@
       "modelFamily": "RF28T5001SR",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "samsung-refrigerator-door"
-      ],
+      "sourceIds": ["samsung-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -1221,9 +1177,7 @@
       "modelFamily": "LRFLC2706S",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "lg-refrigerator-door"
-      ],
+      "sourceIds": ["lg-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -1260,9 +1214,7 @@
       "modelFamily": "NTW4519JW",
       "topology": "hose-only",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "amana-top-washer-lid"
-      ],
+      "sourceIds": ["amana-top-washer-lid"],
       "applicability": "Brand-specific washer cohort only; hose-only; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -1301,9 +1253,7 @@
       "modelFamily": "DW80CG4021SR",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "samsung-dishwasher-door"
-      ],
+      "sourceIds": ["samsung-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -1341,9 +1291,7 @@
       "modelFamily": "FDPH4316AS",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "frigidaire-dishwasher-door"
-      ],
+      "sourceIds": ["frigidaire-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -1381,9 +1329,7 @@
       "modelFamily": "SHEM63W55N/01",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "bosch-dishwasher-door"
-      ],
+      "sourceIds": ["bosch-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -1421,9 +1367,7 @@
       "modelFamily": "FRSS2623AS",
       "topology": "side-by-side-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "frigidaire-refrigerator-door"
-      ],
+      "sourceIds": ["frigidaire-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -1460,9 +1404,7 @@
       "modelFamily": "ASI2175GRS",
       "topology": "side-by-side-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "amana-refrigerator-door"
-      ],
+      "sourceIds": ["amana-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -1499,9 +1441,7 @@
       "modelFamily": "MFI2570FEZ",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "maytag-refrigerator-door"
-      ],
+      "sourceIds": ["maytag-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -1538,9 +1478,7 @@
       "modelFamily": "KRFF577KPS",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "kitchenaid-refrigerator-door"
-      ],
+      "sourceIds": ["kitchenaid-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -1577,9 +1515,7 @@
       "modelFamily": "B36CL80ENS/01",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "bosch-refrigerator-door"
-      ],
+      "sourceIds": ["bosch-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -1616,9 +1552,7 @@
       "modelFamily": "WTW5010LW",
       "topology": "washer-top-load",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "whirlpool-top-washer-lid"
-      ],
+      "sourceIds": ["whirlpool-top-washer-lid"],
       "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -1657,9 +1591,7 @@
       "modelFamily": "WTW5105LW",
       "topology": "washer-top-load",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "whirlpool-top-washer-lid"
-      ],
+      "sourceIds": ["whirlpool-top-washer-lid"],
       "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -1698,9 +1630,7 @@
       "modelFamily": "WFW4720RW",
       "topology": "hose-only",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "whirlpool-front-washer-door"
-      ],
+      "sourceIds": ["whirlpool-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -1739,9 +1669,7 @@
       "modelFamily": "MVW4505MW",
       "topology": "washer-top-load",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "maytag-top-washer-lid"
-      ],
+      "sourceIds": ["maytag-top-washer-lid"],
       "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -1780,9 +1708,7 @@
       "modelFamily": "MHW5500FW",
       "topology": "hose-only",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "maytag-front-washer-door"
-      ],
+      "sourceIds": ["maytag-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -1821,9 +1747,7 @@
       "modelFamily": "NFW5800HW",
       "topology": "hose-only",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "amana-front-washer-door"
-      ],
+      "sourceIds": ["amana-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -1862,9 +1786,7 @@
       "modelFamily": "WF46BG6500AV",
       "topology": "front-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "samsung-washer-door"
-      ],
+      "sourceIds": ["samsung-washer-door"],
       "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -1903,9 +1825,7 @@
       "modelFamily": "WF53BB8700AT",
       "topology": "front-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "samsung-washer-door"
-      ],
+      "sourceIds": ["samsung-washer-door"],
       "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -1944,9 +1864,7 @@
       "modelFamily": "WA50R5200AW",
       "topology": "washer-top-load",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "samsung-washer-door"
-      ],
+      "sourceIds": ["samsung-washer-door"],
       "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -1985,9 +1903,7 @@
       "modelFamily": "WA54CG7105AW",
       "topology": "washer-top-load",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "samsung-washer-door"
-      ],
+      "sourceIds": ["samsung-washer-door"],
       "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -2026,9 +1942,7 @@
       "modelFamily": "WA55CG7100AW",
       "topology": "washer-top-load",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "samsung-washer-door"
-      ],
+      "sourceIds": ["samsung-washer-door"],
       "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -2067,9 +1981,7 @@
       "modelFamily": "WM3600HWA",
       "topology": "front-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "lg-front-washer-door"
-      ],
+      "sourceIds": ["lg-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -2108,9 +2020,7 @@
       "modelFamily": "WM5500HWA",
       "topology": "front-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "lg-front-washer-door"
-      ],
+      "sourceIds": ["lg-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -2149,9 +2059,7 @@
       "modelFamily": "WM6700HBA",
       "topology": "front-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "lg-front-washer-door"
-      ],
+      "sourceIds": ["lg-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; front-filter; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -2190,9 +2098,7 @@
       "modelFamily": "WT6105CW",
       "topology": "washer-top-load",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "lg-top-washer-lid"
-      ],
+      "sourceIds": ["lg-top-washer-lid"],
       "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -2231,9 +2137,7 @@
       "modelFamily": "WT7150CW",
       "topology": "washer-top-load",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "lg-top-washer-lid"
-      ],
+      "sourceIds": ["lg-top-washer-lid"],
       "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -2272,9 +2176,7 @@
       "modelFamily": "WT7300CW",
       "topology": "washer-top-load",
       "loadStyle": "top-load",
-      "sourceIds": [
-        "lg-top-washer-lid"
-      ],
+      "sourceIds": ["lg-top-washer-lid"],
       "applicability": "Brand-specific washer cohort only; washer-top-load; top-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -2313,9 +2215,7 @@
       "modelFamily": "ELFW7337AW",
       "topology": "hose-only",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "electrolux-front-washer-door"
-      ],
+      "sourceIds": ["electrolux-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -2354,9 +2254,7 @@
       "modelFamily": "ELFW7738AA",
       "topology": "hose-only",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "electrolux-front-washer-door"
-      ],
+      "sourceIds": ["electrolux-front-washer-door"],
       "applicability": "Brand-specific washer cohort only; hose-only; front-load. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -2395,9 +2293,7 @@
       "modelFamily": "GFE28GYNFS",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "ge-refrigerator-door"
-      ],
+      "sourceIds": ["ge-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2434,9 +2330,7 @@
       "modelFamily": "GNE27JYMFS",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "ge-refrigerator-door"
-      ],
+      "sourceIds": ["ge-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2473,9 +2367,7 @@
       "modelFamily": "PVD28BYNFS",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "ge-refrigerator-door"
-      ],
+      "sourceIds": ["ge-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2512,9 +2404,7 @@
       "modelFamily": "GSS23GYPFS",
       "topology": "side-by-side-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "ge-refrigerator-door"
-      ],
+      "sourceIds": ["ge-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2551,9 +2441,7 @@
       "modelFamily": "WRS588FIHZ",
       "topology": "side-by-side-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "whirlpool-refrigerator-door"
-      ],
+      "sourceIds": ["whirlpool-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2590,9 +2478,7 @@
       "modelFamily": "WRX735SDHZ",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "whirlpool-refrigerator-door"
-      ],
+      "sourceIds": ["whirlpool-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2629,9 +2515,7 @@
       "modelFamily": "MSS25C4MGZ",
       "topology": "side-by-side-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "maytag-refrigerator-door"
-      ],
+      "sourceIds": ["maytag-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2668,9 +2552,7 @@
       "modelFamily": "MFT2772HEZ",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "maytag-refrigerator-door"
-      ],
+      "sourceIds": ["maytag-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2707,9 +2589,7 @@
       "modelFamily": "KRFC300ESS",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "kitchenaid-refrigerator-door"
-      ],
+      "sourceIds": ["kitchenaid-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2746,9 +2626,7 @@
       "modelFamily": "ASI2575GRS",
       "topology": "side-by-side-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "amana-refrigerator-door"
-      ],
+      "sourceIds": ["amana-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2785,9 +2663,7 @@
       "modelFamily": "RS27T5200SR",
       "topology": "side-by-side-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "samsung-refrigerator-door"
-      ],
+      "sourceIds": ["samsung-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2824,9 +2700,7 @@
       "modelFamily": "RF23R6201SR",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "samsung-refrigerator-door"
-      ],
+      "sourceIds": ["samsung-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2863,9 +2737,7 @@
       "modelFamily": "RF28R7201SR",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "samsung-refrigerator-door"
-      ],
+      "sourceIds": ["samsung-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2902,9 +2774,7 @@
       "modelFamily": "LFXS26973S",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "lg-refrigerator-door"
-      ],
+      "sourceIds": ["lg-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2941,9 +2811,7 @@
       "modelFamily": "LMXS28626S",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "lg-refrigerator-door"
-      ],
+      "sourceIds": ["lg-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -2980,9 +2848,7 @@
       "modelFamily": "LRFWS2906S",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "lg-refrigerator-door"
-      ],
+      "sourceIds": ["lg-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -3019,9 +2885,7 @@
       "modelFamily": "LRSXS2706S",
       "topology": "side-by-side-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "lg-refrigerator-door"
-      ],
+      "sourceIds": ["lg-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -3058,9 +2922,7 @@
       "modelFamily": "GRFS2853AF",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "frigidaire-refrigerator-door"
-      ],
+      "sourceIds": ["frigidaire-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -3097,9 +2959,7 @@
       "modelFamily": "FRFS2823AS",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "frigidaire-refrigerator-door"
-      ],
+      "sourceIds": ["frigidaire-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -3136,9 +2996,7 @@
       "modelFamily": "GRSS2652AF",
       "topology": "side-by-side-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "frigidaire-refrigerator-door"
-      ],
+      "sourceIds": ["frigidaire-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; side-by-side-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -3175,9 +3033,7 @@
       "modelFamily": "ERMC2295AS",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "electrolux-refrigerator-door"
-      ],
+      "sourceIds": ["electrolux-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -3214,9 +3070,7 @@
       "modelFamily": "B36CT80SNS/01",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "bosch-refrigerator-door"
-      ],
+      "sourceIds": ["bosch-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -3253,9 +3107,7 @@
       "modelFamily": "B36CD50SNS/01",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "bosch-refrigerator-door"
-      ],
+      "sourceIds": ["bosch-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -3292,9 +3144,7 @@
       "modelFamily": "B36FD50SNS/01",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "bosch-refrigerator-door"
-      ],
+      "sourceIds": ["bosch-refrigerator-door"],
       "applicability": "Brand-specific refrigerator cohort only; french-door-refrigerator; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -3331,9 +3181,7 @@
       "modelFamily": "GDT550PYRFS",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "ge-dishwasher-door"
-      ],
+      "sourceIds": ["ge-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -3371,9 +3219,7 @@
       "modelFamily": "GDT225SSLSS",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "ge-dishwasher-door"
-      ],
+      "sourceIds": ["ge-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -3411,9 +3257,7 @@
       "modelFamily": "WDT730HAMZ",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "whirlpool-dishwasher-door"
-      ],
+      "sourceIds": ["whirlpool-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -3451,9 +3295,7 @@
       "modelFamily": "WDF331PAMS",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "whirlpool-dishwasher-door"
-      ],
+      "sourceIds": ["whirlpool-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -3491,9 +3333,7 @@
       "modelFamily": "KDFE204KPS",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "kitchenaid-dishwasher-door"
-      ],
+      "sourceIds": ["kitchenaid-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -3531,9 +3371,7 @@
       "modelFamily": "DW80R2031US/AA",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "samsung-dishwasher-door"
-      ],
+      "sourceIds": ["samsung-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -3571,9 +3409,7 @@
       "modelFamily": "DW80B6060US/AA",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "samsung-dishwasher-door"
-      ],
+      "sourceIds": ["samsung-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -3611,9 +3447,7 @@
       "modelFamily": "FDPC4314AS",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "frigidaire-dishwasher-door"
-      ],
+      "sourceIds": ["frigidaire-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -3651,9 +3485,7 @@
       "modelFamily": "SHX78CM5N/01",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "bosch-dishwasher-door"
-      ],
+      "sourceIds": ["bosch-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -3691,9 +3523,7 @@
       "modelFamily": "SHP65CM5N/24",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "bosch-dishwasher-door"
-      ],
+      "sourceIds": ["bosch-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -3731,9 +3561,7 @@
       "modelFamily": "SHE53B75UC/75",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "bosch-dishwasher-door"
-      ],
+      "sourceIds": ["bosch-dishwasher-door"],
       "applicability": "Brand-specific dishwasher cohort only; dishwasher; load style not applicable. Feature-specific branches require the complete model/manual.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -3771,9 +3599,7 @@
       "modelFamily": "WM4000HBA",
       "topology": "front-filter",
       "loadStyle": "front-load",
-      "sourceIds": [
-        "lg-front-washer-door"
-      ],
+      "sourceIds": ["lg-front-washer-door"],
       "applicability": "Official LG model identity plus brand/category cohort troubleshooting; front-filter. Complete-code/manual gates remain.",
       "homeownerObservableChecks": [
         "Stop the cycle and wait for the door/lid lock indicator to clear.",
@@ -3812,9 +3638,7 @@
       "modelFamily": "SHP78CM5N/34",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "bosch-dishwasher-door"
-      ],
+      "sourceIds": ["bosch-dishwasher-door"],
       "applicability": "Official Bosch model identity plus brand/category cohort troubleshooting; dishwasher. Complete-code/manual gates remain.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -3852,9 +3676,7 @@
       "modelFamily": "DW80CG5450SR/AA",
       "topology": "dishwasher",
       "loadStyle": null,
-      "sourceIds": [
-        "samsung-dishwasher-door"
-      ],
+      "sourceIds": ["samsung-dishwasher-door"],
       "applicability": "Official Samsung model identity plus brand/category cohort troubleshooting; dishwasher. Complete-code/manual gates remain.",
       "homeownerObservableChecks": [
         "Confirm dishes, handles, and utensils stay inside the rack envelope.",
@@ -3892,9 +3714,7 @@
       "modelFamily": "WRS321SDHZ",
       "topology": "side-by-side-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "whirlpool-refrigerator-door"
-      ],
+      "sourceIds": ["whirlpool-refrigerator-door"],
       "applicability": "Official Whirlpool model identity plus brand/category cohort troubleshooting; side-by-side-refrigerator. Complete-code/manual gates remain.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -3931,9 +3751,7 @@
       "modelFamily": "RF27CG5100SR/AA",
       "topology": "french-door-refrigerator",
       "loadStyle": null,
-      "sourceIds": [
-        "samsung-refrigerator-door"
-      ],
+      "sourceIds": ["samsung-refrigerator-door"],
       "applicability": "Official Samsung model identity plus brand/category cohort troubleshooting; french-door-refrigerator. Complete-code/manual gates remain.",
       "homeownerObservableChecks": [
         "Move food packages, bins, drawers, or shelves that block closure.",
@@ -3960,6 +3778,210 @@
       "unresolvedGaps": [
         "No exact complete-code-to-part evidence; do not make purchase-ready.",
         "Manual-level feature confirmation is still required before implementation."
+      ]
+    },
+    {
+      "rowId": "lg-lrmvc2306s__door-will-not-close",
+      "modelId": "lg-lrmvc2306s",
+      "category": "refrigerator",
+      "brand": "LG",
+      "modelFamily": "LRMVC2306S",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["lg-refrigerator-door"],
+      "applicability": "Official LG exact product-code identity plus current LG all-model refrigerator door troubleshooting; visible obstruction and gasket observations only.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the visible french-door mullion/flap position without adjustment.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Food/bin/shelf obstruction and visible gasket cleaning only"],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Preserve the complete LRMVC2306S.ASTCNA0 product-code boundary; no Door-in-Door latch procedure is generalized.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence; do not make purchase-ready.",
+        "Hinge, gasket, sensor, and leveling diagnosis remains professional-only."
+      ]
+    },
+    {
+      "rowId": "ge-gne29gynfs__door-will-not-close",
+      "modelId": "ge-gne29gynfs",
+      "category": "refrigerator",
+      "brand": "GE",
+      "modelFamily": "GNE29GYNFS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["ge-refrigerator-door"],
+      "applicability": "Official GE model-family identity plus current GE refrigerator door troubleshooting; visible obstruction and gasket observations only.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the visible french-door mullion/flap position without adjustment.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Food/bin/shelf obstruction and visible gasket cleaning only"],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Family-only identity remains guided; no complete revision or replacement-part claim is made.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence; do not make purchase-ready.",
+        "Hinge, gasket, sensor, and leveling diagnosis remains professional-only."
+      ]
+    },
+    {
+      "rowId": "whirlpool-wrf555sdfz08__door-will-not-close",
+      "modelId": "whirlpool-wrf555sdfz08",
+      "category": "refrigerator",
+      "brand": "Whirlpool",
+      "modelFamily": "WRF555SDFZ08",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["whirlpool-refrigerator-door"],
+      "applicability": "Official Whirlpool exact-revision identity plus current Whirlpool refrigerator door troubleshooting; visible obstruction and gasket observations only.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the visible french-door mullion/flap position without adjustment.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Food/bin/shelf obstruction and visible gasket cleaning only"],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Preserve exact revision 08; no neighboring WRF555 revision or replacement part is inferred.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence; do not make purchase-ready.",
+        "Hinge, gasket, sensor, and leveling diagnosis remains professional-only."
+      ]
+    },
+    {
+      "rowId": "kitchenaid-krff305ess00__door-will-not-close",
+      "modelId": "kitchenaid-krff305ess00",
+      "category": "refrigerator",
+      "brand": "KitchenAid",
+      "modelFamily": "KRFF305ESS00",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["kitchenaid-refrigerator-door"],
+      "applicability": "Official KitchenAid exact-revision identity plus current KitchenAid refrigerator door troubleshooting; visible obstruction and gasket observations only.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the visible french-door mullion/flap position without adjustment.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Food/bin/shelf obstruction and visible gasket cleaning only"],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Preserve exact revision 00; the conflicting water-filter evidence is unrelated and remains checks-only.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence; do not make purchase-ready.",
+        "Hinge, gasket, sensor, and leveling diagnosis remains professional-only."
+      ]
+    },
+    {
+      "rowId": "bosch-b36ct81ens07__door-will-not-close",
+      "modelId": "bosch-b36ct81ens07",
+      "category": "refrigerator",
+      "brand": "Bosch",
+      "modelFamily": "B36CT81ENS/07",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["bosch-refrigerator-door"],
+      "applicability": "Official Bosch E-Nr identity plus current Bosch refrigerator door troubleshooting; visible seal cleaning and closure observations only.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe the visible door seal with a soft cloth and mild soapy water.",
+        "Close the door gently and observe whether it stays shut.",
+        "Stop at Bosch support if cleaning the seal does not resolve the condition."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Food/bin/shelf obstruction and visible seal cleaning only"],
+        "professional": [
+          "Door-seal replacement, hinge, door, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Preserve Bosch E-Nr /07 and stop at support before seal replacement or alignment work.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence; do not make purchase-ready.",
+        "Seal replacement, hinge, sensor, and alignment diagnosis remains professional-only."
+      ]
+    },
+    {
+      "rowId": "maytag-mrff5033pz__door-will-not-close",
+      "modelId": "maytag-mrff5033pz",
+      "category": "refrigerator",
+      "brand": "Maytag",
+      "modelFamily": "MRFF5033PZ",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["maytag-refrigerator-door"],
+      "applicability": "Official Maytag model-family identity plus current Maytag refrigerator door troubleshooting; visible obstruction and gasket observations only.",
+      "homeownerObservableChecks": [
+        "Move food packages, bins, drawers, or shelves that block closure.",
+        "Wipe visible gasket soil with a soft cloth and mild soapy water.",
+        "Check only the visible french-door mullion/flap position without adjustment.",
+        "Close the door gently and observe whether it stays shut."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Food/bin/shelf obstruction and visible gasket cleaning only"],
+        "professional": [
+          "Hinge, door, gasket replacement, heavy-unit leveling/movement, wiring, or sensor work"
+        ],
+        "stop": [
+          "Damaged hinge or door, unstable appliance, exposed wiring, refrigerant concern, or food-safety temperature excursion"
+        ]
+      },
+      "profile": "refrigerator-door-closure-observation",
+      "modelSpecificException": "Family-only identity remains guided; no complete revision or replacement-part claim is made.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-28",
+      "unresolvedGaps": [
+        "No exact complete-code-to-part evidence; do not make purchase-ready.",
+        "Hinge, gasket, sensor, and leveling diagnosis remains professional-only."
       ]
     }
   ]

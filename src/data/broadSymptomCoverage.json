@@ -160,7 +160,18 @@
       "id": "refrigerator-cooling-broad-2026-08-29",
       "category": "refrigerator",
       "symptomId": "not-cooling",
-      "brands": ["GE", "LG", "Samsung", "Whirlpool"],
+      "brands": [
+        "GE",
+        "LG",
+        "Samsung",
+        "Whirlpool",
+        "Frigidaire",
+        "Electrolux",
+        "Amana",
+        "Maytag",
+        "KitchenAid",
+        "Bosch"
+      ],
       "profile": "refrigerator-cooling-observation",
       "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
       "featureGates": [
@@ -176,7 +187,17 @@
       "id": "refrigerator-leak-broad-2026-08-29",
       "category": "refrigerator",
       "symptomId": "is-leaking",
-      "brands": ["GE", "LG", "Samsung", "Whirlpool"],
+      "brands": [
+        "GE",
+        "LG",
+        "Samsung",
+        "Whirlpool",
+        "Frigidaire",
+        "Electrolux",
+        "Amana",
+        "Maytag",
+        "KitchenAid"
+      ],
       "profile": "refrigerator-leak-observation",
       "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
       "featureGates": [
@@ -192,7 +213,17 @@
       "id": "refrigerator-ice-broad-2026-08-29",
       "category": "refrigerator",
       "symptomId": "ice-maker-not-making-ice",
-      "brands": ["GE", "LG", "Samsung", "Whirlpool"],
+      "brands": [
+        "GE",
+        "LG",
+        "Samsung",
+        "Whirlpool",
+        "Frigidaire",
+        "Electrolux",
+        "Amana",
+        "Maytag",
+        "KitchenAid"
+      ],
       "profile": "refrigerator-ice-observation",
       "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
       "featureGates": [
@@ -793,6 +824,166 @@
       "url": "https://producthelp.whirlpool.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Installation_Support/How_to_Check_the_Water_Supply_Line",
       "publisher": "Whirlpool",
       "appliesTo": "Whirlpool refrigerators with factory icemakers; visible household water, supply-line, and leak observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "frigidaire-refrigerator-cooling": {
+      "id": "frigidaire-refrigerator-cooling",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Frigidaire refrigerator not-cooling checks",
+      "url": "https://owner.frigidaire.com/support-articles/article/1898299-refrigerators-not-cooling",
+      "publisher": "Frigidaire",
+      "appliesTo": "Frigidaire refrigerators; power, temperature, airflow, door-seal, and food-safety observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "frigidaire-refrigerator-leak": {
+      "id": "frigidaire-refrigerator-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Frigidaire refrigerator water-leak checks",
+      "url": "https://owner.frigidaire.com/support-articles/article/1847166-refrigerators-water-leaks",
+      "publisher": "Frigidaire",
+      "appliesTo": "Frigidaire refrigerators with factory water/ice systems; visible filter, dispenser, and connection observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "frigidaire-refrigerator-ice": {
+      "id": "frigidaire-refrigerator-ice",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Frigidaire refrigerator low-ice checks",
+      "url": "https://owner.frigidaire.com/support-articles/article/1853036-what-should-i-do-if-my-ice-maker-is-not-making-enough-ice-in-my-refrigerator-",
+      "publisher": "Frigidaire",
+      "appliesTo": "Frigidaire French-door, side-by-side, and top-freezer refrigerators with factory icemakers; filter age, temperature, water supply, and door observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "electrolux-refrigerator-cooling": {
+      "id": "electrolux-refrigerator-cooling",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Electrolux refrigerator not-cooling checks",
+      "url": "https://owner.electrolux.com/support-articles/article/1898299-refrigerators-not-cooling",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux refrigerators; power, temperature, airflow, door-seal, and food-safety observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "electrolux-refrigerator-leak": {
+      "id": "electrolux-refrigerator-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Electrolux refrigerator water-leak checks",
+      "url": "https://owner.electrolux.com/support-articles/article/1847166-refrigerators-water-leaks",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux refrigerators with factory water/ice systems; visible filter, dispenser, and connection observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "electrolux-refrigerator-ice": {
+      "id": "electrolux-refrigerator-ice",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Electrolux refrigerator no-ice checks",
+      "url": "https://owner.electrolux.com/support-articles/article/1898308-refrigerators-no-ice",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux refrigerators with factory icemakers; power, temperature, filter age, water supply, and visible bin observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "amana-refrigerator-cooling": {
+      "id": "amana-refrigerator-cooling",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana refrigerator control-setting checks",
+      "url": "https://producthelp.amana.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Product_Assistance/Tips_for_Properly_Setting_the_Controls",
+      "publisher": "Amana",
+      "appliesTo": "Amana full-size refrigerators; temperature settings, room conditions, door, and airflow observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "amana-refrigerator-leak": {
+      "id": "amana-refrigerator-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana refrigerator water-supply checks",
+      "url": "https://producthelp.amana.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Installation_Support/How_to_Check_the_Water_Supply_Line",
+      "publisher": "Amana",
+      "appliesTo": "Amana refrigerators with factory water/ice systems; visible household water, supply-line, and leak observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "amana-refrigerator-ice": {
+      "id": "amana-refrigerator-ice",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana refrigerator ice-maker checks",
+      "url": "https://producthelp.amana.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Product_Assistance/Ice_Maker_Not_Working_-_Troubleshooting",
+      "publisher": "Amana",
+      "appliesTo": "Amana refrigerators with factory icemakers; power, temperature, water supply, filter age, and visible bin observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "maytag-refrigerator-cooling": {
+      "id": "maytag-refrigerator-cooling",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag refrigerator control-setting checks",
+      "url": "https://producthelp.maytag.com/Refrigeration/Full-size_Refrigerators/Product_Info/Product_Assistance/Tips_for_Properly_Setting_the_Controls",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag full-size refrigerators; temperature settings, room conditions, door, and airflow observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "maytag-refrigerator-leak": {
+      "id": "maytag-refrigerator-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag refrigerator water-on-floor checks",
+      "url": "https://producthelp.maytag.com/Refrigeration/Full-size_Refrigerators/Product_Info/Installation_Support/What_to_Do_if_There_is_Water_on_the_Floor",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag refrigerators with factory water/ice systems; visible filter, supply, and floor-water observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "maytag-refrigerator-ice": {
+      "id": "maytag-refrigerator-ice",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag refrigerator ice-maker checks",
+      "url": "https://producthelp.maytag.com/Refrigeration/Full-size_Refrigerators/Product_Info/Product_Assistance/Ice_Maker_Not_Working_-_Troubleshooting",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag refrigerators with factory icemakers; power, temperature, water supply, filter age, and visible bin observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "kitchenaid-refrigerator-cooling": {
+      "id": "kitchenaid-refrigerator-cooling",
+      "kind": "manufacturer-troubleshooting",
+      "title": "KitchenAid refrigerator control-setting checks",
+      "url": "https://producthelp.kitchenaid.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Product_Assistance/Tips_for_Properly_Setting_the_Controls",
+      "publisher": "KitchenAid",
+      "appliesTo": "KitchenAid full-size refrigerators; temperature settings, room conditions, door, and airflow observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "kitchenaid-refrigerator-leak": {
+      "id": "kitchenaid-refrigerator-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "KitchenAid refrigerator water-on-floor checks",
+      "url": "https://producthelp.kitchenaid.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Installation_Support/What_to_Do_if_There_is_Water_on_the_Floor",
+      "publisher": "KitchenAid",
+      "appliesTo": "KitchenAid refrigerators with factory water/ice systems; visible filter, supply, and floor-water observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "kitchenaid-refrigerator-ice": {
+      "id": "kitchenaid-refrigerator-ice",
+      "kind": "manufacturer-troubleshooting",
+      "title": "KitchenAid refrigerator ice-maker checks",
+      "url": "https://producthelp.kitchenaid.com/Refrigeration/Full-Size_Refrigerators/Product_Info/Product_Assistance/Ice_Maker_Not_Working_-_Troubleshooting",
+      "publisher": "KitchenAid",
+      "appliesTo": "KitchenAid refrigerators with factory icemakers; power, temperature, water supply, filter age, and visible bin observations only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "bosch-refrigerator-cooling": {
+      "id": "bosch-refrigerator-cooling",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Bosch refrigerator not-cooling checks",
+      "url": "https://www.bosch-home.com/us/owner-support/get-support/self-help-fridge-has-stopped-cooling",
+      "publisher": "Bosch",
+      "appliesTo": "Bosch full-size refrigerators; power, temperature, airflow, door, and food-safety observations only",
       "verifiedOn": "2026-08-29",
       "quality": "primary"
     }
@@ -11761,6 +11952,231 @@
       ]
     },
     {
+      "rowId": "frigidaire-frss2623as__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "frigidaire-frss2623as",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Frigidaire",
+      "modelFamily": "FRSS2623AS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["frigidaire-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "frigidaire-frss2623as-model",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FRSS2623AS",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "amana-asi2175grs__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "amana-asi2175grs",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Amana",
+      "modelFamily": "ASI2175GRS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["amana-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "amana-asi2175grs-model",
+        "url": "https://www.amana.com/refrigerators/side-by-side/p.33-inch-side-by-side-refrigerator-with-dual-pad-external-ice-and-water-dispenser.asi2175grs.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "maytag-mfi2570fez__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "maytag-mfi2570fez",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Maytag",
+      "modelFamily": "MFI2570FEZ",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["maytag-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "maytag-mfi2570fez-model",
+        "url": "https://www.maytag.com/kitchen/refrigerators/french-door/p.36-inch-wide-french-door-refrigerator-with-powercold-feature-25-cu.-ft%20.mfi2570fez.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "kitchenaid-krff577kps__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "kitchenaid-krff577kps",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "KitchenAid",
+      "modelFamily": "KRFF577KPS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["kitchenaid-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "kitchenaid-krff577kps-model",
+        "url": "https://www.kitchenaid.com/owners-center-pdp.KRFF577KPS.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "bosch-b36cl80ens01__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "bosch-b36cl80ens01",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Bosch",
+      "modelFamily": "B36CL80ENS/01",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["bosch-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "bosch-b36cl80ens01-model",
+        "url": "https://www.bosch-home.com/us/en/productservice/B36CL80ENS-01",
+        "verifiedProductCodes": ["B36CL80ENS/01"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
       "rowId": "ge-gfe28gynfs__not-cooling",
       "cohortId": "refrigerator-cooling-broad-2026-08-29",
       "modelId": "ge-gfe28gynfs",
@@ -11819,7 +12235,7 @@
       "modelEvidence": {
         "sourceId": "ge-gne27jymfs-model",
         "url": "https://products.geappliances.com/appliance/gea-specs/GNE27JYMFS/support",
-        "verifiedProductCodes": [],
+        "verifiedProductCodes": ["GNE27JYMFS"],
         "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
       },
       "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
@@ -11864,7 +12280,7 @@
       "modelEvidence": {
         "sourceId": "ge-pvd28bynfs-model",
         "url": "https://products.geappliances.com/appliance/gea-specs/PVD28BYNFS/support",
-        "verifiedProductCodes": [],
+        "verifiedProductCodes": ["PVD28BYNFS"],
         "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
       },
       "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
@@ -11909,7 +12325,7 @@
       "modelEvidence": {
         "sourceId": "ge-gss23gypfs-model",
         "url": "https://products.geappliances.com/appliance/gea-specs/GSS23GYPFS/support",
-        "verifiedProductCodes": [],
+        "verifiedProductCodes": ["GSS23GYPFS"],
         "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
       },
       "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
@@ -12000,6 +12416,186 @@
         "sourceId": "whirlpool-wrx735sdhz-model",
         "url": "https://www.whirlpool.com/owners-center-pdp.WRX735SDHZ.html",
         "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "maytag-mss25c4mgz__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "maytag-mss25c4mgz",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Maytag",
+      "modelFamily": "MSS25C4MGZ",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["maytag-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "maytag-mss25c4mgz-model",
+        "url": "https://www.maytag.com/owners-center-pdp.MSS25C4MGZ.html",
+        "verifiedProductCodes": ["MSS25C4MGZ03"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "maytag-mft2772hez__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "maytag-mft2772hez",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Maytag",
+      "modelFamily": "MFT2772HEZ",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["maytag-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "maytag-mft2772hez-model",
+        "url": "https://www.maytag.com/owners-center-pdp.MFT2772HEZ.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "kitchenaid-krfc300ess__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "kitchenaid-krfc300ess",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "KitchenAid",
+      "modelFamily": "KRFC300ESS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["kitchenaid-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "kitchenaid-krfc300ess-model",
+        "url": "https://www.kitchenaid.com/owners-center-pdp.KRFC300ESS08.html",
+        "verifiedProductCodes": ["KRFC300ESS08"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "amana-asi2575grs__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "amana-asi2575grs",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Amana",
+      "modelFamily": "ASI2575GRS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["amana-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "amana-asi2575grs-model",
+        "url": "https://www.amana.com/refrigerators/side-by-side/p.36-inch-side-by-side-refrigerator-with-dual-pad-external-ice-and-water-dispenser.asi2575grs.html",
+        "verifiedProductCodes": ["ASI2575GRS05"],
         "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
       },
       "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
@@ -12346,6 +12942,321 @@
       ]
     },
     {
+      "rowId": "frigidaire-grfs2853af__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "frigidaire-grfs2853af",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Frigidaire",
+      "modelFamily": "GRFS2853AF",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["frigidaire-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "frigidaire-grfs2853af-model",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/GRFS2853AF",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "frigidaire-frfs2823as__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "frigidaire-frfs2823as",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Frigidaire",
+      "modelFamily": "FRFS2823AS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["frigidaire-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "frigidaire-frfs2823as-model",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FRFS2823AS",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "frigidaire-grss2652af__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "frigidaire-grss2652af",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Frigidaire",
+      "modelFamily": "GRSS2652AF",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["frigidaire-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "frigidaire-grss2652af-model",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/GRSS2652AF",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "electrolux-ermc2295as__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "electrolux-ermc2295as",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Electrolux",
+      "modelFamily": "ERMC2295AS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["electrolux-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "electrolux-ermc2295as-model",
+        "url": "https://www.electrolux.com/en/p/kitchen/refrigerators/french-door-refrigerators/ERMC2295AS",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "bosch-b36ct80sns01__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "bosch-b36ct80sns01",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Bosch",
+      "modelFamily": "B36CT80SNS/01",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["bosch-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "bosch-b36ct80sns01-model",
+        "url": "https://www.bosch-home.com/us/en/productservice/B36CT80SNS-01",
+        "verifiedProductCodes": ["B36CT80SNS/01"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "bosch-b36cd50sns01__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "bosch-b36cd50sns01",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Bosch",
+      "modelFamily": "B36CD50SNS/01",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["bosch-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "bosch-b36cd50sns01-model",
+        "url": "https://www.bosch-home.com/us/en/productservice/B36CD50SNS-01",
+        "verifiedProductCodes": ["B36CD50SNS/01"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "bosch-b36fd50sns01__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "bosch-b36fd50sns01",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Bosch",
+      "modelFamily": "B36FD50SNS/01",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["bosch-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "bosch-b36fd50sns01-model",
+        "url": "https://www.bosch-home.com/us/en/productservice/B36FD50SNS-01",
+        "verifiedProductCodes": ["B36FD50SNS/01"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
       "rowId": "whirlpool-wrs321sdhz08__not-cooling",
       "cohortId": "refrigerator-cooling-broad-2026-08-29",
       "modelId": "whirlpool-wrs321sdhz08",
@@ -12571,6 +13482,141 @@
       ]
     },
     {
+      "rowId": "kitchenaid-krff305ess00__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "kitchenaid-krff305ess00",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "KitchenAid",
+      "modelFamily": "KRFF305ESS00",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["kitchenaid-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "kitchenaid-krff305ess00-model",
+        "url": "https://www.kitchenaid.com/owners-center-pdp.KRFF305ESS00.html",
+        "verifiedProductCodes": ["KRFF305ESS00"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "bosch-b36ct81ens07__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "bosch-b36ct81ens07",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Bosch",
+      "modelFamily": "B36CT81ENS/07",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["bosch-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "bosch-b36ct81ens07-model",
+        "url": "https://www.bosch-home.com/us/en/productservice/B36CT81ENS-07",
+        "verifiedProductCodes": ["B36CT81ENS/07"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "maytag-mrff5033pz__not-cooling",
+      "cohortId": "refrigerator-cooling-broad-2026-08-29",
+      "modelId": "maytag-mrff5033pz",
+      "category": "refrigerator",
+      "symptomId": "not-cooling",
+      "brand": "Maytag",
+      "modelFamily": "MRFF5033PZ",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["maytag-refrigerator-cooling"],
+      "modelEvidence": {
+        "sourceId": "maytag-mrff5033pz-model",
+        "url": "https://www.maytag.com/owners-center-pdp.MRFF5033PZ.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size French-door or side-by-side refrigerator; temperature setting, cooling mode, door seal, airflow, room condition, and food-safety observations only.",
+      "featureGates": [
+        "Use the exact console/manual for cooling-mode controls; no generic button sequence.",
+        "No panel, coil, fan, compressor, or refrigerant-system access."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Compartment controls and convertible zones vary by exact revision.",
+          "Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-cooling-observation",
+      "modelSpecificException": "Compartment controls and convertible zones vary by exact revision. Unsafe food temperature, electrical damage, smoke, chemical odor, or water near power is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
       "rowId": "ge-gss25gypfs__is-leaking",
       "cohortId": "refrigerator-leak-broad-2026-08-29",
       "modelId": "ge-gss25gypfs",
@@ -12751,6 +13797,186 @@
       ]
     },
     {
+      "rowId": "frigidaire-frss2623as__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "frigidaire-frss2623as",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "Frigidaire",
+      "modelFamily": "FRSS2623AS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["frigidaire-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "frigidaire-frss2623as-model",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FRSS2623AS",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "amana-asi2175grs__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "amana-asi2175grs",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "Amana",
+      "modelFamily": "ASI2175GRS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["amana-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "amana-asi2175grs-model",
+        "url": "https://www.amana.com/refrigerators/side-by-side/p.33-inch-side-by-side-refrigerator-with-dual-pad-external-ice-and-water-dispenser.asi2175grs.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "maytag-mfi2570fez__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "maytag-mfi2570fez",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "Maytag",
+      "modelFamily": "MFI2570FEZ",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["maytag-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "maytag-mfi2570fez-model",
+        "url": "https://www.maytag.com/kitchen/refrigerators/french-door/p.36-inch-wide-french-door-refrigerator-with-powercold-feature-25-cu.-ft%20.mfi2570fez.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "kitchenaid-krff577kps__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "kitchenaid-krff577kps",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "KitchenAid",
+      "modelFamily": "KRFF577KPS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["kitchenaid-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "kitchenaid-krff577kps-model",
+        "url": "https://www.kitchenaid.com/owners-center-pdp.KRFF577KPS.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
       "rowId": "ge-gfe28gynfs__is-leaking",
       "cohortId": "refrigerator-leak-broad-2026-08-29",
       "modelId": "ge-gfe28gynfs",
@@ -12809,7 +14035,7 @@
       "modelEvidence": {
         "sourceId": "ge-gne27jymfs-model",
         "url": "https://products.geappliances.com/appliance/gea-specs/GNE27JYMFS/support",
-        "verifiedProductCodes": [],
+        "verifiedProductCodes": ["GNE27JYMFS"],
         "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
       },
       "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
@@ -12854,7 +14080,7 @@
       "modelEvidence": {
         "sourceId": "ge-pvd28bynfs-model",
         "url": "https://products.geappliances.com/appliance/gea-specs/PVD28BYNFS/support",
-        "verifiedProductCodes": [],
+        "verifiedProductCodes": ["PVD28BYNFS"],
         "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
       },
       "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
@@ -12899,7 +14125,7 @@
       "modelEvidence": {
         "sourceId": "ge-gss23gypfs-model",
         "url": "https://products.geappliances.com/appliance/gea-specs/GSS23GYPFS/support",
-        "verifiedProductCodes": [],
+        "verifiedProductCodes": ["GSS23GYPFS"],
         "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
       },
       "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
@@ -12990,6 +14216,186 @@
         "sourceId": "whirlpool-wrx735sdhz-model",
         "url": "https://www.whirlpool.com/owners-center-pdp.WRX735SDHZ.html",
         "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "maytag-mss25c4mgz__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "maytag-mss25c4mgz",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "Maytag",
+      "modelFamily": "MSS25C4MGZ",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["maytag-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "maytag-mss25c4mgz-model",
+        "url": "https://www.maytag.com/owners-center-pdp.MSS25C4MGZ.html",
+        "verifiedProductCodes": ["MSS25C4MGZ03"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "maytag-mft2772hez__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "maytag-mft2772hez",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "Maytag",
+      "modelFamily": "MFT2772HEZ",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["maytag-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "maytag-mft2772hez-model",
+        "url": "https://www.maytag.com/owners-center-pdp.MFT2772HEZ.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "kitchenaid-krfc300ess__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "kitchenaid-krfc300ess",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "KitchenAid",
+      "modelFamily": "KRFC300ESS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["kitchenaid-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "kitchenaid-krfc300ess-model",
+        "url": "https://www.kitchenaid.com/owners-center-pdp.KRFC300ESS08.html",
+        "verifiedProductCodes": ["KRFC300ESS08"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "amana-asi2575grs__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "amana-asi2575grs",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "Amana",
+      "modelFamily": "ASI2575GRS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["amana-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "amana-asi2575grs-model",
+        "url": "https://www.amana.com/refrigerators/side-by-side/p.36-inch-side-by-side-refrigerator-with-dual-pad-external-ice-and-water-dispenser.asi2575grs.html",
+        "verifiedProductCodes": ["ASI2575GRS05"],
         "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
       },
       "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
@@ -13336,6 +14742,186 @@
       ]
     },
     {
+      "rowId": "frigidaire-grfs2853af__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "frigidaire-grfs2853af",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "Frigidaire",
+      "modelFamily": "GRFS2853AF",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["frigidaire-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "frigidaire-grfs2853af-model",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/GRFS2853AF",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "frigidaire-frfs2823as__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "frigidaire-frfs2823as",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "Frigidaire",
+      "modelFamily": "FRFS2823AS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["frigidaire-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "frigidaire-frfs2823as-model",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FRFS2823AS",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "frigidaire-grss2652af__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "frigidaire-grss2652af",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "Frigidaire",
+      "modelFamily": "GRSS2652AF",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["frigidaire-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "frigidaire-grss2652af-model",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/GRSS2652AF",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "electrolux-ermc2295as__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "electrolux-ermc2295as",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "Electrolux",
+      "modelFamily": "ERMC2295AS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["electrolux-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "electrolux-ermc2295as-model",
+        "url": "https://www.electrolux.com/en/p/kitchen/refrigerators/french-door-refrigerators/ERMC2295AS",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
       "rowId": "whirlpool-wrs321sdhz08__is-leaking",
       "cohortId": "refrigerator-leak-broad-2026-08-29",
       "modelId": "whirlpool-wrs321sdhz08",
@@ -13561,6 +15147,96 @@
       ]
     },
     {
+      "rowId": "kitchenaid-krff305ess00__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "kitchenaid-krff305ess00",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "KitchenAid",
+      "modelFamily": "KRFF305ESS00",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["kitchenaid-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "kitchenaid-krff305ess00-model",
+        "url": "https://www.kitchenaid.com/owners-center-pdp.KRFF305ESS00.html",
+        "verifiedProductCodes": ["KRFF305ESS00"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "maytag-mrff5033pz__is-leaking",
+      "cohortId": "refrigerator-leak-broad-2026-08-29",
+      "modelId": "maytag-mrff5033pz",
+      "category": "refrigerator",
+      "symptomId": "is-leaking",
+      "brand": "Maytag",
+      "modelFamily": "MRFF5033PZ",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["maytag-refrigerator-leak"],
+      "modelEvidence": {
+        "sourceId": "maytag-mrff5033pz-model",
+        "url": "https://www.maytag.com/owners-center-pdp.MRFF5033PZ.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory water/ice system; visible source, filter area, dispenser, supply line, and dry reachable shutoff observations only.",
+      "featureGates": [
+        "Factory water/ice feature is confirmed on the exact model source before activation.",
+        "Do not pull the refrigerator, remove covers, disconnect tubing, or infer a filter/valve part."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Filter type, reservoir, pitcher, and ice layout vary by exact revision.",
+          "Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop."
+        ]
+      },
+      "profile": "refrigerator-leak-observation",
+      "modelSpecificException": "Filter type, reservoir, pitcher, and ice layout vary by exact revision. Spreading water, water near power, a hidden shutoff, or a damaged line is an immediate stop.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
       "rowId": "ge-gss25gypfs__ice-maker-not-making-ice",
       "cohortId": "refrigerator-ice-broad-2026-08-29",
       "modelId": "ge-gss25gypfs",
@@ -13741,6 +15417,186 @@
       ]
     },
     {
+      "rowId": "frigidaire-frss2623as__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "frigidaire-frss2623as",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "Frigidaire",
+      "modelFamily": "FRSS2623AS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["frigidaire-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "frigidaire-frss2623as-model",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FRSS2623AS",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "amana-asi2175grs__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "amana-asi2175grs",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "Amana",
+      "modelFamily": "ASI2175GRS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["amana-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "amana-asi2175grs-model",
+        "url": "https://www.amana.com/refrigerators/side-by-side/p.33-inch-side-by-side-refrigerator-with-dual-pad-external-ice-and-water-dispenser.asi2175grs.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "maytag-mfi2570fez__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "maytag-mfi2570fez",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "Maytag",
+      "modelFamily": "MFI2570FEZ",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["maytag-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "maytag-mfi2570fez-model",
+        "url": "https://www.maytag.com/kitchen/refrigerators/french-door/p.36-inch-wide-french-door-refrigerator-with-powercold-feature-25-cu.-ft%20.mfi2570fez.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "kitchenaid-krff577kps__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "kitchenaid-krff577kps",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "KitchenAid",
+      "modelFamily": "KRFF577KPS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["kitchenaid-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "kitchenaid-krff577kps-model",
+        "url": "https://www.kitchenaid.com/owners-center-pdp.KRFF577KPS.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
       "rowId": "ge-gfe28gynfs__ice-maker-not-making-ice",
       "cohortId": "refrigerator-ice-broad-2026-08-29",
       "modelId": "ge-gfe28gynfs",
@@ -13799,7 +15655,7 @@
       "modelEvidence": {
         "sourceId": "ge-gne27jymfs-model",
         "url": "https://products.geappliances.com/appliance/gea-specs/GNE27JYMFS/support",
-        "verifiedProductCodes": [],
+        "verifiedProductCodes": ["GNE27JYMFS"],
         "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
       },
       "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
@@ -13844,7 +15700,7 @@
       "modelEvidence": {
         "sourceId": "ge-pvd28bynfs-model",
         "url": "https://products.geappliances.com/appliance/gea-specs/PVD28BYNFS/support",
-        "verifiedProductCodes": [],
+        "verifiedProductCodes": ["PVD28BYNFS"],
         "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
       },
       "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
@@ -13889,7 +15745,7 @@
       "modelEvidence": {
         "sourceId": "ge-gss23gypfs-model",
         "url": "https://products.geappliances.com/appliance/gea-specs/GSS23GYPFS/support",
-        "verifiedProductCodes": [],
+        "verifiedProductCodes": ["GSS23GYPFS"],
         "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
       },
       "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
@@ -13980,6 +15836,186 @@
         "sourceId": "whirlpool-wrx735sdhz-model",
         "url": "https://www.whirlpool.com/owners-center-pdp.WRX735SDHZ.html",
         "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "maytag-mss25c4mgz__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "maytag-mss25c4mgz",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "Maytag",
+      "modelFamily": "MSS25C4MGZ",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["maytag-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "maytag-mss25c4mgz-model",
+        "url": "https://www.maytag.com/owners-center-pdp.MSS25C4MGZ.html",
+        "verifiedProductCodes": ["MSS25C4MGZ03"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "maytag-mft2772hez__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "maytag-mft2772hez",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "Maytag",
+      "modelFamily": "MFT2772HEZ",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["maytag-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "maytag-mft2772hez-model",
+        "url": "https://www.maytag.com/owners-center-pdp.MFT2772HEZ.html",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "kitchenaid-krfc300ess__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "kitchenaid-krfc300ess",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "KitchenAid",
+      "modelFamily": "KRFC300ESS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["kitchenaid-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "kitchenaid-krfc300ess-model",
+        "url": "https://www.kitchenaid.com/owners-center-pdp.KRFC300ESS08.html",
+        "verifiedProductCodes": ["KRFC300ESS08"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "amana-asi2575grs__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "amana-asi2575grs",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "Amana",
+      "modelFamily": "ASI2575GRS",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["amana-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "amana-asi2575grs-model",
+        "url": "https://www.amana.com/refrigerators/side-by-side/p.36-inch-side-by-side-refrigerator-with-dual-pad-external-ice-and-water-dispenser.asi2575grs.html",
+        "verifiedProductCodes": ["ASI2575GRS05"],
         "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
       },
       "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
@@ -14326,6 +16362,186 @@
       ]
     },
     {
+      "rowId": "frigidaire-grfs2853af__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "frigidaire-grfs2853af",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "Frigidaire",
+      "modelFamily": "GRFS2853AF",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["frigidaire-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "frigidaire-grfs2853af-model",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/GRFS2853AF",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "frigidaire-frfs2823as__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "frigidaire-frfs2823as",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "Frigidaire",
+      "modelFamily": "FRFS2823AS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["frigidaire-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "frigidaire-frfs2823as-model",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FRFS2823AS",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "frigidaire-grss2652af__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "frigidaire-grss2652af",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "Frigidaire",
+      "modelFamily": "GRSS2652AF",
+      "topology": "side-by-side-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["frigidaire-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "frigidaire-grss2652af-model",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/GRSS2652AF",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "electrolux-ermc2295as__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "electrolux-ermc2295as",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "Electrolux",
+      "modelFamily": "ERMC2295AS",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["electrolux-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "electrolux-ermc2295as-model",
+        "url": "https://www.electrolux.com/en/p/kitchen/refrigerators/french-door-refrigerators/ERMC2295AS",
+        "verifiedProductCodes": [],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
       "rowId": "whirlpool-wrs321sdhz08__ice-maker-not-making-ice",
       "cohortId": "refrigerator-ice-broad-2026-08-29",
       "modelId": "whirlpool-wrs321sdhz08",
@@ -14520,6 +16736,96 @@
         "sourceId": "whirlpool-wrf555sdfz08-model",
         "url": "https://www.whirlpool.com/owners-center-pdp.WRF555SDFZ08.html",
         "verifiedProductCodes": ["WRF555SDFZ08"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "kitchenaid-krff305ess00__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "kitchenaid-krff305ess00",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "KitchenAid",
+      "modelFamily": "KRFF305ESS00",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["kitchenaid-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "kitchenaid-krff305ess00-model",
+        "url": "https://www.kitchenaid.com/owners-center-pdp.KRFF305ESS00.html",
+        "verifiedProductCodes": ["KRFF305ESS00"],
+        "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
+      },
+      "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",
+      "featureGates": [
+        "Factory ice-maker presence is confirmed on the exact model source before activation.",
+        "No generic reset/test-button sequence, internal access, or replacement-part inference."
+      ],
+      "homeownerObservableChecks": [
+        "Use only the visible, exterior, or explicitly owner-accessible checks in the shared profile.",
+        "Match any control, cycle, or feature name to the exact appliance console or owner manual."
+      ],
+      "safetyBoundaries": {
+        "homeowner": ["Dry, visible observations with no disassembly or appliance movement."],
+        "professional": [
+          "Internal components, installation correction, wiring, and exact-part diagnosis."
+        ],
+        "stop": [
+          "Ice-maker location, controls, and dual-ice features vary by exact revision.",
+          "A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service."
+        ]
+      },
+      "profile": "refrigerator-ice-observation",
+      "modelSpecificException": "Ice-maker location, controls, and dual-ice features vary by exact revision. A leak, damaged wiring, hot/burning odor, sharp obstruction, or unresolved error requires service.",
+      "capabilityTier": "guided-checks",
+      "verifiedOn": "2026-08-29",
+      "unresolvedGaps": [
+        "No exact failed part is identified by this guided profile.",
+        "No purchase-ready compatibility claim is made for this symptom route."
+      ]
+    },
+    {
+      "rowId": "maytag-mrff5033pz__ice-maker-not-making-ice",
+      "cohortId": "refrigerator-ice-broad-2026-08-29",
+      "modelId": "maytag-mrff5033pz",
+      "category": "refrigerator",
+      "symptomId": "ice-maker-not-making-ice",
+      "brand": "Maytag",
+      "modelFamily": "MRFF5033PZ",
+      "topology": "french-door-refrigerator",
+      "loadStyle": null,
+      "sourceIds": ["maytag-refrigerator-ice"],
+      "modelEvidence": {
+        "sourceId": "maytag-mrff5033pz-model",
+        "url": "https://www.maytag.com/owners-center-pdp.MRFF5033PZ.html",
+        "verifiedProductCodes": [],
         "purpose": "Exact model identity, topology, and feature-gate corroboration only; not troubleshooting evidence."
       },
       "applicability": "Exact listed full-size refrigerator with a factory ice maker; power state, compartment temperature, water supply, filter age, door seal, and visible ice-bin observations only.",

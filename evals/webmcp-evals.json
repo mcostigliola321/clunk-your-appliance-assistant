@@ -396,25 +396,25 @@
         {
           "name": "search_supported_appliances",
           "arguments": {
-            "kind": "dryer",
-            "symptomId": "not-heating",
-            "modelQuery": "MED4500MW"
+            "kind": "refrigerator",
+            "symptomId": "is-leaking",
+            "modelQuery": "B36CT81ENS/07"
           }
         }
       ],
-      "prompt": "This Maytag dryer appears elsewhere in the catalog. Do not use it for no-heat checks unless that exact model-problem pair is covered.",
+      "prompt": "This Bosch refrigerator appears elsewhere in the catalog. Do not use it for leak checks unless that exact model-problem pair is covered.",
       "expectedCalls": [
         {
           "name": "select_appliance",
           "arguments": {
-            "applianceId": "maytag-med4500mw",
-            "symptomId": "not-heating"
+            "applianceId": "bosch-b36ct81ens07",
+            "symptomId": "is-leaking"
           },
           "expectedOk": false
         }
       ],
-      "expectedVisible": ["not supported for that problem", "door-will-not-close"],
-      "mustNot": ["Borrow the GE no-heat pack", "Claim model support implies symptom support"]
+      "expectedVisible": ["not supported for that problem", "not-cooling"],
+      "mustNot": ["Borrow another brand's leak pack", "Claim model support implies symptom support"]
     },
     {
       "id": "washer-start-visible-fix",

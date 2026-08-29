@@ -1,0 +1,458 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-08-29",
+  "expectedCounts": { "dishwasher": 9, "dryer": 7, "refrigerator": 1, "total": 17 },
+  "partProfiles": {
+    "demo-dishwasher-00631200": {
+      "componentId": "drain-pump",
+      "name": "00631200 dishwasher drain pump",
+      "sku": "00631200",
+      "location": "Internal drain pump below the tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "00631200 dishwasher drain pump exact SKU",
+      "offerCountAtVerification": 19,
+      "identitySource": {
+        "id": "demo-dishwasher-00631200-identity",
+        "kind": "manufacturer-part",
+        "title": "Bosch exact part 00631200",
+        "url": "https://www.bosch-home.com/us/en/product/00631200",
+        "publisher": "Bosch",
+        "appliesTo": "Dishwasher drain-pump part 00631200; exact appliance fit is established separately"
+      }
+    },
+    "demo-dishwasher-w11412291": {
+      "componentId": "drain-pump",
+      "name": "W11412291 dishwasher drain pump",
+      "sku": "W11412291",
+      "location": "Internal drain pump below the tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "W11412291 dishwasher drain pump exact SKU",
+      "offerCountAtVerification": 7,
+      "identitySource": {
+        "id": "demo-dishwasher-w11412291-identity",
+        "kind": "authorized-parts",
+        "title": "Whirlpool Parts exact part W11412291",
+        "url": "https://www.whirlpoolparts.com/PartDetail/Drain-Pump/W11412291/4960707",
+        "publisher": "Whirlpool Parts",
+        "appliesTo": "Dishwasher drain-pump part W11412291; exact appliance fit is established separately"
+      }
+    },
+    "demo-dishwasher-w10876537": {
+      "componentId": "drain-pump",
+      "name": "W10876537 dishwasher drain pump",
+      "sku": "W10876537",
+      "location": "Internal drain pump below the tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "W10876537 dishwasher drain pump exact SKU",
+      "offerCountAtVerification": 20,
+      "identitySource": {
+        "id": "demo-dishwasher-w10876537-identity",
+        "kind": "authorized-parts",
+        "title": "Whirlpool Parts exact part W10876537",
+        "url": "https://www.whirlpoolparts.com/PartDetail/Drain-Pump/W10876537/4454971",
+        "publisher": "Whirlpool Parts",
+        "appliesTo": "Dishwasher drain-pump part W10876537; exact appliance fit is established separately"
+      }
+    },
+    "demo-dishwasher-wd19x25461": {
+      "componentId": "drain-pump",
+      "name": "WD19X25461 dishwasher drain pump",
+      "sku": "WD19X25461",
+      "location": "Internal drain pump below the tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "WD19X25461 dishwasher drain pump exact SKU",
+      "offerCountAtVerification": 20,
+      "identitySource": {
+        "id": "demo-dishwasher-wd19x25461-identity",
+        "kind": "authorized-parts",
+        "title": "GE Appliances exact part WD19X25461",
+        "url": "https://www.geapplianceparts.com/store/parts/spec/WD19X25461",
+        "publisher": "GE Appliances",
+        "appliesTo": "Dishwasher drain-pump part WD19X25461; exact appliance fit is established separately"
+      }
+    },
+    "demo-dishwasher-wd19x24651": {
+      "componentId": "drain-pump",
+      "name": "WD19X24651 dishwasher drain pump",
+      "sku": "WD19X24651",
+      "location": "Internal drain pump below the tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "WD19X24651 dishwasher drain pump exact SKU",
+      "offerCountAtVerification": 3,
+      "identitySource": {
+        "id": "demo-dishwasher-wd19x24651-identity",
+        "kind": "authorized-parts",
+        "title": "GE Appliances exact part WD19X24651",
+        "url": "https://www.geapplianceparts.com/store/parts/spec/WD19X24651",
+        "publisher": "GE Appliances",
+        "appliesTo": "Dishwasher drain-pump part WD19X24651; exact appliance fit is established separately"
+      }
+    },
+    "demo-dishwasher-w10724439": {
+      "componentId": "drain-pump",
+      "name": "W10724439 dishwasher drain pump",
+      "sku": "W10724439",
+      "location": "Internal drain pump below the tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "W10724439 dishwasher drain pump exact SKU",
+      "offerCountAtVerification": 11,
+      "identitySource": {
+        "id": "demo-dishwasher-w10724439-identity",
+        "kind": "authorized-parts",
+        "title": "www.whirlpool.com exact part W10724439",
+        "url": "https://www.whirlpool.com/content/dam/global/documents/202210/repair-parts-list-w11637950-reva.pdf",
+        "publisher": "www.whirlpool.com",
+        "appliesTo": "Dishwasher drain-pump part W10724439; exact appliance fit is established separately"
+      }
+    },
+    "demo-dishwasher-w11497943": {
+      "componentId": "drain-pump",
+      "name": "W11497943 dishwasher drain pump",
+      "sku": "W11497943",
+      "location": "Internal drain pump below the tub; diagnosis stops before disassembly",
+      "installBoundary": "professional-only",
+      "commerceQuery": "W11497943 dishwasher drain pump exact SKU",
+      "offerCountAtVerification": 8,
+      "identitySource": {
+        "id": "demo-dishwasher-w11497943-identity",
+        "kind": "authorized-parts",
+        "title": "Whirlpool Parts exact part W11497943",
+        "url": "https://www.whirlpoolparts.com/PartDetail/Drain-Pump/W11497943/4960223",
+        "publisher": "Whirlpool Parts",
+        "appliesTo": "Dishwasher drain-pump part W11497943; exact appliance fit is established separately"
+      }
+    },
+    "demo-dryer-we01m10007": {
+      "componentId": "door-strike",
+      "name": "Dryer strike",
+      "sku": "WE01M10007",
+      "location": "visible door-side strike",
+      "installBoundary": "user-replaceable",
+      "commerceQuery": "WE01M10007 dryer door strike exact SKU",
+      "offerCountAtVerification": 10,
+      "identitySource": {
+        "id": "demo-dryer-we01m10007-identity",
+        "kind": "authorized-parts",
+        "title": "GE Appliances Parts exact door-side strike WE01M10007",
+        "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/HTX24EASK0WS/2/0/0/0/FRONT_PANEL_%26_DOOR",
+        "publisher": "GE Appliances Parts",
+        "appliesTo": "Dryer door-side strike WE01M10007; exact appliance fit and observation gate are established separately"
+      }
+    },
+    "demo-dryer-we1x1192": {
+      "componentId": "door-strike",
+      "name": "Strike door",
+      "sku": "WE1X1192",
+      "location": "visible door-side strike",
+      "installBoundary": "user-replaceable",
+      "commerceQuery": "WE1X1192 dryer door strike exact SKU",
+      "offerCountAtVerification": 10,
+      "identitySource": {
+        "id": "demo-dryer-we1x1192-identity",
+        "kind": "authorized-parts",
+        "title": "GE Appliances Parts exact door-side strike WE1X1192",
+        "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/PTD70EBST0WS/2/0/0/0/FRONT_PANEL_%26_DOOR",
+        "publisher": "GE Appliances Parts",
+        "appliesTo": "Dryer door-side strike WE1X1192; exact appliance fit and observation gate are established separately"
+      }
+    },
+    "demo-dryer-w11429589": {
+      "componentId": "door-strike",
+      "name": "Dryer door strike",
+      "sku": "W11429589",
+      "location": "visible door-side strike; distinct from cabinet catch W11429587",
+      "installBoundary": "user-replaceable",
+      "commerceQuery": "W11429589 dryer door strike exact SKU",
+      "offerCountAtVerification": 10,
+      "identitySource": {
+        "id": "demo-dryer-w11429589-identity",
+        "kind": "authorized-parts",
+        "title": "Whirlpool Parts (authorized) exact door-side strike W11429589",
+        "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a8b5d2467159/Model-WED6150PB0-Whirlpool-Dryer-Parts?n=3",
+        "publisher": "Whirlpool Parts (authorized)",
+        "appliesTo": "Dryer door-side strike W11429589; exact appliance fit and observation gate are established separately"
+      }
+    },
+    "demo-refrigerator-edr2rxd1": {
+      "componentId": "water-filter",
+      "name": "EveryDrop Filter 2 refrigerator water filter",
+      "sku": "EDR2RXD1",
+      "location": "Inside the fresh-food compartment; follow the exact model instructions",
+      "installBoundary": "user-replaceable",
+      "commerceQuery": "EDR2RXD1 EveryDrop refrigerator water filter exact SKU",
+      "offerCountAtVerification": 17,
+      "identitySource": {
+        "id": "demo-refrigerator-edr2rxd1-identity",
+        "kind": "manufacturer-part",
+        "title": "Maytag MFT2772HEZ owner page naming EveryDrop Filter 2 EDR2RXD1",
+        "url": "https://www.maytag.com/owners-center-pdp.MFT2772HEZ.html",
+        "publisher": "Maytag",
+        "appliesTo": "EveryDrop Filter 2 manufacturer part EDR2RXD1; exact revision fit is established separately"
+      }
+    }
+  },
+  "records": [
+    {
+      "modelId": "bosch-shpm65z55n20",
+      "exactCode": "SHPM65Z55N/20",
+      "partProfile": "demo-dishwasher-00631200",
+      "compatibilitySources": [
+        {
+          "id": "bosch-shpm65z55n20-00631200-fit",
+          "kind": "manufacturer-part",
+          "title": "Exact SHPM65Z55N/20 drain-pump listing",
+          "url": "https://www.bosch-home.com/us/en/spare-parts-list/SHPM65Z55N-20",
+          "publisher": "Bosch",
+          "appliesTo": "SHPM65Z55N/20 uses exact drain-pump SKU 00631200. Bosch's exact E-Nr spare-parts page places 00631200 on SHPM65Z55N/20 and Bosch identifies it as Pump-drain."
+        }
+      ]
+    },
+    {
+      "modelId": "kitchenaid-kdtm404kps",
+      "exactCode": "KDTM404KPS0",
+      "partProfile": "demo-dishwasher-w11412291",
+      "compatibilitySources": [
+        {
+          "id": "kitchenaid-kdtm404kps-w11412291-fit",
+          "kind": "authorized-parts",
+          "title": "Exact KDTM404KPS0 drain-pump listing",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b121c36d2460010/Model-KDTM404KPS0-Kitchenaid-Dishwasher-Pump-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "KDTM404KPS0 uses exact drain-pump SKU W11412291. The Whirlpool-authorized exact-model pump page returns one item explicitly titled drain pump, manufacturer number W11412291, for KDTM404KPS0."
+        }
+      ]
+    },
+    {
+      "modelId": "amana-adb1400agw",
+      "exactCode": "ADB1400AGW0",
+      "partProfile": "demo-dishwasher-w10876537",
+      "compatibilitySources": [
+        {
+          "id": "amana-adb1400agw-w10876537-fit",
+          "kind": "authorized-parts",
+          "title": "Exact ADB1400AGW0 drain-pump listing",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b1c36d2150695/Model-ADB1400AGW0-Amana-Dishwasher-Pump-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "ADB1400AGW0 uses exact drain-pump SKU W10876537. The Whirlpool-authorized exact-model pump page explicitly lists W10876537 as the drain pump fitting ADB1400AGW0."
+        }
+      ]
+    },
+    {
+      "modelId": "ge-gdt550pyrfs",
+      "exactCode": "GDT550PYR0FS",
+      "partProfile": "demo-dishwasher-wd19x25461",
+      "compatibilitySources": [
+        {
+          "id": "ge-gdt550pyrfs-wd19x25461-fit",
+          "kind": "authorized-parts",
+          "title": "Exact GDT550PYR0FS drain-pump listing",
+          "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GDT550PYR0FS/7/0/0/0/MOTOR%2C_SUMP_%26_FILTER_ASSEMBLY",
+          "publisher": "GE Appliances",
+          "appliesTo": "GDT550PYR0FS uses exact drain-pump SKU WD19X25461. GE's exact-revision diagram labels item 325 Drain Pump Assembly WD19X25461 for GDT550PYR0FS."
+        }
+      ]
+    },
+    {
+      "modelId": "hotpoint-hdf310pgrww",
+      "exactCode": "HDF310PGR3WW",
+      "partProfile": "demo-dishwasher-wd19x25461",
+      "compatibilitySources": [
+        {
+          "id": "hotpoint-hdf310pgrww-wd19x25461-fit",
+          "kind": "authorized-parts",
+          "title": "Exact HDF310PGR3WW drain-pump listing",
+          "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/HDF310PGR3WW/6/0/0/0/MOTOR%2C_SUMP_%26_FILTER_ASSEMBLY",
+          "publisher": "GE Appliances",
+          "appliesTo": "HDF310PGR3WW uses exact drain-pump SKU WD19X25461. GE Appliances' exact Hotpoint revision diagram labels item 325 Drain Pump Assembly WD19X25461 for HDF310PGR3WW."
+        }
+      ]
+    },
+    {
+      "modelId": "ge-gdt225sslss",
+      "exactCode": "GDT225SSL0SS",
+      "partProfile": "demo-dishwasher-wd19x24651",
+      "compatibilitySources": [
+        {
+          "id": "ge-gdt225sslss-wd19x24651-fit",
+          "kind": "authorized-parts",
+          "title": "Exact GDT225SSL0SS drain-pump listing",
+          "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GDT225SSL0SS/4/0/0/0/MOTOR-PUMP_MECHANISM",
+          "publisher": "GE Appliances",
+          "appliesTo": "GDT225SSL0SS uses exact drain-pump SKU WD19X24651. GE's exact-revision diagram labels item 325 DRAIN PUMP ASM WD19X24651 for GDT225SSL0SS."
+        }
+      ]
+    },
+    {
+      "modelId": "whirlpool-wdf331pams",
+      "exactCode": "WDF331PAMS0",
+      "partProfile": "demo-dishwasher-w10724439",
+      "compatibilitySources": [
+        {
+          "id": "whirlpool-wdf331pams-w10724439-fit",
+          "kind": "authorized-parts",
+          "title": "Exact WDF331PAMS0 drain-pump listing",
+          "url": "https://www.whirlpool.com/content/dam/global/documents/202210/repair-parts-list-w11637950-reva.pdf",
+          "publisher": "www.whirlpool.com",
+          "appliesTo": "WDF331PAMS0 uses exact drain-pump SKU W10724439. Whirlpool repair-parts list W11637950 Rev. A explicitly scopes WDF331PAMS0 and names item 8 W10724439 Pump, Drain; neighboring W10876537 is not substituted."
+        }
+      ]
+    },
+    {
+      "modelId": "whirlpool-wdt540hamz",
+      "exactCode": "WDT540HAMZ1",
+      "partProfile": "demo-dishwasher-w10876537",
+      "compatibilitySources": [
+        {
+          "id": "whirlpool-wdt540hamz-w10876537-fit",
+          "kind": "authorized-parts",
+          "title": "Exact WDT540HAMZ1 drain-pump listing",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b5c36d2467117/Model-WDT540HAMZ1-Whirlpool-Dishwasher-Pump-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "WDT540HAMZ1 uses exact drain-pump SKU W10876537. The Whirlpool-authorized exact-model page explicitly lists W10876537 as the drain pump fitting WDT540HAMZ1; revision 0 is not promoted and must not inherit this result."
+        }
+      ]
+    },
+    {
+      "modelId": "maytag-mdb8959skz",
+      "exactCode": "MDB8959SKZ1",
+      "partProfile": "demo-dishwasher-w11497943",
+      "compatibilitySources": [
+        {
+          "id": "maytag-mdb8959skz-w11497943-fit",
+          "kind": "authorized-parts",
+          "title": "Exact MDB8959SKZ1 drain-pump listing",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a9b4c36d2454085/Model-MDB8959SKZ1-Maytag-Dishwasher-Pump-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "MDB8959SKZ1 uses exact drain-pump SKU W11497943. The Whirlpool-authorized exact-model pump page explicitly lists W11497943 as the drain pump fitting MDB8959SKZ1."
+        }
+      ]
+    },
+    {
+      "modelId": "hotpoint-htx24easkws",
+      "exactCode": "HTX24EASK0WS",
+      "partProfile": "demo-dryer-we01m10007",
+      "compatibilitySources": [
+        {
+          "id": "hotpoint-htx24easkws-we01m10007-fit",
+          "kind": "authorized-parts",
+          "title": "Exact HTX24EASK0WS visible door-side strike listing",
+          "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/HTX24EASK0WS/2/0/0/0/FRONT_PANEL_%26_DOOR",
+          "publisher": "GE Appliances Parts",
+          "appliesTo": "HTX24EASK0WS uses visible door-side strike WE01M10007. Exact model assembly lists diagram 3049 Dryer strike WE01M10007 and offers it for sale."
+        }
+      ]
+    },
+    {
+      "modelId": "hotpoint-htx26easwww",
+      "exactCode": "HTX26EASW0WW",
+      "partProfile": "demo-dryer-we01m10007",
+      "compatibilitySources": [
+        {
+          "id": "hotpoint-htx26easwww-we01m10007-fit",
+          "kind": "authorized-parts",
+          "title": "Exact HTX26EASW0WW visible door-side strike listing",
+          "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/HTX26EASW0WW/2/0/0/0/FRONT_PANEL_%26_DOOR",
+          "publisher": "GE Appliances Parts",
+          "appliesTo": "HTX26EASW0WW uses visible door-side strike WE01M10007. Exact model assembly lists diagram 3049 Dryer strike WE01M10007 and offers it for sale."
+        }
+      ]
+    },
+    {
+      "modelId": "ge-ptd70ebstws",
+      "exactCode": "PTD70EBST0WS",
+      "partProfile": "demo-dryer-we1x1192",
+      "compatibilitySources": [
+        {
+          "id": "ge-ptd70ebstws-we1x1192-fit",
+          "kind": "authorized-parts",
+          "title": "Exact PTD70EBST0WS visible door-side strike listing",
+          "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/PTD70EBST0WS/2/0/0/0/FRONT_PANEL_%26_DOOR",
+          "publisher": "GE Appliances Parts",
+          "appliesTo": "PTD70EBST0WS uses visible door-side strike WE1X1192. Exact model assembly lists diagram 3049 STRIKE DOOR WE01X1192 and the manufacturer supersession to WE1X1192."
+        }
+      ]
+    },
+    {
+      "modelId": "ge-gtx33easkww",
+      "exactCode": "GTX33EASK0WW",
+      "partProfile": "demo-dryer-we1x1192",
+      "compatibilitySources": [
+        {
+          "id": "ge-gtx33easkww-we1x1192-fit",
+          "kind": "authorized-parts",
+          "title": "Exact GTX33EASK0WW visible door-side strike listing",
+          "url": "https://www.geapplianceparts.com/store/parts/ModelSectionParts/GTX33EASK0WW/2/0/0/0/FRONT_PANEL_%26_DOOR",
+          "publisher": "GE Appliances Parts",
+          "appliesTo": "GTX33EASK0WW uses visible door-side strike WE1X1192. Exact model assembly lists diagram 3049 STRIKE DOOR WE01X1192 and the manufacturer supersession to WE1X1192."
+        }
+      ]
+    },
+    {
+      "modelId": "ge-gtd38easwws",
+      "exactCode": "GTD38EASW0WS",
+      "partProfile": "demo-dryer-we01m10007",
+      "compatibilitySources": [
+        {
+          "id": "ge-gtd38easwws-we01m10007-fit",
+          "kind": "authorized-parts",
+          "title": "Exact GTD38EASW0WS visible door-side strike listing",
+          "url": "https://partstore.encompass.com/model/HOTGTD38EASW0WS",
+          "publisher": "Encompass (GE-authorized parts distributor)",
+          "appliesTo": "GTD38EASW0WS uses visible door-side strike WE01M10007. Authorized exact-model ledger lists GE Strike WE01M10007 at schematic location 3049 and in stock."
+        }
+      ]
+    },
+    {
+      "modelId": "ge-gtd58ebsvws",
+      "exactCode": "GTD58EBSV0WS",
+      "partProfile": "demo-dryer-we01m10007",
+      "compatibilitySources": [
+        {
+          "id": "ge-gtd58ebsvws-we01m10007-fit",
+          "kind": "authorized-parts",
+          "title": "Exact GTD58EBSV0WS visible door-side strike listing",
+          "url": "https://encompass.com/model/HOTGTD58EBSV0WS",
+          "publisher": "Encompass (GE-authorized parts distributor)",
+          "appliesTo": "GTD58EBSV0WS uses visible door-side strike WE01M10007. Authorized exact-model ledger lists GE Strike WE01M10007 for GTD58EBSV0WS."
+        }
+      ]
+    },
+    {
+      "modelId": "whirlpool-wed6150pb",
+      "exactCode": "WED6150PB0",
+      "partProfile": "demo-dryer-w11429589",
+      "compatibilitySources": [
+        {
+          "id": "whirlpool-wed6150pb-w11429589-fit",
+          "kind": "authorized-parts",
+          "title": "Exact WED6150PB0 visible door-side strike listing",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a8b5d2467159/Model-WED6150PB0-Whirlpool-Dryer-Parts?n=3",
+          "publisher": "Whirlpool Parts (authorized)",
+          "appliesTo": "WED6150PB0 uses visible door-side strike W11429589. Authorized exact-model listing states OEM W11429589 Door Strike fits WED6150PB0; W11429587 is separately listed as the door catch and is not substituted."
+        }
+      ]
+    },
+    {
+      "modelId": "maytag-mft2772hez",
+      "exactCode": "MFT2772HEZ00",
+      "partProfile": "demo-refrigerator-edr2rxd1",
+      "compatibilitySources": [
+        {
+          "id": "maytag-mft2772hez00-edr2rxd1-fit",
+          "kind": "authorized-parts",
+          "title": "Whirlpool-authorized MFT2772HEZ00 water-filter listing",
+          "url": "https://www.whirlpoolparts.com/Shop-For-Parts/a4b4c43d2171289/Model-MFT2772HEZ00-Maytag-Refrigerator-Filter-Parts",
+          "publisher": "Whirlpool Parts",
+          "appliesTo": "Maytag MFT2772HEZ00 uses exact water-filter SKU EDR2RXD1"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Shopify Global Catalog results establish only a separately observed exact-SKU seller offer, never appliance fit.",
+    "Every purchase row requires a complete product revision mapped to one exact manufacturer SKU by primary or authorized evidence.",
+    "Dishwasher pump replacement remains professional-only.",
+    "Dryer parts unlock only for the broken, bent, or missing visible door-side strike branch; cabinet catches, hinges, alignment, and switches are excluded.",
+    "All category-review blockers remain guided-only and cannot inherit a neighboring revision's part."
+  ]
+}

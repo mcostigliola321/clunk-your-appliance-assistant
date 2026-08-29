@@ -1,6 +1,12 @@
 # Clunk model source ledger
 
-This ledger defines the 163-model real-appliance catalog: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. It is deliberately conservative: 67 exact-code revisions are **Purchase-ready**, 96 model identities are **Guided checks only**, and none currently sit in **Verified part unavailable**. Those identities resolve to 557 model × symptom packs—67 purchase-ready and 490 guided. A supported model never inherits a neighboring model's part or symptom coverage.
+This ledger defines the 163-model real-appliance catalog: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. It is deliberately conservative: 84 exact-code revisions are **Purchase-ready** and the remaining identities are limited to **Guided checks only** where exact compatibility is incomplete. The identities resolve to 782 possible model × symptom pairs: 766 supported and 16 explicitly unsupported. A supported model never inherits a neighboring model's part or symptom coverage.
+
+## 2026-08-29 demo-ready exact-pair audit
+
+The complete release audit is in [`research/demo-ready-2026-08-29/`](./research/demo-ready-2026-08-29/README.md). Washer coverage is 274/280 pairs, dishwasher 165/165, electric dryer 132/132, and refrigerator 195/205. The 16 remaining gaps are recorded with explicit missing-evidence reasons instead of being silently generalized. The normalized category-review overlay contributes 156 washer, dishwasher, and dryer rows; the refrigerator review contributes 53 rows through the existing broad and closure ledgers.
+
+Seventeen newly accepted purchase paths raise the catalog from 67 to 84 purchase-ready models: nine dishwasher drain pumps, seven dryer door-side strikes, and Maytag `MFT2772HEZ00` → `EDR2RXD1`. Each promotion requires one complete revision, one exact SKU, primary or authorized fit evidence, and a separately observed exact-SKU offer. The release intentionally stops below the aspirational 145-model target where these layers are not all present.
 
 ## 2026-08-29 broad symptom integration
 

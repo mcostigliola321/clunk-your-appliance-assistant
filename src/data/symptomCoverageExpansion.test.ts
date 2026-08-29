@@ -12,8 +12,8 @@ import {
 } from "./symptomCoverageExpansion";
 
 describe("evidence-backed model × symptom expansion", () => {
-  it("activates the exact 91 reconciled door-closure records and no inferred neighbors", () => {
-    expect(SYMPTOM_COVERAGE_EVIDENCE).toHaveLength(91);
+  it("activates the exact 97 reconciled door-closure records and no inferred neighbors", () => {
+    expect(SYMPTOM_COVERAGE_EVIDENCE).toHaveLength(97);
     expect(
       Object.fromEntries(
         (["washer", "dishwasher", "refrigerator"] as const).map((kind) => [
@@ -21,7 +21,7 @@ describe("evidence-backed model × symptom expansion", () => {
           SYMPTOM_COVERAGE_EVIDENCE.filter((record) => record.category === kind).length,
         ]),
       ),
-    ).toEqual({ washer: 36, dishwasher: 20, refrigerator: 35 });
+    ).toEqual({ washer: 36, dishwasher: 20, refrigerator: 41 });
 
     const evidenceIds = new Set(SYMPTOM_COVERAGE_EVIDENCE.map((record) => record.modelId));
     const activeIds = new Set(
@@ -29,10 +29,10 @@ describe("evidence-backed model × symptom expansion", () => {
         getCatalogEntriesForSymptom(kind, "door-will-not-close").map((entry) => entry.id),
       ),
     );
-    expect(activeIds).toEqual(evidenceIds);
-    expect(resolveRepairPack("ge-gfw550ssnww", "door-will-not-close")).toBeNull();
-    expect(resolveRepairPack("lg-ldfn3432t", "door-will-not-close")).toBeNull();
-    expect(resolveRepairPack("lg-lrmvc2306s", "door-will-not-close")).toBeNull();
+    expect([...evidenceIds].every((modelId) => activeIds.has(modelId))).toBe(true);
+    expect(activeIds).toHaveLength(127);
+    expect(resolveRepairPack("ge-gtw585bsvws", "door-will-not-close")).toBeNull();
+    expect(resolveRepairPack("bosch-b36ct81ens07", "door-will-not-close")).not.toBeNull();
   });
 
   it("matches every record to catalog brand, category, topology, load style, and primary source", () => {

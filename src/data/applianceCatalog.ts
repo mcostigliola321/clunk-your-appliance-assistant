@@ -8,6 +8,7 @@ import type {
 import { isPurchaseReadyPart } from "@/domain/purchase";
 
 import { CATALOG_EXPANSION } from "./catalogExpansion";
+import { applyDemoReadyPurchaseExpansion } from "./demoReadyPurchaseExpansion";
 import { applyPurchaseCoverageExpansion } from "./purchaseCoverageExpansion";
 import { buildSymptomCoverage } from "./symptomCatalog";
 
@@ -1428,6 +1429,6 @@ export const PURCHASE_COVERAGE_BASE_CATALOG: ApplianceCatalogEntry[] = [
   ...CATALOG_EXPANSION,
 ];
 
-export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = applyPurchaseCoverageExpansion(
-  PURCHASE_COVERAGE_BASE_CATALOG,
+export const APPLIANCE_CATALOG: ApplianceCatalogEntry[] = applyDemoReadyPurchaseExpansion(
+  applyPurchaseCoverageExpansion(PURCHASE_COVERAGE_BASE_CATALOG),
 );

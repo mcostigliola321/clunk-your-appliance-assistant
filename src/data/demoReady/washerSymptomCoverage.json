@@ -1,0 +1,1309 @@
+{
+  "schemaVersion": 1,
+  "category": "washer",
+  "verifiedOn": "2026-08-29",
+  "status": "integration-ready-research-data-not-runtime-wired",
+  "safetyBoundary": "Guided checks only. These rows must not create purchase cards or diagnose internal parts.",
+  "records": [
+    {
+      "applianceId": "ge-gfw550ssnww",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-front-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--Q2ZqW1dH--/207c3da007ffc1f522fe0a1723081c5d6c09941e.pdf",
+      "modelIdentitySourceUrl": "https://www.geapplianceparts.com/store/parts/assembly/GFW550SSN0WW",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "ge-gfw650ssnww",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-front-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--Q2ZqW1dH--/207c3da007ffc1f522fe0a1723081c5d6c09941e.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/GFW650SSNWW/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mhw5630hw",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-front-start",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating_-_Front_Load_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MHW5630HW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mhw5630hw",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-front-spin",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Spinning/Not_Spinning_-_Front_Load_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MHW5630HW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mhw5630hw",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-front-leak",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Leaking/Leaking_from_Underneath_or_Bottom_-_Front_Load_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MHW5630HW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mhw6630hw",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-front-start",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating_-_Front_Load_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MHW6630HW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mhw6630hw",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-front-spin",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Spinning/Not_Spinning_-_Front_Load_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MHW6630HW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mhw6630hw",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-front-leak",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Leaking/Leaking_from_Underneath_or_Bottom_-_Front_Load_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MHW6630HW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7537at",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-start",
+      "supportSourceUrl": "https://owner.electrolux.com/support-articles/article/1853594-how-to-fix-your-front-load-washer-not-starting",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7537AT",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7537at",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-spin-manual-7437-7738",
+      "supportSourceUrl": "https://frigidaire.bynder.com/m/673fe45bbf48d90f/original/A20448609-en-pdf.pdf",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7537AT",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7537at",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-leak",
+      "supportSourceUrl": "https://owner.electrolux.com/support-articles/article/1831358-laundry-front-loading-washer-is-leaking-water-",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7537AT",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7637at",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-start",
+      "supportSourceUrl": "https://owner.electrolux.com/support-articles/article/1853594-how-to-fix-your-front-load-washer-not-starting",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7637AT",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7637at",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-spin-manual-7437-7738",
+      "supportSourceUrl": "https://frigidaire.bynder.com/m/673fe45bbf48d90f/original/A20448609-en-pdf.pdf",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7637AT",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7637at",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-leak",
+      "supportSourceUrl": "https://owner.electrolux.com/support-articles/article/1831358-laundry-front-loading-washer-is-leaking-water-",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7637AT",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "ge-gtw465asnww",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/GTW465ASNWW/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mvw5430mw",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-top-start",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MVW5430MW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mvw5430mw",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-top-spin",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MVW5430MW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mvw5430mw",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-top-leak",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_from_Front_or_Top_-_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MVW5430MW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "frigidaire-fftw4120sw",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "frigidaire-top-closure",
+      "supportSourceUrl": "https://owner.frigidaire.com/support-articles/article/1829706-laundry-top-loading-washer-displaying-error-code-e3-washer-lid-open-or-lid-lock-failed-",
+      "modelIdentitySourceUrl": "https://www.frigidaire.com/en/p/owner-center/product-support/FFTW4120SW",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "amana-ntw4519jw",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "amana-top-start",
+      "supportSourceUrl": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+      "modelIdentitySourceUrl": "https://www.amana.com/laundry/washers/top-load/p.large-capacity-top-load-washer-with-high-efficiency-agitator.ntw4519jw.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "amana-ntw4519jw",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "amana-top-spin",
+      "supportSourceUrl": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+      "modelIdentitySourceUrl": "https://www.amana.com/laundry/washers/top-load/p.large-capacity-top-load-washer-with-high-efficiency-agitator.ntw4519jw.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "amana-ntw4519jw",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "amana-top-leak",
+      "supportSourceUrl": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_Water_Underneath_-_Washer",
+      "modelIdentitySourceUrl": "https://www.amana.com/laundry/washers/top-load/p.large-capacity-top-load-washer-with-high-efficiency-agitator.ntw4519jw.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "hotpoint-htw240askws",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/HTW240ASKWS/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "hotpoint-htw240askws",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/HTW240ASKWS/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "hotpoint-htw240askws",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/HTW240ASKWS/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "hotpoint-htw240askws",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/HTW240ASKWS/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "ge-gfw655ssvww",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-front-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--Q2ZqW1dH--/207c3da007ffc1f522fe0a1723081c5d6c09941e.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/GFW655SSVWW/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "ge-gfw850spnrs",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-front-owner-manual-850",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--7SJ2Cn5O--/c7cd23acabd0dde381486804fd70bf93a72f5b8b.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/GFW850SPNRS/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "ge-gtw335asnww",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/GTW335ASNWW/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "ge-gtw485aswwb",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/GTW485ASWWB/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "hotpoint-htw265aswww",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/HTW265ASWWW/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "hotpoint-htw265aswww",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/HTW265ASWWW/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "hotpoint-htw265aswww",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/HTW265ASWWW/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "hotpoint-htw265aswww",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/HTW265ASWWW/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mvw4505mw",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-top-start",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MVW4505MW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mvw4505mw",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-top-spin",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MVW4505MW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mvw4505mw",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-top-leak",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_from_Front_or_Top_-_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MVW4505MW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mhw5500fw",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-front-start",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating_-_Front_Load_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MHW5500FW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mhw5500fw",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-front-spin",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Spinning/Not_Spinning_-_Front_Load_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MHW5500FW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mhw5500fw",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-front-leak",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Leaking/Leaking_from_Underneath_or_Bottom_-_Front_Load_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MHW5500FW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "amana-nfw5800hw",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "amana-front-start",
+      "supportSourceUrl": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating_-_Front_Load_Washer",
+      "modelIdentitySourceUrl": "https://www.amana.com/laundry/washers/top-load/p.4.3-cu.-ft.-front-load-washer-with-large-capacity.nfw5800hw.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "amana-nfw5800hw",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "amana-front-spin",
+      "supportSourceUrl": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Spinning/Not_Spinning_-_Front_Load_Washer",
+      "modelIdentitySourceUrl": "https://www.amana.com/laundry/washers/top-load/p.4.3-cu.-ft.-front-load-washer-with-large-capacity.nfw5800hw.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "amana-nfw5800hw",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "amana-front-leak",
+      "supportSourceUrl": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Leaking/Leaking_from_Underneath_or_Bottom_-_Front_Load_Washer",
+      "modelIdentitySourceUrl": "https://www.amana.com/laundry/washers/top-load/p.4.3-cu.-ft.-front-load-washer-with-large-capacity.nfw5800hw.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7337aw",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-start",
+      "supportSourceUrl": "https://owner.electrolux.com/support-articles/article/1853594-how-to-fix-your-front-load-washer-not-starting",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7337AW",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7337aw",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-spin-manual-7337",
+      "supportSourceUrl": "https://frigidaire.bynder.com/asset/eba93fb2-1a4d-4766-b03a-81b69b8eba26/A20448610-en-pdf.pdf",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7337AW",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7337aw",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-leak",
+      "supportSourceUrl": "https://owner.electrolux.com/support-articles/article/1831358-laundry-front-loading-washer-is-leaking-water-",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7337AW",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7738aa",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-start",
+      "supportSourceUrl": "https://owner.electrolux.com/support-articles/article/1853594-how-to-fix-your-front-load-washer-not-starting",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7738AA",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7738aa",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-spin-manual-7437-7738",
+      "supportSourceUrl": "https://frigidaire.bynder.com/m/673fe45bbf48d90f/original/A20448609-en-pdf.pdf",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7738AA",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7738aa",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-leak",
+      "supportSourceUrl": "https://owner.electrolux.com/support-articles/article/1831358-laundry-front-loading-washer-is-leaking-water-",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7738AA",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "ge-gtw325aswww",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/GTW325ASWWW/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "lg-wm6500hba",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "lg-front-closure",
+      "supportSourceUrl": "https://www.lg.com/us/support/help-library/lg-front-load-washer-error-code-list-CT10000010-20155069413456",
+      "modelIdentitySourceUrl": "https://www.lg.com/us/support/product/lg-WM6500HBA.ABLEVUS?tab=1",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "ge-gtw385aswws",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSourceUrl": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "modelIdentitySourceUrl": "https://products.geappliances.com/appliance/gea-specs/GTW385ASWWS/support",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "whirlpool-wtw6157pw",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "whirlpool-top-closure",
+      "supportSourceUrl": "https://producthelp.whirlpool.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "modelIdentitySourceUrl": "https://www.whirlpool.com/owners-center-pdp.WTW6157PW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mvw7232hw",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-top-closure",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MVW7232HW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mvw7232hw",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-top-start",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MVW7232HW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mvw7232hw",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-top-spin",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MVW7232HW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "maytag-mvw7232hw",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "maytag-top-leak",
+      "supportSourceUrl": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_from_Front_or_Top_-_Washer",
+      "modelIdentitySourceUrl": "https://www.maytag.com/owners-center-pdp.MVW7232HW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "amana-ntw4516fw",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "amana-top-closure",
+      "supportSourceUrl": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "modelIdentitySourceUrl": "https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "amana-ntw4516fw",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "amana-top-start",
+      "supportSourceUrl": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+      "modelIdentitySourceUrl": "https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "amana-ntw4516fw",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "amana-top-spin",
+      "supportSourceUrl": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+      "modelIdentitySourceUrl": "https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "amana-ntw4516fw",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "amana-top-leak",
+      "supportSourceUrl": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_Water_Underneath_-_Washer",
+      "modelIdentitySourceUrl": "https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7437aw",
+      "symptomId": "door-will-not-close",
+      "capability": "guided-checks",
+      "title": "Door or lid will not close",
+      "checkpoints": [
+        "Remove laundry or debris caught in the visible door or lid opening.",
+        "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+        "Close normally without forcing it; if it still will not latch, stop and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-closure",
+      "supportSourceUrl": "https://owner.electrolux.com/support-articles/article/1820509-laundry-front-loading-washer-displaying-error-code-e41-door-is-open-",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7437aw",
+      "symptomId": "will-not-start",
+      "capability": "guided-checks",
+      "title": "Washer will not start",
+      "checkpoints": [
+        "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+        "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+        "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-start",
+      "supportSourceUrl": "https://owner.electrolux.com/support-articles/article/1853594-how-to-fix-your-front-load-washer-not-starting",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7437aw",
+      "symptomId": "will-not-spin",
+      "capability": "guided-checks",
+      "title": "Washer will not spin",
+      "checkpoints": [
+        "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+        "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+        "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-spin-manual-7437-7738",
+      "supportSourceUrl": "https://frigidaire.bynder.com/m/673fe45bbf48d90f/original/A20448609-en-pdf.pdf",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW",
+      "evidenceTier": "primary-guided-checks"
+    },
+    {
+      "applianceId": "electrolux-elfw7437aw",
+      "symptomId": "is-leaking",
+      "capability": "guided-checks",
+      "title": "Washer is leaking",
+      "checkpoints": [
+        "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+        "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+        "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+      ],
+      "stopConditions": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "supportSourceId": "electrolux-leak",
+      "supportSourceUrl": "https://owner.electrolux.com/support-articles/article/1831358-laundry-front-loading-washer-is-leaking-water-",
+      "modelIdentitySourceUrl": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW",
+      "evidenceTier": "primary-guided-checks"
+    }
+  ]
+}

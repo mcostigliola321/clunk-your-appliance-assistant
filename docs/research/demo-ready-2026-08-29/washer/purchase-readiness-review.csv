@@ -1,0 +1,42 @@
+applianceId,brand,modelFamily,completeProductCodes,identityGate,fitProofOutcome,fitProofReason,observedCandidateSkus,rejectedNearbyRevision,shopifyEligible,shopifySearchPerformed
+lg-wm3400cw,LG,WM3400CW,WM3400CW.ABWEVUS,complete-code,blocked,The exact Encompass variation lists more than one drain-pump assembly record/position; it does not prove one exact replacement SKU.,AHA75693425|AHA75693450,,false,false
+lg-wm4000hwa,LG,WM4000HWA,WM4000HWA.ABWEUUS,complete-code,blocked,No indexed authorized content was located for stored suffix ABWEUUS; the available ABWEEUS listing is a different revision and exposes multiple drain-pump assemblies.,,WM4000HWA.ABWEEUS,false,false
+ge-gfw650ssnww,GE,GFW650SSNWW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+whirlpool-wfw5605mw,Whirlpool,WFW5605MW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+whirlpool-wfw6620hw,Whirlpool,WFW6620HW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+maytag-mhw5630hw,Maytag,MHW5630HW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+maytag-mhw6630hw,Maytag,MHW6630HW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+electrolux-elfw7537at,Electrolux,ELFW7537AT,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+electrolux-elfw7637at,Electrolux,ELFW7637AT,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+lg-wt7405cw,LG,WT7405CW,WT7405CW.ABWEUUS,complete-code,blocked,No authorized exact listing was located for stored suffix ABWEUUS; the available ABWETUS listing is a different revision and has multiple pump rows.,,WT7405CW.ABWETUS,false,false
+ge-gtw465asnww,GE,GTW465ASNWW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+ge-gtw585bsvws,GE,GTW585BSVWS,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+whirlpool-wtw5057lw,Whirlpool,WTW5057LW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+maytag-mvw5430mw,Maytag,MVW5430MW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+frigidaire-fftw4120sw,Frigidaire,FFTW4120SW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+frigidaire-fffw5000qw,Frigidaire,FFFW5000QW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+amana-ntw4519jw,Amana,NTW4519JW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+hotpoint-htw240askws,Hotpoint,HTW240ASKWS,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+ge-gtw485aswwb,GE,GTW485ASWWB,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+hotpoint-htw2065sbww,Hotpoint,HTW2065SBWW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+whirlpool-wtw5105lw,Whirlpool,WTW5105LW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+whirlpool-wfw4720rw,Whirlpool,WFW4720RW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+maytag-mvw4505mw,Maytag,MVW4505MW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+maytag-mhw5500fw,Maytag,MHW5500FW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+amana-nfw5800hw,Amana,NFW5800HW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+samsung-wf46bg6500av,Samsung,WF46BG6500AV,WF46BG6500AVUS,complete-code,blocked,"The complete Samsung identity is current, but no official or authorized page was located that maps WF46BG6500AVUS to exactly one drain-pump SKU.",,,false,false
+samsung-wa50r5200aw,Samsung,WA50R5200AW,WA50R5200AW/US,complete-code,blocked,"The complete Samsung identity is current, but no official or authorized page was located that maps WA50R5200AW/US to exactly one drain-pump SKU.",,,false,false
+lg-wm3600hwa,LG,WM3600HWA,WM3600HWA.ABWEUUS,complete-code,blocked,"The stored suffix is ABWEUUS, while the current authorized result is ABWEVUS and lists several pump assemblies. Cross-suffix inference is prohibited.",,WM3600HWA.ABWEVUS,false,false
+lg-wm5500hwa,LG,WM5500HWA,WM5500HWA.ABWEUUS,complete-code,blocked,No current authorized exact listing was located for ABWEUUS. The available ASSEVUS evidence is a different color/revision and cannot be borrowed.,,WM5500HVA.ASSEVUS,false,false
+lg-wt6105cw,LG,WT6105CW,WT6105CW.BBWETUS,complete-code,blocked,"The exact BBWETUS listing contains at least two drain-pump assembly SKUs, without an explicit one-SKU replacement/supersession rule.",AGF30196101|AHA75673404,,false,false
+lg-wt7150cw,LG,WT7150CW,WT7150CW.ABWETUS,complete-code,blocked,No current authorized exact-revision page was located that maps ABWETUS to one drain-pump SKU.,,,false,false
+lg-wt7300cw,LG,WT7300CW,WT7300CW.ABWEUCI,complete-code,blocked,No authorized exact listing was located for ABWEUCI; nearby ABWETUS and ABWEUUS pages show multiple pump assemblies and cannot establish this revision.,,WT7300CW.ABWETUS / WT7300CW.ABWEUUS,false,false
+electrolux-elfw7337aw,Electrolux,ELFW7337AW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+electrolux-elfw7738aa,Electrolux,ELFW7738AA,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+lg-wm4000hba,LG,WM4000HBA,WM4000HBA.ABLEVUS,complete-code,blocked,The exact ABLEVUS listing contains two drain-pump assembly SKU rows and no explicit supersession selecting one exact replacement.,AHA75853816|AHA75853813,,false,false
+ge-gtw325aswww,GE,GTW325ASWWW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+ge-gtw385aswws,GE,GTW385ASWWS,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+whirlpool-wtw6157pw,Whirlpool,WTW6157PW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+maytag-mvw7232hw,Maytag,MVW7232HW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+amana-ntw4516fw,Amana,NTW4516FW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false
+electrolux-elfw7437aw,Electrolux,ELFW7437AW,,family-only,blocked,"No complete rating-label revision is stored, so exact SKU research is not permitted.",,,false,false

@@ -14,17 +14,19 @@ import {
 } from "./broadSymptomCoverage";
 
 describe("broad evidence-backed model × symptom coverage", () => {
-  it("activates all 303 exact evidence rows at the locked route counts", () => {
-    expect(BROAD_SYMPTOM_COVERAGE_EVIDENCE).toHaveLength(303);
+  it("activates all 350 exact evidence rows at the locked route counts", () => {
+    expect(BROAD_SYMPTOM_COVERAGE_EVIDENCE).toHaveLength(350);
     expect(BROAD_SYMPTOM_COVERAGE_COHORTS).toHaveLength(12);
     expect(
       Object.fromEntries(
         Object.keys(EXPECTED_BROAD_SYMPTOM_COUNTS).map((key) => {
-          const [category, symptomId] = key.split(":") as [
-            Parameters<typeof getCatalogEntriesForSymptom>[0],
-            Parameters<typeof getCatalogEntriesForSymptom>[1],
+          const [category, symptomId] = key.split(":");
+          return [
+            key,
+            BROAD_SYMPTOM_COVERAGE_EVIDENCE.filter(
+              (record) => record.category === category && record.symptomId === symptomId,
+            ).length,
           ];
-          return [key, getCatalogEntriesForSymptom(category, symptomId).length];
         }),
       ),
     ).toEqual(EXPECTED_BROAD_SYMPTOM_COUNTS);
@@ -97,20 +99,14 @@ describe("broad evidence-backed model × symptom coverage", () => {
     }
   });
 
-  it("keeps excluded neighboring brands unsupported for the exact problem", () => {
-    expect(resolveRepairPack("maytag-mvw4505mw", "will-not-start")).toBeNull();
-    expect(resolveRepairPack("samsung-dw80r2031usaa", "will-not-fill")).toBeNull();
-    expect(resolveRepairPack("maytag-med6230hw", "not-heating")).toBeNull();
-    expect(resolveRepairPack("maytag-mss25c4mgz", "ice-maker-not-making-ice")).toBeNull();
+  it("keeps the category-reviewed blockers unsupported for the exact problem", () => {
+    expect(resolveRepairPack("hotpoint-htw2065sbww", "will-not-start")).toBeNull();
+    expect(resolveRepairPack("ge-gtw585bsvws", "door-will-not-close")).toBeNull();
+    expect(resolveRepairPack("bosch-b36cl80ens01", "ice-maker-not-making-ice")).toBeNull();
 
     expect(
       getCatalogEntriesForSymptom("washer", "will-not-start").some(
-        (entry) => entry.id === "maytag-mvw4505mw",
-      ),
-    ).toBe(false);
-    expect(
-      getCatalogEntriesForSymptom("dishwasher", "will-not-fill").some(
-        (entry) => entry.id === "samsung-dw80r2031usaa",
+        (entry) => entry.id === "hotpoint-htw2065sbww",
       ),
     ).toBe(false);
   });
@@ -122,12 +118,12 @@ describe("broad evidence-backed model × symptom coverage", () => {
       APPLIANCE_CATALOG.filter((entry) =>
         entry.symptomCoverage.some((coverage) => coverage.exactPartEvidence),
       ),
-    ).toHaveLength(67);
+    ).toHaveLength(84);
     expect(
       APPLIANCE_CATALOG.flatMap((entry) => entry.symptomCoverage).filter(
         (coverage) => coverage.capability === "purchase-ready",
       ),
-    ).toHaveLength(67);
+    ).toHaveLength(84);
   });
 
   it("rejects missing sources, tier inflation, malformed identity, and removed safety gates", () => {

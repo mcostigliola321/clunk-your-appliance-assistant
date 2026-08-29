@@ -1,0 +1,1473 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-08-29",
+  "scope": "Dishwasher model × symptom gaps present in the 2026-08-29 baseline only.",
+  "rules": [
+    "No evidence transfer from neighboring model, revision, brand, or corporate sibling.",
+    "A manufacturer-wide troubleshooting page can support bounded external observations only when it explicitly applies to dishwashers of that brand.",
+    "Model pages establish identity only unless the exact owner manual supplies the symptom instruction.",
+    "All internal diagnosis, disassembly, electrical testing, appliance movement, and component replacement remain professional-only.",
+    "Symptom evidence never establishes a part or purchase claim."
+  ],
+  "baseline": {
+    "identities": 33,
+    "symptomRoutes": 5,
+    "possiblePairs": 165,
+    "supportedBefore": 116,
+    "gapsReviewed": 49,
+    "promotableGuidedCheckRows": 49,
+    "unsupportedRows": 0,
+    "supportedIfIntegrated": 165
+  },
+  "sources": {
+    "samsung-cleaning": {
+      "id": "samsung-cleaning",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher cycle ends before dishes are clean",
+      "publisher": "Samsung",
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10000118/",
+      "appliesTo": "Samsung dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "samsung-fill": {
+      "id": "samsung-fill",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Samsung dishwasher water-supply error guidance",
+      "publisher": "Samsung",
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10004499/",
+      "appliesTo": "Samsung dishwashers reporting a water-supply error",
+      "verifiedOn": "2026-08-29"
+    },
+    "samsung-leak": {
+      "id": "samsung-leak",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Samsung dishwasher leak guidance",
+      "publisher": "Samsung",
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10010593/",
+      "appliesTo": "Samsung dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "kitchenaid-cleaning": {
+      "id": "kitchenaid-cleaning",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishes are not clean",
+      "publisher": "KitchenAid",
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Wash_Performance/None_of_the_Dishes_are_Clean/Dishes_are_not_Clean",
+      "appliesTo": "KitchenAid dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "kitchenaid-fill": {
+      "id": "kitchenaid-fill",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher not filling with water",
+      "publisher": "KitchenAid",
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Cycle_Concerns/Not_Filling%2F%2FNo_Water/Not_Filling_With_Water_-_Dishwasher",
+      "appliesTo": "KitchenAid dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "kitchenaid-leak": {
+      "id": "kitchenaid-leak",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher leaking from door",
+      "publisher": "KitchenAid",
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Leaking/Front%2F%2FDoor/Leaking_from_Door",
+      "appliesTo": "KitchenAid dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "maytag-cleaning": {
+      "id": "maytag-cleaning",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishes are not clean",
+      "publisher": "Maytag",
+      "url": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Wash_Performance/None_of_the_Dishes_are_Clean/Dishes_are_not_Clean",
+      "appliesTo": "Maytag dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "maytag-fill": {
+      "id": "maytag-fill",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher not filling with water",
+      "publisher": "Maytag",
+      "url": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Cycle_Concerns/Not_Filling%2F%2FNo_Water/Not_Filling_With_Water_-_Dishwasher",
+      "appliesTo": "Maytag dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "maytag-leak": {
+      "id": "maytag-leak",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher leaking from door",
+      "publisher": "Maytag",
+      "url": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Leaking/Front%2F%2FDoor/Leaking_from_Door",
+      "appliesTo": "Maytag dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "maytag-door": {
+      "id": "maytag-door",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher door will not close",
+      "publisher": "Maytag",
+      "url": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "appliesTo": "Maytag dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "amana-cleaning": {
+      "id": "amana-cleaning",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishes are not clean",
+      "publisher": "Amana",
+      "url": "https://producthelp.amana.com/Dishwashers/Dishwasher/Wash_Performance/None_of_the_Dishes_are_Clean/Dishes_are_not_Clean",
+      "appliesTo": "Amana dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "amana-fill": {
+      "id": "amana-fill",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher not filling with water",
+      "publisher": "Amana",
+      "url": "https://producthelp.amana.com/Dishwashers/Dishwasher/Cycle_Concerns/Not_Filling%2F%2FNo_Water/Not_Filling_With_Water_-_Dishwasher",
+      "appliesTo": "Amana dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "amana-leak": {
+      "id": "amana-leak",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher leaking underneath",
+      "publisher": "Amana",
+      "url": "https://producthelp.amana.com/Dishwashers/Dishwasher/Leaking/Underneath_or_Behind/Leaking_-_Underneath_-_Dishwasher",
+      "appliesTo": "Amana dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "amana-door": {
+      "id": "amana-door",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher door will not close",
+      "publisher": "Amana",
+      "url": "https://producthelp.amana.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "appliesTo": "Amana dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "electrolux-cleaning": {
+      "id": "electrolux-cleaning",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher not cleaning",
+      "publisher": "Electrolux",
+      "url": "https://owner.electrolux.com/support-articles/article/1831286-dishwasher-not-cleaning",
+      "appliesTo": "Electrolux dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "electrolux-fill": {
+      "id": "electrolux-fill",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher not filling",
+      "publisher": "Electrolux",
+      "url": "https://owner.electrolux.com/support-articles/article/1835628-dishwasher-not-filling",
+      "appliesTo": "Electrolux dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "electrolux-leak": {
+      "id": "electrolux-leak",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher water leaking",
+      "publisher": "Electrolux",
+      "url": "https://owner.electrolux.com/support-articles/article/1838717-dishwasher-water-leaking",
+      "appliesTo": "Electrolux dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "electrolux-door": {
+      "id": "electrolux-door",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher error CL or Cd: door is open",
+      "publisher": "Electrolux",
+      "url": "https://owner.electrolux.com/support-articles/article/1830354-dishwasher-error-code-cl-or-cd-door-is-open",
+      "appliesTo": "Electrolux dishwashers that display CL or Cd",
+      "verifiedOn": "2026-08-29"
+    },
+    "ge-door": {
+      "id": "ge-door",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher door does not close properly",
+      "publisher": "GE Appliances",
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17529",
+      "appliesTo": "GE Appliances dishwashers; adjustable-rack branch is model-gated",
+      "verifiedOn": "2026-08-29"
+    },
+    "whirlpool-door": {
+      "id": "whirlpool-door",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher door will not close",
+      "publisher": "Whirlpool",
+      "url": "https://producthelp.whirlpool.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "appliesTo": "Whirlpool dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "kitchenaid-door": {
+      "id": "kitchenaid-door",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Dishwasher door will not close",
+      "publisher": "KitchenAid",
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "appliesTo": "KitchenAid dishwashers",
+      "verifiedOn": "2026-08-29"
+    },
+    "bosch-door": {
+      "id": "bosch-door",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "Bosch dishwasher troubleshooting",
+      "publisher": "Bosch",
+      "url": "https://www.bosch-home.com/us/owner-support/dishwashers/troubleshooting",
+      "appliesTo": "Bosch dishwashers; feature-specific branches are model-gated",
+      "verifiedOn": "2026-08-29"
+    },
+    "lg-ldfn4542-door-manual": {
+      "id": "lg-ldfn4542-door-manual",
+      "kind": "manufacturer-manual",
+      "quality": "primary",
+      "title": "LDFN4542S exact support page and owner's manual index",
+      "publisher": "LG",
+      "url": "https://www.lg.com/us/support/product/lg-LDFN4542S.ASSESNA",
+      "appliesTo": "LDFN4542S.ASSESNA only; the indexed owner's manual directs checking that the door is completely closed and latched",
+      "verifiedOn": "2026-08-29"
+    },
+    "lg-ldfn3432-door-manual": {
+      "id": "lg-ldfn3432-door-manual",
+      "kind": "manufacturer-manual",
+      "quality": "primary",
+      "title": "LDFN3432T exact support page and owner's manual index",
+      "publisher": "LG",
+      "url": "https://www.lg.com/us/support/product/lg-LDFN3432T",
+      "appliesTo": "LDFN3432T.ASTEEUS only; the indexed owner's manual directs checking that the door is completely closed and latched",
+      "verifiedOn": "2026-08-29"
+    },
+    "lg-ldth7972-door-manual": {
+      "id": "lg-ldth7972-door-manual",
+      "kind": "manufacturer-manual",
+      "quality": "primary",
+      "title": "LDTH7972S exact support page and owner's manual index",
+      "publisher": "LG",
+      "url": "https://www.lg.com/us/support/product/lg-LDTH7972S.ASSESNA?tab=1",
+      "appliesTo": "LDTH7972S.ASSESNA only; the indexed owner's manual directs checking that the door is completely closed and latched",
+      "verifiedOn": "2026-08-29"
+    },
+    "lg-ldps6762-door-manual": {
+      "id": "lg-ldps6762-door-manual",
+      "kind": "manufacturer-manual",
+      "quality": "primary",
+      "title": "LDPS6762S exact support page and owner's manual index",
+      "publisher": "LG",
+      "url": "https://www.lg.com/us/support/product/lg-LDPS6762S.ASSESNA",
+      "appliesTo": "LDPS6762S.ASSESNA only; the indexed owner's manual directs checking that the door is completely closed and latched",
+      "verifiedOn": "2026-08-29"
+    },
+    "hotpoint-model-manual": {
+      "id": "hotpoint-model-manual",
+      "kind": "manufacturer-troubleshooting",
+      "quality": "primary",
+      "title": "HDF310PGRWW owner manual and support",
+      "publisher": "GE Appliances / Hotpoint",
+      "url": "https://products.geappliances.com/appliance/gea-specs/HDF310PGRWW/support",
+      "appliesTo": "Hotpoint HDF310PGRWW only",
+      "verifiedOn": "2026-08-29"
+    }
+  },
+  "safetyProfiles": {
+    "not-cleaning": {
+      "homeowner": [
+        "Confirm dishes and utensils do not block spray-arm travel or the detergent dispenser.",
+        "Confirm automatic-dishwasher detergent and an appropriate cycle were used.",
+        "Check hot-water readiness only from normal household controls; do not adjust appliance internals."
+      ],
+      "professional": [
+        "Circulation-pump, heater, sensor, wiring, and internal water-path diagnosis or replacement."
+      ],
+      "stop": ["Stop for smoke, burning odor, damaged wiring, or active leaking."]
+    },
+    "will-not-fill": {
+      "homeowner": [
+        "Confirm the door is fully closed and the cycle was started normally.",
+        "Confirm the household supply valve is open only when it is already visible and safely reachable.",
+        "Inspect only the exposed supply hose for an obvious kink; do not move the dishwasher."
+      ],
+      "professional": [
+        "Inlet-valve, float-switch, pressure-sensor, wiring, or concealed supply diagnosis."
+      ],
+      "stop": [
+        "Stop for active leaking, damaged wiring, or any need to remove a panel or move the unit."
+      ]
+    },
+    "is-leaking": {
+      "homeowner": [
+        "Stop the cycle and keep people clear of standing water.",
+        "Check for visible oversudsing, a recent spill, loading interference, or loose debris on the visible door seal.",
+        "Observe exposed under-sink connections only; do not move the appliance or tighten concealed fittings."
+      ],
+      "professional": [
+        "Internal leak location, leveling/alignment correction, hose/valve/pump/seal replacement, and electrical inspection."
+      ],
+      "stop": [
+        "Stop immediately for an active leak near electricity, a burning odor, or water entering cabinetry/flooring."
+      ]
+    },
+    "door-will-not-close": {
+      "homeowner": [
+        "Remove visible dish, utensil, and rack obstructions and push racks fully home.",
+        "Wipe loose debris from the visible seal and observe cabinet/countertop interference without loosening hardware.",
+        "Close the door once gently; do not force it."
+      ],
+      "professional": [
+        "Latch, hinge, spring, alignment, leveling, cabinetry, or installation correction."
+      ],
+      "stop": ["Stop if the door binds, is visibly damaged or misaligned, or requires force."]
+    }
+  },
+  "records": [
+    {
+      "rowId": "kitchenaid-kdtm404kps__not-cleaning",
+      "modelId": "kitchenaid-kdtm404kps",
+      "brand": "KitchenAid",
+      "modelFamily": "KDTM404KPS",
+      "symptomId": "not-cleaning",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["kitchenaid-cleaning"],
+      "modelEvidence": {
+        "url": "https://www.kitchenaid.com/major-appliances/dishwashers/integrated-control/p.44-dba-dishwasher-in-printshield-finish-with-freeflex-third-rack.kdtm404kps.html",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "not-cleaning",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdtm404kps__will-not-fill",
+      "modelId": "kitchenaid-kdtm404kps",
+      "brand": "KitchenAid",
+      "modelFamily": "KDTM404KPS",
+      "symptomId": "will-not-fill",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["kitchenaid-fill"],
+      "modelEvidence": {
+        "url": "https://www.kitchenaid.com/major-appliances/dishwashers/integrated-control/p.44-dba-dishwasher-in-printshield-finish-with-freeflex-third-rack.kdtm404kps.html",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "will-not-fill",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdtm404kps__is-leaking",
+      "modelId": "kitchenaid-kdtm404kps",
+      "brand": "KitchenAid",
+      "modelFamily": "KDTM404KPS",
+      "symptomId": "is-leaking",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["kitchenaid-leak"],
+      "modelEvidence": {
+        "url": "https://www.kitchenaid.com/major-appliances/dishwashers/integrated-control/p.44-dba-dishwasher-in-printshield-finish-with-freeflex-third-rack.kdtm404kps.html",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "is-leaking",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80cg4021sr__not-cleaning",
+      "modelId": "samsung-dw80cg4021sr",
+      "brand": "Samsung",
+      "modelFamily": "DW80CG4021SR",
+      "symptomId": "not-cleaning",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["samsung-cleaning"],
+      "modelEvidence": {
+        "url": "https://www.samsung.com/us/home-appliances/dishwashers/rotary/fingerprint-resistant-53-dba-dishwasher-with-height-adjustable-rack-in-stainless-steel-dw80cg4021sraa/",
+        "currentlyVerifiedCodes": ["DW80CG4021SR/AA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "not-cleaning",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80cg4021sr__will-not-fill",
+      "modelId": "samsung-dw80cg4021sr",
+      "brand": "Samsung",
+      "modelFamily": "DW80CG4021SR",
+      "symptomId": "will-not-fill",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["samsung-fill"],
+      "modelEvidence": {
+        "url": "https://www.samsung.com/us/home-appliances/dishwashers/rotary/fingerprint-resistant-53-dba-dishwasher-with-height-adjustable-rack-in-stainless-steel-dw80cg4021sraa/",
+        "currentlyVerifiedCodes": ["DW80CG4021SR/AA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Samsung dishwashers reporting a water-supply error; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "will-not-fill",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80cg4021sr__is-leaking",
+      "modelId": "samsung-dw80cg4021sr",
+      "brand": "Samsung",
+      "modelFamily": "DW80CG4021SR",
+      "symptomId": "is-leaking",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["samsung-leak"],
+      "modelEvidence": {
+        "url": "https://www.samsung.com/us/home-appliances/dishwashers/rotary/fingerprint-resistant-53-dba-dishwasher-with-height-adjustable-rack-in-stainless-steel-dw80cg4021sraa/",
+        "currentlyVerifiedCodes": ["DW80CG4021SR/AA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "is-leaking",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-adb1400agw__not-cleaning",
+      "modelId": "amana-adb1400agw",
+      "brand": "Amana",
+      "modelFamily": "ADB1400AGW",
+      "symptomId": "not-cleaning",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["amana-cleaning"],
+      "modelEvidence": {
+        "url": "https://www.amana.com/kitchen/dishwashers/p.dishwasher-with-triple-filter-wash-system.ADB1400AGW.html",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Amana dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "not-cleaning",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-adb1400agw__will-not-fill",
+      "modelId": "amana-adb1400agw",
+      "brand": "Amana",
+      "modelFamily": "ADB1400AGW",
+      "symptomId": "will-not-fill",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["amana-fill"],
+      "modelEvidence": {
+        "url": "https://www.amana.com/kitchen/dishwashers/p.dishwasher-with-triple-filter-wash-system.ADB1400AGW.html",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Amana dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "will-not-fill",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-adb1400agw__is-leaking",
+      "modelId": "amana-adb1400agw",
+      "brand": "Amana",
+      "modelFamily": "ADB1400AGW",
+      "symptomId": "is-leaking",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["amana-leak"],
+      "modelEvidence": {
+        "url": "https://www.amana.com/kitchen/dishwashers/p.dishwasher-with-triple-filter-wash-system.ADB1400AGW.html",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Amana dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "is-leaking",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-hdf310pgrww__not-cleaning",
+      "modelId": "hotpoint-hdf310pgrww",
+      "brand": "Hotpoint",
+      "modelFamily": "HDF310PGRWW",
+      "symptomId": "not-cleaning",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["hotpoint-model-manual"],
+      "modelEvidence": {
+        "url": "https://products.geappliances.com/appliance/gea-specs/HDF310PGRWW/support",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Exact HDF310PGRWW owner-support/manual scope; no GE-brand neighbor transfer.",
+      "safetyProfileId": "not-cleaning",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-hdf310pgrww__will-not-fill",
+      "modelId": "hotpoint-hdf310pgrww",
+      "brand": "Hotpoint",
+      "modelFamily": "HDF310PGRWW",
+      "symptomId": "will-not-fill",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["hotpoint-model-manual"],
+      "modelEvidence": {
+        "url": "https://products.geappliances.com/appliance/gea-specs/HDF310PGRWW/support",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Exact HDF310PGRWW owner-support/manual scope; no GE-brand neighbor transfer.",
+      "safetyProfileId": "will-not-fill",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-hdf310pgrww__is-leaking",
+      "modelId": "hotpoint-hdf310pgrww",
+      "brand": "Hotpoint",
+      "modelFamily": "HDF310PGRWW",
+      "symptomId": "is-leaking",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["hotpoint-model-manual"],
+      "modelEvidence": {
+        "url": "https://products.geappliances.com/appliance/gea-specs/HDF310PGRWW/support",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Exact HDF310PGRWW owner-support/manual scope; no GE-brand neighbor transfer.",
+      "safetyProfileId": "is-leaking",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb4949skz__not-cleaning",
+      "modelId": "maytag-mdb4949skz",
+      "brand": "Maytag",
+      "modelFamily": "MDB4949SKZ",
+      "symptomId": "not-cleaning",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["maytag-cleaning"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MDB4949SKZ.html",
+        "currentlyVerifiedCodes": ["MDB4949SKZ1"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "not-cleaning",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb4949skz__will-not-fill",
+      "modelId": "maytag-mdb4949skz",
+      "brand": "Maytag",
+      "modelFamily": "MDB4949SKZ",
+      "symptomId": "will-not-fill",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["maytag-fill"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MDB4949SKZ.html",
+        "currentlyVerifiedCodes": ["MDB4949SKZ1"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "will-not-fill",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb4949skz__is-leaking",
+      "modelId": "maytag-mdb4949skz",
+      "brand": "Maytag",
+      "modelFamily": "MDB4949SKZ",
+      "symptomId": "is-leaking",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["maytag-leak"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MDB4949SKZ.html",
+        "currentlyVerifiedCodes": ["MDB4949SKZ1"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "is-leaking",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdfe204kps__not-cleaning",
+      "modelId": "kitchenaid-kdfe204kps",
+      "brand": "KitchenAid",
+      "modelFamily": "KDFE204KPS",
+      "symptomId": "not-cleaning",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["kitchenaid-cleaning"],
+      "modelEvidence": {
+        "url": "https://www.kitchenaid.com/major-appliances/dishwashers/front-controls/p.third-level-utensil-rack-dishwasher-with-30%2B-total-wash-jets%2C-39-dba-.kdfe204kps.html",
+        "currentlyVerifiedCodes": ["KDFE204KPS0"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "not-cleaning",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdfe204kps__will-not-fill",
+      "modelId": "kitchenaid-kdfe204kps",
+      "brand": "KitchenAid",
+      "modelFamily": "KDFE204KPS",
+      "symptomId": "will-not-fill",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["kitchenaid-fill"],
+      "modelEvidence": {
+        "url": "https://www.kitchenaid.com/major-appliances/dishwashers/front-controls/p.third-level-utensil-rack-dishwasher-with-30%2B-total-wash-jets%2C-39-dba-.kdfe204kps.html",
+        "currentlyVerifiedCodes": ["KDFE204KPS0"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "will-not-fill",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdfe204kps__is-leaking",
+      "modelId": "kitchenaid-kdfe204kps",
+      "brand": "KitchenAid",
+      "modelFamily": "KDFE204KPS",
+      "symptomId": "is-leaking",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["kitchenaid-leak"],
+      "modelEvidence": {
+        "url": "https://www.kitchenaid.com/major-appliances/dishwashers/front-controls/p.third-level-utensil-rack-dishwasher-with-30%2B-total-wash-jets%2C-39-dba-.kdfe204kps.html",
+        "currentlyVerifiedCodes": ["KDFE204KPS0"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "is-leaking",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80r2031usaa__not-cleaning",
+      "modelId": "samsung-dw80r2031usaa",
+      "brand": "Samsung",
+      "modelFamily": "DW80R2031US/AA",
+      "symptomId": "not-cleaning",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["samsung-cleaning"],
+      "modelEvidence": {
+        "url": "https://www.samsung.com/us/support/service/warranty/DW80R2031US/AA/",
+        "currentlyVerifiedCodes": ["DW80R2031US/AA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "not-cleaning",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80r2031usaa__will-not-fill",
+      "modelId": "samsung-dw80r2031usaa",
+      "brand": "Samsung",
+      "modelFamily": "DW80R2031US/AA",
+      "symptomId": "will-not-fill",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["samsung-fill"],
+      "modelEvidence": {
+        "url": "https://www.samsung.com/us/support/service/warranty/DW80R2031US/AA/",
+        "currentlyVerifiedCodes": ["DW80R2031US/AA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Samsung dishwashers reporting a water-supply error; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "will-not-fill",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80r2031usaa__is-leaking",
+      "modelId": "samsung-dw80r2031usaa",
+      "brand": "Samsung",
+      "modelFamily": "DW80R2031US/AA",
+      "symptomId": "is-leaking",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["samsung-leak"],
+      "modelEvidence": {
+        "url": "https://www.samsung.com/us/support/service/warranty/DW80R2031US/AA/",
+        "currentlyVerifiedCodes": ["DW80R2031US/AA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "is-leaking",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80b6060usaa__not-cleaning",
+      "modelId": "samsung-dw80b6060usaa",
+      "brand": "Samsung",
+      "modelFamily": "DW80B6060US/AA",
+      "symptomId": "not-cleaning",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["samsung-cleaning"],
+      "modelEvidence": {
+        "url": "https://www.samsung.com/us/support/home-appliances/dishwashers/?modelCode=DW80B6060US%2FAA",
+        "currentlyVerifiedCodes": ["DW80B6060US/AA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "not-cleaning",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80b6060usaa__will-not-fill",
+      "modelId": "samsung-dw80b6060usaa",
+      "brand": "Samsung",
+      "modelFamily": "DW80B6060US/AA",
+      "symptomId": "will-not-fill",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["samsung-fill"],
+      "modelEvidence": {
+        "url": "https://www.samsung.com/us/support/home-appliances/dishwashers/?modelCode=DW80B6060US%2FAA",
+        "currentlyVerifiedCodes": ["DW80B6060US/AA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Samsung dishwashers reporting a water-supply error; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "will-not-fill",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80b6060usaa__is-leaking",
+      "modelId": "samsung-dw80b6060usaa",
+      "brand": "Samsung",
+      "modelFamily": "DW80B6060US/AA",
+      "symptomId": "is-leaking",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["samsung-leak"],
+      "modelEvidence": {
+        "url": "https://www.samsung.com/us/support/home-appliances/dishwashers/?modelCode=DW80B6060US%2FAA",
+        "currentlyVerifiedCodes": ["DW80B6060US/AA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "is-leaking",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-edsh4944as__not-cleaning",
+      "modelId": "electrolux-edsh4944as",
+      "brand": "Electrolux",
+      "modelFamily": "EDSH4944AS",
+      "symptomId": "not-cleaning",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["electrolux-cleaning"],
+      "modelEvidence": {
+        "url": "https://www.electrolux.com/en/p/dishwasher/EDSH4944AS",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Electrolux dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "not-cleaning",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-edsh4944as__will-not-fill",
+      "modelId": "electrolux-edsh4944as",
+      "brand": "Electrolux",
+      "modelFamily": "EDSH4944AS",
+      "symptomId": "will-not-fill",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["electrolux-fill"],
+      "modelEvidence": {
+        "url": "https://www.electrolux.com/en/p/dishwasher/EDSH4944AS",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Electrolux dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "will-not-fill",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-edsh4944as__is-leaking",
+      "modelId": "electrolux-edsh4944as",
+      "brand": "Electrolux",
+      "modelFamily": "EDSH4944AS",
+      "symptomId": "is-leaking",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["electrolux-leak"],
+      "modelEvidence": {
+        "url": "https://www.electrolux.com/en/p/dishwasher/EDSH4944AS",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Electrolux dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "is-leaking",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80cg5450sraa__not-cleaning",
+      "modelId": "samsung-dw80cg5450sraa",
+      "brand": "Samsung",
+      "modelFamily": "DW80CG5450SR/AA",
+      "symptomId": "not-cleaning",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["samsung-cleaning"],
+      "modelEvidence": {
+        "url": "https://www.samsung.com/us/home-appliances/dishwashers/rotary/smart-46-dba-dishwasher-with-stormwash-in-stainless-steel-dw80cg5450sraa/",
+        "currentlyVerifiedCodes": ["DW80CG5450SR/AA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "not-cleaning",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80cg5450sraa__will-not-fill",
+      "modelId": "samsung-dw80cg5450sraa",
+      "brand": "Samsung",
+      "modelFamily": "DW80CG5450SR/AA",
+      "symptomId": "will-not-fill",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["samsung-fill"],
+      "modelEvidence": {
+        "url": "https://www.samsung.com/us/home-appliances/dishwashers/rotary/smart-46-dba-dishwasher-with-stormwash-in-stainless-steel-dw80cg5450sraa/",
+        "currentlyVerifiedCodes": ["DW80CG5450SR/AA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Samsung dishwashers reporting a water-supply error; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "will-not-fill",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80cg5450sraa__is-leaking",
+      "modelId": "samsung-dw80cg5450sraa",
+      "brand": "Samsung",
+      "modelFamily": "DW80CG5450SR/AA",
+      "symptomId": "is-leaking",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["samsung-leak"],
+      "modelEvidence": {
+        "url": "https://www.samsung.com/us/home-appliances/dishwashers/rotary/smart-46-dba-dishwasher-with-stormwash-in-stainless-steel-dw80cg5450sraa/",
+        "currentlyVerifiedCodes": ["DW80CG5450SR/AA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "is-leaking",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb8959skz__not-cleaning",
+      "modelId": "maytag-mdb8959skz",
+      "brand": "Maytag",
+      "modelFamily": "MDB8959SKZ",
+      "symptomId": "not-cleaning",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["maytag-cleaning"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MDB8959SKZ.html",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "not-cleaning",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb8959skz__will-not-fill",
+      "modelId": "maytag-mdb8959skz",
+      "brand": "Maytag",
+      "modelFamily": "MDB8959SKZ",
+      "symptomId": "will-not-fill",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["maytag-fill"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MDB8959SKZ.html",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "will-not-fill",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb8959skz__is-leaking",
+      "modelId": "maytag-mdb8959skz",
+      "brand": "Maytag",
+      "modelFamily": "MDB8959SKZ",
+      "symptomId": "is-leaking",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["maytag-leak"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MDB8959SKZ.html",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "is-leaking",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdte204kps__not-cleaning",
+      "modelId": "kitchenaid-kdte204kps",
+      "brand": "KitchenAid",
+      "modelFamily": "KDTE204KPS",
+      "symptomId": "not-cleaning",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["kitchenaid-cleaning"],
+      "modelEvidence": {
+        "url": "https://www.kitchenaid.com/owners-center-pdp.KDTE204KPS2.html",
+        "currentlyVerifiedCodes": ["KDTE204KPS2"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "not-cleaning",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdte204kps__will-not-fill",
+      "modelId": "kitchenaid-kdte204kps",
+      "brand": "KitchenAid",
+      "modelFamily": "KDTE204KPS",
+      "symptomId": "will-not-fill",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["kitchenaid-fill"],
+      "modelEvidence": {
+        "url": "https://www.kitchenaid.com/owners-center-pdp.KDTE204KPS2.html",
+        "currentlyVerifiedCodes": ["KDTE204KPS2"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "will-not-fill",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdte204kps__is-leaking",
+      "modelId": "kitchenaid-kdte204kps",
+      "brand": "KitchenAid",
+      "modelFamily": "KDTE204KPS",
+      "symptomId": "is-leaking",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["kitchenaid-leak"],
+      "modelEvidence": {
+        "url": "https://www.kitchenaid.com/owners-center-pdp.KDTE204KPS2.html",
+        "currentlyVerifiedCodes": ["KDTE204KPS2"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "is-leaking",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "lg-ldfn4542s__door-will-not-close",
+      "modelId": "lg-ldfn4542s",
+      "brand": "LG",
+      "modelFamily": "LDFN4542S",
+      "symptomId": "door-will-not-close",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["lg-ldfn4542-door-manual"],
+      "modelEvidence": {
+        "url": "https://www.lg.com/us/support/product/lg-LDFN4542S.ASSESNA",
+        "currentlyVerifiedCodes": ["LDFN4542S.ASSESNA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "LDFN4542S.ASSESNA only; the indexed owner's manual directs checking that the door is completely closed and latched; only visible obstruction and gentle closure checks transfer.",
+      "safetyProfileId": "door-will-not-close",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-adb1400agw__door-will-not-close",
+      "modelId": "amana-adb1400agw",
+      "brand": "Amana",
+      "modelFamily": "ADB1400AGW",
+      "symptomId": "door-will-not-close",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["amana-door"],
+      "modelEvidence": {
+        "url": "https://www.amana.com/kitchen/dishwashers/p.dishwasher-with-triple-filter-wash-system.ADB1400AGW.html",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Amana dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "door-will-not-close",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-hdf310pgrww__door-will-not-close",
+      "modelId": "hotpoint-hdf310pgrww",
+      "brand": "Hotpoint",
+      "modelFamily": "HDF310PGRWW",
+      "symptomId": "door-will-not-close",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["hotpoint-model-manual"],
+      "modelEvidence": {
+        "url": "https://products.geappliances.com/appliance/gea-specs/HDF310PGRWW/support",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Exact HDF310PGRWW owner-support/manual scope; no GE-brand neighbor transfer.",
+      "safetyProfileId": "door-will-not-close",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb4949skz__door-will-not-close",
+      "modelId": "maytag-mdb4949skz",
+      "brand": "Maytag",
+      "modelFamily": "MDB4949SKZ",
+      "symptomId": "door-will-not-close",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["maytag-door"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MDB4949SKZ.html",
+        "currentlyVerifiedCodes": ["MDB4949SKZ1"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "door-will-not-close",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "lg-ldfn3432t__door-will-not-close",
+      "modelId": "lg-ldfn3432t",
+      "brand": "LG",
+      "modelFamily": "LDFN3432T",
+      "symptomId": "door-will-not-close",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["lg-ldfn3432-door-manual"],
+      "modelEvidence": {
+        "url": "https://www.lg.com/us/support/product/lg-LDFN3432T",
+        "currentlyVerifiedCodes": ["LDFN3432T.ASTEEUS"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "LDFN3432T.ASTEEUS only; the indexed owner's manual directs checking that the door is completely closed and latched; only visible obstruction and gentle closure checks transfer.",
+      "safetyProfileId": "door-will-not-close",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "lg-ldth7972s__door-will-not-close",
+      "modelId": "lg-ldth7972s",
+      "brand": "LG",
+      "modelFamily": "LDTH7972S",
+      "symptomId": "door-will-not-close",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["lg-ldth7972-door-manual"],
+      "modelEvidence": {
+        "url": "https://www.lg.com/us/support/product/lg-LDTH7972S.ASSESNA?tab=1",
+        "currentlyVerifiedCodes": ["LDTH7972S.ASSESNA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "LDTH7972S.ASSESNA only; the indexed owner's manual directs checking that the door is completely closed and latched; only visible obstruction and gentle closure checks transfer.",
+      "safetyProfileId": "door-will-not-close",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-edsh4944as__door-will-not-close",
+      "modelId": "electrolux-edsh4944as",
+      "brand": "Electrolux",
+      "modelFamily": "EDSH4944AS",
+      "symptomId": "door-will-not-close",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["electrolux-door"],
+      "modelEvidence": {
+        "url": "https://www.electrolux.com/en/p/dishwasher/EDSH4944AS",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Electrolux dishwashers that display CL or Cd; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "door-will-not-close",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gdp670sgvww__door-will-not-close",
+      "modelId": "ge-gdp670sgvww",
+      "brand": "GE",
+      "modelFamily": "GDP670SGVWW",
+      "symptomId": "door-will-not-close",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["ge-door"],
+      "modelEvidence": {
+        "url": "https://products.geappliances.com/appliance/gea-specs/GDP670SGVWW/support",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "GE Appliances dishwashers; adjustable-rack branch is model-gated; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "door-will-not-close",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "whirlpool-wdt540hamz__door-will-not-close",
+      "modelId": "whirlpool-wdt540hamz",
+      "brand": "Whirlpool",
+      "modelFamily": "WDT540HAMZ",
+      "symptomId": "door-will-not-close",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["whirlpool-door"],
+      "modelEvidence": {
+        "url": "https://www.whirlpool.com/owners-center-pdp.WDT540HAMZ.html",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Whirlpool dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "door-will-not-close",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb8959skz__door-will-not-close",
+      "modelId": "maytag-mdb8959skz",
+      "brand": "Maytag",
+      "modelFamily": "MDB8959SKZ",
+      "symptomId": "door-will-not-close",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["maytag-door"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MDB8959SKZ.html",
+        "currentlyVerifiedCodes": [],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "door-will-not-close",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdte204kps__door-will-not-close",
+      "modelId": "kitchenaid-kdte204kps",
+      "brand": "KitchenAid",
+      "modelFamily": "KDTE204KPS",
+      "symptomId": "door-will-not-close",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["kitchenaid-door"],
+      "modelEvidence": {
+        "url": "https://www.kitchenaid.com/owners-center-pdp.KDTE204KPS2.html",
+        "currentlyVerifiedCodes": ["KDTE204KPS2"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "door-will-not-close",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "lg-ldps6762s__door-will-not-close",
+      "modelId": "lg-ldps6762s",
+      "brand": "LG",
+      "modelFamily": "LDPS6762S",
+      "symptomId": "door-will-not-close",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["lg-ldps6762-door-manual"],
+      "modelEvidence": {
+        "url": "https://www.lg.com/us/support/product/lg-LDPS6762S.ASSESNA",
+        "currentlyVerifiedCodes": ["LDPS6762S.ASSESNA"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "LDPS6762S.ASSESNA only; the indexed owner's manual directs checking that the door is completely closed and latched; only visible obstruction and gentle closure checks transfer.",
+      "safetyProfileId": "door-will-not-close",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "bosch-shx5aem5n01__door-will-not-close",
+      "modelId": "bosch-shx5aem5n01",
+      "brand": "Bosch",
+      "modelFamily": "SHX5AEM5N/01",
+      "symptomId": "door-will-not-close",
+      "decision": "promotable-guided-checks",
+      "reason": "A current primary manufacturer source explicitly covers this dishwasher symptom and supports only the bounded external observations in the named safety profile.",
+      "sourceIds": ["bosch-door"],
+      "modelEvidence": {
+        "url": "https://www.bosch-home.com/us/en/productservice/SHX5AEM5N-01",
+        "currentlyVerifiedCodes": ["SHX5AEM5N/01"],
+        "purpose": "Identity evidence only; not an exact-part claim."
+      },
+      "applicability": "Bosch dishwashers; feature-specific branches are model-gated; feature-specific branches remain gated to the exact owner manual.",
+      "safetyProfileId": "door-will-not-close",
+      "limitations": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    }
+  ]
+}

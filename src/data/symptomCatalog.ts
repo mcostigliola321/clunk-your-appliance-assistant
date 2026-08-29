@@ -7,6 +7,7 @@ import type {
   SymptomCoverage,
 } from "@/domain/types";
 import { getBroadSymptomCoverage } from "@/data/broadSymptomCoverage";
+import { getDemoReadySymptomCoverage } from "@/data/demoReadyCoverage";
 import { getExpandedSymptomCoverage } from "@/data/symptomCoverageExpansion";
 
 export interface SymptomPresentation {
@@ -344,6 +345,7 @@ export function buildSymptomCoverage(input: {
     base,
     ...getExpandedSymptomCoverage(input.modelId),
     ...getBroadSymptomCoverage(input.modelId),
+    ...getDemoReadySymptomCoverage(input.modelId),
   ];
 }
 

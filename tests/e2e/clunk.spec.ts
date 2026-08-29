@@ -212,15 +212,15 @@ test("shows four broad consumer problems and a neutral checked overflow", async 
     "41 checked models",
   );
   await expect(page.getByRole("button", { name: /Supported now Not cold enough/ })).toContainText(
-    "22 checked models · checks only",
+    "41 checked models · checks only",
   );
   await expect(
-    page.getByRole("button", { name: /35 checked models.*Door won't close/ }),
+    page.getByRole("button", { name: /41 checked models.*Door won't close/ }),
   ).toBeHidden();
   await page.getByText("More problems").click();
   await expect(
-    page.getByRole("button", { name: /35 checked models.*Door won't close/ }),
-  ).toContainText("35 checked models");
+    page.getByRole("button", { name: /41 checked models.*Door won't close/ }),
+  ).toContainText("41 checked models");
 });
 
 test("opens every broadened washer problem with topology-aware guided checks", async ({ page }) => {
@@ -261,7 +261,7 @@ test("opens every broadened dryer problem with electrical safety stops", async (
   for (const [problem, heading] of [
     [/Supported now Won't start/, "Keep the dryer off"],
     [/Supported now Runs without heat/, "Stop if there is heat damage"],
-    [/Supported now Drum won't turn/, "Unplug before touching the drum"],
+    [/Supported now Drum won't turn/, "Keep the drum still and stop for hazards"],
   ] as const)
     await openGuidedProblem(
       page,
@@ -294,7 +294,7 @@ test("opens every broadened refrigerator problem with feature-gated guided check
 test("runs a topology-aware washer lid closure guide and stops before internal repair", async ({
   page,
 }) => {
-  await reachModelSearch(page, /Choose Washer/, /36 checked models.*Door won't close/);
+  await reachModelSearch(page, /Choose Washer/, /53 checked models.*Door won't close/);
   const input = page.getByRole("searchbox", { name: "Washer model number" });
   await input.fill("WT7400CW");
   await page.getByRole("button", { name: "Find model" }).click();
@@ -312,12 +312,12 @@ test("runs a topology-aware washer lid closure guide and stops before internal r
 test("browses the 163-model catalog by brand and honest coverage tier", async ({ page }) => {
   await reachModelSearch(page, /Choose Electric dryer/, /Supported now Door won't close/);
   await page.getByText("Browse by brand").click();
-  await page.getByRole("button", { name: "Checks only 22" }).click();
+  await page.getByRole("button", { name: "Checks only 15" }).click();
   await page.getByText("Bosch").click();
   await expect(
     page.getByRole("button", { name: /WTG86403UC\/01 Guided checks only/ }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Purchase-ready 11" }).click();
+  await page.getByRole("button", { name: "Purchase-ready 18" }).click();
   await expect(page.getByRole("button", { name: /WTG86403UC\/01 Guided checks only/ })).toHaveCount(
     0,
   );
@@ -359,9 +359,9 @@ test("gives an honest unsupported-model state and rejects serial-number text", a
 });
 
 test("refuses a known model when the selected problem is not covered", async ({ page }) => {
-  await reachModelSearch(page, /Choose Washer/, /Supported now Water is leaking/);
-  const input = page.getByRole("searchbox", { name: "Washer model number" });
-  await input.fill("MHW5630HW");
+  await reachModelSearch(page, /Choose Refrigerator/, /Supported now Water is leaking/);
+  const input = page.getByRole("searchbox", { name: "Refrigerator model number" });
+  await input.fill("B36CT81ENS/07");
   await expect(page.getByText("That model is supported for a different problem.")).toBeVisible();
   await expect(page.getByText(/Go back and choose the problem/)).toBeVisible();
   await expect(page.locator(".model-result")).toHaveCount(0);

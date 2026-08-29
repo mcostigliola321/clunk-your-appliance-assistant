@@ -1,0 +1,1281 @@
+{
+  "schemaVersion": 1,
+  "category": "washer",
+  "verifiedOn": "2026-08-29",
+  "methodology": {
+    "exactFitGate": "complete rating-label product code -> one exact drain-pump SKU",
+    "offerGate": "Only after exact fit proof may a live Shopify seller offer be considered.",
+    "replacementGate": "Multiple pump rows, adjacent revisions, historical candidates, and implicit supersessions are blocked."
+  },
+  "baseline": {
+    "identities": 56,
+    "purchaseReadyIdentities": 15,
+    "nonPurchaseReadyIdentities": 41,
+    "nonPurchaseReadyFamilyOnly": 30,
+    "nonPurchaseReadyCompleteCode": 11
+  },
+  "outcome": {
+    "newExactFitProofs": 0,
+    "newPurchasePromotions": 0,
+    "shopifyEligibleIdentities": 0,
+    "shopifySearchesPerformed": 0,
+    "sellerCandidatesAccepted": 0
+  },
+  "records": [
+    {
+      "applianceId": "lg-wm3400cw",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WM3400CW",
+      "completeProductCodes": ["WM3400CW.ABWEVUS"],
+      "identityGate": "complete-code",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "The exact Encompass variation lists more than one drain-pump assembly record/position; it does not prove one exact replacement SKU.",
+      "modelIdentitySource": {
+        "id": "lg-wm3400cw-model",
+        "kind": "manufacturer-model",
+        "title": "LG WM3400CW official support",
+        "url": "https://www.lg.com/us/support/product/lg-WM3400CW.ABWEVUS",
+        "publisher": "LG",
+        "appliesTo": "WM3400CW",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": ["https://encompass.com/model/ZENWM3400CW/ABWEVUS/"],
+      "observedCandidateSkus": ["AHA75693425", "AHA75693450"],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "lg-wm4000hwa",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WM4000HWA",
+      "completeProductCodes": ["WM4000HWA.ABWEUUS"],
+      "identityGate": "complete-code",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No indexed authorized content was located for stored suffix ABWEUUS; the available ABWEEUS listing is a different revision and exposes multiple drain-pump assemblies.",
+      "modelIdentitySource": {
+        "id": "lg-wm4000hwa-model",
+        "kind": "manufacturer-model",
+        "title": "LG WM4000HWA official support",
+        "url": "https://www.lg.com/us/support/product/lg-WM4000HWA.ABWEUUS",
+        "publisher": "LG",
+        "appliesTo": "WM4000HWA",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [
+        "https://partstore.encompass.com/model/ZENWM4000HWA/ABWEUUS/",
+        "https://partstore.encompass.com/model/ZENWM4000HWA/ABWEEUS/"
+      ],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": "WM4000HWA.ABWEEUS",
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "ge-gfw650ssnww",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GFW650SSNWW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "ge-gfw650ssnww-model",
+        "kind": "manufacturer-model",
+        "title": "GE GFW650SSNWW official support",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GFW650SSNWW/support",
+        "publisher": "GE",
+        "appliesTo": "GFW650SSNWW",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "whirlpool-wfw5605mw",
+      "category": "washer",
+      "brand": "Whirlpool",
+      "modelFamily": "WFW5605MW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "whirlpool-wfw5605mw-model",
+        "kind": "manufacturer-model",
+        "title": "Whirlpool WFW5605MW official support",
+        "url": "https://www.whirlpool.com/owners-center-pdp.WFW5605MW.html",
+        "publisher": "Whirlpool",
+        "appliesTo": "WFW5605MW",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "whirlpool-wfw6620hw",
+      "category": "washer",
+      "brand": "Whirlpool",
+      "modelFamily": "WFW6620HW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "whirlpool-wfw6620hw-model",
+        "kind": "manufacturer-model",
+        "title": "Whirlpool WFW6620HW official support",
+        "url": "https://www.whirlpool.com/owners-center-pdp.WFW6620HW.html",
+        "publisher": "Whirlpool",
+        "appliesTo": "WFW6620HW",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "maytag-mhw5630hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW5630HW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "maytag-mhw5630hw-model",
+        "kind": "manufacturer-model",
+        "title": "Maytag MHW5630HW official support",
+        "url": "https://www.maytag.com/owners-center-pdp.MHW5630HW.html",
+        "publisher": "Maytag",
+        "appliesTo": "MHW5630HW",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "maytag-mhw6630hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW6630HW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "maytag-mhw6630hw-model",
+        "kind": "manufacturer-model",
+        "title": "Maytag MHW6630HW official support",
+        "url": "https://www.maytag.com/owners-center-pdp.MHW6630HW.html",
+        "publisher": "Maytag",
+        "appliesTo": "MHW6630HW",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "electrolux-elfw7537at",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7537AT",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "electrolux-elfw7537at-model",
+        "kind": "manufacturer-model",
+        "title": "Electrolux ELFW7537AT official support",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7537AT",
+        "publisher": "Electrolux",
+        "appliesTo": "ELFW7537AT",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "electrolux-elfw7637at",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7637AT",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "electrolux-elfw7637at-model",
+        "kind": "manufacturer-model",
+        "title": "Electrolux ELFW7637AT official support",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7637AT",
+        "publisher": "Electrolux",
+        "appliesTo": "ELFW7637AT",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "lg-wt7405cw",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WT7405CW",
+      "completeProductCodes": ["WT7405CW.ABWEUUS"],
+      "identityGate": "complete-code",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No authorized exact listing was located for stored suffix ABWEUUS; the available ABWETUS listing is a different revision and has multiple pump rows.",
+      "modelIdentitySource": {
+        "id": "lg-wt7405cw-model",
+        "kind": "manufacturer-model",
+        "title": "LG WT7405CW official support",
+        "url": "https://www.lg.com/us/support/product/lg-WT7405CW",
+        "publisher": "LG",
+        "appliesTo": "WT7405CW",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [
+        "https://partstore.encompass.com/model/ZENWT7405CW/ABWEUUS/",
+        "https://partstore.encompass.com/model/ZENWT7405CW/ABWETUS/"
+      ],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": "WT7405CW.ABWETUS",
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "ge-gtw465asnww",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GTW465ASNWW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "ge-gtw465asnww-model",
+        "kind": "manufacturer-model",
+        "title": "GE GTW465ASNWW official support",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GTW465ASNWW/support",
+        "publisher": "GE",
+        "appliesTo": "GTW465ASNWW",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "ge-gtw585bsvws",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GTW585BSVWS",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "ge-gtw585bsvws-model",
+        "kind": "manufacturer-model",
+        "title": "GE GTW585BSVWS official support",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GTW585BSVWS/support",
+        "publisher": "GE",
+        "appliesTo": "GTW585BSVWS",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "whirlpool-wtw5057lw",
+      "category": "washer",
+      "brand": "Whirlpool",
+      "modelFamily": "WTW5057LW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "whirlpool-wtw5057lw-model",
+        "kind": "manufacturer-model",
+        "title": "Whirlpool WTW5057LW official support",
+        "url": "https://www.whirlpool.com/owners-center-pdp.WTW5057LW.html",
+        "publisher": "Whirlpool",
+        "appliesTo": "WTW5057LW",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "maytag-mvw5430mw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW5430MW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "maytag-mvw5430mw-model",
+        "kind": "manufacturer-model",
+        "title": "Maytag MVW5430MW official support",
+        "url": "https://www.maytag.com/owners-center-pdp.MVW5430MW.html",
+        "publisher": "Maytag",
+        "appliesTo": "MVW5430MW",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "frigidaire-fftw4120sw",
+      "category": "washer",
+      "brand": "Frigidaire",
+      "modelFamily": "FFTW4120SW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "frigidaire-fftw4120sw-model",
+        "kind": "manufacturer-model",
+        "title": "Frigidaire FFTW4120SW official support",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FFTW4120SW",
+        "publisher": "Frigidaire",
+        "appliesTo": "FFTW4120SW",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "frigidaire-fffw5000qw",
+      "category": "washer",
+      "brand": "Frigidaire",
+      "modelFamily": "FFFW5000QW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "frigidaire-fffw5000qw-model",
+        "kind": "manufacturer-model",
+        "title": "Frigidaire FFFW5000QW official support",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FFFW5000QW",
+        "publisher": "Frigidaire",
+        "appliesTo": "FFFW5000QW",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "amana-ntw4519jw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NTW4519JW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "amana-ntw4519jw-model",
+        "kind": "manufacturer-model",
+        "title": "Amana NTW4519JW official support",
+        "url": "https://www.amana.com/laundry/washers/top-load/p.large-capacity-top-load-washer-with-high-efficiency-agitator.ntw4519jw.html",
+        "publisher": "Amana",
+        "appliesTo": "NTW4519JW",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "hotpoint-htw240askws",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW240ASKWS",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "hotpoint-htw240askws-model",
+        "kind": "manufacturer-model",
+        "title": "Hotpoint HTW240ASKWS official support",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW240ASKWS/support",
+        "publisher": "Hotpoint",
+        "appliesTo": "HTW240ASKWS",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "ge-gtw485aswwb",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GTW485ASWWB",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "ge-gtw485aswwb-model",
+        "kind": "manufacturer-model",
+        "title": "GE GTW485ASWWB official model/support page",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GTW485ASWWB/support",
+        "publisher": "GE",
+        "appliesTo": "GTW485ASWWB family; rating-label revision still required",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "hotpoint-htw2065sbww",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW2065SBWW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "hotpoint-htw2065sbww-model",
+        "kind": "manufacturer-model",
+        "title": "Hotpoint HTW2065SBWW official model/support page",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW2065SBWW/support",
+        "publisher": "Hotpoint",
+        "appliesTo": "HTW2065SBWW family; rating-label revision still required",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "whirlpool-wtw5105lw",
+      "category": "washer",
+      "brand": "Whirlpool",
+      "modelFamily": "WTW5105LW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "whirlpool-wtw5105lw-model",
+        "kind": "manufacturer-model",
+        "title": "Whirlpool WTW5105LW official model/support page",
+        "url": "https://www.whirlpool.com/owners-center-pdp.WTW5105LW.html",
+        "publisher": "Whirlpool",
+        "appliesTo": "WTW5105LW family; rating-label revision still required",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "whirlpool-wfw4720rw",
+      "category": "washer",
+      "brand": "Whirlpool",
+      "modelFamily": "WFW4720RW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "whirlpool-wfw4720rw-model",
+        "kind": "manufacturer-model",
+        "title": "Whirlpool WFW4720RW official model/support page",
+        "url": "https://www.whirlpool.com/laundry/washers/front-load/p.WFW4720RW.html",
+        "publisher": "Whirlpool",
+        "appliesTo": "WFW4720RW family; rating-label revision still required",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "maytag-mvw4505mw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW4505MW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "maytag-mvw4505mw-model",
+        "kind": "manufacturer-model",
+        "title": "Maytag MVW4505MW official model/support page",
+        "url": "https://www.maytag.com/owners-center-pdp.MVW4505MW.html",
+        "publisher": "Maytag",
+        "appliesTo": "MVW4505MW family; rating-label revision still required",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "maytag-mhw5500fw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW5500FW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "maytag-mhw5500fw-model",
+        "kind": "manufacturer-model",
+        "title": "Maytag MHW5500FW official model/support page",
+        "url": "https://www.maytag.com/owners-center-pdp.MHW5500FW.html",
+        "publisher": "Maytag",
+        "appliesTo": "MHW5500FW family; rating-label revision still required",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "amana-nfw5800hw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NFW5800HW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "amana-nfw5800hw-model",
+        "kind": "manufacturer-model",
+        "title": "Amana NFW5800HW official model/support page",
+        "url": "https://www.amana.com/laundry/washers/top-load/p.4.3-cu.-ft.-front-load-washer-with-large-capacity.nfw5800hw.html",
+        "publisher": "Amana",
+        "appliesTo": "NFW5800HW family; rating-label revision still required",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "samsung-wf46bg6500av",
+      "category": "washer",
+      "brand": "Samsung",
+      "modelFamily": "WF46BG6500AV",
+      "completeProductCodes": ["WF46BG6500AVUS"],
+      "identityGate": "complete-code",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "The complete Samsung identity is current, but no official or authorized page was located that maps WF46BG6500AVUS to exactly one drain-pump SKU.",
+      "modelIdentitySource": {
+        "id": "samsung-wf46bg6500av-model",
+        "kind": "manufacturer-model",
+        "title": "Samsung WF46BG6500AV official model/support page",
+        "url": "https://www.samsung.com/us/support/service/warranty/WF46BG6500AVUS/",
+        "publisher": "Samsung",
+        "appliesTo": "WF46BG6500AVUS",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [
+        "https://www.samsung.com/us/support/service/warranty/WF46BG6500AVUS/",
+        "https://samsungparts.com/collections/washer-parts"
+      ],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "samsung-wa50r5200aw",
+      "category": "washer",
+      "brand": "Samsung",
+      "modelFamily": "WA50R5200AW",
+      "completeProductCodes": ["WA50R5200AW/US"],
+      "identityGate": "complete-code",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "The complete Samsung identity is current, but no official or authorized page was located that maps WA50R5200AW/US to exactly one drain-pump SKU.",
+      "modelIdentitySource": {
+        "id": "samsung-wa50r5200aw-model",
+        "kind": "manufacturer-model",
+        "title": "Samsung WA50R5200AW official model/support page",
+        "url": "https://www.samsung.com/us/support/service/warranty/WA50R5200AW/US/",
+        "publisher": "Samsung",
+        "appliesTo": "WA50R5200AW/US",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [
+        "https://www.samsung.com/us/support/service/warranty/WA50R5200AW/US/",
+        "https://samsungparts.com/collections/washer-parts"
+      ],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "lg-wm3600hwa",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WM3600HWA",
+      "completeProductCodes": ["WM3600HWA.ABWEUUS"],
+      "identityGate": "complete-code",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "The stored suffix is ABWEUUS, while the current authorized result is ABWEVUS and lists several pump assemblies. Cross-suffix inference is prohibited.",
+      "modelIdentitySource": {
+        "id": "lg-wm3600hwa-model",
+        "kind": "manufacturer-model",
+        "title": "LG WM3600HWA official model/support page",
+        "url": "https://www.lg.com/us/support/product/lg-WM3600HWA.ABWEUUS",
+        "publisher": "LG",
+        "appliesTo": "WM3600HWA.ABWEUUS",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [
+        "https://partstore.encompass.com/model/ZENWM3600HWA/ABWEUUS/",
+        "https://partstore.encompass.com/model/ZENWM3600HWA/ABWEVUS/"
+      ],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": "WM3600HWA.ABWEVUS",
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "lg-wm5500hwa",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WM5500HWA",
+      "completeProductCodes": ["WM5500HWA.ABWEUUS"],
+      "identityGate": "complete-code",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No current authorized exact listing was located for ABWEUUS. The available ASSEVUS evidence is a different color/revision and cannot be borrowed.",
+      "modelIdentitySource": {
+        "id": "lg-wm5500hwa-model",
+        "kind": "manufacturer-model",
+        "title": "LG WM5500HWA official model/support page",
+        "url": "https://www.lg.com/us/support/product/lg-WM5500HWA.ABWEUUS",
+        "publisher": "LG",
+        "appliesTo": "WM5500HWA.ABWEUUS",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [
+        "https://partstore.encompass.com/model/ZENWM5500HWA/ABWEUUS/",
+        "https://partstore.encompass.com/model/ZENWM5500HVA/ASSEVUS/"
+      ],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": "WM5500HVA.ASSEVUS",
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "lg-wt6105cw",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WT6105CW",
+      "completeProductCodes": ["WT6105CW.BBWETUS"],
+      "identityGate": "complete-code",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "The exact BBWETUS listing contains at least two drain-pump assembly SKUs, without an explicit one-SKU replacement/supersession rule.",
+      "modelIdentitySource": {
+        "id": "lg-wt6105cw-model",
+        "kind": "manufacturer-model",
+        "title": "LG WT6105CW official model/support page",
+        "url": "https://www.lg.com/us/support/product/lg-WT6105CW",
+        "publisher": "LG",
+        "appliesTo": "WT6105CW.BBWETUS",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": ["https://partstore.encompass.com/model/ZENWT6105CW/BBWETUS/"],
+      "observedCandidateSkus": ["AGF30196101", "AHA75673404"],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "lg-wt7150cw",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WT7150CW",
+      "completeProductCodes": ["WT7150CW.ABWETUS"],
+      "identityGate": "complete-code",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No current authorized exact-revision page was located that maps ABWETUS to one drain-pump SKU.",
+      "modelIdentitySource": {
+        "id": "lg-wt7150cw-model",
+        "kind": "manufacturer-model",
+        "title": "LG WT7150CW official model/support page",
+        "url": "https://www.lg.com/us/support/product/lg-WT7150CW.ABWETUS",
+        "publisher": "LG",
+        "appliesTo": "WT7150CW.ABWETUS",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [
+        "https://www.lg.com/us/support/product/lg-WT7150CW.ABWETUS",
+        "https://partstore.encompass.com/model/ZENWT7150CW/ABWETUS/"
+      ],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "lg-wt7300cw",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WT7300CW",
+      "completeProductCodes": ["WT7300CW.ABWEUCI"],
+      "identityGate": "complete-code",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No authorized exact listing was located for ABWEUCI; nearby ABWETUS and ABWEUUS pages show multiple pump assemblies and cannot establish this revision.",
+      "modelIdentitySource": {
+        "id": "lg-wt7300cw-model",
+        "kind": "manufacturer-model",
+        "title": "LG WT7300CW official model/support page",
+        "url": "https://www.lg.com/us/support/product/lg-WT7300CW.ABWEUCI",
+        "publisher": "LG",
+        "appliesTo": "WT7300CW.ABWEUCI",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [
+        "https://partstore.encompass.com/model/ZENWT7300CW/ABWEUCI/",
+        "https://partstore.encompass.com/model/ZENWT7300CW/ABWETUS/",
+        "https://partstore.encompass.com/model/ZENWT7300CW/ABWEUUS/"
+      ],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": "WT7300CW.ABWETUS / WT7300CW.ABWEUUS",
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "electrolux-elfw7337aw",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7337AW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "electrolux-elfw7337aw-model",
+        "kind": "manufacturer-model",
+        "title": "Electrolux ELFW7337AW official model/support page",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7337AW",
+        "publisher": "Electrolux",
+        "appliesTo": "ELFW7337AW family; rating-label revision still required",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "electrolux-elfw7738aa",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7738AA",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "electrolux-elfw7738aa-model",
+        "kind": "manufacturer-model",
+        "title": "Electrolux ELFW7738AA official model/support page",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7738AA",
+        "publisher": "Electrolux",
+        "appliesTo": "ELFW7738AA family; rating-label revision still required",
+        "lastVerified": "2026-08-27"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "lg-wm4000hba",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WM4000HBA",
+      "completeProductCodes": ["WM4000HBA.ABLEVUS"],
+      "identityGate": "complete-code",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "The exact ABLEVUS listing contains two drain-pump assembly SKU rows and no explicit supersession selecting one exact replacement.",
+      "modelIdentitySource": {
+        "id": "lg-wm4000hba-model",
+        "kind": "manufacturer-model",
+        "title": "LG WM4000HBA official model/support page",
+        "url": "https://www.lg.com/us/support/product/lg-WM4000HBA.ABLEVUS?tab=1",
+        "publisher": "LG",
+        "appliesTo": "WM4000HBA.ABLEVUS",
+        "lastVerified": "2026-08-28"
+      },
+      "fitEvidenceUrls": ["https://partstore.encompass.com/model/ZENWM4000HBA/ABLEVUS/"],
+      "observedCandidateSkus": ["AHA75853816", "AHA75853813"],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "ge-gtw325aswww",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GTW325ASWWW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "ge-gtw325aswww-model",
+        "kind": "manufacturer-model",
+        "title": "GE GTW325ASWWW official model/support page",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GTW325ASWWW/support",
+        "publisher": "GE",
+        "appliesTo": "GTW325ASWWW family; rating-label revision still required",
+        "lastVerified": "2026-08-28"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "ge-gtw385aswws",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GTW385ASWWS",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "ge-gtw385aswws-model",
+        "kind": "manufacturer-model",
+        "title": "GE GTW385ASWWS official model/support page",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GTW385ASWWS/support",
+        "publisher": "GE",
+        "appliesTo": "GTW385ASWWS family; rating-label revision still required",
+        "lastVerified": "2026-08-28"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "whirlpool-wtw6157pw",
+      "category": "washer",
+      "brand": "Whirlpool",
+      "modelFamily": "WTW6157PW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "whirlpool-wtw6157pw-model",
+        "kind": "manufacturer-model",
+        "title": "Whirlpool WTW6157PW official model/support page",
+        "url": "https://www.whirlpool.com/owners-center-pdp.WTW6157PW.html",
+        "publisher": "Whirlpool",
+        "appliesTo": "WTW6157PW family; rating-label revision still required",
+        "lastVerified": "2026-08-28"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "maytag-mvw7232hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW7232HW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "maytag-mvw7232hw-model",
+        "kind": "manufacturer-model",
+        "title": "Maytag MVW7232HW official model/support page",
+        "url": "https://www.maytag.com/owners-center-pdp.MVW7232HW.html",
+        "publisher": "Maytag",
+        "appliesTo": "MVW7232HW family; rating-label revision still required",
+        "lastVerified": "2026-08-28"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "amana-ntw4516fw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NTW4516FW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "amana-ntw4516fw-model",
+        "kind": "manufacturer-model",
+        "title": "Amana NTW4516FW official model/support page",
+        "url": "https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html",
+        "publisher": "Amana",
+        "appliesTo": "NTW4516FW family; rating-label revision still required",
+        "lastVerified": "2026-08-28"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "applianceId": "electrolux-elfw7437aw",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7437AW",
+      "completeProductCodes": [],
+      "identityGate": "family-only",
+      "fitProofOutcome": "blocked",
+      "fitProofReason": "No complete rating-label revision is stored, so exact SKU research is not permitted.",
+      "modelIdentitySource": {
+        "id": "electrolux-elfw7437aw-model",
+        "kind": "manufacturer-model",
+        "title": "Electrolux ELFW7437AW official model/support page",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW",
+        "publisher": "Electrolux",
+        "appliesTo": "ELFW7437AW family; rating-label revision still required",
+        "lastVerified": "2026-08-28"
+      },
+      "fitEvidenceUrls": [],
+      "observedCandidateSkus": [],
+      "rejectedNearbyRevision": null,
+      "shopifyOfferSearch": {
+        "eligible": false,
+        "performed": false,
+        "reason": "Shopify discovery is downstream of exact complete-code to one-SKU fit proof; this identity did not pass that gate.",
+        "candidates": []
+      },
+      "promotable": false,
+      "verifiedOn": "2026-08-29"
+    }
+  ]
+}

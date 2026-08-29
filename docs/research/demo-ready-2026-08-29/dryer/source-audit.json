@@ -1,0 +1,197 @@
+{
+  "generatedOn": "2026-08-29",
+  "category": "dryer",
+  "reviewedSources": 19,
+  "records": [
+    {
+      "id": "maytag-dryer-start",
+      "publisher": "Maytag",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://producthelp.maytag.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Starting_or_Not_Operating_-_Dryer",
+      "evidence": "Door, cycle, Start control, Control Lock, visible power, and household breaker checks.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "maytag-electric-dryer-heat",
+      "publisher": "Maytag",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://producthelp.maytag.com/Laundry/Dryers/Dryer/Operation/Not_Heating/Not_Heating_-_Electric_Dryer",
+      "evidence": "Electric-dryer dual-breaker and Air Only checks; terminal-block instructions are excluded.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "maytag-dryer-tumble",
+      "publisher": "Maytag",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://producthelp.maytag.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Tumbling_or_Spinning_-_Dryer",
+      "evidence": "Visible power and Start-control observations followed by service; terminal access is excluded.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "amana-dryer-start",
+      "publisher": "Amana",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://producthelp.amana.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Starting_or_Not_Operating_-_Dryer",
+      "evidence": "Door, cycle, Start control, Control Lock, and visible power checks.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "amana-electric-dryer-heat",
+      "publisher": "Amana",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://producthelp.amana.com/Laundry/Dryers/Product_Info/Dryer_Product_Assistance/Dryer_is_Not_Heating",
+      "evidence": "Air Only, external vent, and electric-dryer dual-breaker checks; terminal access is excluded.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "amana-dryer-tumble",
+      "publisher": "Amana",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://producthelp.amana.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Tumbling_or_Spinning_-_Dryer",
+      "evidence": "Visible power and Start-control observations followed by service; terminal access is excluded.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "electrolux-dryer-start",
+      "publisher": "Electrolux",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://owner.electrolux.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+      "evidence": "Start control, cycle selector, door, plug, and household breaker checks.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "electrolux-electric-dryer-heat",
+      "publisher": "Electrolux",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://owner.electrolux.com/support-articles/article/1853007-my-dryer-is-running-but-does-not-seem-to-be-heating-what-should-i-do-",
+      "evidence": "Electric-dryer dual-circuit and Air Fluff checks; outlet verification is professional-only.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "electrolux-dryer-stop-overload",
+      "publisher": "Electrolux",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://owner.electrolux.com/support-articles/article/1853011-what-should-i-do-if-my-dryer-stops-operating-?locale=en-US",
+      "evidence": "Overload reduction, cool-down, and service stop for the thermal limiter.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "frigidaire-dryer-start",
+      "publisher": "Frigidaire",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://owner.frigidaire.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+      "evidence": "Start control, cycle selector, door, plug, and household breaker checks.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "frigidaire-electric-dryer-heat",
+      "publisher": "Frigidaire",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://owner.frigidaire.com/support-articles/article/1853007-my-dryer-is-running-but-does-not-seem-to-be-heating-what-should-i-do-",
+      "evidence": "Electric-dryer dual-circuit and Air Fluff checks; outlet verification is professional-only.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "frigidaire-dryer-stop-overload",
+      "publisher": "Frigidaire",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://owner.frigidaire.com/support-articles/article/1853011-what-should-i-do-if-my-dryer-stops-operating-",
+      "evidence": "Overload reduction, cool-down, and service stop for the thermal limiter.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "ge-hotpoint-dryer-start",
+      "publisher": "GE Appliances",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17381",
+      "evidence": "Plug, door, cycle, Start control, and breaker checks; exact Hotpoint owner pages link the GE-hosted support library.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "ge-hotpoint-electric-dryer-heat",
+      "publisher": "GE Appliances",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=16921",
+      "evidence": "Heated-cycle, airflow, and household-breaker checks; cord-terminal inspection is excluded.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "ge-hotpoint-dryer-drum",
+      "publisher": "GE Appliances",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17096",
+      "evidence": "Load observation and service escalation; the manufacturer's hand-turn test is deliberately excluded.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "bosch-dryer-start",
+      "publisher": "Bosch",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dryers-repair-dryer-not-switching-on",
+      "evidence": "Plug, door, program, breaker, and professional-stop checks.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "bosch-dryer-heat",
+      "publisher": "Bosch",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dryers-repair-dryer-not-getting-warm",
+      "evidence": "No-heat condition is explicitly professional-diagnosis-only.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "bosch-dryer-drum",
+      "publisher": "Bosch",
+      "kind": "manufacturer-troubleshooting",
+      "url": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dryers-repair-dryer-drum-not-spinning",
+      "evidence": "Plug and door checks followed by Bosch support; no drum manipulation.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    },
+    {
+      "id": "bosch-wtg86403uc01-manual",
+      "publisher": "Bosch",
+      "kind": "manufacturer-exact-owner-manual",
+      "url": "https://media3.bosch-home.com/Documents/9001883723_A.pdf",
+      "evidence": "Exact WTG86403UC manual identifies condensation topology, lint filter, condenser, programs, and troubleshooting boundaries.",
+      "verifiedOn": "2026-08-29",
+      "observedStatus": "current-primary-source-reviewed",
+      "scope": "Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded."
+    }
+  ]
+}

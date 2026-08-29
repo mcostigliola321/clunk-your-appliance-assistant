@@ -17,6 +17,10 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "audit:purchase": "tsx scripts/audit-purchase-coverage.ts",
+    "audit:coverage": "tsx scripts/audit-demo-readiness.ts --write",
+    "generate:demo-ready-coverage": "tsx scripts/generate-demo-ready-coverage.ts",
+    "generate:demo-ready-purchase": "tsx scripts/generate-demo-ready-purchase.ts",
+    "verify:live": "npm run build && tsx scripts/verify-live-deployment.ts",
     "verify": "npm run typecheck && npm run lint && npm run test && npm run build && npm run test:e2e"
   },
   "dependencies": {

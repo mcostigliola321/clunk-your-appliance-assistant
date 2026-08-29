@@ -6,3 +6,8 @@ pnpm-lock.yaml
 package-lock.json
 bun.lock
 routeTree.gen.ts
+
+# Historical research snapshots and repository-owned instruction files predate Prettier.
+.codebase-memory/adr.md
+AGENTS.md
+docs/research/clunk-evidence-recon-2026-08-28/

@@ -1793,7 +1793,7 @@ const dryerDrum: ProfileSpec = {
     component(
       "door",
       "Door opening",
-      "The safe opening used for an unplugged drum check.",
+      "The safe opening used only to remove the load; the drum stays untouched.",
       "visible",
       64,
       48,
@@ -1808,9 +1808,9 @@ const dryerDrum: ProfileSpec = {
     ),
   ],
   safety: {
-    label: "Unplug before touching the drum",
+    label: "Keep the drum still and stop for hazards",
     instruction:
-      "Stop and unplug the dryer, then wait until the drum is completely still. Keep the door open and do not remove any panel.",
+      "Stop and unplug the dryer, then wait until the drum is completely still. Keep hands clear of the drum and do not remove any panel.",
     stop: "the cabinet is hot, the cord is damaged, or you smell burning.",
     firstCheckId: "check-dryer-drum-load",
   },
@@ -1834,9 +1834,11 @@ const dryerDrum: ProfileSpec = {
               "Split the load and try the dryer once. Stop if the drum still does not turn.",
           },
         ),
-        outcome("dryer-drum-load-normal", "The load was not overloaded", "continue", {
-          nextCheckId: "check-dryer-drum-movement",
-          focusComponentId: "door",
+        outcome("dryer-drum-load-normal", "The load was not overloaded", "professional-only", {
+          focusComponentId: "drive-system",
+          outcomeTitle: "The drive system needs service",
+          outcomeMessage:
+            "Leave the drum still and keep the dryer unplugged. Belt, motor, roller, switch, and control diagnosis requires internal access.",
         }),
         outcome("dryer-drum-jammed", "The drum is jammed or scraping", "professional-only", {
           focusComponentId: "drive-system",
@@ -1844,43 +1846,6 @@ const dryerDrum: ProfileSpec = {
           outcomeMessage:
             "A jammed drum or trapped item needs service before the motor is energized.",
         }),
-      ],
-    ),
-    check(
-      "check-dryer-drum-movement",
-      "Gently test the unplugged drum",
-      "drum",
-      "With the dryer unplugged and empty, use one hand at the front edge to turn the drum gently counter-clockwise. Stop immediately if it binds or scrapes.",
-      "GE notes that a drum that turns unusually freely can indicate a loose or broken belt.",
-      "movement needs force, makes scraping sounds, or you cannot maintain a safe stance.",
-      [
-        outcome("dryer-drum-free", "The drum turns unusually freely", "professional-only", {
-          focusComponentId: "drive-system",
-          outcomeTitle: "The belt or drive system likely needs service",
-          outcomeMessage:
-            "Keep the dryer unplugged. Belt access is behind panels and is not part of this guided check.",
-        }),
-        outcome(
-          "dryer-drum-resistant",
-          "The drum binds, scrapes, or will not move",
-          "professional-only",
-          {
-            focusComponentId: "drive-system",
-            outcomeTitle: "The drum support or drive system needs service",
-            outcomeMessage: "Do not power the dryer against resistance.",
-          },
-        ),
-        outcome(
-          "dryer-drum-feels-normal",
-          "The drum has normal, smooth resistance",
-          "professional-only",
-          {
-            focusComponentId: "drive-system",
-            outcomeTitle: "The motor or control path needs service",
-            outcomeMessage:
-              "The load and unplugged drum checks are clear; internal motor and control diagnosis remains professional-only.",
-          },
-        ),
       ],
     ),
   ],
@@ -1898,8 +1863,9 @@ const dryerDrum: ProfileSpec = {
       label: "Loose or broken belt",
       componentId: "drive-system",
       baseRank: 30,
-      defaultExplanation: "An unusually free drum can point to the belt.",
-      resultScores: { "dryer-drum-free": 90 },
+      defaultExplanation:
+        "A belt fault requires internal service; Clunk does not ask for hand rotation.",
+      resultScores: { "dryer-drum-load-normal": 70 },
     },
     {
       id: "dryer-drum-drive",
@@ -1907,11 +1873,7 @@ const dryerDrum: ProfileSpec = {
       componentId: "drive-system",
       baseRank: 20,
       defaultExplanation: "Internal drive parts require panel access.",
-      resultScores: {
-        "dryer-drum-load-normal": 20,
-        "dryer-drum-resistant": 75,
-        "dryer-drum-feels-normal": 60,
-      },
+      resultScores: { "dryer-drum-load-normal": 60, "dryer-drum-jammed": 80 },
     },
   ],
 };

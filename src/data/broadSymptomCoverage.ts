@@ -90,9 +90,9 @@ export const EXPECTED_BROAD_SYMPTOM_COUNTS = {
   "dryer:will-not-start": 19,
   "dryer:not-heating": 19,
   "dryer:drum-will-not-turn": 19,
-  "refrigerator:not-cooling": 22,
-  "refrigerator:is-leaking": 22,
-  "refrigerator:ice-maker-not-making-ice": 22,
+  "refrigerator:not-cooling": 41,
+  "refrigerator:is-leaking": 36,
+  "refrigerator:ice-maker-not-making-ice": 36,
 } as const;
 
 const ALLOWED_SYMPTOMS_BY_CATEGORY: Record<ApplianceKind, SupportedSymptomId[]> = {

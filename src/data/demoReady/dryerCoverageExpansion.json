@@ -1,0 +1,1461 @@
+{
+  "generatedOn": "2026-08-29",
+  "category": "dryer",
+  "records": [
+    {
+      "rowId": "maytag-med4500mw__will-not-start",
+      "modelId": "maytag-med4500mw",
+      "brand": "Maytag",
+      "model": "MED4500MW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["maytag-dryer-start"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MED4500MW.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "Maytag explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med4500mw__not-heating",
+      "modelId": "maytag-med4500mw",
+      "brand": "Maytag",
+      "model": "MED4500MW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["maytag-electric-dryer-heat"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MED4500MW.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm a heated cycle rather than Air Only/Air Fluff/No Heat.",
+        "With the dryer cool and unplugged, clean and reinstall the owner-accessible lint screen.",
+        "For vented models only, observe the exterior vent flap without reaching into the duct."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "Maytag explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med4500mw__drum-will-not-turn",
+      "modelId": "maytag-med4500mw",
+      "brand": "Maytag",
+      "model": "MED4500MW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["maytag-dryer-tumble"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MED4500MW.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door, selected cycle, lock state, Start gesture, and visible power condition.",
+        "Remove an obviously overloaded load only where the cited manufacturer supports load reduction.",
+        "Leave the drum still and escalate after visible checks."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "Maytag explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7637at__will-not-start",
+      "modelId": "electrolux-elfe7637at",
+      "brand": "Electrolux",
+      "model": "ELFE7637AT",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["electrolux-dryer-start"],
+      "modelEvidence": {
+        "url": "https://www.electrolux.com/en/p/washers-dryers/dryer/ELFE7637AT",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "Electrolux explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7637at__not-heating",
+      "modelId": "electrolux-elfe7637at",
+      "brand": "Electrolux",
+      "model": "ELFE7637AT",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["electrolux-electric-dryer-heat"],
+      "modelEvidence": {
+        "url": "https://www.electrolux.com/en/p/washers-dryers/dryer/ELFE7637AT",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm a heated cycle rather than Air Only/Air Fluff/No Heat.",
+        "With the dryer cool and unplugged, clean and reinstall the owner-accessible lint screen.",
+        "For vented models only, observe the exterior vent flap without reaching into the duct."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "Electrolux explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7637at__drum-will-not-turn",
+      "modelId": "electrolux-elfe7637at",
+      "brand": "Electrolux",
+      "model": "ELFE7637AT",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["electrolux-dryer-stop-overload"],
+      "modelEvidence": {
+        "url": "https://www.electrolux.com/en/p/washers-dryers/dryer/ELFE7637AT",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door, selected cycle, lock state, Start gesture, and visible power condition.",
+        "Remove an obviously overloaded load only where the cited manufacturer supports load reduction.",
+        "Leave the drum still and escalate after visible checks."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "Electrolux explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-ffre4120sw__will-not-start",
+      "modelId": "frigidaire-ffre4120sw",
+      "brand": "Frigidaire",
+      "model": "FFRE4120SW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["frigidaire-dryer-start"],
+      "modelEvidence": {
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FFRE4120SW",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Frigidaire vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "Frigidaire explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-ffre4120sw__not-heating",
+      "modelId": "frigidaire-ffre4120sw",
+      "brand": "Frigidaire",
+      "model": "FFRE4120SW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["frigidaire-electric-dryer-heat"],
+      "modelEvidence": {
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FFRE4120SW",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Frigidaire vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm a heated cycle rather than Air Only/Air Fluff/No Heat.",
+        "With the dryer cool and unplugged, clean and reinstall the owner-accessible lint screen.",
+        "For vented models only, observe the exterior vent flap without reaching into the duct."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "Frigidaire explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-ffre4120sw__drum-will-not-turn",
+      "modelId": "frigidaire-ffre4120sw",
+      "brand": "Frigidaire",
+      "model": "FFRE4120SW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["frigidaire-dryer-stop-overload"],
+      "modelEvidence": {
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FFRE4120SW",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Frigidaire vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door, selected cycle, lock state, Start gesture, and visible power condition.",
+        "Remove an obviously overloaded load only where the cited manufacturer supports load reduction.",
+        "Leave the drum still and escalate after visible checks."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "Frigidaire explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ned4655ew__will-not-start",
+      "modelId": "amana-ned4655ew",
+      "brand": "Amana",
+      "model": "NED4655EW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["amana-dryer-start"],
+      "modelEvidence": {
+        "url": "https://www.amana.com/laundry/dryers/top-load/p.6.5-cu.-ft.-electric-dryer-with-wrinkle-prevent-option.ned4655ew.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Amana vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "Amana explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ned4655ew__not-heating",
+      "modelId": "amana-ned4655ew",
+      "brand": "Amana",
+      "model": "NED4655EW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["amana-electric-dryer-heat"],
+      "modelEvidence": {
+        "url": "https://www.amana.com/laundry/dryers/top-load/p.6.5-cu.-ft.-electric-dryer-with-wrinkle-prevent-option.ned4655ew.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Amana vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm a heated cycle rather than Air Only/Air Fluff/No Heat.",
+        "With the dryer cool and unplugged, clean and reinstall the owner-accessible lint screen.",
+        "For vented models only, observe the exterior vent flap without reaching into the duct."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "Amana explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ned4655ew__drum-will-not-turn",
+      "modelId": "amana-ned4655ew",
+      "brand": "Amana",
+      "model": "NED4655EW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["amana-dryer-tumble"],
+      "modelEvidence": {
+        "url": "https://www.amana.com/laundry/dryers/top-load/p.6.5-cu.-ft.-electric-dryer-with-wrinkle-prevent-option.ned4655ew.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Amana vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door, selected cycle, lock state, Start gesture, and visible power condition.",
+        "Remove an obviously overloaded load only where the cited manufacturer supports load reduction.",
+        "Leave the drum still and escalate after visible checks."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "Amana explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htx24easkws__will-not-start",
+      "modelId": "hotpoint-htx24easkws",
+      "brand": "Hotpoint",
+      "model": "HTX24EASKWS",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["ge-hotpoint-dryer-start"],
+      "modelEvidence": {
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTX24EASKWS/support",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Hotpoint vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "GE Appliances explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htx24easkws__not-heating",
+      "modelId": "hotpoint-htx24easkws",
+      "brand": "Hotpoint",
+      "model": "HTX24EASKWS",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["ge-hotpoint-electric-dryer-heat"],
+      "modelEvidence": {
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTX24EASKWS/support",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Hotpoint vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm a heated cycle rather than Air Only/Air Fluff/No Heat.",
+        "With the dryer cool and unplugged, clean and reinstall the owner-accessible lint screen.",
+        "For vented models only, observe the exterior vent flap without reaching into the duct."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "GE Appliances explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htx24easkws__drum-will-not-turn",
+      "modelId": "hotpoint-htx24easkws",
+      "brand": "Hotpoint",
+      "model": "HTX24EASKWS",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["ge-hotpoint-dryer-drum"],
+      "modelEvidence": {
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTX24EASKWS/support",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Hotpoint vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door, selected cycle, lock state, Start gesture, and visible power condition.",
+        "Remove an obviously overloaded load only where the cited manufacturer supports load reduction.",
+        "Leave the drum still and escalate after visible checks."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "GE Appliances explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htx26easwww__will-not-start",
+      "modelId": "hotpoint-htx26easwww",
+      "brand": "Hotpoint",
+      "model": "HTX26EASWWW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["ge-hotpoint-dryer-start"],
+      "modelEvidence": {
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTX26EASWWW/support",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Hotpoint vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "GE Appliances explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htx26easwww__not-heating",
+      "modelId": "hotpoint-htx26easwww",
+      "brand": "Hotpoint",
+      "model": "HTX26EASWWW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["ge-hotpoint-electric-dryer-heat"],
+      "modelEvidence": {
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTX26EASWWW/support",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Hotpoint vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm a heated cycle rather than Air Only/Air Fluff/No Heat.",
+        "With the dryer cool and unplugged, clean and reinstall the owner-accessible lint screen.",
+        "For vented models only, observe the exterior vent flap without reaching into the duct."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "GE Appliances explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htx26easwww__drum-will-not-turn",
+      "modelId": "hotpoint-htx26easwww",
+      "brand": "Hotpoint",
+      "model": "HTX26EASWWW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["ge-hotpoint-dryer-drum"],
+      "modelEvidence": {
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTX26EASWWW/support",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Hotpoint vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door, selected cycle, lock state, Start gesture, and visible power condition.",
+        "Remove an obviously overloaded load only where the cited manufacturer supports load reduction.",
+        "Leave the drum still and escalate after visible checks."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "GE Appliances explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med6230hw__will-not-start",
+      "modelId": "maytag-med6230hw",
+      "brand": "Maytag",
+      "model": "MED6230HW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["maytag-dryer-start"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MED6230HW.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "Maytag explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med6230hw__not-heating",
+      "modelId": "maytag-med6230hw",
+      "brand": "Maytag",
+      "model": "MED6230HW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["maytag-electric-dryer-heat"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MED6230HW.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm a heated cycle rather than Air Only/Air Fluff/No Heat.",
+        "With the dryer cool and unplugged, clean and reinstall the owner-accessible lint screen.",
+        "For vented models only, observe the exterior vent flap without reaching into the duct."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "Maytag explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med6230hw__drum-will-not-turn",
+      "modelId": "maytag-med6230hw",
+      "brand": "Maytag",
+      "model": "MED6230HW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["maytag-dryer-tumble"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MED6230HW.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door, selected cycle, lock state, Start gesture, and visible power condition.",
+        "Remove an obviously overloaded load only where the cited manufacturer supports load reduction.",
+        "Leave the drum still and escalate after visible checks."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "Maytag explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med7230hw__will-not-start",
+      "modelId": "maytag-med7230hw",
+      "brand": "Maytag",
+      "model": "MED7230HW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["maytag-dryer-start"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MED7230HW.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "Maytag explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med7230hw__not-heating",
+      "modelId": "maytag-med7230hw",
+      "brand": "Maytag",
+      "model": "MED7230HW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["maytag-electric-dryer-heat"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MED7230HW.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm a heated cycle rather than Air Only/Air Fluff/No Heat.",
+        "With the dryer cool and unplugged, clean and reinstall the owner-accessible lint screen.",
+        "For vented models only, observe the exterior vent flap without reaching into the duct."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "Maytag explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med7230hw__drum-will-not-turn",
+      "modelId": "maytag-med7230hw",
+      "brand": "Maytag",
+      "model": "MED7230HW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["maytag-dryer-tumble"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MED7230HW.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door, selected cycle, lock state, Start gesture, and visible power condition.",
+        "Remove an obviously overloaded load only where the cited manufacturer supports load reduction.",
+        "Leave the drum still and escalate after visible checks."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "Maytag explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ned5800hw__will-not-start",
+      "modelId": "amana-ned5800hw",
+      "brand": "Amana",
+      "model": "NED5800HW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["amana-dryer-start"],
+      "modelEvidence": {
+        "url": "https://www.amana.com/owners-center-pdp.NED5800HW.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Amana vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "Amana explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ned5800hw__not-heating",
+      "modelId": "amana-ned5800hw",
+      "brand": "Amana",
+      "model": "NED5800HW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["amana-electric-dryer-heat"],
+      "modelEvidence": {
+        "url": "https://www.amana.com/owners-center-pdp.NED5800HW.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Amana vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm a heated cycle rather than Air Only/Air Fluff/No Heat.",
+        "With the dryer cool and unplugged, clean and reinstall the owner-accessible lint screen.",
+        "For vented models only, observe the exterior vent flap without reaching into the duct."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "Amana explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ned5800hw__drum-will-not-turn",
+      "modelId": "amana-ned5800hw",
+      "brand": "Amana",
+      "model": "NED5800HW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["amana-dryer-tumble"],
+      "modelEvidence": {
+        "url": "https://www.amana.com/owners-center-pdp.NED5800HW.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Amana vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door, selected cycle, lock state, Start gesture, and visible power condition.",
+        "Remove an obviously overloaded load only where the cited manufacturer supports load reduction.",
+        "Leave the drum still and escalate after visible checks."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "Amana explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7337aw__will-not-start",
+      "modelId": "electrolux-elfe7337aw",
+      "brand": "Electrolux",
+      "model": "ELFE7337AW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["electrolux-dryer-start"],
+      "modelEvidence": {
+        "url": "https://www.electrolux.com/en/p/washers-dryers/dryer/ELFE7337AW",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "Electrolux explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7337aw__not-heating",
+      "modelId": "electrolux-elfe7337aw",
+      "brand": "Electrolux",
+      "model": "ELFE7337AW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["electrolux-electric-dryer-heat"],
+      "modelEvidence": {
+        "url": "https://www.electrolux.com/en/p/washers-dryers/dryer/ELFE7337AW",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm a heated cycle rather than Air Only/Air Fluff/No Heat.",
+        "With the dryer cool and unplugged, clean and reinstall the owner-accessible lint screen.",
+        "For vented models only, observe the exterior vent flap without reaching into the duct."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "Electrolux explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7337aw__drum-will-not-turn",
+      "modelId": "electrolux-elfe7337aw",
+      "brand": "Electrolux",
+      "model": "ELFE7337AW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["electrolux-dryer-stop-overload"],
+      "modelEvidence": {
+        "url": "https://www.electrolux.com/en/p/washers-dryers/dryer/ELFE7337AW",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door, selected cycle, lock state, Start gesture, and visible power condition.",
+        "Remove an obviously overloaded load only where the cited manufacturer supports load reduction.",
+        "Leave the drum still and escalate after visible checks."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "Electrolux explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-flve7000aw__will-not-start",
+      "modelId": "frigidaire-flve7000aw",
+      "brand": "Frigidaire",
+      "model": "FLVE7000AW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["frigidaire-dryer-start"],
+      "modelEvidence": {
+        "url": "https://www.frigidaire.com/en/p/Laundry-Care/Dryers/FLVE7000AW",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Frigidaire vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "Frigidaire explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-flve7000aw__not-heating",
+      "modelId": "frigidaire-flve7000aw",
+      "brand": "Frigidaire",
+      "model": "FLVE7000AW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["frigidaire-electric-dryer-heat"],
+      "modelEvidence": {
+        "url": "https://www.frigidaire.com/en/p/Laundry-Care/Dryers/FLVE7000AW",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Frigidaire vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm a heated cycle rather than Air Only/Air Fluff/No Heat.",
+        "With the dryer cool and unplugged, clean and reinstall the owner-accessible lint screen.",
+        "For vented models only, observe the exterior vent flap without reaching into the duct."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "Frigidaire explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-flve7000aw__drum-will-not-turn",
+      "modelId": "frigidaire-flve7000aw",
+      "brand": "Frigidaire",
+      "model": "FLVE7000AW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["frigidaire-dryer-stop-overload"],
+      "modelEvidence": {
+        "url": "https://www.frigidaire.com/en/p/Laundry-Care/Dryers/FLVE7000AW",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Frigidaire vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door, selected cycle, lock state, Start gesture, and visible power condition.",
+        "Remove an obviously overloaded load only where the cited manufacturer supports load reduction.",
+        "Leave the drum still and escalate after visible checks."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "Frigidaire explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "bosch-wtg86403uc01__will-not-start",
+      "modelId": "bosch-wtg86403uc01",
+      "brand": "Bosch",
+      "model": "WTG86403UC/01",
+      "category": "dryer",
+      "topology": "compact-condensation-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["bosch-dryer-start", "bosch-wtg86403uc01-manual"],
+      "modelEvidence": {
+        "url": "https://www.bosch-home.com/us/en/productservice/WTG86403UC-01",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact WTG86403UC/01 compact condensation electric dryer; only Bosch-supported visible checks and exact-manual owner maintenance.",
+      "featureGates": [
+        "Exact model is a compact condensation dryer; never use a vented-dryer exterior-exhaust branch.",
+        "Use the exact Bosch manual for program, lint-filter, condenser, and condensate behavior."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "Bosch explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "bosch-wtg86403uc01__not-heating",
+      "modelId": "bosch-wtg86403uc01",
+      "brand": "Bosch",
+      "model": "WTG86403UC/01",
+      "category": "dryer",
+      "topology": "compact-condensation-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["bosch-dryer-heat", "bosch-wtg86403uc01-manual"],
+      "modelEvidence": {
+        "url": "https://www.bosch-home.com/us/en/productservice/WTG86403UC-01",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact WTG86403UC/01 compact condensation electric dryer; only Bosch-supported visible checks and exact-manual owner maintenance.",
+      "featureGates": [
+        "Exact model is a compact condensation dryer; never use a vented-dryer exterior-exhaust branch.",
+        "Use the exact Bosch manual for program, lint-filter, condenser, and condensate behavior."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm an appropriate drying program.",
+        "With the dryer cool and unplugged, clean the owner-accessible lint filter and condenser exactly as the manual directs.",
+        "If it is not warming, stop and contact Bosch support."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "Bosch explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "bosch-wtg86403uc01__drum-will-not-turn",
+      "modelId": "bosch-wtg86403uc01",
+      "brand": "Bosch",
+      "model": "WTG86403UC/01",
+      "category": "dryer",
+      "topology": "compact-condensation-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["bosch-dryer-drum", "bosch-wtg86403uc01-manual"],
+      "modelEvidence": {
+        "url": "https://www.bosch-home.com/us/en/productservice/WTG86403UC-01",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact WTG86403UC/01 compact condensation electric dryer; only Bosch-supported visible checks and exact-manual owner maintenance.",
+      "featureGates": [
+        "Exact model is a compact condensation dryer; never use a vented-dryer exterior-exhaust branch.",
+        "Use the exact Bosch manual for program, lint-filter, condenser, and condensate behavior."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the plug is seated and the door is fully closed.",
+        "Do not rotate the drum by hand; stop and contact Bosch support if it still does not spin."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "Bosch explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med6500mbk__will-not-start",
+      "modelId": "maytag-med6500mbk",
+      "brand": "Maytag",
+      "model": "MED6500MBK",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["maytag-dryer-start"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MED6500MBK.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "Maytag explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med6500mbk__not-heating",
+      "modelId": "maytag-med6500mbk",
+      "brand": "Maytag",
+      "model": "MED6500MBK",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["maytag-electric-dryer-heat"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MED6500MBK.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm a heated cycle rather than Air Only/Air Fluff/No Heat.",
+        "With the dryer cool and unplugged, clean and reinstall the owner-accessible lint screen.",
+        "For vented models only, observe the exterior vent flap without reaching into the duct."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "Maytag explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med6500mbk__drum-will-not-turn",
+      "modelId": "maytag-med6500mbk",
+      "brand": "Maytag",
+      "model": "MED6500MBK",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["maytag-dryer-tumble"],
+      "modelEvidence": {
+        "url": "https://www.maytag.com/owners-center-pdp.MED6500MBK.html",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door, selected cycle, lock state, Start gesture, and visible power condition.",
+        "Remove an obviously overloaded load only where the cited manufacturer supports load reduction.",
+        "Leave the drum still and escalate after visible checks."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "Maytag explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7437aw__will-not-start",
+      "modelId": "electrolux-elfe7437aw",
+      "brand": "Electrolux",
+      "model": "ELFE7437AW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "will-not-start",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-start-visible-only",
+      "sourceIds": ["electrolux-dryer-start"],
+      "modelEvidence": {
+        "url": "https://www.electrolux.com/en/p/washers-dryers/dryer/ELFE7437AW",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door is fully closed and no clothing is trapped.",
+        "Match the selected cycle, lock state, and Start gesture to the exact console.",
+        "From a dry, safe position only, observe the seated plug and household breaker."
+      ],
+      "excludedManufacturerSteps": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access."
+      ],
+      "professionalStop": "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks.",
+      "evidenceReason": "Electrolux explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7437aw__not-heating",
+      "modelId": "electrolux-elfe7437aw",
+      "brand": "Electrolux",
+      "model": "ELFE7437AW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "not-heating",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable",
+      "profile": "dryer-heat-visible-only",
+      "sourceIds": ["electrolux-electric-dryer-heat"],
+      "modelEvidence": {
+        "url": "https://www.electrolux.com/en/p/washers-dryers/dryer/ELFE7437AW",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm a heated cycle rather than Air Only/Air Fluff/No Heat.",
+        "With the dryer cool and unplugged, clean and reinstall the owner-accessible lint screen.",
+        "For vented models only, observe the exterior vent flap without reaching into the duct."
+      ],
+      "excludedManufacturerSteps": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access."
+      ],
+      "professionalStop": "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat.",
+      "evidenceReason": "Electrolux explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7437aw__drum-will-not-turn",
+      "modelId": "electrolux-elfe7437aw",
+      "brand": "Electrolux",
+      "model": "ELFE7437AW",
+      "category": "dryer",
+      "topology": "vented-electric-dryer",
+      "symptomId": "drum-will-not-turn",
+      "currentStatus": "unsupported",
+      "evidenceDecision": "supported",
+      "activationDisposition": "promotable-with-safe-profile-fork",
+      "profile": "dryer-drum-no-manual-rotation",
+      "sourceIds": ["electrolux-dryer-stop-overload"],
+      "modelEvidence": {
+        "url": "https://www.electrolux.com/en/p/washers-dryers/dryer/ELFE7437AW",
+        "purpose": "Exact model identity and topology only; not a sibling compatibility inference."
+      },
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "featureGates": [
+        "Exact official model page identifies a vented electric dryer.",
+        "Gas, heat-pump, compact-condensation, and washer/dryer-combo instructions are excluded."
+      ],
+      "homeownerObservableChecks": [
+        "Confirm the door, selected cycle, lock state, Start gesture, and visible power condition.",
+        "Remove an obviously overloaded load only where the cited manufacturer supports load reduction.",
+        "Leave the drum still and escalate after visible checks."
+      ],
+      "excludedManufacturerSteps": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access."
+      ],
+      "professionalStop": "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition.",
+      "evidenceReason": "Electrolux explicitly addresses this dryer symptom. The model page supplies exact identity/topology, while the route excludes disassembly and unsupported topology branches.",
+      "verifiedOn": "2026-08-29"
+    }
+  ]
+}

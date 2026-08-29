@@ -1,0 +1,3052 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-08-29",
+  "expectedCounts": { "washer": 65, "dishwasher": 49, "dryer": 42 },
+  "evidenceRules": [
+    "Every row is an explicit exact catalog model × symptom decision from the category review.",
+    "Model identity evidence never substitutes for symptom troubleshooting evidence.",
+    "Only visible, owner-safe observations shared by the cited manufacturer guidance are active.",
+    "No row creates an exact-part or purchase claim.",
+    "Blocked rows remain absent and cannot inherit evidence from a neighbor, sibling brand, or topology."
+  ],
+  "sources": {
+    "dishwasher-amana-cleaning": {
+      "id": "dishwasher-amana-cleaning",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishes are not clean",
+      "url": "https://producthelp.amana.com/Dishwashers/Dishwasher/Wash_Performance/None_of_the_Dishes_are_Clean/Dishes_are_not_Clean",
+      "publisher": "Amana",
+      "appliesTo": "Amana dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-amana-door": {
+      "id": "dishwasher-amana-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher door will not close",
+      "url": "https://producthelp.amana.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "publisher": "Amana",
+      "appliesTo": "Amana dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-amana-fill": {
+      "id": "dishwasher-amana-fill",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher not filling with water",
+      "url": "https://producthelp.amana.com/Dishwashers/Dishwasher/Cycle_Concerns/Not_Filling%2F%2FNo_Water/Not_Filling_With_Water_-_Dishwasher",
+      "publisher": "Amana",
+      "appliesTo": "Amana dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-amana-leak": {
+      "id": "dishwasher-amana-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher leaking underneath",
+      "url": "https://producthelp.amana.com/Dishwashers/Dishwasher/Leaking/Underneath_or_Behind/Leaking_-_Underneath_-_Dishwasher",
+      "publisher": "Amana",
+      "appliesTo": "Amana dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-bosch-door": {
+      "id": "dishwasher-bosch-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Bosch dishwasher troubleshooting",
+      "url": "https://www.bosch-home.com/us/owner-support/dishwashers/troubleshooting",
+      "publisher": "Bosch",
+      "appliesTo": "Bosch dishwashers; feature-specific branches are model-gated",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-electrolux-cleaning": {
+      "id": "dishwasher-electrolux-cleaning",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher not cleaning",
+      "url": "https://owner.electrolux.com/support-articles/article/1831286-dishwasher-not-cleaning",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-electrolux-door": {
+      "id": "dishwasher-electrolux-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher error CL or Cd: door is open",
+      "url": "https://owner.electrolux.com/support-articles/article/1830354-dishwasher-error-code-cl-or-cd-door-is-open",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux dishwashers that display CL or Cd",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-electrolux-fill": {
+      "id": "dishwasher-electrolux-fill",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher not filling",
+      "url": "https://owner.electrolux.com/support-articles/article/1835628-dishwasher-not-filling",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-electrolux-leak": {
+      "id": "dishwasher-electrolux-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher water leaking",
+      "url": "https://owner.electrolux.com/support-articles/article/1838717-dishwasher-water-leaking",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-ge-door": {
+      "id": "dishwasher-ge-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher door does not close properly",
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17529",
+      "publisher": "GE Appliances",
+      "appliesTo": "GE Appliances dishwashers; adjustable-rack branch is model-gated",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-hotpoint-model-manual": {
+      "id": "dishwasher-hotpoint-model-manual",
+      "kind": "manufacturer-troubleshooting",
+      "title": "HDF310PGRWW owner manual and support",
+      "url": "https://products.geappliances.com/appliance/gea-specs/HDF310PGRWW/support",
+      "publisher": "GE Appliances / Hotpoint",
+      "appliesTo": "Hotpoint HDF310PGRWW only",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-kitchenaid-cleaning": {
+      "id": "dishwasher-kitchenaid-cleaning",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishes are not clean",
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Wash_Performance/None_of_the_Dishes_are_Clean/Dishes_are_not_Clean",
+      "publisher": "KitchenAid",
+      "appliesTo": "KitchenAid dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-kitchenaid-door": {
+      "id": "dishwasher-kitchenaid-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher door will not close",
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "publisher": "KitchenAid",
+      "appliesTo": "KitchenAid dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-kitchenaid-fill": {
+      "id": "dishwasher-kitchenaid-fill",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher not filling with water",
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Cycle_Concerns/Not_Filling%2F%2FNo_Water/Not_Filling_With_Water_-_Dishwasher",
+      "publisher": "KitchenAid",
+      "appliesTo": "KitchenAid dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-kitchenaid-leak": {
+      "id": "dishwasher-kitchenaid-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher leaking from door",
+      "url": "https://producthelp.kitchenaid.com/Dishwashers/Dishwasher/Leaking/Front%2F%2FDoor/Leaking_from_Door",
+      "publisher": "KitchenAid",
+      "appliesTo": "KitchenAid dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-lg-ldfn3432-door-manual": {
+      "id": "dishwasher-lg-ldfn3432-door-manual",
+      "kind": "manufacturer-troubleshooting",
+      "title": "LDFN3432T exact support page and owner's manual index",
+      "url": "https://www.lg.com/us/support/product/lg-LDFN3432T",
+      "publisher": "LG",
+      "appliesTo": "LDFN3432T.ASTEEUS only; the indexed owner's manual directs checking that the door is completely closed and latched",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-lg-ldfn4542-door-manual": {
+      "id": "dishwasher-lg-ldfn4542-door-manual",
+      "kind": "manufacturer-troubleshooting",
+      "title": "LDFN4542S exact support page and owner's manual index",
+      "url": "https://www.lg.com/us/support/product/lg-LDFN4542S.ASSESNA",
+      "publisher": "LG",
+      "appliesTo": "LDFN4542S.ASSESNA only; the indexed owner's manual directs checking that the door is completely closed and latched",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-lg-ldps6762-door-manual": {
+      "id": "dishwasher-lg-ldps6762-door-manual",
+      "kind": "manufacturer-troubleshooting",
+      "title": "LDPS6762S exact support page and owner's manual index",
+      "url": "https://www.lg.com/us/support/product/lg-LDPS6762S.ASSESNA",
+      "publisher": "LG",
+      "appliesTo": "LDPS6762S.ASSESNA only; the indexed owner's manual directs checking that the door is completely closed and latched",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-lg-ldth7972-door-manual": {
+      "id": "dishwasher-lg-ldth7972-door-manual",
+      "kind": "manufacturer-troubleshooting",
+      "title": "LDTH7972S exact support page and owner's manual index",
+      "url": "https://www.lg.com/us/support/product/lg-LDTH7972S.ASSESNA?tab=1",
+      "publisher": "LG",
+      "appliesTo": "LDTH7972S.ASSESNA only; the indexed owner's manual directs checking that the door is completely closed and latched",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-maytag-cleaning": {
+      "id": "dishwasher-maytag-cleaning",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishes are not clean",
+      "url": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Wash_Performance/None_of_the_Dishes_are_Clean/Dishes_are_not_Clean",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-maytag-door": {
+      "id": "dishwasher-maytag-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher door will not close",
+      "url": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-maytag-fill": {
+      "id": "dishwasher-maytag-fill",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher not filling with water",
+      "url": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Cycle_Concerns/Not_Filling%2F%2FNo_Water/Not_Filling_With_Water_-_Dishwasher",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-maytag-leak": {
+      "id": "dishwasher-maytag-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher leaking from door",
+      "url": "https://producthelp.maytag.com/Dishwashers/Dishwasher/Leaking/Front%2F%2FDoor/Leaking_from_Door",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-samsung-cleaning": {
+      "id": "dishwasher-samsung-cleaning",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher cycle ends before dishes are clean",
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10000118/",
+      "publisher": "Samsung",
+      "appliesTo": "Samsung dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-samsung-fill": {
+      "id": "dishwasher-samsung-fill",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Samsung dishwasher water-supply error guidance",
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10004499/",
+      "publisher": "Samsung",
+      "appliesTo": "Samsung dishwashers reporting a water-supply error",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-samsung-leak": {
+      "id": "dishwasher-samsung-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Samsung dishwasher leak guidance",
+      "url": "https://www.samsung.com/us/support/troubleshoot/TSG10010593/",
+      "publisher": "Samsung",
+      "appliesTo": "Samsung dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dishwasher-whirlpool-door": {
+      "id": "dishwasher-whirlpool-door",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Dishwasher door will not close",
+      "url": "https://producthelp.whirlpool.com/Dishwashers/Dishwasher/Door_Concerns/Door_Will_Not_Close/Door_Will_Not_Close_-_Dishwasher",
+      "publisher": "Whirlpool",
+      "appliesTo": "Whirlpool dishwashers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-amana-dryer-start": {
+      "id": "dryer-amana-dryer-start",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana dryer troubleshooting: Door, cycle, Start control, Control Lock, and visible power checks.",
+      "url": "https://producthelp.amana.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Starting_or_Not_Operating_-_Dryer",
+      "publisher": "Amana",
+      "appliesTo": "Amana NED5800HW; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-amana-dryer-tumble": {
+      "id": "dryer-amana-dryer-tumble",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana dryer troubleshooting: Visible power and Start-control observations followed by service; terminal access is excluded.",
+      "url": "https://producthelp.amana.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Tumbling_or_Spinning_-_Dryer",
+      "publisher": "Amana",
+      "appliesTo": "Amana NED5800HW; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-amana-electric-dryer-heat": {
+      "id": "dryer-amana-electric-dryer-heat",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana dryer troubleshooting: Air Only, external vent, and electric-dryer dual-breaker checks; terminal access is excluded.",
+      "url": "https://producthelp.amana.com/Laundry/Dryers/Product_Info/Dryer_Product_Assistance/Dryer_is_Not_Heating",
+      "publisher": "Amana",
+      "appliesTo": "Amana NED5800HW; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-bosch-dryer-drum": {
+      "id": "dryer-bosch-dryer-drum",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Bosch dryer troubleshooting: Plug and door checks followed by Bosch support; no drum manipulation.",
+      "url": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dryers-repair-dryer-drum-not-spinning",
+      "publisher": "Bosch",
+      "appliesTo": "Bosch WTG86403UC/01; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-bosch-dryer-heat": {
+      "id": "dryer-bosch-dryer-heat",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Bosch dryer troubleshooting: No-heat condition is explicitly professional-diagnosis-only.",
+      "url": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dryers-repair-dryer-not-getting-warm",
+      "publisher": "Bosch",
+      "appliesTo": "Bosch WTG86403UC/01; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-bosch-dryer-start": {
+      "id": "dryer-bosch-dryer-start",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Bosch dryer troubleshooting: Plug, door, program, breaker, and professional-stop checks.",
+      "url": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dryers-repair-dryer-not-switching-on",
+      "publisher": "Bosch",
+      "appliesTo": "Bosch WTG86403UC/01; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-bosch-wtg86403uc01-manual": {
+      "id": "dryer-bosch-wtg86403uc01-manual",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Bosch dryer troubleshooting: Exact WTG86403UC manual identifies condensation topology, lint filter, condenser, programs, and troubleshooting boundaries.",
+      "url": "https://media3.bosch-home.com/Documents/9001883723_A.pdf",
+      "publisher": "Bosch",
+      "appliesTo": "Bosch WTG86403UC/01; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-electrolux-dryer-start": {
+      "id": "dryer-electrolux-dryer-start",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Electrolux dryer troubleshooting: Start control, cycle selector, door, plug, and household breaker checks.",
+      "url": "https://owner.electrolux.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux ELFE7437AW; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-electrolux-dryer-stop-overload": {
+      "id": "dryer-electrolux-dryer-stop-overload",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Electrolux dryer troubleshooting: Overload reduction, cool-down, and service stop for the thermal limiter.",
+      "url": "https://owner.electrolux.com/support-articles/article/1853011-what-should-i-do-if-my-dryer-stops-operating-?locale=en-US",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux ELFE7437AW; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-electrolux-electric-dryer-heat": {
+      "id": "dryer-electrolux-electric-dryer-heat",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Electrolux dryer troubleshooting: Electric-dryer dual-circuit and Air Fluff checks; outlet verification is professional-only.",
+      "url": "https://owner.electrolux.com/support-articles/article/1853007-my-dryer-is-running-but-does-not-seem-to-be-heating-what-should-i-do-",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux ELFE7437AW; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-frigidaire-dryer-start": {
+      "id": "dryer-frigidaire-dryer-start",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Frigidaire dryer troubleshooting: Start control, cycle selector, door, plug, and household breaker checks.",
+      "url": "https://owner.frigidaire.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+      "publisher": "Frigidaire",
+      "appliesTo": "Frigidaire FLVE7000AW; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-frigidaire-dryer-stop-overload": {
+      "id": "dryer-frigidaire-dryer-stop-overload",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Frigidaire dryer troubleshooting: Overload reduction, cool-down, and service stop for the thermal limiter.",
+      "url": "https://owner.frigidaire.com/support-articles/article/1853011-what-should-i-do-if-my-dryer-stops-operating-",
+      "publisher": "Frigidaire",
+      "appliesTo": "Frigidaire FLVE7000AW; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-frigidaire-electric-dryer-heat": {
+      "id": "dryer-frigidaire-electric-dryer-heat",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Frigidaire dryer troubleshooting: Electric-dryer dual-circuit and Air Fluff checks; outlet verification is professional-only.",
+      "url": "https://owner.frigidaire.com/support-articles/article/1853007-my-dryer-is-running-but-does-not-seem-to-be-heating-what-should-i-do-",
+      "publisher": "Frigidaire",
+      "appliesTo": "Frigidaire FLVE7000AW; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-ge-hotpoint-dryer-drum": {
+      "id": "dryer-ge-hotpoint-dryer-drum",
+      "kind": "manufacturer-troubleshooting",
+      "title": "GE Appliances dryer troubleshooting: Load observation and service escalation; the manufacturer's hand-turn test is deliberately excluded.",
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17096",
+      "publisher": "GE Appliances",
+      "appliesTo": "Hotpoint HTX26EASWWW; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-ge-hotpoint-dryer-start": {
+      "id": "dryer-ge-hotpoint-dryer-start",
+      "kind": "manufacturer-troubleshooting",
+      "title": "GE Appliances dryer troubleshooting: Plug, door, cycle, Start control, and breaker checks; exact Hotpoint owner pages link the GE-hosted support library.",
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17381",
+      "publisher": "GE Appliances",
+      "appliesTo": "Hotpoint HTX26EASWWW; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-ge-hotpoint-electric-dryer-heat": {
+      "id": "dryer-ge-hotpoint-electric-dryer-heat",
+      "kind": "manufacturer-troubleshooting",
+      "title": "GE Appliances dryer troubleshooting: Heated-cycle, airflow, and household-breaker checks; cord-terminal inspection is excluded.",
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=16921",
+      "publisher": "GE Appliances",
+      "appliesTo": "Hotpoint HTX26EASWWW; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-maytag-dryer-start": {
+      "id": "dryer-maytag-dryer-start",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag dryer troubleshooting: Door, cycle, Start control, Control Lock, visible power, and household breaker checks.",
+      "url": "https://producthelp.maytag.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Starting_or_Not_Operating_-_Dryer",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag MED6500MBK; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-maytag-dryer-tumble": {
+      "id": "dryer-maytag-dryer-tumble",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag dryer troubleshooting: Visible power and Start-control observations followed by service; terminal access is excluded.",
+      "url": "https://producthelp.maytag.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Tumbling_or_Spinning_-_Dryer",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag MED6500MBK; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "dryer-maytag-electric-dryer-heat": {
+      "id": "dryer-maytag-electric-dryer-heat",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag dryer troubleshooting: Electric-dryer dual-breaker and Air Only checks; terminal-block instructions are excluded.",
+      "url": "https://producthelp.maytag.com/Laundry/Dryers/Dryer/Operation/Not_Heating/Not_Heating_-_Electric_Dryer",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag MED6500MBK; Content was used only for the stated visible or owner-accessible checks; unsafe and wrong-topology sections are excluded.",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-amana-front-leak": {
+      "id": "washer-amana-front-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana Washer is leaking owner guidance",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Leaking/Leaking_from_Underneath_or_Bottom_-_Front_Load_Washer",
+      "publisher": "Amana",
+      "appliesTo": "Amana front-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-amana-front-spin": {
+      "id": "washer-amana-front-spin",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana Washer will not spin owner guidance",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Spinning/Not_Spinning_-_Front_Load_Washer",
+      "publisher": "Amana",
+      "appliesTo": "Amana front-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-amana-front-start": {
+      "id": "washer-amana-front-start",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana Washer will not start owner guidance",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating_-_Front_Load_Washer",
+      "publisher": "Amana",
+      "appliesTo": "Amana front-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-amana-top-closure": {
+      "id": "washer-amana-top-closure",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana Door or lid will not close owner guidance",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "publisher": "Amana",
+      "appliesTo": "Amana top-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-amana-top-leak": {
+      "id": "washer-amana-top-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana Washer is leaking owner guidance",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_Water_Underneath_-_Washer",
+      "publisher": "Amana",
+      "appliesTo": "Amana top-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-amana-top-spin": {
+      "id": "washer-amana-top-spin",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana Washer will not spin owner guidance",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+      "publisher": "Amana",
+      "appliesTo": "Amana top-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-amana-top-start": {
+      "id": "washer-amana-top-start",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Amana Washer will not start owner guidance",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+      "publisher": "Amana",
+      "appliesTo": "Amana top-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-electrolux-closure": {
+      "id": "washer-electrolux-closure",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Electrolux Door or lid will not close owner guidance",
+      "url": "https://owner.electrolux.com/support-articles/article/1820509-laundry-front-loading-washer-displaying-error-code-e41-door-is-open-",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux front-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-electrolux-leak": {
+      "id": "washer-electrolux-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Electrolux Washer is leaking owner guidance",
+      "url": "https://owner.electrolux.com/support-articles/article/1831358-laundry-front-loading-washer-is-leaking-water-",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux front-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-electrolux-spin-manual-7337": {
+      "id": "washer-electrolux-spin-manual-7337",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Electrolux Washer will not spin owner guidance",
+      "url": "https://frigidaire.bynder.com/asset/eba93fb2-1a4d-4766-b03a-81b69b8eba26/A20448610-en-pdf.pdf",
+      "publisher": "Electrolux",
+      "appliesTo": "ELFW7337AW; linked as Complete Owner's Guide from the exact Electrolux model page",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-electrolux-spin-manual-7437-7738": {
+      "id": "washer-electrolux-spin-manual-7437-7738",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Electrolux Washer will not spin owner guidance",
+      "url": "https://frigidaire.bynder.com/m/673fe45bbf48d90f/original/A20448609-en-pdf.pdf",
+      "publisher": "Electrolux",
+      "appliesTo": "ELFW7437AW, ELFW7537AT, ELFW7637AT and ELFW7738AA; each exact Electrolux model page links this Complete Owner's Guide",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-electrolux-start": {
+      "id": "washer-electrolux-start",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Electrolux Washer will not start owner guidance",
+      "url": "https://owner.electrolux.com/support-articles/article/1853594-how-to-fix-your-front-load-washer-not-starting",
+      "publisher": "Electrolux",
+      "appliesTo": "Electrolux front-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-frigidaire-top-closure": {
+      "id": "washer-frigidaire-top-closure",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Frigidaire Door or lid will not close owner guidance",
+      "url": "https://owner.frigidaire.com/support-articles/article/1829706-laundry-top-loading-washer-displaying-error-code-e3-washer-lid-open-or-lid-lock-failed-",
+      "publisher": "Frigidaire",
+      "appliesTo": "Frigidaire top-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-ge-front-owner-manual": {
+      "id": "washer-ge-front-owner-manual",
+      "kind": "manufacturer-troubleshooting",
+      "title": "GE Appliances Door or lid will not close owner guidance",
+      "url": "https://images.salsify.com/image/upload/s--Q2ZqW1dH--/207c3da007ffc1f522fe0a1723081c5d6c09941e.pdf",
+      "publisher": "GE Appliances",
+      "appliesTo": "GFW850, GFW655, GFW650 and GFW550 model families named in the manual",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-ge-front-owner-manual-850": {
+      "id": "washer-ge-front-owner-manual-850",
+      "kind": "manufacturer-troubleshooting",
+      "title": "GE Appliances Door or lid will not close owner guidance",
+      "url": "https://images.salsify.com/image/upload/s--7SJ2Cn5O--/c7cd23acabd0dde381486804fd70bf93a72f5b8b.pdf",
+      "publisher": "GE Appliances",
+      "appliesTo": "GFW850 model family named in the manual",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-ge-hotpoint-top-owner-manual": {
+      "id": "washer-ge-hotpoint-top-owner-manual",
+      "kind": "manufacturer-troubleshooting",
+      "title": "GE Appliances Door or lid will not close owner guidance",
+      "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "publisher": "GE Appliances",
+      "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-lg-front-closure": {
+      "id": "washer-lg-front-closure",
+      "kind": "manufacturer-troubleshooting",
+      "title": "LG Door or lid will not close owner guidance",
+      "url": "https://www.lg.com/us/support/help-library/lg-front-load-washer-error-code-list-CT10000010-20155069413456",
+      "publisher": "LG",
+      "appliesTo": "LG front-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-maytag-front-leak": {
+      "id": "washer-maytag-front-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag Washer is leaking owner guidance",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Leaking/Leaking_from_Underneath_or_Bottom_-_Front_Load_Washer",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag front-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-maytag-front-spin": {
+      "id": "washer-maytag-front-spin",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag Washer will not spin owner guidance",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Spinning/Not_Spinning_-_Front_Load_Washer",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag front-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-maytag-front-start": {
+      "id": "washer-maytag-front-start",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag Washer will not start owner guidance",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating_-_Front_Load_Washer",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag front-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-maytag-top-closure": {
+      "id": "washer-maytag-top-closure",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag Door or lid will not close owner guidance",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag top-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-maytag-top-leak": {
+      "id": "washer-maytag-top-leak",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag Washer is leaking owner guidance",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_from_Front_or_Top_-_Washer",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag top-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-maytag-top-spin": {
+      "id": "washer-maytag-top-spin",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag Washer will not spin owner guidance",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag top-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-maytag-top-start": {
+      "id": "washer-maytag-top-start",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Maytag Washer will not start owner guidance",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+      "publisher": "Maytag",
+      "appliesTo": "Maytag top-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    },
+    "washer-whirlpool-top-closure": {
+      "id": "washer-whirlpool-top-closure",
+      "kind": "manufacturer-troubleshooting",
+      "title": "Whirlpool Door or lid will not close owner guidance",
+      "url": "https://producthelp.whirlpool.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "publisher": "Whirlpool",
+      "appliesTo": "Whirlpool top-load washers",
+      "verifiedOn": "2026-08-29",
+      "quality": "primary"
+    }
+  },
+  "records": [
+    {
+      "rowId": "amana-adb1400agw__door-will-not-close",
+      "modelId": "amana-adb1400agw",
+      "category": "dishwasher",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["dishwasher-amana-door"],
+      "applicability": "Amana dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "door-will-not-close",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-adb1400agw__is-leaking",
+      "modelId": "amana-adb1400agw",
+      "category": "dishwasher",
+      "symptomId": "is-leaking",
+      "sourceIds": ["dishwasher-amana-leak"],
+      "applicability": "Amana dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "is-leaking",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-adb1400agw__not-cleaning",
+      "modelId": "amana-adb1400agw",
+      "category": "dishwasher",
+      "symptomId": "not-cleaning",
+      "sourceIds": ["dishwasher-amana-cleaning"],
+      "applicability": "Amana dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "not-cleaning",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-adb1400agw__will-not-fill",
+      "modelId": "amana-adb1400agw",
+      "category": "dishwasher",
+      "symptomId": "will-not-fill",
+      "sourceIds": ["dishwasher-amana-fill"],
+      "applicability": "Amana dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "will-not-fill",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ned4655ew__drum-will-not-turn",
+      "modelId": "amana-ned4655ew",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-amana-dryer-tumble"],
+      "applicability": "Exact listed Amana vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ned4655ew__not-heating",
+      "modelId": "amana-ned4655ew",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-amana-electric-dryer-heat"],
+      "applicability": "Exact listed Amana vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ned4655ew__will-not-start",
+      "modelId": "amana-ned4655ew",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-amana-dryer-start"],
+      "applicability": "Exact listed Amana vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ned5800hw__drum-will-not-turn",
+      "modelId": "amana-ned5800hw",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-amana-dryer-tumble"],
+      "applicability": "Exact listed Amana vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ned5800hw__not-heating",
+      "modelId": "amana-ned5800hw",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-amana-electric-dryer-heat"],
+      "applicability": "Exact listed Amana vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ned5800hw__will-not-start",
+      "modelId": "amana-ned5800hw",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-amana-dryer-start"],
+      "applicability": "Exact listed Amana vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-nfw5800hw__is-leaking",
+      "modelId": "amana-nfw5800hw",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-amana-front-leak"],
+      "applicability": "Amana NFW5800HW; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-nfw5800hw__will-not-spin",
+      "modelId": "amana-nfw5800hw",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-amana-front-spin"],
+      "applicability": "Amana NFW5800HW; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-nfw5800hw__will-not-start",
+      "modelId": "amana-nfw5800hw",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-amana-front-start"],
+      "applicability": "Amana NFW5800HW; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4516fw__door-will-not-close",
+      "modelId": "amana-ntw4516fw",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-amana-top-closure"],
+      "applicability": "Amana NTW4516FW; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4516fw__is-leaking",
+      "modelId": "amana-ntw4516fw",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-amana-top-leak"],
+      "applicability": "Amana NTW4516FW; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4516fw__will-not-spin",
+      "modelId": "amana-ntw4516fw",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-amana-top-spin"],
+      "applicability": "Amana NTW4516FW; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4516fw__will-not-start",
+      "modelId": "amana-ntw4516fw",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-amana-top-start"],
+      "applicability": "Amana NTW4516FW; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4519jw__is-leaking",
+      "modelId": "amana-ntw4519jw",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-amana-top-leak"],
+      "applicability": "Amana NTW4519JW; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4519jw__will-not-spin",
+      "modelId": "amana-ntw4519jw",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-amana-top-spin"],
+      "applicability": "Amana NTW4519JW; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4519jw__will-not-start",
+      "modelId": "amana-ntw4519jw",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-amana-top-start"],
+      "applicability": "Amana NTW4519JW; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "bosch-shx5aem5n01__door-will-not-close",
+      "modelId": "bosch-shx5aem5n01",
+      "category": "dishwasher",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["dishwasher-bosch-door"],
+      "applicability": "Bosch dishwashers; feature-specific branches are model-gated; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "door-will-not-close",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "bosch-wtg86403uc01__drum-will-not-turn",
+      "modelId": "bosch-wtg86403uc01",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-bosch-dryer-drum", "dryer-bosch-wtg86403uc01-manual"],
+      "applicability": "Exact WTG86403UC/01 compact condensation electric dryer; only Bosch-supported visible checks and exact-manual owner maintenance.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "bosch-wtg86403uc01__not-heating",
+      "modelId": "bosch-wtg86403uc01",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-bosch-dryer-heat", "dryer-bosch-wtg86403uc01-manual"],
+      "applicability": "Exact WTG86403UC/01 compact condensation electric dryer; only Bosch-supported visible checks and exact-manual owner maintenance.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "bosch-wtg86403uc01__will-not-start",
+      "modelId": "bosch-wtg86403uc01",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-bosch-dryer-start", "dryer-bosch-wtg86403uc01-manual"],
+      "applicability": "Exact WTG86403UC/01 compact condensation electric dryer; only Bosch-supported visible checks and exact-manual owner maintenance.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-edsh4944as__door-will-not-close",
+      "modelId": "electrolux-edsh4944as",
+      "category": "dishwasher",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["dishwasher-electrolux-door"],
+      "applicability": "Electrolux dishwashers that display CL or Cd; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "door-will-not-close",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-edsh4944as__is-leaking",
+      "modelId": "electrolux-edsh4944as",
+      "category": "dishwasher",
+      "symptomId": "is-leaking",
+      "sourceIds": ["dishwasher-electrolux-leak"],
+      "applicability": "Electrolux dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "is-leaking",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-edsh4944as__not-cleaning",
+      "modelId": "electrolux-edsh4944as",
+      "category": "dishwasher",
+      "symptomId": "not-cleaning",
+      "sourceIds": ["dishwasher-electrolux-cleaning"],
+      "applicability": "Electrolux dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "not-cleaning",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-edsh4944as__will-not-fill",
+      "modelId": "electrolux-edsh4944as",
+      "category": "dishwasher",
+      "symptomId": "will-not-fill",
+      "sourceIds": ["dishwasher-electrolux-fill"],
+      "applicability": "Electrolux dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "will-not-fill",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7337aw__drum-will-not-turn",
+      "modelId": "electrolux-elfe7337aw",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-electrolux-dryer-stop-overload"],
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7337aw__not-heating",
+      "modelId": "electrolux-elfe7337aw",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-electrolux-electric-dryer-heat"],
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7337aw__will-not-start",
+      "modelId": "electrolux-elfe7337aw",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-electrolux-dryer-start"],
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7437aw__drum-will-not-turn",
+      "modelId": "electrolux-elfe7437aw",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-electrolux-dryer-stop-overload"],
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7437aw__not-heating",
+      "modelId": "electrolux-elfe7437aw",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-electrolux-electric-dryer-heat"],
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7437aw__will-not-start",
+      "modelId": "electrolux-elfe7437aw",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-electrolux-dryer-start"],
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7637at__drum-will-not-turn",
+      "modelId": "electrolux-elfe7637at",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-electrolux-dryer-stop-overload"],
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7637at__not-heating",
+      "modelId": "electrolux-elfe7637at",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-electrolux-electric-dryer-heat"],
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfe7637at__will-not-start",
+      "modelId": "electrolux-elfe7637at",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-electrolux-dryer-start"],
+      "applicability": "Exact listed Electrolux vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7337aw__is-leaking",
+      "modelId": "electrolux-elfw7337aw",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-electrolux-leak"],
+      "applicability": "Electrolux ELFW7337AW; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7337aw__will-not-spin",
+      "modelId": "electrolux-elfw7337aw",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-electrolux-spin-manual-7337"],
+      "applicability": "Electrolux ELFW7337AW; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7337aw__will-not-start",
+      "modelId": "electrolux-elfw7337aw",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-electrolux-start"],
+      "applicability": "Electrolux ELFW7337AW; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7437aw__door-will-not-close",
+      "modelId": "electrolux-elfw7437aw",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-electrolux-closure"],
+      "applicability": "Electrolux ELFW7437AW; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7437aw__is-leaking",
+      "modelId": "electrolux-elfw7437aw",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-electrolux-leak"],
+      "applicability": "Electrolux ELFW7437AW; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7437aw__will-not-spin",
+      "modelId": "electrolux-elfw7437aw",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-electrolux-spin-manual-7437-7738"],
+      "applicability": "Electrolux ELFW7437AW; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7437aw__will-not-start",
+      "modelId": "electrolux-elfw7437aw",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-electrolux-start"],
+      "applicability": "Electrolux ELFW7437AW; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7537at__is-leaking",
+      "modelId": "electrolux-elfw7537at",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-electrolux-leak"],
+      "applicability": "Electrolux ELFW7537AT; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7537at__will-not-spin",
+      "modelId": "electrolux-elfw7537at",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-electrolux-spin-manual-7437-7738"],
+      "applicability": "Electrolux ELFW7537AT; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7537at__will-not-start",
+      "modelId": "electrolux-elfw7537at",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-electrolux-start"],
+      "applicability": "Electrolux ELFW7537AT; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7637at__is-leaking",
+      "modelId": "electrolux-elfw7637at",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-electrolux-leak"],
+      "applicability": "Electrolux ELFW7637AT; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7637at__will-not-spin",
+      "modelId": "electrolux-elfw7637at",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-electrolux-spin-manual-7437-7738"],
+      "applicability": "Electrolux ELFW7637AT; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7637at__will-not-start",
+      "modelId": "electrolux-elfw7637at",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-electrolux-start"],
+      "applicability": "Electrolux ELFW7637AT; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7738aa__is-leaking",
+      "modelId": "electrolux-elfw7738aa",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-electrolux-leak"],
+      "applicability": "Electrolux ELFW7738AA; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7738aa__will-not-spin",
+      "modelId": "electrolux-elfw7738aa",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-electrolux-spin-manual-7437-7738"],
+      "applicability": "Electrolux ELFW7738AA; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7738aa__will-not-start",
+      "modelId": "electrolux-elfw7738aa",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-electrolux-start"],
+      "applicability": "Electrolux ELFW7738AA; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-ffre4120sw__drum-will-not-turn",
+      "modelId": "frigidaire-ffre4120sw",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-frigidaire-dryer-stop-overload"],
+      "applicability": "Exact listed Frigidaire vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-ffre4120sw__not-heating",
+      "modelId": "frigidaire-ffre4120sw",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-frigidaire-electric-dryer-heat"],
+      "applicability": "Exact listed Frigidaire vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-ffre4120sw__will-not-start",
+      "modelId": "frigidaire-ffre4120sw",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-frigidaire-dryer-start"],
+      "applicability": "Exact listed Frigidaire vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-fftw4120sw__door-will-not-close",
+      "modelId": "frigidaire-fftw4120sw",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-frigidaire-top-closure"],
+      "applicability": "Frigidaire FFTW4120SW; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-flve7000aw__drum-will-not-turn",
+      "modelId": "frigidaire-flve7000aw",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-frigidaire-dryer-stop-overload"],
+      "applicability": "Exact listed Frigidaire vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-flve7000aw__not-heating",
+      "modelId": "frigidaire-flve7000aw",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-frigidaire-electric-dryer-heat"],
+      "applicability": "Exact listed Frigidaire vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-flve7000aw__will-not-start",
+      "modelId": "frigidaire-flve7000aw",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-frigidaire-dryer-start"],
+      "applicability": "Exact listed Frigidaire vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gdp670sgvww__door-will-not-close",
+      "modelId": "ge-gdp670sgvww",
+      "category": "dishwasher",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["dishwasher-ge-door"],
+      "applicability": "GE Appliances dishwashers; adjustable-rack branch is model-gated; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "door-will-not-close",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gfw550ssnww__door-will-not-close",
+      "modelId": "ge-gfw550ssnww",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-ge-front-owner-manual"],
+      "applicability": "GE GFW550SSNWW; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gfw650ssnww__door-will-not-close",
+      "modelId": "ge-gfw650ssnww",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-ge-front-owner-manual"],
+      "applicability": "GE GFW650SSNWW; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gfw655ssvww__door-will-not-close",
+      "modelId": "ge-gfw655ssvww",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-ge-front-owner-manual"],
+      "applicability": "GE GFW655SSVWW; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gfw850spnrs__door-will-not-close",
+      "modelId": "ge-gfw850spnrs",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-ge-front-owner-manual-850"],
+      "applicability": "GE GFW850SPNRS; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gtw325aswww__door-will-not-close",
+      "modelId": "ge-gtw325aswww",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-ge-hotpoint-top-owner-manual"],
+      "applicability": "GE GTW325ASWWW; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gtw335asnww__door-will-not-close",
+      "modelId": "ge-gtw335asnww",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-ge-hotpoint-top-owner-manual"],
+      "applicability": "GE GTW335ASNWW; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gtw385aswws__door-will-not-close",
+      "modelId": "ge-gtw385aswws",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-ge-hotpoint-top-owner-manual"],
+      "applicability": "GE GTW385ASWWS; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gtw465asnww__door-will-not-close",
+      "modelId": "ge-gtw465asnww",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-ge-hotpoint-top-owner-manual"],
+      "applicability": "GE GTW465ASNWW; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gtw485aswwb__door-will-not-close",
+      "modelId": "ge-gtw485aswwb",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-ge-hotpoint-top-owner-manual"],
+      "applicability": "GE GTW485ASWWB; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-hdf310pgrww__door-will-not-close",
+      "modelId": "hotpoint-hdf310pgrww",
+      "category": "dishwasher",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["dishwasher-hotpoint-model-manual"],
+      "applicability": "Exact HDF310PGRWW owner-support/manual scope; no GE-brand neighbor transfer.",
+      "profile": "door-will-not-close",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-hdf310pgrww__is-leaking",
+      "modelId": "hotpoint-hdf310pgrww",
+      "category": "dishwasher",
+      "symptomId": "is-leaking",
+      "sourceIds": ["dishwasher-hotpoint-model-manual"],
+      "applicability": "Exact HDF310PGRWW owner-support/manual scope; no GE-brand neighbor transfer.",
+      "profile": "is-leaking",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-hdf310pgrww__not-cleaning",
+      "modelId": "hotpoint-hdf310pgrww",
+      "category": "dishwasher",
+      "symptomId": "not-cleaning",
+      "sourceIds": ["dishwasher-hotpoint-model-manual"],
+      "applicability": "Exact HDF310PGRWW owner-support/manual scope; no GE-brand neighbor transfer.",
+      "profile": "not-cleaning",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-hdf310pgrww__will-not-fill",
+      "modelId": "hotpoint-hdf310pgrww",
+      "category": "dishwasher",
+      "symptomId": "will-not-fill",
+      "sourceIds": ["dishwasher-hotpoint-model-manual"],
+      "applicability": "Exact HDF310PGRWW owner-support/manual scope; no GE-brand neighbor transfer.",
+      "profile": "will-not-fill",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw240askws__door-will-not-close",
+      "modelId": "hotpoint-htw240askws",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-ge-hotpoint-top-owner-manual"],
+      "applicability": "Hotpoint HTW240ASKWS; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw240askws__is-leaking",
+      "modelId": "hotpoint-htw240askws",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-ge-hotpoint-top-owner-manual"],
+      "applicability": "Hotpoint HTW240ASKWS; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw240askws__will-not-spin",
+      "modelId": "hotpoint-htw240askws",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-ge-hotpoint-top-owner-manual"],
+      "applicability": "Hotpoint HTW240ASKWS; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw240askws__will-not-start",
+      "modelId": "hotpoint-htw240askws",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-ge-hotpoint-top-owner-manual"],
+      "applicability": "Hotpoint HTW240ASKWS; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw265aswww__door-will-not-close",
+      "modelId": "hotpoint-htw265aswww",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-ge-hotpoint-top-owner-manual"],
+      "applicability": "Hotpoint HTW265ASWWW; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw265aswww__is-leaking",
+      "modelId": "hotpoint-htw265aswww",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-ge-hotpoint-top-owner-manual"],
+      "applicability": "Hotpoint HTW265ASWWW; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw265aswww__will-not-spin",
+      "modelId": "hotpoint-htw265aswww",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-ge-hotpoint-top-owner-manual"],
+      "applicability": "Hotpoint HTW265ASWWW; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw265aswww__will-not-start",
+      "modelId": "hotpoint-htw265aswww",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-ge-hotpoint-top-owner-manual"],
+      "applicability": "Hotpoint HTW265ASWWW; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htx24easkws__drum-will-not-turn",
+      "modelId": "hotpoint-htx24easkws",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-ge-hotpoint-dryer-drum"],
+      "applicability": "Exact listed Hotpoint vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htx24easkws__not-heating",
+      "modelId": "hotpoint-htx24easkws",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-ge-hotpoint-electric-dryer-heat"],
+      "applicability": "Exact listed Hotpoint vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htx24easkws__will-not-start",
+      "modelId": "hotpoint-htx24easkws",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-ge-hotpoint-dryer-start"],
+      "applicability": "Exact listed Hotpoint vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htx26easwww__drum-will-not-turn",
+      "modelId": "hotpoint-htx26easwww",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-ge-hotpoint-dryer-drum"],
+      "applicability": "Exact listed Hotpoint vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htx26easwww__not-heating",
+      "modelId": "hotpoint-htx26easwww",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-ge-hotpoint-electric-dryer-heat"],
+      "applicability": "Exact listed Hotpoint vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htx26easwww__will-not-start",
+      "modelId": "hotpoint-htx26easwww",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-ge-hotpoint-dryer-start"],
+      "applicability": "Exact listed Hotpoint vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdfe204kps__is-leaking",
+      "modelId": "kitchenaid-kdfe204kps",
+      "category": "dishwasher",
+      "symptomId": "is-leaking",
+      "sourceIds": ["dishwasher-kitchenaid-leak"],
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "is-leaking",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdfe204kps__not-cleaning",
+      "modelId": "kitchenaid-kdfe204kps",
+      "category": "dishwasher",
+      "symptomId": "not-cleaning",
+      "sourceIds": ["dishwasher-kitchenaid-cleaning"],
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "not-cleaning",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdfe204kps__will-not-fill",
+      "modelId": "kitchenaid-kdfe204kps",
+      "category": "dishwasher",
+      "symptomId": "will-not-fill",
+      "sourceIds": ["dishwasher-kitchenaid-fill"],
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "will-not-fill",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdte204kps__door-will-not-close",
+      "modelId": "kitchenaid-kdte204kps",
+      "category": "dishwasher",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["dishwasher-kitchenaid-door"],
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "door-will-not-close",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdte204kps__is-leaking",
+      "modelId": "kitchenaid-kdte204kps",
+      "category": "dishwasher",
+      "symptomId": "is-leaking",
+      "sourceIds": ["dishwasher-kitchenaid-leak"],
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "is-leaking",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdte204kps__not-cleaning",
+      "modelId": "kitchenaid-kdte204kps",
+      "category": "dishwasher",
+      "symptomId": "not-cleaning",
+      "sourceIds": ["dishwasher-kitchenaid-cleaning"],
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "not-cleaning",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdte204kps__will-not-fill",
+      "modelId": "kitchenaid-kdte204kps",
+      "category": "dishwasher",
+      "symptomId": "will-not-fill",
+      "sourceIds": ["dishwasher-kitchenaid-fill"],
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "will-not-fill",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdtm404kps__is-leaking",
+      "modelId": "kitchenaid-kdtm404kps",
+      "category": "dishwasher",
+      "symptomId": "is-leaking",
+      "sourceIds": ["dishwasher-kitchenaid-leak"],
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "is-leaking",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdtm404kps__not-cleaning",
+      "modelId": "kitchenaid-kdtm404kps",
+      "category": "dishwasher",
+      "symptomId": "not-cleaning",
+      "sourceIds": ["dishwasher-kitchenaid-cleaning"],
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "not-cleaning",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "kitchenaid-kdtm404kps__will-not-fill",
+      "modelId": "kitchenaid-kdtm404kps",
+      "category": "dishwasher",
+      "symptomId": "will-not-fill",
+      "sourceIds": ["dishwasher-kitchenaid-fill"],
+      "applicability": "KitchenAid dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "will-not-fill",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "lg-ldfn3432t__door-will-not-close",
+      "modelId": "lg-ldfn3432t",
+      "category": "dishwasher",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["dishwasher-lg-ldfn3432-door-manual"],
+      "applicability": "LDFN3432T.ASTEEUS only; the indexed owner's manual directs checking that the door is completely closed and latched; only visible obstruction and gentle closure checks transfer.",
+      "profile": "door-will-not-close",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "lg-ldfn4542s__door-will-not-close",
+      "modelId": "lg-ldfn4542s",
+      "category": "dishwasher",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["dishwasher-lg-ldfn4542-door-manual"],
+      "applicability": "LDFN4542S.ASSESNA only; the indexed owner's manual directs checking that the door is completely closed and latched; only visible obstruction and gentle closure checks transfer.",
+      "profile": "door-will-not-close",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "lg-ldps6762s__door-will-not-close",
+      "modelId": "lg-ldps6762s",
+      "category": "dishwasher",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["dishwasher-lg-ldps6762-door-manual"],
+      "applicability": "LDPS6762S.ASSESNA only; the indexed owner's manual directs checking that the door is completely closed and latched; only visible obstruction and gentle closure checks transfer.",
+      "profile": "door-will-not-close",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "lg-ldth7972s__door-will-not-close",
+      "modelId": "lg-ldth7972s",
+      "category": "dishwasher",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["dishwasher-lg-ldth7972-door-manual"],
+      "applicability": "LDTH7972S.ASSESNA only; the indexed owner's manual directs checking that the door is completely closed and latched; only visible obstruction and gentle closure checks transfer.",
+      "profile": "door-will-not-close",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "lg-wm6500hba__door-will-not-close",
+      "modelId": "lg-wm6500hba",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-lg-front-closure"],
+      "applicability": "LG WM6500HBA; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb4949skz__door-will-not-close",
+      "modelId": "maytag-mdb4949skz",
+      "category": "dishwasher",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["dishwasher-maytag-door"],
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "door-will-not-close",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb4949skz__is-leaking",
+      "modelId": "maytag-mdb4949skz",
+      "category": "dishwasher",
+      "symptomId": "is-leaking",
+      "sourceIds": ["dishwasher-maytag-leak"],
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "is-leaking",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb4949skz__not-cleaning",
+      "modelId": "maytag-mdb4949skz",
+      "category": "dishwasher",
+      "symptomId": "not-cleaning",
+      "sourceIds": ["dishwasher-maytag-cleaning"],
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "not-cleaning",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb4949skz__will-not-fill",
+      "modelId": "maytag-mdb4949skz",
+      "category": "dishwasher",
+      "symptomId": "will-not-fill",
+      "sourceIds": ["dishwasher-maytag-fill"],
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "will-not-fill",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb8959skz__door-will-not-close",
+      "modelId": "maytag-mdb8959skz",
+      "category": "dishwasher",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["dishwasher-maytag-door"],
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "door-will-not-close",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb8959skz__is-leaking",
+      "modelId": "maytag-mdb8959skz",
+      "category": "dishwasher",
+      "symptomId": "is-leaking",
+      "sourceIds": ["dishwasher-maytag-leak"],
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "is-leaking",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb8959skz__not-cleaning",
+      "modelId": "maytag-mdb8959skz",
+      "category": "dishwasher",
+      "symptomId": "not-cleaning",
+      "sourceIds": ["dishwasher-maytag-cleaning"],
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "not-cleaning",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mdb8959skz__will-not-fill",
+      "modelId": "maytag-mdb8959skz",
+      "category": "dishwasher",
+      "symptomId": "will-not-fill",
+      "sourceIds": ["dishwasher-maytag-fill"],
+      "applicability": "Maytag dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "will-not-fill",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med4500mw__drum-will-not-turn",
+      "modelId": "maytag-med4500mw",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-maytag-dryer-tumble"],
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med4500mw__not-heating",
+      "modelId": "maytag-med4500mw",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-maytag-electric-dryer-heat"],
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med4500mw__will-not-start",
+      "modelId": "maytag-med4500mw",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-maytag-dryer-start"],
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med6230hw__drum-will-not-turn",
+      "modelId": "maytag-med6230hw",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-maytag-dryer-tumble"],
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med6230hw__not-heating",
+      "modelId": "maytag-med6230hw",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-maytag-electric-dryer-heat"],
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med6230hw__will-not-start",
+      "modelId": "maytag-med6230hw",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-maytag-dryer-start"],
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med6500mbk__drum-will-not-turn",
+      "modelId": "maytag-med6500mbk",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-maytag-dryer-tumble"],
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med6500mbk__not-heating",
+      "modelId": "maytag-med6500mbk",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-maytag-electric-dryer-heat"],
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med6500mbk__will-not-start",
+      "modelId": "maytag-med6500mbk",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-maytag-dryer-start"],
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med7230hw__drum-will-not-turn",
+      "modelId": "maytag-med7230hw",
+      "category": "dryer",
+      "symptomId": "drum-will-not-turn",
+      "sourceIds": ["dryer-maytag-dryer-tumble"],
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-drum-no-manual-rotation",
+      "safetyBoundary": [
+        "Do not turn the drum by hand.",
+        "No belt, roller, motor, switch, blower, terminal, or panel access.",
+        "Stop for binding, scraping, overheating, burning odor, or any unresolved no-tumble condition."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med7230hw__not-heating",
+      "modelId": "maytag-med7230hw",
+      "category": "dryer",
+      "symptomId": "not-heating",
+      "sourceIds": ["dryer-maytag-electric-dryer-heat"],
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-heat-visible-only",
+      "safetyBoundary": [
+        "No five-minute empty hot-drum feel test.",
+        "No cord-cover, terminal-block, outlet-voltage, heating-element, thermal-device, cabinet, or internal-duct access.",
+        "Stop for scorching, unusual cabinet or cord heat, repeated breaker trip, smoke, burning odor, or normal visible airflow with no heat."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-med7230hw__will-not-start",
+      "modelId": "maytag-med7230hw",
+      "category": "dryer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["dryer-maytag-dryer-start"],
+      "applicability": "Exact listed Maytag vented electric dryer; visible controls, owner-accessible lint screen, and external household observations only.",
+      "profile": "dryer-start-visible-only",
+      "safetyBoundary": [
+        "No cord-cover, terminal-block, outlet-voltage, continuity, or panel access.",
+        "Stop for a damaged or hot cord, repeated breaker trip, smoke, burning odor, or unresolved failure after visible checks."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw5500fw__is-leaking",
+      "modelId": "maytag-mhw5500fw",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-maytag-front-leak"],
+      "applicability": "Maytag MHW5500FW; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw5500fw__will-not-spin",
+      "modelId": "maytag-mhw5500fw",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-maytag-front-spin"],
+      "applicability": "Maytag MHW5500FW; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw5500fw__will-not-start",
+      "modelId": "maytag-mhw5500fw",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-maytag-front-start"],
+      "applicability": "Maytag MHW5500FW; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw5630hw__is-leaking",
+      "modelId": "maytag-mhw5630hw",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-maytag-front-leak"],
+      "applicability": "Maytag MHW5630HW; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw5630hw__will-not-spin",
+      "modelId": "maytag-mhw5630hw",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-maytag-front-spin"],
+      "applicability": "Maytag MHW5630HW; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw5630hw__will-not-start",
+      "modelId": "maytag-mhw5630hw",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-maytag-front-start"],
+      "applicability": "Maytag MHW5630HW; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw6630hw__is-leaking",
+      "modelId": "maytag-mhw6630hw",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-maytag-front-leak"],
+      "applicability": "Maytag MHW6630HW; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw6630hw__will-not-spin",
+      "modelId": "maytag-mhw6630hw",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-maytag-front-spin"],
+      "applicability": "Maytag MHW6630HW; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw6630hw__will-not-start",
+      "modelId": "maytag-mhw6630hw",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-maytag-front-start"],
+      "applicability": "Maytag MHW6630HW; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw4505mw__is-leaking",
+      "modelId": "maytag-mvw4505mw",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-maytag-top-leak"],
+      "applicability": "Maytag MVW4505MW; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw4505mw__will-not-spin",
+      "modelId": "maytag-mvw4505mw",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-maytag-top-spin"],
+      "applicability": "Maytag MVW4505MW; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw4505mw__will-not-start",
+      "modelId": "maytag-mvw4505mw",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-maytag-top-start"],
+      "applicability": "Maytag MVW4505MW; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw5430mw__is-leaking",
+      "modelId": "maytag-mvw5430mw",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-maytag-top-leak"],
+      "applicability": "Maytag MVW5430MW; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw5430mw__will-not-spin",
+      "modelId": "maytag-mvw5430mw",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-maytag-top-spin"],
+      "applicability": "Maytag MVW5430MW; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw5430mw__will-not-start",
+      "modelId": "maytag-mvw5430mw",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-maytag-top-start"],
+      "applicability": "Maytag MVW5430MW; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw7232hw__door-will-not-close",
+      "modelId": "maytag-mvw7232hw",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-maytag-top-closure"],
+      "applicability": "Maytag MVW7232HW; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw7232hw__is-leaking",
+      "modelId": "maytag-mvw7232hw",
+      "category": "washer",
+      "symptomId": "is-leaking",
+      "sourceIds": ["washer-maytag-top-leak"],
+      "applicability": "Maytag MVW7232HW; primary-guided-checks.",
+      "profile": "Washer is leaking",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw7232hw__will-not-spin",
+      "modelId": "maytag-mvw7232hw",
+      "category": "washer",
+      "symptomId": "will-not-spin",
+      "sourceIds": ["washer-maytag-top-spin"],
+      "applicability": "Maytag MVW7232HW; primary-guided-checks.",
+      "profile": "Washer will not spin",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw7232hw__will-not-start",
+      "modelId": "maytag-mvw7232hw",
+      "category": "washer",
+      "symptomId": "will-not-start",
+      "sourceIds": ["washer-maytag-top-start"],
+      "applicability": "Maytag MVW7232HW; primary-guided-checks.",
+      "profile": "Washer will not start",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80b6060usaa__is-leaking",
+      "modelId": "samsung-dw80b6060usaa",
+      "category": "dishwasher",
+      "symptomId": "is-leaking",
+      "sourceIds": ["dishwasher-samsung-leak"],
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "is-leaking",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80b6060usaa__not-cleaning",
+      "modelId": "samsung-dw80b6060usaa",
+      "category": "dishwasher",
+      "symptomId": "not-cleaning",
+      "sourceIds": ["dishwasher-samsung-cleaning"],
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "not-cleaning",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80b6060usaa__will-not-fill",
+      "modelId": "samsung-dw80b6060usaa",
+      "category": "dishwasher",
+      "symptomId": "will-not-fill",
+      "sourceIds": ["dishwasher-samsung-fill"],
+      "applicability": "Samsung dishwashers reporting a water-supply error; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "will-not-fill",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80cg4021sr__is-leaking",
+      "modelId": "samsung-dw80cg4021sr",
+      "category": "dishwasher",
+      "symptomId": "is-leaking",
+      "sourceIds": ["dishwasher-samsung-leak"],
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "is-leaking",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80cg4021sr__not-cleaning",
+      "modelId": "samsung-dw80cg4021sr",
+      "category": "dishwasher",
+      "symptomId": "not-cleaning",
+      "sourceIds": ["dishwasher-samsung-cleaning"],
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "not-cleaning",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80cg4021sr__will-not-fill",
+      "modelId": "samsung-dw80cg4021sr",
+      "category": "dishwasher",
+      "symptomId": "will-not-fill",
+      "sourceIds": ["dishwasher-samsung-fill"],
+      "applicability": "Samsung dishwashers reporting a water-supply error; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "will-not-fill",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80cg5450sraa__is-leaking",
+      "modelId": "samsung-dw80cg5450sraa",
+      "category": "dishwasher",
+      "symptomId": "is-leaking",
+      "sourceIds": ["dishwasher-samsung-leak"],
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "is-leaking",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80cg5450sraa__not-cleaning",
+      "modelId": "samsung-dw80cg5450sraa",
+      "category": "dishwasher",
+      "symptomId": "not-cleaning",
+      "sourceIds": ["dishwasher-samsung-cleaning"],
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "not-cleaning",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80cg5450sraa__will-not-fill",
+      "modelId": "samsung-dw80cg5450sraa",
+      "category": "dishwasher",
+      "symptomId": "will-not-fill",
+      "sourceIds": ["dishwasher-samsung-fill"],
+      "applicability": "Samsung dishwashers reporting a water-supply error; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "will-not-fill",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80r2031usaa__is-leaking",
+      "modelId": "samsung-dw80r2031usaa",
+      "category": "dishwasher",
+      "symptomId": "is-leaking",
+      "sourceIds": ["dishwasher-samsung-leak"],
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "is-leaking",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80r2031usaa__not-cleaning",
+      "modelId": "samsung-dw80r2031usaa",
+      "category": "dishwasher",
+      "symptomId": "not-cleaning",
+      "sourceIds": ["dishwasher-samsung-cleaning"],
+      "applicability": "Samsung dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "not-cleaning",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "samsung-dw80r2031usaa__will-not-fill",
+      "modelId": "samsung-dw80r2031usaa",
+      "category": "dishwasher",
+      "symptomId": "will-not-fill",
+      "sourceIds": ["dishwasher-samsung-fill"],
+      "applicability": "Samsung dishwashers reporting a water-supply error; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "will-not-fill",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "whirlpool-wdt540hamz__door-will-not-close",
+      "modelId": "whirlpool-wdt540hamz",
+      "category": "dishwasher",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["dishwasher-whirlpool-door"],
+      "applicability": "Whirlpool dishwashers; feature-specific branches remain gated to the exact owner manual.",
+      "profile": "door-will-not-close",
+      "safetyBoundary": [
+        "No internal disassembly, energized testing, appliance movement, or component diagnosis.",
+        "No part or purchase claim is created by this symptom evidence.",
+        "If the named feature/error condition is absent, that feature-specific branch is omitted."
+      ],
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "whirlpool-wtw6157pw__door-will-not-close",
+      "modelId": "whirlpool-wtw6157pw",
+      "category": "washer",
+      "symptomId": "door-will-not-close",
+      "sourceIds": ["washer-whirlpool-top-closure"],
+      "applicability": "Whirlpool WTW6157PW; primary-guided-checks.",
+      "profile": "Door or lid will not close",
+      "safetyBoundary": [
+        "Water is near the plug, outlet, cord, controls, or another electrical source.",
+        "A step would require moving, opening, bypassing, disconnecting, tightening, or testing the washer.",
+        "The visible checks do not resolve the symptom."
+      ],
+      "verifiedOn": "2026-08-29"
+    }
+  ]
+}

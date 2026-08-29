@@ -1,0 +1,85 @@
+{
+  "auditedOn": "2026-08-29",
+  "endpoint": "https://catalog.shopify.com/api/ucp/mcp",
+  "criterion": "Commerce candidate exists only when an available returned variant contains the exact normalized SKU. Results never establish compatibility.",
+  "persistenceBoundary": "Only aggregate counts and identifiers are retained; seller, product, price, and checkout payloads are not cached.",
+  "results": [
+    {
+      "sku": "00631200",
+      "status": "present-available",
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 20,
+      "exactAvailableVariantCount": 19,
+      "exactCheckoutUrlCount": 20,
+      "rejectedNeighborVariantCount": 0,
+      "query": "00631200 dishwasher drain pump exact SKU"
+    },
+    {
+      "sku": "W10724439",
+      "status": "present-available",
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 11,
+      "exactAvailableVariantCount": 11,
+      "exactCheckoutUrlCount": 11,
+      "rejectedNeighborVariantCount": 9,
+      "query": "W10724439 dishwasher drain pump exact SKU"
+    },
+    {
+      "sku": "W10876537",
+      "status": "present-available",
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 20,
+      "exactAvailableVariantCount": 20,
+      "exactCheckoutUrlCount": 20,
+      "rejectedNeighborVariantCount": 0,
+      "query": "W10876537 dishwasher drain pump exact SKU"
+    },
+    {
+      "sku": "W11412291",
+      "status": "present-available",
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 7,
+      "exactAvailableVariantCount": 7,
+      "exactCheckoutUrlCount": 7,
+      "rejectedNeighborVariantCount": 13,
+      "query": "W11412291 dishwasher drain pump exact SKU"
+    },
+    {
+      "sku": "W11497943",
+      "status": "present-available",
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 8,
+      "exactAvailableVariantCount": 8,
+      "exactCheckoutUrlCount": 8,
+      "rejectedNeighborVariantCount": 12,
+      "query": "W11497943 dishwasher drain pump exact SKU"
+    },
+    {
+      "sku": "WD19X24651",
+      "status": "present-available",
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 3,
+      "exactAvailableVariantCount": 3,
+      "exactCheckoutUrlCount": 3,
+      "rejectedNeighborVariantCount": 17,
+      "query": "WD19X24651 dishwasher drain pump exact SKU"
+    },
+    {
+      "sku": "WD19X25461",
+      "status": "present-available",
+      "returnedProductCount": 20,
+      "returnedVariantCount": 20,
+      "exactVariantCount": 20,
+      "exactAvailableVariantCount": 20,
+      "exactCheckoutUrlCount": 20,
+      "rejectedNeighborVariantCount": 0,
+      "query": "WD19X25461 dishwasher drain pump exact SKU"
+    }
+  ]
+}

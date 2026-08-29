@@ -1,0 +1,3513 @@
+{
+  "schemaVersion": 1,
+  "category": "washer",
+  "verifiedOn": "2026-08-29",
+  "methodology": {
+    "baseline": "Current composed APPLIANCE_CATALOG in this worktree.",
+    "evidenceRule": "Current primary manufacturer model pages, manuals, and support articles only; no brand-neighbor or model-neighbor inference.",
+    "applicabilityRule": "Every promoted row requires exact model-family identity plus a same-brand source that explicitly applies to the model family or its front-/top-load topology.",
+    "safetyRule": "Only the intersection of source guidance with Clunk's non-invasive safety boundary is retained."
+  },
+  "counts": {
+    "washerIdentities": 56,
+    "totalPossiblePairs": 280,
+    "baselineSupportedPairs": 209,
+    "reviewedGaps": 71,
+    "promotableGuidedCheckRows": 65,
+    "blockedRows": 6,
+    "bySymptom": {
+      "will-not-drain": {
+        "gaps": 0,
+        "promotable": 0,
+        "blocked": 0
+      },
+      "door-will-not-close": {
+        "gaps": 20,
+        "promotable": 17,
+        "blocked": 3
+      },
+      "will-not-start": {
+        "gaps": 17,
+        "promotable": 16,
+        "blocked": 1
+      },
+      "will-not-spin": {
+        "gaps": 17,
+        "promotable": 16,
+        "blocked": 1
+      },
+      "is-leaking": {
+        "gaps": 17,
+        "promotable": 16,
+        "blocked": 1
+      }
+    },
+    "promotableByBrand": {
+      "Amana": 10,
+      "Electrolux": 16,
+      "Frigidaire": 1,
+      "GE": 9,
+      "Hotpoint": 8,
+      "LG": 1,
+      "Maytag": 19,
+      "Whirlpool": 1
+    }
+  },
+  "sources": {
+    "amana-front-start": {
+      "publisher": "Amana",
+      "kind": "manufacturer-support",
+      "appliesTo": "Amana front-load washers",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating_-_Front_Load_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "amana-front-spin": {
+      "publisher": "Amana",
+      "kind": "manufacturer-support",
+      "appliesTo": "Amana front-load washers",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Spinning/Not_Spinning_-_Front_Load_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "amana-front-leak": {
+      "publisher": "Amana",
+      "kind": "manufacturer-support",
+      "appliesTo": "Amana front-load washers",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Leaking/Leaking_from_Underneath_or_Bottom_-_Front_Load_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "amana-top-closure": {
+      "publisher": "Amana",
+      "kind": "manufacturer-support",
+      "appliesTo": "Amana top-load washers",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "amana-top-start": {
+      "publisher": "Amana",
+      "kind": "manufacturer-support",
+      "appliesTo": "Amana top-load washers",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "amana-top-spin": {
+      "publisher": "Amana",
+      "kind": "manufacturer-support",
+      "appliesTo": "Amana top-load washers",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "amana-top-leak": {
+      "publisher": "Amana",
+      "kind": "manufacturer-support",
+      "appliesTo": "Amana top-load washers",
+      "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_Water_Underneath_-_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "maytag-front-start": {
+      "publisher": "Maytag",
+      "kind": "manufacturer-support",
+      "appliesTo": "Maytag front-load washers",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating_-_Front_Load_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "maytag-front-spin": {
+      "publisher": "Maytag",
+      "kind": "manufacturer-support",
+      "appliesTo": "Maytag front-load washers",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Spinning/Not_Spinning_-_Front_Load_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "maytag-front-leak": {
+      "publisher": "Maytag",
+      "kind": "manufacturer-support",
+      "appliesTo": "Maytag front-load washers",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Leaking/Leaking_from_Underneath_or_Bottom_-_Front_Load_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "maytag-top-closure": {
+      "publisher": "Maytag",
+      "kind": "manufacturer-support",
+      "appliesTo": "Maytag top-load washers",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "maytag-top-start": {
+      "publisher": "Maytag",
+      "kind": "manufacturer-support",
+      "appliesTo": "Maytag top-load washers",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "maytag-top-spin": {
+      "publisher": "Maytag",
+      "kind": "manufacturer-support",
+      "appliesTo": "Maytag top-load washers",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "maytag-top-leak": {
+      "publisher": "Maytag",
+      "kind": "manufacturer-support",
+      "appliesTo": "Maytag top-load washers",
+      "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_from_Front_or_Top_-_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "whirlpool-top-closure": {
+      "publisher": "Whirlpool",
+      "kind": "manufacturer-support",
+      "appliesTo": "Whirlpool top-load washers",
+      "url": "https://producthelp.whirlpool.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "lg-front-closure": {
+      "publisher": "LG",
+      "kind": "manufacturer-support",
+      "appliesTo": "LG front-load washers",
+      "url": "https://www.lg.com/us/support/help-library/lg-front-load-washer-error-code-list-CT10000010-20155069413456",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "electrolux-start": {
+      "publisher": "Electrolux",
+      "kind": "manufacturer-support",
+      "appliesTo": "Electrolux front-load washers",
+      "url": "https://owner.electrolux.com/support-articles/article/1853594-how-to-fix-your-front-load-washer-not-starting",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "electrolux-spin-manual-7337": {
+      "publisher": "Electrolux",
+      "kind": "manufacturer-manual",
+      "appliesTo": "ELFW7337AW; linked as Complete Owner's Guide from the exact Electrolux model page",
+      "url": "https://frigidaire.bynder.com/asset/eba93fb2-1a4d-4766-b03a-81b69b8eba26/A20448610-en-pdf.pdf",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "electrolux-spin-manual-7437-7738": {
+      "publisher": "Electrolux",
+      "kind": "manufacturer-manual",
+      "appliesTo": "ELFW7437AW, ELFW7537AT, ELFW7637AT and ELFW7738AA; each exact Electrolux model page links this Complete Owner's Guide",
+      "url": "https://frigidaire.bynder.com/m/673fe45bbf48d90f/original/A20448609-en-pdf.pdf",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "electrolux-leak": {
+      "publisher": "Electrolux",
+      "kind": "manufacturer-support",
+      "appliesTo": "Electrolux front-load washers",
+      "url": "https://owner.electrolux.com/support-articles/article/1831358-laundry-front-loading-washer-is-leaking-water-",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "electrolux-closure": {
+      "publisher": "Electrolux",
+      "kind": "manufacturer-support",
+      "appliesTo": "Electrolux front-load washers",
+      "url": "https://owner.electrolux.com/support-articles/article/1820509-laundry-front-loading-washer-displaying-error-code-e41-door-is-open-",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "frigidaire-top-closure": {
+      "publisher": "Frigidaire",
+      "kind": "manufacturer-support",
+      "appliesTo": "Frigidaire top-load washers",
+      "url": "https://owner.frigidaire.com/support-articles/article/1829706-laundry-top-loading-washer-displaying-error-code-e3-washer-lid-open-or-lid-lock-failed-",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "ge-front-owner-manual": {
+      "publisher": "GE Appliances",
+      "kind": "manufacturer-manual",
+      "appliesTo": "GFW850, GFW655, GFW650 and GFW550 model families named in the manual",
+      "url": "https://images.salsify.com/image/upload/s--Q2ZqW1dH--/207c3da007ffc1f522fe0a1723081c5d6c09941e.pdf",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "ge-front-owner-manual-850": {
+      "publisher": "GE Appliances",
+      "kind": "manufacturer-manual",
+      "appliesTo": "GFW850 model family named in the manual",
+      "url": "https://images.salsify.com/image/upload/s--7SJ2Cn5O--/c7cd23acabd0dde381486804fd70bf93a72f5b8b.pdf",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    },
+    "ge-hotpoint-top-owner-manual": {
+      "publisher": "GE Appliances",
+      "kind": "manufacturer-manual",
+      "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+      "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+      "lastVerified": "2026-08-29",
+      "quality": "primary"
+    }
+  },
+  "records": [
+    {
+      "rowId": "ge-gfw550ssnww__door-will-not-close",
+      "applianceId": "ge-gfw550ssnww",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GFW550SSNWW",
+      "loadStyle": "front-load",
+      "topology": "front-filter",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "GE GFW550SSNWW official support",
+        "publisher": "GE",
+        "url": "https://www.geapplianceparts.com/store/parts/assembly/GFW550SSN0WW",
+        "appliesTo": "GFW550SSNWW"
+      },
+      "supportSourceId": "ge-front-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GFW850, GFW655, GFW650 and GFW550 model families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--Q2ZqW1dH--/207c3da007ffc1f522fe0a1723081c5d6c09941e.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GFW850, GFW655, GFW650 and GFW550 model families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gfw650ssnww__door-will-not-close",
+      "applianceId": "ge-gfw650ssnww",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GFW650SSNWW",
+      "loadStyle": "front-load",
+      "topology": "front-filter",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "GE GFW650SSNWW official support",
+        "publisher": "GE",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GFW650SSNWW/support",
+        "appliesTo": "GFW650SSNWW"
+      },
+      "supportSourceId": "ge-front-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GFW850, GFW655, GFW650 and GFW550 model families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--Q2ZqW1dH--/207c3da007ffc1f522fe0a1723081c5d6c09941e.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GFW850, GFW655, GFW650 and GFW550 model families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw5630hw__will-not-start",
+      "applianceId": "maytag-mhw5630hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW5630HW",
+      "loadStyle": "front-load",
+      "topology": "drawer-filter",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MHW5630HW official support",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MHW5630HW.html",
+        "appliesTo": "MHW5630HW"
+      },
+      "supportSourceId": "maytag-front-start",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag front-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating_-_Front_Load_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw5630hw__will-not-spin",
+      "applianceId": "maytag-mhw5630hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW5630HW",
+      "loadStyle": "front-load",
+      "topology": "drawer-filter",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MHW5630HW official support",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MHW5630HW.html",
+        "appliesTo": "MHW5630HW"
+      },
+      "supportSourceId": "maytag-front-spin",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag front-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Spinning/Not_Spinning_-_Front_Load_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw5630hw__is-leaking",
+      "applianceId": "maytag-mhw5630hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW5630HW",
+      "loadStyle": "front-load",
+      "topology": "drawer-filter",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MHW5630HW official support",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MHW5630HW.html",
+        "appliesTo": "MHW5630HW"
+      },
+      "supportSourceId": "maytag-front-leak",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag front-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Leaking/Leaking_from_Underneath_or_Bottom_-_Front_Load_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw6630hw__will-not-start",
+      "applianceId": "maytag-mhw6630hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW6630HW",
+      "loadStyle": "front-load",
+      "topology": "drawer-filter",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MHW6630HW official support",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MHW6630HW.html",
+        "appliesTo": "MHW6630HW"
+      },
+      "supportSourceId": "maytag-front-start",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag front-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating_-_Front_Load_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw6630hw__will-not-spin",
+      "applianceId": "maytag-mhw6630hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW6630HW",
+      "loadStyle": "front-load",
+      "topology": "drawer-filter",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MHW6630HW official support",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MHW6630HW.html",
+        "appliesTo": "MHW6630HW"
+      },
+      "supportSourceId": "maytag-front-spin",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag front-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Spinning/Not_Spinning_-_Front_Load_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw6630hw__is-leaking",
+      "applianceId": "maytag-mhw6630hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW6630HW",
+      "loadStyle": "front-load",
+      "topology": "drawer-filter",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MHW6630HW official support",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MHW6630HW.html",
+        "appliesTo": "MHW6630HW"
+      },
+      "supportSourceId": "maytag-front-leak",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag front-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Leaking/Leaking_from_Underneath_or_Bottom_-_Front_Load_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7537at__will-not-start",
+      "applianceId": "electrolux-elfw7537at",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7537AT",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7537AT official support",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7537AT",
+        "appliesTo": "ELFW7537AT"
+      },
+      "supportSourceId": "electrolux-start",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-support",
+        "appliesTo": "Electrolux front-load washers",
+        "url": "https://owner.electrolux.com/support-articles/article/1853594-how-to-fix-your-front-load-washer-not-starting",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Electrolux front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7537at__will-not-spin",
+      "applianceId": "electrolux-elfw7537at",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7537AT",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7537AT official support",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7537AT",
+        "appliesTo": "ELFW7537AT"
+      },
+      "supportSourceId": "electrolux-spin-manual-7437-7738",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-manual",
+        "appliesTo": "ELFW7437AW, ELFW7537AT, ELFW7637AT and ELFW7738AA; each exact Electrolux model page links this Complete Owner's Guide",
+        "url": "https://frigidaire.bynder.com/m/673fe45bbf48d90f/original/A20448609-en-pdf.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the ELFW7437AW, ELFW7537AT, ELFW7637AT and ELFW7738AA; each exact Electrolux model page links this Complete Owner's Guide primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7537at__is-leaking",
+      "applianceId": "electrolux-elfw7537at",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7537AT",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7537AT official support",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7537AT",
+        "appliesTo": "ELFW7537AT"
+      },
+      "supportSourceId": "electrolux-leak",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-support",
+        "appliesTo": "Electrolux front-load washers",
+        "url": "https://owner.electrolux.com/support-articles/article/1831358-laundry-front-loading-washer-is-leaking-water-",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Electrolux front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7637at__will-not-start",
+      "applianceId": "electrolux-elfw7637at",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7637AT",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7637AT official support",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7637AT",
+        "appliesTo": "ELFW7637AT"
+      },
+      "supportSourceId": "electrolux-start",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-support",
+        "appliesTo": "Electrolux front-load washers",
+        "url": "https://owner.electrolux.com/support-articles/article/1853594-how-to-fix-your-front-load-washer-not-starting",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Electrolux front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7637at__will-not-spin",
+      "applianceId": "electrolux-elfw7637at",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7637AT",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7637AT official support",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7637AT",
+        "appliesTo": "ELFW7637AT"
+      },
+      "supportSourceId": "electrolux-spin-manual-7437-7738",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-manual",
+        "appliesTo": "ELFW7437AW, ELFW7537AT, ELFW7637AT and ELFW7738AA; each exact Electrolux model page links this Complete Owner's Guide",
+        "url": "https://frigidaire.bynder.com/m/673fe45bbf48d90f/original/A20448609-en-pdf.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the ELFW7437AW, ELFW7537AT, ELFW7637AT and ELFW7738AA; each exact Electrolux model page links this Complete Owner's Guide primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7637at__is-leaking",
+      "applianceId": "electrolux-elfw7637at",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7637AT",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7637AT official support",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7637AT",
+        "appliesTo": "ELFW7637AT"
+      },
+      "supportSourceId": "electrolux-leak",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-support",
+        "appliesTo": "Electrolux front-load washers",
+        "url": "https://owner.electrolux.com/support-articles/article/1831358-laundry-front-loading-washer-is-leaking-water-",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Electrolux front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gtw465asnww__door-will-not-close",
+      "applianceId": "ge-gtw465asnww",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GTW465ASNWW",
+      "loadStyle": "top-load",
+      "topology": "hose-only",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "GE GTW465ASNWW official support",
+        "publisher": "GE",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GTW465ASNWW/support",
+        "appliesTo": "GTW465ASNWW"
+      },
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gtw585bsvws__door-will-not-close",
+      "applianceId": "ge-gtw585bsvws",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GTW585BSVWS",
+      "loadStyle": "top-load",
+      "topology": "hose-only",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "blocked",
+      "modelIdentitySource": {
+        "title": "GE GTW585BSVWS official support",
+        "publisher": "GE",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GTW585BSVWS/support",
+        "appliesTo": "GTW585BSVWS"
+      },
+      "supportSourceId": null,
+      "supportSource": null,
+      "evidenceStatement": null,
+      "blockedReason": "The current exact GE support page did not expose a manual or model-applicable closure instruction. The older GTW/HTW manual does not name this family.",
+      "safetyBoundary": "No guidance is proposed without applicable primary evidence.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": null,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw5430mw__will-not-start",
+      "applianceId": "maytag-mvw5430mw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW5430MW",
+      "loadStyle": "top-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MVW5430MW official support",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MVW5430MW.html",
+        "appliesTo": "MVW5430MW"
+      },
+      "supportSourceId": "maytag-top-start",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag top-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw5430mw__will-not-spin",
+      "applianceId": "maytag-mvw5430mw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW5430MW",
+      "loadStyle": "top-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MVW5430MW official support",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MVW5430MW.html",
+        "appliesTo": "MVW5430MW"
+      },
+      "supportSourceId": "maytag-top-spin",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag top-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw5430mw__is-leaking",
+      "applianceId": "maytag-mvw5430mw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW5430MW",
+      "loadStyle": "top-load",
+      "topology": "hose-only",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MVW5430MW official support",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MVW5430MW.html",
+        "appliesTo": "MVW5430MW"
+      },
+      "supportSourceId": "maytag-top-leak",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag top-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_from_Front_or_Top_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-fftw4120sw__door-will-not-close",
+      "applianceId": "frigidaire-fftw4120sw",
+      "category": "washer",
+      "brand": "Frigidaire",
+      "modelFamily": "FFTW4120SW",
+      "loadStyle": "top-load",
+      "topology": "hose-only",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Frigidaire FFTW4120SW official support",
+        "publisher": "Frigidaire",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FFTW4120SW",
+        "appliesTo": "FFTW4120SW"
+      },
+      "supportSourceId": "frigidaire-top-closure",
+      "supportSource": {
+        "publisher": "Frigidaire",
+        "kind": "manufacturer-support",
+        "appliesTo": "Frigidaire top-load washers",
+        "url": "https://owner.frigidaire.com/support-articles/article/1829706-laundry-top-loading-washer-displaying-error-code-e3-washer-lid-open-or-lid-lock-failed-",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Frigidaire top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "frigidaire-fffw5000qw__door-will-not-close",
+      "applianceId": "frigidaire-fffw5000qw",
+      "category": "washer",
+      "brand": "Frigidaire",
+      "modelFamily": "FFFW5000QW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "blocked",
+      "modelIdentitySource": {
+        "title": "Frigidaire FFFW5000QW official support",
+        "publisher": "Frigidaire",
+        "url": "https://www.frigidaire.com/en/p/owner-center/product-support/FFFW5000QW",
+        "appliesTo": "FFFW5000QW"
+      },
+      "supportSourceId": null,
+      "supportSource": null,
+      "evidenceStatement": null,
+      "blockedReason": "No current Frigidaire primary front-load closure article or exact-family manual was located. The top-load E3 article is inapplicable.",
+      "safetyBoundary": "No guidance is proposed without applicable primary evidence.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": null,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4519jw__will-not-start",
+      "applianceId": "amana-ntw4519jw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NTW4519JW",
+      "loadStyle": "top-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Amana NTW4519JW official support",
+        "publisher": "Amana",
+        "url": "https://www.amana.com/laundry/washers/top-load/p.large-capacity-top-load-washer-with-high-efficiency-agitator.ntw4519jw.html",
+        "appliesTo": "NTW4519JW"
+      },
+      "supportSourceId": "amana-top-start",
+      "supportSource": {
+        "publisher": "Amana",
+        "kind": "manufacturer-support",
+        "appliesTo": "Amana top-load washers",
+        "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Amana top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4519jw__will-not-spin",
+      "applianceId": "amana-ntw4519jw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NTW4519JW",
+      "loadStyle": "top-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Amana NTW4519JW official support",
+        "publisher": "Amana",
+        "url": "https://www.amana.com/laundry/washers/top-load/p.large-capacity-top-load-washer-with-high-efficiency-agitator.ntw4519jw.html",
+        "appliesTo": "NTW4519JW"
+      },
+      "supportSourceId": "amana-top-spin",
+      "supportSource": {
+        "publisher": "Amana",
+        "kind": "manufacturer-support",
+        "appliesTo": "Amana top-load washers",
+        "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Amana top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4519jw__is-leaking",
+      "applianceId": "amana-ntw4519jw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NTW4519JW",
+      "loadStyle": "top-load",
+      "topology": "hose-only",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Amana NTW4519JW official support",
+        "publisher": "Amana",
+        "url": "https://www.amana.com/laundry/washers/top-load/p.large-capacity-top-load-washer-with-high-efficiency-agitator.ntw4519jw.html",
+        "appliesTo": "NTW4519JW"
+      },
+      "supportSourceId": "amana-top-leak",
+      "supportSource": {
+        "publisher": "Amana",
+        "kind": "manufacturer-support",
+        "appliesTo": "Amana top-load washers",
+        "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_Water_Underneath_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Amana top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw240askws__door-will-not-close",
+      "applianceId": "hotpoint-htw240askws",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW240ASKWS",
+      "loadStyle": "top-load",
+      "topology": "hose-only",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Hotpoint HTW240ASKWS official support",
+        "publisher": "Hotpoint",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW240ASKWS/support",
+        "appliesTo": "HTW240ASKWS"
+      },
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw240askws__will-not-start",
+      "applianceId": "hotpoint-htw240askws",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW240ASKWS",
+      "loadStyle": "top-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Hotpoint HTW240ASKWS official support",
+        "publisher": "Hotpoint",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW240ASKWS/support",
+        "appliesTo": "HTW240ASKWS"
+      },
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw240askws__will-not-spin",
+      "applianceId": "hotpoint-htw240askws",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW240ASKWS",
+      "loadStyle": "top-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Hotpoint HTW240ASKWS official support",
+        "publisher": "Hotpoint",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW240ASKWS/support",
+        "appliesTo": "HTW240ASKWS"
+      },
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw240askws__is-leaking",
+      "applianceId": "hotpoint-htw240askws",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW240ASKWS",
+      "loadStyle": "top-load",
+      "topology": "hose-only",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Hotpoint HTW240ASKWS official support",
+        "publisher": "Hotpoint",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW240ASKWS/support",
+        "appliesTo": "HTW240ASKWS"
+      },
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gfw655ssvww__door-will-not-close",
+      "applianceId": "ge-gfw655ssvww",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GFW655SSVWW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "GE GFW655SSVWW official model/support page",
+        "publisher": "GE",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GFW655SSVWW/support",
+        "appliesTo": "GFW655SSV0WW"
+      },
+      "supportSourceId": "ge-front-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GFW850, GFW655, GFW650 and GFW550 model families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--Q2ZqW1dH--/207c3da007ffc1f522fe0a1723081c5d6c09941e.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GFW850, GFW655, GFW650 and GFW550 model families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gfw850spnrs__door-will-not-close",
+      "applianceId": "ge-gfw850spnrs",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GFW850SPNRS",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "GE GFW850SPNRS official model/support page",
+        "publisher": "GE",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GFW850SPNRS/support",
+        "appliesTo": "GFW850SPN0RS"
+      },
+      "supportSourceId": "ge-front-owner-manual-850",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GFW850 model family named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--7SJ2Cn5O--/c7cd23acabd0dde381486804fd70bf93a72f5b8b.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GFW850 model family named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gtw335asnww__door-will-not-close",
+      "applianceId": "ge-gtw335asnww",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GTW335ASNWW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "GE GTW335ASNWW official model/support page",
+        "publisher": "GE",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GTW335ASNWW/support",
+        "appliesTo": "GTW335ASN1WW"
+      },
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gtw485aswwb__door-will-not-close",
+      "applianceId": "ge-gtw485aswwb",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GTW485ASWWB",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "GE GTW485ASWWB official model/support page",
+        "publisher": "GE",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GTW485ASWWB/support",
+        "appliesTo": "GTW485ASWWB family; rating-label revision still required"
+      },
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw265aswww__door-will-not-close",
+      "applianceId": "hotpoint-htw265aswww",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW265ASWWW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Hotpoint HTW265ASWWW official model/support page",
+        "publisher": "Hotpoint",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW265ASWWW/support",
+        "appliesTo": "HTW265ASW0WW"
+      },
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw265aswww__will-not-start",
+      "applianceId": "hotpoint-htw265aswww",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW265ASWWW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Hotpoint HTW265ASWWW official model/support page",
+        "publisher": "Hotpoint",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW265ASWWW/support",
+        "appliesTo": "HTW265ASW0WW"
+      },
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw265aswww__will-not-spin",
+      "applianceId": "hotpoint-htw265aswww",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW265ASWWW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Hotpoint HTW265ASWWW official model/support page",
+        "publisher": "Hotpoint",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW265ASWWW/support",
+        "appliesTo": "HTW265ASW0WW"
+      },
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw265aswww__is-leaking",
+      "applianceId": "hotpoint-htw265aswww",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW265ASWWW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Hotpoint HTW265ASWWW official model/support page",
+        "publisher": "Hotpoint",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW265ASWWW/support",
+        "appliesTo": "HTW265ASW0WW"
+      },
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw2065sbww__door-will-not-close",
+      "applianceId": "hotpoint-htw2065sbww",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW2065SBWW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "blocked",
+      "modelIdentitySource": {
+        "title": "Hotpoint HTW2065SBWW official model/support page",
+        "publisher": "Hotpoint",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW2065SBWW/support",
+        "appliesTo": "HTW2065SBWW family; rating-label revision still required"
+      },
+      "supportSourceId": null,
+      "supportSource": null,
+      "evidenceStatement": null,
+      "blockedReason": "The exact current support page did not expose a manual or model-applicable closure guidance, and the current HTW240/HTW265 manual does not name HTW2065SBWW.",
+      "safetyBoundary": "No guidance is proposed without applicable primary evidence.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": null,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw2065sbww__will-not-start",
+      "applianceId": "hotpoint-htw2065sbww",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW2065SBWW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "blocked",
+      "modelIdentitySource": {
+        "title": "Hotpoint HTW2065SBWW official model/support page",
+        "publisher": "Hotpoint",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW2065SBWW/support",
+        "appliesTo": "HTW2065SBWW family; rating-label revision still required"
+      },
+      "supportSourceId": null,
+      "supportSource": null,
+      "evidenceStatement": null,
+      "blockedReason": "The exact current support page did not expose a manual or model-applicable start guidance, and the current HTW240/HTW265 manual does not name HTW2065SBWW.",
+      "safetyBoundary": "No guidance is proposed without applicable primary evidence.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": null,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw2065sbww__will-not-spin",
+      "applianceId": "hotpoint-htw2065sbww",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW2065SBWW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "blocked",
+      "modelIdentitySource": {
+        "title": "Hotpoint HTW2065SBWW official model/support page",
+        "publisher": "Hotpoint",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW2065SBWW/support",
+        "appliesTo": "HTW2065SBWW family; rating-label revision still required"
+      },
+      "supportSourceId": null,
+      "supportSource": null,
+      "evidenceStatement": null,
+      "blockedReason": "The exact current support page did not expose a manual or model-applicable spin guidance, and the current HTW240/HTW265 manual does not name HTW2065SBWW.",
+      "safetyBoundary": "No guidance is proposed without applicable primary evidence.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": null,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "hotpoint-htw2065sbww__is-leaking",
+      "applianceId": "hotpoint-htw2065sbww",
+      "category": "washer",
+      "brand": "Hotpoint",
+      "modelFamily": "HTW2065SBWW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "blocked",
+      "modelIdentitySource": {
+        "title": "Hotpoint HTW2065SBWW official model/support page",
+        "publisher": "Hotpoint",
+        "url": "https://products.geappliances.com/appliance/gea-specs/HTW2065SBWW/support",
+        "appliesTo": "HTW2065SBWW family; rating-label revision still required"
+      },
+      "supportSourceId": null,
+      "supportSource": null,
+      "evidenceStatement": null,
+      "blockedReason": "The exact current support page did not expose a manual or model-applicable leak guidance, and the current HTW240/HTW265 manual does not name HTW2065SBWW.",
+      "safetyBoundary": "No guidance is proposed without applicable primary evidence.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": null,
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw4505mw__will-not-start",
+      "applianceId": "maytag-mvw4505mw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW4505MW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MVW4505MW official model/support page",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MVW4505MW.html",
+        "appliesTo": "MVW4505MW family; rating-label revision still required"
+      },
+      "supportSourceId": "maytag-top-start",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag top-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw4505mw__will-not-spin",
+      "applianceId": "maytag-mvw4505mw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW4505MW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MVW4505MW official model/support page",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MVW4505MW.html",
+        "appliesTo": "MVW4505MW family; rating-label revision still required"
+      },
+      "supportSourceId": "maytag-top-spin",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag top-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw4505mw__is-leaking",
+      "applianceId": "maytag-mvw4505mw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW4505MW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MVW4505MW official model/support page",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MVW4505MW.html",
+        "appliesTo": "MVW4505MW family; rating-label revision still required"
+      },
+      "supportSourceId": "maytag-top-leak",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag top-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_from_Front_or_Top_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw5500fw__will-not-start",
+      "applianceId": "maytag-mhw5500fw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW5500FW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MHW5500FW official model/support page",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MHW5500FW.html",
+        "appliesTo": "MHW5500FW family; rating-label revision still required"
+      },
+      "supportSourceId": "maytag-front-start",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag front-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating_-_Front_Load_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw5500fw__will-not-spin",
+      "applianceId": "maytag-mhw5500fw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW5500FW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MHW5500FW official model/support page",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MHW5500FW.html",
+        "appliesTo": "MHW5500FW family; rating-label revision still required"
+      },
+      "supportSourceId": "maytag-front-spin",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag front-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Spinning/Not_Spinning_-_Front_Load_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mhw5500fw__is-leaking",
+      "applianceId": "maytag-mhw5500fw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MHW5500FW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MHW5500FW official model/support page",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MHW5500FW.html",
+        "appliesTo": "MHW5500FW family; rating-label revision still required"
+      },
+      "supportSourceId": "maytag-front-leak",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag front-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Front_Load_Washers/Leaking/Leaking_from_Underneath_or_Bottom_-_Front_Load_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-nfw5800hw__will-not-start",
+      "applianceId": "amana-nfw5800hw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NFW5800HW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Amana NFW5800HW official model/support page",
+        "publisher": "Amana",
+        "url": "https://www.amana.com/laundry/washers/top-load/p.4.3-cu.-ft.-front-load-washer-with-large-capacity.nfw5800hw.html",
+        "appliesTo": "NFW5800HW family; rating-label revision still required"
+      },
+      "supportSourceId": "amana-front-start",
+      "supportSource": {
+        "publisher": "Amana",
+        "kind": "manufacturer-support",
+        "appliesTo": "Amana front-load washers",
+        "url": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating/Not_Starting_or_Not_Operating_-_Front_Load_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Amana front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-nfw5800hw__will-not-spin",
+      "applianceId": "amana-nfw5800hw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NFW5800HW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Amana NFW5800HW official model/support page",
+        "publisher": "Amana",
+        "url": "https://www.amana.com/laundry/washers/top-load/p.4.3-cu.-ft.-front-load-washer-with-large-capacity.nfw5800hw.html",
+        "appliesTo": "NFW5800HW family; rating-label revision still required"
+      },
+      "supportSourceId": "amana-front-spin",
+      "supportSource": {
+        "publisher": "Amana",
+        "kind": "manufacturer-support",
+        "appliesTo": "Amana front-load washers",
+        "url": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Not_Starting_or_Not_Operating/Not_Spinning/Not_Spinning_-_Front_Load_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Amana front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-nfw5800hw__is-leaking",
+      "applianceId": "amana-nfw5800hw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NFW5800HW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Amana NFW5800HW official model/support page",
+        "publisher": "Amana",
+        "url": "https://www.amana.com/laundry/washers/top-load/p.4.3-cu.-ft.-front-load-washer-with-large-capacity.nfw5800hw.html",
+        "appliesTo": "NFW5800HW family; rating-label revision still required"
+      },
+      "supportSourceId": "amana-front-leak",
+      "supportSource": {
+        "publisher": "Amana",
+        "kind": "manufacturer-support",
+        "appliesTo": "Amana front-load washers",
+        "url": "https://producthelp.amana.com/Laundry/Washers/Front_Load_Washers/Leaking/Leaking_from_Underneath_or_Bottom_-_Front_Load_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Amana front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7337aw__will-not-start",
+      "applianceId": "electrolux-elfw7337aw",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7337AW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7337AW official model/support page",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7337AW",
+        "appliesTo": "ELFW7337AW family; rating-label revision still required"
+      },
+      "supportSourceId": "electrolux-start",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-support",
+        "appliesTo": "Electrolux front-load washers",
+        "url": "https://owner.electrolux.com/support-articles/article/1853594-how-to-fix-your-front-load-washer-not-starting",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Electrolux front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7337aw__will-not-spin",
+      "applianceId": "electrolux-elfw7337aw",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7337AW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7337AW official model/support page",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7337AW",
+        "appliesTo": "ELFW7337AW family; rating-label revision still required"
+      },
+      "supportSourceId": "electrolux-spin-manual-7337",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-manual",
+        "appliesTo": "ELFW7337AW; linked as Complete Owner's Guide from the exact Electrolux model page",
+        "url": "https://frigidaire.bynder.com/asset/eba93fb2-1a4d-4766-b03a-81b69b8eba26/A20448610-en-pdf.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the ELFW7337AW; linked as Complete Owner's Guide from the exact Electrolux model page primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7337aw__is-leaking",
+      "applianceId": "electrolux-elfw7337aw",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7337AW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7337AW official model/support page",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7337AW",
+        "appliesTo": "ELFW7337AW family; rating-label revision still required"
+      },
+      "supportSourceId": "electrolux-leak",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-support",
+        "appliesTo": "Electrolux front-load washers",
+        "url": "https://owner.electrolux.com/support-articles/article/1831358-laundry-front-loading-washer-is-leaking-water-",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Electrolux front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7738aa__will-not-start",
+      "applianceId": "electrolux-elfw7738aa",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7738AA",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7738AA official model/support page",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7738AA",
+        "appliesTo": "ELFW7738AA family; rating-label revision still required"
+      },
+      "supportSourceId": "electrolux-start",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-support",
+        "appliesTo": "Electrolux front-load washers",
+        "url": "https://owner.electrolux.com/support-articles/article/1853594-how-to-fix-your-front-load-washer-not-starting",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Electrolux front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7738aa__will-not-spin",
+      "applianceId": "electrolux-elfw7738aa",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7738AA",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7738AA official model/support page",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7738AA",
+        "appliesTo": "ELFW7738AA family; rating-label revision still required"
+      },
+      "supportSourceId": "electrolux-spin-manual-7437-7738",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-manual",
+        "appliesTo": "ELFW7437AW, ELFW7537AT, ELFW7637AT and ELFW7738AA; each exact Electrolux model page links this Complete Owner's Guide",
+        "url": "https://frigidaire.bynder.com/m/673fe45bbf48d90f/original/A20448609-en-pdf.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the ELFW7437AW, ELFW7537AT, ELFW7637AT and ELFW7738AA; each exact Electrolux model page links this Complete Owner's Guide primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7738aa__is-leaking",
+      "applianceId": "electrolux-elfw7738aa",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7738AA",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7738AA official model/support page",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7738AA",
+        "appliesTo": "ELFW7738AA family; rating-label revision still required"
+      },
+      "supportSourceId": "electrolux-leak",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-support",
+        "appliesTo": "Electrolux front-load washers",
+        "url": "https://owner.electrolux.com/support-articles/article/1831358-laundry-front-loading-washer-is-leaking-water-",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Electrolux front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gtw325aswww__door-will-not-close",
+      "applianceId": "ge-gtw325aswww",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GTW325ASWWW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "GE GTW325ASWWW official model/support page",
+        "publisher": "GE",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GTW325ASWWW/support",
+        "appliesTo": "GTW325ASWWW family; rating-label revision still required"
+      },
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "lg-wm6500hba__door-will-not-close",
+      "applianceId": "lg-wm6500hba",
+      "category": "washer",
+      "brand": "LG",
+      "modelFamily": "WM6500HBA",
+      "loadStyle": "front-load",
+      "topology": "front-filter",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "LG WM6500HBA official model/support page",
+        "publisher": "LG",
+        "url": "https://www.lg.com/us/support/product/lg-WM6500HBA.ABLEVUS?tab=1",
+        "appliesTo": "WM6500HBA.ABLEVUS"
+      },
+      "supportSourceId": "lg-front-closure",
+      "supportSource": {
+        "publisher": "LG",
+        "kind": "manufacturer-support",
+        "appliesTo": "LG front-load washers",
+        "url": "https://www.lg.com/us/support/help-library/lg-front-load-washer-error-code-list-CT10000010-20155069413456",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the LG front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "ge-gtw385aswws__door-will-not-close",
+      "applianceId": "ge-gtw385aswws",
+      "category": "washer",
+      "brand": "GE",
+      "modelFamily": "GTW385ASWWS",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "GE GTW385ASWWS official model/support page",
+        "publisher": "GE",
+        "url": "https://products.geappliances.com/appliance/gea-specs/GTW385ASWWS/support",
+        "appliesTo": "GTW385ASWWS family; rating-label revision still required"
+      },
+      "supportSourceId": "ge-hotpoint-top-owner-manual",
+      "supportSource": {
+        "publisher": "GE Appliances",
+        "kind": "manufacturer-manual",
+        "appliesTo": "GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual",
+        "url": "https://images.salsify.com/image/upload/s--AKgAhUAs--/r4yctjlrytehsjedypih.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the GTW485, GTW465, GTW385, GTW335, GTW325, HTW265 and HTW240 families named in the manual primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "whirlpool-wtw6157pw__door-will-not-close",
+      "applianceId": "whirlpool-wtw6157pw",
+      "category": "washer",
+      "brand": "Whirlpool",
+      "modelFamily": "WTW6157PW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Whirlpool WTW6157PW official model/support page",
+        "publisher": "Whirlpool",
+        "url": "https://www.whirlpool.com/owners-center-pdp.WTW6157PW.html",
+        "appliesTo": "WTW6157PW family; rating-label revision still required"
+      },
+      "supportSourceId": "whirlpool-top-closure",
+      "supportSource": {
+        "publisher": "Whirlpool",
+        "kind": "manufacturer-support",
+        "appliesTo": "Whirlpool top-load washers",
+        "url": "https://producthelp.whirlpool.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Whirlpool top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw7232hw__door-will-not-close",
+      "applianceId": "maytag-mvw7232hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW7232HW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MVW7232HW official model/support page",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MVW7232HW.html",
+        "appliesTo": "MVW7232HW family; rating-label revision still required"
+      },
+      "supportSourceId": "maytag-top-closure",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag top-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw7232hw__will-not-start",
+      "applianceId": "maytag-mvw7232hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW7232HW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MVW7232HW official model/support page",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MVW7232HW.html",
+        "appliesTo": "MVW7232HW family; rating-label revision still required"
+      },
+      "supportSourceId": "maytag-top-start",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag top-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw7232hw__will-not-spin",
+      "applianceId": "maytag-mvw7232hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW7232HW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MVW7232HW official model/support page",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MVW7232HW.html",
+        "appliesTo": "MVW7232HW family; rating-label revision still required"
+      },
+      "supportSourceId": "maytag-top-spin",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag top-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "maytag-mvw7232hw__is-leaking",
+      "applianceId": "maytag-mvw7232hw",
+      "category": "washer",
+      "brand": "Maytag",
+      "modelFamily": "MVW7232HW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Maytag MVW7232HW official model/support page",
+        "publisher": "Maytag",
+        "url": "https://www.maytag.com/owners-center-pdp.MVW7232HW.html",
+        "appliesTo": "MVW7232HW family; rating-label revision still required"
+      },
+      "supportSourceId": "maytag-top-leak",
+      "supportSource": {
+        "publisher": "Maytag",
+        "kind": "manufacturer-support",
+        "appliesTo": "Maytag top-load washers",
+        "url": "https://producthelp.maytag.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_from_Front_or_Top_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Maytag top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4516fw__door-will-not-close",
+      "applianceId": "amana-ntw4516fw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NTW4516FW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Amana NTW4516FW official model/support page",
+        "publisher": "Amana",
+        "url": "https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html",
+        "appliesTo": "NTW4516FW family; rating-label revision still required"
+      },
+      "supportSourceId": "amana-top-closure",
+      "supportSource": {
+        "publisher": "Amana",
+        "kind": "manufacturer-support",
+        "appliesTo": "Amana top-load washers",
+        "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Lid_Not_Latching_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Amana top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4516fw__will-not-start",
+      "applianceId": "amana-ntw4516fw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NTW4516FW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Amana NTW4516FW official model/support page",
+        "publisher": "Amana",
+        "url": "https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html",
+        "appliesTo": "NTW4516FW family; rating-label revision still required"
+      },
+      "supportSourceId": "amana-top-start",
+      "supportSource": {
+        "publisher": "Amana",
+        "kind": "manufacturer-support",
+        "appliesTo": "Amana top-load washers",
+        "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Operation/Not_Operating/Not_Starting_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Amana top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4516fw__will-not-spin",
+      "applianceId": "amana-ntw4516fw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NTW4516FW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Amana NTW4516FW official model/support page",
+        "publisher": "Amana",
+        "url": "https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html",
+        "appliesTo": "NTW4516FW family; rating-label revision still required"
+      },
+      "supportSourceId": "amana-top-spin",
+      "supportSource": {
+        "publisher": "Amana",
+        "kind": "manufacturer-support",
+        "appliesTo": "Amana top-load washers",
+        "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Cycle_Concerns/Not_Spinning_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Amana top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "amana-ntw4516fw__is-leaking",
+      "applianceId": "amana-ntw4516fw",
+      "category": "washer",
+      "brand": "Amana",
+      "modelFamily": "NTW4516FW",
+      "loadStyle": "top-load",
+      "topology": "washer-top-load",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Amana NTW4516FW official model/support page",
+        "publisher": "Amana",
+        "url": "https://www.amana.com/laundry/washers/p.35-cu-ft-top-load-washer-with-dual-action-agitator.NTW4516FW.html",
+        "appliesTo": "NTW4516FW family; rating-label revision still required"
+      },
+      "supportSourceId": "amana-top-leak",
+      "supportSource": {
+        "publisher": "Amana",
+        "kind": "manufacturer-support",
+        "appliesTo": "Amana top-load washers",
+        "url": "https://producthelp.amana.com/Laundry/Washers/Top_Load_Washer/Water/Leaking/Leaking_Water_Underneath_-_Washer",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Amana top-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7437aw__door-will-not-close",
+      "applianceId": "electrolux-elfw7437aw",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7437AW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "door-will-not-close",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7437AW official model/support page",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW",
+        "appliesTo": "ELFW7437AW family; rating-label revision still required"
+      },
+      "supportSourceId": "electrolux-closure",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-support",
+        "appliesTo": "Electrolux front-load washers",
+        "url": "https://owner.electrolux.com/support-articles/article/1820509-laundry-front-loading-washer-displaying-error-code-e41-door-is-open-",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Electrolux front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Door or lid will not close",
+        "checkpoints": [
+          "Remove laundry or debris caught in the visible door or lid opening.",
+          "Inspect the visible gasket, striker, and latch opening for an obstruction without disassembly.",
+          "Close normally without forcing it; if it still will not latch, stop and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7437aw__will-not-start",
+      "applianceId": "electrolux-elfw7437aw",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7437AW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-start",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7437AW official model/support page",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW",
+        "appliesTo": "ELFW7437AW family; rating-label revision still required"
+      },
+      "supportSourceId": "electrolux-start",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-support",
+        "appliesTo": "Electrolux front-load washers",
+        "url": "https://owner.electrolux.com/support-articles/article/1853594-how-to-fix-your-front-load-washer-not-starting",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Electrolux front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not start",
+        "checkpoints": [
+          "Confirm the door or lid is fully closed and the controls are not locked or on Delay Start.",
+          "Choose a cycle and use Start/Pause exactly as labeled on the control panel.",
+          "Record any displayed code; do not bypass the latch, reset a breaker, or open the cabinet."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7437aw__will-not-spin",
+      "applianceId": "electrolux-elfw7437aw",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7437AW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "will-not-spin",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7437AW official model/support page",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW",
+        "appliesTo": "ELFW7437AW family; rating-label revision still required"
+      },
+      "supportSourceId": "electrolux-spin-manual-7437-7738",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-manual",
+        "appliesTo": "ELFW7437AW, ELFW7537AT, ELFW7637AT and ELFW7738AA; each exact Electrolux model page links this Complete Owner's Guide",
+        "url": "https://frigidaire.bynder.com/m/673fe45bbf48d90f/original/A20448609-en-pdf.pdf",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the ELFW7437AW, ELFW7537AT, ELFW7637AT and ELFW7738AA; each exact Electrolux model page links this Complete Owner's Guide primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer will not spin",
+        "checkpoints": [
+          "Pause with the controls and redistribute an overloaded, very small, or visibly unbalanced load.",
+          "Confirm the selected cycle includes spin and visually check the accessible drain hose for a kink.",
+          "If the symptom persists, stop; internal drive, latch, pump, and electrical checks are professional-only."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    },
+    {
+      "rowId": "electrolux-elfw7437aw__is-leaking",
+      "applianceId": "electrolux-elfw7437aw",
+      "category": "washer",
+      "brand": "Electrolux",
+      "modelFamily": "ELFW7437AW",
+      "loadStyle": "front-load",
+      "topology": "hose-only",
+      "symptomId": "is-leaking",
+      "baselineStatus": "unsupported",
+      "researchOutcome": "promotable-guided-checks",
+      "modelIdentitySource": {
+        "title": "Electrolux ELFW7437AW official model/support page",
+        "publisher": "Electrolux",
+        "url": "https://www.electrolux.com/en/p/laundry-care/washers/front-load-washers/ELFW7437AW",
+        "appliesTo": "ELFW7437AW family; rating-label revision still required"
+      },
+      "supportSourceId": "electrolux-leak",
+      "supportSource": {
+        "publisher": "Electrolux",
+        "kind": "manufacturer-support",
+        "appliesTo": "Electrolux front-load washers",
+        "url": "https://owner.electrolux.com/support-articles/article/1831358-laundry-front-loading-washer-is-leaking-water-",
+        "lastVerified": "2026-08-29",
+        "quality": "primary"
+      },
+      "evidenceStatement": "The exact model-family identity source and the Electrolux front-load washers primary guidance intersect for this row. Only the safe visible checks in the draft pack are proposed.",
+      "blockedReason": null,
+      "safetyBoundary": "Visible, non-invasive observations and control-panel actions only. No panel removal, energized test, latch bypass, breaker reset, appliance movement, leveling, hose disconnection/tightening, or internal part diagnosis.",
+      "professionalOnly": [
+        "cabinet or panel removal",
+        "energized or electrical testing",
+        "latch bypass or internal latch testing",
+        "moving or leveling the appliance",
+        "disconnecting or tightening water hoses",
+        "internal drive, pump, seal, or wiring work"
+      ],
+      "draftRepairPack": {
+        "title": "Washer is leaking",
+        "checkpoints": [
+          "Stop the cycle. Keep clear of water near the plug, outlet, cord, or controls.",
+          "From a dry, accessible position, look for a caught item at the door seal, dispenser residue, or visible hose damage.",
+          "Do not move, level, disconnect, tighten, or open the washer; shut off the water only if safely accessible and arrange service."
+        ]
+      },
+      "verifiedOn": "2026-08-29"
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "generatedOn": "2026-08-29",
+  "category": "dryer",
+  "method": "credential-free GET with redirects and a 20-second timeout",
+  "result": {
+    "checked": 19,
+    "ok": 19,
+    "failed": 0
+  },
+  "records": [
+    {
+      "id": "maytag-dryer-start",
+      "url": "https://producthelp.maytag.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Starting_or_Not_Operating_-_Dryer",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.maytag.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Starting_or_Not_Operating_-_Dryer",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "maytag-electric-dryer-heat",
+      "url": "https://producthelp.maytag.com/Laundry/Dryers/Dryer/Operation/Not_Heating/Not_Heating_-_Electric_Dryer",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.maytag.com/Laundry/Dryers/Dryer/Operation/Not_Heating/Not_Heating_-_Electric_Dryer",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "maytag-dryer-tumble",
+      "url": "https://producthelp.maytag.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Tumbling_or_Spinning_-_Dryer",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.maytag.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Tumbling_or_Spinning_-_Dryer",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "amana-dryer-start",
+      "url": "https://producthelp.amana.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Starting_or_Not_Operating_-_Dryer",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.amana.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Starting_or_Not_Operating_-_Dryer",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "amana-electric-dryer-heat",
+      "url": "https://producthelp.amana.com/Laundry/Dryers/Product_Info/Dryer_Product_Assistance/Dryer_is_Not_Heating",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.amana.com/Laundry/Dryers/Product_Info/Dryer_Product_Assistance/Dryer_is_Not_Heating",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "amana-dryer-tumble",
+      "url": "https://producthelp.amana.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Tumbling_or_Spinning_-_Dryer",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://producthelp.amana.com/Laundry/Dryers/Dryer/Operation/Not_Starting/Not_Tumbling_or_Spinning_-_Dryer",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "electrolux-dryer-start",
+      "url": "https://owner.electrolux.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "electrolux-electric-dryer-heat",
+      "url": "https://owner.electrolux.com/support-articles/article/1853007-my-dryer-is-running-but-does-not-seem-to-be-heating-what-should-i-do-",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/1853007-my-dryer-is-running-but-does-not-seem-to-be-heating-what-should-i-do-",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "electrolux-dryer-stop-overload",
+      "url": "https://owner.electrolux.com/support-articles/article/1853011-what-should-i-do-if-my-dryer-stops-operating-?locale=en-US",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://owner.electrolux.com/support-articles/article/1853011-what-should-i-do-if-my-dryer-stops-operating-?locale=en-US",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "frigidaire-dryer-start",
+      "url": "https://owner.frigidaire.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://owner.frigidaire.com/support-articles/article/1853009-what-should-i-do-if-my-dryer-does-not-start-",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "frigidaire-electric-dryer-heat",
+      "url": "https://owner.frigidaire.com/support-articles/article/1853007-my-dryer-is-running-but-does-not-seem-to-be-heating-what-should-i-do-",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://owner.frigidaire.com/support-articles/article/1853007-my-dryer-is-running-but-does-not-seem-to-be-heating-what-should-i-do-",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "frigidaire-dryer-stop-overload",
+      "url": "https://owner.frigidaire.com/support-articles/article/1853011-what-should-i-do-if-my-dryer-stops-operating-",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://owner.frigidaire.com/support-articles/article/1853011-what-should-i-do-if-my-dryer-stops-operating-",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "ge-hotpoint-dryer-start",
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17381",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17381",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "ge-hotpoint-electric-dryer-heat",
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=16921",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=16921",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "ge-hotpoint-dryer-drum",
+      "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17096",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=17096",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "bosch-dryer-start",
+      "url": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dryers-repair-dryer-not-switching-on",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dryers-repair-dryer-not-switching-on",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "bosch-dryer-heat",
+      "url": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dryers-repair-dryer-not-getting-warm",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dryers-repair-dryer-not-getting-warm",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "bosch-dryer-drum",
+      "url": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dryers-repair-dryer-drum-not-spinning",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-dryers-repair-dryer-drum-not-spinning",
+      "checkedOn": "2026-08-29"
+    },
+    {
+      "id": "bosch-wtg86403uc01-manual",
+      "url": "https://media3.bosch-home.com/Documents/9001883723_A.pdf",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://media3.bosch-home.com/Documents/9001883723_A.pdf",
+      "checkedOn": "2026-08-29"
+    }
+  ]
+}

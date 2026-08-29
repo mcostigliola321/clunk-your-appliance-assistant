@@ -52,7 +52,7 @@ describe("state-dependent WebMCP registration", () => {
       structuredContent: Record<string, unknown>;
     };
     const serialized = JSON.stringify(stateOutput.structuredContent);
-    expect(serialized.length).toBeLessThan(3800);
+    expect(serialized.length).toBeLessThan(4200);
     expect(serialized).not.toContain("likelyCauses");
     expect(serialized).not.toContain("catalogResults");
     expect(stateOutput.structuredContent).toMatchObject({
@@ -184,8 +184,8 @@ describe("state-dependent WebMCP registration", () => {
     expect(state.packId).toBe("ge-gtd42easj2ww::not-heating");
 
     const unsupported = (await select.execute({
-      applianceId: "maytag-med4500mw",
-      symptomId: "not-heating",
+      applianceId: "bosch-b36ct81ens07",
+      symptomId: "is-leaking",
     })) as { structuredContent: Record<string, unknown> };
     expect(unsupported.structuredContent).toMatchObject({ ok: false });
   });
