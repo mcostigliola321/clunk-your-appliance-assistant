@@ -85,7 +85,7 @@ async function reachModelSearch(page: Page, appliance: RegExp, problem: RegExp) 
   await expect(page.getByRole("heading", { name: "What is it doing?" })).toBeFocused();
   await expect(page.getByRole("searchbox", { name: /model number/i })).toHaveCount(0);
   const problemButton = page.getByRole("button", { name: problem });
-  if (!(await problemButton.isVisible())) await page.getByText("Limited pilots").click();
+  if (!(await problemButton.isVisible())) await page.getByText("More problems").click();
   await problemButton.click();
   await expect(page.getByRole("heading", { name: "Find the model label." })).toBeVisible();
   await expect(page.getByRole("searchbox", { name: /model number/i })).toBeFocused();
@@ -108,6 +108,25 @@ async function selectLg(page: Page, query = "WM3400CW.ABWEVUS") {
   await page.getByRole("button", { name: /LG WM3400CW Guided checks only/ }).click();
 }
 
+async function openGuidedProblem(
+  page: Page,
+  appliance: RegExp,
+  problem: RegExp,
+  query: string,
+  modelResult: RegExp,
+  safetyHeading: string,
+) {
+  await reachModelSearch(page, appliance, problem);
+  const input = page.getByRole("searchbox", { name: /model number/i });
+  await input.fill(query);
+  await page.getByRole("button", { name: "Find model" }).click();
+  await page.getByRole("button", { name: modelResult }).click();
+  const start = page.getByRole("button", { name: "Start the checks" });
+  if (await start.isVisible()) await start.click();
+  await expect(page.getByRole("heading", { name: safetyHeading })).toBeFocused();
+  await page.getByRole("button", { name: "Start over" }).click();
+}
+
 async function reachFilterOutcome(page: Page, resultName: string) {
   await page.getByRole("button", { name: "Safe to continue" }).click();
   await page.getByRole("button", { name: "The hose looks clear" }).click();
@@ -125,10 +144,10 @@ test("puts substantial cutaway actions in the first journey and avoids full-reso
 }) => {
   await expect(page.getByRole("heading", { name: "What are you fixing?" })).toBeVisible();
   for (const label of [
-    /Choose Washer — 2 broad problem guides/,
-    /Choose Dishwasher — 2 broad problem guides/,
-    /Choose Electric dryer — 1 broad problem guide/,
-    /Choose Refrigerator — 2 broad problem guides/,
+    /Choose Washer — 4 broad problem guides/,
+    /Choose Dishwasher — 4 broad problem guides/,
+    /Choose Electric dryer — 4 broad problem guides/,
+    /Choose Refrigerator — 4 broad problem guides/,
   ])
     await expect(page.getByRole("button", { name: label })).toBeVisible();
   await expect(page.getByText("See how Clunk works")).toBeVisible();
@@ -152,10 +171,10 @@ test("keeps all four appliance actions identifiable in the 390px first viewport"
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   for (const label of [
-    /Choose Washer — 2 broad problem guides/,
-    /Choose Dishwasher — 2 broad problem guides/,
-    /Choose Electric dryer — 1 broad problem guide/,
-    /Choose Refrigerator — 2 broad problem guides/,
+    /Choose Washer — 4 broad problem guides/,
+    /Choose Dishwasher — 4 broad problem guides/,
+    /Choose Electric dryer — 4 broad problem guides/,
+    /Choose Refrigerator — 4 broad problem guides/,
   ]) {
     const action = page.getByRole("button", { name: label });
     const box = await action.boundingBox();
@@ -179,27 +198,95 @@ test("moves from visual appliance to supported problem before model identificati
   await expect(page.getByRole("heading", { name: "What is it doing?" })).toBeVisible();
 });
 
-test("shows broad door-closure cohorts as primary and keeps one-model routes in limited pilots", async ({
-  page,
-}) => {
+test("shows four broad consumer problems and a neutral checked overflow", async ({ page }) => {
   await page.getByRole("button", { name: /Choose Refrigerator/ }).click();
   await expect(page.getByRole("button", { name: /Supported now Water is slow/ })).toContainText(
     "41 checked models",
   );
-  await expect(page.getByRole("button", { name: /Supported now Door won't close/ })).toContainText(
-    "35 checked models · checks only",
+  await expect(page.getByRole("button", { name: /Supported now Not cold enough/ })).toContainText(
+    "22 checked models · checks only",
   );
-  await expect(page.getByRole("button", { name: /Limited pilot.*Not cold enough/ })).toBeHidden();
-  await page.getByText("Limited pilots").click();
-  await expect(page.getByRole("button", { name: /Limited pilot.*Not cold enough/ })).toContainText(
-    "1 checked model",
-  );
+  await expect(
+    page.getByRole("button", { name: /35 checked models.*Door won't close/ }),
+  ).toBeHidden();
+  await page.getByText("More problems").click();
+  await expect(
+    page.getByRole("button", { name: /35 checked models.*Door won't close/ }),
+  ).toContainText("35 checked models");
+});
+
+test("opens every broadened washer problem with topology-aware guided checks", async ({ page }) => {
+  for (const [problem, heading] of [
+    [/Supported now Won't start/, "Pause before checking"],
+    [/Supported now Won't spin/, "Wait for the washer to stop"],
+    [/Supported now Water is leaking/, "Stop the water first"],
+  ] as const)
+    await openGuidedProblem(
+      page,
+      /Choose Washer/,
+      problem,
+      "GTW335ASNWW",
+      /GE GTW335ASNWW Guided checks only/,
+      heading,
+    );
+});
+
+test("opens every broadened dishwasher problem with conservative guided checks", async ({
+  page,
+}) => {
+  for (const [problem, heading] of [
+    [/Supported now Dishes stay dirty/, "Let the tub cool"],
+    [/Supported now No water enters/, "Check for water before starting"],
+    [/Supported now Water is leaking/, "Stop the cycle and power"],
+  ] as const)
+    await openGuidedProblem(
+      page,
+      /Choose Dishwasher/,
+      problem,
+      "GDT550PYRFS",
+      /GE GDT550PYRFS Guided checks only/,
+      heading,
+    );
+});
+
+test("opens every broadened dryer problem with electrical safety stops", async ({ page }) => {
+  for (const [problem, heading] of [
+    [/Supported now Won't start/, "Keep the dryer off"],
+    [/Supported now Runs without heat/, "Stop if there is heat damage"],
+    [/Supported now Drum won't turn/, "Unplug before touching the drum"],
+  ] as const)
+    await openGuidedProblem(
+      page,
+      /Choose Electric dryer/,
+      problem,
+      "DLE6100W",
+      /LG DLE6100W Guided checks only/,
+      heading,
+    );
+});
+
+test("opens every broadened refrigerator problem with feature-gated guided checks", async ({
+  page,
+}) => {
+  for (const [problem, heading] of [
+    [/Supported now Not cold enough/, "Protect food and check for damage"],
+    [/Supported now Water is leaking/, "Keep water away from power"],
+    [/Supported now Ice maker is not making ice/, "Keep hands out of the ice mechanism"],
+  ] as const)
+    await openGuidedProblem(
+      page,
+      /Choose Refrigerator/,
+      problem,
+      "RF23R6201SR/AA",
+      /Samsung RF23R6201SR Guided checks only/,
+      heading,
+    );
 });
 
 test("runs a topology-aware washer lid closure guide and stops before internal repair", async ({
   page,
 }) => {
-  await reachModelSearch(page, /Choose Washer/, /Supported now Door won't close/);
+  await reachModelSearch(page, /Choose Washer/, /36 checked models.*Door won't close/);
   const input = page.getByRole("searchbox", { name: "Washer model number" });
   await input.fill("WT7400CW");
   await page.getByRole("button", { name: "Find model" }).click();
@@ -264,9 +351,9 @@ test("gives an honest unsupported-model state and rejects serial-number text", a
 });
 
 test("refuses a known model when the selected problem is not covered", async ({ page }) => {
-  await reachModelSearch(page, /Choose Washer/, /Limited pilot.*Water is leaking/);
+  await reachModelSearch(page, /Choose Washer/, /Supported now Water is leaking/);
   const input = page.getByRole("searchbox", { name: "Washer model number" });
-  await input.fill("WM3400CW.ABWEVUS");
+  await input.fill("MHW5630HW");
   await expect(page.getByText("That model is supported for a different problem.")).toBeVisible();
   await expect(page.getByText(/Go back and choose the problem/)).toBeVisible();
   await expect(page.locator(".model-result")).toHaveCount(0);

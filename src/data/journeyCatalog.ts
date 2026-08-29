@@ -84,7 +84,7 @@ export function getPrimarySymptoms(kind: ApplianceKind) {
   return PRIMARY_SYMPTOMS_BY_KIND[kind].filter((symptomId) => supported.has(symptomId));
 }
 
-export function getLimitedSymptoms(kind: ApplianceKind) {
+export function getMoreSymptoms(kind: ApplianceKind) {
   const primary = new Set(getPrimarySymptoms(kind));
   return getSupportedSymptoms(kind).filter((symptomId) => !primary.has(symptomId));
 }

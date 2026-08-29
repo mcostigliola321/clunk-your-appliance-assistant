@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clunk.local/schemas/broad-symptom-coverage.schema.json",
+  "title": "Clunk broad model by symptom evidence ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "verifiedOn", "evidenceRules", "cohorts", "sources", "records"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "verifiedOn": { "type": "string", "format": "date" },
+    "evidenceRules": {
+      "type": "array",
+      "minItems": 5,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "cohorts": { "type": "array", "minItems": 12, "items": { "$ref": "#/$defs/cohort" } },
+    "sources": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "#/$defs/source" }
+    },
+    "records": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/record" } }
+  },
+  "$defs": {
+    "category": { "enum": ["washer", "dishwasher", "dryer", "refrigerator"] },
+    "symptom": {
+      "enum": [
+        "will-not-start",
+        "will-not-spin",
+        "is-leaking",
+        "not-cleaning",
+        "will-not-fill",
+        "not-heating",
+        "drum-will-not-turn",
+        "not-cooling",
+        "ice-maker-not-making-ice"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "title", "url", "publisher", "appliesTo", "verifiedOn", "quality"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "const": "manufacturer-troubleshooting" },
+        "title": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "publisher": { "type": "string", "minLength": 1 },
+        "appliesTo": { "type": "string", "minLength": 1 },
+        "verifiedOn": { "type": "string", "format": "date" },
+        "quality": { "const": "primary" }
+      }
+    },
+    "cohort": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "category",
+        "symptomId",
+        "brands",
+        "profile",
+        "applicability",
+        "featureGates",
+        "exceptions"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "category": { "$ref": "#/$defs/category" },
+        "symptomId": { "$ref": "#/$defs/symptom" },
+        "brands": { "type": "array", "minItems": 2, "items": { "type": "string" } },
+        "profile": { "type": "string", "pattern": "-observation$" },
+        "applicability": { "type": "string", "minLength": 1 },
+        "featureGates": { "type": "array", "minItems": 2, "items": { "type": "string" } },
+        "exceptions": { "type": "array", "minItems": 2, "items": { "type": "string" } }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rowId",
+        "cohortId",
+        "modelId",
+        "category",
+        "symptomId",
+        "brand",
+        "modelFamily",
+        "topology",
+        "loadStyle",
+        "sourceIds",
+        "modelEvidence",
+        "applicability",
+        "featureGates",
+        "homeownerObservableChecks",
+        "safetyBoundaries",
+        "profile",
+        "modelSpecificException",
+        "capabilityTier",
+        "verifiedOn",
+        "unresolvedGaps"
+      ],
+      "properties": {
+        "rowId": { "type": "string", "minLength": 1 },
+        "cohortId": { "type": "string", "minLength": 1 },
+        "modelId": { "type": "string", "minLength": 1 },
+        "category": { "$ref": "#/$defs/category" },
+        "symptomId": { "$ref": "#/$defs/symptom" },
+        "brand": { "type": "string", "minLength": 1 },
+        "modelFamily": { "type": "string", "minLength": 1 },
+        "topology": { "type": "string", "minLength": 1 },
+        "loadStyle": { "type": ["string", "null"] },
+        "sourceIds": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "modelEvidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sourceId", "url", "verifiedProductCodes", "purpose"],
+          "properties": {
+            "sourceId": { "type": "string" },
+            "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+            "verifiedProductCodes": { "type": "array", "items": { "type": "string" } },
+            "purpose": { "type": "string", "minLength": 1 }
+          }
+        },
+        "applicability": { "type": "string", "minLength": 1 },
+        "featureGates": { "type": "array", "minItems": 2, "items": { "type": "string" } },
+        "homeownerObservableChecks": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string" }
+        },
+        "safetyBoundaries": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["homeowner", "professional", "stop"],
+          "properties": {
+            "homeowner": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+            "professional": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+            "stop": { "type": "array", "minItems": 2, "items": { "type": "string" } }
+          }
+        },
+        "profile": { "type": "string", "pattern": "-observation$" },
+        "modelSpecificException": { "type": "string", "minLength": 1 },
+        "capabilityTier": { "const": "guided-checks" },
+        "verifiedOn": { "type": "string", "format": "date" },
+        "unresolvedGaps": { "type": "array", "minItems": 2, "items": { "type": "string" } }
+      }
+    }
+  }
+}

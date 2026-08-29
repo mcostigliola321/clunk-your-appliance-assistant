@@ -1,14 +1,22 @@
 # Clunk model source ledger
 
-This ledger defines the 163-model real-appliance catalog: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. It is deliberately conservative: 25 exact-code revisions are **Purchase-ready**, 138 model identities are **Guided checks only**, and none currently sit in **Verified part unavailable**. Those identities resolve to 266 model × symptom packs—25 purchase-ready and 241 guided. A supported model never inherits a neighboring model's part or symptom coverage.
+This ledger defines the 163-model real-appliance catalog: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. It is deliberately conservative: 25 exact-code revisions are **Purchase-ready**, 138 model identities are **Guided checks only**, and none currently sit in **Verified part unavailable**. Those identities resolve to 557 model × symptom packs—25 purchase-ready and 532 guided. A supported model never inherits a neighboring model's part or symptom coverage.
+
+## 2026-08-29 broad symptom integration
+
+The 12 formerly thin routes now have 303 exact guided-only evidence rows in `src/data/broadSymptomCoverage.json`: washer start/spin/leak each cover 39 exact models across Frigidaire, GE, LG, Samsung, and Whirlpool; dishwasher cleaning/fill/leak each cover 21 across Bosch, Frigidaire, GE, LG, and Whirlpool; dryer start/heat/drum each cover 19 vented electric models across GE, LG, Samsung, and Whirlpool; refrigerator cooling/leak/ice each cover 22 exact French-door or side-by-side models across GE, LG, Samsung, and Whirlpool. The schema, runtime validator, and generator lock category, topology/load style, primary symptom source, model-page purpose, feature gates, exceptions, safety stops, verification date, and guided-only tier for every row.
+
+Manufacturer model pages remain identity/topology/feature corroboration only. The 59 troubleshooting sources supply the common exterior checks. The shared profile is the intersection of each explicit cohort: it does not generalize washer pump-filter or leveling actions, dishwasher filter/panel/installation work, dryer terminals/internal drive, refrigerator reset sequences, refrigerant work, parts, or commerce. Models from Maytag, Amana, Electrolux, Hotpoint, KitchenAid, Bosch refrigerators/dryers, and Samsung dishwashers remain unsupported on these routes unless an exact row exists; brand ownership or a neighboring model is not evidence.
+
+The consumer problem chooser shows no more than four common peers and uses **More problems** for a fifth checked route. It does not expose internal pilot/beta/evidence-tier language. Every option still shows the exact checked-model count and search remains filtered to the selected model × symptom rows.
 
 ## 2026-08-28 symptom-coverage integration
 
-All 163 models retain their previously evidenced category symptom. Twelve additional guided-check combinations remain active only on GE `GFW550SSNWW`, Whirlpool `WDT750SAKZ1`, GE `GTD42EASJ2WW`, and GE `GSS25GYPFS`, using the symptom-specific source and applicability records in `src/data/symptomCatalog.ts`; the UI now labels these one-model routes as limited pilots.
+All 163 models retain their previously evidenced category symptom. The earlier 12 flagship-only combinations were the starting point for the separately evidenced 2026-08-29 broad-route ledger; they are no longer special one-model paths.
 
 The 2026-08-28 door-closure release adds 91 guided-only combinations: 36 washers, 20 dishwashers, and 35 refrigerators. Every production row, source ID, category, topology/load style, applicability statement, safe-check list, exception, and unresolved exact-part gap is frozen in `src/data/symptomCoverageExpansion.json`. The file is a reconciled projection of the existing reconnaissance candidate matrix, not a blanket activation: the later 24-model batch and all research gaps remain unsupported unless individually listed. Two Samsung research slugs were mapped to their existing production IDs (`samsung-dw80cg5450sraa` and `samsung-rf27cg5100sraa`) without changing their evidenced family or code. None of these 91 rows adds a part, SKU, retailer claim, Shopify query, or purchase-ready status.
 
-Primary coverage counts are therefore: washer drain 56 and closure 36; dishwasher drain 33 and closure 20; electric-dryer closure 33; refrigerator slow water 41 and closure 35. Every other supported symptom has one checked flagship model. Unsupported model × symptom pairs stop before diagnosis.
+The unchanged coverage counts are washer drain 56 and closure 36; dishwasher drain 33 and closure 20; electric-dryer closure 33; refrigerator slow water 41 and closure 35. Current counts for the other 12 routes are recorded in the 2026-08-29 section above. Unsupported model × symptom pairs stop before diagnosis.
 
 ## Verification vocabulary
 

@@ -555,450 +555,496 @@ const refrigeratorDoorClosure: ProfileSpec = {
   ],
 };
 
-const washerStart: ProfileSpec = {
-  symptom: {
-    id: "will-not-start",
-    label: "Washer cycle will not start",
-    shortLabel: "Cycle will not start",
-  },
-  components: [
-    component(
-      "machine",
-      "Front-load washer",
-      "The selected washer and visible exterior.",
-      "visible",
-      48,
-      48,
-    ),
-    component(
-      "controls",
-      "Cycle controls",
-      "The visible cycle, pause, and lock indicators.",
-      "visible",
-      50,
-      17,
-    ),
-    component(
-      "door",
-      "Door and dispenser",
-      "The closed door and fully seated dispenser drawer.",
-      "visible",
-      48,
-      43,
-    ),
-    component(
-      "water-supply",
-      "Water supply",
-      "The household valves and visible hose ends behind the washer.",
-      "visible",
-      82,
-      37,
-    ),
-    component(
-      "internal-start-system",
-      "Internal start system",
-      "Door lock, inlet, and controls behind panels.",
-      "professional-only",
-      54,
-      28,
-    ),
-  ],
-  safety: {
-    label: "Pause before checking",
-    instruction:
-      "Keep hands dry, stop pressing Start, and look for water near the washer or outlet. Do not move the washer or remove a panel.",
-    stop: "there is water near power, a damaged cord, smoke, or a burning smell.",
-    firstCheckId: "check-start-controls",
-  },
-  checks: [
-    check(
-      "check-start-controls",
-      "Check the door, drawer, and controls",
-      "controls",
-      "Close the door firmly, seat the dispenser drawer, choose a cycle, and confirm Pause or Control Lock is not shown. Do not force the door.",
-      "A paused cycle, locked controls, open door, or open drawer can prevent the cycle from beginning.",
-      "the door will not close normally or the controls show an unfamiliar fault.",
-      [
-        outcome(
-          "start-control-corrected",
-          "A pause, lock, door, or drawer was the problem",
-          "no-part-needed",
-          {
-            focusComponentId: "controls",
-            outcomeTitle: "The start condition was the problem",
-            outcomeMessage:
-              "With the visible start condition corrected, try the cycle once more and stay nearby for the first fill.",
-          },
-        ),
-        outcome(
-          "start-controls-ready",
-          "Everything is closed and the controls look ready",
-          "continue",
-          {
-            nextCheckId: "check-water-supply",
+function washerStart(entry: ApplianceCatalogEntry): ProfileSpec {
+  const closure = entry.loadStyle === "top-load" ? "lid" : "door";
+  const Closure = entry.loadStyle === "top-load" ? "Lid" : "Door";
+  return {
+    symptom: {
+      id: "will-not-start",
+      label: "Washer cycle will not start",
+      shortLabel: "Cycle will not start",
+    },
+    components: [
+      component(
+        "machine",
+        entry.loadStyle === "top-load" ? "Top-load washer" : "Front-load washer",
+        "The selected washer and visible exterior.",
+        "visible",
+        48,
+        48,
+      ),
+      component(
+        "controls",
+        "Cycle controls",
+        "The visible cycle, pause, and lock indicators.",
+        "visible",
+        50,
+        17,
+      ),
+      component(
+        "door",
+        `${Closure} and opening`,
+        `The visible ${closure}, opening, and closure indicator.`,
+        "visible",
+        48,
+        43,
+      ),
+      component(
+        "water-supply",
+        "Water supply",
+        "The household valves and visible hose ends behind the washer.",
+        "visible",
+        82,
+        37,
+      ),
+      component(
+        "internal-start-system",
+        "Internal start system",
+        `${Closure} lock, inlet, and controls behind panels.`,
+        "professional-only",
+        54,
+        28,
+      ),
+    ],
+    safety: {
+      label: "Pause before checking",
+      instruction:
+        "Keep hands dry, stop pressing Start, and look for water near the washer or outlet. Do not move the washer or remove a panel.",
+      stop: "there is water near power, a damaged cord, smoke, or a burning smell.",
+      firstCheckId: "check-start-controls",
+    },
+    checks: [
+      check(
+        "check-start-controls",
+        `Check the ${closure} and controls`,
+        "controls",
+        `Close the ${closure} normally, choose a cycle, and confirm Pause or Control Lock is not shown. Do not force the ${closure}.`,
+        `A paused cycle, locked controls, or open ${closure} can prevent the cycle from beginning.`,
+        `the ${closure} will not close normally or the controls show an unfamiliar fault.`,
+        [
+          outcome(
+            "start-control-corrected",
+            `A pause, lock, or open ${closure} was the problem`,
+            "no-part-needed",
+            {
+              focusComponentId: "controls",
+              outcomeTitle: "The start condition was the problem",
+              outcomeMessage:
+                "With the visible start condition corrected, try the cycle once more and stay nearby for the first fill.",
+            },
+          ),
+          outcome(
+            "start-controls-ready",
+            "Everything is closed and the controls look ready",
+            "continue",
+            {
+              nextCheckId: "check-water-supply",
+              focusComponentId: "water-supply",
+            },
+          ),
+          outcome(
+            "start-door-damaged",
+            `The ${closure} or control is damaged`,
+            "professional-only",
+            {
+              focusComponentId: "door",
+              outcomeTitle: "The washer needs service before another start",
+              outcomeMessage: `Visible damage can prevent a safe start. Do not force the ${closure} or remove a panel.`,
+            },
+          ),
+        ],
+      ),
+      check(
+        "check-water-supply",
+        "Confirm the visible water supply",
+        "water-supply",
+        "Without moving the washer, confirm both household water valves are open and the visible hose ends are not kinked or leaking.",
+        "This washer can appear not to start while it waits for water.",
+        "a valve is stuck, a hose is wet or damaged, or the connections are hidden behind the washer.",
+        [
+          outcome("start-water-off", "A water valve was closed", "no-part-needed", {
             focusComponentId: "water-supply",
-          },
-        ),
-        outcome(
-          "start-door-damaged",
-          "The door, drawer, or control is damaged",
-          "professional-only",
-          {
-            focusComponentId: "door",
-            outcomeTitle: "The washer needs service before another start",
+            outcomeTitle: "The washer was waiting for water",
             outcomeMessage:
-              "Visible damage can prevent a safe start. Do not force the door or remove a panel.",
-          },
-        ),
-      ],
-    ),
-    check(
-      "check-water-supply",
-      "Confirm the visible water supply",
-      "water-supply",
-      "Without moving the washer, confirm both household water valves are open and the visible hose ends are not kinked or leaking.",
-      "This washer can appear not to start while it waits for water.",
-      "a valve is stuck, a hose is wet or damaged, or the connections are hidden behind the washer.",
-      [
-        outcome("start-water-off", "A water valve was closed", "no-part-needed", {
-          focusComponentId: "water-supply",
-          outcomeTitle: "The washer was waiting for water",
-          outcomeMessage:
-            "Open the household valve only if it turns normally and the connection stays dry, then try the cycle once.",
-        }),
-        outcome("start-water-ready", "Water is on and the hoses look clear", "professional-only", {
-          focusComponentId: "internal-start-system",
-          outcomeTitle: "The next check is inside the washer",
-          outcomeMessage:
-            "The visible start conditions look correct. Door-lock, inlet, and control checks require model-specific service.",
-        }),
-        outcome("start-water-damaged", "A hose or valve is wet or damaged", "professional-only", {
-          focusComponentId: "water-supply",
-          outcomeTitle: "Do not start the washer",
-          outcomeMessage:
-            "Shut off the household water if it is safe to reach and arrange service for the damaged connection.",
-        }),
-      ],
-    ),
-  ],
-  causes: [
-    {
-      id: "washer-start-condition",
-      label: "Paused or open start condition",
-      componentId: "controls",
-      baseRank: 45,
-      defaultExplanation: "A visible pause, lock, door, or drawer state can block starting.",
-      resultScores: { "start-control-corrected": 90, "start-controls-ready": -35 },
-    },
-    {
-      id: "washer-start-water",
-      label: "Water supply not ready",
-      componentId: "water-supply",
-      baseRank: 30,
-      defaultExplanation: "The washer may wait when it cannot fill.",
-      resultScores: { "start-water-off": 90, "start-water-ready": -30 },
-    },
-    {
-      id: "washer-start-internal",
-      label: "Door-lock, inlet, or control issue",
-      componentId: "internal-start-system",
-      baseRank: 15,
-      defaultExplanation: "Internal start components require service.",
-      resultScores: { "start-controls-ready": 25, "start-water-ready": 75 },
-    },
-  ],
-};
+              "Open the household valve only if it turns normally and the connection stays dry, then try the cycle once.",
+          }),
+          outcome(
+            "start-water-ready",
+            "Water is on and the hoses look clear",
+            "professional-only",
+            {
+              focusComponentId: "internal-start-system",
+              outcomeTitle: "The next check is inside the washer",
+              outcomeMessage:
+                "The visible start conditions look correct. Door-lock, inlet, and control checks require model-specific service.",
+            },
+          ),
+          outcome("start-water-damaged", "A hose or valve is wet or damaged", "professional-only", {
+            focusComponentId: "water-supply",
+            outcomeTitle: "Do not start the washer",
+            outcomeMessage:
+              "Shut off the household water if it is safe to reach and arrange service for the damaged connection.",
+          }),
+        ],
+      ),
+    ],
+    causes: [
+      {
+        id: "washer-start-condition",
+        label: "Paused or open start condition",
+        componentId: "controls",
+        baseRank: 45,
+        defaultExplanation: `A visible pause, lock, or ${closure} state can block starting.`,
+        resultScores: { "start-control-corrected": 90, "start-controls-ready": -35 },
+      },
+      {
+        id: "washer-start-water",
+        label: "Water supply not ready",
+        componentId: "water-supply",
+        baseRank: 30,
+        defaultExplanation: "The washer may wait when it cannot fill.",
+        resultScores: { "start-water-off": 90, "start-water-ready": -30 },
+      },
+      {
+        id: "washer-start-internal",
+        label: "Door-lock, inlet, or control issue",
+        componentId: "internal-start-system",
+        baseRank: 15,
+        defaultExplanation: "Internal start components require service.",
+        resultScores: { "start-controls-ready": 25, "start-water-ready": 75 },
+      },
+    ],
+  };
+}
 
-const washerSpin: ProfileSpec = {
-  symptom: { id: "will-not-spin", label: "Washer will not spin", shortLabel: "Drum will not spin" },
-  components: [
-    component(
-      "machine",
-      "Front-load washer",
-      "The selected washer and visible exterior.",
-      "visible",
-      48,
-      48,
-    ),
-    component(
-      "drum",
-      "Drum and load",
-      "The visible clothing load inside the drum.",
-      "visible",
-      49,
-      43,
-    ),
-    component(
-      "door",
-      "Door and dispenser",
-      "The closed door and seated dispenser drawer.",
-      "visible",
-      48,
-      42,
-    ),
-    component(
-      "drain-path",
-      "Drain path",
-      "Standing water or a drain message visible to the user.",
-      "visible",
-      38,
-      72,
-    ),
-    component(
-      "drive-system",
-      "Internal drive system",
-      "Motor, belt, and controls behind panels.",
-      "professional-only",
-      50,
-      64,
-    ),
-  ],
-  safety: {
-    label: "Wait for the washer to stop",
-    instruction:
-      "Cancel the cycle and wait until the drum is completely still. Do not open a locked door or reach into standing water.",
-    stop: "water is hot, the door stays locked, the washer moved, or you smell burning.",
-    firstCheckId: "check-spin-load",
-  },
-  checks: [
-    check(
-      "check-spin-load",
-      "Look at the load and display",
-      "drum",
-      "Check for a very small, single heavy, or bunched load and for a balance or drain message. Redistribute only after the door unlocks normally.",
-      "An unbalanced load or unfinished drain can prevent full-speed spin.",
-      "the door is locked, water remains, or the washer is tilted or damaged.",
-      [
-        outcome("spin-load-unbalanced", "The load is bunched or unbalanced", "no-part-needed", {
-          focusComponentId: "drum",
-          outcomeTitle: "The load balance stopped the spin",
-          outcomeMessage: "Redistribute similar items evenly and try Drain & Spin once.",
-        }),
-        outcome(
-          "spin-water-remains",
-          "Water remains or a drain message is shown",
-          "professional-only",
-          {
-            focusComponentId: "drain-path",
-            outcomeTitle: "Resolve the drain problem first",
-            outcomeMessage:
-              "A washer may not spin while water remains. Use Clunk's supported drain path for this model instead of continuing this spin path.",
-          },
-        ),
-        outcome("spin-load-normal", "The load looks balanced and the tub is drained", "continue", {
-          nextCheckId: "check-spin-closures",
-          focusComponentId: "door",
-        }),
-      ],
-    ),
-    check(
-      "check-spin-closures",
-      "Check the door and dispenser",
-      "door",
-      "Confirm the door closes normally and the dispenser drawer is fully seated. Do not force either part.",
-      "GE notes that an open dispenser or door condition can block spin.",
-      "anything is cracked, misaligned, or will not close with light pressure.",
-      [
-        outcome(
-          "spin-closure-corrected",
-          "The door or drawer was not fully closed",
-          "no-part-needed",
-          {
-            focusComponentId: "door",
-            outcomeTitle: "The open closure stopped the spin",
-            outcomeMessage: "Close it normally and try Drain & Spin once.",
-          },
-        ),
-        outcome(
-          "spin-closures-normal",
-          "The door and drawer are fully closed",
-          "professional-only",
-          {
-            focusComponentId: "drive-system",
-            outcomeTitle: "The drive system needs a technician",
-            outcomeMessage:
-              "The safe, visible spin checks are clear. Belt, motor, lock, and control diagnosis is inside the washer.",
-          },
-        ),
-        outcome(
-          "spin-closure-damaged",
-          "A closure is damaged or will not seat",
-          "professional-only",
-          {
-            focusComponentId: "door",
-            outcomeTitle: "Do not force the closure",
-            outcomeMessage: "A damaged door or dispenser needs model-specific service.",
-          },
-        ),
-      ],
-    ),
-  ],
-  causes: [
-    {
-      id: "washer-spin-load",
-      label: "Unbalanced load",
-      componentId: "drum",
-      baseRank: 45,
-      defaultExplanation: "A bunched or unsuitable load can stop spin.",
-      resultScores: { "spin-load-unbalanced": 90, "spin-load-normal": -35 },
+function washerSpin(entry: ApplianceCatalogEntry): ProfileSpec {
+  const closure = entry.loadStyle === "top-load" ? "lid" : "door";
+  const Closure = entry.loadStyle === "top-load" ? "Lid" : "Door";
+  return {
+    symptom: {
+      id: "will-not-spin",
+      label: "Washer will not spin",
+      shortLabel: "Drum will not spin",
     },
-    {
-      id: "washer-spin-drain",
-      label: "Water has not drained",
-      componentId: "drain-path",
-      baseRank: 35,
-      defaultExplanation: "The washer may protect itself from spinning with water inside.",
-      resultScores: { "spin-water-remains": 90 },
+    components: [
+      component(
+        "machine",
+        entry.loadStyle === "top-load" ? "Top-load washer" : "Front-load washer",
+        "The selected washer and visible exterior.",
+        "visible",
+        48,
+        48,
+      ),
+      component(
+        "drum",
+        "Drum and load",
+        "The visible clothing load inside the drum.",
+        "visible",
+        49,
+        43,
+      ),
+      component(
+        "door",
+        `${Closure} and opening`,
+        `The visible ${closure}, opening, and closure indicator.`,
+        "visible",
+        48,
+        42,
+      ),
+      component(
+        "drain-path",
+        "Drain path",
+        "Standing water or a drain message visible to the user.",
+        "visible",
+        38,
+        72,
+      ),
+      component(
+        "drive-system",
+        "Internal drive system",
+        "Motor, belt, and controls behind panels.",
+        "professional-only",
+        50,
+        64,
+      ),
+    ],
+    safety: {
+      label: "Wait for the washer to stop",
+      instruction: `Cancel the cycle and wait until the basket is completely still. Do not open a locked ${closure} or reach into standing water.`,
+      stop: `water is hot, the ${closure} stays locked, the washer moved, or you smell burning.`,
+      firstCheckId: "check-spin-load",
     },
-    {
-      id: "washer-spin-drive",
-      label: "Internal drive or lock issue",
-      componentId: "drive-system",
-      baseRank: 15,
-      defaultExplanation: "Internal spin components are beyond exterior checks.",
-      resultScores: { "spin-load-normal": 25, "spin-closures-normal": 75 },
-    },
-  ],
-};
+    checks: [
+      check(
+        "check-spin-load",
+        "Look at the load and display",
+        "drum",
+        "Check for a very small, single heavy, or bunched load and for a balance or drain message. Redistribute only after the door unlocks normally.",
+        "An unbalanced load or unfinished drain can prevent full-speed spin.",
+        "the door is locked, water remains, or the washer is tilted or damaged.",
+        [
+          outcome("spin-load-unbalanced", "The load is bunched or unbalanced", "no-part-needed", {
+            focusComponentId: "drum",
+            outcomeTitle: "The load balance stopped the spin",
+            outcomeMessage: "Redistribute similar items evenly and try Drain & Spin once.",
+          }),
+          outcome(
+            "spin-water-remains",
+            "Water remains or a drain message is shown",
+            "professional-only",
+            {
+              focusComponentId: "drain-path",
+              outcomeTitle: "Resolve the drain problem first",
+              outcomeMessage:
+                "A washer may not spin while water remains. Use Clunk's supported drain path for this model instead of continuing this spin path.",
+            },
+          ),
+          outcome(
+            "spin-load-normal",
+            "The load looks balanced and the tub is drained",
+            "continue",
+            {
+              nextCheckId: "check-spin-closures",
+              focusComponentId: "door",
+            },
+          ),
+        ],
+      ),
+      check(
+        "check-spin-closures",
+        `Check the ${closure}`,
+        "door",
+        `Confirm the ${closure} closes normally and its visible lock indicator clears. Do not force it.`,
+        `An open or unlocked ${closure} condition can block spin.`,
+        "anything is cracked, misaligned, or will not close with light pressure.",
+        [
+          outcome(
+            "spin-closure-corrected",
+            `The ${closure} was not fully closed`,
+            "no-part-needed",
+            {
+              focusComponentId: "door",
+              outcomeTitle: "The open closure stopped the spin",
+              outcomeMessage: `Close the ${closure} normally and try Drain & Spin once.`,
+            },
+          ),
+          outcome(
+            "spin-closures-normal",
+            "The door and drawer are fully closed",
+            "professional-only",
+            {
+              focusComponentId: "drive-system",
+              outcomeTitle: "The drive system needs a technician",
+              outcomeMessage:
+                "The safe, visible spin checks are clear. Belt, motor, lock, and control diagnosis is inside the washer.",
+            },
+          ),
+          outcome(
+            "spin-closure-damaged",
+            "A closure is damaged or will not seat",
+            "professional-only",
+            {
+              focusComponentId: "door",
+              outcomeTitle: "Do not force the closure",
+              outcomeMessage: `A damaged ${closure} needs model-specific service.`,
+            },
+          ),
+        ],
+      ),
+    ],
+    causes: [
+      {
+        id: "washer-spin-load",
+        label: "Unbalanced load",
+        componentId: "drum",
+        baseRank: 45,
+        defaultExplanation: "A bunched or unsuitable load can stop spin.",
+        resultScores: { "spin-load-unbalanced": 90, "spin-load-normal": -35 },
+      },
+      {
+        id: "washer-spin-drain",
+        label: "Water has not drained",
+        componentId: "drain-path",
+        baseRank: 35,
+        defaultExplanation: "The washer may protect itself from spinning with water inside.",
+        resultScores: { "spin-water-remains": 90 },
+      },
+      {
+        id: "washer-spin-drive",
+        label: "Internal drive or lock issue",
+        componentId: "drive-system",
+        baseRank: 15,
+        defaultExplanation: "Internal spin components are beyond exterior checks.",
+        resultScores: { "spin-load-normal": 25, "spin-closures-normal": 75 },
+      },
+    ],
+  };
+}
 
-const washerLeak: ProfileSpec = {
-  symptom: { id: "is-leaking", label: "Washer is leaking water", shortLabel: "Water is leaking" },
-  components: [
-    component(
-      "machine",
-      "Front-load washer",
-      "The selected washer and floor around it.",
-      "visible",
-      48,
-      48,
-    ),
-    component(
-      "door-gasket",
-      "Door seal",
-      "The visible rubber seal and door opening.",
-      "user-accessible",
-      48,
-      43,
-    ),
-    component(
-      "dispenser",
-      "Detergent drawer",
-      "The visible dispenser and its opening.",
-      "user-accessible",
-      29,
-      18,
-    ),
-    component(
-      "external-hoses",
-      "External hoses",
-      "Visible fill and drain connections without moving the washer.",
-      "visible",
-      82,
-      43,
-    ),
-    component(
-      "internal-water-path",
-      "Internal water path",
-      "Pump, tub, and internal connections behind panels.",
-      "professional-only",
-      49,
-      70,
-    ),
-  ],
-  safety: {
-    label: "Stop the water first",
-    instruction:
-      "Pause or turn off the washer without stepping in water. If water is still spreading, turn off the household water only if the valves are dry and safe to reach.",
-    stop: "water is near an outlet, the floor is flooding, the washer is hot, or the shutoff cannot be reached safely.",
-    firstCheckId: "check-leak-front",
-  },
-  checks: [
-    check(
-      "check-leak-front",
-      "Inspect the door seal and dispenser",
-      "door-gasket",
-      "With the washer off, wipe the visible gasket edge and look for trapped fabric, hair, residue, a detergent pod in the drawer, or heavy suds. Do not pull the seal away or remove trim.",
-      "Residue, trapped items, and excess suds can send water out the front.",
-      "the seal is torn, the glass is cracked, or water continues to appear.",
-      [
-        outcome(
-          "leak-front-residue",
-          "I found residue, a trapped item, or excess suds",
-          "no-part-needed",
-          {
-            focusComponentId: "door-gasket",
-            outcomeTitle: "The front seal area explains the small leak",
-            outcomeMessage:
-              "Clean the visible seal, move detergent pods to the drum, and use the correct amount of HE detergent before one watched test.",
-          },
-        ),
-        outcome("leak-front-damaged", "The seal, drawer, or door is damaged", "professional-only", {
-          focusComponentId: "door-gasket",
-          outcomeTitle: "Do not run the washer",
-          outcomeMessage:
-            "A damaged water boundary needs model-specific service before another cycle.",
-        }),
-        outcome("leak-front-clear", "The front area is clean and undamaged", "continue", {
-          nextCheckId: "check-leak-hoses",
-          focusComponentId: "external-hoses",
-        }),
-      ],
-    ),
-    check(
-      "check-leak-hoses",
-      "Look at the visible hose connections",
-      "external-hoses",
-      "Without moving the washer, look for moisture, cracks, or a drain hose pushed too far into or loose at the standpipe. Do not tighten or disconnect anything.",
-      "Rear leaks often come from installation, hoses, or household plumbing.",
-      "the area is hidden, wet near power, or a connection must be moved.",
-      [
-        outcome(
-          "leak-hose-visible",
-          "A hose, valve, or standpipe is wet or damaged",
-          "professional-only",
-          {
+function washerLeak(entry: ApplianceCatalogEntry): ProfileSpec {
+  const isTopLoad = entry.loadStyle === "top-load";
+  const closure = isTopLoad ? "lid and tub rim" : "door seal and dispenser";
+  return {
+    symptom: { id: "is-leaking", label: "Washer is leaking water", shortLabel: "Water is leaking" },
+    components: [
+      component(
+        "machine",
+        isTopLoad ? "Top-load washer" : "Front-load washer",
+        "The selected washer and floor around it.",
+        "visible",
+        48,
+        48,
+      ),
+      component(
+        "door-gasket",
+        isTopLoad ? "Lid and tub rim" : "Door seal",
+        isTopLoad
+          ? "The visible lid, basket opening, and top edge of the tub."
+          : "The visible rubber seal and door opening.",
+        "user-accessible",
+        48,
+        43,
+      ),
+      component(
+        "dispenser",
+        "Detergent area",
+        isTopLoad
+          ? "The visible detergent dispenser or pour area."
+          : "The visible dispenser and its opening.",
+        "user-accessible",
+        29,
+        18,
+      ),
+      component(
+        "external-hoses",
+        "External hoses",
+        "Visible fill and drain connections without moving the washer.",
+        "visible",
+        82,
+        43,
+      ),
+      component(
+        "internal-water-path",
+        "Internal water path",
+        "Pump, tub, and internal connections behind panels.",
+        "professional-only",
+        49,
+        70,
+      ),
+    ],
+    safety: {
+      label: "Stop the water first",
+      instruction:
+        "Pause or turn off the washer without stepping in water. If water is still spreading, turn off the household water only if the valves are dry and safe to reach.",
+      stop: "water is near an outlet, the floor is flooding, the washer is hot, or the shutoff cannot be reached safely.",
+      firstCheckId: "check-leak-front",
+    },
+    checks: [
+      check(
+        "check-leak-front",
+        `Inspect the ${closure}`,
+        "door-gasket",
+        isTopLoad
+          ? "With the washer off, look for a load above the basket edge, residue around the visible tub rim, detergent outside its labeled area, or heavy suds. Do not reach under the rim or remove trim."
+          : "With the washer off, wipe the visible gasket edge and look for trapped fabric, hair, residue, detergent in the wrong compartment, or heavy suds. Do not pull the seal away or remove trim.",
+        isTopLoad
+          ? "Overloading, residue at the visible rim, and excess suds can send water over the top edge."
+          : "Residue, trapped items, and excess suds can send water out the front.",
+        isTopLoad
+          ? "the lid, basket, or visible tub rim is damaged, or water continues to appear."
+          : "the seal is torn, the glass is cracked, or water continues to appear.",
+        [
+          outcome(
+            "leak-front-residue",
+            "I found residue, a trapped item, or excess suds",
+            "no-part-needed",
+            {
+              focusComponentId: "door-gasket",
+              outcomeTitle: isTopLoad
+                ? "The visible loading or suds condition explains the small leak"
+                : "The front seal area explains the small leak",
+              outcomeMessage: isTopLoad
+                ? "Correct the load, clean only the visible rim, and use the labeled amount of HE detergent before one watched test."
+                : "Clean the visible seal, place detergent where the console or manual directs, and use the correct amount of HE detergent before one watched test.",
+            },
+          ),
+          outcome(
+            "leak-front-damaged",
+            "The visible water boundary is damaged",
+            "professional-only",
+            {
+              focusComponentId: "door-gasket",
+              outcomeTitle: "Do not run the washer",
+              outcomeMessage:
+                "A damaged water boundary needs model-specific service before another cycle.",
+            },
+          ),
+          outcome("leak-front-clear", "The front area is clean and undamaged", "continue", {
+            nextCheckId: "check-leak-hoses",
             focusComponentId: "external-hoses",
-            outcomeTitle: "Keep the washer off",
+          }),
+        ],
+      ),
+      check(
+        "check-leak-hoses",
+        "Look at the visible hose connections",
+        "external-hoses",
+        "Without moving the washer, look for moisture, cracks, or a drain hose pushed too far into or loose at the standpipe. Do not tighten or disconnect anything.",
+        "Rear leaks often come from installation, hoses, or household plumbing.",
+        "the area is hidden, wet near power, or a connection must be moved.",
+        [
+          outcome(
+            "leak-hose-visible",
+            "A hose, valve, or standpipe is wet or damaged",
+            "professional-only",
+            {
+              focusComponentId: "external-hoses",
+              outcomeTitle: "Keep the washer off",
+              outcomeMessage:
+                "The visible connection needs a plumber or appliance technician before another cycle.",
+            },
+          ),
+          outcome("leak-hoses-dry", "The visible hoses and drain are dry", "professional-only", {
+            focusComponentId: "internal-water-path",
+            outcomeTitle: "The leak source is inside or out of view",
             outcomeMessage:
-              "The visible connection needs a plumber or appliance technician before another cycle.",
-          },
-        ),
-        outcome("leak-hoses-dry", "The visible hoses and drain are dry", "professional-only", {
-          focusComponentId: "internal-water-path",
-          outcomeTitle: "The leak source is inside or out of view",
-          outcomeMessage:
-            "The owner-safe leak checks are clear. Do not remove panels to find the source.",
-        }),
-      ],
-    ),
-  ],
-  causes: [
-    {
-      id: "washer-leak-front",
-      label: "Seal residue, trapped fabric, or suds",
-      componentId: "door-gasket",
-      baseRank: 45,
-      defaultExplanation: "Visible front-door conditions can cause small leaks.",
-      resultScores: { "leak-front-residue": 90, "leak-front-clear": -35 },
-    },
-    {
-      id: "washer-leak-hose",
-      label: "External hose or household drain leak",
-      componentId: "external-hoses",
-      baseRank: 35,
-      defaultExplanation: "Visible connections can leak or back up.",
-      resultScores: { "leak-hose-visible": 90, "leak-hoses-dry": -30 },
-    },
-    {
-      id: "washer-leak-internal",
-      label: "Internal water-path leak",
-      componentId: "internal-water-path",
-      baseRank: 15,
-      defaultExplanation: "Internal leaks require safe service access.",
-      resultScores: { "leak-front-clear": 20, "leak-hoses-dry": 75 },
-    },
-  ],
-};
+              "The owner-safe leak checks are clear. Do not remove panels to find the source.",
+          }),
+        ],
+      ),
+    ],
+    causes: [
+      {
+        id: "washer-leak-front",
+        label: isTopLoad
+          ? "Loading, rim residue, or suds"
+          : "Seal residue, trapped fabric, or suds",
+        componentId: "door-gasket",
+        baseRank: 45,
+        defaultExplanation: isTopLoad
+          ? "Visible loading, rim, or suds conditions can cause small leaks."
+          : "Visible front-door conditions can cause small leaks.",
+        resultScores: { "leak-front-residue": 90, "leak-front-clear": -35 },
+      },
+      {
+        id: "washer-leak-hose",
+        label: "External hose or household drain leak",
+        componentId: "external-hoses",
+        baseRank: 35,
+        defaultExplanation: "Visible connections can leak or back up.",
+        resultScores: { "leak-hose-visible": 90, "leak-hoses-dry": -30 },
+      },
+      {
+        id: "washer-leak-internal",
+        label: "Internal water-path leak",
+        componentId: "internal-water-path",
+        baseRank: 15,
+        defaultExplanation: "Internal leaks require safe service access.",
+        resultScores: { "leak-front-clear": 20, "leak-hoses-dry": 75 },
+      },
+    ],
+  };
+}
 
 const dishwasherCleaning: ProfileSpec = {
   symptom: {
@@ -2337,10 +2383,10 @@ export function buildSupplementalProfile(
   const spec =
     entry.kind === "washer"
       ? symptomId === "will-not-start"
-        ? washerStart
+        ? washerStart(entry)
         : symptomId === "will-not-spin"
-          ? washerSpin
-          : washerLeak
+          ? washerSpin(entry)
+          : washerLeak(entry)
       : entry.kind === "dishwasher"
         ? symptomId === "not-cleaning"
           ? dishwasherCleaning

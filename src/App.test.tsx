@@ -87,10 +87,10 @@ describe("Clunk visual field guide", () => {
     expect(screen.getByRole("heading", { name: "What are you fixing?" })).toBeVisible();
     expect(screen.getByText("163 supported models")).toBeVisible();
     for (const label of [
-      /Choose Washer — 2 broad problem guides/,
-      /Choose Dishwasher — 2 broad problem guides/,
-      /Choose Electric dryer — 1 broad problem guide/,
-      /Choose Refrigerator — 2 broad problem guides/,
+      /Choose Washer — 4 broad problem guides/,
+      /Choose Dishwasher — 4 broad problem guides/,
+      /Choose Electric dryer — 4 broad problem guides/,
+      /Choose Refrigerator — 4 broad problem guides/,
     ])
       expect(screen.getByRole("button", { name: label })).toBeVisible();
     expect(screen.getByAltText("Cutaway view of an electric dryer")).toHaveAttribute(
@@ -110,15 +110,17 @@ describe("Clunk visual field guide", () => {
       screen.getByText(/Coverage is checked separately for every model and problem/),
     ).toBeVisible();
     expect(screen.getByText(/41 checked models · 6 purchase-ready/)).toBeVisible();
+    expect(screen.getByRole("button", { name: /Supported now Not cold enough/ })).toHaveTextContent(
+      "22 checked models · checks only",
+    );
+    expect(screen.getByText("More problems")).toBeVisible();
     expect(
-      screen.getByRole("button", { name: /Supported now Door won't close/ }),
-    ).toHaveTextContent("35 checked models · checks only");
-    expect(screen.getByText("Limited pilots")).toBeVisible();
-    expect(
-      screen.queryByRole("button", { name: /Limited pilot.*Not cold enough/ }),
+      screen.queryByRole("button", { name: /35 checked models.*Door won't close/ }),
     ).not.toBeVisible();
-    await user.click(screen.getByText("Limited pilots"));
-    expect(screen.getByRole("button", { name: /Limited pilot.*Not cold enough/ })).toBeVisible();
+    await user.click(screen.getByText("More problems"));
+    expect(
+      screen.getByRole("button", { name: /35 checked models.*Door won't close/ }),
+    ).toBeVisible();
     await user.click(screen.getByRole("button", { name: /Supported now Water is slow/ }));
     expect(screen.getByRole("heading", { name: "Find the model label." })).toBeVisible();
     expect(screen.getByRole("searchbox", { name: "Refrigerator model number" })).toBeVisible();

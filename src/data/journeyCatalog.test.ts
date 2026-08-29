@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   APPLIANCE_JOURNEYS,
   getCatalogEntriesForSymptom,
-  getLimitedSymptoms,
+  getMoreSymptoms,
   getPrimarySymptoms,
   getSupportedSymptoms,
 } from "./journeyCatalog";
@@ -24,40 +24,26 @@ describe("visual journey catalog", () => {
     }
   });
 
-  it("separates broad problem guides from one-model pilots without universalizing coverage", () => {
+  it("keeps four prominent consumer choices and a neutral more-problems overflow", () => {
     expect(
       Object.fromEntries(
         APPLIANCE_JOURNEYS.map((journey) => [journey.id, getPrimarySymptoms(journey.id)]),
       ),
     ).toEqual({
-      washer: ["will-not-drain", "door-will-not-close"],
-      dishwasher: ["will-not-drain", "door-will-not-close"],
-      dryer: ["door-will-not-close"],
-      refrigerator: ["slow-water-flow", "door-will-not-close"],
+      washer: ["will-not-drain", "will-not-start", "will-not-spin", "is-leaking"],
+      dishwasher: ["will-not-drain", "not-cleaning", "will-not-fill", "is-leaking"],
+      dryer: ["door-will-not-close", "will-not-start", "not-heating", "drum-will-not-turn"],
+      refrigerator: ["slow-water-flow", "not-cooling", "is-leaking", "ice-maker-not-making-ice"],
     });
-    expect(getLimitedSymptoms("washer")).toEqual(["will-not-start", "will-not-spin", "is-leaking"]);
-    expect(getLimitedSymptoms("dishwasher")).toEqual([
-      "not-cleaning",
-      "will-not-fill",
-      "is-leaking",
-    ]);
-    expect(getLimitedSymptoms("dryer")).toEqual([
-      "will-not-start",
-      "not-heating",
-      "drum-will-not-turn",
-    ]);
-    expect(getLimitedSymptoms("refrigerator")).toEqual([
-      "not-cooling",
-      "is-leaking",
-      "ice-maker-not-making-ice",
-    ]);
+    expect(getMoreSymptoms("washer")).toEqual(["door-will-not-close"]);
+    expect(getMoreSymptoms("dishwasher")).toEqual(["door-will-not-close"]);
+    expect(getMoreSymptoms("dryer")).toEqual([]);
+    expect(getMoreSymptoms("refrigerator")).toEqual(["door-will-not-close"]);
     expect(getSupportedSymptoms("washer")).toHaveLength(5);
     expect(getSupportedSymptoms("dishwasher")).toHaveLength(5);
     expect(getSupportedSymptoms("dryer")).toHaveLength(4);
     expect(getSupportedSymptoms("refrigerator")).toHaveLength(5);
-    expect(getCatalogEntriesForSymptom("dryer", "not-heating").map((entry) => entry.id)).toEqual([
-      "ge-gtd42easj2ww",
-    ]);
+    expect(getCatalogEntriesForSymptom("dryer", "not-heating")).toHaveLength(19);
     expect(getCatalogEntriesForSymptom("dryer", "door-will-not-close").length).toBeGreaterThan(1);
   });
 
@@ -74,23 +60,23 @@ describe("visual journey catalog", () => {
     ).toEqual({
       "washer:will-not-drain": 56,
       "washer:door-will-not-close": 36,
-      "washer:will-not-start": 1,
-      "washer:will-not-spin": 1,
-      "washer:is-leaking": 1,
+      "washer:will-not-start": 39,
+      "washer:will-not-spin": 39,
+      "washer:is-leaking": 39,
       "dishwasher:will-not-drain": 33,
       "dishwasher:door-will-not-close": 20,
-      "dishwasher:not-cleaning": 1,
-      "dishwasher:will-not-fill": 1,
-      "dishwasher:is-leaking": 1,
+      "dishwasher:not-cleaning": 21,
+      "dishwasher:will-not-fill": 21,
+      "dishwasher:is-leaking": 21,
       "dryer:door-will-not-close": 33,
-      "dryer:will-not-start": 1,
-      "dryer:not-heating": 1,
-      "dryer:drum-will-not-turn": 1,
+      "dryer:will-not-start": 19,
+      "dryer:not-heating": 19,
+      "dryer:drum-will-not-turn": 19,
       "refrigerator:slow-water-flow": 41,
       "refrigerator:door-will-not-close": 35,
-      "refrigerator:not-cooling": 1,
-      "refrigerator:is-leaking": 1,
-      "refrigerator:ice-maker-not-making-ice": 1,
+      "refrigerator:not-cooling": 22,
+      "refrigerator:is-leaking": 22,
+      "refrigerator:ice-maker-not-making-ice": 22,
     });
   });
 });

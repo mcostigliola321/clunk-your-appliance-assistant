@@ -283,11 +283,11 @@ The opening appliance field is intentionally square and ruled edge-to-edge. This
 
 ### Appliance Choice Field
 
-Each appliance is a substantial cutaway action inside a shared ruled field. The image occupies most of the action, followed by the appliance name, the count of broad problem guides, and a directional arrow. The appliance action always opens problem selection; no repeated example or limited pilot shares equal prominence with it.
+Each appliance is a substantial cutaway action inside a shared ruled field. The image occupies most of the action, followed by the appliance name, the count of broad problem guides, and a directional arrow. The appliance action always opens problem selection; no repeated example or secondary problem disclosure shares equal prominence with it.
 
 ### Symptom Choice Field
 
-The symptom stage presents no more than four mature plain-language observations beside the category cutaway. Every primary choice includes a short behavior description and exact checked-model count, stays keyboard and screen-reader operable, and filters the next model view by actual model × symptom coverage. Routes with only one checked model belong in a clearly labeled **Limited pilots** disclosure with their count; they remain reachable but must not look like equal-strength peers. The UI must never present a category or model count as proof that a particular problem is covered.
+The symptom stage presents no more than four plain-language observations beside the category cutaway. Every primary choice includes a short behavior description and exact checked-model count, stays keyboard and screen-reader operable, and filters the next model view by actual model × symptom coverage. A fifth checked route belongs in a neutral **More problems** disclosure with its exact count; this is layout prioritization, not a consumer-facing evidence grade. Internal terms such as pilot, beta, experimental, cohort, or evidence tier do not belong in this choice UI. The UI must never present a category or model count as proof that a particular problem is covered.
 
 ### Completed Example Hub
 

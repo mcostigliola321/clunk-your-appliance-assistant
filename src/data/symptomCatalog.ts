@@ -6,9 +6,8 @@ import type {
   SupportedSymptomId,
   SymptomCoverage,
 } from "@/domain/types";
+import { getBroadSymptomCoverage } from "@/data/broadSymptomCoverage";
 import { getExpandedSymptomCoverage } from "@/data/symptomCoverageExpansion";
-
-const VERIFIED_ON = "2026-08-27";
 
 export interface SymptomPresentation {
   id: SupportedSymptomId;
@@ -105,10 +104,10 @@ export const SYMPTOMS_BY_KIND: Record<ApplianceKind, SupportedSymptomId[]> = {
 };
 
 export const PRIMARY_SYMPTOMS_BY_KIND: Record<ApplianceKind, SupportedSymptomId[]> = {
-  washer: ["will-not-drain", "door-will-not-close"],
-  dishwasher: ["will-not-drain", "door-will-not-close"],
-  dryer: ["door-will-not-close"],
-  refrigerator: ["slow-water-flow", "door-will-not-close"],
+  washer: ["will-not-drain", "will-not-start", "will-not-spin", "is-leaking"],
+  dishwasher: ["will-not-drain", "not-cleaning", "will-not-fill", "is-leaking"],
+  dryer: ["door-will-not-close", "will-not-start", "not-heating", "drum-will-not-turn"],
+  refrigerator: ["slow-water-flow", "not-cooling", "is-leaking", "ice-maker-not-making-ice"],
 };
 
 export const DEFAULT_SYMPTOM_BY_KIND: Record<ApplianceKind, SupportedSymptomId> = {
@@ -118,25 +117,7 @@ export const DEFAULT_SYMPTOM_BY_KIND: Record<ApplianceKind, SupportedSymptomId> 
   refrigerator: "slow-water-flow",
 };
 
-function source(
-  id: string,
-  title: string,
-  url: string,
-  publisher: string,
-  appliesTo: string,
-): SourceReference {
-  return {
-    id,
-    kind: "manufacturer-troubleshooting",
-    title,
-    url,
-    publisher,
-    appliesTo,
-    lastVerified: VERIFIED_ON,
-  };
-}
-
-const additionalCoverage: Record<
+/* const additionalCoverage: Record<
   string,
   Array<{
     symptomId: SupportedSymptomId;
@@ -330,7 +311,7 @@ const additionalCoverage: Record<
       ],
     },
   ],
-};
+}; */
 
 export function repairPackId(modelId: string, symptomId: SupportedSymptomId): string {
   return `${modelId}::${symptomId}`;
@@ -362,12 +343,7 @@ export function buildSymptomCoverage(input: {
   return [
     base,
     ...getExpandedSymptomCoverage(input.modelId),
-    ...(additionalCoverage[input.modelId] ?? []).map(({ symptomId, sources }): SymptomCoverage => ({
-      symptomId,
-      repairPackId: repairPackId(input.modelId, symptomId),
-      capability: "guided-checks",
-      troubleshootingSources: sources,
-    })),
+    ...getBroadSymptomCoverage(input.modelId),
   ];
 }
 

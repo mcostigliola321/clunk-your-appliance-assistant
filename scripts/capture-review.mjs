@@ -230,7 +230,7 @@ try {
   {
     const { context, page } = await openPage(browser, { width: 1440, height: 1000 });
     await reachModelSearch(page, /Choose Washer/, /Supported now Water is leaking/);
-    await page.getByRole("searchbox", { name: "Washer model number" }).fill("WM3400CW.ABWEVUS");
+    await page.getByRole("searchbox", { name: "Washer model number" }).fill("MVW7232HW");
     await page.getByText("That model is supported for a different problem.").waitFor();
     await page.screenshot({ path: `${output}/unsupported-model-symptom-desktop.png` });
     await context.close();

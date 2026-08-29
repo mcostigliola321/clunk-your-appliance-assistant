@@ -398,16 +398,16 @@
           "arguments": {
             "kind": "dryer",
             "symptomId": "not-heating",
-            "modelQuery": "WED4950HW"
+            "modelQuery": "MED4500MW"
           }
         }
       ],
-      "prompt": "This Whirlpool dryer appears elsewhere in the catalog. Do not use it for no-heat checks unless that exact model-problem pair is covered.",
+      "prompt": "This Maytag dryer appears elsewhere in the catalog. Do not use it for no-heat checks unless that exact model-problem pair is covered.",
       "expectedCalls": [
         {
           "name": "select_appliance",
           "arguments": {
-            "applianceId": "whirlpool-wed4950hw",
+            "applianceId": "maytag-med4500mw",
             "symptomId": "not-heating"
           },
           "expectedOk": false
@@ -502,11 +502,7 @@
           "arguments": {}
         }
       ],
-      "expectedVisible": [
-        "door-will-not-close",
-        "lid system needs service",
-        "No purchase link"
-      ],
+      "expectedVisible": ["door-will-not-close", "lid system needs service", "No purchase link"],
       "mustNot": [
         "Call the closure a front door",
         "Return a latch or hinge SKU",

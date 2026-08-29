@@ -8,7 +8,7 @@ import {
   getApplianceJourney,
   getCatalogEntriesForSymptom,
   getCategoryCount,
-  getLimitedSymptoms,
+  getMoreSymptoms,
   getPrimarySymptoms,
   getSymptomCoverage,
   getSupportedSymptoms,
@@ -81,7 +81,7 @@ export function ModelFinder({
     categoryEntries[0];
   const supportedSymptoms = getSupportedSymptoms(kind);
   const primarySymptoms = getPrimarySymptoms(kind);
-  const limitedSymptoms = getLimitedSymptoms(kind);
+  const moreSymptoms = getMoreSymptoms(kind);
   const analysis = useMemo(() => analyzeModelQuery(query, brand, kind), [brand, kind, query]);
   const symptomMatches = selectedSymptomId
     ? analysis.matches.filter((entry) => getSymptomCoverage(entry, selectedSymptomId))
@@ -335,16 +335,16 @@ export function ModelFinder({
                 );
               })}
             </div>
-            {limitedSymptoms.length > 0 ? (
+            {moreSymptoms.length > 0 ? (
               <details className="limited-problems">
                 <summary>
                   <span>
-                    Limited pilots <small>Checked on one model each</small>
+                    More problems <small>{moreSymptoms.length} more checked option</small>
                   </span>
                   <ChevronDown size={18} aria-hidden="true" />
                 </summary>
-                <div aria-label={`Limited ${journey.noun} problem pilots`}>
-                  {limitedSymptoms.map((symptomId) => {
+                <div aria-label={`More checked ${journey.noun} problems`}>
+                  {moreSymptoms.map((symptomId) => {
                     const symptom = SYMPTOM_PRESENTATION[symptomId];
                     const coveredEntries = getCatalogEntriesForSymptom(kind, symptomId);
                     return (
@@ -354,7 +354,7 @@ export function ModelFinder({
                         onClick={() => chooseSymptom(symptomId)}
                       >
                         <span>
-                          <small>Limited pilot · {coveredEntries.length} checked model</small>
+                          <small>{coveredEntries.length} checked models · guided checks</small>
                           <strong>{symptom.title}</strong>
                         </span>
                         <ArrowRight size={18} aria-hidden="true" />

@@ -184,7 +184,7 @@ describe("state-dependent WebMCP registration", () => {
     expect(state.packId).toBe("ge-gtd42easj2ww::not-heating");
 
     const unsupported = (await select.execute({
-      applianceId: "whirlpool-wed4950hw",
+      applianceId: "maytag-med4500mw",
       symptomId: "not-heating",
     })) as { structuredContent: Record<string, unknown> };
     expect(unsupported.structuredContent).toMatchObject({ ok: false });
