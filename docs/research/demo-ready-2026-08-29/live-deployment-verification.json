@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-08-29T16:44:32.015Z",
+  "liveUrl": "https://clunk-appliance-assistant.lovable.app",
+  "attempt": 2,
+  "freshBrowserContext": true,
+  "visibleCounts": {
+    "models": 163,
+    "refrigeratorModels": 41,
+    "refrigeratorCooling": 41,
+    "refrigeratorLeak": 36
+  },
+  "routes": {
+    "supported": "Bosch B36CT81ENS/07 × not cooling",
+    "unsupported": "Bosch B36CT81ENS/07 × water leaking"
+  },
+  "asset": {
+    "localAsset": "index-CUsFw9Qn.js",
+    "liveAsset": "index-CUsFw9Qn.js",
+    "sha256": "3d1c737a8423ae4a2d71caa0291d6d26d10c14356e9d7d784b65b3eb0c17c33a",
+    "bytes": 1600194
+  }
+}

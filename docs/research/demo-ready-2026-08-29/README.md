@@ -43,4 +43,4 @@ Purchase-ready status requires all of the following: a complete product revision
 
 The local release gate passed on 2026-08-29: strict TypeScript, ESLint, Prettier, 110 unit/integration/WebMCP tests, production build, 54 desktop/mobile Playwright journeys, and `npm audit --audit-level=moderate` with zero vulnerabilities. A fresh-context verifier also passed against the local production preview, including visible counts, one supported Bosch cooling route, one explicitly unsupported Bosch leak route, and byte-for-byte equality between the served and local production JavaScript asset.
 
-The public deployment result is recorded separately in `live-deployment-verification.json` only after the connected Lovable deployment serves the exact locally built asset.
+The connected Lovable project was freshly published on 2026-08-29. `live-deployment-verification.json` records the fresh-context route checks and exact SHA-256 match between the public production module and the locally built asset.

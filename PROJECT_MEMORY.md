@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-08-29** for the demo-ready evidence release on `codex/demo-ready-evidence`. The local release gate is green; confirm remote `main` and the public Lovable deployment before treating this branch as shipped. The canonical release report is [`docs/research/demo-ready-2026-08-29/README.md`](docs/research/demo-ready-2026-08-29/README.md).
+Last reconciled: **2026-08-29** after demo-ready release code commit `17af432eab4055b43396b6102a85c3778c8075c8` was fast-forwarded to `main`, passed GitHub Verify run [33263520337](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/runs/33263520337), and was published to the public Lovable site. The canonical release report is [`docs/research/demo-ready-2026-08-29/README.md`](docs/research/demo-ready-2026-08-29/README.md).
 
 This is a concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
@@ -28,7 +28,7 @@ The 2026-08-29 local release gate passed: deterministic regeneration, strict Typ
 
 A fresh-context local production-preview verification passed visible catalog counts, refrigerator cooling/leak counts, Bosch `B36CT81ENS/07 × not cooling` as supported, Bosch `B36CT81ENS/07 × leak` as explicitly unsupported, and byte-for-byte equality between the served and local JavaScript asset. Desktop and 390px homepage screenshots were visually reviewed with no overflow or hierarchy regression observed.
 
-Public publication is not complete until `scripts/verify-live-deployment.ts` passes against `https://clunk-appliance-assistant.lovable.app` after the connected `main` push and records `docs/research/demo-ready-2026-08-29/live-deployment-verification.json`.
+The public Lovable deployment at `https://clunk-appliance-assistant.lovable.app` was freshly published and verified on 2026-08-29. `scripts/verify-live-deployment.ts` used service-worker-blocked, no-cache browser contexts and confirmed the visible release counts, supported/unsupported Bosch routes, production module basename, byte length, and SHA-256 digest against the local build. The result is recorded in `docs/research/demo-ready-2026-08-29/live-deployment-verification.json`.
 
 ## Evidence and release boundaries
 
