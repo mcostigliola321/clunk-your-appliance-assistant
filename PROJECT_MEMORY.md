@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-08-29** after the broad-symptom expansion passed its full release gate on `codex/expand-model-symptom-coverage`, based on `605c3a9`. Confirm the moving remote and deployment state before relying on this handoff; production publication has not been verified.
+Last reconciled: **2026-08-29** after the broad-symptom expansion passed its full release gate, was pushed on `codex/expand-model-symptom-coverage`, and was fast-forward merged into `main`. Confirm the moving remote and deployment state before relying on this handoff; production publication has not been verified.
 
 This is the concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
@@ -25,7 +25,7 @@ The design direction is **Approachable Precision**: calm, appliance-led, highly 
 - Shopify organic Global Catalog search remains credential-free. An optional validated public saved-catalog identifier can request Shopify's `affiliate` placement. Promoted offers are labeled, disclose possible commission near the action, and preserve Shopify's attributed variant URL exactly. Enrollment, saved-catalog approval, and payout setup remain manual external dependencies.
 - Repository hardening includes corrected security claims, a private-vulnerability-reporting path through GitHub, stronger secret ignores and a public-only example configuration, bounded public-HTTPS URL validation, hardened local-state parsing, full-SHA Actions pins, and static-host security-header declarations. External GitHub and host settings remain in `docs/release-security-checklist.md`.
 
-The earlier door-closure release was fast-forward merged and pushed to `main` on 2026-08-28. The broader 303-row symptom expansion passed its full local release gate on 2026-08-29. A connected-branch push should sync into the Lovable editor, but production deployment and the live URL have not been verified. No GitHub settings, repository visibility, external account, program enrollment, or production publication was changed.
+The earlier door-closure release was fast-forward merged and pushed to `main` on 2026-08-28. The broader 303-row symptom implementation (`c5c7cb3`) passed its full local release gate on 2026-08-29, was pushed to `codex/expand-model-symptom-coverage`, and was fast-forward pushed to `main`. The connected-branch push should sync into the Lovable editor, but production deployment and the live URL have not been verified. No GitHub settings, repository visibility, external account, program enrollment, or production publication was changed.
 
 ## Verification
 
