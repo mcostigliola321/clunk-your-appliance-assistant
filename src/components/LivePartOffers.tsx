@@ -14,9 +14,9 @@ type OfferState =
   | { status: "error"; offers: ShopifyPartOffer[] };
 
 const OFFER_LABELS: Record<ShopifyPartOffer["kind"], string> = {
-  "seller-listed-oem": "Seller lists as OEM",
-  "exact-part-listing": "Exact part-number listing",
-  "compatible-replacement": "Compatible replacement listing",
+  "seller-listed-oem": "Seller says OEM",
+  "exact-part-listing": "Exact part number shown",
+  "compatible-replacement": "Seller says compatible",
 };
 
 export function LivePartOffers({ part }: { part: RepairPackPart }) {
@@ -44,15 +44,23 @@ export function LivePartOffers({ part }: { part: RepairPackPart }) {
   if (!part.commerce) return null;
 
   const hasPromotedOffer = state.offers.some((offer) => offer.promoted);
+  const statusLabel =
+    state.status === "loading"
+      ? "Checking"
+      : state.status === "error"
+        ? "Unavailable"
+        : state.offers.length === 0
+          ? "None found"
+          : `${state.offers.length} found`;
 
   return (
     <section className="live-offers" aria-labelledby="live-offers-title">
       <div className="live-offers__heading">
         <div>
-          <h3 id="live-offers-title">Current seller listings</h3>
-          <p>Exact part number {part.sku} · supplied live by Shopify</p>
+          <h3 id="live-offers-title">Seller listings for this part</h3>
+          <p>Exact part number {part.sku} · checked through Shopify</p>
         </div>
-        <span className="live-offers__status">Live</span>
+        <span className={`live-offers__status is-${state.status}`}>{statusLabel}</span>
       </div>
 
       <div

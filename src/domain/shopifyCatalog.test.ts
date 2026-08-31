@@ -93,6 +93,34 @@ describe("Shopify Global Catalog handoff", () => {
     expect(offers.every((offer) => offer.promoted === false)).toBe(true);
   });
 
+  it("shows one best exact-SKU listing per seller", () => {
+    const payload = catalogPayload();
+    payload.result.structuredContent.products.push({
+      id: "lower-price-same-seller",
+      title: "Genuine GE WH11X39237 washer drain pump",
+      variants: [
+        {
+          id: "lower-price-same-seller-variant",
+          sku: "WH11X39237",
+          price: { amount: 7799, currency: "USD" },
+          checkout_url: "https://seller.example/cart/lower-price-same-seller",
+          availability: { available: true },
+          seller: { name: "Parts Seller", domain: "www.seller.example" },
+        },
+      ],
+    });
+
+    const offers = extractShopifyPartOffers(payload, "WH11X39237");
+
+    expect(offers.filter((offer) => offer.sellerDomain?.includes("seller.example"))).toHaveLength(
+      1,
+    );
+    expect(offers[0]).toMatchObject({
+      productId: "lower-price-same-seller",
+      price: { amount: 7799, currency: "USD" },
+    });
+  });
+
   it("preserves an attributed promoted URL exactly and rejects unsafe destinations", () => {
     const attributedUrl =
       "https://seller.example/products/pump?variant=42&utm_source=shopify&utm_medium=catalog&shclid=click_1&shdid=developer_9";

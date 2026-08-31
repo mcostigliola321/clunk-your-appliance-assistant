@@ -31,12 +31,12 @@ Simple, instantly understandable, clean. The interface should feel calm and exac
 2. Show the relevant place to check on a recognizable appliance while asking one plain-language question; never call the original art an exact service diagram.
 3. Reveal the result automatically after the last answer; never add a technical “resolve” step.
 4. When an exact match exists, show the part name, location, model fit, price, and a prominent buy link together.
-5. Explain the WebMCP novelty as one guarded repair state shared by a person and a browser agent; keep raw activity, tools, sources, and detailed reasoning one level deeper.
+5. State the WebMCP division of responsibility in the first viewport: a browser agent can help with lookup, but only the person can report what is physically present. Keep raw activity, tools, sources, and detailed reasoning one level deeper.
 6. Say “safe checks available” before a user starts any model path that cannot currently end in an exact part.
 7. Let every category prove the final outcome in one click, with filled-in observations visibly labeled as a sample guide.
-8. After appliance choice, show no more than four plain-language problem peers with exact coverage context. Put any additional checked route in a neutral **More problems** disclosure; internal evidence maturity language never appears in consumer copy, and model identity never grants symptom coverage.
+8. After appliance choice, show no more than four plain-language problem peers. Put any additional checked route in a neutral **More problems** disclosure; model counts and internal evidence maturity language do not belong beside symptom choices, and model identity never grants symptom coverage.
 9. Keep sample outcomes behind one secondary **See a finished guide** entry. Research-roadmap copy does not belong in the homeowner journey.
-10. Label paid Shopify placements at the offer and disclose a possible Clunk commission near the action; preserve organic checkout when no approved placement exists.
+10. Show at most one current exact-SKU result per seller. Label paid Shopify placements at the offer and disclose a possible Clunk commission near the action; preserve organic checkout when no approved placement exists.
 
 ## Accessibility & Inclusion
 

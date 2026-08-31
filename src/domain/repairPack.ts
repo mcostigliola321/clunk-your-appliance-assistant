@@ -350,8 +350,8 @@ function washerProfile(entry: FlagshipProfileEntry, sourceIds: string[]) {
             title: "See a complete washer answer",
             summary:
               entry.profile === "washer-front-drain"
-                ? "Clear hose + clear filter → verified drain-pump link"
-                : "Clear external hose → verified exact-code pump handoff",
+                ? "The hose and filter are clear, so Clunk checks the exact drain-pump fit"
+                : "The outside hose is clear, so Clunk checks the exact pump fit",
             productCode: entry.verifiedProductCodes[0] ?? entry.model,
             observations: [
               { checkId: "safety-check", resultId: "safe-ready" },
@@ -485,7 +485,7 @@ function dishwasherProfile(entry: FlagshipProfileEntry, sourceIds: string[]) {
         entry.capability === "purchase-ready" && entry.exactPart
           ? {
               title: "See a complete dishwasher answer",
-              summary: "Clear sink connection → verified exact-code pump handoff",
+              summary: "The sink connection is clear, so Clunk checks the exact drain-pump fit",
               productCode: entry.verifiedProductCodes[0] ?? entry.model,
               observations: [
                 { checkId: "safety-check", resultId: "safe-ready" },
@@ -637,7 +637,8 @@ function dishwasherProfile(entry: FlagshipProfileEntry, sourceIds: string[]) {
       entry.capability === "purchase-ready" && entry.exactPart
         ? {
             title: "See a complete dishwasher answer",
-            summary: "Clear sink + clear filter → verified drain-pump link",
+            summary:
+              "The sink connection and filter are clear, so Clunk checks the exact drain-pump fit",
             productCode: entry.verifiedProductCodes[0] ?? entry.model,
             observations: [
               { checkId: "safety-check", resultId: "safe-ready" },
@@ -757,7 +758,7 @@ function dryerProfile(entry: FlagshipProfileEntry, sourceIds: string[]) {
       entry.capability === "purchase-ready" && entry.exactPart
         ? {
             title: "See a complete dryer answer",
-            summary: "Broken visible catch → verified $7 part link",
+            summary: "The visible door catch is broken, so Clunk checks the exact replacement",
             productCode: entry.verifiedProductCodes[0] ?? entry.model,
             observations: [
               { checkId: "safety-check", resultId: "safe-ready" },
@@ -897,7 +898,7 @@ function refrigeratorProfile(entry: FlagshipProfileEntry, sourceIds: string[]) {
       entry.capability === "purchase-ready" && entry.exactPart
         ? {
             title: "See a complete refrigerator answer",
-            summary: "Old filter → verified replacement link",
+            summary: "The water filter is overdue, so Clunk checks the exact replacement",
             productCode: entry.verifiedProductCodes[0] ?? entry.model,
             observations: [
               { checkId: "safety-check", resultId: "safe-ready" },

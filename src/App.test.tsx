@@ -109,23 +109,21 @@ describe("Clunk visual field guide", () => {
     renderClunk();
     await user.click(screen.getByRole("button", { name: /Choose Refrigerator/ }));
     expect(screen.getByText(/only show models with guidance for that problem/)).toBeVisible();
-    expect(screen.getAllByText("41 models").length).toBeGreaterThan(0);
-    expect(screen.getByRole("button", { name: /Not cold enough/ })).toHaveTextContent("41 models");
+    expect(screen.getByRole("button", { name: /Not cold enough/ })).not.toHaveTextContent("models");
     expect(screen.getByText("More problems")).toBeVisible();
-    expect(screen.queryByRole("button", { name: /41 models.*Door won't close/ })).not.toBeVisible();
+    expect(screen.queryByRole("button", { name: /Door won't close/ })).not.toBeVisible();
     await user.click(screen.getByText("More problems"));
-    expect(screen.getByRole("button", { name: /41 models.*Door won't close/ })).toBeVisible();
+    expect(screen.getByRole("button", { name: /Door won't close/ })).toBeVisible();
     await user.click(screen.getByRole("button", { name: /Water is slow/ }));
     expect(screen.getByRole("heading", { name: "Find the model label." })).toBeVisible();
     expect(screen.getByRole("searchbox", { name: "Refrigerator model number" })).toBeVisible();
   });
 
-  it("shows the expanded exact-pump count with complete dishwasher route breadth", async () => {
+  it("keeps catalog breadth out of the dishwasher problem choice", async () => {
     const user = userEvent.setup();
     renderClunk();
     await user.click(screen.getByRole("button", { name: /Choose Dishwasher/ }));
-    expect(screen.getAllByText("33 models").length).toBeGreaterThan(0);
-    expect(screen.getByRole("button", { name: /Won't drain/ })).toBeVisible();
+    expect(screen.getByRole("button", { name: /Won't drain/ })).not.toHaveTextContent("models");
   });
 
   it("returns the local journey to appliance choice when Start over clears shared state", async () => {
@@ -191,7 +189,9 @@ describe("Clunk visual field guide", () => {
     await user.click(screen.getByRole("button", { name: "See completed dryer example" }));
     expect(screen.getByRole("heading", { name: "This is the part for your dryer" })).toBeVisible();
     expect(screen.getByText("Part #WE01M10007")).toBeVisible();
-    expect(await screen.findByRole("heading", { name: "Current seller listings" })).toBeVisible();
+    expect(
+      await screen.findByRole("heading", { name: "Seller listings for this part" }),
+    ).toBeVisible();
     expect(
       await screen.findByRole("link", {
         name: "View Shopify test seller offer for part WE01M10007 in a new tab",
@@ -306,7 +306,7 @@ describe("Clunk visual field guide", () => {
     await user.click(
       screen.getByRole("button", { name: "The strike is cracked, bent, or missing" }),
     );
-    expect(screen.getByText("Part lookup available")).toBeVisible();
+    expect(screen.getByText("Part lookup used")).toBeVisible();
     expect(screen.getByText("Part #WE01M10007")).toBeVisible();
   });
 

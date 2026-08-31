@@ -171,10 +171,16 @@ export function ModelFinder({
           <h1 id="journey-title" ref={stageTitleRef} tabIndex={-1}>
             What are you fixing?
           </h1>
-          <p>
-            Pick the appliance and what it’s doing. Clunk points to one safe place at a time, then
-            checks the full model number before showing a part.
-          </p>
+          <div className="journey-start__promise">
+            <p>
+              Pick the appliance and what it’s doing. Clunk points to one safe place at a time, then
+              checks the full model number before showing a part.
+            </p>
+            <p>
+              A browser agent can help with the lookup. Only you can report what is physically
+              there.
+            </p>
+          </div>
         </div>
 
         <div className="appliance-field" aria-label="Choose an appliance">
@@ -292,14 +298,10 @@ export function ModelFinder({
             >
               {primarySymptoms.map((symptomId) => {
                 const symptom = SYMPTOM_PRESENTATION[symptomId];
-                const coveredEntries = getCatalogEntriesForSymptom(kind, symptomId);
                 return (
                   <button type="button" key={symptomId} onClick={() => chooseSymptom(symptomId)}>
                     <strong>{symptom.title}</strong>
                     <small>{symptom.description}</small>
-                    <small className="symptom-options__coverage">
-                      {coveredEntries.length} models
-                    </small>
                     <ArrowRight size={20} aria-hidden="true" />
                   </button>
                 );
@@ -319,7 +321,6 @@ export function ModelFinder({
                 <div aria-label={`More checked ${journey.noun} problems`}>
                   {moreSymptoms.map((symptomId) => {
                     const symptom = SYMPTOM_PRESENTATION[symptomId];
-                    const coveredEntries = getCatalogEntriesForSymptom(kind, symptomId);
                     return (
                       <button
                         type="button"
@@ -327,7 +328,6 @@ export function ModelFinder({
                         onClick={() => chooseSymptom(symptomId)}
                       >
                         <span>
-                          <small>{coveredEntries.length} models</small>
                           <strong>{symptom.title}</strong>
                         </span>
                         <ArrowRight size={18} aria-hidden="true" />
@@ -500,7 +500,7 @@ export function ModelFinder({
                   <span>
                     {hasDifferentSymptomMatches
                       ? "Go back and choose the problem that matches what the appliance is doing."
-                      : analysis.guidance}
+                      : null}
                   </span>
                 </div>
               )}

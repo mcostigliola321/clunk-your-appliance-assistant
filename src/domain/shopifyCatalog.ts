@@ -139,10 +139,20 @@ export function extractShopifyPartOffers(
     }
   }
 
+  const sellers = new Set<string>();
   return offers
     .sort((left, right) => {
       const kindDifference = offerRank(left.kind) - offerRank(right.kind);
       return kindDifference || left.price.amount - right.price.amount;
+    })
+    .filter((offer) => {
+      const sellerKey = (offer.sellerDomain ?? offer.seller)
+        .trim()
+        .toLowerCase()
+        .replace(/^www\./, "");
+      if (sellers.has(sellerKey)) return false;
+      sellers.add(sellerKey);
+      return true;
     })
     .slice(0, 5);
 }

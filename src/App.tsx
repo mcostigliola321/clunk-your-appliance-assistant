@@ -167,7 +167,12 @@ export function App() {
         Skip to main content
       </a>
       <header className="topbar">
-        <a className="brand" href="#main-content" aria-label="Clunk home">
+        <a
+          className="brand"
+          href="#main-content"
+          aria-label="Clunk home"
+          onClick={hasSession ? reset : undefined}
+        >
           Clunk<span aria-hidden="true">.</span>
         </a>
         <p>See where to look. Know what fits.</p>
@@ -288,17 +293,15 @@ export function App() {
           <summary>
             <span>
               <strong>One guide. Two ways to use it.</strong>
-              <small>
-                Use Clunk yourself, or share the same guarded steps with a browser agent
-              </small>
+              <small>WebMCP lets the browser help; physical observations stay with you</small>
             </span>
             <span>
               See how it works <ChevronDown size={18} aria-hidden="true" />
             </span>
           </summary>
           <div className="protocol-band">
-            <AgentStory />
             <HandoffStatus snapshot={snapshot} />
+            <AgentStory />
             <details className="protocol-inspector">
               <summary>
                 <span>

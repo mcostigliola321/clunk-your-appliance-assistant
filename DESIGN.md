@@ -287,7 +287,7 @@ Each appliance is a substantial cutaway action inside a shared ruled field. The 
 
 ### Symptom Choice Field
 
-The symptom stage presents no more than four plain-language observations beside the category cutaway. Choices form one ruled editorial index rather than a grid of repeated status cards. Every choice includes a short behavior description and exact model count, stays keyboard and screen-reader operable, and filters the next model view by actual model × symptom coverage. A fifth checked route belongs in a neutral **More problems** disclosure with its exact count; this is layout prioritization, not a consumer-facing evidence grade. Internal terms such as pilot, beta, experimental, cohort, purchase-ready, checks-only, or evidence tier do not belong in this choice UI. The UI must never present a category or model count as proof that a particular problem is covered.
+The symptom stage presents no more than four plain-language observations beside the category cutaway. Choices form one ruled editorial index rather than a grid of repeated status cards. Every choice includes a short behavior description, stays keyboard and screen-reader operable, and filters the next model view by actual model × symptom coverage. A fifth checked route belongs in a neutral **More problems** disclosure; this is layout prioritization, not a consumer-facing evidence grade. Model counts belong in catalog browsing and release evidence, not beside a homeowner's symptom choices. Internal terms such as pilot, beta, experimental, cohort, purchase-ready, checks-only, or evidence tier do not belong in this choice UI. The UI must never present a category or model count as proof that a particular problem is covered.
 
 ### Completed Example Hub
 

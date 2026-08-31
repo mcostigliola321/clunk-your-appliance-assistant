@@ -206,15 +206,13 @@ test("moves from visual appliance to supported problem before model identificati
   await expect(page.getByRole("heading", { name: "What is it doing?" })).toBeVisible();
 });
 
-test("shows four broad consumer problems and a neutral checked overflow", async ({ page }) => {
+test("shows four plain consumer problems and a neutral checked overflow", async ({ page }) => {
   await page.getByRole("button", { name: /Choose Refrigerator/ }).click();
-  await expect(page.getByRole("button", { name: /Water is slow/ })).toContainText("41 models");
-  await expect(page.getByRole("button", { name: /Not cold enough/ })).toContainText("41 models");
-  await expect(page.getByRole("button", { name: /41 models.*Door won't close/ })).toBeHidden();
+  await expect(page.getByRole("button", { name: /Water is slow/ })).not.toContainText("models");
+  await expect(page.getByRole("button", { name: /Not cold enough/ })).not.toContainText("models");
+  await expect(page.getByRole("button", { name: /Door won't close/ })).toBeHidden();
   await page.getByText("More problems").click();
-  await expect(page.getByRole("button", { name: /41 models.*Door won't close/ })).toContainText(
-    "41 models",
-  );
+  await expect(page.getByRole("button", { name: /Door won't close/ })).toBeVisible();
 });
 
 test("opens every broadened washer problem with topology-aware guided checks", async ({ page }) => {
@@ -288,7 +286,7 @@ test("opens every broadened refrigerator problem with feature-gated guided check
 test("runs a topology-aware washer lid closure guide and stops before internal repair", async ({
   page,
 }) => {
-  await reachModelSearch(page, /Choose Washer/, /53 models.*Door won't close/);
+  await reachModelSearch(page, /Choose Washer/, /Door won't close/);
   const input = page.getByRole("searchbox", { name: "Washer model number" });
   await input.fill("WT7400CW");
   await page.getByRole("button", { name: "Find model" }).click();
@@ -365,7 +363,7 @@ test("one secondary action reaches an exact part and exact-SKU seller handoff", 
     page.getByRole("heading", { name: "This is the part for your dryer" }),
   ).toBeFocused();
   await expect(page.locator(".part-sku")).toHaveText("Part #WE01M10007");
-  await expect(page.getByRole("heading", { name: "Current seller listings" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Seller listings for this part" })).toBeVisible();
   await expect(page.getByText("$18.99", { exact: true })).toBeVisible();
   await expect(
     page.getByRole("link", { name: /View UCP Parts offer for part WE01M10007/ }),
@@ -503,7 +501,7 @@ test("keeps stacked seller offers clear of source and safety guidance", async ({
   await page.setViewportSize({ width: 1063, height: 800 });
   await openCompletedExample(page, "See completed dryer example");
 
-  const offers = page.getByRole("region", { name: "Current seller listings" });
+  const offers = page.getByRole("region", { name: "Seller listings for this part" });
   const source = page.getByRole("link", { name: /Check the GE Appliances source/ });
   const disclaimer = page.getByText(/Confirm the full model number again on the seller page/);
   await expect(page.getByText("Genuine Replacement Parts")).toBeVisible();
@@ -629,7 +627,7 @@ test("keeps WebMCP activity judge-visible but out of the primary consumer flow",
   await expect(inspector.getByText("record_observation", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Safe to continue" }).click();
   await page.getByRole("button", { name: "The strike is cracked, bent, or missing" }).click();
-  await expect(page.getByText("Part lookup available")).toBeVisible();
+  await expect(page.getByText("Part lookup used")).toBeVisible();
   await expect(page.locator(".part-sku")).toHaveText("Part #WE01M10007");
 });
 

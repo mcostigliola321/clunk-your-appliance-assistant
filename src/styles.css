@@ -284,12 +284,24 @@ h2[tabindex="-1"]:focus-visible {
   text-wrap: balance;
 }
 
-.journey-start__intro p {
+.journey-start__promise {
+  display: grid;
+  gap: 16px;
+}
+
+.journey-start__promise p {
   max-width: 62ch;
-  padding-bottom: 6px;
   color: var(--muted);
   font-size: clamp(16px, 1.5vw, 21px);
   line-height: 1.5;
+}
+
+.journey-start__promise p:last-child {
+  border-top: 1px solid var(--line-strong);
+  padding-top: 14px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 680;
 }
 
 .appliance-field {
@@ -675,15 +687,9 @@ h2[tabindex="-1"]:focus-visible {
   font-size: 14px;
 }
 
-.symptom-options .symptom-options__coverage {
-  color: var(--tide-dark);
-  font-size: 11px;
-  font-weight: 720;
-}
-
 .symptom-options > button > svg {
   grid-column: 2;
-  grid-row: 1 / span 3;
+  grid-row: 1 / span 2;
   align-self: center;
 }
 
@@ -2182,6 +2188,16 @@ h2[tabindex="-1"]:focus-visible {
   font-weight: 760;
 }
 
+.live-offers__status.is-loading {
+  background: var(--paper-strong);
+  color: var(--muted);
+}
+
+.live-offers__status.is-error {
+  background: var(--stop-pale);
+  color: var(--stop);
+}
+
 .live-offers__results {
   margin-top: 14px;
 }
@@ -2490,43 +2506,36 @@ h2[tabindex="-1"]:focus-visible {
   line-height: 1.55;
 }
 
-.agent-story__steps {
+.agent-story__roles {
   grid-column: 2;
   grid-row: 1 / span 4;
   padding: 0;
-  list-style: none;
 }
 
-.agent-story__steps li {
+.agent-story__roles > div {
   min-height: 82px;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: 14px;
+  grid-template-columns: minmax(92px, 0.32fr) minmax(0, 0.68fr);
+  align-items: baseline;
+  gap: 20px;
   border-top: 1px solid #4b5c54;
+  padding: 20px 0;
 }
 
-.agent-story__steps li:last-child {
+.agent-story__roles > div:last-child {
   border-bottom: 1px solid #4b5c54;
 }
 
-.agent-story__steps svg {
+.agent-story__roles dt {
   color: var(--citron);
+  font-size: 12px;
+  font-weight: 760;
 }
 
-.agent-story__steps span {
-  display: grid;
-  gap: 4px;
-}
-
-.agent-story__steps strong {
-  font-size: 14px;
-}
-
-.agent-story__steps small {
+.agent-story__roles dd {
   color: #adc0b7;
-  font-size: 11px;
-  line-height: 1.4;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .agent-story__point {
@@ -2542,10 +2551,6 @@ h2[tabindex="-1"]:focus-visible {
   font-size: 13px;
   font-weight: 700;
   line-height: 1.5;
-}
-
-.agent-story__point svg {
-  flex: 0 0 auto;
 }
 
 .protocol-inspector {
@@ -2671,6 +2676,14 @@ h2[tabindex="-1"]:focus-visible {
 
 .handoff-tool.is-locked {
   color: var(--muted);
+}
+
+.handoff-tool.is-available > svg {
+  color: var(--tide);
+}
+
+.handoff-tool.is-complete > svg {
+  color: var(--success);
 }
 
 .activity-log,
@@ -2943,7 +2956,7 @@ footer a {
   .agent-story__eyebrow,
   .agent-story h2,
   .agent-story__lead,
-  .agent-story__steps,
+  .agent-story__roles,
   .agent-story__point {
     grid-column: 1;
     grid-row: auto;
@@ -2998,6 +3011,15 @@ footer a {
 
   .journey-start__intro p {
     font-size: 15px;
+  }
+
+  .journey-start__promise {
+    gap: 12px;
+  }
+
+  .journey-start__promise p:last-child {
+    padding-top: 10px;
+    font-size: 12px;
   }
 
   .appliance-field {
@@ -3297,6 +3319,11 @@ footer a {
 
   .agent-story {
     padding: 24px 20px;
+  }
+
+  .agent-story__roles > div {
+    grid-template-columns: 1fr;
+    gap: 5px;
   }
 
   .protocol-disclosure > summary > span:last-child {
