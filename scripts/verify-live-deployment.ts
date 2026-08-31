@@ -39,21 +39,30 @@ async function verifyVisibleRoutes(page: Page) {
     timeout: 45_000,
   });
   await page.getByText(`${expected.models} models across 4 types`, { exact: true }).waitFor();
+  await page
+    .getByText(
+      "A browser agent can help with the lookup. Only you can report what is physically there.",
+      { exact: true },
+    )
+    .waitFor();
   const lovableBadgeCount = await page
     .getByRole("complementary", { name: "Edit with Lovable" })
     .count();
   if (lovableBadgeCount > 0) {
     throw new Error('The public deployment still shows Lovable\'s "Edit with Lovable" badge.');
   }
+  await page.getByText("Browse all models", { exact: true }).click();
+  await page
+    .getByRole("button", {
+      name: new RegExp(`Refrigerator.*${expected.refrigeratorModels} models`, "i"),
+    })
+    .waitFor();
   await page.getByRole("button", { name: /Choose Refrigerator/ }).click();
-  await page
-    .getByRole("button", { name: /Not cold enough/ })
-    .getByText(`${expected.refrigeratorCooling} models`, { exact: false })
-    .waitFor();
-  await page
-    .getByRole("button", { name: /Water is leaking/ })
-    .getByText(`${expected.refrigeratorLeak} models`, { exact: false })
-    .waitFor();
+  for (const problem of [/Not cold enough/, /Water is leaking/]) {
+    const problemText = await page.getByRole("button", { name: problem }).textContent();
+    if (/\b\d+\s+models\b/i.test(problemText ?? ""))
+      throw new Error("A homeowner symptom choice still exposes a catalog model count.");
+  }
 
   await page.getByRole("button", { name: /Not cold enough/ }).click();
   const coolingSearch = page.getByRole("searchbox", { name: "Refrigerator model number" });

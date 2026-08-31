@@ -14,6 +14,8 @@ The depth candidate fixes those issues without changing the evidence catalog, ex
 
 The final local gate passed deterministic coverage and purchase audits, strict TypeScript, ESLint, Prettier, all 111 unit/integration/WebMCP tests, the production build, all 54 desktop/mobile browser journeys, `git diff --check`, and `npm audit --audit-level=moderate` with zero vulnerabilities. The production bundle remains about 190 kB gzip and retains Vite's existing large-chunk advisory.
 
+The implementation shipped from commit `a8b66121c4285c07f82cbfd962fc87d4d54350b9` after GitHub Verify run [33442958061](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/runs/33442958061) passed. Lovable deployment `7069b1fa-8817-4943-878e-1a1d028d5adc` published to `https://clunk-appliance-assistant.lovable.app`. A fresh service-worker-blocked browser verified the first-viewport promise, badge absence, catalog and supported/unsupported routes, and exact equality between the deployed and local JavaScript asset; see [`live-deployment-verification.json`](live-deployment-verification.json).
+
 ## Honest score reset
 
 The earlier 38/40 design-health score is withdrawn as a useful baseline. It rewarded surface cleanup without testing whether the novelty was visible, whether the dynamic proof stayed truthful after completion, or whether live commerce produced duplicate merchants.

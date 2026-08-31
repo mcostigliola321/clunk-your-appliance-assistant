@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-08-31** after judge-critical polish commit `8c7f1ff0339e3f954d55c11b3551fddda7167006` was fast-forwarded to `main`, passed GitHub Verify run [33435463790](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/runs/33435463790), and was published through Lovable. The final badge-free republish is deployment `238f9024-7ed0-4c39-a99c-71b52a748dd5`; repository release records were at `dd6c978103cac9db63233373ebc6888bedca77ca` before the final memory update. The implementation and audit are recorded in [`docs/research/judge-polish-2026-08-31/README.md`](docs/research/judge-polish-2026-08-31/README.md).
+Last reconciled: **2026-08-31** after judge-depth implementation commit `a8b66121c4285c07f82cbfd962fc87d4d54350b9` was fast-forwarded to `main`, passed GitHub Verify run [33442958061](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/runs/33442958061), and was published through Lovable as deployment `7069b1fa-8817-4943-878e-1a1d028d5adc`. The implementation, candid score reset, and remaining priorities are recorded in [`docs/research/judge-depth-2026-08-31/README.md`](docs/research/judge-depth-2026-08-31/README.md); fresh public verification is in the adjacent `live-deployment-verification.json`.
 
 This is a concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
@@ -8,11 +8,11 @@ This is a concise cross-task handoff. Verify moving branch, deployment, external
 
 Clunk is a consumer-first visual appliance diagnostic guide and WebMCP demo. A homeowner and browser agent share one deterministic repair state: the agent reasons over bounded, source-backed evidence while the person reports only physical observations. Model identity, symptom guidance, exact-part compatibility, seller availability, and promoted placement are separate claims.
 
-The design direction is **Approachable Precision**: calm, appliance-led, highly legible, and free of generic AI styling or dashboard density. Real diagnosis is primary. Finished examples sit behind one secondary **See a finished guide** entry. The homepage shows four working appliance choices and observable problems, without catalog metrics or a future-product roadmap competing with the homeowner's task. Symptom selection is a restrained editorial index rather than a repeated card grid.
+The design direction is **Approachable Precision**: calm, appliance-led, highly legible, and free of generic AI styling or dashboard density. Real diagnosis is primary. Finished examples sit behind one secondary **See a finished guide** entry. The homepage shows four working appliance choices and observable problems; one plain first-viewport sentence explains that a browser can help with lookup while physical observations stay with the person. Symptom selection is a restrained editorial index without per-symptom catalog counts.
 
 Customer-facing capability language is **Exact part available**, **Safe checks available**, and **Exact part currently unavailable**. Internal evidence-tier language such as purchase-ready, guided-only, UCP, or outcome availability must stay out of the primary journey. Exact model matches collapse to one decisive choice, seller offers use compact **View offer** actions, and technical details sit behind plain-language disclosure.
 
-WebMCP novelty is introduced as **One guide. Two ways to use it.** The product explains that the page itself is the protocol: the browser agent supplies the exact model, the person supplies physical observations, and the next tool unlocks only when the guarded state permits it. Raw tool and activity data remains available one disclosure deeper for judges and developers.
+WebMCP novelty is introduced as **One guide. Two ways to use it.** The secondary explanation assigns plain responsibilities to **Browser agent**, **Person**, and **Clunk**; live handoff proof appears before the general explanation when a diagnosis exists. Tool display state distinguishes available, complete, and locked, so a completed diagnosis says **Part lookup used** rather than falsely appearing locked. Raw tool and activity data remains available one disclosure deeper for judges and developers.
 
 ## Current release state
 
@@ -25,8 +25,11 @@ WebMCP novelty is introduced as **One guide. Two ways to use it.** The product e
 - `scripts/audit-demo-readiness.ts` emits the complete 163-identity/782-pair JSON and CSV audit. Every row includes its active evidence and capability or an explicit missing-evidence reason.
 - Dryer drum guidance no longer asks the homeowner to rotate the drum by hand. It keeps hands clear, permits load removal only while unplugged and still, and stops at professional service when the visible load does not explain the failure.
 - Existing safety, exact-code, commerce-attribution, accessibility, 320px, reduced-motion, persistence, public-URL, and eight-tool WebMCP boundaries remain in force.
+- Shopify results show at most one exact-SKU offer per seller, retain paid-placement attribution, and report checking/error/result-count state instead of a generic **Live** badge. Seller quality and OEM claims remain unverified.
 
 ## Verification
+
+The 2026-08-31 judge-depth release passed both deterministic evidence audits, strict TypeScript, ESLint, Prettier, all 111 unit/integration/WebMCP tests, production build, all 54 desktop/mobile Playwright journeys, `git diff --check`, and `npm audit --audit-level=moderate` with zero vulnerabilities. GitHub Verify run [33442958061](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/runs/33442958061) passed the exact implementation commit. Fresh public verification confirmed the first-viewport browser/person promise, badge absence, all catalog counts and supported/unsupported Bosch routes, and byte-for-byte equality between deployed and local JavaScript (`index-CzLdmU5i.js`, 1,600,109 bytes, SHA-256 `32dc0ba9f1cf6bd4c3017750ab33c40ecc8f9d245195531b54eaf500695cc7c2`).
 
 The 2026-08-31 judge-polish candidate passed deterministic regeneration and both evidence audits, strict TypeScript, ESLint, Prettier, all 110 unit/integration/WebMCP tests, production build, all 54 desktop/mobile Playwright journeys, `git diff --check`, and `npm audit --audit-level=moderate` with zero vulnerabilities. Representative homepage, symptom, exact-model, result, and WebMCP-story states were visually reviewed on desktop and at 390px. The production build retains Vite's existing advisory for a JavaScript chunk above 500 kB; the built JavaScript is about 190 kB gzip.
 
