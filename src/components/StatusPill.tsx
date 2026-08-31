@@ -4,7 +4,7 @@ import type { WebMcpStatus } from "@/domain/types";
 
 const STATUS_COPY: Record<WebMcpStatus, { label: string; detail: string }> = {
   detecting: { label: "Connecting", detail: "Checking browser support" },
-  ready: { label: "AI connected", detail: "Eight WebMCP tools registered" },
+  ready: { label: "Browser agent ready", detail: "WebMCP tools are available" },
   unavailable: { label: "Guided mode", detail: "Use the same flow without WebMCP" },
   partial: { label: "Guided mode", detail: "Some browser tools are unavailable" },
   failed: { label: "Guided mode", detail: "Use the same flow without WebMCP" },

@@ -41,26 +41,26 @@ async function verifyVisibleRoutes(page: Page) {
   await page.getByText(`${expected.models} models across 4 types`, { exact: true }).waitFor();
   await page.getByRole("button", { name: /Choose Refrigerator/ }).click();
   await page
-    .getByRole("button", { name: /Supported now Not cold enough/ })
-    .getByText(`${expected.refrigeratorCooling} checked models`, { exact: false })
+    .getByRole("button", { name: /Not cold enough/ })
+    .getByText(`${expected.refrigeratorCooling} models`, { exact: false })
     .waitFor();
   await page
-    .getByRole("button", { name: /Supported now Water is leaking/ })
-    .getByText(`${expected.refrigeratorLeak} checked models`, { exact: false })
+    .getByRole("button", { name: /Water is leaking/ })
+    .getByText(`${expected.refrigeratorLeak} models`, { exact: false })
     .waitFor();
 
-  await page.getByRole("button", { name: /Supported now Not cold enough/ }).click();
+  await page.getByRole("button", { name: /Not cold enough/ }).click();
   const coolingSearch = page.getByRole("searchbox", { name: "Refrigerator model number" });
   await coolingSearch.fill("B36CT81ENS/07");
   await page.getByRole("button", { name: "Find model" }).click();
-  await page.getByRole("button", { name: /Bosch B36CT81ENS\/07 Guided checks only/ }).waitFor();
+  await page.getByRole("button", { name: /Bosch B36CT81ENS\/07 Safe checks available/ }).waitFor();
 
   await page.goto(`${LIVE_URL}/?unsupported-route-check=${Date.now()}`, {
     waitUntil: "networkidle",
     timeout: 45_000,
   });
   await page.getByRole("button", { name: /Choose Refrigerator/ }).click();
-  await page.getByRole("button", { name: /Supported now Water is leaking/ }).click();
+  await page.getByRole("button", { name: /Water is leaking/ }).click();
   const leakSearch = page.getByRole("searchbox", { name: "Refrigerator model number" });
   await leakSearch.fill("B36CT81ENS/07");
   await page.getByText("That model is supported for a different problem.").waitFor();

@@ -35,11 +35,11 @@ export function HandoffStatus({ snapshot }: { snapshot: RepairSnapshot }) {
   if (snapshot.exampleMode) {
     return (
       <section className="handoff-status handoff-status--example" aria-labelledby="handoff-title">
-        <div className="handoff-status__eyebrow">Deterministic example fixture</div>
-        <h2 id="handoff-title">Example replay complete — no live observation was supplied.</h2>
+        <div className="handoff-status__eyebrow">Sample path</div>
+        <h2 id="handoff-title">This example did not use a live observation.</h2>
         <p>
-          The fixture uses labeled sample observations to preview a finished outcome. It is not an
-          agent run.
+          Its answers are filled in to preview a finished outcome. Start over to use your own
+          appliance.
         </p>
         <div className="handoff-transition" aria-label="Fixture tool sequence">
           <ToolState name="record_observation" label="Sample observation replayed" active />
@@ -80,17 +80,17 @@ export function HandoffStatus({ snapshot }: { snapshot: RepairSnapshot }) {
         ) : (
           <CheckCircle2 size={15} aria-hidden="true" />
         )}
-        Human + agent handoff
+        Person + browser agent
       </div>
       <h2 id="handoff-title">
         {waitingForHuman
-          ? "Your turn — Clunk cannot see this."
-          : "Observation recorded — part lookup unlocked."}
+          ? "Clunk is waiting for what you see."
+          : "Your observation unlocked the next step."}
       </h2>
       <p>
         {waitingForHuman
-          ? `Inspect the highlighted ${snapshot.highlightedComponent.label.toLowerCase()}, then choose only what you actually observe.`
-          : "The physical observation changed the tools available on the page. Clunk can now resolve the evidence-bounded outcome."}
+          ? `Check the highlighted ${snapshot.highlightedComponent.label.toLowerCase()}, then choose only what is actually there. A browser agent cannot supply this answer for you.`
+          : "The answer changed what the browser agent is allowed to do. A part lookup is now available."}
       </p>
       <div className="handoff-transition" aria-label="Current WebMCP tool handoff">
         <ToolState

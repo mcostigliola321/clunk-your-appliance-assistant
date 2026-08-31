@@ -22,13 +22,12 @@ describe("model × symptom capability introduction", () => {
         onBack={vi.fn()}
         canUndo={false}
         capability="verified-part-unavailable"
-        exampleProductCode="GTD42EASJ2WW"
       />,
     );
 
-    expect(screen.getByText("Verified part unavailable")).toBeInTheDocument();
-    expect(screen.getByText(/no verified available seller offer/i)).toBeInTheDocument();
-    expect(screen.queryByText("Purchase-ready model")).not.toBeInTheDocument();
+    expect(screen.getByText("Exact part currently unavailable")).toBeInTheDocument();
+    expect(screen.getByText(/no current seller listing/i)).toBeInTheDocument();
+    expect(screen.queryByText("Exact part available")).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Start the checks/ })).toBeInTheDocument();
   });
 });

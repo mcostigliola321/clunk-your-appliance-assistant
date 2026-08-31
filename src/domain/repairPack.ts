@@ -208,7 +208,7 @@ function washerProfile(entry: FlagshipProfileEntry, sourceIds: string[]) {
             focusComponentId: "drain-pump",
             outcomeTitle: "The exact-code drain pump is the next likely part",
             outcomeMessage:
-              "The outside hose looks clear. Clunk can show the separately verified pump for this complete model code, but internal access remains professional-only.",
+              "The outside hose looks clear. This pump is listed for the full model number, but replacing it means opening the washer—leave that to a qualified technician.",
           })
         : result("hose-clear", "The hose looks clear", "professional-only", {
             focusComponentId: "drain-pump",
@@ -415,7 +415,7 @@ function dishwasherProfile(entry: FlagshipProfileEntry, sourceIds: string[]) {
                     focusComponentId: "drain-pump",
                     outcomeTitle: "The exact-code drain pump is the next likely part",
                     outcomeMessage:
-                      "The outside drain path looks clear. Clunk can show the separately verified pump for this complete model code, but internal access remains professional-only.",
+                      "The outside drain path looks clear. This pump is listed for the full model number, but replacing it means opening the appliance—leave that to a qualified technician.",
                   },
                 )
               : result(

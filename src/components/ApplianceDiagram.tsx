@@ -30,7 +30,7 @@ export function ApplianceDiagram({
           </h2>
           <p>
             {overviewMode
-              ? "Use this complete view while you make the appliance safe. No inspection location is active yet."
+              ? `First, make the ${pack.appliance.noun} safe. Clunk will point to the first place to check next.`
               : active.description}
           </p>
         </div>

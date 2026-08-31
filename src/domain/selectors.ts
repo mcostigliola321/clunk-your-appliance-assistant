@@ -100,7 +100,7 @@ export function getPartOutcome(state: RepairState): PartOutcome | null {
         : "Clunk has not verified a part for this model yet",
       message: part
         ? "Small letters and engineering digits can change which part fits. Enter the complete number from the appliance label."
-        : "The safe checks reached a likely component, but this model is currently guided checks only—there is no verified purchase link.",
+        : "The safe checks reached a likely component, but Clunk has not matched a part to this model.",
       applianceNoun: noun,
       part: null,
       requiredProductCode: pack.productCodePrompt,

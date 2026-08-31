@@ -14,11 +14,10 @@ import {
   getSupportedSymptoms,
   SYMPTOM_PRESENTATION,
 } from "@/data/journeyCatalog";
-import { analyzeModelQuery, capabilityLabel } from "@/domain/modelSearch";
+import { analyzeModelQuery, capabilityLabel, normalizeModel } from "@/domain/modelSearch";
 import type {
   ApplianceKind,
   BrandName,
-  CapabilityTier,
   RepairSnapshot,
   SupportedSymptomId,
   WasherLoadStyle,
@@ -57,7 +56,6 @@ export function ModelFinder({
   );
   const [query, setQuery] = useState(snapshot.catalogQuery);
   const [brand, setBrand] = useState<BrandName | null>(null);
-  const [capability, setCapability] = useState<CapabilityTier | null>(null);
   const [showGuide, setShowGuide] = useState(false);
   const [washerStyle, setWasherStyle] = useState<WasherLoadStyle>("front-load");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -86,29 +84,20 @@ export function ModelFinder({
   const symptomMatches = selectedSymptomId
     ? analysis.matches.filter((entry) => getSymptomCoverage(entry, selectedSymptomId))
     : analysis.matches;
-  const results = capability
-    ? symptomMatches.filter(
-        (entry) =>
-          selectedSymptomId &&
-          getSymptomCoverage(entry, selectedSymptomId)?.capability === capability,
-      )
-    : symptomMatches;
+  const results = symptomMatches;
   const hasDifferentSymptomMatches = analysis.matches.length > 0 && symptomMatches.length === 0;
-  const tierCounts = categoryEntries.reduce(
-    (counts, entry) => {
-      const tier = selectedSymptomId
-        ? getSymptomCoverage(entry, selectedSymptomId)?.capability
-        : null;
-      return tier ? { ...counts, [tier]: counts[tier] + 1 } : counts;
-    },
-    { "purchase-ready": 0, "guided-checks": 0, "verified-part-unavailable": 0 },
+  const exactMatch =
+    analysis.status === "exact-code"
+      ? symptomMatches.find((entry) => entry.id === analysis.exactEntryId)
+      : null;
+  const exactProductCode = exactMatch?.verifiedProductCodes.find(
+    (code) => normalizeModel(code) === analysis.normalizedQuery,
   );
 
   const chooseKind = (next: ApplianceKind) => {
     setKind(next);
     setSelectedSymptomId(null);
     setBrand(null);
-    setCapability(null);
     setQuery("");
     setShowGuide(false);
     onSearch("", null, next, null);
@@ -119,7 +108,6 @@ export function ModelFinder({
   const chooseSymptom = (symptomId: SupportedSymptomId) => {
     setSelectedSymptomId(symptomId);
     setBrand(null);
-    setCapability(null);
     setQuery("");
     onSearch("", null, kind, symptomId);
     pendingStageFocusRef.current = "input";
@@ -152,7 +140,6 @@ export function ModelFinder({
     setStage("appliance");
     setSelectedSymptomId(null);
     setBrand(null);
-    setCapability(null);
     setQuery("");
     setShowGuide(false);
   }, [isFreshSession]);
@@ -185,17 +172,17 @@ export function ModelFinder({
             What are you fixing?
           </h1>
           <p>
-            Choose the appliance, then pick the problem. Clunk will show one safe place to look at a
-            time—and only name a part when the complete model number proves it fits.
+            Pick the appliance and what it’s doing. Clunk points to one safe place at a time, then
+            checks the full model number before showing a part.
           </p>
         </div>
 
         <div className="appliance-field" aria-label="Choose an appliance">
           {APPLIANCE_JOURNEYS.map((item, index) => {
             const symptoms = getPrimarySymptoms(item.id);
-            const guideLabel = `${symptoms.length} broad problem ${
-              symptoms.length === 1 ? "guide" : "guides"
-            }`;
+            const guideLabel = symptoms
+              .map((symptomId) => SYMPTOM_PRESENTATION[symptomId].title)
+              .join(" · ");
             return (
               <article className={`appliance-choice appliance-choice--${item.id}`} key={item.id}>
                 <button
@@ -227,17 +214,12 @@ export function ModelFinder({
           })}
         </div>
 
-        <p className="appliance-roadmap" aria-label="Appliance research roadmap">
-          <strong>More appliances are in the research queue.</strong> Vacuums and robot vacuums are
-          next to evaluate.
-        </p>
-
         <details className="completed-example-hub">
           <summary>
             <span>
-              <BadgeCheck size={18} aria-hidden="true" /> See how Clunk works
+              <BadgeCheck size={18} aria-hidden="true" /> See a finished guide
             </span>
-            <small>Four clearly labeled completed examples</small>
+            <small>Four sample outcomes, ready to open</small>
             <ChevronDown size={18} aria-hidden="true" />
           </summary>
           <div>
@@ -250,7 +232,7 @@ export function ModelFinder({
               >
                 <span>
                   <strong>{item.label}</strong>
-                  <small>Completed example · prefilled observations</small>
+                  <small>Open the finished path</small>
                 </span>
                 <ArrowRight size={17} aria-hidden="true" />
               </button>
@@ -260,7 +242,7 @@ export function ModelFinder({
 
         <details className="all-appliances">
           <summary>
-            <span>All supported appliances</span>
+            <span>Browse all models</span>
             <span>{APPLIANCE_CATALOG.length} models across 4 types</span>
             <ChevronDown size={18} aria-hidden="true" />
           </summary>
@@ -294,9 +276,7 @@ export function ModelFinder({
               width="480"
               height="480"
             />
-            <figcaption>
-              Recognizable cutaway · the exact location comes after model selection
-            </figcaption>
+            <figcaption>We’ll point to the exact spot after we know the model.</figcaption>
           </figure>
           <div className="symptom-select__content">
             <p className="journey-step">{journey.label} selected</p>
@@ -304,8 +284,7 @@ export function ModelFinder({
               What is it doing?
             </h1>
             <p className="symptom-select__lead">
-              Choose the behavior you can observe. Coverage is checked separately for every model
-              and problem.
+              Pick the closest description. We’ll only show models with guidance for that problem.
             </p>
             <div
               className="symptom-options"
@@ -314,21 +293,12 @@ export function ModelFinder({
               {primarySymptoms.map((symptomId) => {
                 const symptom = SYMPTOM_PRESENTATION[symptomId];
                 const coveredEntries = getCatalogEntriesForSymptom(kind, symptomId);
-                const purchaseReadyCount = coveredEntries.filter(
-                  (entry) => getSymptomCoverage(entry, symptomId)?.capability === "purchase-ready",
-                ).length;
                 return (
                   <button type="button" key={symptomId} onClick={() => chooseSymptom(symptomId)}>
-                    <span>
-                      <BadgeCheck size={18} aria-hidden="true" /> Supported now
-                    </span>
                     <strong>{symptom.title}</strong>
                     <small>{symptom.description}</small>
                     <small className="symptom-options__coverage">
-                      {coveredEntries.length} checked models
-                      {purchaseReadyCount > 0
-                        ? ` · ${purchaseReadyCount} purchase-ready`
-                        : " · checks only"}
+                      {coveredEntries.length} models
                     </small>
                     <ArrowRight size={20} aria-hidden="true" />
                   </button>
@@ -339,7 +309,10 @@ export function ModelFinder({
               <details className="limited-problems">
                 <summary>
                   <span>
-                    More problems <small>{moreSymptoms.length} more checked option</small>
+                    More problems
+                    <small>
+                      {moreSymptoms.length} more {moreSymptoms.length === 1 ? "option" : "options"}
+                    </small>
                   </span>
                   <ChevronDown size={18} aria-hidden="true" />
                 </summary>
@@ -354,7 +327,7 @@ export function ModelFinder({
                         onClick={() => chooseSymptom(symptomId)}
                       >
                         <span>
-                          <small>{coveredEntries.length} checked models · guided checks</small>
+                          <small>{coveredEntries.length} models</small>
                           <strong>{symptom.title}</strong>
                         </span>
                         <ArrowRight size={18} aria-hidden="true" />
@@ -365,8 +338,7 @@ export function ModelFinder({
               </details>
             ) : null}
             <p className="coverage-note">
-              Search results show only models checked for this problem. Clunk will not borrow
-              coverage from another symptom or model.
+              Don’t see the right description? Go back and choose the closest thing you can observe.
             </p>
           </div>
         </div>
@@ -388,8 +360,7 @@ export function ModelFinder({
           Find the model label.
         </h1>
         <p>
-          Search is the fastest path. Copy the complete model line—including every letter, slash,
-          and suffix—so Clunk can keep an exact part separate from a family-level suggestion.
+          Enter every letter and number on the Model line. The ending can change which part fits.
         </p>
       </div>
 
@@ -463,147 +434,111 @@ export function ModelFinder({
         >
           {analysis.guidance}
         </p>
-        {analysis.candidateProductCodes.length ? (
+        {analysis.candidateProductCodes.length && analysis.status !== "exact-code" ? (
           <p className="model-search__variants">
             Known complete codes: {analysis.candidateProductCodes.join(" · ")}
           </p>
         ) : null}
       </form>
 
-      <details className="model-browser" open={Boolean(query || brand || capability)}>
-        <summary>
-          <span>
-            Browse by brand <small>{categoryEntries.length} supported models</small>
-          </span>
-          <ChevronDown size={18} aria-hidden="true" />
-        </summary>
-        <p className="model-browser__tiers">
-          {tierCounts["purchase-ready"]} purchase-ready · {tierCounts["guided-checks"]} checks only
-          {tierCounts["verified-part-unavailable"] > 0
-            ? ` · ${tierCounts["verified-part-unavailable"]} verified part unavailable`
-            : ""}
-        </p>
-        <div className="model-filter-group">
-          <span>Outcome available today</span>
-          <div className="capability-filters" aria-label="Filter by coverage">
-            <button
-              className={capability === null ? "is-active" : ""}
-              type="button"
-              aria-pressed={capability === null}
-              onClick={() => setCapability(null)}
-            >
-              All {categoryEntries.length}
-            </button>
-            <button
-              className={capability === "purchase-ready" ? "is-active" : ""}
-              type="button"
-              aria-pressed={capability === "purchase-ready"}
-              onClick={() => setCapability("purchase-ready")}
-            >
-              Purchase-ready {tierCounts["purchase-ready"]}
-            </button>
-            <button
-              className={capability === "guided-checks" ? "is-active" : ""}
-              type="button"
-              aria-pressed={capability === "guided-checks"}
-              onClick={() => setCapability("guided-checks")}
-            >
-              Checks only {tierCounts["guided-checks"]}
-            </button>
-            {tierCounts["verified-part-unavailable"] > 0 ? (
-              <button
-                className={capability === "verified-part-unavailable" ? "is-active" : ""}
-                type="button"
-                aria-pressed={capability === "verified-part-unavailable"}
-                onClick={() => setCapability("verified-part-unavailable")}
-              >
-                Verified part unavailable {tierCounts["verified-part-unavailable"]}
-              </button>
-            ) : null}
-          </div>
-        </div>
-
-        {query ? (
-          <div className="model-results" id="model-suggestions" aria-live="polite">
-            {results.length ? (
-              results.slice(0, 12).map((entry) => (
-                <button
-                  className={selectedId === entry.id ? "model-result is-selected" : "model-result"}
-                  type="button"
-                  key={entry.id}
-                  onClick={() => selectEntry(entry.id)}
-                >
-                  <span>
-                    <strong>
-                      {entry.brand} {entry.model}
-                    </strong>
-                    <small>
-                      {capabilityLabel(getSymptomCoverage(entry, selectedSymptomId!)!.capability)}
-                    </small>
-                  </span>
-                  <ArrowRight size={17} aria-hidden="true" />
-                </button>
-              ))
-            ) : (
-              <div className="model-empty">
-                <strong>
-                  {symptomMatches.length > 0 && capability
-                    ? `No ${capabilityLabel(capability).toLowerCase()} models in this view.`
-                    : hasDifferentSymptomMatches
+      {exactMatch ? (
+        <section className="exact-model-match" aria-label="Exact model match" aria-live="polite">
+          <span>Exact match</span>
+          <button type="button" onClick={() => selectEntry(exactMatch.id)}>
+            <span>
+              <strong>{exactProductCode ?? query.trim().toUpperCase()}</strong>
+              <small>
+                {exactMatch.brand} {exactMatch.model} ·{" "}
+                {capabilityLabel(getSymptomCoverage(exactMatch, selectedSymptomId!)!.capability)}
+              </small>
+            </span>
+            <span>
+              Choose this model <ArrowRight size={17} aria-hidden="true" />
+            </span>
+          </button>
+        </section>
+      ) : (
+        <details className="model-browser" open={Boolean(query || brand)}>
+          <summary>
+            <span>
+              Browse instead <small>{categoryEntries.length} models with guidance</small>
+            </span>
+            <ChevronDown size={18} aria-hidden="true" />
+          </summary>
+          {query ? (
+            <div className="model-results" id="model-suggestions" aria-live="polite">
+              {results.length ? (
+                results.slice(0, 12).map((entry) => (
+                  <button
+                    className={
+                      selectedId === entry.id ? "model-result is-selected" : "model-result"
+                    }
+                    type="button"
+                    key={entry.id}
+                    onClick={() => selectEntry(entry.id)}
+                  >
+                    <span>
+                      <strong>
+                        {entry.brand} {entry.model}
+                      </strong>
+                      <small>
+                        {capabilityLabel(getSymptomCoverage(entry, selectedSymptomId!)!.capability)}
+                      </small>
+                    </span>
+                    <ArrowRight size={17} aria-hidden="true" />
+                  </button>
+                ))
+              ) : (
+                <div className="model-empty">
+                  <strong>
+                    {hasDifferentSymptomMatches
                       ? "That model is supported for a different problem."
                       : analysis.status === "serial-number"
                         ? "That looks like the serial line."
                         : "That model is not in Clunk yet."}
-                </strong>
-                <span>
-                  {symptomMatches.length > 0 && capability
-                    ? "Choose another coverage level."
-                    : hasDifferentSymptomMatches
+                  </strong>
+                  <span>
+                    {hasDifferentSymptomMatches
                       ? "Go back and choose the problem that matches what the appliance is doing."
                       : analysis.guidance}
-                </span>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className="brand-directory" id="model-suggestions">
-            {brands.map((name) => {
-              const brandEntries = results.filter((entry) => entry.brand === name);
-              if (!brandEntries.length) return null;
-              return (
-                <details className="model-brand-group" key={name} open={brand === name}>
-                  <summary>
-                    <span>{name}</span>
-                    <span>{brandEntries.length} models</span>
-                    <ChevronDown size={16} aria-hidden="true" />
-                  </summary>
-                  <div>
-                    {brandEntries.map((entry) => (
-                      <button type="button" key={entry.id} onClick={() => selectEntry(entry.id)}>
-                        <span>
-                          <strong>{entry.model}</strong>
-                          <small>
-                            {capabilityLabel(
-                              getSymptomCoverage(entry, selectedSymptomId!)!.capability,
-                            )}
-                          </small>
-                        </span>
-                        <ArrowRight size={16} aria-hidden="true" />
-                      </button>
-                    ))}
-                  </div>
-                </details>
-              );
-            })}
-            {!results.length ? (
-              <div className="model-empty">
-                <strong>No models at this coverage level.</strong>
-                <span>Choose another coverage filter to see supported models.</span>
-              </div>
-            ) : null}
-          </div>
-        )}
-      </details>
+                  </span>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="brand-directory" id="model-suggestions">
+              {brands.map((name) => {
+                const brandEntries = results.filter((entry) => entry.brand === name);
+                if (!brandEntries.length) return null;
+                return (
+                  <details className="model-brand-group" key={name} open={brand === name}>
+                    <summary>
+                      <span>{name}</span>
+                      <span>{brandEntries.length} models</span>
+                      <ChevronDown size={16} aria-hidden="true" />
+                    </summary>
+                    <div>
+                      {brandEntries.map((entry) => (
+                        <button type="button" key={entry.id} onClick={() => selectEntry(entry.id)}>
+                          <span>
+                            <strong>{entry.model}</strong>
+                            <small>
+                              {capabilityLabel(
+                                getSymptomCoverage(entry, selectedSymptomId!)!.capability,
+                              )}
+                            </small>
+                          </span>
+                          <ArrowRight size={16} aria-hidden="true" />
+                        </button>
+                      ))}
+                    </div>
+                  </details>
+                );
+              })}
+            </div>
+          )}
+        </details>
+      )}
     </section>
   );
 }

@@ -2,6 +2,7 @@ import { ChevronDown, RotateCcw } from "lucide-react";
 import { useEffect } from "react";
 
 import { ActivityLog } from "@/components/ActivityLog";
+import { AgentStory } from "@/components/AgentStory";
 import { ApplianceDiagram } from "@/components/ApplianceDiagram";
 import { CauseStack } from "@/components/CauseStack";
 import { HandoffStatus } from "@/components/HandoffStatus";
@@ -12,7 +13,6 @@ import { SourcePanel } from "@/components/SourcePanel";
 import { StatusPill } from "@/components/StatusPill";
 import { ToolInspector } from "@/components/ToolInspector";
 import { getActivityMilestone } from "@/components/activityMilestones";
-import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
 import { capabilityLabel } from "@/domain/modelSearch";
 import { getCatalogEntry, getRepairPack, normalizeModel } from "@/domain/repairPack";
 import type {
@@ -170,11 +170,9 @@ export function App() {
         <a className="brand" href="#main-content" aria-label="Clunk home">
           Clunk<span aria-hidden="true">.</span>
         </a>
-        <p>Visual appliance guidance for ordinary homeowners</p>
+        <p>See where to look. Know what fits.</p>
         <div className="topbar__meta">
-          <span className="model-badge">
-            {snapshot.appliance ?? `${APPLIANCE_CATALOG.length} supported models`}
-          </span>
+          {snapshot.appliance ? <span className="model-badge">{snapshot.appliance}</span> : null}
           {hasSession ? (
             <button className="reset-button" type="button" onClick={reset}>
               <RotateCcw size={16} aria-hidden="true" /> Start over
@@ -197,10 +195,10 @@ export function App() {
           <>
             {snapshot.exampleMode ? (
               <div className="example-banner" role="status">
-                <strong>Completed example</strong>
+                <strong>Sample guide</strong>
                 <span>
-                  {snapshot.exampleSummary}. The answers are prefilled to show the finished path;
-                  use Start over when you are ready to check your own appliance.
+                  {snapshot.exampleSummary}. The observations are filled in so you can see the
+                  outcome. Use Start over to check your own appliance.
                 </span>
               </div>
             ) : null}
@@ -212,10 +210,10 @@ export function App() {
                 <span className="selected-appliance__details">
                   <span>
                     {snapshot.verificationLabel === "Full model number confirmed"
-                      ? `Exact model confirmed · ${snapshot.productCode}`
+                      ? `Full model number · ${snapshot.productCode}`
                       : snapshot.productCode
-                        ? `Label recorded · ${snapshot.productCode} · exact fit not confirmed`
-                        : "Model family selected · full label still needed for an exact part"}
+                        ? `Label recorded · ${snapshot.productCode} · part fit not confirmed`
+                        : "Model family selected · enter the full label before ordering a part"}
                   </span>
                   <strong>{pack ? capabilityLabel(pack.appliance.capability) : null}</strong>
                 </span>
@@ -270,11 +268,6 @@ export function App() {
                   onBack={goBack}
                   canUndo={canUndo}
                   capability={pack?.appliance.capability ?? "guided-checks"}
-                  exampleProductCode={
-                    state.applianceId
-                      ? (getCatalogEntry(state.applianceId).verifiedProductCodes[0] ?? null)
-                      : null
-                  }
                 />
                 <PartResult outcome={snapshot.partOutcome} />
                 {snapshot.partOutcome ? (
@@ -294,22 +287,39 @@ export function App() {
         <details className="protocol-disclosure">
           <summary>
             <span>
-              <strong>For judges and developers</strong>
-              <small>Sources, WebMCP activity, and the current tool boundary</small>
+              <strong>One guide. Two ways to use it.</strong>
+              <small>
+                Use Clunk yourself, or share the same guarded steps with a browser agent
+              </small>
             </span>
             <span>
-              Open technical view <ChevronDown size={18} aria-hidden="true" />
+              See how it works <ChevronDown size={18} aria-hidden="true" />
             </span>
           </summary>
-          <section className="protocol-band" aria-label="Technical evidence and WebMCP inspector">
-            <div className="protocol-status">
-              <StatusPill status={state.webMcpStatus} />
-              <span>{latestMessage}</span>
-            </div>
+          <div className="protocol-band">
+            <AgentStory />
             <HandoffStatus snapshot={snapshot} />
-            <ActivityLog activity={state.activity} />
-            <ToolInspector activeTools={snapshot.validNextActions} onRun={runManualTool} />
-          </section>
+            <details className="protocol-inspector">
+              <summary>
+                <span>
+                  <strong>Open the live WebMCP inspector</strong>
+                  <small>Current page state, activity, and available tools</small>
+                </span>
+                <ChevronDown size={17} aria-hidden="true" />
+              </summary>
+              <section
+                className="protocol-inspector__body"
+                aria-label="Technical evidence and WebMCP inspector"
+              >
+                <div className="protocol-status">
+                  <StatusPill status={state.webMcpStatus} />
+                  <span>{latestMessage}</span>
+                </div>
+                <ActivityLog activity={state.activity} />
+                <ToolInspector activeTools={snapshot.validNextActions} onRun={runManualTool} />
+              </section>
+            </details>
+          </div>
         </details>
       </main>
 

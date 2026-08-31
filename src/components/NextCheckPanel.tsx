@@ -12,7 +12,6 @@ interface NextCheckPanelProps {
   onBack: () => void;
   canUndo: boolean;
   capability: CapabilityTier;
-  exampleProductCode: string | null;
 }
 
 function BackButton({ onBack }: { onBack: () => void }) {
@@ -23,20 +22,14 @@ function BackButton({ onBack }: { onBack: () => void }) {
   );
 }
 
-function ModelCodeStep({
-  snapshot,
-  onStart,
-  onUseProductCode,
-  capability,
-  exampleProductCode,
-}: NextCheckPanelProps) {
+function ModelCodeStep({ snapshot, onStart, onUseProductCode, capability }: NextCheckPanelProps) {
   const [productCode, setProductCode] = useState("");
   const [modelError, setModelError] = useState<string | null>(null);
   if (capability === "guided-checks") {
     return (
       <section className="next-check" aria-labelledby="next-check-title">
         <div className="next-check__status">
-          <ShieldCheck size={17} aria-hidden="true" /> Guided checks
+          <ShieldCheck size={17} aria-hidden="true" /> Safe checks
         </div>
         <h2 id="next-check-title" tabIndex={-1}>
           We can show you what to check.
@@ -56,14 +49,14 @@ function ModelCodeStep({
     <section className="next-check" aria-labelledby="next-check-title">
       <div className="next-check__status">
         <CircleCheck size={17} aria-hidden="true" />
-        {unavailable ? "Verified part unavailable" : "Purchase-ready model"}
+        {unavailable ? "Exact part currently unavailable" : "Exact part available"}
       </div>
       <h2 id="next-check-title" tabIndex={-1}>
         Confirm the full model number.
       </h2>
       <p>
         {unavailable
-          ? "Clunk has exact compatibility evidence, but no verified available seller offer. The complete model number keeps that unavailable result specific."
+          ? "Clunk has a model match for the part, but no current seller listing. The full model number keeps that answer specific."
           : "Use the complete number on the appliance label. That is what makes the final part link specific."}
       </p>
       <form
@@ -81,7 +74,7 @@ function ModelCodeStep({
           id="product-code"
           value={productCode}
           onChange={(event) => setProductCode(event.target.value)}
-          placeholder={exampleProductCode ?? "Complete model number"}
+          placeholder="Complete model number"
           required
         />
         <button className="button button--primary button--wide" type="submit">
@@ -94,18 +87,6 @@ function ModelCodeStep({
           </p>
         ) : null}
       </form>
-      {exampleProductCode ? (
-        <button
-          className="demo-code-button"
-          type="button"
-          onClick={() => {
-            const result = onUseProductCode(exampleProductCode);
-            setModelError(result && !result.ok ? result.message : null);
-          }}
-        >
-          Use verified demo model {exampleProductCode}
-        </button>
-      ) : null}
       <small className="model-code-hint">
         Look inside the door or fresh-food compartment for the label.
       </small>

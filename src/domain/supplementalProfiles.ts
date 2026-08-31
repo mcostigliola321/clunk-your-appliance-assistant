@@ -2287,7 +2287,7 @@ const refrigeratorIce: ProfileSpec = {
             focusComponentId: "filter-area",
             outcomeTitle: "Verify the exact filter before replacement",
             outcomeMessage:
-              "This ice flow does not carry a purchase-ready filter outcome. Use the model's verified slow-water-flow path for exact filter evidence.",
+              "This ice-maker guide cannot confirm the exact water filter. Use the slow-water-flow guide for a model-matched filter.",
           },
         ),
         outcome(

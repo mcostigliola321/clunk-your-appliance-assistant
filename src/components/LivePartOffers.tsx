@@ -1,4 +1,4 @@
-import { ExternalLink, RefreshCw, ShoppingCart } from "lucide-react";
+import { ChevronDown, ExternalLink, RefreshCw } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import {
@@ -49,10 +49,10 @@ export function LivePartOffers({ part }: { part: RepairPackPart }) {
     <section className="live-offers" aria-labelledby="live-offers-title">
       <div className="live-offers__heading">
         <div>
-          <h3 id="live-offers-title">Live offers from Shopify</h3>
-          <p>UCP catalog search · exact part number {part.sku} only</p>
+          <h3 id="live-offers-title">Current seller listings</h3>
+          <p>Exact part number {part.sku} · supplied live by Shopify</p>
         </div>
-        <span className="live-offers__status">Live lookup</span>
+        <span className="live-offers__status">Live</span>
       </div>
 
       <div
@@ -86,14 +86,13 @@ export function LivePartOffers({ part }: { part: RepairPackPart }) {
                 </div>
                 <strong className="live-offers__price">{formatShopifyPrice(offer)}</strong>
                 <a
-                  className="button button--purchase live-offers__cart"
+                  className="live-offers__link"
                   href={offer.checkoutUrl}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={`Open ${offer.seller} ${offer.promoted ? "promoted listing" : "cart"} for part ${part.sku} in a new tab`}
+                  aria-label={`View ${offer.seller} ${offer.promoted ? "promoted listing" : "offer"} for part ${part.sku} in a new tab`}
                 >
-                  <ShoppingCart size={16} aria-hidden="true" />
-                  {offer.promoted ? "View promoted offer" : "Open cart"}
+                  {offer.promoted ? "View promoted offer" : "View offer"}
                   <ExternalLink size={13} aria-hidden="true" />
                 </a>
               </li>
@@ -102,14 +101,18 @@ export function LivePartOffers({ part }: { part: RepairPackPart }) {
         )}
       </div>
 
-      <p className="live-offers__disclosure">
-        {hasPromotedOffer
-          ? "Promoted offers are paid placements. Clunk may earn a commission when you purchase through one. "
-          : "These organic offers are not paid placements, and Clunk does not earn a commission from them. "}
-        Clunk verified the model-to-part match. Shopify supplies live seller listings and merchant
-        destinations. “OEM” and “compatible” are merchant claims; confirm the seller and exact part
-        number before paying.
-      </p>
+      <details className="live-offers__details">
+        <summary>
+          About these listings <ChevronDown size={15} aria-hidden="true" />
+        </summary>
+        <p className="live-offers__disclosure">
+          {hasPromotedOffer
+            ? "Promoted offers are paid placements. Clunk may earn a commission when you purchase through one. "
+            : "These listings are not paid placements, and Clunk does not earn a commission from them. "}
+          Shopify supplies the seller, price, and destination. “OEM” and “compatible” are seller
+          claims, so confirm the seller and exact part number before paying.
+        </p>
+      </details>
     </section>
   );
 }

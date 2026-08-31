@@ -30,8 +30,7 @@ export function PartResult({ outcome }: { outcome: PartOutcome | null }) {
         {exact ? (
           <>
             <p className="part-fit-proof">
-              <BadgeCheck size={16} aria-hidden="true" /> Clunk confirmed the fit for the complete
-              model number
+              <BadgeCheck size={16} aria-hidden="true" /> Exact model match
             </p>
             <div className="part-name">{outcome.part?.name}</div>
             <div className="part-sku">Part #{outcome.part?.sku}</div>
@@ -114,7 +113,7 @@ export function PartResult({ outcome }: { outcome: PartOutcome | null }) {
         ) : null}
         {outcome.source ? (
           <a className="part-source" href={outcome.source.url} target="_blank" rel="noreferrer">
-            Read the {outcome.source.publisher} instructions{" "}
+            Check the {outcome.source.publisher} source{" "}
             <ExternalLink size={14} aria-hidden="true" />
           </a>
         ) : null}

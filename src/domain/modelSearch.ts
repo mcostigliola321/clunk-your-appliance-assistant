@@ -119,7 +119,7 @@ export function analyzeModelQuery(
       needsCompleteCode: false,
       variantAmbiguity: false,
       candidateProductCodes: entry.verifiedProductCodes,
-      guidance: `Exact supported code found for ${entry.brand} ${entry.model}.`,
+      guidance: `Exact model number found for ${entry.brand} ${entry.model}.`,
     };
   }
 
@@ -140,8 +140,8 @@ export function analyzeModelQuery(
       variantAmbiguity: candidateProductCodes.length > 1,
       candidateProductCodes,
       guidance: candidateProductCodes.length
-        ? `${entry.brand} ${entry.model} is a supported family. Confirm the complete suffix or engineering revision on the label before any part claim.`
-        : `${entry.brand} ${entry.model} is supported for guided checks. Keep the complete label text for any later compatibility check.`,
+        ? `${entry.brand} ${entry.model} matches a model family. Check the ending on the label before choosing a part.`
+        : `${entry.brand} ${entry.model} has safe checks available. Keep the complete label text handy.`,
     };
   }
 
@@ -156,8 +156,8 @@ export function analyzeModelQuery(
       candidateProductCodes: [],
       guidance:
         matches.length === 1
-          ? "One possible model family found. Confirm every letter, number, and suffix on the appliance label."
-          : `${matches.length} possible model families found. Choose the exact label match; Clunk will not guess between variants.`,
+          ? "One possible model found. Check every letter and number against the appliance label."
+          : `${matches.length} possible models found. Choose the exact label match; Clunk will not guess the ending.`,
     };
   }
 
@@ -175,7 +175,7 @@ export function analyzeModelQuery(
 }
 
 export function capabilityLabel(capability: CapabilityTier): string {
-  if (capability === "purchase-ready") return "Purchase-ready";
-  if (capability === "verified-part-unavailable") return "Verified part unavailable";
-  return "Guided checks only";
+  if (capability === "purchase-ready") return "Exact part available";
+  if (capability === "verified-part-unavailable") return "Exact part currently unavailable";
+  return "Safe checks available";
 }

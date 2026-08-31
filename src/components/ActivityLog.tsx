@@ -25,7 +25,7 @@ export function ActivityLog({ activity }: { activity: ActivityEvent[] }) {
   return (
     <section className="activity-log" aria-labelledby="activity-title" role="region">
       <div className="section-heading">
-        <h2 id="activity-title">Collaboration timeline</h2>
+        <h2 id="activity-title">Shared activity</h2>
         <span className="activity-count">{activity.length} updates</span>
       </div>
       <ol className="activity-list">

@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-08-29** after demo-ready release code commit `17af432eab4055b43396b6102a85c3778c8075c8` was fast-forwarded to `main`, passed GitHub Verify run [33263520337](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/runs/33263520337), and was published to the public Lovable site. The canonical release report is [`docs/research/demo-ready-2026-08-29/README.md`](docs/research/demo-ready-2026-08-29/README.md).
+Last reconciled: **2026-08-31** while the judge-critical polish candidate was locally complete on `codex/judge-critical-polish`. The implementation and audit are recorded in [`docs/research/judge-polish-2026-08-31/README.md`](docs/research/judge-polish-2026-08-31/README.md); confirm the final commit, GitHub Verify run, Lovable publication, and fresh public verification below before treating it as shipped.
 
 This is a concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
@@ -8,7 +8,11 @@ This is a concise cross-task handoff. Verify moving branch, deployment, external
 
 Clunk is a consumer-first visual appliance diagnostic guide and WebMCP demo. A homeowner and browser agent share one deterministic repair state: the agent reasons over bounded, source-backed evidence while the person reports only physical observations. Model identity, symptom guidance, exact-part compatibility, seller availability, and promoted placement are separate claims.
 
-The design direction is **Approachable Precision**: calm, appliance-led, highly legible, and free of generic AI styling or dashboard density. Real diagnosis is primary. Completed fixtures sit behind one secondary **See how Clunk works** entry. The homepage shows four working appliance choices and at most four common problems; a fifth checked route uses **More problems**. Vacuums and robot vacuums remain a quiet future research note, not a control or shipping promise.
+The design direction is **Approachable Precision**: calm, appliance-led, highly legible, and free of generic AI styling or dashboard density. Real diagnosis is primary. Finished examples sit behind one secondary **See a finished guide** entry. The homepage shows four working appliance choices and observable problems, without catalog metrics or a future-product roadmap competing with the homeowner's task. Symptom selection is a restrained editorial index rather than a repeated card grid.
+
+Customer-facing capability language is **Exact part available**, **Safe checks available**, and **Exact part currently unavailable**. Internal evidence-tier language such as purchase-ready, guided-only, UCP, or outcome availability must stay out of the primary journey. Exact model matches collapse to one decisive choice, seller offers use compact **View offer** actions, and technical details sit behind plain-language disclosure.
+
+WebMCP novelty is introduced as **One guide. Two ways to use it.** The product explains that the page itself is the protocol: the browser agent supplies the exact model, the person supplies physical observations, and the next tool unlocks only when the guarded state permits it. Raw tool and activity data remains available one disclosure deeper for judges and developers.
 
 ## Current release state
 
@@ -23,6 +27,8 @@ The design direction is **Approachable Precision**: calm, appliance-led, highly 
 - Existing safety, exact-code, commerce-attribution, accessibility, 320px, reduced-motion, persistence, public-URL, and eight-tool WebMCP boundaries remain in force.
 
 ## Verification
+
+The 2026-08-31 judge-polish candidate passed deterministic regeneration and both evidence audits, strict TypeScript, ESLint, Prettier, all 110 unit/integration/WebMCP tests, production build, all 54 desktop/mobile Playwright journeys, `git diff --check`, and `npm audit --audit-level=moderate` with zero vulnerabilities. Representative homepage, symptom, exact-model, result, and WebMCP-story states were visually reviewed on desktop and at 390px. The production build retains Vite's existing advisory for a JavaScript chunk above 500 kB; the built JavaScript is about 190 kB gzip.
 
 The 2026-08-29 local release gate passed: deterministic regeneration, strict TypeScript, ESLint, Prettier, all 110 unit/integration/WebMCP tests, production build, all 54 desktop/mobile Playwright journeys, and `npm audit --audit-level=moderate` with zero vulnerabilities. The production build retains Vite's existing advisory for a JavaScript chunk above 500 kB; the built JavaScript is about 190 kB gzip.
 
@@ -39,6 +45,7 @@ The public Lovable deployment at `https://clunk-appliance-assistant.lovable.app`
 - Protected or variable source-page HTTP behavior is an access limitation, not evidence. Reverify dated source and seller observations before a later release.
 - `public/_headers` is host-specific; verify the production host actually serves equivalent security controls.
 - Genuine natural-language WebMCP sessions, the public demo video, Devpost creation, and submission remain external work requiring explicit authorization where applicable.
+- Lovable's public **Edit with Lovable** badge is an external project setting, not repository UI. The paid workspace appears eligible to disable it, but changing that public setting requires explicit user confirmation and fresh visual verification.
 
 ## Working rules
 

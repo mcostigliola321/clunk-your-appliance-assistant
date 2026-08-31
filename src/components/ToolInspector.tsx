@@ -20,8 +20,8 @@ export function ToolInspector({
         <span className="tool-count">{visibleContracts.length} active · 8 total</span>
       </div>
       <p className="tool-intro">
-        This list mirrors the tools registered for the current page state. Run the same bounded
-        actions an agent can call; each result updates the shared bench.
+        These are the actions a browser agent can use on this screen. Run a sample to see the same
+        repair guide update above.
       </p>
       <div className="tool-list">
         {visibleContracts.map((contract) => (

@@ -259,7 +259,7 @@ The opening appliance field is intentionally square and ruled edge-to-edge. This
 ### Chips
 
 - **Style:** Compact 36px status pills use Strong Field Paper or a semantic wash with 12px horizontal padding and high-weight 12px labeling.
-- **State:** Capability filters are 44px-tall outlined pills at rest and become solid Tide Green when selected. Success and stop variants retain explicit text and icons.
+- **State:** Success and stop variants retain explicit text and icons. Internal capability filters do not appear in the homeowner model search.
 
 ### Cards / Containers
 
@@ -283,19 +283,15 @@ The opening appliance field is intentionally square and ruled edge-to-edge. This
 
 ### Appliance Choice Field
 
-Each appliance is a substantial cutaway action inside a shared ruled field. The image occupies most of the action, followed by the appliance name, the count of broad problem guides, and a directional arrow. The appliance action always opens problem selection; no repeated example or secondary problem disclosure shares equal prominence with it.
+Each appliance is a substantial cutaway action inside a shared ruled field. The image occupies most of the action, followed by the appliance name, a compact list of observable problems, and a directional arrow. The appliance action always opens problem selection; no repeated example or secondary problem disclosure shares equal prominence with it.
 
 ### Symptom Choice Field
 
-The symptom stage presents no more than four plain-language observations beside the category cutaway. Every primary choice includes a short behavior description and exact checked-model count, stays keyboard and screen-reader operable, and filters the next model view by actual model × symptom coverage. A fifth checked route belongs in a neutral **More problems** disclosure with its exact count; this is layout prioritization, not a consumer-facing evidence grade. Internal terms such as pilot, beta, experimental, cohort, or evidence tier do not belong in this choice UI. The UI must never present a category or model count as proof that a particular problem is covered.
+The symptom stage presents no more than four plain-language observations beside the category cutaway. Choices form one ruled editorial index rather than a grid of repeated status cards. Every choice includes a short behavior description and exact model count, stays keyboard and screen-reader operable, and filters the next model view by actual model × symptom coverage. A fifth checked route belongs in a neutral **More problems** disclosure with its exact count; this is layout prioritization, not a consumer-facing evidence grade. Internal terms such as pilot, beta, experimental, cohort, purchase-ready, checks-only, or evidence tier do not belong in this choice UI. The UI must never present a category or model count as proof that a particular problem is covered.
 
 ### Completed Example Hub
 
-One clearly secondary disclosure on the appliance landing stage opens a compact four-category chooser. Example mode is always labeled, uses prefilled observations, and remains visually subordinate to real diagnosis; each flagship exact result is still reachable in two actions.
-
-### Quiet Roadmap Signal
-
-A short text-only note may sit beneath the working appliance field to say which categories are next to evaluate. It must have no button treatment, hover state, arrow, category image, or availability language. It is a research-direction signal, not a shipping promise or a fifth appliance choice.
+One clearly secondary **See a finished guide** disclosure on the appliance landing stage opens a compact four-category chooser. Sample mode is always labeled, uses filled-in observations, and remains visually subordinate to real diagnosis; each flagship exact result is still reachable in two actions.
 
 ### Cutaway Location Hotspot
 
@@ -303,7 +299,7 @@ The hotspot is a 44px accessible button anchored to a physical location on the c
 
 ### Exact Part & Commerce Handoff
 
-The finished answer is a Graphite Ink surface with Clean White type, a Citron Marker icon, exact-fit proof, part name and SKU, fit/location facts, and a separate white commerce inset. The buy action is Citron Marker and the seller, price, availability, and verification language remain together. Supporting evidence follows in a ruled disclosure outside the commerce field.
+The finished answer is a Graphite Ink surface with Clean White type, a Citron Marker icon, exact-fit proof, part name and SKU, fit/location facts, and a separate white commerce inset. Current Shopify listings use a compact ruled seller list with honest **View offer** links; merchant claims and paid-placement terms sit in a nearby disclosure. Supporting evidence follows in a ruled disclosure outside the commerce field.
 
 ## Do's and Don'ts
 

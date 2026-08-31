@@ -100,20 +100,20 @@ async function reachModelSearch(page: Page, appliance: RegExp, problem: RegExp) 
 }
 
 async function selectExactDryer(page: Page) {
-  await reachModelSearch(page, /Choose Electric dryer/, /Supported now Door won't close/);
+  await reachModelSearch(page, /Choose Electric dryer/, /Door won't close/);
   const input = page.getByRole("searchbox", { name: "Electric dryer model number" });
   await input.fill("GTD42EASJ2WW");
   await page.getByRole("button", { name: "Find model" }).click();
-  await page.getByRole("button", { name: /GE GTD42EASJ2WW Purchase-ready/ }).click();
+  await page.locator(".exact-model-match button").click();
   await expect(page.getByRole("heading", { name: "Unplug the dryer" })).toBeFocused();
 }
 
 async function selectLg(page: Page, query = "WM3400CW.ABWEVUS") {
-  await reachModelSearch(page, /Choose Washer/, /Supported now Won't drain/);
+  await reachModelSearch(page, /Choose Washer/, /Won't drain/);
   const input = page.getByRole("searchbox", { name: "Washer model number" });
   await input.fill(query);
   await page.getByRole("button", { name: "Find model" }).click();
-  await page.getByRole("button", { name: /LG WM3400CW Guided checks only/ }).click();
+  await page.locator(".exact-model-match button").click();
 }
 
 async function openGuidedProblem(
@@ -128,7 +128,9 @@ async function openGuidedProblem(
   const input = page.getByRole("searchbox", { name: /model number/i });
   await input.fill(query);
   await page.getByRole("button", { name: "Find model" }).click();
-  await page.getByRole("button", { name: modelResult }).click();
+  const exactMatch = page.locator(".exact-model-match button");
+  if (await exactMatch.isVisible()) await exactMatch.click();
+  else await page.getByRole("button", { name: modelResult }).click();
   const start = page.getByRole("button", { name: "Start the checks" });
   if (await start.isVisible()) await start.click();
   await expect(page.getByRole("heading", { name: safetyHeading })).toBeFocused();
@@ -143,7 +145,7 @@ async function reachFilterOutcome(page: Page, resultName: string) {
 
 async function openCompletedExample(page: Page, name: string) {
   const example = page.getByRole("button", { name });
-  if (!(await example.isVisible())) await page.getByText("See how Clunk works").click();
+  if (!(await example.isVisible())) await page.getByText("See a finished guide").click();
   await example.click();
 }
 
@@ -152,15 +154,15 @@ test("puts substantial cutaway actions in the first journey and avoids full-reso
 }) => {
   await expect(page.getByRole("heading", { name: "What are you fixing?" })).toBeVisible();
   for (const label of [
-    /Choose Washer — 4 broad problem guides/,
-    /Choose Dishwasher — 4 broad problem guides/,
-    /Choose Electric dryer — 4 broad problem guides/,
-    /Choose Refrigerator — 4 broad problem guides/,
+    /Choose Washer — Won't drain/,
+    /Choose Dishwasher — Won't drain/,
+    /Choose Electric dryer — Door won't close/,
+    /Choose Refrigerator — Water is slow/,
   ])
     await expect(page.getByRole("button", { name: label })).toBeVisible();
-  await expect(page.getByText("See how Clunk works")).toBeVisible();
-  await expect(page.getByText(/Vacuums and robot vacuums are next to evaluate/)).toBeVisible();
-  await expect(page.getByText("All supported appliances")).toBeVisible();
+  await expect(page.getByText("See a finished guide")).toBeVisible();
+  await expect(page.getByText(/research queue|next to evaluate/i)).toHaveCount(0);
+  await expect(page.getByText("Browse all models")).toBeVisible();
 
   const loadedFullCutaways = await page.evaluate(() =>
     performance
@@ -179,10 +181,10 @@ test("keeps all four appliance actions identifiable in the 390px first viewport"
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   for (const label of [
-    /Choose Washer — 4 broad problem guides/,
-    /Choose Dishwasher — 4 broad problem guides/,
-    /Choose Electric dryer — 4 broad problem guides/,
-    /Choose Refrigerator — 4 broad problem guides/,
+    /Choose Washer — Won't drain/,
+    /Choose Dishwasher — Won't drain/,
+    /Choose Electric dryer — Door won't close/,
+    /Choose Refrigerator — Water is slow/,
   ]) {
     const action = page.getByRole("button", { name: label });
     const box = await action.boundingBox();
@@ -196,11 +198,9 @@ test("moves from visual appliance to supported problem before model identificati
   page,
 }) => {
   await page.getByRole("button", { name: /Choose Refrigerator/ }).click();
-  await expect(
-    page.getByText(/Coverage is checked separately for every model and problem/),
-  ).toBeVisible();
+  await expect(page.getByText(/only show models with guidance for that problem/)).toBeVisible();
   await expect(page.getByRole("searchbox", { name: /model number/i })).toHaveCount(0);
-  await page.getByRole("button", { name: /Supported now Water is slow/ }).click();
+  await page.getByRole("button", { name: /Water is slow/ }).click();
   await expect(page.getByRole("searchbox", { name: "Refrigerator model number" })).toBeFocused();
   await page.getByRole("button", { name: /Back to the problem/ }).click();
   await expect(page.getByRole("heading", { name: "What is it doing?" })).toBeVisible();
@@ -208,33 +208,27 @@ test("moves from visual appliance to supported problem before model identificati
 
 test("shows four broad consumer problems and a neutral checked overflow", async ({ page }) => {
   await page.getByRole("button", { name: /Choose Refrigerator/ }).click();
-  await expect(page.getByRole("button", { name: /Supported now Water is slow/ })).toContainText(
-    "41 checked models",
-  );
-  await expect(page.getByRole("button", { name: /Supported now Not cold enough/ })).toContainText(
-    "41 checked models · checks only",
-  );
-  await expect(
-    page.getByRole("button", { name: /41 checked models.*Door won't close/ }),
-  ).toBeHidden();
+  await expect(page.getByRole("button", { name: /Water is slow/ })).toContainText("41 models");
+  await expect(page.getByRole("button", { name: /Not cold enough/ })).toContainText("41 models");
+  await expect(page.getByRole("button", { name: /41 models.*Door won't close/ })).toBeHidden();
   await page.getByText("More problems").click();
-  await expect(
-    page.getByRole("button", { name: /41 checked models.*Door won't close/ }),
-  ).toContainText("41 checked models");
+  await expect(page.getByRole("button", { name: /41 models.*Door won't close/ })).toContainText(
+    "41 models",
+  );
 });
 
 test("opens every broadened washer problem with topology-aware guided checks", async ({ page }) => {
   for (const [problem, heading] of [
-    [/Supported now Won't start/, "Pause before checking"],
-    [/Supported now Won't spin/, "Wait for the washer to stop"],
-    [/Supported now Water is leaking/, "Stop the water first"],
+    [/Won't start/, "Pause before checking"],
+    [/Won't spin/, "Wait for the washer to stop"],
+    [/Water is leaking/, "Stop the water first"],
   ] as const)
     await openGuidedProblem(
       page,
       /Choose Washer/,
       problem,
       "GTW335ASNWW",
-      /GE GTW335ASNWW Guided checks only/,
+      /GE GTW335ASNWW Safe checks available/,
       heading,
     );
 });
@@ -243,32 +237,32 @@ test("opens every broadened dishwasher problem with conservative guided checks",
   page,
 }) => {
   for (const [problem, heading] of [
-    [/Supported now Dishes stay dirty/, "Let the tub cool"],
-    [/Supported now No water enters/, "Check for water before starting"],
-    [/Supported now Water is leaking/, "Stop the cycle and power"],
+    [/Dishes stay dirty/, "Let the tub cool"],
+    [/No water enters/, "Check for water before starting"],
+    [/Water is leaking/, "Stop the cycle and power"],
   ] as const)
     await openGuidedProblem(
       page,
       /Choose Dishwasher/,
       problem,
       "GDT550PYRFS",
-      /GE GDT550PYRFS Guided checks only/,
+      /GE GDT550PYRFS Safe checks available/,
       heading,
     );
 });
 
 test("opens every broadened dryer problem with electrical safety stops", async ({ page }) => {
   for (const [problem, heading] of [
-    [/Supported now Won't start/, "Keep the dryer off"],
-    [/Supported now Runs without heat/, "Stop if there is heat damage"],
-    [/Supported now Drum won't turn/, "Keep the drum still and stop for hazards"],
+    [/Won't start/, "Keep the dryer off"],
+    [/Runs without heat/, "Stop if there is heat damage"],
+    [/Drum won't turn/, "Keep the drum still and stop for hazards"],
   ] as const)
     await openGuidedProblem(
       page,
       /Choose Electric dryer/,
       problem,
       "DLE6100W",
-      /LG DLE6100W Guided checks only/,
+      /LG DLE6100W Safe checks available/,
       heading,
     );
 });
@@ -277,16 +271,16 @@ test("opens every broadened refrigerator problem with feature-gated guided check
   page,
 }) => {
   for (const [problem, heading] of [
-    [/Supported now Not cold enough/, "Protect food and check for damage"],
-    [/Supported now Water is leaking/, "Keep water away from power"],
-    [/Supported now Ice maker is not making ice/, "Keep hands out of the ice mechanism"],
+    [/Not cold enough/, "Protect food and check for damage"],
+    [/Water is leaking/, "Keep water away from power"],
+    [/Ice maker is not making ice/, "Keep hands out of the ice mechanism"],
   ] as const)
     await openGuidedProblem(
       page,
       /Choose Refrigerator/,
       problem,
       "RF23R6201SR/AA",
-      /Samsung RF23R6201SR Guided checks only/,
+      /Samsung RF23R6201SR Safe checks available/,
       heading,
     );
 });
@@ -294,11 +288,11 @@ test("opens every broadened refrigerator problem with feature-gated guided check
 test("runs a topology-aware washer lid closure guide and stops before internal repair", async ({
   page,
 }) => {
-  await reachModelSearch(page, /Choose Washer/, /53 checked models.*Door won't close/);
+  await reachModelSearch(page, /Choose Washer/, /53 models.*Door won't close/);
   const input = page.getByRole("searchbox", { name: "Washer model number" });
   await input.fill("WT7400CW");
   await page.getByRole("button", { name: "Find model" }).click();
-  await page.getByRole("button", { name: /LG WT7400CW Guided checks only/ }).click();
+  await page.getByRole("button", { name: /LG WT7400CW Safe checks available/ }).click();
   await page.getByRole("button", { name: "Start the checks" }).click();
   await expect(page.getByRole("heading", { name: "Wait for the lid lock" })).toBeFocused();
   await page.getByRole("button", { name: "Safe to continue" }).click();
@@ -309,22 +303,18 @@ test("runs a topology-aware washer lid closure guide and stops before internal r
   await expect(page.getByRole("link", { name: /Buy this part/ })).toHaveCount(0);
 });
 
-test("browses the 163-model catalog by brand and honest coverage tier", async ({ page }) => {
-  await reachModelSearch(page, /Choose Electric dryer/, /Supported now Door won't close/);
-  await page.getByText("Browse by brand").click();
-  await page.getByRole("button", { name: "Checks only 15" }).click();
+test("browses the 163-model catalog by brand without exposing internal tiers", async ({ page }) => {
+  await reachModelSearch(page, /Choose Electric dryer/, /Door won't close/);
+  await page.getByText("Browse instead").click();
   await page.getByText("Bosch").click();
   await expect(
-    page.getByRole("button", { name: /WTG86403UC\/01 Guided checks only/ }),
+    page.getByRole("button", { name: /WTG86403UC\/01 Safe checks available/ }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Purchase-ready 18" }).click();
-  await expect(page.getByRole("button", { name: /WTG86403UC\/01 Guided checks only/ })).toHaveCount(
-    0,
-  );
+  await expect(page.getByText(/purchase-ready|checks only/i)).toHaveCount(0);
 });
 
 test("shows physical label guidance and preserves the exact-code boundary", async ({ page }) => {
-  await reachModelSearch(page, /Choose Electric dryer/, /Supported now Door won't close/);
+  await reachModelSearch(page, /Choose Electric dryer/, /Door won't close/);
   await page.getByRole("button", { name: /Show me where the label is/ }).click();
   await expect(page.getByRole("heading", { name: "Find the dryer label" })).toBeVisible();
   await expect(page.getByText(/Open the door. Check the front face/)).toBeVisible();
@@ -338,15 +328,15 @@ test("shows physical label guidance and preserves the exact-code boundary", asyn
   const input = page.getByRole("searchbox", { name: "Electric dryer model number" });
   await expect(input).toBeFocused();
   await input.fill("gtd42-easj2");
-  await expect(page.getByText(/One possible model family found/)).toBeVisible();
-  await page.getByRole("button", { name: /GE GTD42EASJ2WW Purchase-ready/ }).click();
+  await expect(page.getByText(/One possible model found/)).toBeVisible();
+  await page.getByRole("button", { name: /GE GTD42EASJ2WW Exact part available/ }).click();
   await expect(page.getByText(/Model family selected/)).toBeVisible();
   await expect(page.getByRole("textbox", { name: "Full model number" })).toBeVisible();
   await expect(page.getByRole("link", { name: /Buy this part/ })).toHaveCount(0);
 });
 
 test("gives an honest unsupported-model state and rejects serial-number text", async ({ page }) => {
-  await reachModelSearch(page, /Choose Electric dryer/, /Supported now Door won't close/);
+  await reachModelSearch(page, /Choose Electric dryer/, /Door won't close/);
   const input = page.getByRole("searchbox", { name: "Electric dryer model number" });
   await input.fill("S/N: 123ABC456");
   await expect(page.getByRole("alert")).toContainText("labeled as a serial number");
@@ -359,7 +349,7 @@ test("gives an honest unsupported-model state and rejects serial-number text", a
 });
 
 test("refuses a known model when the selected problem is not covered", async ({ page }) => {
-  await reachModelSearch(page, /Choose Refrigerator/, /Supported now Water is leaking/);
+  await reachModelSearch(page, /Choose Refrigerator/, /Water is leaking/);
   const input = page.getByRole("searchbox", { name: "Refrigerator model number" });
   await input.fill("B36CT81ENS/07");
   await expect(page.getByText("That model is supported for a different problem.")).toBeVisible();
@@ -375,52 +365,52 @@ test("one secondary action reaches an exact part and exact-SKU seller handoff", 
     page.getByRole("heading", { name: "This is the part for your dryer" }),
   ).toBeFocused();
   await expect(page.locator(".part-sku")).toHaveText("Part #WE01M10007");
-  await expect(page.getByRole("heading", { name: "Live offers from Shopify" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Current seller listings" })).toBeVisible();
   await expect(page.getByText("$18.99", { exact: true })).toBeVisible();
   await expect(
-    page.getByRole("link", { name: /Open UCP Parts cart for part WE01M10007/ }),
+    page.getByRole("link", { name: /View UCP Parts offer for part WE01M10007/ }),
   ).toHaveAttribute("href", "https://merchant.example/cart/WE01M10007");
   await expect(page.getByText("Wrong Seller")).toHaveCount(0);
-  await expect(page.getByText("Completed example")).toBeVisible();
+  await expect(page.getByText("Sample guide")).toBeVisible();
 });
 
 test("the new LG washer and dryer revisions reach only their proven exact-SKU handoffs", async ({
   page,
 }) => {
-  await reachModelSearch(page, /Choose Washer/, /Supported now Won't drain/);
+  await reachModelSearch(page, /Choose Washer/, /Won't drain/);
   let input = page.getByRole("searchbox", { name: "Washer model number" });
   await input.fill("WT7400CW.ABWEUUS");
   await page.getByRole("button", { name: "Find model" }).click();
-  await page.getByRole("button", { name: /LG WT7400CW Purchase-ready/ }).click();
+  await page.locator(".exact-model-match button").click();
   await page.getByRole("button", { name: "Safe to continue" }).click();
   await page.getByRole("button", { name: "The hose looks clear" }).click();
   await expect(page.locator(".part-sku")).toHaveText("Part #AHA75673404");
   await expect(
-    page.getByRole("link", { name: /Open UCP Parts cart for part AHA75673404/ }),
+    page.getByRole("link", { name: /View UCP Parts offer for part AHA75673404/ }),
   ).toBeVisible();
 
   await page.getByRole("button", { name: "Start over" }).click();
-  await reachModelSearch(page, /Choose Electric dryer/, /Supported now Door won't close/);
+  await reachModelSearch(page, /Choose Electric dryer/, /Door won't close/);
   input = page.getByRole("searchbox", { name: "Electric dryer model number" });
   await input.fill("DLE6100W.ABWETUS");
   await page.getByRole("button", { name: "Find model" }).click();
-  await page.getByRole("button", { name: /LG DLE6100W Purchase-ready/ }).click();
+  await page.locator(".exact-model-match button").click();
   await page.getByRole("button", { name: "Safe to continue" }).click();
   await page.getByRole("button", { name: "The strike is cracked, bent, or missing" }).click();
   await expect(page.locator(".part-sku")).toHaveText("Part #4026EL3007C");
   await expect(
-    page.getByRole("link", { name: /Open UCP Parts cart for part 4026EL3007C/ }),
+    page.getByRole("link", { name: /View UCP Parts offer for part 4026EL3007C/ }),
   ).toBeVisible();
 });
 
 test("the exact KitchenAid dishwasher revision reaches its proven professional drain-pump handoff", async ({
   page,
 }) => {
-  await reachModelSearch(page, /Choose Dishwasher/, /Supported now Won't drain/);
+  await reachModelSearch(page, /Choose Dishwasher/, /Won't drain/);
   const input = page.getByRole("searchbox", { name: "Dishwasher model number" });
   await input.fill("KDTE204KPS2");
   await page.getByRole("button", { name: "Find model" }).click();
-  await page.getByRole("button", { name: /KitchenAid KDTE204KPS Purchase-ready/ }).click();
+  await page.locator(".exact-model-match button").click();
   await page.getByRole("button", { name: "Safe to continue" }).click();
   await page.getByRole("button", { name: "The sink and visible hose look clear" }).click();
   await expect(page.locator(".part-sku")).toHaveText("Part #W11462456");
@@ -428,18 +418,18 @@ test("the exact KitchenAid dishwasher revision reaches its proven professional d
     page.getByText("This is an internal repair for a qualified appliance technician."),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: /Open UCP Parts cart for part W11462456/ }),
+    page.getByRole("link", { name: /View UCP Parts offer for part W11462456/ }),
   ).toBeVisible();
 });
 
 test("exact Samsung washer and dryer revisions reach only their proven professional handoffs", async ({
   page,
 }) => {
-  await reachModelSearch(page, /Choose Washer/, /Supported now Won't drain/);
+  await reachModelSearch(page, /Choose Washer/, /Won't drain/);
   let input = page.getByRole("searchbox", { name: "Washer model number" });
   await input.fill("WA54CG7105AWUS");
   await page.getByRole("button", { name: "Find model" }).click();
-  await page.getByRole("button", { name: /Samsung WA54CG7105AW Purchase-ready/ }).click();
+  await page.locator(".exact-model-match button").click();
   await page.getByRole("button", { name: "Safe to continue" }).click();
   await page.getByRole("button", { name: "The hose looks clear" }).click();
   await expect(page.locator(".part-sku")).toHaveText("Part #DC97-22840A");
@@ -447,15 +437,15 @@ test("exact Samsung washer and dryer revisions reach only their proven professio
     page.getByText("This is an internal repair for a qualified appliance technician."),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: /Open UCP Parts cart for part DC97-22840A/ }),
+    page.getByRole("link", { name: /View UCP Parts offer for part DC97-22840A/ }),
   ).toBeVisible();
 
   await page.getByRole("button", { name: "Start over" }).click();
-  await reachModelSearch(page, /Choose Electric dryer/, /Supported now Door won't close/);
+  await reachModelSearch(page, /Choose Electric dryer/, /Door won't close/);
   input = page.getByRole("searchbox", { name: "Electric dryer model number" });
   await input.fill("DVE45T6000W/A3");
   await page.getByRole("button", { name: "Find model" }).click();
-  await page.getByRole("button", { name: /Samsung DVE45T6000W Purchase-ready/ }).click();
+  await page.locator(".exact-model-match button").click();
   await page.getByRole("button", { name: "Safe to continue" }).click();
   await page.getByRole("button", { name: "The strike is cracked, bent, or missing" }).click();
   await expect(page.locator(".part-sku")).toHaveText("Part #DC66-00814A");
@@ -463,7 +453,7 @@ test("exact Samsung washer and dryer revisions reach only their proven professio
     page.getByText("This is an internal repair for a qualified appliance technician."),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: /Open UCP Parts cart for part DC66-00814A/ }),
+    page.getByRole("link", { name: /View UCP Parts offer for part DC66-00814A/ }),
   ).toBeVisible();
 });
 
@@ -502,9 +492,10 @@ test("distinguishes a promoted offer and preserves Shopify attribution", async (
   });
   await openCompletedExample(page, "See completed dryer example");
   await expect(page.getByText("Promoted · paid placement")).toBeVisible();
+  await page.getByText("About these listings").click();
   await expect(page.getByText(/Clunk may earn a commission/)).toBeVisible();
   await expect(
-    page.getByRole("link", { name: /Open Promoted Parts promoted listing/ }),
+    page.getByRole("link", { name: /View Promoted Parts promoted listing/ }),
   ).toHaveAttribute("href", attributedUrl);
 });
 
@@ -512,8 +503,8 @@ test("keeps stacked seller offers clear of source and safety guidance", async ({
   await page.setViewportSize({ width: 1063, height: 800 });
   await openCompletedExample(page, "See completed dryer example");
 
-  const offers = page.getByRole("region", { name: "Live offers from Shopify" });
-  const source = page.getByRole("link", { name: /Read the GE Appliances instructions/ });
+  const offers = page.getByRole("region", { name: "Current seller listings" });
+  const source = page.getByRole("link", { name: /Check the GE Appliances source/ });
   const disclaimer = page.getByText(/Confirm the full model number again on the seller page/);
   await expect(page.getByText("Genuine Replacement Parts")).toBeVisible();
 
@@ -547,7 +538,7 @@ test("every category completed example ends at its verified purchase handoff", a
     ).toBeVisible();
     await expect(page.locator(".part-sku")).toHaveText(`Part #${item.sku}`);
     await expect(
-      page.getByRole("link", { name: new RegExp(`Open UCP Parts cart for part ${item.sku}`) }),
+      page.getByRole("link", { name: new RegExp(`View UCP Parts offer for part ${item.sku}`) }),
     ).toHaveAttribute("target", "_blank");
     await page.getByRole("button", { name: "Start over" }).click();
   }
@@ -555,7 +546,7 @@ test("every category completed example ends at its verified purchase handoff", a
 
 test("a checks-only model can finish at a no-purchase answer", async ({ page }) => {
   await selectLg(page);
-  await expect(page.getByText("Guided checks only", { exact: true })).toBeVisible();
+  await expect(page.getByText("Safe checks available", { exact: true })).toBeVisible();
   await reachFilterOutcome(page, "I found debris");
   await expect(
     page.getByRole("heading", { name: "The blockage is the likely problem" }),
@@ -564,11 +555,11 @@ test("a checks-only model can finish at a no-purchase answer", async ({ page }) 
 });
 
 test("uses the correct persistent cutaway for a supported top-load model", async ({ page }) => {
-  await reachModelSearch(page, /Choose Washer/, /Supported now Won't drain/);
+  await reachModelSearch(page, /Choose Washer/, /Won't drain/);
   const input = page.getByRole("searchbox", { name: "Washer model number" });
   await input.fill("GTW585BSVWS");
   await page.getByRole("button", { name: "Find model" }).click();
-  await page.getByRole("button", { name: /GE GTW585BSVWS Guided checks only/ }).click();
+  await page.getByRole("button", { name: /GE GTW585BSVWS Safe checks available/ }).click();
   await expect(
     page.locator('img[src="/assets/clunk-washer-top-load-topology-v2.png"]'),
   ).toBeVisible();
@@ -582,7 +573,7 @@ test("keeps the essential result and next purchase step in the mobile result vie
   await page.setViewportSize({ width: 320, height: 800 });
   await openCompletedExample(page, "See completed dryer example");
   const result = page.getByRole("heading", { name: "This is the part for your dryer" });
-  const cart = page.getByRole("link", { name: /Open UCP Parts cart for part WE01M10007/ });
+  const cart = page.getByRole("link", { name: /View UCP Parts offer for part WE01M10007/ });
   await expect(result).toBeVisible();
   await expect(cart).toBeVisible();
   await expect
@@ -631,8 +622,9 @@ test("keeps WebMCP activity judge-visible but out of the primary consumer flow",
 }) => {
   await selectExactDryer(page);
   await expect(page.getByText("Waiting for your observation")).not.toBeVisible();
-  await page.getByText("For judges and developers").click();
+  await page.getByText("One guide. Two ways to use it.").click();
   await expect(page.getByText("Waiting for your observation")).toBeVisible();
+  await page.getByText("Open the live WebMCP inspector").click();
   const inspector = page.getByRole("region", { name: "WebMCP tools" });
   await expect(inspector.getByText("record_observation", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Safe to continue" }).click();
@@ -648,7 +640,7 @@ test("is keyboard reachable, touch sized, reduced-motion safe, and WCAG A/AA cle
   await appliance.focus();
   await expect(appliance).toBeFocused();
   await page.keyboard.press("Enter");
-  await page.getByRole("button", { name: /Supported now Door won't close/ }).focus();
+  await page.getByRole("button", { name: /Door won't close/ }).focus();
   await page.keyboard.press("Enter");
   await expect(page.getByRole("searchbox", { name: "Electric dryer model number" })).toBeFocused();
 
