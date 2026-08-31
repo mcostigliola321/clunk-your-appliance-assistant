@@ -39,6 +39,12 @@ async function verifyVisibleRoutes(page: Page) {
     timeout: 45_000,
   });
   await page.getByText(`${expected.models} models across 4 types`, { exact: true }).waitFor();
+  const lovableBadgeCount = await page
+    .getByRole("complementary", { name: "Edit with Lovable" })
+    .count();
+  if (lovableBadgeCount > 0) {
+    throw new Error('The public deployment still shows Lovable\'s "Edit with Lovable" badge.');
+  }
   await page.getByRole("button", { name: /Choose Refrigerator/ }).click();
   await page
     .getByRole("button", { name: /Not cold enough/ })
@@ -67,7 +73,10 @@ async function verifyVisibleRoutes(page: Page) {
   await leakSearch.fill("B36CT81ENS/07");
   await page.getByText("That model is supported for a different problem.").waitFor();
 
-  return expected;
+  return {
+    visibleCounts: expected,
+    publishing: { lovableBadgeHidden: true },
+  };
 }
 
 async function verifyAssets(context: BrowserContext) {
@@ -114,7 +123,7 @@ try {
     });
     try {
       const page = await context.newPage();
-      const visibleCounts = await verifyVisibleRoutes(page);
+      const routeVerification = await verifyVisibleRoutes(page);
       const asset = await verifyAssets(context);
       const report = {
         schemaVersion: 1,
@@ -122,7 +131,8 @@ try {
         liveUrl: LIVE_URL,
         attempt,
         freshBrowserContext: true,
-        visibleCounts,
+        visibleCounts: routeVerification.visibleCounts,
+        publishing: routeVerification.publishing,
         routes: {
           supported: "Bosch B36CT81ENS/07 × not cooling",
           unsupported: "Bosch B36CT81ENS/07 × water leaking",

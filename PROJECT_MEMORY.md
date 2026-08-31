@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-08-31** after judge-critical polish commit `8c7f1ff0339e3f954d55c11b3551fddda7167006` was fast-forwarded to `main`, passed GitHub Verify run [33435463790](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/runs/33435463790), and was published through Lovable deployment `7f236d6e-e827-41e9-9bfb-1a319b8a0672`. The implementation and audit are recorded in [`docs/research/judge-polish-2026-08-31/README.md`](docs/research/judge-polish-2026-08-31/README.md).
+Last reconciled: **2026-08-31** after judge-critical polish commit `8c7f1ff0339e3f954d55c11b3551fddda7167006` was fast-forwarded to `main`, passed GitHub Verify run [33435463790](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/runs/33435463790), and was published through Lovable. The final badge-free republish is deployment `238f9024-7ed0-4c39-a99c-71b52a748dd5`; repository release records were at `dd6c978103cac9db63233373ebc6888bedca77ca` before the final memory update. The implementation and audit are recorded in [`docs/research/judge-polish-2026-08-31/README.md`](docs/research/judge-polish-2026-08-31/README.md).
 
 This is a concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
@@ -36,7 +36,7 @@ A fresh-context local production-preview verification passed visible catalog cou
 
 The public Lovable deployment at `https://clunk-appliance-assistant.lovable.app` was freshly published and verified on 2026-08-29. `scripts/verify-live-deployment.ts` used service-worker-blocked, no-cache browser contexts and confirmed the visible release counts, supported/unsupported Bosch routes, production module basename, byte length, and SHA-256 digest against the local build. The result is recorded in `docs/research/demo-ready-2026-08-29/live-deployment-verification.json`.
 
-The judge-polish release was freshly published and verified again on 2026-08-31. A no-cache, service-worker-blocked context confirmed all 163 visible models; refrigerator cooling/leak counts of 41/36; Bosch `B36CT81ENS/07 × not cooling` as supported; Bosch `B36CT81ENS/07 × leak` as explicitly unsupported; and exact equality between the served and local JavaScript asset (`index-Doriv2Mi.js`, 1,599,558 bytes, SHA-256 `d73b00c8aaba412a8abbc51e1c0b986309d6c9aad66231a18e54ee62d2e0ffda`). Desktop and mobile public screenshots were also reviewed. The result is recorded in `docs/research/judge-polish-2026-08-31/live-deployment-verification.json`.
+The judge-polish release was freshly published and verified again on 2026-08-31. A no-cache, service-worker-blocked context confirmed Lovable's injected badge is absent; all 163 visible models; refrigerator cooling/leak counts of 41/36; Bosch `B36CT81ENS/07 × not cooling` as supported; Bosch `B36CT81ENS/07 × leak` as explicitly unsupported; and exact equality between the served and local JavaScript asset (`index-Doriv2Mi.js`, 1,599,558 bytes, SHA-256 `d73b00c8aaba412a8abbc51e1c0b986309d6c9aad66231a18e54ee62d2e0ffda`). Desktop and mobile public screenshots were also reviewed. The result is recorded in `docs/research/judge-polish-2026-08-31/live-deployment-verification.json`.
 
 ## Evidence and release boundaries
 
@@ -47,7 +47,7 @@ The judge-polish release was freshly published and verified again on 2026-08-31.
 - Protected or variable source-page HTTP behavior is an access limitation, not evidence. Reverify dated source and seller observations before a later release.
 - `public/_headers` is host-specific; verify the production host actually serves equivalent security controls.
 - Genuine natural-language WebMCP sessions, the public demo video, Devpost creation, and submission remain external work requiring explicit authorization where applicable.
-- Lovable's public **Edit with Lovable** badge is an external project setting, not repository UI. The paid workspace appears eligible to disable it, but changing that public setting requires explicit user confirmation and fresh visual verification.
+- Lovable's public **Edit with Lovable** badge is an external project setting, not repository UI. It was disabled with explicit user confirmation, persisted after a settings reload, republished, and verified absent in a fresh public browser context on 2026-08-31.
 
 ## Working rules
 

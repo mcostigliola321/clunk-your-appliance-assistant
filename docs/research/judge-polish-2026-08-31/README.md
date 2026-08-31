@@ -59,10 +59,10 @@ The live build failed three of six checks: the symptom grid repeated status and 
 - Reworked Shopify results into compact seller rows with honest **View offer** links and a nearby terms disclosure.
 - Removed the model-family demo-code shortcut; sample outcomes remain clearly labeled in the separate finished-guide hub.
 - Updated durable product and design guidance so future work does not reintroduce internal evidence terminology into the homeowner journey.
+- Disabled Lovable's injected **Edit with Lovable** badge in the paid project setting and verified it absent after a fresh republish.
 
 ## Remaining high-value work
 
-1. Disable Lovable's injected **Edit with Lovable** badge in the paid project setting. It is not part of the repository and remains the clearest external builder tell.
-2. Record one real natural-language browser-agent session for the submission video. The interface now tells the story clearly; an authentic run would prove it.
-3. Treat merchant quality as unverified. Clunk can verify the exact SKU returned, not seller legitimacy or whether a seller's OEM claim is true.
-4. Consider bundle splitting after the submission if load performance becomes a product priority; it is not a current correctness or mobile-layout failure.
+1. Record one real natural-language browser-agent session for the submission video. The interface now tells the story clearly; an authentic run would prove it.
+2. Treat merchant quality as unverified. Clunk can verify the exact SKU returned, not seller legitimacy or whether a seller's OEM claim is true.
+3. Consider bundle splitting after the submission if load performance becomes a product priority; it is not a current correctness or mobile-layout failure.
