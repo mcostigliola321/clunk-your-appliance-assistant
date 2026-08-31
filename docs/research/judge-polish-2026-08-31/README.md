@@ -4,7 +4,9 @@
 
 The live release already had a distinctive core: the appliance cutaway becomes the interface, the person reports only physical observations, and the current screen controls what a browser agent can do next. The weakest layer was the language and scaffolding around that core. Repeated capability cards, internal evidence terms, a raw developer panel, exact-match filters, and oversized seller actions made a defensible product feel generated and competition-built.
 
-This candidate keeps the catalog, model × symptom evidence, safety stops, exact-code rules, Shopify attribution, and eight-tool WebMCP contract unchanged. It changes how those truths are presented.
+This release keeps the catalog, model × symptom evidence, safety stops, exact-code rules, Shopify attribution, and eight-tool WebMCP contract unchanged. It changes how those truths are presented.
+
+It shipped to the public Lovable site from commit `8c7f1ff0339e3f954d55c11b3551fddda7167006` after GitHub Verify run [33435463790](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/runs/33435463790) passed. Fresh public verification confirmed the expected supported and unsupported routes and exact equality between the deployed and local JavaScript asset; see [`live-deployment-verification.json`](live-deployment-verification.json).
 
 ## Critical baseline
 

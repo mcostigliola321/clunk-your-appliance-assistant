@@ -53,7 +53,9 @@ async function verifyVisibleRoutes(page: Page) {
   const coolingSearch = page.getByRole("searchbox", { name: "Refrigerator model number" });
   await coolingSearch.fill("B36CT81ENS/07");
   await page.getByRole("button", { name: "Find model" }).click();
-  await page.getByRole("button", { name: /Bosch B36CT81ENS\/07 Safe checks available/ }).waitFor();
+  await page
+    .getByRole("button", { name: /B36CT81ENS\/07.*Safe checks available.*Choose this model/ })
+    .waitFor();
 
   await page.goto(`${LIVE_URL}/?unsupported-route-check=${Date.now()}`, {
     waitUntil: "networkidle",

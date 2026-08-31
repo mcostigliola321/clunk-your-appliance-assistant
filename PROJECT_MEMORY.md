@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-08-31** while the judge-critical polish candidate was locally complete on `codex/judge-critical-polish`. The implementation and audit are recorded in [`docs/research/judge-polish-2026-08-31/README.md`](docs/research/judge-polish-2026-08-31/README.md); confirm the final commit, GitHub Verify run, Lovable publication, and fresh public verification below before treating it as shipped.
+Last reconciled: **2026-08-31** after judge-critical polish commit `8c7f1ff0339e3f954d55c11b3551fddda7167006` was fast-forwarded to `main`, passed GitHub Verify run [33435463790](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/runs/33435463790), and was published through Lovable deployment `7f236d6e-e827-41e9-9bfb-1a319b8a0672`. The implementation and audit are recorded in [`docs/research/judge-polish-2026-08-31/README.md`](docs/research/judge-polish-2026-08-31/README.md).
 
 This is a concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
@@ -35,6 +35,8 @@ The 2026-08-29 local release gate passed: deterministic regeneration, strict Typ
 A fresh-context local production-preview verification passed visible catalog counts, refrigerator cooling/leak counts, Bosch `B36CT81ENS/07 × not cooling` as supported, Bosch `B36CT81ENS/07 × leak` as explicitly unsupported, and byte-for-byte equality between the served and local JavaScript asset. Desktop and 390px homepage screenshots were visually reviewed with no overflow or hierarchy regression observed.
 
 The public Lovable deployment at `https://clunk-appliance-assistant.lovable.app` was freshly published and verified on 2026-08-29. `scripts/verify-live-deployment.ts` used service-worker-blocked, no-cache browser contexts and confirmed the visible release counts, supported/unsupported Bosch routes, production module basename, byte length, and SHA-256 digest against the local build. The result is recorded in `docs/research/demo-ready-2026-08-29/live-deployment-verification.json`.
+
+The judge-polish release was freshly published and verified again on 2026-08-31. A no-cache, service-worker-blocked context confirmed all 163 visible models; refrigerator cooling/leak counts of 41/36; Bosch `B36CT81ENS/07 × not cooling` as supported; Bosch `B36CT81ENS/07 × leak` as explicitly unsupported; and exact equality between the served and local JavaScript asset (`index-Doriv2Mi.js`, 1,599,558 bytes, SHA-256 `d73b00c8aaba412a8abbc51e1c0b986309d6c9aad66231a18e54ee62d2e0ffda`). Desktop and mobile public screenshots were also reviewed. The result is recorded in `docs/research/judge-polish-2026-08-31/live-deployment-verification.json`.
 
 ## Evidence and release boundaries
 
