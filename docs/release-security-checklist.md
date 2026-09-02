@@ -24,6 +24,25 @@ or the production host. They were not changed by the 2026-08-28 release worktree
   `frame-ancestors`, so host-level headers are required for reliable clickjacking protection.
 - Recheck the live response headers and Shopify browser request after every host change.
 
+## Remote MCP Edge Function
+
+- Keep the source contract in `src/lib/mcp/` and regenerate `.lovable/mcp/manifest.json` and
+  `supabase/functions/mcp/index.ts`; do not treat hand-edits to generated outputs as a reviewed fix.
+- The current manifest declares `auth.type: none`. Before deployment, confirm that every tool is
+  read-only from the service's perspective, exposes public data only, uses bounded inputs and
+  outputs, and has appropriate request-size, rate, timeout, and abuse controls.
+- Confirm `run_diagnosis` creates an isolated in-memory state, persists nothing, and cannot mutate
+  the browser app or infer a physical observation.
+- Run direct negative cases for unknown IDs, unsupported model/problem pairs, invalid observation
+  order, serial-number input, incomplete model codes, hazards, and neighboring revisions/SKUs.
+- Deploy only after the repository gate passes. Then verify MCP initialization, `tools/list`, all
+  five tool contracts, error behavior, and one end-to-end safe and hazardous flow from a real MCP
+  client.
+- Recheck that generated browser Supabase configuration contains only publishable values. Never put
+  a service-role key, secret key, private token, or personal data in source or a `VITE_` variable.
+
+See [`mcp-server-integration.md`](./mcp-server-integration.md) for the current status and evidence.
+
 ## Shopify promoted placements
 
 - Join the invite-led promoted-placements waitlist with the Shopify organization ID.

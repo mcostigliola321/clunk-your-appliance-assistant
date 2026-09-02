@@ -19,6 +19,12 @@ Diagrams and explanatory artwork must be original and mechanically conservative.
 
 Contributions that add gas, mains or high-voltage, energized, refrigerant, sealed-compressor, protection-bypass, internal-wiring, panel-removal, or professional-only instructions will not be accepted.
 
+## Agent surfaces
+
+Keep Clunk's two agent surfaces distinct. `src/webmcp/` owns the eight state-dependent tools that share the visible browser state. `src/lib/mcp/` owns the five stateless remote tools packaged for a Supabase Edge Function. New remote tools must remain bounded to public data, preserve the same observation and evidence rules, include direct contract and abuse-boundary tests, and be documented in [`docs/mcp-server-integration.md`](./docs/mcp-server-integration.md).
+
+Do not hand-edit the generated MCP manifest or Edge Function bundle as a substitute for changing the reviewable tool source. A remote MCP change is not complete until the full repository gate passes and the deployed endpoint has been exercised with a real MCP client.
+
 ## Commit style
 
 Use a short conventional subject such as `feat: add a safe observation state` or `fix: preserve the professional stop boundary`. Keep generated Lovable history intact: do not force-push, rebase, amend, or squash commits already published to the connected main branch.

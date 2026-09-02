@@ -1,6 +1,6 @@
 # Clunk
 
-**A human-and-browser-agent guide for safe appliance checks, exact-part matches, and current seller offers—without guessing.**
+**A source-backed appliance guide for people and agents, with safe checks, exact-part matches, and current seller offers—without guessing.**
 
 [![App](https://img.shields.io/badge/app-Clunk-0b5d4c)](https://clunk-appliance-assistant.lovable.app)
 [![Demo video](https://img.shields.io/badge/demo-2%3A28-dff46a)](https://youtu.be/hUHGxR0iRR8)
@@ -44,9 +44,20 @@ Clunk's release catalog contains 163 source-backed U.S. appliance identities acr
 
 Coverage is intentionally broad but bounded. A recognized model does not imply that every problem is supported, and a family-level match is never promoted into exact revision compatibility. The original appliance illustrations show common physical locations; they are not model-specific service diagrams.
 
-## Why WebMCP
+## Two agent surfaces
 
 Appliance troubleshooting crosses a physical boundary. A browser agent can search model evidence, track the valid next action, and point to a component. It cannot see the rating label, hose, filter, latch, leak, smoke, or damaged access beside the person.
+
+Clunk now has two distinct agent-facing designs:
+
+| Surface               | Purpose                                                                                                       | State model                                                                                     | Current status                                                              |
+| --------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| **In-page WebMCP**    | Let a browser agent and person operate the visible repair guide together.                                     | Stateful; shares the page's current repair state and activity history.                          | Implemented and covered by the established browser release.                 |
+| **Remote MCP server** | Let an MCP client search coverage, retrieve a guide, and replay reported observations without opening the UI. | Stateless; each call reads the public catalog or replays the deterministic engine in isolation. | Source present; deployment and build integration are not yet release-ready. |
+
+These surfaces reuse the same catalog, repair packs, model search, engine, selectors, evidence rules, and safety boundary. They do not expose the same tool names or persistence model, and the remote server does not control the visible browser session.
+
+### In-page WebMCP
 
 WebMCP lets the page expose its real task model instead of making the agent scrape interface text or maintain a separate hidden workflow:
 
@@ -59,7 +70,7 @@ WebMCP lets the page expose its real task model instead of making the agent scra
 
 The site—not the agent—owns sequence, evidence thresholds, exact-fit rules, and terminal safety stops. Browsers without WebMCP retain the complete manual experience.
 
-## Eight state-dependent tools
+## Eight state-dependent WebMCP tools
 
 Clunk contains eight literal `document.modelContext.registerTool` registrations in [`src/webmcp/registerTools.ts`](./src/webmcp/registerTools.ts).
 
@@ -76,20 +87,38 @@ Clunk contains eight literal `document.modelContext.registerTool` registrations 
 
 Only contextually valid tools are registered. Inputs use bounded schemas with `additionalProperties: false`, registration lifecycle is managed with an `AbortController`, and the same public action layer serves the UI, sample guides, inspector, and browser-agent calls.
 
+## Five stateless remote MCP tools
+
+The remote server source is defined with `@lovable.dev/mcp-js` in [`src/lib/mcp`](./src/lib/mcp). Its generated manifest declares anonymous access and a Supabase Edge Function route at `/functions/v1/mcp`.
+
+| Tool                     | What it can do                                                                                                         |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `search_appliances`      | Search the bounded catalog by model text, category, brand, or covered problem.                                         |
+| `get_appliance_coverage` | Return the supported problems, capability labels, and model source for one catalog identity.                           |
+| `get_repair_guide`       | Return ordered safe checks, allowed result IDs, visible components, and sources for one supported pair.                |
+| `run_diagnosis`          | Replay ordered person-reported observations through a fresh engine state and return the next check or bounded outcome. |
+| `find_model_number`      | Return manufacturer-backed label locations, identifier examples, and suffix guidance.                                  |
+
+All five tools are read-only from the server's perspective: `run_diagnosis` computes an isolated result and returns a transcript but does not persist a repair session or mutate the browser UI. The intended public function is not currently deployed—the configured Supabase route returned `404 Requested function was not found` on September 2, 2026—and the generated integration currently fails the repository TypeScript gate. See [`docs/mcp-server-integration.md`](./docs/mcp-server-integration.md) for the exact status and release checklist.
+
 ## One shared, inspectable engine
 
 ```text
-Person controls ─┐
-Sample guide ────┼─> shared action layer ─> deterministic engine ─> repair state ─> UI
-Manual inspector ┤                              │
-WebMCP call ─────┘                              └─> accepted/rejected activity event
+Browser app
+  Person controls ─┐
+  Sample guide ────┼─> shared action layer ─> deterministic engine ─> repair state ─> UI
+  Manual inspector ┤                              │
+  WebMCP call ─────┘                              └─> accepted/rejected activity event
+
+Remote MCP draft
+  MCP client ─> five stateless adapters ─> catalog / fresh engine replay ─> structured response
 
 source-backed catalog ─> validated repair packs ─> safe checks and bounded outcomes
                                                          │
                                                          └─> exact SKU ─> Shopify offers
 ```
 
-Clunk ships as static React, TypeScript, CSS, JSON, original illustrations, and local fonts. There is no application backend, account system, database, app-side model call, model SDK, private API key, or payment handling. A compatible browser agent supplies reasoning; Clunk supplies the authoritative state and rules.
+The browser product ships as static React, TypeScript, CSS, JSON, original illustrations, and local fonts. It has no account system, database dependency, app-side model call, model SDK, private API key, or payment handling. The repository now also contains a generated Supabase Edge Function bundle for the draft remote MCP surface. That server reuses public catalog logic and currently has no database read/write path, but it is a backend runtime and must be built, deployed, and verified separately from the static app.
 
 Read the [architecture](./docs/architecture.md) for the layer-by-layer design and the [repair-pack schema](./docs/repair-pack-schema.md) for the evidence model.
 
@@ -137,7 +166,9 @@ npx playwright install chromium
 npm run verify
 ```
 
-The complete gate runs strict TypeScript, ESLint, 112 unit/integration/WebMCP tests, a production build, and 54 desktop/mobile Playwright journeys. Browser coverage includes catalog and symptom boundaries, exact-code handling, nearby-SKU rejection, person/agent handoff, catalog failure fallback, no-part outcomes, safety stops, keyboard access, touch targets, reduced motion, 320px layouts, and automated WCAG A/AA checks.
+The established browser release passed strict TypeScript, ESLint, 112 unit/integration/WebMCP tests, a production build, and 54 desktop/mobile Playwright journeys. Browser coverage includes catalog and symptom boundaries, exact-code handling, nearby-SKU rejection, person/agent handoff, catalog failure fallback, no-part outcomes, safety stops, keyboard access, touch targets, reduced motion, 320px layouts, and automated WCAG A/AA checks.
+
+**Current-main status:** the September 2 remote MCP/Supabase additions do not yet pass `npm run typecheck`. GitHub run [33665544064](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/runs/33665544064) stops on generated MCP tool-definition variance errors and two indexed environment-variable accesses. The application tests did not fail; the gate stopped before running them. Treat the green browser-release evidence above as the last verified baseline, not as a claim that current `main` is green.
 
 Useful focused commands:
 
@@ -153,17 +184,18 @@ Deterministic scenario fixtures live in [`evals/webmcp-evals.json`](./evals/webm
 
 ## Documentation map
 
-| Start here                                                             | Purpose                                                      |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------ |
-| [`docs/README.md`](./docs/README.md)                                   | Current documentation index and source-of-truth guide.       |
-| [`docs/architecture.md`](./docs/architecture.md)                       | State, data, WebMCP, UI, and commerce layers.                |
-| [`docs/safety.md`](./docs/safety.md)                                   | Deterministic safety rules and prohibited capabilities.      |
-| [`docs/repair-pack-schema.md`](./docs/repair-pack-schema.md)           | Model/problem coverage and exact-part evidence requirements. |
-| [`docs/model-source-ledger.md`](./docs/model-source-ledger.md)         | Catalog identities, sources, and exact-part status.          |
-| [`docs/shopify-ucp-integration.md`](./docs/shopify-ucp-integration.md) | Exact-SKU offer discovery and checkout boundary.             |
-| [`docs/webmcp-agent-evaluation.md`](./docs/webmcp-agent-evaluation.md) | Repeatable natural-language agent evaluation plan.           |
-| [`DESIGN.md`](./DESIGN.md)                                             | “Approachable Precision” interface system.                   |
-| [`PRODUCT.md`](./PRODUCT.md)                                           | Durable product promise and customer-facing principles.      |
+| Start here                                                             | Purpose                                                       |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [`docs/README.md`](./docs/README.md)                                   | Current documentation index and source-of-truth guide.        |
+| [`docs/architecture.md`](./docs/architecture.md)                       | State, data, WebMCP, UI, and commerce layers.                 |
+| [`docs/safety.md`](./docs/safety.md)                                   | Deterministic safety rules and prohibited capabilities.       |
+| [`docs/repair-pack-schema.md`](./docs/repair-pack-schema.md)           | Model/problem coverage and exact-part evidence requirements.  |
+| [`docs/model-source-ledger.md`](./docs/model-source-ledger.md)         | Catalog identities, sources, and exact-part status.           |
+| [`docs/shopify-ucp-integration.md`](./docs/shopify-ucp-integration.md) | Exact-SKU offer discovery and checkout boundary.              |
+| [`docs/mcp-server-integration.md`](./docs/mcp-server-integration.md)   | Draft remote MCP server, tool contract, and release blockers. |
+| [`docs/webmcp-agent-evaluation.md`](./docs/webmcp-agent-evaluation.md) | Repeatable natural-language agent evaluation plan.            |
+| [`DESIGN.md`](./DESIGN.md)                                             | “Approachable Precision” interface system.                    |
+| [`PRODUCT.md`](./PRODUCT.md)                                           | Durable product promise and customer-facing principles.       |
 
 `docs/hackathon-build/` preserves the project's build history, including the early fictional single-washer proof of concept. It is an archive, not the current product scope.
 
@@ -174,6 +206,7 @@ Deterministic scenario fixtures live in [`evals/webmcp-evals.json`](./evals/webm
 - Exact-part results require a complete verified revision; family-only identities remain safe-checks-only.
 - Clunk does not confirm a diagnosis, guarantee price or stock, validate a merchant, complete payment, or replace a qualified technician.
 - WebMCP is progressively enhanced; unsupported environments use the same manual action layer.
+- The remote MCP source is present but is not yet a working public service: current `main` fails TypeScript and the configured function route returns 404.
 - Genuine natural-language agent runs remain separate from deterministic test fixtures and are not claimed as completed evidence.
 
 ## AI usage

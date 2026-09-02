@@ -99,7 +99,9 @@ source-backed catalog ─> validated repair pack ─> checks + results + exact S
                                                                          └─> Shopify UCP live offers
 ```
 
-The production app is static HTML, CSS, JavaScript, JSON, original images, and local fonts. It has no database, auth, backend, server function, environment secret, model SDK, or app-side LLM call. Its one external runtime request is the optional credential-free Shopify catalog lookup after an exact SKU is known. Unsupported browsers and catalog failures retain the complete manual diagnosis and evidence flow.
+The submitted browser product is static HTML, CSS, JavaScript, JSON, original images, and local fonts. It has no required database, auth, private environment secret, model SDK, or app-side LLM call. Its one established external runtime request is the optional credential-free Shopify catalog lookup after an exact SKU is known. Unsupported browsers and catalog failures retain the complete manual diagnosis and evidence flow.
+
+The repository later gained a separate draft remote MCP server packaged for a Supabase Edge Function. It reuses the public catalog and engine but does not share the browser session and is not part of the verified submission claim: current `main` does not typecheck and the configured function route is not deployed. See `docs/mcp-server-integration.md`.
 
 ## Testing instructions
 
@@ -130,7 +132,7 @@ npx playwright install chromium
 npm run verify
 ```
 
-The current public release passed deterministic evidence audits, strict TypeScript, ESLint, Prettier, **112 unit/integration/WebMCP tests**, a production build, and **54 desktop/mobile Playwright journeys**. Coverage includes catalog and symptom boundaries, model-label discovery, partial/serial handling, exact and nearby-SKU behavior, the visible person/agent baton pass, live-catalog failure fallback, no-part outcomes, safety stops, 320px layouts, keyboard access, 44px touch targets, reduced motion, and automated WCAG A/AA checks.
+The established public browser release passed deterministic evidence audits, strict TypeScript, ESLint, Prettier, **112 unit/integration/WebMCP tests**, a production build, and **54 desktop/mobile Playwright journeys**. Coverage includes catalog and symptom boundaries, model-label discovery, partial/serial handling, exact and nearby-SKU behavior, the visible person/agent baton pass, live-catalog failure fallback, no-part outcomes, safety stops, 320px layouts, keyboard access, 44px touch targets, reduced motion, and automated WCAG A/AA checks. The later draft remote MCP integration currently fails TypeScript before those tests run and must not be represented as verified submission functionality.
 
 ## How We Used AI
 
@@ -197,6 +199,7 @@ Official requirements and form fields were rechecked from Devpost on **September
 - Clunk does not confirm a diagnosis, guarantee stock or price, complete payment, or replace a technician.
 - Shopify Global Catalog coverage is broad but not universal; Clunk shows an honest no-offer/retry state and never substitutes a nearby SKU.
 - WebMCP is evolving; unsupported environments use the identical manual action layer.
+- A separate remote MCP server draft exists in source but is not deployed or build-green and is outside the verified browser submission claim.
 - The person remains responsible for reporting physical observations and confirming the complete model on the seller page.
 
 ## Remaining submission tasks
