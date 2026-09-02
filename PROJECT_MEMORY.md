@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-09-02** after WebMCP.com rescored the published eight-tool release B+ and the follow-up contract refinement was implemented, verified, fast-forwarded to GitHub `main` as commit `ae1ff8c`, and published through Lovable. `clunk.repair` deployment `c30ceb14-edf4-4573-8613-57a39e0eba3e` serves `index-BfaTsAx5.js`, byte-for-byte identical to the verified local production build. A fresh WebMCP.com rescore remains pending. The latest UX audit and prior live evidence remain in [`docs/research/final-submission-polish-2026-09-02/README.md`](docs/research/final-submission-polish-2026-09-02/README.md).
+Last reconciled: **2026-09-02** after WebMCP.com rescored the published eight-tool release B+ and the follow-up contract refinement was implemented, verified, fast-forwarded to GitHub `main` as commit `ae1ff8c`, and published through Lovable. The Lovable-published `clunk.repair` release serves `index-BfaTsAx5.js`, byte-for-byte identical to the verified local production build. A fresh WebMCP.com rescore remains pending. The latest UX audit and prior live evidence remain in [`docs/research/final-submission-polish-2026-09-02/README.md`](docs/research/final-submission-polish-2026-09-02/README.md).
 
 This is a concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
