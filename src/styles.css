@@ -25,6 +25,10 @@
   --success-pale: #dcefe5;
   --stop: #a3302a;
   --stop-pale: #f8e4e1;
+  --placeholder: #667a70;
+  --on-ink-soft: #d5e0db;
+  --on-ink-muted: #adc0b7;
+  --on-ink-line: #4b5c54;
   --radius: 14px;
   --focus: 0 0 0 2px var(--paper), 0 0 0 5px var(--tide);
   --shadow: 0 22px 50px rgba(20, 35, 29, 0.11);
@@ -899,7 +903,7 @@ h2[tabindex="-1"]:focus-visible {
 
 .model-search__row input::placeholder,
 .product-code-form input::placeholder {
-  color: #667a70;
+  color: var(--placeholder);
   opacity: 1;
 }
 
@@ -2020,7 +2024,7 @@ h2[tabindex="-1"]:focus-visible {
 .part-message {
   max-width: 65ch;
   margin-top: 16px;
-  color: #d5e0db;
+  color: var(--on-ink-soft);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -2029,8 +2033,8 @@ h2[tabindex="-1"]:focus-visible {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 20px;
-  border-top: 1px solid #4b5c54;
-  border-bottom: 1px solid #4b5c54;
+  border-top: 1px solid var(--on-ink-line);
+  border-bottom: 1px solid var(--on-ink-line);
 }
 
 .part-details > div {
@@ -2041,12 +2045,12 @@ h2[tabindex="-1"]:focus-visible {
 }
 
 .part-details > div + div {
-  border-left: 1px solid #4b5c54;
+  border-left: 1px solid var(--on-ink-line);
   padding-left: 14px;
 }
 
 .part-details dt {
-  color: #adc0b7;
+  color: var(--on-ink-muted);
   font-size: 10px;
   font-weight: 720;
 }
@@ -2071,7 +2075,7 @@ h2[tabindex="-1"]:focus-visible {
 
 .part-disclaimer {
   margin-top: 17px;
-  color: #adc0b7;
+  color: var(--on-ink-muted);
   font-size: 12px;
   line-height: 1.5;
 }
@@ -2501,7 +2505,7 @@ h2[tabindex="-1"]:focus-visible {
 .agent-story__lead {
   grid-column: 1;
   max-width: 48ch;
-  color: #d5e0db;
+  color: var(--on-ink-soft);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -2518,12 +2522,12 @@ h2[tabindex="-1"]:focus-visible {
   grid-template-columns: minmax(92px, 0.32fr) minmax(0, 0.68fr);
   align-items: baseline;
   gap: 20px;
-  border-top: 1px solid #4b5c54;
+  border-top: 1px solid var(--on-ink-line);
   padding: 20px 0;
 }
 
 .agent-story__roles > div:last-child {
-  border-bottom: 1px solid #4b5c54;
+  border-bottom: 1px solid var(--on-ink-line);
 }
 
 .agent-story__roles dt {
@@ -2533,7 +2537,7 @@ h2[tabindex="-1"]:focus-visible {
 }
 
 .agent-story__roles dd {
-  color: #adc0b7;
+  color: var(--on-ink-muted);
   font-size: 12px;
   line-height: 1.5;
 }
@@ -2545,7 +2549,7 @@ h2[tabindex="-1"]:focus-visible {
   justify-content: space-between;
   gap: 16px;
   margin-top: 10px;
-  border-top: 1px solid #4b5c54;
+  border-top: 1px solid var(--on-ink-line);
   padding-top: 18px;
   color: var(--citron);
   font-size: 13px;
@@ -3308,7 +3312,7 @@ footer p {
   }
 
   .part-details > div + div {
-    border-top: 1px solid #4b5c54;
+    border-top: 1px solid var(--on-ink-line);
     border-left: 0;
     padding-left: 0;
   }

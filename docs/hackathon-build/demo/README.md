@@ -1,6 +1,6 @@
 # Clunk demo draft
 
-`clunk-demo-draft.mp4` is a 45-second, 1440×900, captioned capture of an earlier public Lovable build. Treat it as b-roll, not proof of the current fresh-eyes changes or a natural-language agent run. It shows:
+`clunk-demo-draft.mp4` is a 45-second, 1440×900, captioned capture of an earlier public Lovable build. Treat it as b-roll, not proof of the current release or a natural-language agent run. The final replacement script, exact prompt, human replies, and captions are in [`final-demo-package.md`](./final-demo-package.md) and [`final-demo-captions.srt`](./final-demo-captions.srt). The draft shows:
 
 1. the five-second promise and four appliance categories;
 2. the one-click Whirlpool dishwasher answer;

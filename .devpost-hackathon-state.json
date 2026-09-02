@@ -15,7 +15,7 @@
   "project": {
     "name": "Clunk",
     "summary": "An open-source WebMCP repair bench where a person supplies physical observations and an AI navigates source-backed appliance checks, highlights the physical location, and resolves an exact seller link when compatibility evidence is complete.",
-    "ai_usage": "A compatible browser agent discovers supported appliances and invokes a state-dependent set of eight WebMCP tools against deterministic page state. The shipped site does not call a model. Lovable is used for hosting and GitHub sync.",
+    "ai_usage": "A compatible browser agent can discover all eight in-page WebMCP tools from page load. Each result reports the currently valid nextTools, while Clunk's deterministic engine rejects out-of-order, unsupported, unsafe, or post-terminal calls. The shipped site does not call a model. Lovable is used for hosting and GitHub sync.",
     "codex_usage": "Codex supported scoping, implementation, debugging, accessibility, deterministic testing, live browser verification, and open-source and Devpost documentation."
   },
   "current_stage": "prepare-submission",
@@ -30,12 +30,12 @@
   },
   "submission": {
     "draft_file": "devpost-submission.md",
-    "status": "drafting",
-    "requirements_checked_at": "2026-08-27T14:22:32Z",
+    "status": "internal-package-ready",
+    "requirements_checked_at": "2026-09-02T20:30:00Z",
     "required_external_steps": [
-      "Run and record the real-agent evaluation matrix",
-      "Publish a public YouTube demo under three minutes with audio",
-      "Choose submitter type, country, app status, learning level, and career-value answers"
+      "Approve and publish a replacement public YouTube demo under three minutes with audio, captions, accurate all-eight-tool wording, and clearly visible client discovery and calls",
+      "Log in to Devpost, join the hackathon, create the Clunk project, and paste the prepared copy and links",
+      "Choose submitter type, country, app status, learning level, and career-value answers, then review and approve final submission"
     ]
   },
   "next_command": "prepare-submission"
