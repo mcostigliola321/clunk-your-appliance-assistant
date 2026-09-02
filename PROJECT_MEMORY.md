@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-09-02** after the WebMCP.com score remediation was implemented and verified on unpushed branch `codex/improve-webmcp-grade`, based on synced GitHub `main` commit `2c37f34`. The latest UX audit and prior live evidence remain in [`docs/research/final-submission-polish-2026-09-02/README.md`](docs/research/final-submission-polish-2026-09-02/README.md).
+Last reconciled: **2026-09-02** after the WebMCP.com score remediation was implemented, verified, and fast-forwarded to GitHub `main` as commit `68453b2` from branch `codex/improve-webmcp-grade`. Lovable publication and a fresh live WebMCP.com score remain pending. The latest UX audit and prior live evidence remain in [`docs/research/final-submission-polish-2026-09-02/README.md`](docs/research/final-submission-polish-2026-09-02/README.md).
 
 This is a concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
