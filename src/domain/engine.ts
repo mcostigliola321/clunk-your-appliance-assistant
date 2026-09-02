@@ -329,15 +329,17 @@ function startDiagnosis(
       input,
       "Select a supported appliance before starting.",
     );
-  if (typeof input["symptomId"] !== "string")
+  const selectedSymptomId =
+    typeof input["symptomId"] === "string" ? input["symptomId"] : state.symptomId;
+  if (!selectedSymptomId)
     return reject(
       state,
       source,
       "start_diagnosis",
       input,
-      "Provide one symptomId returned for the selected model.",
+      "Select a supported problem before starting the diagnosis.",
     );
-  const symptomId = input["symptomId"] as SupportedSymptomId;
+  const symptomId = selectedSymptomId as SupportedSymptomId;
   const pack = resolveRepairPack(state.applianceId, symptomId);
   if (!pack)
     return reject(

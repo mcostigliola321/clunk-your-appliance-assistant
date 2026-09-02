@@ -4,7 +4,7 @@ This document separates probabilistic browser-agent evidence from Clunk’s dete
 
 ## Current evidence status
 
-WebMCP.com ran one real natural-language catalog journey against `https://clunk.repair/` on 2026-09-02 and marked it passed. The prompt searched Samsung refrigerators, selected a returned model, and read the repair state. The associated surface scan found all three tools that the then-published catalog state registered and scored that release 67/B; its concrete findings—missing output schemas, incomplete on-load workflow discovery, and the 163-value appliance ID enum—are addressed by the stable eight-tool registration and contracts in this candidate. The full diagnosis, safety, ambiguity, and purchase cases below remain unrun until recorded through a supported agent interface.
+WebMCP.com ran one real natural-language catalog journey against `https://clunk.repair/` on 2026-09-02 and marked it passed. The prompt searched Samsung refrigerators, selected a returned model, and read the repair state. The first associated surface scan found three tools and scored the prior release 67/B. After Clunk exposed all eight tools, added output schemas, and removed the 163-value appliance ID enum, a fresh live scan detected all eight and raised the grade to B+. That rescan praised the strict inputs and authoritative `nextTools`, then identified two remaining contract issues: `symptomId` repeated across search, selection, and start; and one identical bulky output schema on every tool. This candidate removes the duplicate start argument and gives every tool a distinct, validated output projection. The full diagnosis, safety, ambiguity, and purchase cases below remain unrun until recorded through a supported agent interface.
 
 Use one row per fresh conversation. Record failures exactly as observed; do not silently retry and report only the successful attempt.
 
@@ -61,7 +61,7 @@ Expected call sequence:
 
 1. `search_supported_appliances({ kind: "dryer", modelQuery: "GTD42EASJ2WW" })`
 2. `select_appliance({ applianceId: "ge-gtd42easj2ww", productCode: "GTD42EASJ2WW" })`
-3. `start_diagnosis({ symptomId: "door-will-not-close" })`
+3. `start_diagnosis({})` — starts the model/problem pair selected in step 2
 4. optional `show_component({ componentId: "door-strike" })` after state inspection
 5. `record_observation({ checkId: "safety-check", resultId: "safe-ready" })` only after reply 1
 6. `record_observation({ checkId: "inspect-door-strike", resultId: "strike-broken" })` only after reply 2

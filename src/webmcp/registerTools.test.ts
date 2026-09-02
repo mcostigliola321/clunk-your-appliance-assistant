@@ -4,8 +4,8 @@ import { z } from "zod";
 import { createInitialRepairState, executeRepairTool } from "@/domain/engine";
 import type { RepairState, WebMcpStatus } from "@/domain/types";
 
-import { WEBMCP_TASK_OUTPUT_SCHEMA } from "./contracts";
 import { registerClunkTools } from "./registerTools";
+import { WEBMCP_TOOL_OUTPUT_SCHEMAS } from "./toolOutputs";
 
 const COMPLETE_TOOL_INVENTORY = [
   "search_supported_appliances",
@@ -17,7 +17,12 @@ const COMPLETE_TOOL_INVENTORY = [
   "find_compatible_part",
   "stop_and_escalate",
 ];
-const outputContract = z.fromJSONSchema(WEBMCP_TASK_OUTPUT_SCHEMA);
+const outputContracts = Object.fromEntries(
+  Object.entries(WEBMCP_TOOL_OUTPUT_SCHEMAS).map(([name, schema]) => [
+    name,
+    z.fromJSONSchema(schema),
+  ]),
+) as Record<string, z.ZodType>;
 
 describe("stable WebMCP registration", () => {
   afterEach(() => Reflect.deleteProperty(document, "modelContext"));
@@ -56,7 +61,11 @@ describe("stable WebMCP registration", () => {
     );
     await Promise.resolve();
     expect(tools.map((tool) => tool.name)).toEqual(COMPLETE_TOOL_INVENTORY);
-    expect(tools.every((tool) => tool.outputSchema === WEBMCP_TASK_OUTPUT_SCHEMA)).toBe(true);
+    expect(new Set(tools.map((tool) => JSON.stringify(tool.outputSchema))).size).toBe(8);
+    for (const tool of tools)
+      expect(tool.outputSchema).toBe(
+        WEBMCP_TOOL_OUTPUT_SCHEMAS[tool.name as keyof typeof WEBMCP_TOOL_OUTPUT_SCHEMAS],
+      );
 
     const selectSchema = tools.find((tool) => tool.name === "select_appliance")?.inputSchema as {
       properties: { applianceId: Record<string, unknown> };
@@ -67,6 +76,13 @@ describe("stable WebMCP registration", () => {
       description: expect.stringContaining("returned by search_supported_appliances"),
     });
     expect(selectSchema.properties.applianceId).not.toHaveProperty("enum");
+    const symptomTools = tools
+      .filter((tool) => {
+        const schema = tool.inputSchema as { properties?: Record<string, unknown> };
+        return Boolean(schema.properties?.["symptomId"]);
+      })
+      .map((tool) => tool.name);
+    expect(symptomTools).toEqual(["search_supported_appliances", "select_appliance"]);
 
     const stateOutput = (await tools[2]?.execute({})) as {
       structuredContent: Record<string, unknown>;
@@ -84,7 +100,9 @@ describe("stable WebMCP registration", () => {
         },
       },
     });
-    expect(outputContract.safeParse(stateOutput.structuredContent).success).toBe(true);
+    expect(
+      outputContracts["get_repair_state"]!.safeParse(stateOutput.structuredContent).success,
+    ).toBe(true);
     expect(state.activity).toHaveLength(1);
     await tools[1]?.execute({
       applianceId: "lg-wm3400cw",
@@ -122,6 +140,12 @@ describe("stable WebMCP registration", () => {
       kind: "dryer",
     })) as { structuredContent: Record<string, unknown> };
 
+    expect(
+      outputContracts["search_supported_appliances"]!.safeParse(output.structuredContent).success,
+    ).toBe(true);
+    expect(Object.keys(output.structuredContent).sort()).toEqual(
+      ["catalog", "handoff", "nextTools", "ok", "phase"].sort(),
+    );
     expect(output.structuredContent).toMatchObject({
       ok: true,
       phase: "catalog",
@@ -192,10 +216,13 @@ describe("stable WebMCP registration", () => {
       productCode: "GTD42EASJ2WW",
       symptomId: "not-heating",
     })) as { structuredContent: Record<string, unknown> };
+    expect(outputContracts["select_appliance"]!.safeParse(selected.structuredContent).success).toBe(
+      true,
+    );
     expect(selected.structuredContent).toMatchObject({
       ok: true,
       phase: "idle",
-      task: {
+      selection: {
         symptom: "Electric dryer runs without heat",
         capability: "guided-checks",
       },
@@ -206,6 +233,9 @@ describe("stable WebMCP registration", () => {
       applianceId: "bosch-b36ct81ens07",
       symptomId: "is-leaking",
     })) as { structuredContent: Record<string, unknown> };
+    expect(
+      outputContracts["select_appliance"]!.safeParse(unsupported.structuredContent).success,
+    ).toBe(true);
     expect(unsupported.structuredContent).toMatchObject({ ok: false });
   });
 
@@ -232,7 +262,7 @@ describe("stable WebMCP registration", () => {
       const result = (await tool.execute(input)) as {
         structuredContent: Record<string, unknown>;
       };
-      expect(outputContract.safeParse(result.structuredContent).success).toBe(true);
+      expect(outputContracts[name]!.safeParse(result.structuredContent).success).toBe(true);
       return result;
     };
 
@@ -251,11 +281,16 @@ describe("stable WebMCP registration", () => {
         })
       ).structuredContent["nextTools"],
     ).toContain("start_diagnosis");
-    expect(
-      (await execute("start_diagnosis", { symptomId: "door-will-not-close" })).structuredContent[
-        "nextTools"
-      ],
-    ).toContain("record_observation");
+    const started = await execute("start_diagnosis");
+    expect(started.structuredContent["nextTools"]).toContain("record_observation");
+    expect(started.structuredContent).toMatchObject({
+      currentCheck: { checkId: "safety-check", componentId: "machine" },
+      highlightedComponent: { id: "machine" },
+    });
+    const shown = await execute("show_component", { componentId: "machine" });
+    expect(Object.keys(shown.structuredContent).sort()).toEqual(
+      ["handoff", "highlightedComponent", "nextTools", "ok", "phase"].sort(),
+    );
 
     await execute("record_observation", { checkId: "safety-check", resultId: "safe-ready" });
     const result = await execute("record_observation", {
@@ -265,7 +300,7 @@ describe("stable WebMCP registration", () => {
     expect(result.structuredContent["nextTools"]).toContain("find_compatible_part");
     const outcome = await execute("find_compatible_part");
     expect(outcome.structuredContent).toMatchObject({
-      task: { outcome: { status: "exact", part: { sku: "WE01M10007" } } },
+      outcome: { status: "exact", part: { sku: "WE01M10007" } },
     });
   });
 
@@ -301,7 +336,9 @@ describe("stable WebMCP registration", () => {
     const terminalState = (await stateTool.execute({})) as {
       structuredContent: Record<string, unknown>;
     };
-    expect(outputContract.safeParse(terminalState.structuredContent).success).toBe(true);
+    expect(
+      outputContracts["get_repair_state"]!.safeParse(terminalState.structuredContent).success,
+    ).toBe(true);
     expect(terminalState.structuredContent["nextTools"]).toEqual([
       "get_repair_state",
       "search_supported_appliances",
@@ -313,7 +350,24 @@ describe("stable WebMCP registration", () => {
       isError: boolean;
       structuredContent: Record<string, unknown>;
     };
-    expect(outputContract.safeParse(rejected.structuredContent).success).toBe(true);
-    expect(rejected).toMatchObject({ isError: true, structuredContent: { ok: false } });
+    expect(
+      outputContracts["find_compatible_part"]!.safeParse(rejected.structuredContent).success,
+    ).toBe(true);
+    expect(rejected).toMatchObject({
+      isError: true,
+      structuredContent: { ok: false, outcome: null },
+    });
+
+    const stop = tools.find((tool) => tool.name === "stop_and_escalate")!;
+    const stopped = (await stop.execute({ reason: "unresolved" })) as {
+      structuredContent: Record<string, unknown>;
+    };
+    expect(outputContracts["stop_and_escalate"]!.safeParse(stopped.structuredContent).success).toBe(
+      true,
+    );
+    expect(stopped.structuredContent).toMatchObject({
+      ok: true,
+      escalation: { reason: "unresolved" },
+    });
   });
 });

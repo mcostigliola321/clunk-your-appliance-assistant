@@ -1,21 +1,13 @@
 import type { RepairToolName, ToolExecutionResult, WebMcpStatus } from "@/domain/types";
-import { getWebMcpTaskSnapshot } from "@/domain/selectors";
 
 import { getRepairToolContract } from "./contracts";
+import { formatWebMcpToolOutput } from "./toolOutputs";
 
 type InvokeTool = (
   name: RepairToolName,
   input: Record<string, unknown>,
   source: "agent",
 ) => ToolExecutionResult;
-
-function asToolOutput(execution: ToolExecutionResult) {
-  return {
-    content: [{ type: "text" as const, text: execution.message }],
-    structuredContent: { ok: execution.ok, ...getWebMcpTaskSnapshot(execution.state) },
-    isError: !execution.ok,
-  };
-}
 
 export function registerClunkTools(
   invokeTool: InvokeTool,
@@ -41,7 +33,10 @@ export function registerClunkTools(
         outputSchema: search.outputSchema,
         annotations: { readOnlyHint: true, untrustedContentHint: false },
         execute: async (input) => {
-          return asToolOutput(invokeTool("search_supported_appliances", input, "agent"));
+          return formatWebMcpToolOutput(
+            "search_supported_appliances",
+            invokeTool("search_supported_appliances", input, "agent"),
+          );
         },
       },
       options,
@@ -58,7 +53,10 @@ export function registerClunkTools(
         inputSchema: select.inputSchema,
         outputSchema: select.outputSchema,
         execute: async (input) => {
-          return asToolOutput(invokeTool("select_appliance", input, "agent"));
+          return formatWebMcpToolOutput(
+            "select_appliance",
+            invokeTool("select_appliance", input, "agent"),
+          );
         },
       },
       options,
@@ -76,7 +74,10 @@ export function registerClunkTools(
         outputSchema: getState.outputSchema,
         annotations: { readOnlyHint: true, untrustedContentHint: false },
         execute: async (input) => {
-          return asToolOutput(invokeTool("get_repair_state", input, "agent"));
+          return formatWebMcpToolOutput(
+            "get_repair_state",
+            invokeTool("get_repair_state", input, "agent"),
+          );
         },
       },
       options,
@@ -93,7 +94,10 @@ export function registerClunkTools(
         inputSchema: start.inputSchema,
         outputSchema: start.outputSchema,
         execute: async (input) => {
-          return asToolOutput(invokeTool("start_diagnosis", input, "agent"));
+          return formatWebMcpToolOutput(
+            "start_diagnosis",
+            invokeTool("start_diagnosis", input, "agent"),
+          );
         },
       },
       options,
@@ -110,7 +114,10 @@ export function registerClunkTools(
         inputSchema: show.inputSchema,
         outputSchema: show.outputSchema,
         execute: async (input) => {
-          return asToolOutput(invokeTool("show_component", input, "agent"));
+          return formatWebMcpToolOutput(
+            "show_component",
+            invokeTool("show_component", input, "agent"),
+          );
         },
       },
       options,
@@ -127,7 +134,10 @@ export function registerClunkTools(
         inputSchema: record.inputSchema,
         outputSchema: record.outputSchema,
         execute: async (input) => {
-          return asToolOutput(invokeTool("record_observation", input, "agent"));
+          return formatWebMcpToolOutput(
+            "record_observation",
+            invokeTool("record_observation", input, "agent"),
+          );
         },
       },
       options,
@@ -144,7 +154,10 @@ export function registerClunkTools(
         inputSchema: findPart.inputSchema,
         outputSchema: findPart.outputSchema,
         execute: async (input) => {
-          return asToolOutput(invokeTool("find_compatible_part", input, "agent"));
+          return formatWebMcpToolOutput(
+            "find_compatible_part",
+            invokeTool("find_compatible_part", input, "agent"),
+          );
         },
       },
       options,
@@ -161,7 +174,10 @@ export function registerClunkTools(
         inputSchema: escalate.inputSchema,
         outputSchema: escalate.outputSchema,
         execute: async (input) => {
-          return asToolOutput(invokeTool("stop_and_escalate", input, "agent"));
+          return formatWebMcpToolOutput(
+            "stop_and_escalate",
+            invokeTool("stop_and_escalate", input, "agent"),
+          );
         },
       },
       options,
