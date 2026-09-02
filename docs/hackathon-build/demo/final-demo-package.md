@@ -1,7 +1,9 @@
 # Final demo capture package
 
-Target length: **2:20–2:35**. Hard limit: **under 3:00**.  
-Primary proof: a real compatible browser agent discovers/calls Clunk’s live WebMCP tools while the visible page changes.  
+Target length: **2:20–2:35**. Hard limit: **under 3:00**.
+
+Primary proof: a real compatible browser agent discovers/calls Clunk’s live WebMCP tools while the visible page changes.
+
 Capture URL: `https://clunk.repair` in a fresh session at desktop width, with one short mobile proof near the close.
 
 The current public 2:28 video is public, has audio, and visibly changes between the exact result, safety step, activity/inspector, and terminal-stop states. However, its narration incorrectly says tools are registered only when valid, and it does not clearly frame a real client discovering and calling the stable eight-tool inventory. Replace it before final submission if possible; do not edit or replace the YouTube upload without Mark’s explicit approval.

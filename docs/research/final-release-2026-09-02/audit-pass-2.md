@@ -1,7 +1,9 @@
 # Final release audit — pass 2
 
-Date: 2026-09-02  
-Scope: final local release candidate on `codex/final-release`  
+Date: 2026-09-02
+
+Scope: final local release candidate on `codex/final-release`
+
 Design context: ordinary homeowners under repair pressure and judges evaluating person/browser-agent collaboration; **Approachable Precision**; appliance-led, calm, exact, restrained, and highly legible.
 
 ## Anti-pattern verdict

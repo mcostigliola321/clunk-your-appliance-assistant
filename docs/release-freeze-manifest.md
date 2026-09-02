@@ -1,7 +1,9 @@
 # Release freeze manifest
 
-Status date: **2026-09-02**  
-Submission deadline: **2026-09-03 at 1:00 PM Pacific Time**  
+Status date: **2026-09-02**
+
+Submission deadline: **2026-09-03 at 1:00 PM Pacific Time**
+
 Release branch: `codex/final-release` (local isolated worktree; not pushed or published)
 
 ## Frozen release identity

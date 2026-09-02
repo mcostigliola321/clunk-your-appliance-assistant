@@ -1,7 +1,9 @@
 # Final release audit — pass 1
 
-Date: 2026-09-02  
-Scope: current `origin/main` application UI and production build at `deb1862`  
+Date: 2026-09-02
+
+Scope: current `origin/main` application UI and production build at `deb1862`
+
 Design context: ordinary homeowners under repair pressure and judges evaluating person/browser-agent collaboration; **Approachable Precision**; appliance-led, calm, exact, restrained, and highly legible.
 
 ## Anti-pattern verdict
