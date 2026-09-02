@@ -8,7 +8,7 @@ import { format } from "prettier";
 import { APPLIANCE_CATALOG } from "../src/data/applianceCatalog";
 import { getCatalogEntriesForSymptom } from "../src/data/journeyCatalog";
 
-const LIVE_URL = process.env["CLUNK_LIVE_URL"] ?? "https://clunk-appliance-assistant.lovable.app";
+const LIVE_URL = process.env["CLUNK_LIVE_URL"] ?? "https://clunk.repair";
 const MAX_ATTEMPTS = Number(process.env["CLUNK_LIVE_ATTEMPTS"] ?? "5");
 const RETRY_DELAY_MS = Number(process.env["CLUNK_LIVE_RETRY_DELAY_MS"] ?? "15000");
 const REPORT_PATH = resolve(

@@ -106,6 +106,10 @@ describe("Clunk visual field guide", () => {
     expect(screen.getByText("See a finished guide")).toBeVisible();
     expect(screen.queryByText(/research queue|next to evaluate/i)).not.toBeInTheDocument();
     expect(screen.getByText("Browse all models")).toBeVisible();
+    expect(screen.getByRole("link", { name: /hello@clunk\.repair/ })).toHaveAttribute(
+      "href",
+      "mailto:hello@clunk.repair?subject=Clunk%20question%20or%20feedback",
+    );
   });
 
   it("keeps internal capability language out of a full-code stop", () => {

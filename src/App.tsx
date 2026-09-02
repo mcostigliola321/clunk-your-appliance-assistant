@@ -328,13 +328,18 @@ export function App() {
 
       <footer>
         <p>{snapshot.disclaimer}</p>
-        <a
-          href="https://github.com/mcostigliola321/clunk-your-appliance-assistant"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Open source on GitHub
-        </a>
+        <nav className="footer-links" aria-label="Clunk links">
+          <a href="mailto:hello@clunk.repair?subject=Clunk%20question%20or%20feedback">
+            Questions or feedback: hello@clunk.repair
+          </a>
+          <a
+            href="https://github.com/mcostigliola321/clunk-your-appliance-assistant"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open source on GitHub
+          </a>
+        </nav>
       </footer>
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {latestMessage}

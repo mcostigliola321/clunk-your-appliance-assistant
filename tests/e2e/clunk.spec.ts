@@ -149,6 +149,47 @@ async function openCompletedExample(page: Page, name: string) {
   await example.click();
 }
 
+test("publishes the clunk.repair identity and contact route", async ({ page, request }) => {
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "https://clunk.repair/",
+  );
+  await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
+    "content",
+    "https://clunk.repair/",
+  );
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    "content",
+    "https://clunk.repair/clunk-social-preview.png",
+  );
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
+    "content",
+    "summary_large_image",
+  );
+  await expect(page.getByRole("link", { name: /hello@clunk\.repair/ })).toHaveAttribute(
+    "href",
+    "mailto:hello@clunk.repair?subject=Clunk%20question%20or%20feedback",
+  );
+
+  const sitemap = await request.get("/sitemap.xml");
+  expect(sitemap.ok()).toBe(true);
+  expect(await sitemap.text()).toContain("<loc>https://clunk.repair/</loc>");
+
+  const robots = await request.get("/robots.txt");
+  expect(await robots.text()).toContain("Sitemap: https://clunk.repair/sitemap.xml");
+
+  const socialImage = await page.evaluate(
+    () =>
+      new Promise<{ width: number; height: number }>((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => resolve({ width: image.naturalWidth, height: image.naturalHeight });
+        image.onerror = () => reject(new Error("Social preview image did not load"));
+        image.src = "/clunk-social-preview.png";
+      }),
+  );
+  expect(socialImage).toEqual({ width: 1200, height: 630 });
+});
+
 test("puts substantial cutaway actions in the first journey and avoids full-resolution eager loads", async ({
   page,
 }) => {
