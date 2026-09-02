@@ -51,8 +51,8 @@ export function PartResult({ outcome }: { outcome: PartOutcome | null }) {
           <div className="result-next-step">
             <strong>No substitute will be shown</strong>
             <p>
-              Return to the appliance label and copy the full code. If this model is checks-only,
-              use the manufacturer source below when speaking with a qualified technician.
+              Return to the appliance label and copy the full code. If this model only has safe
+              checks, use the manufacturer source below when speaking with a qualified technician.
             </p>
           </div>
         ) : null}

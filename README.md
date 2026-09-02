@@ -6,9 +6,9 @@
 
 Clunk is a lightweight, open-source WebMCP app where a person and a browser agent investigate a broken household appliance together. The person supplies physical observations. The agent searches Clunk’s supported catalog, reads the shared repair state, focuses the relevant location, and records only what the person reports.
 
-The catalog covers 163 source-backed U.S. model families: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. Those identities resolve to 557 explicitly supported model × symptom combinations: 67 purchase-ready paths backed by manufacturer or authorized-parts compatibility evidence and 490 **Guided checks only** paths. The 12 formerly thin problems cover 39 washers per route, 21 dishwashers per route, 19 electric dryers per route, and 22 refrigerators per route across four or five manufacturers. This is broad, bounded coverage—not a claim of exhaustive or universal compatibility. The illustrations are original location guides—not model-specific service diagrams.
+The catalog covers 163 source-backed U.S. model identities: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. All 782 possible model × symptom pairs are classified: 766 have source-backed safe guidance and 16 stop explicitly as unsupported. Eighty-four models have one exact-part route backed by manufacturer or authorized-parts compatibility evidence; the other supported routes remain guided checks. This is broad, bounded coverage—not a claim of exhaustive or universal compatibility. The illustrations are original location guides—not model-specific service diagrams.
 
-For those 67 exact revisions, Clunk passes the verified SKU to [Shopify Global Catalog](https://shopify.dev/docs/agents/catalog) over UCP and shows current cross-merchant offers. Shopify discovers sellers; it does not decide what fits. The credential-free organic catalog remains the default. An optional public saved-catalog identifier can request Shopify's `affiliate` placement; returned promoted offers are visibly labeled and use Shopify's attributed variant URL exactly, with a nearby commission disclosure. Clunk rejects unavailable results and any nearby SKU, labels merchant “OEM” or “compatible” language as a seller claim, never caches results, and leaves checkout on the merchant site. Public storefront data, including a store's `/products.json` response when exposed, is candidate and offer discovery only—not compatibility evidence or a supported cross-store ingestion contract.
+For those 84 exact revisions, Clunk passes the verified SKU to [Shopify Global Catalog](https://shopify.dev/docs/agents/catalog) over UCP and shows current cross-merchant offers. Shopify discovers sellers; it does not decide what fits. The credential-free organic catalog remains the default. An optional public saved-catalog identifier can request Shopify's `affiliate` placement; returned promoted offers are visibly labeled and use Shopify's attributed variant URL exactly, with a nearby commission disclosure. Clunk rejects unavailable results and any nearby SKU, labels merchant “OEM” or “compatible” language as a seller claim, never caches results, and leaves checkout on the merchant site. Public storefront data, including a store's `/products.json` response when exposed, is candidate and offer discovery only—not compatibility evidence or a supported cross-store ingestion contract.
 
 If the model number is hard to find, **Find my model number** turns that physical-world gap into a visible person/agent handoff: choose the category and washer form factor, inspect manufacturer-backed common label locations, distinguish Model/E-Nr from Serial/S/N, then type any part of the code. Search ignores case and punctuation, surfaces ambiguous variants, and never upgrades a partial family code into an exact compatibility claim.
 
@@ -18,11 +18,11 @@ No account, API key, model call, database, server function, or secret is require
 
 ## Judge it in under three minutes
 
-1. Pick Washer, Dishwasher, Electric dryer, or Refrigerator.
-2. Choose one of four common problems, or open **More problems** for another checked route. Every choice shows its exact checked-model count.
-3. Open the secondary **See how Clunk works** entry and choose one labeled completed example. One click replays a deterministic fixture through the same shared action layer and lands on the exact part, then loads current exact-SKU Shopify offers.
-4. Open **Human + agent activity** to see plain-language collaboration milestones plus the underlying WebMCP action names and active tool inventory.
-5. Reset and use **Diagnose yours** to supply real observations instead of the example fixture.
+1. Pick Washer, Dishwasher, Electric dryer, or Refrigerator, then choose the closest observable problem.
+2. Expand **See a finished guide** and open one clearly labeled sample. The next action lands on the exact part and loads current exact-SKU Shopify offers through the same guarded state as a real diagnosis.
+3. Start over, choose **Electric dryer → Door won't close**, and enter `GTD42EASJ2WW` to run the person/browser-agent baton pass.
+4. Open **One guide. Two ways to use it.** before and after the physical observation to see `record_observation` hand off to `find_compatible_part`.
+5. Expand **Open the live WebMCP inspector** for the source-labeled activity and current tool inventory; report smoke or a burning smell to prove that the purchase path disappears at a safety stop.
 
 The same sequence can be driven by a person, the manual judge controls, or a WebMCP-capable browser agent. Every accepted and rejected action appears in the shared activity log.
 

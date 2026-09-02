@@ -177,8 +177,8 @@ export function ModelFinder({
               checks the full model number before showing a part.
             </p>
             <p>
-              A browser agent can help with the lookup. Only you can report what is physically
-              there.
+              WebMCP lets a browser agent search models and point this guide to the current
+              location. Only you can report what is physically there.
             </p>
           </div>
         </div>

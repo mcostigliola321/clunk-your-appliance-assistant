@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { App } from "./App";
 import { ActivityLog } from "./components/ActivityLog";
+import { PartResult } from "./components/PartResult";
 import { RepairProvider } from "./state/RepairProvider";
 
 function renderClunk() {
@@ -87,6 +88,9 @@ describe("Clunk visual field guide", () => {
   it("leads with visual appliance actions and a secondary completed path", () => {
     renderClunk();
     expect(screen.getByRole("heading", { name: "What are you fixing?" })).toBeVisible();
+    expect(
+      screen.getByText(/WebMCP lets a browser agent search models and point this guide/),
+    ).toBeVisible();
     expect(screen.getByText("163 models across 4 types")).toBeVisible();
     for (const label of [
       /Choose Washer — Won't drain/,
@@ -102,6 +106,25 @@ describe("Clunk visual field guide", () => {
     expect(screen.getByText("See a finished guide")).toBeVisible();
     expect(screen.queryByText(/research queue|next to evaluate/i)).not.toBeInTheDocument();
     expect(screen.getByText("Browse all models")).toBeVisible();
+  });
+
+  it("keeps internal capability language out of a full-code stop", () => {
+    render(
+      <PartResult
+        outcome={{
+          status: "variant-needed",
+          title: "We need the full model number",
+          message: "The family is supported, but the ending is still missing.",
+          applianceNoun: "dryer",
+          part: null,
+          requiredProductCode: "Copy the complete Model line.",
+          source: null,
+        }}
+      />,
+    );
+
+    expect(screen.getByText(/only has safe checks/)).toBeVisible();
+    expect(screen.queryByText(/checks-only/i)).not.toBeInTheDocument();
   });
 
   it("makes the supported problem an honest step before model lookup", async () => {
