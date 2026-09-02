@@ -26,18 +26,18 @@ Remote MCP client ─> generated Supabase MCP adapter ─> same catalog + determ
 - `src/domain/engine.ts` is the only transition engine. It handles catalog search, exact selection, checks, observations, part outcomes, refusals, and escalation.
 - `src/domain/selectors.ts` derives the full visible snapshot, a compact current-task WebMCP output, and the tools that are valid for the current state.
 - `src/state/RepairProvider.tsx` owns current state and exposes one synchronous action layer to both UI controls and WebMCP callbacks. Versioned persistence migrates the prior single-symptom shape, rejects malformed or oversized local state, validates phases, and bounds undo history.
-- `src/webmcp/contracts.ts` is the bounded public tool catalog used by registration, tests, eval fixtures, and the visible inspector.
-- `src/webmcp/registerTools.ts` contains eight literal imperative registrations, state-dependent registration, structured results, feature detection, and `AbortController` lifecycle cleanup.
+- `src/webmcp/contracts.ts` is the bounded public tool catalog used by registration, tests, eval fixtures, and the visible inspector. It declares each input and structured-output schema; catalog- and step-derived IDs are bounded strings that must be copied from earlier results, not duplicated as large enums.
+- `src/webmcp/registerTools.ts` contains eight literal imperative registrations exposed together on page load, structured results, feature detection, and `AbortController` lifecycle cleanup.
 - `src/lib/mcp` defines five stateless remote tools for catalog search, coverage, guide retrieval, diagnosis replay, and model-label guidance. Each has bounded Zod inputs, a concrete output schema, and read-only/idempotent/closed-world annotations.
 - `@lovable.dev/mcp-js` generates `.lovable/mcp/manifest.json` and `supabase/functions/mcp/index.ts`. The manifest is the platform registration contract; the edge bundle is generated and must not be hand-edited. CI fails when either generated artifact drifts from its source.
 - `src/components` renders category/model discovery, original appliance location guides, next checks, evidence, source links, activity, compatibility outcomes, and accessible live-offer states. Components do not contain diagnosis or fit rules.
 - `evals/webmcp-evals.json` stores deterministic scenario fixtures with exact expected calls, visible results, and prohibited behavior. It does not record probabilistic agent-evaluation results.
 
-## State-dependent WebMCP
+## Stable discovery, state-dependent execution
 
-Clunk does not expose every mutation at every moment. At catalog state, an agent can read state, search, and select. After selection it can start the diagnosis. During a check it can read, focus a component, record an observation, or stop. A part lookup appears only after the visible evidence boundary is reached.
+Clunk exposes all eight tool definitions together so an agent or directory that takes one discovery snapshot can understand the complete repair workflow. Execution remains state-dependent. At catalog state, the valid next actions are read, search, and select. After selection, the agent can start the diagnosis. During a check it can read, focus a component, record a person-supplied observation, or stop. Part lookup becomes valid only after the visible evidence boundary is reached.
 
-`RepairProvider` replaces the active registration group when that valid inventory changes and aborts the prior group. This makes the protocol surface itself communicate sequencing instead of relying only on tool descriptions. The main UI mirrors the transition from `record_observation` to `find_compatible_part` so the handoff is visible without opening the inspector.
+Every structured result includes `nextTools`, the authoritative list for the current phase. The deterministic engine independently rejects invented IDs, invalid ordering, unsupported model/problem pairs, mismatched observations, and post-terminal advancement even if an agent ignores that list. The main UI mirrors the transition from `record_observation` to `find_compatible_part` so the handoff remains visible without opening the inspector.
 
 Catalog-state structured output also carries the truthful category/tier counts, query status, suffix ambiguity, capability labels, and a concise `modelNumberHandoff`. The agent can ask the person to inspect the same common label locations shown on screen, but only the person supplies the text. The existing eight-tool surface is sufficient; model discovery did not add a ninth tool.
 
@@ -64,7 +64,7 @@ For the exact state, compatibility and commerce are deliberately separated. Manu
 
 ## Progressive enhancement
 
-When `document.modelContext` is present, Clunk registers the currently valid tools and reports ready, partial, or failed status. When it is absent, the app reports manual mode and remains fully usable. The judge inspector uses the same public action layer; it is not a mock diagnosis.
+When `document.modelContext` is present, Clunk registers the complete eight-tool workflow and reports ready, partial, or failed status. When it is absent, the app reports manual mode and remains fully usable. The judge inspector uses the same public action layer; it is not a mock diagnosis.
 
 ## Static customer app, narrow remote adapter
 

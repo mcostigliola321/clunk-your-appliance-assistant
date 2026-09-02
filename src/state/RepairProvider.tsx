@@ -12,7 +12,7 @@ import {
 
 import { createInitialRepairState, executeRepairTool, withWebMcpStatus } from "@/domain/engine";
 import { getCatalogEntry, REPAIR_PACKS, resolveRepairPack } from "@/domain/repairPack";
-import { getRepairSnapshot, getToolAvailabilityKey } from "@/domain/selectors";
+import { getRepairSnapshot } from "@/domain/selectors";
 import type {
   ActivitySource,
   RepairSnapshot,
@@ -229,16 +229,14 @@ export function RepairProvider({ children }: PropsWithChildren) {
     [replaceState],
   );
 
-  const toolAvailabilityKey = getToolAvailabilityKey(state);
-
   useEffect(() => {
     saveStoredSession(state, undoStackRef.current);
   }, [state]);
 
   useEffect(() => {
-    const controller = registerClunkTools(invokeTool, setWebMcpStatus, stateRef.current);
+    const controller = registerClunkTools(invokeTool, setWebMcpStatus);
     return () => controller?.abort();
-  }, [invokeTool, setWebMcpStatus, toolAvailabilityKey]);
+  }, [invokeTool, setWebMcpStatus]);
 
   const value = useMemo<RepairContextValue>(
     () => ({

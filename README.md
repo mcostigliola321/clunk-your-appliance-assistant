@@ -51,13 +51,13 @@ WebMCP lets the page expose its real task model instead of making the agent scra
 1. The agent searches only the supported catalog and selects an exact returned identity.
 2. Clunk starts only a model/problem flow with explicit coverage.
 3. The agent can focus a visible location, but the person must supply every physical observation.
-4. The active tool set changes with state. While Clunk waits for the person, observation recording is available and part lookup is locked.
+4. Every tool result names the valid `nextTools` for the current state. While Clunk waits for the person, observation recording is valid and premature part lookup is rejected.
 5. Clunk resolves the observation history to a no-part, more-detail, exact-part, or professional outcome.
 6. Every accepted or rejected action appears in the same visible activity history.
 
 The site—not the agent—owns sequence, evidence thresholds, exact-fit rules, and terminal safety stops. Browsers without WebMCP retain the complete manual experience.
 
-## Eight state-dependent tools
+## Eight discoverable, state-guarded tools
 
 Clunk contains eight literal `document.modelContext.registerTool` registrations in [`src/webmcp/registerTools.ts`](./src/webmcp/registerTools.ts).
 
@@ -72,7 +72,7 @@ Clunk contains eight literal `document.modelContext.registerTool` registrations 
 | `find_compatible_part`        | Resolve to no part, complete-code required, exact part, or professional service.                |
 | `stop_and_escalate`           | End the flow at a hazard, access, electrical, or unresolved boundary.                           |
 
-Only contextually valid tools are registered. Inputs use bounded schemas with `additionalProperties: false`, registration lifecycle is managed with an `AbortController`, and the same public action layer serves the UI, sample guides, inspector, and browser-agent calls.
+All eight tools are registered on page load so browser agents and directories can discover the complete workflow. Every result has an explicit structured-output schema and a `nextTools` list for the current phase. IDs that depend on catalog or repair state must come from prior tool output instead of a copied catalog-sized enum, while the engine still rejects invented IDs, out-of-order observations, unsupported model/problem pairs, and post-terminal advancement. Inputs use bounded schemas with `additionalProperties: false`, registration lifecycle is managed with an `AbortController`, and the same public action layer serves the UI, sample guides, inspector, and browser-agent calls.
 
 ## One shared, inspectable engine
 

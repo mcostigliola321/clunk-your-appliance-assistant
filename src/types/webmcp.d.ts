@@ -8,6 +8,12 @@ interface WebMcpTool {
   title?: string;
   description: string;
   inputSchema?: Record<string, unknown>;
+  /**
+   * Forward-compatible structured-result contract. Current browsers may ignore
+   * this extension, while WebMCP directories and MCP-compatible clients can use
+   * it to understand structuredContent without guessing.
+   */
+  outputSchema?: Record<string, unknown>;
   execute: (inputObject: Record<string, unknown>) => Promise<unknown>;
   annotations?: WebMcpToolAnnotations;
 }

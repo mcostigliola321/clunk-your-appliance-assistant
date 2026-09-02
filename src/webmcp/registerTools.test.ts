@@ -1,11 +1,25 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { z } from "zod";
 
 import { createInitialRepairState, executeRepairTool } from "@/domain/engine";
 import type { RepairState, WebMcpStatus } from "@/domain/types";
 
+import { WEBMCP_TASK_OUTPUT_SCHEMA } from "./contracts";
 import { registerClunkTools } from "./registerTools";
 
-describe("state-dependent WebMCP registration", () => {
+const COMPLETE_TOOL_INVENTORY = [
+  "search_supported_appliances",
+  "select_appliance",
+  "get_repair_state",
+  "start_diagnosis",
+  "show_component",
+  "record_observation",
+  "find_compatible_part",
+  "stop_and_escalate",
+];
+const outputContract = z.fromJSONSchema(WEBMCP_TASK_OUTPUT_SCHEMA);
+
+describe("stable WebMCP registration", () => {
   afterEach(() => Reflect.deleteProperty(document, "modelContext"));
 
   it("falls back cleanly when WebMCP is unavailable", () => {
@@ -14,13 +28,12 @@ describe("state-dependent WebMCP registration", () => {
     const controller = registerClunkTools(
       (name, input, source) => executeRepairTool(state, name, input, source),
       (status) => statuses.push(status),
-      state,
     );
     expect(controller).toBeNull();
     expect(statuses).toEqual(["unavailable"]);
   });
 
-  it("registers only tools useful in the current state and aborts the group", async () => {
+  it("registers the complete discoverable workflow with output schemas and aborts the group", async () => {
     const tools: WebMcpTool[] = [];
     const signals: AbortSignal[] = [];
     Object.defineProperty(document, "modelContext", {
@@ -40,14 +53,21 @@ describe("state-dependent WebMCP registration", () => {
         return execution;
       },
       () => undefined,
-      state,
     );
     await Promise.resolve();
-    expect(tools.map((tool) => tool.name)).toEqual([
-      "search_supported_appliances",
-      "select_appliance",
-      "get_repair_state",
-    ]);
+    expect(tools.map((tool) => tool.name)).toEqual(COMPLETE_TOOL_INVENTORY);
+    expect(tools.every((tool) => tool.outputSchema === WEBMCP_TASK_OUTPUT_SCHEMA)).toBe(true);
+
+    const selectSchema = tools.find((tool) => tool.name === "select_appliance")?.inputSchema as {
+      properties: { applianceId: Record<string, unknown> };
+    };
+    expect(selectSchema.properties.applianceId).toMatchObject({
+      type: "string",
+      maxLength: 128,
+      description: expect.stringContaining("returned by search_supported_appliances"),
+    });
+    expect(selectSchema.properties.applianceId).not.toHaveProperty("enum");
+
     const stateOutput = (await tools[2]?.execute({})) as {
       structuredContent: Record<string, unknown>;
     };
@@ -64,6 +84,7 @@ describe("state-dependent WebMCP registration", () => {
         },
       },
     });
+    expect(outputContract.safeParse(stateOutput.structuredContent).success).toBe(true);
     expect(state.activity).toHaveLength(1);
     await tools[1]?.execute({
       applianceId: "lg-wm3400cw",
@@ -93,7 +114,6 @@ describe("state-dependent WebMCP registration", () => {
         return execution;
       },
       () => undefined,
-      state,
     );
 
     const search = tools.find((tool) => tool.name === "search_supported_appliances");
@@ -138,7 +158,6 @@ describe("state-dependent WebMCP registration", () => {
         return execution;
       },
       () => undefined,
-      state,
     );
 
     const search = tools.find((tool) => tool.name === "search_supported_appliances")!;
@@ -190,69 +209,73 @@ describe("state-dependent WebMCP registration", () => {
     expect(unsupported.structuredContent).toMatchObject({ ok: false });
   });
 
-  it("changes inventory between selected, active, and result states", () => {
-    const inventories: string[][] = [];
+  it("keeps all tools discoverable while nextTools advances through the repair phases", async () => {
+    const tools: WebMcpTool[] = [];
     Object.defineProperty(document, "modelContext", {
       configurable: true,
       value: {
-        registerTool: vi.fn(async (tool: WebMcpTool) => {
-          (inventories.at(-1) ?? []).push(tool.name);
-        }),
+        registerTool: vi.fn(async (tool: WebMcpTool) => tools.push(tool)),
       },
     });
-    const capture = (state: RepairState) => {
-      inventories.push([]);
-      registerClunkTools(
-        (name, input, source) => executeRepairTool(state, name, input, source),
-        () => undefined,
-        state,
-      );
-    };
     let state = createInitialRepairState();
-    state = executeRepairTool(state, "select_appliance", { applianceId: "lg-wm3400cw" }).state;
-    capture(state);
-    expect(inventories.at(-1)).toEqual([
+    registerClunkTools(
+      (name, input, source) => {
+        const execution = executeRepairTool(state, name, input, source);
+        state = execution.state;
+        return execution;
+      },
+      () => undefined,
+    );
+
+    const execute = async (name: string, input: Record<string, unknown> = {}) => {
+      const tool = tools.find((candidate) => candidate.name === name)!;
+      const result = (await tool.execute(input)) as {
+        structuredContent: Record<string, unknown>;
+      };
+      expect(outputContract.safeParse(result.structuredContent).success).toBe(true);
+      return result;
+    };
+
+    expect(tools.map((tool) => tool.name)).toEqual(COMPLETE_TOOL_INVENTORY);
+    expect((await execute("get_repair_state")).structuredContent["nextTools"]).toEqual([
+      "get_repair_state",
       "search_supported_appliances",
       "select_appliance",
-      "get_repair_state",
-      "start_diagnosis",
     ]);
-    state = executeRepairTool(state, "start_diagnosis", { symptomId: "will-not-drain" }).state;
-    capture(state);
-    expect(inventories.at(-1)).toEqual([
-      "get_repair_state",
-      "show_component",
-      "record_observation",
-      "stop_and_escalate",
-    ]);
-    state = executeRepairTool(state, "record_observation", {
-      checkId: "safety-check",
-      resultId: "safe-ready",
-    }).state;
-    state = executeRepairTool(state, "record_observation", {
-      checkId: "inspect-drain-hose",
-      resultId: "hose-clear",
-    }).state;
-    state = executeRepairTool(state, "record_observation", {
-      checkId: "inspect-filter",
-      resultId: "filter-clear",
-    }).state;
-    capture(state);
-    expect(inventories.at(-1)).toEqual([
-      "get_repair_state",
-      "show_component",
-      "find_compatible_part",
-      "stop_and_escalate",
-    ]);
+    expect(
+      (
+        await execute("select_appliance", {
+          applianceId: "ge-gtd42easj2ww",
+          productCode: "GTD42EASJ2WW",
+          symptomId: "door-will-not-close",
+        })
+      ).structuredContent["nextTools"],
+    ).toContain("start_diagnosis");
+    expect(
+      (await execute("start_diagnosis", { symptomId: "door-will-not-close" })).structuredContent[
+        "nextTools"
+      ],
+    ).toContain("record_observation");
+
+    await execute("record_observation", { checkId: "safety-check", resultId: "safe-ready" });
+    const result = await execute("record_observation", {
+      checkId: "inspect-door-strike",
+      resultId: "strike-broken",
+    });
+    expect(result.structuredContent["nextTools"]).toContain("find_compatible_part");
+    const outcome = await execute("find_compatible_part");
+    expect(outcome.structuredContent).toMatchObject({
+      task: { outcome: { status: "exact", part: { sku: "WE01M10007" } } },
+    });
   });
 
-  it("removes observation and part tools after a reported hazard", () => {
-    const tools: string[] = [];
+  it("keeps terminal tools discoverable but rejects unsafe post-hazard advancement", async () => {
+    const tools: WebMcpTool[] = [];
     Object.defineProperty(document, "modelContext", {
       configurable: true,
       value: {
         registerTool: vi.fn(async (tool: WebMcpTool) => {
-          tools.push(tool.name);
+          tools.push(tool);
         }),
       },
     });
@@ -271,8 +294,26 @@ describe("state-dependent WebMCP registration", () => {
     registerClunkTools(
       (name, input, source) => executeRepairTool(state, name, input, source),
       () => undefined,
-      state,
     );
-    expect(tools).toEqual(["search_supported_appliances", "select_appliance", "get_repair_state"]);
+    expect(tools.map((tool) => tool.name)).toEqual(COMPLETE_TOOL_INVENTORY);
+
+    const stateTool = tools.find((tool) => tool.name === "get_repair_state")!;
+    const terminalState = (await stateTool.execute({})) as {
+      structuredContent: Record<string, unknown>;
+    };
+    expect(outputContract.safeParse(terminalState.structuredContent).success).toBe(true);
+    expect(terminalState.structuredContent["nextTools"]).toEqual([
+      "get_repair_state",
+      "search_supported_appliances",
+      "select_appliance",
+    ]);
+
+    const findPart = tools.find((tool) => tool.name === "find_compatible_part")!;
+    const rejected = (await findPart.execute({})) as {
+      isError: boolean;
+      structuredContent: Record<string, unknown>;
+    };
+    expect(outputContract.safeParse(rejected.structuredContent).success).toBe(true);
+    expect(rejected).toMatchObject({ isError: true, structuredContent: { ok: false } });
   });
 });

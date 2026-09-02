@@ -149,10 +149,6 @@ export function getValidNextActions(state: RepairState): RepairToolName[] {
   return ["get_repair_state"];
 }
 
-export function getToolAvailabilityKey(state: RepairState): string {
-  return getValidNextActions(state).join("|");
-}
-
 export function getRepairSnapshot(state: RepairState): RepairSnapshot {
   const pack = state.packId ? getRepairPack(state.packId) : null;
   const outcome = getPartOutcome(state);
@@ -337,6 +333,7 @@ export function getWebMcpTaskSnapshot(state: RepairState) {
           currentCheck: snapshot.currentStep
             ? {
                 checkId: snapshot.currentStep.id,
+                componentId: snapshot.currentStep.componentId,
                 label: snapshot.currentStep.label,
                 instruction: snapshot.currentStep.instruction,
                 stop: snapshot.currentStep.stop,
