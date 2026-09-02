@@ -87,7 +87,9 @@ source-backed catalog ─> validated repair packs ─> safe checks and bounded o
                                                          └─> exact SKU ─> Shopify offers
 ```
 
-Clunk ships as static React, TypeScript, CSS, JSON, original illustrations, and local fonts. There is no application backend, account system, database, app-side model call, model SDK, private API key, or payment handling. A compatible browser agent supplies reasoning; Clunk supplies the authoritative state and rules.
+The customer experience ships as static React, TypeScript, CSS, JSON, original illustrations, and local fonts. There is no account system, database, app-side model call, private API key, or payment handling. A compatible browser agent supplies reasoning; Clunk supplies the authoritative state and rules.
+
+Lovable also publishes a read-only remote MCP server for clients that cannot use the page's in-browser WebMCP surface. Its five catalog and diagnosis tools replay the same deterministic data and engine without changing the visible browser session. Every input is bounded, every successful structured result is schema-validated, and the public endpoint has no database or secret access. See the [remote MCP deployment contract](./docs/remote-mcp.md).
 
 Read the [architecture](./docs/architecture.md) for the layer-by-layer design and the [repair-pack schema](./docs/repair-pack-schema.md) for the evidence model.
 
@@ -135,7 +137,7 @@ npx playwright install chromium
 npm run verify
 ```
 
-The complete gate runs strict TypeScript, ESLint, 112 unit/integration/WebMCP tests, a production build, and 54 desktop/mobile Playwright journeys. Browser coverage includes catalog and symptom boundaries, exact-code handling, nearby-SKU rejection, person/agent handoff, catalog failure fallback, no-part outcomes, safety stops, keyboard access, touch targets, reduced motion, 320px layouts, and automated WCAG A/AA checks.
+The complete gate runs strict TypeScript, ESLint, 118 unit/integration/WebMCP/MCP tests, a production build, 56 desktop/mobile Playwright journeys, and a generated-MCP drift check. Coverage includes catalog and symptom boundaries, exact-code handling, nearby-SKU rejection, person/agent handoff, catalog failure fallback, no-part outcomes, safety stops, keyboard access, touch targets, reduced motion, 320px layouts, automated WCAG A/AA checks, and protocol-level remote MCP exact-part, hazard, and input-boundary journeys.
 
 Useful focused commands:
 
@@ -155,6 +157,7 @@ Deterministic scenario fixtures live in [`evals/webmcp-evals.json`](./evals/webm
 | ---------------------------------------------------------------------- | ------------------------------------------------------------ |
 | [`docs/README.md`](./docs/README.md)                                   | Current documentation index and source-of-truth guide.       |
 | [`docs/architecture.md`](./docs/architecture.md)                       | State, data, WebMCP, UI, and commerce layers.                |
+| [`docs/remote-mcp.md`](./docs/remote-mcp.md)                           | Remote MCP contract, deployment, and verification.           |
 | [`docs/safety.md`](./docs/safety.md)                                   | Deterministic safety rules and prohibited capabilities.      |
 | [`docs/repair-pack-schema.md`](./docs/repair-pack-schema.md)           | Model/problem coverage and exact-part evidence requirements. |
 | [`docs/model-source-ledger.md`](./docs/model-source-ledger.md)         | Catalog identities, sources, and exact-part status.          |

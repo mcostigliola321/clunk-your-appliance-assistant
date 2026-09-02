@@ -12,7 +12,7 @@ Appliance troubleshooting crosses a physical boundary. An AI can track model dat
 
 ## Solution
 
-Clunk is a static, open-source visual repair bench for washers, dishwashers, electric dryers, and refrigerators. A browser agent discovers eight bounded WebMCP tools, selects an exact supported model, reads the visible repair state, highlights a component, records only a person-supplied observation, and resolves one of four honest outcomes:
+Clunk is an open-source visual repair bench for washers, dishwashers, electric dryers, and refrigerators. A browser agent discovers eight bounded in-page WebMCP tools, selects an exact supported model, reads the visible repair state, highlights a component, records only a person-supplied observation, and resolves one of four honest outcomes:
 
 - no part is needed;
 - the complete model code is still required;
@@ -78,6 +78,8 @@ Clunk contains eight literal `document.modelContext.registerTool` registrations:
 
 Schemas are bounded with pack-derived enums and `additionalProperties: false`. The active registration set changes with repair state and is lifecycle-owned by an `AbortController`. Tool responses include text plus compact current-task structured content. `get_repair_state` is genuinely read-only and does not append an activity mutation.
 
+Lovable also publishes five read-only remote MCP tools through a generated Supabase Edge Function. This stateless surface covers model search, model/problem coverage, repair guides, deterministic diagnosis replay, and model-label guidance for clients that cannot operate the page-local WebMCP session. It uses the same source-backed catalog and repair engine, has bounded inputs and validated structured outputs, and cannot access a database, secret, account, or payment system.
+
 ## Safety and evidence
 
 Clunk never provides gas, live/high-voltage, energized-test, refrigerant, sealed-compressor, interlock-bypass, internal-wiring, control-board, or professional-only repair instructions. Smoke, burning smell, heat, an active leak near power, unsafe reach, or damaged/mismatched access enters a terminal professional state.
@@ -99,7 +101,7 @@ source-backed catalog ─> validated repair pack ─> checks + results + exact S
                                                                          └─> Shopify UCP live offers
 ```
 
-The production app is static HTML, CSS, JavaScript, JSON, original images, and local fonts. It has no database, auth, backend, server function, environment secret, model SDK, or app-side LLM call. Its one external runtime request is the optional credential-free Shopify catalog lookup after an exact SKU is known. Unsupported browsers and catalog failures retain the complete manual diagnosis and evidence flow.
+The customer-facing app is static HTML, CSS, JavaScript, JSON, original images, and local fonts. It has no database, account system, environment secret, model SDK, payment handling, or app-side LLM call. Its one browser runtime request is the optional credential-free Shopify catalog lookup after an exact SKU is known. A separate generated, stateless Supabase Edge Function serves the read-only remote MCP surface. Unsupported browsers, remote MCP availability, and catalog failures do not affect the complete manual diagnosis and evidence flow.
 
 ## Testing instructions
 
@@ -130,7 +132,7 @@ npx playwright install chromium
 npm run verify
 ```
 
-The current public release passed deterministic evidence audits, strict TypeScript, ESLint, Prettier, **112 unit/integration/WebMCP tests**, a production build, and **54 desktop/mobile Playwright journeys**. Coverage includes catalog and symptom boundaries, model-label discovery, partial/serial handling, exact and nearby-SKU behavior, the visible person/agent baton pass, live-catalog failure fallback, no-part outcomes, safety stops, 320px layouts, keyboard access, 44px touch targets, reduced motion, and automated WCAG A/AA checks.
+The current release candidate passed deterministic evidence audits, strict TypeScript, ESLint, Prettier, **118 unit/integration/WebMCP/MCP tests**, a production build, and **56 desktop/mobile Playwright journeys**. Coverage includes catalog and symptom boundaries, model-label discovery, partial/serial handling, exact and nearby-SKU behavior, the visible person/agent baton pass, live-catalog failure fallback, remote MCP exact-part and hazard cases, no-part outcomes, safety stops, 320px layouts, keyboard access, 44px touch targets, reduced motion, and automated WCAG A/AA checks.
 
 ## How We Used AI
 

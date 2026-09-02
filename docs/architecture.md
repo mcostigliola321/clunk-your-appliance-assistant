@@ -1,6 +1,6 @@
 # Architecture
 
-Clunk is a static React application with no backend and no app-side model call. A compatible browser agent discovers tools registered by the page and invokes them locally against the same state as the visible controls. Purchase-ready outcomes can make one optional browser request to Shopify Global Catalog for current exact-SKU offers; diagnosis and compatibility remain deterministic if that request fails. Organic search is credential-free. An approved public saved-catalog identifier may additionally request Shopify's affiliate placement, but no private credential is stored or sent.
+Clunk's customer experience is a static React application with no app-side model call. A compatible browser agent discovers tools registered by the page and invokes them locally against the same state as the visible controls. Lovable also deploys a stateless, read-only remote MCP adapter as a Supabase Edge Function; it reuses the same catalog and deterministic repair engine but does not share a browser session. Purchase-ready browser outcomes can make one optional request to Shopify Global Catalog for current exact-SKU offers; diagnosis and compatibility remain deterministic if that request fails. No private credential is stored or sent.
 
 ```text
 Human control ─┐
@@ -11,6 +11,8 @@ WebMCP call ───┘                                      │
 catalog entry ─> validated repair pack ─> checks, causes, sources, components, part boundary
                                                        │
                                                        └─> exact SKU ─> Shopify UCP live offers
+
+Remote MCP client ─> generated Supabase MCP adapter ─> same catalog + deterministic engine
 ```
 
 ## Layers
@@ -26,6 +28,8 @@ catalog entry ─> validated repair pack ─> checks, causes, sources, component
 - `src/state/RepairProvider.tsx` owns current state and exposes one synchronous action layer to both UI controls and WebMCP callbacks. Versioned persistence migrates the prior single-symptom shape, rejects malformed or oversized local state, validates phases, and bounds undo history.
 - `src/webmcp/contracts.ts` is the bounded public tool catalog used by registration, tests, eval fixtures, and the visible inspector.
 - `src/webmcp/registerTools.ts` contains eight literal imperative registrations, state-dependent registration, structured results, feature detection, and `AbortController` lifecycle cleanup.
+- `src/lib/mcp` defines five stateless remote tools for catalog search, coverage, guide retrieval, diagnosis replay, and model-label guidance. Each has bounded Zod inputs, a concrete output schema, and read-only/idempotent/closed-world annotations.
+- `@lovable.dev/mcp-js` generates `.lovable/mcp/manifest.json` and `supabase/functions/mcp/index.ts`. The manifest is the platform registration contract; the edge bundle is generated and must not be hand-edited. CI fails when either generated artifact drifts from its source.
 - `src/components` renders category/model discovery, original appliance location guides, next checks, evidence, source links, activity, compatibility outcomes, and accessible live-offer states. Components do not contain diagnosis or fit rules.
 - `evals/webmcp-evals.json` stores deterministic scenario fixtures with exact expected calls, visible results, and prohibited behavior. It does not record probabilistic agent-evaluation results.
 
@@ -62,6 +66,8 @@ For the exact state, compatibility and commerce are deliberately separated. Manu
 
 When `document.modelContext` is present, Clunk registers the currently valid tools and reports ready, partial, or failed status. When it is absent, the app reports manual mode and remains fully usable. The judge inspector uses the same public action layer; it is not a mock diagnosis.
 
-## No hidden backend
+## Static customer app, narrow remote adapter
 
-The production build is static HTML, CSS, JavaScript, JSON, and local font files. There is no database, authentication, server function, payment handling, model SDK, environment variable, or secret. The only live request is the optional keyless Shopify catalog lookup on an exact outcome. Results use `no-store`, are not persisted, and degrade to an honest retry/no-offer state without weakening the source-backed compatibility result. See [`shopify-ucp-integration.md`](./shopify-ucp-integration.md).
+The browser build is static HTML, CSS, JavaScript, JSON, and local font files. It has no database, authentication, payment handling, model SDK, or secret. Its only live request is the optional keyless Shopify catalog lookup on an exact outcome. Results use `no-store`, are not persisted, and degrade to an honest retry/no-offer state without weakening the source-backed compatibility result.
+
+The remote MCP Edge Function is deliberately narrower than the browser experience: it is anonymous because it reads only public, repository-owned data; it has no database calls, external network calls, persistence, commerce lookup, or mutation; and it reconstructs diagnosis state inside each request. Supabase's legacy JWT gate is disabled specifically for this anonymous MCP function. See [`remote-mcp.md`](./remote-mcp.md) and [`shopify-ucp-integration.md`](./shopify-ucp-integration.md).

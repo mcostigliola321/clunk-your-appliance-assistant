@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && npm run generate:mcp && vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
@@ -16,12 +16,14 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "generate:mcp": "lovable-mcp-extract-manifest .",
+    "check:mcp-generated": "git diff --exit-code -- .lovable/mcp/manifest.json supabase/functions/mcp/index.ts",
     "audit:purchase": "tsx scripts/audit-purchase-coverage.ts",
     "audit:coverage": "tsx scripts/audit-demo-readiness.ts --write",
     "generate:demo-ready-coverage": "tsx scripts/generate-demo-ready-coverage.ts",
     "generate:demo-ready-purchase": "tsx scripts/generate-demo-ready-purchase.ts",
     "verify:live": "npm run build && tsx scripts/verify-live-deployment.ts",
-    "verify": "npm run typecheck && npm run lint && npm run test && npm run build && npm run test:e2e"
+    "verify": "npm run typecheck && npm run lint && npm run test && npm run build && npm run test:e2e && npm run check:mcp-generated"
   },
   "dependencies": {
     "@fontsource-variable/albert-sans": "^5.2.8",

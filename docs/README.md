@@ -4,22 +4,23 @@ This directory contains Clunk's current technical, safety, evidence, commerce, e
 
 ## Current product documentation
 
-| Document                                                     | What it covers                                                                                      |
-| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| [`../README.md`](../README.md)                               | Public product overview, current scope, demo, setup, and contributor entry point.                   |
-| [`../PRODUCT.md`](../PRODUCT.md)                             | Durable customer promise, language, accessibility, and product principles.                          |
-| [`../DESIGN.md`](../DESIGN.md)                               | “Approachable Precision” visual system and interaction rules.                                       |
-| [`architecture.md`](./architecture.md)                       | Static application layers, shared engine, state-dependent WebMCP registration, and Shopify handoff. |
-| [`safety.md`](./safety.md)                                   | Deterministic stops, prohibited capabilities, and tested outcome boundaries.                        |
-| [`repair-pack-schema.md`](./repair-pack-schema.md)           | Schema-v6 repair packs, model/problem coverage, and exact-part evidence requirements.               |
-| [`model-source-ledger.md`](./model-source-ledger.md)         | The 163-identity source ledger and exact-part status.                                               |
-| [`category-expansion-plan.md`](./category-expansion-plan.md) | Catalog structure, coverage totals, and the evidence required for expansion.                        |
+| Document                                                     | What it covers                                                                        |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| [`../README.md`](../README.md)                               | Public product overview, current scope, demo, setup, and contributor entry point.     |
+| [`../PRODUCT.md`](../PRODUCT.md)                             | Durable customer promise, language, accessibility, and product principles.            |
+| [`../DESIGN.md`](../DESIGN.md)                               | “Approachable Precision” visual system and interaction rules.                         |
+| [`architecture.md`](./architecture.md)                       | Application layers, shared engine, local/remote MCP surfaces, and Shopify handoff.    |
+| [`safety.md`](./safety.md)                                   | Deterministic stops, prohibited capabilities, and tested outcome boundaries.          |
+| [`repair-pack-schema.md`](./repair-pack-schema.md)           | Schema-v6 repair packs, model/problem coverage, and exact-part evidence requirements. |
+| [`model-source-ledger.md`](./model-source-ledger.md)         | The 163-identity source ledger and exact-part status.                                 |
+| [`category-expansion-plan.md`](./category-expansion-plan.md) | Catalog structure, coverage totals, and the evidence required for expansion.          |
 
 ## Integrations, evaluation, and release
 
 | Document                                                           | What it covers                                                                                |
 | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
 | [`shopify-ucp-integration.md`](./shopify-ucp-integration.md)       | Global Catalog offer discovery, exact-SKU filtering, paid placement, and checkout boundaries. |
+| [`remote-mcp.md`](./remote-mcp.md)                                 | Lovable/Supabase remote MCP contract, generation, safety, and deployment verification.        |
 | [`webmcp-agent-evaluation.md`](./webmcp-agent-evaluation.md)       | Repeatable natural-language agent cases and the distinction from deterministic fixtures.      |
 | [`source-url-audit.md`](./source-url-audit.md)                     | Dated source availability, applicability, and access limitations.                             |
 | [`release-security-checklist.md`](./release-security-checklist.md) | Repository and host controls that require owner or deployment configuration.                  |

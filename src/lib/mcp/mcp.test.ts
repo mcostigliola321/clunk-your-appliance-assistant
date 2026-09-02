@@ -116,6 +116,35 @@ describe("remote MCP server", () => {
     });
   });
 
+  it("returns a terminal escalation without a part for a reported hazard", async () => {
+    const response = await rpc("tools/call", {
+      name: "run_diagnosis",
+      arguments: {
+        applianceId: "ge-gtd42easj2ww",
+        symptomId: "door-will-not-close",
+        productCode: "GTD42EASJ2WW",
+        observations: [{ checkId: "safety-check", resultId: "hazard-burning" }],
+      },
+    });
+    expect(response.error).toBeUndefined();
+    expect(response.result).toMatchObject({
+      structuredContent: {
+        phase: "escalated",
+        part: null,
+        escalation: { reason: "burning-smell" },
+      },
+    });
+  });
+
+  it("rejects oversized public inputs at the protocol boundary", async () => {
+    const response = await rpc("tools/call", {
+      name: "get_appliance_coverage",
+      arguments: { applianceId: "x".repeat(129) },
+    });
+    expect(response.error).toBeUndefined();
+    expect(response.result).toMatchObject({ isError: true });
+  });
+
   it("keeps every successful tool result inside its declared response contract", async () => {
     const cases: Array<[string, Record<string, unknown>]> = [
       ["search_appliances", { query: "GTD42EASJ2WW" }],

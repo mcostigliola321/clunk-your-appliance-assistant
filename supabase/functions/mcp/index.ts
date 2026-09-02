@@ -158,11 +158,7 @@ function getBrandIdentifierHint(brand) {
 // src/lib/mcp/outputSchemas.ts
 import { z } from "npm:zod@^4.5.4";
 var applianceKindSchema = z.enum(["washer", "dishwasher", "dryer", "refrigerator"]);
-var capabilitySchema = z.enum([
-  "purchase-ready",
-  "guided-checks",
-  "verified-part-unavailable"
-]);
+var capabilitySchema = z.enum(["purchase-ready", "guided-checks", "verified-part-unavailable"]);
 var sourceReferenceSchema = z.object({
   id: z.string(),
   kind: z.enum([
@@ -269,9 +265,7 @@ var modelNumberOutputSchema = {
   kind: applianceKindSchema,
   title: z.string(),
   safety: z.string(),
-  locations: z.array(
-    z.object({ id: z.string(), label: z.string(), instruction: z.string() })
-  ),
+  locations: z.array(z.object({ id: z.string(), label: z.string(), instruction: z.string() })),
   examples: z.array(z.string()),
   brandHint: z.string().nullable(),
   sources: z.array(z.object({ title: z.string(), url: z.url(), retrieved: z.string() }))

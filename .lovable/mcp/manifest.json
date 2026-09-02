@@ -52,7 +52,104 @@
             }
           }
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string"
+            },
+            "guidance": {
+              "type": "string"
+            },
+            "matchCount": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "results": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "applianceId": {
+                    "type": "string"
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "washer",
+                      "dishwasher",
+                      "dryer",
+                      "refrigerator"
+                    ]
+                  },
+                  "brand": {
+                    "type": "string"
+                  },
+                  "model": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "verifiedProductCodes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "productCodePrompt": {
+                    "type": "string"
+                  },
+                  "coverage": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "symptomId": {
+                          "type": "string"
+                        },
+                        "capability": {
+                          "type": "string",
+                          "enum": [
+                            "purchase-ready",
+                            "guided-checks",
+                            "verified-part-unavailable"
+                          ]
+                        },
+                        "capabilityLabel": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "symptomId",
+                        "capability",
+                        "capabilityLabel"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "applianceId",
+                  "kind",
+                  "brand",
+                  "model",
+                  "label",
+                  "verifiedProductCodes",
+                  "productCodePrompt",
+                  "coverage"
+                ]
+              }
+            }
+          },
+          "required": [
+            "status",
+            "guidance",
+            "matchCount",
+            "results"
+          ]
+        }
       },
       {
         "name": "get_appliance_coverage",
@@ -70,6 +167,7 @@
             "applianceId": {
               "type": "string",
               "minLength": 1,
+              "maxLength": 128,
               "description": "Catalog ID returned by search_appliances."
             }
           },
@@ -77,7 +175,130 @@
             "applianceId"
           ]
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "applianceId": {
+              "type": "string"
+            },
+            "kind": {
+              "type": "string",
+              "enum": [
+                "washer",
+                "dishwasher",
+                "dryer",
+                "refrigerator"
+              ]
+            },
+            "brand": {
+              "type": "string"
+            },
+            "model": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "verifiedProductCodes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "productCodePrompt": {
+              "type": "string"
+            },
+            "modelSource": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "manufacturer-model",
+                    "manufacturer-troubleshooting",
+                    "manufacturer-part",
+                    "authorized-parts"
+                  ]
+                },
+                "title": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "publisher": {
+                  "type": "string"
+                },
+                "appliesTo": {
+                  "type": "string"
+                },
+                "lastVerified": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "kind",
+                "title",
+                "url",
+                "publisher",
+                "appliesTo",
+                "lastVerified"
+              ]
+            },
+            "coverage": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "symptomId": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "capability": {
+                    "type": "string",
+                    "enum": [
+                      "purchase-ready",
+                      "guided-checks",
+                      "verified-part-unavailable"
+                    ]
+                  },
+                  "capabilityLabel": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "symptomId",
+                  "title",
+                  "description",
+                  "capability",
+                  "capabilityLabel"
+                ]
+              }
+            }
+          },
+          "required": [
+            "applianceId",
+            "kind",
+            "brand",
+            "model",
+            "label",
+            "verifiedProductCodes",
+            "productCodePrompt",
+            "modelSource",
+            "coverage"
+          ]
+        }
       },
       {
         "name": "get_repair_guide",
@@ -95,11 +316,13 @@
             "applianceId": {
               "type": "string",
               "minLength": 1,
+              "maxLength": 128,
               "description": "Catalog ID returned by search_appliances."
             },
             "symptomId": {
               "type": "string",
               "minLength": 1,
+              "maxLength": 64,
               "description": "Observable problem ID returned by get_appliance_coverage."
             }
           },
@@ -108,7 +331,245 @@
             "symptomId"
           ]
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "packId": {
+              "type": "string"
+            },
+            "appliance": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "washer",
+                    "dishwasher",
+                    "dryer",
+                    "refrigerator"
+                  ]
+                },
+                "brand": {
+                  "type": "string"
+                },
+                "model": {
+                  "type": "string"
+                },
+                "noun": {
+                  "type": "string"
+                },
+                "capability": {
+                  "type": "string",
+                  "enum": [
+                    "purchase-ready",
+                    "guided-checks",
+                    "verified-part-unavailable"
+                  ]
+                }
+              },
+              "required": [
+                "kind",
+                "brand",
+                "model",
+                "noun",
+                "capability"
+              ]
+            },
+            "symptom": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "shortLabel": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "label",
+                "shortLabel"
+              ]
+            },
+            "productCodePrompt": {
+              "type": "string"
+            },
+            "verifiedProductCodes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "components": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "access": {
+                    "type": "string",
+                    "enum": [
+                      "visible",
+                      "user-accessible",
+                      "professional-only"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "label",
+                  "description",
+                  "access"
+                ]
+              }
+            },
+            "checks": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "componentId": {
+                    "type": "string"
+                  },
+                  "instruction": {
+                    "type": "string"
+                  },
+                  "why": {
+                    "type": "string"
+                  },
+                  "stop": {
+                    "type": "string"
+                  },
+                  "safetyTags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "results": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "effect": {
+                          "type": "string",
+                          "enum": [
+                            "continue",
+                            "no-part-needed",
+                            "part-candidate",
+                            "professional-only",
+                            "hazard"
+                          ]
+                        },
+                        "nextCheckId": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "label",
+                        "effect",
+                        "nextCheckId"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "id",
+                  "label",
+                  "componentId",
+                  "instruction",
+                  "why",
+                  "stop",
+                  "safetyTags",
+                  "results"
+                ]
+              }
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "manufacturer-model",
+                      "manufacturer-troubleshooting",
+                      "manufacturer-part",
+                      "authorized-parts"
+                    ]
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "publisher": {
+                    "type": "string"
+                  },
+                  "appliesTo": {
+                    "type": "string"
+                  },
+                  "lastVerified": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "kind",
+                  "title",
+                  "url",
+                  "publisher",
+                  "appliesTo",
+                  "lastVerified"
+                ]
+              }
+            }
+          },
+          "required": [
+            "packId",
+            "appliance",
+            "symptom",
+            "productCodePrompt",
+            "verifiedProductCodes",
+            "components",
+            "checks",
+            "sources"
+          ]
+        }
       },
       {
         "name": "run_diagnosis",
@@ -116,6 +577,7 @@
         "description": "Replay a person's reported observations through Clunk's deterministic repair engine and return the outcome: no part needed, an exact source-backed part, a request for the complete model code, or a professional-service stop. Only pass results the person actually observed.",
         "annotations": {
           "readOnlyHint": true,
+          "idempotentHint": true,
           "openWorldHint": false
         },
         "inputSchema": {
@@ -125,11 +587,13 @@
             "applianceId": {
               "type": "string",
               "minLength": 1,
+              "maxLength": 128,
               "description": "Catalog ID returned by search_appliances."
             },
             "symptomId": {
               "type": "string",
               "minLength": 1,
+              "maxLength": 64,
               "description": "Observable problem ID covered for that model."
             },
             "productCode": {
@@ -147,11 +611,13 @@
                   "checkId": {
                     "type": "string",
                     "minLength": 1,
+                    "maxLength": 128,
                     "description": "Check ID from get_repair_guide."
                   },
                   "resultId": {
                     "type": "string",
                     "minLength": 1,
+                    "maxLength": 128,
                     "description": "Result ID the person observed for that check."
                   }
                 },
@@ -169,7 +635,449 @@
             "observations"
           ]
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "phase": {
+              "type": "string",
+              "enum": [
+                "catalog",
+                "idle",
+                "preparing",
+                "checking",
+                "result",
+                "escalated"
+              ]
+            },
+            "summary": {
+              "type": "string"
+            },
+            "transcript": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "tool": {
+                    "type": "string",
+                    "enum": [
+                      "search_supported_appliances",
+                      "select_appliance",
+                      "get_repair_state",
+                      "start_diagnosis",
+                      "show_component",
+                      "record_observation",
+                      "find_compatible_part",
+                      "stop_and_escalate"
+                    ]
+                  },
+                  "ok": {
+                    "type": "boolean"
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "tool",
+                  "ok",
+                  "message"
+                ]
+              }
+            },
+            "nextCheck": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "instruction": {
+                      "type": "string"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "label"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "instruction",
+                    "results"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "outcome": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "not-ready",
+                        "no-part-needed",
+                        "exact",
+                        "variant-needed",
+                        "professional-only"
+                      ]
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "requiredProductCode": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "source": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "kind": {
+                              "type": "string",
+                              "enum": [
+                                "manufacturer-model",
+                                "manufacturer-troubleshooting",
+                                "manufacturer-part",
+                                "authorized-parts"
+                              ]
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "url": {
+                              "type": "string",
+                              "format": "uri"
+                            },
+                            "publisher": {
+                              "type": "string"
+                            },
+                            "appliesTo": {
+                              "type": "string"
+                            },
+                            "lastVerified": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "kind",
+                            "title",
+                            "url",
+                            "publisher",
+                            "appliesTo",
+                            "lastVerified"
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "title",
+                    "message",
+                    "requiredProductCode",
+                    "source"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "part": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "sku": {
+                      "type": "string"
+                    },
+                    "compatibleModel": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "installBoundary": {
+                      "type": "string",
+                      "enum": [
+                        "user-replaceable",
+                        "professional-only"
+                      ]
+                    },
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "manufacturer-model",
+                            "manufacturer-troubleshooting",
+                            "manufacturer-part",
+                            "authorized-parts"
+                          ]
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "publisher": {
+                          "type": "string"
+                        },
+                        "appliesTo": {
+                          "type": "string"
+                        },
+                        "lastVerified": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "kind",
+                        "title",
+                        "url",
+                        "publisher",
+                        "appliesTo",
+                        "lastVerified"
+                      ]
+                    },
+                    "commerce": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "provider": {
+                              "type": "string",
+                              "const": "shopify-global-catalog"
+                            },
+                            "protocol": {
+                              "type": "string",
+                              "const": "UCP"
+                            },
+                            "query": {
+                              "type": "string"
+                            },
+                            "exactSku": {
+                              "type": "string"
+                            },
+                            "offerCountAtVerification": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 9007199254740991
+                            },
+                            "lastVerified": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "provider",
+                            "protocol",
+                            "query",
+                            "exactSku",
+                            "offerCountAtVerification",
+                            "lastVerified"
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "sku",
+                    "compatibleModel",
+                    "location",
+                    "installBoundary",
+                    "source",
+                    "commerce"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "escalation": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "reason": {
+                      "type": "string",
+                      "enum": [
+                        "electrical",
+                        "burning-smell",
+                        "hot-water",
+                        "active-leak",
+                        "internal-access",
+                        "unresolved"
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "reason",
+                    "message"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "likelyCauses": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "componentId": {
+                    "type": "string"
+                  },
+                  "confidence": {
+                    "type": "string",
+                    "enum": [
+                      "possible",
+                      "likely",
+                      "strong match"
+                    ]
+                  },
+                  "explanation": {
+                    "type": "string"
+                  },
+                  "score": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "id",
+                  "label",
+                  "componentId",
+                  "confidence",
+                  "explanation",
+                  "score"
+                ]
+              }
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "manufacturer-model",
+                      "manufacturer-troubleshooting",
+                      "manufacturer-part",
+                      "authorized-parts"
+                    ]
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "publisher": {
+                    "type": "string"
+                  },
+                  "appliesTo": {
+                    "type": "string"
+                  },
+                  "lastVerified": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "kind",
+                  "title",
+                  "url",
+                  "publisher",
+                  "appliesTo",
+                  "lastVerified"
+                ]
+              }
+            },
+            "disclaimer": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "phase",
+            "summary",
+            "transcript",
+            "nextCheck",
+            "outcome",
+            "part",
+            "escalation",
+            "likelyCauses",
+            "sources",
+            "disclaimer"
+          ]
+        }
       },
       {
         "name": "find_model_number",
@@ -212,7 +1120,93 @@
             "kind"
           ]
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "washer",
+                "dishwasher",
+                "dryer",
+                "refrigerator"
+              ]
+            },
+            "title": {
+              "type": "string"
+            },
+            "safety": {
+              "type": "string"
+            },
+            "locations": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "instruction": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "label",
+                  "instruction"
+                ]
+              }
+            },
+            "examples": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "brandHint": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "retrieved": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "title",
+                  "url",
+                  "retrieved"
+                ]
+              }
+            }
+          },
+          "required": [
+            "kind",
+            "title",
+            "safety",
+            "locations",
+            "examples",
+            "brandHint",
+            "sources"
+          ]
+        }
       }
     ]
   }

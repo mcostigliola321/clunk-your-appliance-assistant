@@ -24,6 +24,14 @@ or the production host. They were not changed by the 2026-08-28 release worktree
   `frame-ancestors`, so host-level headers are required for reliable clickjacking protection.
 - Recheck the live response headers and Shopify browser request after every host change.
 
+## Remote MCP edge function
+
+- Keep `mcp` as the only anonymous Supabase function. Its source must remain read-only, bounded, closed-world, and free of database, secret, account, payment, and external-network access.
+- Keep concrete output schemas on every remote tool and run the protocol-level MCP tests before publication.
+- Deploy only the generated `supabase/functions/mcp/index.ts`; change `src/lib/mcp` and regenerate instead of editing the bundle.
+- Verify the live endpoint with `initialize`, `tools/list`, a safe exact-part `tools/call`, and a terminal hazard case after every publish.
+- Add platform rate limiting if the endpoint receives meaningful public traffic. The present handler is computational and stateless, but anonymous availability should still be monitored for abuse.
+
 ## Shopify promoted placements
 
 - Join the invite-led promoted-placements waitlist with the Shopify organization ID.
