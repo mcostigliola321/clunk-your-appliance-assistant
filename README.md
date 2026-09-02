@@ -2,14 +2,12 @@
 
 **A human-and-browser-agent guide for safe appliance checks, exact-part matches, and current seller offers—without guessing.**
 
-[![App](https://img.shields.io/badge/app-Clunk-0b5d4c)](https://clunk-appliance-assistant.lovable.app)
+[![App](https://img.shields.io/badge/app-Clunk-0b5d4c)](https://clunk.repair)
 [![Demo video](https://img.shields.io/badge/demo-2%3A28-dff46a)](https://youtu.be/hUHGxR0iRR8)
 [![Verify](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/workflows/verify.yml/badge.svg)](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/workflows/verify.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-14231d)](./LICENSE)
 
-[App URL](https://clunk-appliance-assistant.lovable.app) · [Watch the demo](https://youtu.be/hUHGxR0iRR8) · [Browse the evidence](./docs/model-source-ledger.md) · [Read the documentation](./docs/README.md)
-
-> **Deployment note — September 2, 2026:** the Lovable URL currently redirects to `clunk.repair`, but the apex domain does not resolve in public DNS. The source and demo are available; the app link needs DNS restoration and a fresh public check before it should be treated as live.
+[Open Clunk](https://clunk.repair) · [Watch the demo](https://youtu.be/hUHGxR0iRR8) · [Browse the evidence](./docs/model-source-ledger.md) · [Read the documentation](./docs/README.md)
 
 Clunk helps a homeowner and a compatible browser agent work through a broken washer, dishwasher, electric dryer, or refrigerator together. The agent handles structured lookup and state. The person reports what is physically visible. Clunk keeps both on the same appliance view and enforces the order, compatibility evidence, and safety boundary.
 
@@ -28,7 +26,7 @@ Clunk is a bounded troubleshooting aid, not a diagnostic authority or a replacem
 
 The 2:28 demo shows a browser agent select GE dryer `GTD42EASJ2WW`, wait for the homeowner's physical observations, unlock the exact `WE01M10007` door strike, and stop the purchase path when smoke or a burning smell is reported.
 
-After the deployment link is restored, the full experience also works without WebMCP support: choose any appliance and select **See a finished guide**. The sample uses the same guarded action layer as the manual and browser-agent paths.
+The full experience also works without WebMCP support: open [clunk.repair](https://clunk.repair), choose any appliance, and select **See a finished guide**. The sample uses the same guarded action layer as the manual and browser-agent paths.
 
 ## Current scope
 
@@ -169,7 +167,7 @@ Deterministic scenario fixtures live in [`evals/webmcp-evals.json`](./evals/webm
 
 ## Project status and limitations
 
-- The source and [public demo](https://youtu.be/hUHGxR0iRR8) are available without login. The configured [app URL](https://clunk-appliance-assistant.lovable.app) needs its custom-domain DNS restored and reverified.
+- The [live app](https://clunk.repair), source, and [public demo](https://youtu.be/hUHGxR0iRR8) are available without login.
 - Sixteen of 782 model/problem pairs stop because current evidence is insufficient.
 - Exact-part results require a complete verified revision; family-only identities remain safe-checks-only.
 - Clunk does not confirm a diagnosis, guarantee price or stock, validate a merchant, complete payment, or replace a qualified technician.

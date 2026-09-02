@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-09-02** after the public repository documentation was brought up to the complete release scope and the GitHub About description and discovery topics were corrected. The implementation baseline remains browser-branding commit `802fe309c9079f89684a57779f7656e054d9ee81`, published through Lovable as deployment `63670d64-5409-4392-a5b2-126cefb19019`; the latest UX audit and release evidence are in [`docs/research/final-submission-polish-2026-09-02/README.md`](docs/research/final-submission-polish-2026-09-02/README.md).
+Last reconciled: **2026-09-02** after the public repository documentation was brought up to the complete release scope, the GitHub About description and discovery topics were corrected, and the branded `https://clunk.repair` deployment was verified live. The implementation baseline remains browser-branding commit `802fe309c9079f89684a57779f7656e054d9ee81`; the latest UX audit and release evidence are in [`docs/research/final-submission-polish-2026-09-02/README.md`](docs/research/final-submission-polish-2026-09-02/README.md).
 
 This is a concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
@@ -18,7 +18,7 @@ WebMCP novelty is introduced as **One guide. Two ways to use it.** The secondary
 
 - The public README now leads with the current four-category product, 163-identity/782-pair scope, 84 exact-part models, person/browser-agent WebMCP handoff, safety and evidence boundaries, Shopify offer role, current demo, local verification, and a source-of-truth documentation map. `docs/README.md` distinguishes current product docs from dated research and the historical single-washer build archive. `CONTRIBUTING.md` no longer incorrectly requires real appliance data to be fictional, and the Devpost brief uses current release counts and demo status.
 - GitHub's About description now presents Clunk as a WebMCP appliance guide for shared person/browser-agent checks, exact-part matching, and Shopify offers. Repository topics include `human-in-the-loop`, `shopify`, and `vite` in addition to the existing accessibility, appliance-repair, hackathon, React, TypeScript, and WebMCP topics.
-- The public 2:28 narrated demo is available at `https://youtu.be/hUHGxR0iRR8`. The configured Lovable URL currently redirects to `https://clunk.repair/`, but the apex domain returned no public DNS record during the 2026-09-02 documentation audit. Restore the apex DNS target and re-run the fresh public deployment check before describing the application URL as live.
+- The branded app is live at `https://clunk.repair`, and the public 2:28 narrated demo is available at `https://youtu.be/hUHGxR0iRR8`. On 2026-09-02, Cloudflare and Google public DNS both resolved the apex to `185.158.133.1`; a fresh HTTPS request returned HTTP 200 from deployment `9cd25849-57b6-4918-a4bf-898290711845` with the expected Clunk metadata. The earlier negative lookup was propagation or resolver-cache lag.
 - Browser branding uses a Clunk-owned favicon set instead of the Lovable starter mark: a Deep Tide rounded field, a Cool Field Paper `C` that also reads as a front-loader aperture, and one Citron action dot. The editable source is `public/favicon.svg`; PNG, Apple touch, and legacy multi-size ICO derivatives ship with it.
 - The catalog preserves 163 source-backed U.S. identities: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. There are 106 exact-code identities and 57 family-only identities.
 - All 782 model × symptom pairs are reproducibly classified. There are 766 supported pairs and 16 explicitly unsupported pairs: washer 274/280, dishwasher 165/165, dryer 132/132, and refrigerator 195/205.
@@ -57,7 +57,7 @@ The judge-polish release was freshly published and verified again on 2026-08-31.
 - Shopify Global Catalog and public storefront content can establish an observed offer only. They cannot prove fit, merchant authenticity, future stock, or commission eligibility.
 - Protected or variable source-page HTTP behavior is an access limitation, not evidence. Reverify dated source and seller observations before a later release.
 - `public/_headers` is host-specific; verify the production host actually serves equivalent security controls.
-- Genuine natural-language WebMCP sessions, Devpost creation, and submission remain external work requiring explicit authorization where applicable. The public demo video is complete; the application URL is not currently submission-ready because the redirected apex domain does not resolve.
+- Genuine natural-language WebMCP sessions, Devpost creation, and submission remain external work requiring explicit authorization where applicable. The branded application URL and public demo video are complete and publicly reachable.
 - Lovable's public **Edit with Lovable** badge is an external project setting, not repository UI. It was disabled with explicit user confirmation, persisted after a settings reload, republished, and verified absent in a fresh public browser context on 2026-08-31.
 
 ## Working rules

@@ -105,7 +105,7 @@ The production app is static HTML, CSS, JavaScript, JSON, original images, and l
 
 ### Fast judge path
 
-1. Open https://clunk-appliance-assistant.lovable.app.
+1. Open https://clunk.repair.
 2. Pick any of the four appliance categories.
 3. Click **See a finished guide**.
 4. Confirm the labeled example disclosure, highlighted location, exact SKU, compatible model, seller disclosure, and external **View offer** link.
@@ -157,7 +157,7 @@ Codex helped turn the product idea into a tested conventional codebase: scoping 
 
 ## Public Demo Link
 
-https://clunk-appliance-assistant.lovable.app
+https://clunk.repair
 
 ## Public Repository Link
 
@@ -172,7 +172,7 @@ https://youtu.be/hUHGxR0iRR8 — **Clunk: A Person and Browser Agent Diagnose an
 Official requirements and form fields were rechecked from Devpost on **September 2, 2026**. The deadline is **Thursday, September 3, 2026 at 1:00 PM Pacific Time**. The account is registered and submissions are currently open.
 
 - [ ] Create the Devpost project. The authenticated account currently has no Devpost projects.
-- [ ] Restore and reverify the public live URL. On September 2, 2026, the Lovable URL redirected to `clunk.repair`, whose apex domain did not resolve in public DNS.
+- [x] Working public live URL for ChatGPT's in-app browser or Chrome with WebMCP enabled: https://clunk.repair.
 - [x] Public code repository with source, assets, setup instructions, literal `document.modelContext.registerTool` code, and MIT license.
 - [x] Text description covering WebMCP fit, user experience, new person/agent collaboration, and implementation.
 - [x] Public YouTube demo under three minutes **with audio**, clearly showing what was built and how WebMCP is used: https://youtu.be/hUHGxR0iRR8 (2:28).
@@ -183,7 +183,7 @@ Official requirements and form fields were rechecked from Devpost on **September
 - [ ] Submitter Type: choose Individual, Team of Individuals, or Organization.
 - [ ] Country of residence: select the participant/team country or countries.
 - [ ] App Status: choose New or Existing; if Existing, describe the work completed during the submission period.
-- [x] Live URL: https://clunk-appliance-assistant.lovable.app
+- [x] Live URL: https://clunk.repair
 - [x] Public repo: https://github.com/mcostigliola321/clunk-your-appliance-assistant
 - [ ] Agent/client testing answer: update from the completed manual matrix; do not claim unrecorded natural-language runs.
 - [x] AI tools used draft: browser-agent layer in supported clients; Codex for implementation/testing/documentation; Lovable for static hosting and GitHub sync; generated original visuals documented in the repo.
