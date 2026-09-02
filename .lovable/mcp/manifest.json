@@ -1,0 +1,219 @@
+{
+  "version": 1,
+  "sdk_version": "1.0.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "clunk-your-appliance-assistant",
+      "version": "0.1.0",
+      "title": "Clunk: Your Appliance Assistant"
+    },
+    "tools": [
+      {
+        "name": "search_appliances",
+        "title": "Search supported appliances",
+        "description": "Search Clunk's bounded catalog of source-backed U.S. appliance models by model text, category, or brand. Returns catalog IDs, verified model codes, and per-problem capability. Never guesses a nearest model.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "query": {
+              "description": "Model text from the appliance rating label, e.g. 'WM3400CW' or 'GTD42EASJ2WW'.",
+              "type": "string",
+              "maxLength": 64
+            },
+            "kind": {
+              "description": "Restrict results to one appliance category.",
+              "type": "string",
+              "enum": [
+                "washer",
+                "dishwasher",
+                "dryer",
+                "refrigerator"
+              ]
+            },
+            "brand": {
+              "description": "Restrict results to one brand name.",
+              "type": "string",
+              "maxLength": 40
+            },
+            "symptomId": {
+              "description": "Only return models that Clunk covers for this observable problem.",
+              "type": "string",
+              "maxLength": 64
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_appliance_coverage",
+        "title": "Get appliance coverage",
+        "description": "List every observable problem Clunk covers for one catalog model, with its capability (exact part available, safe checks available, or exact part currently unavailable) and the model source reference.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "applianceId": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Catalog ID returned by search_appliances."
+            }
+          },
+          "required": [
+            "applianceId"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_repair_guide",
+        "title": "Get repair guide",
+        "description": "Return the deterministic, source-backed guide for one model and problem: the ordered safe checks a person can perform, the possible results of each check, the visible components, and the official source references. Physical observation always stays with the person.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "applianceId": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Catalog ID returned by search_appliances."
+            },
+            "symptomId": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Observable problem ID returned by get_appliance_coverage."
+            }
+          },
+          "required": [
+            "applianceId",
+            "symptomId"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "run_diagnosis",
+        "title": "Run diagnosis",
+        "description": "Replay a person's reported observations through Clunk's deterministic repair engine and return the outcome: no part needed, an exact source-backed part, a request for the complete model code, or a professional-service stop. Only pass results the person actually observed.",
+        "annotations": {
+          "readOnlyHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "applianceId": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Catalog ID returned by search_appliances."
+            },
+            "symptomId": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Observable problem ID covered for that model."
+            },
+            "productCode": {
+              "description": "The complete model code the person read from the rating label. Required for an exact-part answer.",
+              "type": "string",
+              "maxLength": 64
+            },
+            "observations": {
+              "minItems": 1,
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "checkId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Check ID from get_repair_guide."
+                  },
+                  "resultId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Result ID the person observed for that check."
+                  }
+                },
+                "required": [
+                  "checkId",
+                  "resultId"
+                ]
+              },
+              "description": "Ordered observations, starting with the guide's first check."
+            }
+          },
+          "required": [
+            "applianceId",
+            "symptomId",
+            "observations"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "find_model_number",
+        "title": "Find the model number",
+        "description": "Return manufacturer-backed rating-label locations, safety notes, example identifiers, and brand-specific suffix hints so the person can read their complete model code. Clunk never infers the code.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "washer",
+                "dishwasher",
+                "dryer",
+                "refrigerator"
+              ],
+              "description": "Appliance category."
+            },
+            "loadStyle": {
+              "description": "Washer load style, when known.",
+              "type": "string",
+              "enum": [
+                "front-load",
+                "top-load"
+              ]
+            },
+            "brand": {
+              "description": "Brand name, for suffix guidance.",
+              "type": "string",
+              "maxLength": 40
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
