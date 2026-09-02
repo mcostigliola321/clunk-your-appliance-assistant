@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-09-02** after final-submission polish implementation commit `6c75da2541133cb1acf67b340a7042d170b516fa` was fast-forwarded to `main` and published through Lovable as deployment `57b8a941-ab4f-476d-af5b-05ba6dd0dbc7`. The final UX audit, focused corrections, and release evidence are recorded in [`docs/research/final-submission-polish-2026-09-02/README.md`](docs/research/final-submission-polish-2026-09-02/README.md).
+Last reconciled: **2026-09-02** after Clunk browser-branding commit `802fe309c9079f89684a57779f7656e054d9ee81` was pushed to `main` and published through Lovable as deployment `63670d64-5409-4392-a5b2-126cefb19019`. This builds on final-submission polish implementation commit `6c75da2541133cb1acf67b340a7042d170b516fa`; its UX audit and release evidence are recorded in [`docs/research/final-submission-polish-2026-09-02/README.md`](docs/research/final-submission-polish-2026-09-02/README.md).
 
 This is a concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
@@ -29,6 +29,8 @@ WebMCP novelty is introduced as **One guide. Two ways to use it.** The secondary
 - Shopify results show at most one exact-SKU offer per seller, retain paid-placement attribution, and report checking/error/result-count state instead of a generic **Live** badge. Seller quality and OEM claims remain unverified.
 
 ## Verification
+
+The 2026-09-02 browser-branding release passed strict TypeScript and the production build, ESLint, all 112 unit/integration/WebMCP tests, browser link discovery, and 16px/32px visual inspection. Fresh production requests confirmed all four shipped favicon assets are byte-for-byte equal to the local release and that the live HTML selects the Clunk SVG, PNG fallback, and Apple touch icon. Lovable reported production deployment `63670d64-5409-4392-a5b2-126cefb19019`.
 
 The 2026-09-02 final-submission polish passed deterministic regeneration and both evidence audits, strict TypeScript, ESLint, Prettier, all 112 unit/integration/WebMCP tests, production build, all 54 desktop/mobile Playwright journeys, `git diff --check`, and `npm audit --audit-level=moderate` with zero vulnerabilities. Fresh desktop and 390px checks covered the first viewport, exact GE `GTD42EASJ2WW` selection, human/agent handoff, exact `WE01M10007` result, seller handoff, and terminal safety stop. The public Lovable check used a no-cache, service-worker-blocked context and confirmed visible counts, badge absence, supported/unsupported Bosch routes, and byte-for-byte equality between deployed and local JavaScript (`index-DL2LrkBQ.js`, 1,600,161 bytes, SHA-256 `10b907ccc8ab47d223a3ea212c6c7e89be5d62a8b07cacb67f915d562b66d6b2`).
 
