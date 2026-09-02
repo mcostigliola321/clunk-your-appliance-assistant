@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-08-31** after judge-depth implementation commit `a8b66121c4285c07f82cbfd962fc87d4d54350b9` was fast-forwarded to `main`, passed GitHub Verify run [33442958061](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/runs/33442958061), and was published through Lovable as deployment `7069b1fa-8817-4943-878e-1a1d028d5adc`. The implementation, candid score reset, and remaining priorities are recorded in [`docs/research/judge-depth-2026-08-31/README.md`](docs/research/judge-depth-2026-08-31/README.md); fresh public verification is in the adjacent `live-deployment-verification.json`.
+Last reconciled: **2026-09-02** after final-submission polish implementation commit `6c75da2541133cb1acf67b340a7042d170b516fa` was fast-forwarded to `main` and published through Lovable as deployment `57b8a941-ab4f-476d-af5b-05ba6dd0dbc7`. The final UX audit, focused corrections, and release evidence are recorded in [`docs/research/final-submission-polish-2026-09-02/README.md`](docs/research/final-submission-polish-2026-09-02/README.md).
 
 This is a concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
@@ -28,6 +28,8 @@ WebMCP novelty is introduced as **One guide. Two ways to use it.** The secondary
 - Shopify results show at most one exact-SKU offer per seller, retain paid-placement attribution, and report checking/error/result-count state instead of a generic **Live** badge. Seller quality and OEM claims remain unverified.
 
 ## Verification
+
+The 2026-09-02 final-submission polish passed deterministic regeneration and both evidence audits, strict TypeScript, ESLint, Prettier, all 112 unit/integration/WebMCP tests, production build, all 54 desktop/mobile Playwright journeys, `git diff --check`, and `npm audit --audit-level=moderate` with zero vulnerabilities. Fresh desktop and 390px checks covered the first viewport, exact GE `GTD42EASJ2WW` selection, human/agent handoff, exact `WE01M10007` result, seller handoff, and terminal safety stop. The public Lovable check used a no-cache, service-worker-blocked context and confirmed visible counts, badge absence, supported/unsupported Bosch routes, and byte-for-byte equality between deployed and local JavaScript (`index-DL2LrkBQ.js`, 1,600,161 bytes, SHA-256 `10b907ccc8ab47d223a3ea212c6c7e89be5d62a8b07cacb67f915d562b66d6b2`).
 
 The 2026-08-31 judge-depth release passed both deterministic evidence audits, strict TypeScript, ESLint, Prettier, all 111 unit/integration/WebMCP tests, production build, all 54 desktop/mobile Playwright journeys, `git diff --check`, and `npm audit --audit-level=moderate` with zero vulnerabilities. GitHub Verify run [33442958061](https://github.com/mcostigliola321/clunk-your-appliance-assistant/actions/runs/33442958061) passed the exact implementation commit. Fresh public verification confirmed the first-viewport browser/person promise, badge absence, all catalog counts and supported/unsupported Bosch routes, and byte-for-byte equality between deployed and local JavaScript (`index-CzLdmU5i.js`, 1,600,109 bytes, SHA-256 `32dc0ba9f1cf6bd4c3017750ab33c40ecc8f9d245195531b54eaf500695cc7c2`).
 
