@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-09-02** after WebMCP.com rescored the published eight-tool release B+ and the follow-up contract refinement was implemented and verified on unpushed branch `codex/refine-webmcp-contracts`, based on synced GitHub `main` commit `19471c7`. The current Lovable build and `clunk.repair` match that main commit; the refinement candidate is not yet published. The latest UX audit and prior live evidence remain in [`docs/research/final-submission-polish-2026-09-02/README.md`](docs/research/final-submission-polish-2026-09-02/README.md).
+Last reconciled: **2026-09-02** after WebMCP.com rescored the published eight-tool release B+ and the follow-up contract refinement was implemented, verified, and fast-forwarded to GitHub `main` as commit `2db2c30` from branch `codex/refine-webmcp-contracts`. Lovable publication, live-build verification, and a fresh WebMCP.com rescore remain pending. The latest UX audit and prior live evidence remain in [`docs/research/final-submission-polish-2026-09-02/README.md`](docs/research/final-submission-polish-2026-09-02/README.md).
 
 This is a concise cross-task handoff. Verify moving branch, deployment, external-service, and deadline facts before acting.
 
@@ -68,7 +68,7 @@ The judge-polish release was freshly published and verified again on 2026-08-31.
 - Protected or variable source-page HTTP behavior is an access limitation, not evidence. Reverify dated source and seller observations before a later release.
 - `public/_headers` is host-specific; verify the production host actually serves equivalent security controls.
 - Genuine natural-language WebMCP sessions, Devpost creation, and submission remain external work requiring explicit authorization where applicable. The branded application URL and public demo video are complete and publicly reachable.
-- The B+ WebMCP release is live and its production JavaScript matched the local main build byte-for-byte on 2026-09-02. The contract-refinement candidate is not yet on GitHub main or Lovable; after integration, publish the matching build and run one more WebMCP.com score plus a full observation-to-outcome journey. Do not claim a higher grade until that fresh live scan exists.
+- The B+ WebMCP release is live and its production JavaScript matched the prior main build byte-for-byte on 2026-09-02. The contract refinement is now on GitHub main but not yet verified on Lovable or `clunk.repair`; publish the matching build, then run one more WebMCP.com score plus a full observation-to-outcome journey. Do not claim a higher grade until that fresh live scan exists.
 - Lovable's public **Edit with Lovable** badge is an external project setting, not repository UI. It was disabled with explicit user confirmation, persisted after a settings reload, republished, and verified absent in a fresh public browser context on 2026-08-31.
 
 ## Working rules
