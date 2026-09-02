@@ -5,6 +5,7 @@ import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
 import { SYMPTOM_PRESENTATION } from "@/data/symptomCatalog";
 import { capabilityLabel } from "@/domain/modelSearch";
 import type { SupportedSymptomId } from "@/domain/types";
+import { applianceCoverageOutputSchema } from "@/lib/mcp/outputSchemas";
 
 export default defineTool({
   name: "get_appliance_coverage",
@@ -12,8 +13,9 @@ export default defineTool({
   description:
     "List every observable problem Clunk covers for one catalog model, with its capability (exact part available, safe checks available, or exact part currently unavailable) and the model source reference.",
   inputSchema: {
-    applianceId: z.string().min(1).describe("Catalog ID returned by search_appliances."),
+    applianceId: z.string().min(1).max(128).describe("Catalog ID returned by search_appliances."),
   },
+  outputSchema: applianceCoverageOutputSchema,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ applianceId }) => {
     const entry = APPLIANCE_CATALOG.find((item) => item.id === applianceId);

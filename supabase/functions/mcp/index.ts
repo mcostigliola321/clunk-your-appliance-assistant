@@ -7,7 +7,7 @@ import { defineMcp } from "npm:@lovable.dev/mcp-js@1.0.0";
 
 // src/lib/mcp/tools/find-model-number.ts
 import { defineTool } from "npm:@lovable.dev/mcp-js@1.0.0";
-import { z } from "npm:zod@^4.5.4";
+import { z as z2 } from "npm:zod@^4.5.4";
 
 // src/data/modelNumberGuides.ts
 var RETRIEVED = "2026-08-27";
@@ -155,6 +155,206 @@ function getBrandIdentifierHint(brand) {
   return null;
 }
 
+// src/lib/mcp/outputSchemas.ts
+import { z } from "npm:zod@^4.5.4";
+var applianceKindSchema = z.enum(["washer", "dishwasher", "dryer", "refrigerator"]);
+var capabilitySchema = z.enum([
+  "purchase-ready",
+  "guided-checks",
+  "verified-part-unavailable"
+]);
+var sourceReferenceSchema = z.object({
+  id: z.string(),
+  kind: z.enum([
+    "manufacturer-model",
+    "manufacturer-troubleshooting",
+    "manufacturer-part",
+    "authorized-parts"
+  ]),
+  title: z.string(),
+  url: z.url(),
+  publisher: z.string(),
+  appliesTo: z.string(),
+  lastVerified: z.string()
+});
+var catalogCoverageSchema = z.object({
+  symptomId: z.string(),
+  capability: capabilitySchema,
+  capabilityLabel: z.string()
+});
+var searchAppliancesOutputSchema = {
+  status: z.string(),
+  guidance: z.string(),
+  matchCount: z.number().int().nonnegative(),
+  results: z.array(
+    z.object({
+      applianceId: z.string(),
+      kind: applianceKindSchema,
+      brand: z.string(),
+      model: z.string(),
+      label: z.string(),
+      verifiedProductCodes: z.array(z.string()),
+      productCodePrompt: z.string(),
+      coverage: z.array(catalogCoverageSchema)
+    })
+  )
+};
+var applianceCoverageOutputSchema = {
+  applianceId: z.string(),
+  kind: applianceKindSchema,
+  brand: z.string(),
+  model: z.string(),
+  label: z.string(),
+  verifiedProductCodes: z.array(z.string()),
+  productCodePrompt: z.string(),
+  modelSource: sourceReferenceSchema,
+  coverage: z.array(
+    z.object({
+      symptomId: z.string(),
+      title: z.string(),
+      description: z.string(),
+      capability: capabilitySchema,
+      capabilityLabel: z.string()
+    })
+  )
+};
+var repairGuideOutputSchema = {
+  packId: z.string(),
+  appliance: z.object({
+    kind: applianceKindSchema,
+    brand: z.string(),
+    model: z.string(),
+    noun: z.string(),
+    capability: capabilitySchema
+  }),
+  symptom: z.object({ id: z.string(), label: z.string(), shortLabel: z.string() }),
+  productCodePrompt: z.string(),
+  verifiedProductCodes: z.array(z.string()),
+  components: z.array(
+    z.object({
+      id: z.string(),
+      label: z.string(),
+      description: z.string(),
+      access: z.enum(["visible", "user-accessible", "professional-only"])
+    })
+  ),
+  checks: z.array(
+    z.object({
+      id: z.string(),
+      label: z.string(),
+      componentId: z.string(),
+      instruction: z.string(),
+      why: z.string(),
+      stop: z.string(),
+      safetyTags: z.array(z.string()),
+      results: z.array(
+        z.object({
+          id: z.string(),
+          label: z.string(),
+          effect: z.enum([
+            "continue",
+            "no-part-needed",
+            "part-candidate",
+            "professional-only",
+            "hazard"
+          ]),
+          nextCheckId: z.string().nullable()
+        })
+      )
+    })
+  ),
+  sources: z.array(sourceReferenceSchema)
+};
+var modelNumberOutputSchema = {
+  kind: applianceKindSchema,
+  title: z.string(),
+  safety: z.string(),
+  locations: z.array(
+    z.object({ id: z.string(), label: z.string(), instruction: z.string() })
+  ),
+  examples: z.array(z.string()),
+  brandHint: z.string().nullable(),
+  sources: z.array(z.object({ title: z.string(), url: z.url(), retrieved: z.string() }))
+};
+var diagnosisOutputSchema = {
+  phase: z.enum(["catalog", "idle", "preparing", "checking", "result", "escalated"]),
+  summary: z.string(),
+  transcript: z.array(
+    z.object({
+      tool: z.enum([
+        "search_supported_appliances",
+        "select_appliance",
+        "get_repair_state",
+        "start_diagnosis",
+        "show_component",
+        "record_observation",
+        "find_compatible_part",
+        "stop_and_escalate"
+      ]),
+      ok: z.boolean(),
+      message: z.string()
+    })
+  ),
+  nextCheck: z.object({
+    id: z.string(),
+    label: z.string(),
+    instruction: z.string(),
+    results: z.array(z.object({ id: z.string(), label: z.string() }))
+  }).nullable(),
+  outcome: z.object({
+    status: z.enum([
+      "not-ready",
+      "no-part-needed",
+      "exact",
+      "variant-needed",
+      "professional-only"
+    ]),
+    title: z.string(),
+    message: z.string(),
+    requiredProductCode: z.string().nullable(),
+    source: sourceReferenceSchema.nullable()
+  }).nullable(),
+  part: z.object({
+    name: z.string(),
+    sku: z.string(),
+    compatibleModel: z.string(),
+    location: z.string().nullable(),
+    installBoundary: z.enum(["user-replaceable", "professional-only"]),
+    source: sourceReferenceSchema,
+    commerce: z.object({
+      provider: z.literal("shopify-global-catalog"),
+      protocol: z.literal("UCP"),
+      query: z.string(),
+      exactSku: z.string(),
+      offerCountAtVerification: z.number().int().nonnegative(),
+      lastVerified: z.string()
+    }).nullable()
+  }).nullable(),
+  escalation: z.object({
+    reason: z.enum([
+      "electrical",
+      "burning-smell",
+      "hot-water",
+      "active-leak",
+      "internal-access",
+      "unresolved"
+    ]),
+    message: z.string()
+  }).nullable(),
+  likelyCauses: z.array(
+    z.object({
+      id: z.string(),
+      label: z.string(),
+      componentId: z.string(),
+      confidence: z.enum(["possible", "likely", "strong match"]),
+      explanation: z.string(),
+      score: z.number()
+    })
+  ),
+  sources: z.array(sourceReferenceSchema),
+  disclaimer: z.string()
+};
+
 // src/lib/mcp/tools/find-model-number.ts
 var KINDS = ["washer", "dishwasher", "dryer", "refrigerator"];
 var find_model_number_default = defineTool({
@@ -162,10 +362,11 @@ var find_model_number_default = defineTool({
   title: "Find the model number",
   description: "Return manufacturer-backed rating-label locations, safety notes, example identifiers, and brand-specific suffix hints so the person can read their complete model code. Clunk never infers the code.",
   inputSchema: {
-    kind: z.enum(KINDS).describe("Appliance category."),
-    loadStyle: z.enum(["front-load", "top-load"]).optional().describe("Washer load style, when known."),
-    brand: z.string().max(40).optional().describe("Brand name, for suffix guidance.")
+    kind: z2.enum(KINDS).describe("Appliance category."),
+    loadStyle: z2.enum(["front-load", "top-load"]).optional().describe("Washer load style, when known."),
+    brand: z2.string().max(40).optional().describe("Brand name, for suffix guidance.")
   },
+  outputSchema: modelNumberOutputSchema,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ kind, loadStyle, brand }) => {
     const guide = getModelNumberGuide(kind, loadStyle);
@@ -192,7 +393,7 @@ var find_model_number_default = defineTool({
 
 // src/lib/mcp/tools/get-appliance-coverage.ts
 import { defineTool as defineTool2, ToolError } from "npm:@lovable.dev/mcp-js@1.0.0";
-import { z as z2 } from "npm:zod@^4.5.4";
+import { z as z3 } from "npm:zod@^4.5.4";
 
 // src/domain/purchase.ts
 var PURCHASE_READY_LABELS = /* @__PURE__ */ new Set(["in stock", "available to add to cart"]);
@@ -30109,8 +30310,9 @@ var get_appliance_coverage_default = defineTool2({
   title: "Get appliance coverage",
   description: "List every observable problem Clunk covers for one catalog model, with its capability (exact part available, safe checks available, or exact part currently unavailable) and the model source reference.",
   inputSchema: {
-    applianceId: z2.string().min(1).describe("Catalog ID returned by search_appliances.")
+    applianceId: z3.string().min(1).max(128).describe("Catalog ID returned by search_appliances.")
   },
+  outputSchema: applianceCoverageOutputSchema,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ applianceId }) => {
     const entry2 = APPLIANCE_CATALOG.find((item) => item.id === applianceId);
@@ -30149,7 +30351,7 @@ var get_appliance_coverage_default = defineTool2({
 
 // src/lib/mcp/tools/get-repair-guide.ts
 import { defineTool as defineTool3, ToolError as ToolError2 } from "npm:@lovable.dev/mcp-js@1.0.0";
-import { z as z3 } from "npm:zod@^4.5.4";
+import { z as z4 } from "npm:zod@^4.5.4";
 
 // src/domain/shopifyCatalog.ts
 function escapeRegExp(value) {
@@ -33388,9 +33590,10 @@ var get_repair_guide_default = defineTool3({
   title: "Get repair guide",
   description: "Return the deterministic, source-backed guide for one model and problem: the ordered safe checks a person can perform, the possible results of each check, the visible components, and the official source references. Physical observation always stays with the person.",
   inputSchema: {
-    applianceId: z3.string().min(1).describe("Catalog ID returned by search_appliances."),
-    symptomId: z3.string().min(1).describe("Observable problem ID returned by get_appliance_coverage.")
+    applianceId: z4.string().min(1).max(128).describe("Catalog ID returned by search_appliances."),
+    symptomId: z4.string().min(1).max(64).describe("Observable problem ID returned by get_appliance_coverage.")
   },
+  outputSchema: repairGuideOutputSchema,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ applianceId, symptomId }) => {
     const pack = resolveRepairPack(applianceId, symptomId);
@@ -33446,7 +33649,7 @@ var get_repair_guide_default = defineTool3({
 
 // src/lib/mcp/tools/run-diagnosis.ts
 import { defineTool as defineTool4 } from "npm:@lovable.dev/mcp-js@1.0.0";
-import { z as z4 } from "npm:zod@^4.5.4";
+import { z as z5 } from "npm:zod@^4.5.4";
 
 // src/domain/safety.ts
 var ESCALATION_COPY = {
@@ -34082,19 +34285,20 @@ var run_diagnosis_default = defineTool4({
   title: "Run diagnosis",
   description: "Replay a person's reported observations through Clunk's deterministic repair engine and return the outcome: no part needed, an exact source-backed part, a request for the complete model code, or a professional-service stop. Only pass results the person actually observed.",
   inputSchema: {
-    applianceId: z4.string().min(1).describe("Catalog ID returned by search_appliances."),
-    symptomId: z4.string().min(1).describe("Observable problem ID covered for that model."),
-    productCode: z4.string().max(64).optional().describe(
+    applianceId: z5.string().min(1).max(128).describe("Catalog ID returned by search_appliances."),
+    symptomId: z5.string().min(1).max(64).describe("Observable problem ID covered for that model."),
+    productCode: z5.string().max(64).optional().describe(
       "The complete model code the person read from the rating label. Required for an exact-part answer."
     ),
-    observations: z4.array(
-      z4.object({
-        checkId: z4.string().min(1).describe("Check ID from get_repair_guide."),
-        resultId: z4.string().min(1).describe("Result ID the person observed for that check.")
+    observations: z5.array(
+      z5.object({
+        checkId: z5.string().min(1).max(128).describe("Check ID from get_repair_guide."),
+        resultId: z5.string().min(1).max(128).describe("Result ID the person observed for that check.")
       })
     ).min(1).max(12).describe("Ordered observations, starting with the guide's first check.")
   },
-  annotations: { readOnlyHint: true, openWorldHint: false },
+  outputSchema: diagnosisOutputSchema,
+  annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ applianceId, symptomId, productCode, observations }) => {
     let state = createInitialRepairState("unavailable");
     const transcript = [];
@@ -34123,7 +34327,14 @@ var run_diagnosis_default = defineTool4({
       };
     }
     for (const observation of observations) {
-      if (!state.currentStepId) break;
+      if (!state.currentStepId) {
+        const message = "The diagnosis already reached a terminal result; do not send additional observations.";
+        return {
+          content: [{ type: "text", text: message }],
+          structuredContent: { transcript },
+          isError: true
+        };
+      }
       if (!step("record_observation", observation)) {
         return {
           content: [{ type: "text", text: transcript[transcript.length - 1].message }],
@@ -34179,18 +34390,19 @@ var run_diagnosis_default = defineTool4({
 
 // src/lib/mcp/tools/search-appliances.ts
 import { defineTool as defineTool5 } from "npm:@lovable.dev/mcp-js@1.0.0";
-import { z as z5 } from "npm:zod@^4.5.4";
+import { z as z6 } from "npm:zod@^4.5.4";
 var KINDS2 = ["washer", "dishwasher", "dryer", "refrigerator"];
 var search_appliances_default = defineTool5({
   name: "search_appliances",
   title: "Search supported appliances",
   description: "Search Clunk's bounded catalog of source-backed U.S. appliance models by model text, category, or brand. Returns catalog IDs, verified model codes, and per-problem capability. Never guesses a nearest model.",
   inputSchema: {
-    query: z5.string().max(64).optional().describe("Model text from the appliance rating label, e.g. 'WM3400CW' or 'GTD42EASJ2WW'."),
-    kind: z5.enum(KINDS2).optional().describe("Restrict results to one appliance category."),
-    brand: z5.string().max(40).optional().describe("Restrict results to one brand name."),
-    symptomId: z5.string().max(64).optional().describe("Only return models that Clunk covers for this observable problem.")
+    query: z6.string().max(64).optional().describe("Model text from the appliance rating label, e.g. 'WM3400CW' or 'GTD42EASJ2WW'."),
+    kind: z6.enum(KINDS2).optional().describe("Restrict results to one appliance category."),
+    brand: z6.string().max(40).optional().describe("Restrict results to one brand name."),
+    symptomId: z6.string().max(64).optional().describe("Only return models that Clunk covers for this observable problem.")
   },
+  outputSchema: searchAppliancesOutputSchema,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ query, kind, brand, symptomId }) => {
     const analysis = analyzeModelQuery(
@@ -34241,6 +34453,7 @@ var mcp_default = defineMcp({
   title: "Clunk: Your Appliance Assistant",
   version: "0.1.0",
   instructions: "Clunk is a deterministic, source-backed appliance repair guide for a bounded catalog of U.S. washers, dishwashers, electric dryers, and refrigerators. Start with search_appliances, then get_appliance_coverage, then get_repair_guide. Ask the person to perform each safe check and report what they saw, then pass those observations to run_diagnosis. Use find_model_number to help the person read their complete model code; an exact-part answer requires it. Never infer a model, a nearby SKU, or an observation on the person's behalf, and never advise work beyond the guide's stated safe boundary.",
+  metrics: false,
   tools: [
     search_appliances_default,
     get_appliance_coverage_default,

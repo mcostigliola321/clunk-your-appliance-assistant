@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { getBrandIdentifierHint, getModelNumberGuide } from "@/data/modelNumberGuides";
 import type { ApplianceKind, BrandName, WasherLoadStyle } from "@/domain/types";
+import { modelNumberOutputSchema } from "@/lib/mcp/outputSchemas";
 
 const KINDS = ["washer", "dishwasher", "dryer", "refrigerator"] as const;
 
@@ -19,6 +20,7 @@ export default defineTool({
       .describe("Washer load style, when known."),
     brand: z.string().max(40).optional().describe("Brand name, for suffix guidance."),
   },
+  outputSchema: modelNumberOutputSchema,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ kind, loadStyle, brand }) => {
     const guide = getModelNumberGuide(kind as ApplianceKind, loadStyle as WasherLoadStyle);

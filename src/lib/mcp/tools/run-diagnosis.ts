@@ -4,6 +4,7 @@ import { z } from "zod";
 import { createInitialRepairState, executeRepairTool } from "@/domain/engine";
 import { getPartOutcome, getRepairSnapshot } from "@/domain/selectors";
 import type { RepairState, RepairToolName } from "@/domain/types";
+import { diagnosisOutputSchema } from "@/lib/mcp/outputSchemas";
 
 export default defineTool({
   name: "run_diagnosis",
@@ -11,8 +12,8 @@ export default defineTool({
   description:
     "Replay a person's reported observations through Clunk's deterministic repair engine and return the outcome: no part needed, an exact source-backed part, a request for the complete model code, or a professional-service stop. Only pass results the person actually observed.",
   inputSchema: {
-    applianceId: z.string().min(1).describe("Catalog ID returned by search_appliances."),
-    symptomId: z.string().min(1).describe("Observable problem ID covered for that model."),
+    applianceId: z.string().min(1).max(128).describe("Catalog ID returned by search_appliances."),
+    symptomId: z.string().min(1).max(64).describe("Observable problem ID covered for that model."),
     productCode: z
       .string()
       .max(64)
@@ -23,15 +24,20 @@ export default defineTool({
     observations: z
       .array(
         z.object({
-          checkId: z.string().min(1).describe("Check ID from get_repair_guide."),
-          resultId: z.string().min(1).describe("Result ID the person observed for that check."),
+          checkId: z.string().min(1).max(128).describe("Check ID from get_repair_guide."),
+          resultId: z
+            .string()
+            .min(1)
+            .max(128)
+            .describe("Result ID the person observed for that check."),
         }),
       )
       .min(1)
       .max(12)
       .describe("Ordered observations, starting with the guide's first check."),
   },
-  annotations: { readOnlyHint: true, openWorldHint: false },
+  outputSchema: diagnosisOutputSchema,
+  annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ applianceId, symptomId, productCode, observations }) => {
     let state: RepairState = createInitialRepairState("unavailable");
     const transcript: Array<{ tool: RepairToolName; ok: boolean; message: string }> = [];
@@ -64,7 +70,15 @@ export default defineTool({
       };
     }
     for (const observation of observations) {
-      if (!state.currentStepId) break;
+      if (!state.currentStepId) {
+        const message =
+          "The diagnosis already reached a terminal result; do not send additional observations.";
+        return {
+          content: [{ type: "text", text: message }],
+          structuredContent: { transcript },
+          isError: true,
+        };
+      }
       if (!step("record_observation", observation)) {
         return {
           content: [{ type: "text", text: transcript[transcript.length - 1]!.message }],

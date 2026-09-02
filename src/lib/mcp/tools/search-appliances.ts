@@ -5,6 +5,7 @@ import { APPLIANCE_CATALOG } from "@/data/applianceCatalog";
 import { analyzeModelQuery, capabilityLabel } from "@/domain/modelSearch";
 import { getSymptomCoverage } from "@/domain/repairPack";
 import type { ApplianceKind, BrandName, SupportedSymptomId } from "@/domain/types";
+import { searchAppliancesOutputSchema } from "@/lib/mcp/outputSchemas";
 
 const KINDS = ["washer", "dishwasher", "dryer", "refrigerator"] as const;
 
@@ -27,6 +28,7 @@ export default defineTool({
       .optional()
       .describe("Only return models that Clunk covers for this observable problem."),
   },
+  outputSchema: searchAppliancesOutputSchema,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ query, kind, brand, symptomId }) => {
     const analysis = analyzeModelQuery(

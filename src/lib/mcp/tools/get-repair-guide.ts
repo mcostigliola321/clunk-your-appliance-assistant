@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { resolveRepairPack } from "@/domain/repairPack";
 import type { ApplianceId, SupportedSymptomId } from "@/domain/types";
+import { repairGuideOutputSchema } from "@/lib/mcp/outputSchemas";
 
 export default defineTool({
   name: "get_repair_guide",
@@ -10,12 +11,14 @@ export default defineTool({
   description:
     "Return the deterministic, source-backed guide for one model and problem: the ordered safe checks a person can perform, the possible results of each check, the visible components, and the official source references. Physical observation always stays with the person.",
   inputSchema: {
-    applianceId: z.string().min(1).describe("Catalog ID returned by search_appliances."),
+    applianceId: z.string().min(1).max(128).describe("Catalog ID returned by search_appliances."),
     symptomId: z
       .string()
       .min(1)
+      .max(64)
       .describe("Observable problem ID returned by get_appliance_coverage."),
   },
+  outputSchema: repairGuideOutputSchema,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ applianceId, symptomId }) => {
     const pack = resolveRepairPack(applianceId as ApplianceId, symptomId as SupportedSymptomId);

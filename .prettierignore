@@ -7,6 +7,10 @@ package-lock.json
 bun.lock
 routeTree.gen.ts
 
+# Lovable-generated Supabase integration and MCP edge bundle.
+src/integrations/supabase/
+supabase/functions/mcp/index.ts
+
 # Historical research snapshots and repository-owned instruction files predate Prettier.
 .codebase-memory/adr.md
 AGENTS.md

@@ -62,5 +62,10 @@
   },
   "engines": {
     "node": ">=22"
+  },
+  "overrides": {
+    "@lovable.dev/mcp-js": {
+      "esbuild": "0.27.2"
+    }
   }
 }
