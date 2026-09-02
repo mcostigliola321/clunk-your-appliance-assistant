@@ -9,6 +9,7 @@ routeTree.gen.ts
 
 # Lovable-generated Supabase integration and MCP edge bundle.
 src/integrations/supabase/
+.lovable/mcp/manifest.json
 supabase/functions/mcp/index.ts
 
 # Historical research snapshots and repository-owned instruction files predate Prettier.
