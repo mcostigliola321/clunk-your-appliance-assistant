@@ -22,7 +22,7 @@ A judge should understand the product within five seconds and reach a real selle
 - Original category-specific location guides with keyboard-accessible hotspots and persistent “not a service diagram” language.
 - Safe, bounded checks with deterministic order, result effects, likely-cause ranking, stopping conditions, and escalation.
 - Exact part name, SKU, compatible complete model code, location, source, Shopify UCP live offers, and external merchant cart when evidence permits.
-- Eight literal, state-dependent `document.modelContext.registerTool` registrations.
+- Eight literal `document.modelContext.registerTool` registrations, discoverable together with execution guarded by current state.
 - Manual/judge controls and one-click examples using the same public action layer.
 - Visible collaboration milestones, tool-transition handoff, technical inspector, source panels, deterministic tests, and accurately labeled scenario fixtures.
 - Static Lovable hosting, public GitHub repository, MIT license, README, submission copy, and sub-three-minute demo.
@@ -41,7 +41,7 @@ A judge should understand the product within five seconds and reach a real selle
 
 1. The person names the category/model and reads the complete rating-label code.
 2. The agent searches and selects only a returned catalog ID.
-3. The site exposes only the tools valid for the current state.
+3. The site reports the currently valid actions while all eight tool definitions remain discoverable.
 4. Clunk highlights the next location and shows a bounded observation choice.
 5. The person reports what they physically see; the agent records only that result.
 6. The deterministic engine advances, ends with no part, requests a complete code, resolves a verified part, or stops at professional service.

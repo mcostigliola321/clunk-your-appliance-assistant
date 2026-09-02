@@ -154,7 +154,7 @@
 
 - Made the person/agent baton pass primary UI: Clunk now says when it cannot see a physical check, shows `record_observation` as available, and visibly unlocks `find_compatible_part` after the person reports an observation.
 - Reworked the activity surface into source-distinct collaboration milestones while preserving raw WebMCP action names. Example replays are explicitly labeled deterministic fixtures and never presented as agent runs.
-- Tightened the WebMCP boundary with compact current-task structured output, a genuinely read-only `get_repair_state`, positive task descriptions, bounded validation, and tested state-dependent lifecycle swaps.
+- Tightened the WebMCP boundary with compact current-task structured output, a genuinely read-only `get_repair_state`, positive task descriptions, bounded validation, and tested state-guarded transitions. Later releases replaced lifecycle-swapped registrations with stable all-eight-tool discovery.
 - Re-audited all four commercial flagships on 2026-08-27. Encompass’s live fit checker contradicted the prior LG `WM3400CW.ABWEVUS` exact-part claim, so the LG purchase path was withdrawn. GE `GFW550SSN0WW` with `WH11X39237` now provides the exact-code washer flagship.
 - Relabeled `evals/webmcp-evals.json` as deterministic scenario fixtures and added a separate real-agent matrix/runbook. No natural-language agent run was manufactured; the matrix remains Not run until a supported prompt interface is available and recorded.
 - Refreshed the Devpost story and demo shot list around the GE dryer handoff, terminal safety, no-part trust proof, and the closing line: “Clunk is a repair bench a person and their agent operate together.”
