@@ -5,7 +5,7 @@ Clunk welcomes small, reviewable contributions that preserve its deterministic s
 ## Development
 
 1. Use Node.js 22 or newer.
-2. Run `npm install`.
+2. Run `npm ci`.
 3. Run `npm run dev` for the local app.
 4. Run `npm run verify` before opening a pull request.
 
@@ -13,9 +13,11 @@ Do not commit secrets or add a runtime API, model call, database, authentication
 
 ## Repair content
 
-All appliance names, model numbers, diagrams, diagnostic data, compatibility data, and parts must be original and fictional. Follow [`docs/repair-pack-schema.md`](./docs/repair-pack-schema.md), add deterministic tests, and keep every safety disclaimer visible.
+Real appliance coverage is welcome only when each claim meets Clunk's evidence boundary. Model identity needs an official manufacturer source; problem coverage needs reviewed manufacturer guidance for the exact row or explicit cohort; and an exact part needs a complete product code mapped to one SKU by manufacturer or authorized-parts evidence. A seller listing, nearby revision, family name, or similar product is never enough to prove fit.
 
-Contributions that add gas, high-voltage, energized, refrigerant, sealed-compressor, protection-bypass, internal-wiring, or professional-only instructions will not be accepted.
+Diagrams and explanatory artwork must be original and mechanically conservative. Do not copy manufacturer diagrams or describe a general location guide as an exact service diagram. Follow [`docs/repair-pack-schema.md`](./docs/repair-pack-schema.md), update the appropriate source ledger or audit, add deterministic positive and negative tests, and keep safety boundaries visible.
+
+Contributions that add gas, mains or high-voltage, energized, refrigerant, sealed-compressor, protection-bypass, internal-wiring, panel-removal, or professional-only instructions will not be accepted.
 
 ## Commit style
 
