@@ -84,7 +84,7 @@ The app contains these eight literal registrations and no redundant category-spe
 7. `find_compatible_part`
 8. `stop_and_escalate`
 
-Tool schemas are pack-derived, bounded, and `additionalProperties: false`. Registration is feature-detected, state-dependent, and lifecycle-owned by an `AbortController`. Structured tool output mirrors the visible snapshot.
+Tool schemas are bounded with `additionalProperties: false`; state-dependent IDs must come from prior results and are validated by the engine. Registration is feature-detected, exposes all eight tools together from page load, and is lifecycle-owned by an `AbortController`. Every result names authoritative `nextTools`; tool-specific structured projections update the same visible state.
 
 ## Accessibility and responsive requirements
 

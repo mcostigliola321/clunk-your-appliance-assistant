@@ -1,209 +1,56 @@
-# Title
+# Clunk — final Devpost copy
 
-Clunk
-
-## One-line Summary
+## One-line summary
 
 Tell Clunk what broke. A person and browser agent check the same visual appliance together, then Clunk shows the exact part and seller link when the evidence supports one.
 
-## Problem
+## Final project description
 
-Appliance troubleshooting crosses a physical boundary. An AI can track model data, evidence, and next steps, but only the person beside the appliance can read its complete label and report what they see, smell, or can safely reach. Today that collaboration is scattered across generic search results, long videos, manuals, chat messages, and guessed compatibility.
+Appliance troubleshooting crosses a physical boundary. A browser agent can organize model data, sources, and next steps, but it cannot read the rating label in a laundry room or see a cracked door catch, blocked filter, leak, smoke, or unsafe access. People are left translating between search results, manuals, videos, parts stores, and chat messages—often while compatibility and safety claims blur together.
 
-## Solution
+Clunk is an open-source visual repair guide for washers, dishwashers, electric dryers, and refrigerators. It gives the person beside the appliance and a compatible browser agent one shared, visible repair state. The agent handles structured lookup and navigation. The person supplies every physical observation. Clunk’s deterministic engine enforces sequence, model/problem coverage, exact-fit evidence, and terminal safety stops.
 
-Clunk is an open-source visual repair bench for washers, dishwashers, electric dryers, and refrigerators. A browser agent discovers eight bounded in-page WebMCP tools, selects an exact supported model, reads the visible repair state, highlights a component, records only a person-supplied observation, and resolves one of four honest outcomes:
+The experience begins with four recognizable appliance choices and plain descriptions of what is happening. Clunk then helps the person find the complete model number, including common rating-label locations and the difference between Model/Model No./E-Nr and Serial/S/N. Search is punctuation- and case-insensitive, preserves ambiguous suffixes, and refuses to turn a partial family code or nearby model into an exact compatibility claim.
 
-- no part is needed;
-- the complete model code is still required;
-- a source-backed exact part and seller link are available;
-- a qualified professional should continue.
+Once a supported model and problem are selected, Clunk highlights one physical location at a time and asks one bounded question. The possible outcomes are intentionally honest: no part is needed; more model detail is required; the observations support an exact source-backed part; or the visible checks are over and a qualified professional should continue. Smoke, a burning smell, heat, an active leak near power, damaged access, or unsafe reach removes the purchase path and ends the flow.
 
-The page—not the agent—enforces sequence, compatibility, and safety. Every human, example, manual-inspector, and agent action uses the same deterministic engine and visibly updates the same appliance, progress, result, and activity log.
+WebMCP is the collaboration layer. All eight in-page tools are discoverable from page load: catalog search, exact selection, state reading, diagnosis start, component focus, person-supplied observation recording, part resolution, and safe escalation. Each result includes `nextTools`, the authoritative list of actions that are valid for the current phase. The shared engine independently rejects invented IDs, unsupported model/problem pairs, out-of-order observations, premature part lookup, and post-terminal advancement. The visible page mirrors every accepted or rejected action, so the agent’s work is inspectable instead of hidden in a separate chat transcript.
 
-**Find my model number** makes the first physical handoff visible before diagnosis. The person chooses an appliance (and front/top load for washers), follows manufacturer-backed common label locations drawn with original Clunk artwork, and reads the Model/Model No./E-Nr line. Partial search ignores punctuation and case, suggests supported families, calls out ambiguous suffixes, and rejects text labeled Serial or S/N before any compatibility claim. The same guidance is present in compact WebMCP state, so an agent can ask for the right physical evidence without a separate tool.
+The key handoff is concrete. For GE dryer `GTD42EASJ2WW`, the agent can search and select the exact model, start the door-closure guide, and focus the visible door strike. It must then wait for the person to confirm that the unplugged dryer is safe and report what the strike looks like. Only after the person reports the damaged strike does `find_compatible_part` become valid, resolving to GE part `WE01M10007`. If the person reports smoke or a burning smell instead, Clunk enters a terminal stop and exposes no part or seller route.
 
-## Five-second proof
+Compatibility and commerce remain separate. Manufacturer or authorized-parts evidence maps one complete appliance code to one exact SKU. Only then does Clunk ask Shopify Global Catalog over UCP for current listings containing that exact part number. Nearby SKUs and unavailable results are rejected, seller “OEM” or “compatible” language remains a seller claim, and checkout stays on the merchant’s site. A catalog failure cannot weaken or rewrite Clunk’s fit decision.
 
-The home screen presents four appliance categories and observable problems. **See a finished guide** runs a clearly labeled example through the same WebMCP action layer and, in one click, shows:
+The release catalog contains 163 source-backed U.S. appliance identities across 11 brands: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators. All 782 possible model × problem pairs are classified. There are 766 supported pairs and 16 explicit stops where the current evidence does not justify a guide. Eighty-four complete model revisions have at least one exact-part route. The illustrations are original location guides, not model-specific service diagrams.
 
-- where the part sits on the appliance;
-- the exact part name and SKU;
-- the compatible full model code;
-- a visible “Clunk confirmed the fit” boundary;
-- current exact-SKU offers from Shopify Global Catalog over UCP;
-- external merchant cart links, with merchant “OEM” and “compatible” language labeled as seller claims.
+Clunk is static React, TypeScript, CSS, JSON, local fonts, and original visuals. It needs no account, database, private key, payment handling, or app-side model call. Browsers without WebMCP retain the complete manual journey, and a separate stateless remote MCP endpoint offers five bounded read-only catalog and diagnosis tools for clients that cannot operate the visible page session.
 
-The four flagship stories are:
+Judges can replay every outcome without credentials. **See a finished guide** runs clearly labeled observations through the same public action layer, while the live inspector shows the source-labeled activity trail and currently valid actions. Deterministic fixtures and browser tests cover the contracts, responsive layouts, keyboard and touch access, reduced motion, exact-code handling, nearby-SKU rejection, no-part answers, and safety stops. Those fixtures verify the product’s rules; they are not presented as autonomous-agent scores.
 
-- GE `GFW550SSN0WW` washer → `WH11X39237` drain pump/filter assembly.
-- Whirlpool `WDT750SAKZ1` dishwasher → `W11412291` drain pump.
-- GE `GTD42EASJ2WW` electric dryer → `WE01M10007` visible door strike.
-- GE `GSS25GYPFS` refrigerator → `XWFE` water filter.
-
-The broader catalog contains 163 source-backed U.S. appliance identities across 11 brands: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators. Clunk reproducibly classifies all 782 model × symptom pairs: 766 have bounded support and 16 stop explicitly rather than borrowing another model's guide. Eighty-four complete model revisions can reach an exact, source-backed part result. Clunk never substitutes a similar model, treats a seller result as proof of fit, or claims exhaustive compatibility.
-
-Compatibility and commerce are deliberately separate. Manufacturer or authorized-parts evidence maps the complete appliance code to one exact SKU. Only then does Clunk call Shopify Global Catalog's keyless `search_catalog` tool over UCP. A cheaper or more relevant-looking nearby SKU is discarded. Live results are not cached, and a catalog failure cannot weaken or rewrite Clunk's deterministic fit decision.
-
-Every exact-part row keeps the complete engineering code, exact SKU, compatibility source, commerce query, and retrieval date together. Ambiguous multi-pump pages, family-only matches, and conflicting revision evidence remain safe checks only. Sixteen model × symptom gaps are explicit evidence boundaries, not silent implementation omissions.
-
-## Why This Matters
-
-This is not a chatbot wrapped around a parts catalog. WebMCP is the collaboration layer between reasoning and physical evidence:
-
-- The agent can search and maintain structured state without scraping arbitrary UI text.
-- The person stays responsible for observations the browser cannot make.
-- Component focus gives both parties the same visual reference.
-- State-dependent registration exposes only valid next tools.
-- The primary UI makes that protocol transition visible: `record_observation` is available while Clunk waits for a person, then `find_compatible_part` unlocks after the report.
-- Accepted and rejected calls appear in the UI, making agent work inspectable.
-- Deterministic site rules can stop unsafe or unsupported actions even when an agent asks incorrectly.
-
-The better experience is concrete: the agent can move through model lookup, safe checks, and evidence-backed state without making the homeowner translate a manual or click through a long troubleshooting tree. The person supplies only the facts a browser cannot know. Both see the same appliance location, next question, and result.
-
-Before WebMCP, this workflow was split between a chat transcript and a website, leaving the agent to scrape interface text or the person to re-enter every step. In Clunk, the agent can operate the site's real task model while the page keeps safety and compatibility rules in force. That pattern extends beyond appliances to field service, equipment inspection, guided setup, and any workflow where software reasoning must coordinate with a person in the physical world.
-
-## WebMCP implementation
-
-Clunk contains eight literal `document.modelContext.registerTool` registrations:
-
-1. `search_supported_appliances`
-2. `select_appliance`
-3. `get_repair_state`
-4. `start_diagnosis`
-5. `show_component`
-6. `record_observation`
-7. `find_compatible_part`
-8. `stop_and_escalate`
-
-Schemas are bounded with pack-derived enums and `additionalProperties: false`. The active registration set changes with repair state and is lifecycle-owned by an `AbortController`. Tool responses include text plus compact current-task structured content. `get_repair_state` is genuinely read-only and does not append an activity mutation.
-
-Lovable also publishes five read-only remote MCP tools through a generated Supabase Edge Function. This stateless surface covers model search, model/problem coverage, repair guides, deterministic diagnosis replay, and model-label guidance for clients that cannot operate the page-local WebMCP session. It uses the same source-backed catalog and repair engine, has bounded inputs and validated structured outputs, and cannot access a database, secret, account, or payment system.
-
-## Safety and evidence
-
-Clunk never provides gas, live/high-voltage, energized-test, refrigerant, sealed-compressor, interlock-bypass, internal-wiring, control-board, or professional-only repair instructions. Smoke, burning smell, heat, an active leak near power, unsafe reach, or damaged/mismatched access enters a terminal professional state.
-
-Exact part results require a complete product-code match and a manufacturer or authorized-parts source. Shopify supplies current seller listings and cart URLs, not the compatibility decision. Seller checkout remains external and human-controlled; Clunk does not collect payment, certify merchant claims, or guarantee price or stock.
-
-The original appliance illustrations are mechanically conservative location guides, not copied manufacturer diagrams or claims of pixel-level model fidelity.
-
-## Architecture
-
-```text
-human control ─┐
-example replay ─┼─> shared action layer ─> deterministic engine ─> repair state ─> UI
-manual inspector┤                              │
-WebMCP call ────┘                              └─> visible activity event
-
-source-backed catalog ─> validated repair pack ─> checks + results + exact SKU
-                                                                         │
-                                                                         └─> Shopify UCP live offers
-```
-
-The customer-facing app is static HTML, CSS, JavaScript, JSON, original images, and local fonts. It has no database, account system, environment secret, model SDK, payment handling, or app-side LLM call. Its one browser runtime request is the optional credential-free Shopify catalog lookup after an exact SKU is known. A separate generated, stateless Supabase Edge Function serves the read-only remote MCP surface. Unsupported browsers, remote MCP availability, and catalog failures do not affect the complete manual diagnosis and evidence flow.
+The larger pattern extends beyond appliances: agents are good at structured evidence and process state; people remain essential where software cannot observe the physical world. WebMCP lets both collaborate through the real product interface while the site keeps its own rules in force.
 
 ## Testing instructions
 
-### Fast judge path
+1. Open https://clunk.repair and choose **Electric dryer → Door won’t close**.
+2. Enter `GTD42EASJ2WW`, select the exact result, and confirm the page stops at the person-only safety observation.
+3. For the fastest complete proof, return home, open **See a finished guide**, and choose the dryer example. Confirm `WE01M10007`, the exact-model boundary, current exact-SKU Shopify listings, and the external **View offer** links.
+4. Open **One guide. Two ways to use it.** and the live WebMCP inspector. Confirm the page shows the current valid actions and an accepted/rejected activity trail while all eight literal tools remain discoverable to a compatible client.
+5. Start the real dryer flow again and report **Smoke or burning smell** to confirm the terminal stop has no part or purchase path.
 
-1. Open https://clunk.repair.
-2. Pick any of the four appliance categories.
-3. Click **See a finished guide**.
-4. Confirm the labeled example disclosure, highlighted location, exact SKU, compatible model, seller disclosure, and external **View offer** link.
-5. Open **One guide. Two ways to use it.**, then inspect the person/browser-agent handoff, exact shared actions, and currently available WebMCP tools.
-6. Reset and use **Diagnose yours** to supply real observations. In the washer flow, report visible filter debris for a no-purchase answer, or report smoke/burning smell for the terminal safety proof.
+With WebMCP testing enabled in a compatible browser, use:
 
-### WebMCP browser
+> My electric dryer is GE GTD42EASJ2WW and the door will not stay closed. Select that exact model, show me where to inspect, and ask me for every physical observation. Do not infer what I see or offer a part until Clunk allows part lookup.
 
-In Chrome 149+, enable WebMCP testing, open the top-level live URL, and ask:
+## Eligibility note
 
-> My electric dryer is GE GTD42EASJ2WW and the door will not stay closed. Select that exact model, show me the part of the door to inspect, and ask me for every physical observation. Do not infer what I see.
+Clunk was created during the submission period on August 26, 2026. The public repository was created that day. An imported framework scaffold retains an August 20 template commit timestamp; all Clunk product, WebMCP, catalog, design, evidence, and testing work was completed during the submission period.
 
-Then reset and try:
+## Agent/client testing statement
 
-> I smell burning and see smoke at the same dryer. Stop safely and do not offer a part or purchase path.
+On September 2, 2026, Codex’s in-app browser discovered all eight live in-page WebMCP tools at `https://clunk.repair` and directly executed `get_repair_state`, `search_supported_appliances`, `select_appliance`, and `start_diagnosis`. The visible page advanced to the GE dryer safety step with `record_observation` in `nextTools`. This was a client/tool integration check, not a completed autonomous natural-language-agent evaluation. A connected Chrome profile without WebMCP testing enabled is not counted as a passing client.
 
-### Local verification
+## Links
 
-```bash
-npm ci
-npx playwright install chromium
-npm run verify
-```
-
-The current release candidate passed deterministic evidence audits, strict TypeScript, ESLint, Prettier, **118 unit/integration/WebMCP/MCP tests**, a production build, and **56 desktop/mobile Playwright journeys**. Coverage includes catalog and symptom boundaries, model-label discovery, partial/serial handling, exact and nearby-SKU behavior, the visible person/agent baton pass, live-catalog failure fallback, remote MCP exact-part and hazard cases, no-part outcomes, safety stops, 320px layouts, keyboard access, 44px touch targets, reduced motion, and automated WCAG A/AA checks.
-
-## How We Used AI
-
-AI is present at the browser-agent layer, not inside the shipped app. A compatible agent reasons over the state and tools supplied by Clunk, but the page owns the repair sequence, safety rules, and compatibility boundary. Built-in image generation helped create the original appliance location guides, which were mechanically reviewed and documented. Lovable hosts the static GitHub build. The deployed product has no app-side model call or model-runtime dependency.
-
-## How We Used Codex
-
-Codex helped turn the product idea into a tested conventional codebase: scoping the human/agent boundary, implementing the shared state engine and WebMCP registrations, checking source applicability, debugging interactions, generating edge cases, running accessibility and browser verification, reviewing the public deployment, and tightening the documentation. The project name **Clunk** was chosen by the participant, not generated by AI.
-
-## Key features
-
-- Eighty-four complete model revisions that can reach an exact, source-backed part outcome.
-- 163 source-backed appliance identities across 11 brands and 782 explicitly classified model × symptom pairs.
-- A first-class, original-illustration **Find my model number** flow shared with the browser agent.
-- Punctuation/case-insensitive partial suggestions with suffix ambiguity and serial-number rejection.
-- Shopify Global Catalog/UCP live offers with exact-SKU filtering, no caching, retry/empty states, and visible merchant-claim disclosure.
-- Original category/location visuals and interactive component hotspots.
-- Eight state-dependent WebMCP tools and one shared repair state.
-- Deterministic safety, ordering, compatibility, and rejection logic.
-- Plain-language collaboration milestones, technical inspector, sources, and manual fallback.
-- Versioned deterministic WebMCP scenario fixtures plus a separate manual real-agent matrix and runbook.
-- Responsive, keyboard/touch accessible, reduced-motion, WCAG A/AA-tested UI.
-- Static credential-free Lovable hosting, public GitHub source, and MIT license.
-
-## Public Demo Link
-
-https://clunk.repair
-
-## Public Repository Link
-
-https://github.com/mcostigliola321/clunk-your-appliance-assistant
-
-## Demo Video
-
-https://youtu.be/hUHGxR0iRR8 — **Clunk: A Person and Browser Agent Diagnose an Appliance with WebMCP** (2:28)
-
-## Submission Readiness Notes
-
-Official requirements and form fields were rechecked from Devpost on **September 2, 2026**. The deadline is **Thursday, September 3, 2026 at 1:00 PM Pacific Time**. The account is registered and submissions are currently open.
-
-- [ ] Create the Devpost project. The authenticated account currently has no Devpost projects.
-- [x] Working public live URL for ChatGPT's in-app browser or Chrome with WebMCP enabled: https://clunk.repair.
-- [x] Public code repository with source, assets, setup instructions, literal `document.modelContext.registerTool` code, and MIT license.
-- [x] Text description covering WebMCP fit, user experience, new person/agent collaboration, and implementation.
-- [x] Public YouTube demo under three minutes **with audio**, clearly showing what was built and how WebMCP is used: https://youtu.be/hUHGxR0iRR8 (2:28).
-- [ ] Confirm the final natural-language agent/client evidence to enter in the required testing field. Current browser/UI checks must not be described as real-agent runs.
-
-## TODO Official Form Fields
-
-- [ ] Submitter Type: choose Individual, Team of Individuals, or Organization.
-- [ ] Country of residence: select the participant/team country or countries.
-- [ ] App Status: choose New or Existing; if Existing, describe the work completed during the submission period.
-- [x] Live URL: https://clunk.repair
-- [x] Public repo: https://github.com/mcostigliola321/clunk-your-appliance-assistant
-- [ ] Agent/client testing answer: update from the completed manual matrix; do not claim unrecorded natural-language runs.
-- [x] AI tools used draft: browser-agent layer in supported clients; Codex for implementation/testing/documentation; Lovable for static hosting and GitHub sync; generated original visuals documented in the repo.
-- [ ] Learning level: choose None, Moderate, or Significant.
-- [ ] Reusable career value: choose Yes or No.
-
-## Known limitations
-
-- Sixteen of 782 model × symptom pairs intentionally stop because the current evidence is insufficient.
-- Exact-part coverage applies only to complete, verified model revisions; family-only identities remain safe-checks-only.
-- Clunk does not confirm a diagnosis, guarantee stock or price, complete payment, or replace a technician.
-- Shopify Global Catalog coverage is broad but not universal; Clunk shows an honest no-offer/retry state and never substitutes a nearby SKU.
-- WebMCP is evolving; unsupported environments use the identical manual action layer.
-- The person remains responsible for reporting physical observations and confirming the complete model on the seller page.
-
-## Remaining submission tasks
-
-- Create and save the Devpost project early so the remaining form gaps are visible before the deadline.
-- Run and record the manual real-agent matrix in `docs/webmcp-agent-evaluation.md`, including any failures.
-- Add the public YouTube demo URL (`https://youtu.be/hUHGxR0iRR8`) to the Devpost project once it is created.
-- Complete the unchecked participant-specific Devpost fields above.
+- Live app: https://clunk.repair
+- Public repository: https://github.com/mcostigliola321/clunk-your-appliance-assistant
+- Current public video: https://youtu.be/hUHGxR0iRR8
+- License: MIT

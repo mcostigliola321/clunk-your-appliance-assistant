@@ -92,11 +92,11 @@
       Acceptance: Human, manual, and agent actions still reach the same synchronous transition layer across every pack.
       Verify: Parameterized tests run canonical, no-public-filter, exact-part, unknown-model, and hazard paths.
 
-- [x] **14. Bake out the state-dependent WebMCP surface**
+- [x] **14. Bake out the state-guarded WebMCP surface**
       Spec ref: spec.md > Real-model expansion addendum
-      What to build: Register the eight v2 tools with literal registerTool calls, current-state schemas/descriptions, dynamic availability, structured provenance, and visible accepted/rejected activity.
-      Acceptance: Irrelevant tools are not registered; part lookup cannot appear before evidence; deterministic scenario fixtures cover discovery, observation, compatibility, and refusal.
-      Verify: Registry lifecycle tests assert tool sets at catalog, diagnosis, result, and terminal states.
+      What to build: Register all eight v2 tools with literal registerTool calls, bounded schemas/descriptions, stable discovery, authoritative `nextTools`, structured provenance, and visible accepted/rejected activity.
+      Acceptance: All eight definitions are discoverable from page load; part lookup is not valid before evidence; deterministic scenario fixtures cover discovery, observation, compatibility, and refusal.
+      Verify: Registry lifecycle tests assert one stable eight-tool inventory while `nextTools` advances across catalog, diagnosis, result, and terminal states.
 
 - [x] **15. Redesign the bench around model discovery and evidence**
       Spec ref: prd.md > Real-model expansion addendum
@@ -162,7 +162,7 @@
 
 - [x] **25. Strengthen the WebMCP judge story and evals**
       Spec ref: Official WebMCP Leverage judging criterion
-      What to build: Make discovery category-aware, keep registrations state-dependent, expose prefilled example state honestly, add four natural-language fixtures, and show a concise visible narrative of person observations and agent actions.
+      What to build: Make discovery category-aware, keep all eight registrations stable while execution remains state-guarded, expose prefilled example state honestly, add four deterministic fixtures, and show a concise visible narrative of person observations and agent actions.
       Acceptance: A judge can understand why the person and agent need each other within thirty seconds; every agent call updates the same visible state as the human path.
       Verify: Registry, action-equivalence, activity-source, lifecycle, and eval-fixture tests pass.
 

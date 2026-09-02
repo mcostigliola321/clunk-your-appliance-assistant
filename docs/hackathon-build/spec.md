@@ -84,7 +84,7 @@ Runtime invariants verify schema version, unique IDs, component/check/source/res
 
 ## Public WebMCP tools
 
-Tool contracts live in `src/webmcp/contracts.ts`. Enums are derived from the catalog and validated repair packs.
+Tool contracts live in `src/webmcp/contracts.ts`. Stable category and problem enums are bounded in the contract; catalog- and step-dependent IDs must come from prior tool output and are validated by the repair engine.
 
 | Phase        | Available actions                              |
 | ------------ | ---------------------------------------------- |
@@ -94,7 +94,7 @@ Tool contracts live in `src/webmcp/contracts.ts`. Enums are derived from the cat
 | Result       | read, show component, find part, stop          |
 | Escalated    | read, search, select                           |
 
-`registerClunkTools` contains eight literal `document.modelContext.registerTool` calls. The provider aborts and replaces the active registration group when this inventory changes. `get_repair_state` is annotated read-only, does not append an activity mutation, and returns compact current-task structured content. All callbacks return text, bounded structured content, and `isError` for rejected calls.
+`registerClunkTools` contains eight literal `document.modelContext.registerTool` calls, all exposed together on page load and owned by one `AbortController` lifecycle. The table above describes valid execution by phase, not registration. Every response carries authoritative `nextTools`, and the engine rejects out-of-order or invented actions. `get_repair_state` is annotated read-only, does not append an activity mutation, and returns the complete current-task snapshot; the other tools return distinct bounded projections. All callbacks return text, structured content, and `isError` for rejected calls.
 
 ## Example replay
 

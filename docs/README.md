@@ -22,6 +22,7 @@ This directory contains Clunk's current technical, safety, evidence, commerce, e
 | [`shopify-ucp-integration.md`](./shopify-ucp-integration.md)       | Global Catalog offer discovery, exact-SKU filtering, paid placement, and checkout boundaries. |
 | [`remote-mcp.md`](./remote-mcp.md)                                 | Lovable/Supabase remote MCP contract, generation, safety, and deployment verification.        |
 | [`webmcp-agent-evaluation.md`](./webmcp-agent-evaluation.md)       | Repeatable natural-language agent cases and the distinction from deterministic fixtures.      |
+| [`release-freeze-manifest.md`](./release-freeze-manifest.md)       | Final candidate identity, preserved evidence, release gate, and owner-only external actions.  |
 | [`source-url-audit.md`](./source-url-audit.md)                     | Dated source availability, applicability, and access limitations.                             |
 | [`release-security-checklist.md`](./release-security-checklist.md) | Repository and host controls that require owner or deployment configuration.                  |
 | [`../SECURITY.md`](../SECURITY.md)                                 | How to report security, unsafe-repair, or evidence issues.                                    |
@@ -42,6 +43,7 @@ Machine-readable schemas sit beside their human explanations:
 - [`research/judge-polish-2026-08-31/README.md`](./research/judge-polish-2026-08-31/README.md)
 - [`research/judge-depth-2026-08-31/README.md`](./research/judge-depth-2026-08-31/README.md)
 - [`research/final-submission-polish-2026-09-02/README.md`](./research/final-submission-polish-2026-09-02/README.md)
+- [`research/final-release-2026-09-02/audit-pass-1.md`](./research/final-release-2026-09-02/audit-pass-1.md)
 
 Dated source checks are evidence snapshots, not guarantees that a third-party page, seller, price, or stock level is unchanged.
 

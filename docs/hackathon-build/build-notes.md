@@ -1,5 +1,7 @@
 # Build Notes
 
+> Historical browser observations below are dated build evidence, not current-client verification. The connected Chrome profile used for the September 2 final-release audit did not have WebMCP testing enabled and is not counted as a passing client. Current final-release client evidence is recorded in [`../webmcp-agent-evaluation.md`](../webmcp-agent-evaluation.md).
+
 ## 2026-08-26 — Onboarding
 
 - Official Devpost rules, dates, judging criteria, prizes, and submission requirements were reviewed from live Devpost data and explicitly acknowledged.
@@ -76,7 +78,7 @@
 - Scope now targets six brands and twelve real washer model families while retaining one excellent no-drain symptom.
 - Breadth is defined as source-backed model families, not universal coverage. Troubleshooting verification and exact-part verification are separate states.
 - The product must require a complete model/product code before making an exact compatibility claim; uncertain variants are a visible refusal, not a guessed result.
-- The WebMCP surface will become state-dependent and discovery-first so the browser agent performs a meaningful job: locate the right pack, sequence human observations, expose provenance, and stop at evidence or safety boundaries.
+- The WebMCP surface will be discovery-first and state-guarded so the browser agent can locate the right pack, sequence human observations, expose provenance, and stop at evidence or safety boundaries.
 - Existing fictional proof-of-concept history is retained; checklist items 12–18 supersede the prior submission handoff.
 
 ## 2026-08-26 — Source-backed v2 vertical slice
@@ -84,7 +86,7 @@
 - Replaced the fictional singleton with 12 real front-load washer families across LG, Samsung, GE, Whirlpool, Maytag, and Electrolux. Each family has a dated official model/support source and a conservative diagram/check profile.
 - Added exact product-code verification, unsupported-model refusal, no-part-needed, variant-needed, exact-part, and professional-only outcomes. Rechecked the launch evidence and corrected Samsung’s verified drain-pump listing to `DC97-20621A` for the selected complete codes.
 - Generalized the deterministic engine, shared snapshot, original topology diagram, model finder, source panel, part boundary, and activity log without adding a backend or app-side model call.
-- Replaced the v1 WebMCP catalog with eight state-dependent v2 tools and ten agent eval cases covering discovery, human observation, visual explanation, exact part, no part, unsupported models, hazards, and bypass refusal.
+- Replaced the v1 WebMCP catalog with eight state-guarded v2 tools and ten deterministic scenario cases covering discovery, human observation, visual explanation, exact part, no part, unsupported models, hazards, and bypass refusal.
 - Rewrote the public README, architecture, safety model, source ledger, repair-pack guide, JSON Schema, and product brief around source-backed evidence and bounded compatibility.
 - Verification passed: TypeScript, ESLint, 26 unit/integration/eval tests before the final diagram refinement, 22 focused engine/safety/registry/eval regressions after it, production build, and 12/12 Playwright cases across desktop and mobile. Browser checks include exact-part, no-part, hazard, keyboard, 44px touch targets, responsive overflow, reduced motion, and automated WCAG A/AA rules.
 - Desktop and 390px visual review confirmed the clean model-finder-first hierarchy. Deployment and actual natural-language WebMCP sessions remain checklist items 17–18.
@@ -93,8 +95,8 @@
 
 - Pushed `d46c3ef` to the GitHub-connected `main` branch under Mark Costigliola’s configured author and published the synced build to https://clunk-appliance-assistant.lovable.app with Lovable deployment `36ba1bfc-9961-436e-ac7f-7d47d45aa72f`.
 - Live verification caught stale fictional title/description metadata. Fixed it in `30f568b`, pushed it under the same author, and republished with deployment `7bd4efd0-8698-4a28-ad92-69d5036769af`.
-- Chrome 149 loaded the public v2 catalog with **Agent tools ready**. The visible state-dependent inventory changed from 3/8 at catalog state to 4/8 at the exact-part result. The production LG `WM3400CW.ABWEVUS` path ended at `AHA75693425`, the cited LG evidence link, and a professional-only installation boundary with eight visible activity events and no console warnings or errors.
-- The in-app browser loaded the same public v2 build in **Manual mode ready**, exposed 3/8 catalog-state judge tools, and reported no console warnings or errors.
+- A historical Chrome 149 capture loaded the public v2 catalog with **Agent tools ready**. The page inspector’s valid-action view changed from 3/8 at catalog state to 4/8 at the exact-part result; this did not mean the literal registration set changed. The production LG `WM3400CW.ABWEVUS` path ended at `AHA75693425`, the cited LG evidence link, and a professional-only installation boundary with eight visible activity events and no console warnings or errors. This dated capture is not current-client evidence; the connected Chrome profile used for the final release audit did not have WebMCP testing enabled.
+- The in-app browser loaded the same public v2 build in **Manual mode ready**, exposed 3/8 catalog-state actions in the page inspector, and reported no console warnings or errors.
 - Checklist item 17 remains open until the exact-part, no-part-needed, and unsupported-model cases are captured as natural-language agent-driven WebMCP sessions rather than UI/manual verification alone.
 
 ## 2026-08-26 — Visual cutaway and progressive disclosure
