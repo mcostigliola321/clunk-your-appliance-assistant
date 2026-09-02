@@ -20,7 +20,6 @@ This directory contains Clunk's current technical, safety, evidence, commerce, e
 | Document                                                           | What it covers                                                                                |
 | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
 | [`shopify-ucp-integration.md`](./shopify-ucp-integration.md)       | Global Catalog offer discovery, exact-SKU filtering, paid placement, and checkout boundaries. |
-| [`mcp-server-integration.md`](./mcp-server-integration.md)         | Draft remote MCP server, five-tool contract, Supabase boundary, and release blockers.         |
 | [`webmcp-agent-evaluation.md`](./webmcp-agent-evaluation.md)       | Repeatable natural-language agent cases and the distinction from deterministic fixtures.      |
 | [`source-url-audit.md`](./source-url-audit.md)                     | Dated source availability, applicability, and access limitations.                             |
 | [`release-security-checklist.md`](./release-security-checklist.md) | Repository and host controls that require owner or deployment configuration.                  |

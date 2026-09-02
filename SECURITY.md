@@ -1,11 +1,9 @@
 # Security and safety reporting
 
-Clunk's browser product is a static, open-source appliance diagnostic guide with no accounts,
-private API keys, payment handling, required database, or app-side model call. It processes local
-browser state, registers WebMCP tools when supported, and optionally queries Shopify Global Catalog
-for seller offers. The repository also contains a draft unauthenticated remote MCP service packaged
-as a Supabase Edge Function. That function is not currently deployed or build-green, but reports
-about its source, generated bundle, future endpoint, or public-data boundary are in scope.
+Clunk is a static, open-source appliance diagnostic guide. It has no accounts, private API keys,
+payment handling, application backend, or app-side model call. It does process local browser state,
+register WebMCP tools when supported, and optionally queries Shopify Global Catalog for seller
+offers, so security and unsafe-repair reports are welcome.
 
 ## Report a vulnerability privately
 
@@ -24,9 +22,6 @@ person's data.
 - unsafe instructions, protection bypasses, or a safety stop that can be skipped;
 - an exact model, part-fit, seller, paid-placement, or commission disclosure claim that is wrong;
 - malformed WebMCP input that advances state or reveals an unintended action;
-- remote MCP input that bypasses ordering, safety, model/revision isolation, or the public-data-only
-  boundary; unexpected persistence, database access, authentication behavior, or denial-of-service
-  exposure in the Edge Function;
 - script injection, unsafe external URL handling, dependency compromise, or deployment-header gaps;
 - secrets or private operational data committed to the repository.
 
