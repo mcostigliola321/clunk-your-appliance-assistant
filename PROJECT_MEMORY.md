@@ -16,6 +16,7 @@ WebMCP novelty is introduced as **One guide. Two ways to use it.** The secondary
 
 ## Current release state
 
+- Browser branding uses a Clunk-owned favicon set instead of the Lovable starter mark: a Deep Tide rounded field, a Cool Field Paper `C` that also reads as a front-loader aperture, and one Citron action dot. The editable source is `public/favicon.svg`; PNG, Apple touch, and legacy multi-size ICO derivatives ship with it.
 - The catalog preserves 163 source-backed U.S. identities: 56 washers, 33 dishwashers, 33 electric dryers, and 41 refrigerators across 11 brands. There are 106 exact-code identities and 57 family-only identities.
 - All 782 model × symptom pairs are reproducibly classified. There are 766 supported pairs and 16 explicitly unsupported pairs: washer 274/280, dishwasher 165/165, dryer 132/132, and refrigerator 195/205.
 - The 16 gaps are evidence boundaries, not silent implementation omissions. Six washer rows lack sufficiently exact topology-safe manufacturer support. Ten refrigerator rows are leak and no-ice routes for the five Bosch E-Nr identities; current Bosch US evidence did not justify the shared visible-check profiles.

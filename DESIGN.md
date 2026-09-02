@@ -151,6 +151,10 @@ This is the user-pinned, code-led Approachable Precision world established by se
 - Large, tightly set headings pair with plain-language copy and compact evidence labels.
 - Commerce and exact-fit proof share one high-contrast result field; proof-system detail stays secondary.
 
+### Brand mark
+
+The browser mark combines a geometric `C` with the circular aperture of a front-load appliance. It sits on a Deep Tide rounded field in Cool Field Paper, with one Citron dot marking the active physical point. The construction stays intentionally simple so it remains legible at 16px. `public/favicon.svg` is the editable source; the PNG, Apple touch, and multi-size ICO files are derived outputs.
+
 ## Colors
 
 The palette is a cool field-paper base with graphite structure, tide-green trust, a citron action marker, and quiet category washes that keep appliance choices distinct.
