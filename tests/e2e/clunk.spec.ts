@@ -132,8 +132,10 @@ async function openGuidedProblem(
   if (await exactMatch.isVisible()) await exactMatch.click();
   else await page.getByRole("button", { name: modelResult }).click();
   const start = page.getByRole("button", { name: "Start the checks" });
+  const safety = page.getByRole("heading", { name: safetyHeading });
+  await expect(start.or(safety)).toBeVisible();
   if (await start.isVisible()) await start.click();
-  await expect(page.getByRole("heading", { name: safetyHeading })).toBeFocused();
+  await expect(safety).toBeFocused();
   await page.getByRole("button", { name: "Start over" }).click();
 }
 

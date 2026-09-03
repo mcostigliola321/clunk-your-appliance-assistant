@@ -1,6 +1,6 @@
 # Clunk project memory
 
-Last reconciled: **2026-09-03 (September 2 local)** for the user-approved homepage demo addition. The isolated `codex/homepage-demo` worktree starts from freshly verified `origin/main` **75cb780968a284bb7cd9c6b305315378c44199a6**, which Lovable also reports as its current source. The homepage addition is local and not yet published. Verify moving branch, deployment, and external-service facts before acting.
+Last reconciled: **2026-09-03 02:47 UTC (September 2 local)**. The user-approved homepage demo is **published at https://clunk.repair** from merge **b2da7a8ec1a089b8ebfa3efb25052f56fdb66569**, Lovable deployment `c1a042c3-180a-4e69-be29-d2d726966cdf`. PR and main CI passed; live JavaScript and CSS match the tested build. The follow-up handoff/test-wait correction changes no production asset. See `docs/homepage-demo-release.md`. Verify moving branch, deployment, and external-service facts before acting.
 
 ## Submission and freeze
 
@@ -33,12 +33,13 @@ The homepage demo sits inside **One guide. Two ways to use it.**, below the pers
 
 ## Worktrees and verification
 
-- Homepage worktree: `/Users/Mark/Desktop/Claude-Workspace/Projects/Clunk-homepage-demo`, branch `codex/homepage-demo`. Only the video UI, narrow frame CSP allowance, tests, architecture note, and this reconciled handoff are in scope.
+- Homepage worktree: `/Users/Mark/Desktop/Claude-Workspace/Projects/Clunk-homepage-demo`, branch `codex/homepage-demo`, merged through PR #4. Only the video UI, narrow frame CSP allowance, tests, architecture note, and reconciled handoff are in scope. The documentation/test-only follow-up is based on the merge, without modifying the published application.
 - Local `codex/release-evidence` contains the unrelated deferred-focus correction `b79985f` and submission evidence through `37ccf71`. **That focus fix is not published and is not included here.** Do not merge the entire branch implicitly. Related task: **Resolve Clunk release blockers**, `01a063e5-d792-7281-816b-76685b60eb35`; its older recording status is superseded by the completed publication evidence.
 - The original workspace's local main is stale at `605c3a9` and has unrelated dirty submission files. Leave it untouched; use freshly fetched upstream for integration.
 - Base release `75cb780` was merged by PR #3 and verified by GitHub run `33684424983`. Lovable project is `4d536d43-a124-405a-b657-8f125b15b695`, serving https://clunk.repair and https://clunk-appliance-assistant.lovable.app.
-- Local TypeScript, lint, 119 unit/integration/WebMCP tests, build, all 60 desktop/mobile browser checks, generated MCP drift, both deterministic evidence audits, formatting, and zero-vulnerability audit pass. The full gate passed again after the final nested-inspector toggle guard. Delta review found no remaining blocking issue; real YouTube playback is checked separately from the automated player fixture.
+- Local TypeScript, lint, 119 unit/integration/WebMCP tests, build, all 60 desktop/mobile browser checks, generated MCP drift, both deterministic evidence audits, formatting, and zero-vulnerability audit pass. PR CI `33708315322` and main CI `33708615621` passed. A post-publication rerun exposed an existing test helper that sampled the Start button before rendering; it now awaits either Start or the safety heading. The complete gate passed after this test-only correction. No repair implementation changed. Delta review found no remaining blocking issue.
 - Actual YouTube playback was verified locally at 320px: time advanced beyond 15 seconds, readyState 4, no media error. Desktop and 320px visuals were reviewed; the corrected thumbnail fits. The player retains 16:9 sizing where possible and a 200px minimum height on narrow screens.
+- Fresh live checks confirmed public HTTP 200, matching JS/CSS, unchanged catalog counts and supported/unsupported Bosch routes, eight discoverable in-page tools, working playback and captions, desktop/390px appearance, and zero remaining iframes after closing the parent explanation. No Devpost or YouTube changes were made.
 - The only existing build advisory is the large application chunk (now about 192.90 kB gzip). No new dependency was added.
 - Host header declarations are host-specific; do not claim CSP enforcement without inspecting production headers. The source allowance is narrowly `frame-src https://www.youtube-nocookie.com`.
 
@@ -48,4 +49,4 @@ The homepage demo sits inside **One guide. Two ways to use it.**, below the pers
 - Preserve unrelated work and keep evidence, commerce, and safety claims separate.
 - Preserve keyboard access, visible focus, 44px targets, 320px layouts, reduced motion, and plain-language safety stops.
 - Run the complete verification gate and inspect representative desktop/mobile states before integration and after publication.
-- Reconcile this handoff after publishing. No submission/media changes are authorized by the homepage addition.
+- No further submission/media changes are authorized by the homepage addition. Freeze all submitted materials at the deadline above.
