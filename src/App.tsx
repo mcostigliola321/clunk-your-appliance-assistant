@@ -1,10 +1,11 @@
 import { ChevronDown, RotateCcw } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { ActivityLog } from "@/components/ActivityLog";
 import { AgentStory } from "@/components/AgentStory";
 import { ApplianceDiagram } from "@/components/ApplianceDiagram";
 import { CauseStack } from "@/components/CauseStack";
+import { DemoVideo } from "@/components/DemoVideo";
 import { HandoffStatus } from "@/components/HandoffStatus";
 import { ModelFinder } from "@/components/ModelFinder";
 import { NextCheckPanel } from "@/components/NextCheckPanel";
@@ -26,6 +27,7 @@ import type {
 import { useRepair } from "@/state/RepairProvider";
 
 export function App() {
+  const [protocolOpen, setProtocolOpen] = useState(false);
   const { state, snapshot, invokeTool, reset, undoLastObservation, canUndo } = useRepair();
   const latestMessage = getActivityMilestone(state.activity.at(-1));
   const hasSession = Boolean(state.applianceId || state.activity.length > 1);
@@ -289,7 +291,12 @@ export function App() {
           </>
         )}
 
-        <details className="protocol-disclosure">
+        <details
+          className="protocol-disclosure"
+          onToggle={(event) => {
+            if (event.target === event.currentTarget) setProtocolOpen(event.currentTarget.open);
+          }}
+        >
           <summary>
             <span>
               <strong>One guide. Two ways to use it.</strong>
@@ -302,6 +309,7 @@ export function App() {
           <div className="protocol-band">
             <HandoffStatus snapshot={snapshot} />
             <AgentStory />
+            {protocolOpen ? <DemoVideo /> : null}
             <details className="protocol-inspector">
               <summary>
                 <span>

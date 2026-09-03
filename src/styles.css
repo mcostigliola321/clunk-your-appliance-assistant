@@ -2557,6 +2557,62 @@ h2[tabindex="-1"]:focus-visible {
   line-height: 1.5;
 }
 
+.demo-video__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+}
+
+.demo-video__toggle,
+.demo-video__actions a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.demo-video__toggle {
+  padding: 0 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.demo-video__toggle:hover {
+  background: var(--tide-pale);
+}
+
+.demo-video__actions a {
+  color: var(--tide);
+  text-underline-offset: 3px;
+}
+
+.demo-video__note {
+  max-width: 66ch;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.demo-video__player {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  min-height: 200px;
+  aspect-ratio: 16 / 9;
+  margin-top: 20px;
+  border: 0;
+  background: var(--ink);
+}
+
 .protocol-inspector {
   border-top: 1px solid var(--line-strong);
   border-bottom: 1px solid var(--line-strong);
